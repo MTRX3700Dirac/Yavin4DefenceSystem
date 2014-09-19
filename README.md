@@ -4,6 +4,8 @@ Yavin4DefenceSystem
 Instructions for using Git
 --------------------------
 
+Please try and submit raw files as much as possible and not zips, it makes it a hassle to edit
+---------------------------------------------------------------------------------------------
 Note: depending on user account permissions, sudo may be required on linux
 
 -**1)**
