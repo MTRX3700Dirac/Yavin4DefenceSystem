@@ -1,0 +1,114 @@
+\documentclass[]{article}
+\usepackage{graphicx}
+
+%opening
+\title{MTRX3700 Major Project: Death Star Tracker \newline Description of States and Transitions}
+\author{Grant Louat}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document describes the states envisioned in the preliminary State Transition Diagram used to prototype the initial code framework. This is however only a preliminary document and only describes the basic operational functionality. Additional features such as user interface will need to be appended in a later document.
+\end{abstract}
+
+\section{Initialization}
+This is a state which configures the system and powers on the hardware in anticipation of operating.
+
+\subsection{Entry:}
+This is the initial state entered when the system is powered on, and will also be the state that will be called if there is an unhandled exception (E.g. the system simply resets).
+
+\subsection{Function:}
+The primary function of the state is to power the sensors and wait for them to respond ready before attempting to use them. It will also place the actuators in a defined starting position.
+
+\subsection{Exit:}
+The system exits this state when the initialization is complete, and when completed the system will transition to a Check For Target state.
+
+\section{Check for Target}
+This state checks for the presence of a target at the current azimuth and inclination.
+
+\subsection{Entry:}
+This state can be called from the Initialization state, Change Azimuth or Change inclination. On entry the INIT signal to the polaroid sensor is set high, initiating a sensor read.
+
+\subsection{Function:}
+The state checks for the presence of a target by simply using the analogue output from the IR sensor as a digital value (as outlined in the datasheet), and checking if the Sonar sensor receives an echo signal.
+
+\subsection{Exit:}
+The state terminates on any of the following: IR sensor detects an object, an echo is returned, or a time out occurs before an echo is returned.
+If a target was detected, then the system transitions to the Measure Distance state. If no target was detected the system remains in a search mode, alternating between Change Azimuth an Change Inclination until it does detect a target.
+
+\section{Change Azimuth}
+This state, along with the Change Inclination state act as the search state for the system, essentially trawling until it detects a target.
+
+\subsection{Entry:}
+The state Change Azimuth alternates with the Change Inclination state when the Check For Target state does not detect a target.
+
+\subsection{Function:}
+Uses the actuators in the base, to increment the Azimuth the sensors observe. The sweep created with the addition of the Change Inclination state will probably start off as some basic search grid type pattern, then may get more advanced if there is time.
+
+\subsection{Exit:}
+The system exits this state once the system is at the new (incremented) azimuth. Upon exiting this state the system enters the Check for Target state to see if the target is at this new azimuth and inclination.
+
+\section{Change Inclination}
+This state is the other half of the searching mode with the Change Azimuth state, and does the same thing, but altering the inclination.
+
+\subsection{Entry:}
+This state alternates with the Change Azimuth state when the Check For Target state does not detect a target.
+
+\subsection{Function:}
+Controls actuators in order to increment the inclination and (hopefully) find the target.
+
+\subsection{Exit:}
+The system exits this state once the new inclination is reached. Upon exiting this state the system enters the Check For Target state to see if the target is at the new azimuth and inclination.
+
+\section{Measure Distance}
+This state controls the IR and Sonar sensor to measure the range to the detected target.
+
+\subsection{Entry:}
+The system enters this state whenever the Check For Target state detects the target. Upon entry to this state the system drives the INIT pin on the sonar sensor high which will begin the sonar 'read'.
+
+\subsection{Function:}
+As mentioned above, the sonar sweep begins on entry to this state. As the system is waiting for the echo to return (which triggers an interrupt on an input capture) the system will read the analogue signals from the IR and temperature sensors, convert the IR signal to a range, and the temperature signal into a velocity of sound. When the echo returns the range is calculated and combined with the IR range.
+
+\subsection{Exit:}
+If either (or both?) sensors do not detect the target then the system will return to the Check for Target, and subsequently continue to search if necessary. Otherwise the system will transition to the Azimuth Edge state upon completion of the range calculation.
+
+\section{Azimuth Edge} 
+This state finds the edge of the target by altering the azimuth.
+
+\subsection{Entry:}
+The System enters this state after successfully completing a Measure Distance State.
+
+\subsection{Function:}
+In this state the azimuth is altered until the edge of the target is found (e.g. when it is no longer detected). Upon finding the edge of the target either the distance and approx diameter of the target can be used to calculate the offset to the centre, or the opposite edge can be detected. Either method serves to calculate the centre of the object, and will effectively track the movement of the target.
+\newline
+Remark: In this state the target is assumed to be stationary, which effectively just means that the sensor head must be moving much faster than the target.
+
+\subsection{Exit:}
+The system exits this state when it has located the centre of the target, and has moved there. Upon exiting this state the system transitions to the Inclination Edge state.
+
+\section{Inclination Edge:}
+This state finds the edge of the target by altering the inclination.
+
+\subsection{Entry:}
+This state follows the Azimuth edge state.
+
+\subsection{Function:}
+In this state the inclination is altered until the edge of the target is found (e.g. when it is no longer detected). Upon finding the edge of the target either the distance and approx diameter of the target can be used to calculate the offset to the centre, or the opposite edge can be detected. Either method serves to calculate the centre of the object, and will effectively track the movement of the target.
+\newline
+Remark: In this state the target is assumed to be stationary, which effectively just means that the sensor head must be moving much faster than the target.
+
+\subsection{Exit:}
+The system exits this state when it has located the centre of the target, and has moved there. Upon exiting this state the system transitions to the Check for Target state, effectively beginning the loop again.
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth]{"State Transition Diagram 10,9,14"}
+\caption{State Transition Diagram}
+\label{fig:StateTransitionDiagram10,9,14}
+\end{figure}
+
+
+
+\end{document}

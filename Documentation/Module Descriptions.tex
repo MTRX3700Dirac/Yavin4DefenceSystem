@@ -1,0 +1,438 @@
+\documentclass[]{article}
+
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{bookmark}
+
+
+% Title Page
+\title{Module Descriptions}
+\author{Team Dirac}
+\date{12/9/2014}
+
+
+\begin{document}
+\maketitle
+
+\newpage
+
+\begin{abstract}
+	This document divides the project into a number of independent modules to be completed by the different members of the group. It describes each of the modules in detail, including the functionality of the module, the public interface to the module and the hardware and software resources associated with the module.\newline
+	
+	Remark on Interrupts: The pic18 has only two Interrupt Service Routines - high priority and low priority, which must be shared by all the modules. Thus each interrupt driven module defines a macro that returns true if the triggered interrupt relates the that module, and a public function that handles the interrupt. The high and low ISR are contained in the Integration module (main.c), which calls the public ISR handling functions in each module.
+\end{abstract}
+
+\newpage
+
+\section{Range Finding}
+
+\subsection{Description:}
+This module mainly concerns the usage of the ultrasonic range finding sensor, and its dependencies. The source code for the Range Finding module will be contained in the file RangeFinding.c and the public header will be RangeFinding.h. The ultrasonic module may use the Common.h which will contain include files, definitions and macros common to the entire program, but should otherwise be completely contained in the RangeFinding.c file.
+
+\subsection{Public Interface:}
+This module will contain the following public access functions:
+
+\subsubsection{Configuration Description:}
+The configuration function will perform all necessary actions in order to configure the range finding module, including a delay period if necessary, such that after this function returns the range finding module is ready to begin full operation.
+
+\subsubsection{Configuration Prototype:}
+The configuration function will take no arguments and return nothing. It will be prototyped as so: \newline \newline
+void configureRange(void); 
+
+\subsubsection{Range Description:}
+The RangeFinding module will use both the IR and Ultrasonic sensors to calculate the (calibrated) range.
+
+\subsubsection{Range Prototype:}
+The Range function will take no arguments and return an unsigned int representing the measured distance in mm. The function will take the following prototype: \newline \newline
+unsigned int range();
+
+\subsubsection{ISR Function:}
+The ISR function acts as an Interrupt Service Routine for the range Finding module. It handles any interrupt driven functions.
+
+\subsubsection{ISR prototype:}
+The ISR function takes no arguments and returns nothing. It will have the following prototype: \newline \newline
+void rangeISR(void);
+
+\subsubsection{Calibration Function:}
+The calibration function will change a calibration variable in the rangefinding module that gets added to every range calculation. This will set the distance returned by the current target to the passed argument.
+
+\subsubsection{Calibration prototype:}
+The calibration function will take a single argument of the distance to set the measurement to as a signed int in mm. It will then return nothing. The function will use the following prototype: \newline \newline 
+void calibrateRange(signed int distance);
+
+\subsubsection{Raw Range:}
+This function returns the calibrated range.
+
+\subsubsection{Return Calibration offset prototype:}
+The return calibration offset function will take no arguments and will return a single signed int equal to the measured distance in mm. The function will use the following prototype: \newline \newline
+signed int rawRange(void);
+
+\subsection{Functions:}
+In addition to the public interface functions described above, the ultrasonic module should also contain the following private functions:
+\begin{itemize}
+	\item Output Capture interrupt to act as a timeout, resetting the measurement flag and clearing the CCP input register.
+	\item Speed of sound Calculator
+\end{itemize}
+
+\subsection{Hardware:}
+The ultrasonic module will make use of the following hardware: 
+\begin{itemize}
+	\item Polaroid 6500 series ultrasonic range finder sensor
+	\item 5V power supply
+\end{itemize}
+
+\subsection{Processor Resources:}
+\begin{itemize}
+	\item Input Capture module
+	\item Timer0
+	\item Output Compare (using interrupts)
+	\item Analogue to Digital Converter
+	\item 1 Digital output pin
+	\item 1 Digital input pin
+	\item 1 analogue input pin
+\end{itemize}
+
+\newpage
+\section{User Interface}
+
+\subsection{Description:}
+This module concerns the interface to the system, and how the operator will be able to use it. Any source code for this module will be contained in the UserInterface.c file, with the public interface in UserInterface.h. The module may use the Common.h header, but otherwise all functionality should be contained within the UserInterface.c file.
+
+\subsection{Public Interface:}
+Much of the functionality of the user interface module will be interrupt driven and thus not have any public access functions. Thus the user interface module will only have one public function to display the target information. There may be more function in the future depending on how the user interface evolves. It will also have a public ISR function which is called whenever a User Interface related Interrupt is thrown.
+
+\subsubsection{Configure Description:}
+Configures the interface for use, e.g. will set everything to their default values, and put the device in a 'startup mode'.
+
+\subsubsection{Configure Prototype:}
+The configure function will take no arguments, and will return nothing. It will use the following prototype: \newline \newline
+void configUSER(void);
+
+\subsubsection{Display Description:}
+This function will display the current known target information. Depending on the current operation mode this may be on a computer through the UART, or on the LCD or both. If there is no target detected the function will still display the current tracking azimuth and inclination (as indications of where it is no) but will display "No Target" or "-" in lieu of a range, or something similar.
+
+\subsubsection{Display Prototype:}
+The display function will take a single argument of type TrackingData which is a typedef'ed struct defined in Common.h. It will return nothing. The prototype for this function will be:
+\newline \newline
+void display(TrackingData data);
+
+\subsubsection{ISR Function:}
+This function is the equivalent of an ISR function for the User Interface module. It handles any interrupt driven functions in the User Interface module.
+
+\subsubsection{ISR prototype:}
+The prototype for this function will be: \newline \newline
+void userISR(void);
+
+\subsection{Functions:}
+In addition to the public access functions the user interface module will also contain the following functions:
+
+\begin{itemize}
+	\item Interrupt driven user input handling
+	\item Interrupt driven UART receiver and input handling
+\end{itemize}
+
+\subsection{Hardware:}
+The user interface module will make use of the following hardware:
+\begin{itemize}
+	\item TTL to RS-232 adapter and serial port
+	\item LCD display
+	\item Value cycle button
+	\item Operation mode Switch
+	\item Potentiometer or encoder or similar
+	\item SPI interfaced numpad?
+\end{itemize}
+
+\subsection{Processor Resources:}
+The user interface module will make use of the following processor resources:
+\begin{itemize}
+	\item External interrupts
+	\item UART module (interrupt driven)
+	\item SPI module (interrupt driven) - If numpad used
+	\item ADC (if Pot used)
+\end{itemize}
+
+\newpage
+\section{Tracking}
+
+\subsection{Description:}
+This module concerns the movement of the base, the reading of the IR sensor and searching/tracking the target.
+
+\subsection{Public Interface:}
+The tracking module will have two public access functions: a search function and a track function. It also has a public interrupt function.
+
+\subsubsection{Search Description:}
+The search function moves the base in an incremental search pattern whenever called. The search function will need to check that it is not already at the limits of the base before it starts moving. It will then start moving the base and wait until it reaches the desired increment.
+
+\subsubsection{Search Prototype:}
+The search function will take no arguments and return nothing. The tracking module will have a static variable which stores the direction to move in the next function call. The search function will use the following prototype: \newline \newline
+void search(void);
+
+\subsubsection{Edge Description:}
+This function moves the base (very precisely) until it finds the edge of the target (e.g. when it can no longer 'see' the target) in both the azimuth and inclination axis. It then calculates the offset to the middle of the target (either through the target diameter and distance, or by finding the opposite edge), and then directs the sensors to the centre of the target.
+
+\subsubsection{Edge Prototype:}
+The Edge function will take no arguments and return the tracking data - in the format of a struct defined in Common.h. The Edge function will take the following prototype: \newline \newline
+TrackingData edge(void);
+
+\subsubsection{ISR Function:}
+This function is the equivalent of an ISR function for the Tracking module. It handles any interrupt driven functions in the Tracking module.
+
+\subsubsection{ISR Interface:}
+The ISR function takes no arguments and returns nothing. The ISR function uses the following prototype: \newline \newline
+void trackingISR(void);
+
+\subsection{Functions:}
+In addition to the public functions outlined above the Tracking module 4	should also include the following functionality:
+\begin{itemize}
+	\item a Static variable to store the next direction to search
+\end{itemize}
+
+\newpage
+\section{Integration}
+
+\subsection{Description:}
+This module contains the integration of all modules into a functioning system. The code for this module will be contained in the main.c file with no public interface header. It will also use the Common.h file, but all functionality will be contained in the main.c file, which will also include the entry point of the program.
+The main file is the file which contains the entry point for the program, and non-module specific state infrastructure - it stores the current system state, calls state functions (via a switch case) and handles transitions based on the returned data from modules.
+
+\subsection{Public Interface:}
+The Integration module will have public access functions for use of the user interface module.
+
+\subsection{Functions:}
+There are entry and action functions for each of the system states, as well as main(). Main() is essentially an infinite loop which stores the current state and calls the entry and action functions as necessary. The functions alter the current state, changing the function called in the next iteration.
+
+\subsection{Hardware:}
+This module includes hardware necessary for interfacing the hardware of the other modules examples include:
+\begin{itemize}
+	\item 5V power supply and regulator (stepped down from 9V)
+\end{itemize}
+
+\subsection{Processor Resources:}
+This module has no allocated processor resources as such. The interrupt vectors functions and ISR's are included, but they simply call other module functions to handle the cases.
+
+\newpage
+\section{Azimuth/Inclination}
+
+\subsection{Description:}
+This module concerns the operation of the pan tilt actuators to point the sensors in the correct direction (e.g. actually point the sensors at the target, and track it). The functionality for the Azimuth/Inclination module will be completely contained in the PanTilt.c file, with the public interface in the PanTilt.h file.
+
+\subsection{Public Interface:}
+The Azimuth/Inclination module will have the following public access functions:
+
+\subsubsection{Move:}
+This function will simple move the pan tilt mechanism to the specified Azimuth and Inclination.
+
+\subsubsection{Move Prototype:}
+The move function will take a struct Direction defined in Common.h which contains the destination azimuth and inclination. The function will return nothing. The function will use the following prototype: \newline \newline 
+void move(Direction destination);
+
+\subsubsection{Return Direction:}
+This function will return the current position (direction) of the pan tilt mechanism.
+
+\subsubsection{Return Direction prototype:}
+The return direction function will take no arguments and will return a struct Direction defined in Common.h which contains the current azimuth and inclination that the pan tilt is currently pointing. The function will use the following prototype: \newline \newline
+Direction getDir(void);
+
+\subsubsection{Calibrate:}
+This function will modify the calibration offset in the Pan Tilt module so that any direction to move to the specified direction will move the mechanism to the current direction.
+
+\subsubsection{Calibrate Prototype:}
+The calibrate function will take a struct Direction (defined in Common.h) which contains the Azimuth and Inclination to calibrate the system to. The function will return nothing, and will use the following prototype: \newline \newline
+void calibratePanTilt(Direction reference);
+
+\subsubsection{Raw Direction:}
+This function will return the raw direction (without any calibration)
+
+\subsubsection{Raw Direction Prototype:}
+The function will take no arguments and return a struct Direction (defined in Common.h) that contains the azimuth and inclination. The function will use the following prototype: \newline \newline
+Direction rawDir(void);
+
+\subsubsection{Configuration:}
+This function configures the pan tilt mechanism, beginning PWM generation for the servos and moving the pan tilt to its start position.
+
+\subsubsection{Configuration Prototype:}
+This function will take no arguments and return nothing. The function will use the following prototype: \newline \newline
+void configPanTilt(void);
+
+\subsubsection{Pan Tilt ISR:}
+The pan tilt ISR is called whenever an interrupt service routine concerning the pan tilt module is called. It will then act as the ISR for this module.
+
+\subsubsection{Pan Tilt ISR Prototype:}
+The pan tilt ISR will take no arguments and return nothing. It will have the following prototype: \newline \newline 
+void panTiltISR(void);
+
+\subsection{Functions:}
+In addition to the public access functions defined above the Azimuth/Inclination module should also implement the following hidden functionality.
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsection{Hardware:}
+The Azimuth/Inclination module will make use of the following hardware:
+\begin{itemize}
+	\item Pan Tilt mechanism
+\end{itemize}
+
+\subsection{Processor Resources:}
+The Azimuth/Inclination module will make use of the following processor resources:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\newpage
+\section{Temp}
+
+\subsection{Description:}
+This module contains all the functionality associated with the temperature sensor.
+
+\subsection{Public Interface:}
+The temp module will contain the following public access functions:
+
+\subsubsection{Calibrate:}
+This function will calibrate the temperature sensor, so that the current value read by the sensor will be interpreted as the value passed to the function.
+
+\subsubsection{Calibrate Prototype:}
+The calibrate function will take an unsigned character representing the temperature in degrees Celsius and return nothing. The function will take the following prototype: \newline \newline
+void calibrate(unsigned char reference);
+
+\subsubsection{Temperature Read Description:}
+The temperature read function will multiplex the ADC onto the analogue input pin connected to the temperature probe, perform a conversion, and then convert that into a temperature in Celsius. Again polling should be sufficient. The temperature may be returned in increments of $0.5^0$C to improve resolution (e.g. just double temp in Celsius). If this is the case two separate interface functions should be used one specifically labelled x2, which would thus be able to read the temperature from 0-128 deg. Note: The second function may use the exact same functionality, and possibly even call the original one to do so, simply modifying the output.
+
+\subsubsection{Temperature Read Prototype:}
+The temperature read function will take no arguments and will return an unsigned char representing the temperature in degrees Celsius. The function will take the following prototype: \newline \newline
+unsigned char readTemp(void);
+\newline \newline
+A second temperature read function may be implemented to return the temperature x2 , and will return an unsigned char representing twice the temperature in degrees Celsius. The function will take the following prototype: \newline \newline
+unsigned char readTempx2(void);
+
+\subsubsection{Raw Temp:}
+The raw temp function will return the temperature without any calibration.
+
+\subsubsection{Raw Temp Prototype:}
+The raw temp function will take no arguments and return an unsigned char representing the temperature in deg Celsius. The function will take the following prototype: \newline \newline
+unsigned char rawTemp(void);
+
+\subsection{Functions:}
+In addition to the public access functions the Pan Tilt module should also implement the following (private) functions:
+\begin{itemize}
+	\item PWM generation
+\end{itemize}
+
+\subsection{Hardware:}
+The Temperature module will make use of the following hardware:
+\begin{itemize}
+	\item The TI\_LM 35 temperature sensor
+\end{itemize}
+
+\subsection{Processor Resources:}
+The Temperature module will make use of the following processor resources:
+
+\begin{itemize}
+	\item ADC
+\end{itemize}
+
+\newpage
+\section{Serial}
+
+\subsection{Description:}
+The Serial module will control all serial communication to the external interface.
+
+\subsection{Public Interface:}
+The serial module will have the following public accessor functions:
+
+\subsubsection{Configure:}
+The configure function will configure the serial port for immediate use. It will set the baud rate to 9600, with 8 bit bytes and no parity on the UART. It will also enable the serial interrupts.
+
+\subsubsection{Configure Prototype:}
+The configure function will have no arguments and will return nothing. The configure function will take the following prototype: \newline \newline
+void configureSerial(void);
+
+\subsubsection{Transmit:}
+This function will begin a serial transmission of a given string. It will also enable transmission interrupts so that the string will continue to be transmitted while the processor is free to do other things. It will continue to transmit until it reaches a null terminator.
+
+\subsubsection{Transmit prototype:}
+The transmission function will take an argument of a character pointer, which is equivalent to a string. It will return nothing, and have the following prototype: \newline \newline
+void transmit(char *string);
+
+\subsubsection{Serial ISR:}
+This function is called whenever a serial related ISR is thrown. It will act as the interrupt service routine for the serial module.
+
+\subsubsection{Serial ISR Prototype:}
+This function will take no arguments and will return nothing. It will take the following prototype: \newline \newline
+void serialISR(void);
+
+\subsubsection{Receive Empty:}
+This checks if there has been any data received over serial.
+
+\subsubsection{Receive Empty:}
+The receive empty function will take no arguments and will return a char (non-zero if empty, zero if not empty). The receive empty function will take the following prototype: \newline \newline
+char receiveEmpty(void);
+
+\subsubsection{Receive Peek:}
+This function returns the next character received over the serial, without removing it from the buffer. This means the next peek or pop operation will return the same thing.
+
+\subsubsection{Receive Peek prototype:}
+The receive peek function will take no arguments and will return a character. It will take the following prototype: \newline \newline
+char receivePeek(void);
+
+\subsubsection{Receive Pop:}
+This function returns the next character received over the serial, and removes it from the buffer.
+
+\subsubsection{Receive Pop prototype:}
+The receive pop function will take no arguments and will return a character. It will take the following prototype: \newline \newline
+char receivePop(void);
+
+\subsection{Functions:}
+In addition to the public functions described above the Serial module should also implement the following hidden functionality:
+\begin{itemize}
+	\item Circular Buffer types
+	\item Peek, Push and Pop buffer operations
+\end{itemize}
+
+\subsection{Hardware:}
+The Serial module will use the following hardware:
+\begin{itemize}
+	\item Serial port
+	\item TTL to RS-232 adapter
+\end{itemize}
+
+\subsection{Processor Resources:}
+The Serial module will make use of the following processor resources:
+\begin{itemize}
+	\item USART module
+	\item Serial interrupts
+\end{itemize}
+
+\newpage
+\section{LCD}
+ 
+\subsection{Description:}
+This module contains all the functionality required to communicate and use the LCD hardware.
+
+\subsection{Public Interface:}
+The LCD module will contain the following public functions:
+
+\subsubsection{Configuration:}
+The configuration function will setup the LCD for use, and display the initial 'welcome' message, or simply put the LCD into it default state
+
+\subsubsection{Configuration Prototype:}
+The configuration function will take no arguments and will return nothing. It will use the following prototype: \newline \newline
+void configLCD(void);
+
+\subsection{Functions:}
+In addition to the public functions described above the LCD module will also implement the following (hidden) functions.
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsection{Hardware:}
+The LCD module will make use of the following hardware:
+\begin{itemize}
+	\item LCD screen
+\end{itemize}
+
+\subsection{Processor Resources:}
+The LCD module will make use of the following processor resources:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\end{document}          
