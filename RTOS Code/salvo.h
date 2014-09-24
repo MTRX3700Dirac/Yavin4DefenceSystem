@@ -338,7 +338,7 @@ salvolib.h.
 /* if TRUE, we're building a library, and so salvocfg.h     */
 /*  is disregarded -- we use salvolib.h in its place.       */
 #if OSMAKE_LIBRARY
-#include <salvolib.h>
+#include "salvolib.h"
 #else
 #include "salvocfg.h"
 
@@ -355,7 +355,7 @@ salvolib.h.
 /*  configuration options for the library build.			*/
 #if OSUSE_LIBRARY
 #include <salvolbo.h>
-#include <salvolib.h> 
+#include "salvolib.h" 
 #endif
 #endif
 
@@ -1633,7 +1633,7 @@ Additional function attributes as necessary.
 **                                                         **
 ****                                                     ****
 ************************************************************/
-#include <salvomcg.h>
+#include "salvomcg.h"
 
 
 /************************************************************

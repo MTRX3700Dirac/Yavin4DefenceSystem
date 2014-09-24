@@ -8,6 +8,7 @@
  */
 
 #define TRACK_INT (CCP2_INT)
+#define TRACK_SAMPLE_PERIOD 100
 
 //External declarations for the public access functions
 extern void configBase(void);

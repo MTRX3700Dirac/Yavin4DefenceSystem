@@ -6,7 +6,7 @@
  *
  * Created on 7 September 2014, 4:12 PM
  */
-
+//#include <p18f4520.h>
 #include "Common.h"
 
 //Static variables
@@ -65,6 +65,22 @@ unsigned char readTemp(void)
 
     //Divide the temp by two and return the result
     return DIV_2(temp);
+}
+
+/* **********************************************************************
+ * Function: getTemp(void)
+ *
+ * Include: Temp.h
+ *
+ * Description: Returns the result of the last temperature measurement.
+ *
+ * Arguments: None
+ *
+ * Returns: Temp (in deg celsius) as an unsigned char
+ *************************************************************************/
+unsigned char getTemp(void)
+{
+    return DIV_2(lastTempx2);
 }
 
 /* **********************************************************************

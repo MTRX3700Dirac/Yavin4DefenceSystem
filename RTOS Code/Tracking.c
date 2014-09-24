@@ -6,7 +6,7 @@
  *
  * Created on 15 September 2014, 1:42 PM
  */
-
+//#include <p18f4520.h>
 #include "Common.h"
 
 //Stores the current system configuration
@@ -18,8 +18,8 @@ typedef struct
 
 typedef struct
 {
-    unsigned int az_delay = 0;
-    unsigned int in_delay = 0;
+    unsigned int az_delay;
+    unsigned int in_delay;
 } Delay;
 
 //Define the PWM output pins
@@ -92,7 +92,7 @@ void configureBase(void)
     period = 20000;  //Equivelent to 50Hz at 1MHz with 1:1 prescalar
 
     //Configures the CCP2 as output compare
-    void OpenCompare2(unsigned char config, unsigned int period);
+    OpenCompare2(config, period);
 }
 
 /* **********************************************************************
@@ -229,4 +229,9 @@ Delay direction2Delay(DirectionState dir)
     result.in_delay = dir.inclination * 1000 / ARC_RANGE + 1000;
 
     return result;
+}
+
+void setDelay(DirectionState destination)
+{
+    
 }

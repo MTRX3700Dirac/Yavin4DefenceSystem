@@ -6,7 +6,7 @@
  *
  * Created on 7 September 2014, 4:12 PM
  */
-
+//#include <p18f4520.h>
 #include "Common.h"
 #include <usart.h>
 
@@ -39,7 +39,7 @@ typedef struct
     unsigned char data[BUFFERLENGTH];
 } circularBuffer;
 
-circularBuffer recieve_buffer;
+circularBuffer receive_buffer;
 circularBuffer transmit_buffer;
 
 /* **********************************************************************
