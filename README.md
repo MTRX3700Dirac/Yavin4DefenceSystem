@@ -49,4 +49,5 @@ http://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-pract
 
 SIGNED:
 Bas Uytterhoeven-Spark
+Jacob Mackay
 
