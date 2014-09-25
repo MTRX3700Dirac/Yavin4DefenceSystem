@@ -14,7 +14,12 @@ local filesystem:
 
 git clone https://github.com/MTRX3700Dirac/Yavin4DefenceSystem [Source-Directory]                                                                                         
 
-After this, issue commands from within the source-directory                                                                                                               
+After this, issue commands from within the source-directory   
+
+-**1b)**
+If using SourceTree, make a new branch so all your changes are put in its own branch. A branch 
+is like an online copy of your local changes, and should hold the code you are working on before
+they it is integrated into the master.                                                                                                       
 
 -**2)**
 Make a change to a file in the repo, and commit the change, like this readme
@@ -41,4 +46,7 @@ git pull https://github.com/MTRX3700Dirac/Yavin4DefenceSystem/FOLDER
 
 **For all other git needs**
 http://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide/
+
+SIGNED:
+Bas Uytterhoeven-Spark
 
