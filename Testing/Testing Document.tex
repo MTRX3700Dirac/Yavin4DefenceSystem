@@ -18,7 +18,7 @@ WARNING: DO NOT INCLUDE ANYTHING IN THIS DOCUMENT UNLESS YOU ARE CERTAIN THAT IT
 \end{abstract}
 
 \newpage
-\section{Common:}
+\section{Common}
 
 \subsection{DIV\_X:}
 \subsubsection{Status:}
@@ -117,13 +117,13 @@ This is just an accessor function, so it simply returns the value of a static va
 Working as of 10:30 25/9/14 - Grant
 
 \subsubsection{Description:}
-This macro uses integer operations, so merely approximates the actual value to avoid lengthy floating point operations. 
+This macro performs a linear approximation of the given function for the sake of computational efficiency. This means the computations performed are very different from the function provided, but the results closely approximate those of the actual function within the relevant range. See Fig. \ref{fig:SND_comp} for a comparison.
 
 \subsubsection{Criteria:}
-Each temperature from 0 to 100 deg C was tested and compared to the actual formula result. There is some deviation due to the exclusive use of integer operations, but negligible See Fig. \ref{fig:SND_comp}.\newline 
+Each temperature from 0 to 100 deg C was tested and compared to the actual formula result. There is some deviation, but not much to make a significant difference. See Fig. \ref{fig:SND_comp}.\newline 
 
 \subsubsection{Working Code:}
-\#define SPD\_SND(T) (DIV\_128(332 * (unsigned int)sqrt(16384 + T * (unsigned int)60)))
+\#define SPD\_SND(T) (DIV\_1024(T * (unsigned int)614) + 331)
 
 \begin{figure}
 	\centering
@@ -283,6 +283,7 @@ This function converts a desired direction into a pwm delay format that can then
 \subsubsection{Criteria:}
 
 \newpage
+\section{Serial}
 \subsection{Push Macro:}
 \subsubsection{Status:}
 Working as of 1:45pm 26/9/2014 - Grant
