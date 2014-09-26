@@ -6,7 +6,8 @@
  */
 
 //Serial interrupt flag
-#define SERIAL_INT (TX_INT || RC_INT)
+//#define SERIAL_INT (TX_INT || RC_INT)
+#define SERIAL_INT 0
 
 //External declarations of public functions
 extern void configureSerial(void);

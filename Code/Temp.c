@@ -94,8 +94,28 @@ unsigned char rawTemp(void)
  * Arguments: reference - Reference temperature in deg C
  *
  * Returns: None
+ *
+ * Note: This function does not perform a temperature read, but uses the last
+ *       value. This is because the readTemp function automatically calibrate.
  *************************************************************************/
 void calibrateTemp(unsigned char reference)
 {
-    calibration_offset = reference - DIV_2(lastTempx2);
+    calibration_offset = 2 * (reference - DIV_2(lastTempx2));
+}
+
+/* **********************************************************************
+ * Function: calibrationTemp(unsigned char reference)
+ *
+ * Include: Temp.h
+ *
+ * Description: calibrates the temperature sensor by updating the calibration
+ *              offset variable
+ *
+ * Arguments: reference - Reference temperature in deg C
+ *
+ * Returns: None
+ *************************************************************************/
+unsigned char getTemp(void)
+{
+    return DIV_2(lastTempx2);
 }

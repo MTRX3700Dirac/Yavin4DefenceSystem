@@ -39,7 +39,7 @@ typedef struct
     unsigned char data[BUFFERLENGTH];
 } circularBuffer;
 
-circularBuffer recieve_buffer;
+circularBuffer receive_buffer;
 circularBuffer transmit_buffer;
 
 /* **********************************************************************

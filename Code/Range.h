@@ -8,7 +8,8 @@
  */
 
 //Ultrasonic module interrupt macro
-#define RANGE_INT  (PIR1bits.CCP1IF && PIE1bits.CCP1IE) || (PIR1bits.CCP2IF && PIE1bits.CCP2IE)
+//#define RANGE_INT  (PIR1bits.CCP1IF && PIE1bits.CCP1IE) || (PIR1bits.CCP2IF && PIE1bits.CCP2IE)
+#define RANGE_INT 0
 
 //External declarations of the public access functions
 extern void configureRange(void);

@@ -10,3 +10,4 @@ extern unsigned char rawTemp(void);
 extern unsigned char readTemp(void);
 extern unsigned char readTempx2(void);
 extern void calibrateTemp(unsigned char reference);
+extern unsigned char getTemp(void);

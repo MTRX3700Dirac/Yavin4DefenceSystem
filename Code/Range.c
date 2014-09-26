@@ -11,7 +11,7 @@
 #include "Temp.h"
 
 //(Approximate) speed of sound calculation macro
-#define SPD_SND(T) (332 * DIV_16(sqrt(256 + DIV_2(T))))
+#define SPD_SND(T) (DIV_128(332 * (unsigned int)sqrt(16384 + T * (unsigned int)60)))
 
 //Hardware Related macros
 #define INIT_PIN PORTBbits.RB0
@@ -98,7 +98,7 @@ unsigned int rangeUS(unsigned char temp)
 
     //Perform calculation (ReadCapture in us, speed of sound in m/s->um)
     // um/1024 = ~mm
-    range = DIV_1024(ReadCaptue1() * SPD_SND(temp));
+    range = DIV_1024(ReadCapture1() * SPD_SND(temp));
     //DIV_1024(ReadCapture1() * speed_sound(tempx2));
     
     return range;
@@ -155,7 +155,7 @@ unsigned int speed_sound(unsigned char tempx2)
 {
     unsigned int velocity;
 
-    velocity = 332 * DIV_16(sqrt(256 + 256 * tempx2 / 546));
+    velocity = 332 * DIV_16((unsigned int)sqrt(256 + 256 * tempx2 / 546));
     //velocity = 332 * DIV_16(sqrt(256 + DIV_2(tempx2)));
 
     return velocity;
@@ -212,7 +212,7 @@ void calibrateRange(unsigned int reference)
  *
  * Returns: None
  *************************************************************************/
-signed int rawRange(void)
+unsigned int rawRange(void)
 {
     return lastRange;
 }

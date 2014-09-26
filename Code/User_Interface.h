@@ -8,7 +8,8 @@
  */
 
 //User interface related interrupts
-#define USER_INT (RB_INT || INT0_INT)
+//#define USER_INT (RB_INT || INT0_INT)
+#define USER_INT 0
 
 //Public function external declarations
 extern void display(TrackingData data);

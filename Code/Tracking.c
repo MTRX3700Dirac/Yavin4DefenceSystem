@@ -18,8 +18,8 @@ typedef struct
 
 typedef struct
 {
-    unsigned int az_delay = 0;
-    unsigned int in_delay = 0;
+    unsigned int az_delay;
+    unsigned int in_delay;
 } Delay;
 
 //Define the PWM output pins
@@ -43,7 +43,7 @@ typedef struct
 
 //(Private) Function prototypes:
 void moveBase(DirectionState destination);  //Moves the base to the given Azimuth and Inclination
-void setDelay(DirectionState destination);  //Updates the pwm_delays to match the destination
+//void setDelay(DirectionState destination);  //Updates the pwm_delays to match the destination
 void validate(unsigned int *delay);
 
 //Variable to store where the sensors are currently pointing
@@ -76,7 +76,7 @@ void configureBase(void)
     L_AZ_L_IN();
 
     //Sets the pwm delays to the zero position
-    setDelay(zero_pos);
+    //setDelay(zero_pos);
 
     //Prescalar 1:1 on Instruction cycle clock. Oscillator off, external synch off
     config = T1_16BIT_RW & T1_PS_1_1 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF & T1_SOURCE_INT;
@@ -92,7 +92,7 @@ void configureBase(void)
     period = 20000;  //Equivelent to 50Hz at 1MHz with 1:1 prescalar
 
     //Configures the CCP2 as output compare
-    void OpenCompare2(unsigned char config, unsigned int period);
+    OpenCompare2(config, period);
 }
 
 /* **********************************************************************

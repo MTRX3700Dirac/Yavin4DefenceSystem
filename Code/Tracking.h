@@ -7,7 +7,8 @@
  * Created on 15 September 2014, 1:41 PM
  */
 
-#define TRACK_INT (CCP2_INT)
+//#define TRACK_INT (CCP2_INT)
+#define TRACK_INT 0
 
 //External declarations for the public access functions
 extern void configBase(void);
