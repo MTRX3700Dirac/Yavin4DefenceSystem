@@ -11,7 +11,7 @@
 #include "Temp.h"
 
 //(Approximate) speed of sound calculation macro
-#define SPD_SND(T) (DIV_128(332 * (unsigned int)sqrt(16384 + T * (unsigned int)60)))
+#define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
 
 //Hardware Related macros
 #define INIT_PIN PORTBbits.RB0
