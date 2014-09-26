@@ -129,39 +129,6 @@ void rangeISR(void)
 }
 
 /* **********************************************************************
- * Function: speed_sound(unsigned char tempx2)
- *
- * Include: 
- *
- * Description: Calculates the speed of sound from the given temperature
- *              and the following equation: V = 331.6(1+T/273.15)^0.5
- *              where V is in m/s and T is in deg C
- *
- * Arguments: None
- *
- * Returns: None
- *
- * Remark: The calculation is performed in an unusual way for efficiency.
- *         The argument in the sqrt is multiplied by 256 to avoid loss of
- *         Resolution when dividing without the need for floating point
- *         operations. 256 was chosen as it is 16^2, so a simple bit-shift
- *         outside the sqrt will return the correct value. An even faster
- *         (Yet less accurate version is also included). If this version is
- *         used, then changing the argument from tempx2 to temp will remove
- *         the necessity for the DIV_2(). (There is also a macro for the latter
- *         Implementation, SPD_SND() which would be advisable to use).
- *************************************************************************/
-unsigned int speed_sound(unsigned char tempx2)
-{
-    unsigned int velocity;
-
-    velocity = 332 * DIV_16((unsigned int)sqrt(256 + 256 * tempx2 / 546));
-    //velocity = 332 * DIV_16(sqrt(256 + DIV_2(tempx2)));
-
-    return velocity;
-}
-
-/* **********************************************************************
  * Function: calibrateRange(unsigned int reference)
  *
  * Include:
