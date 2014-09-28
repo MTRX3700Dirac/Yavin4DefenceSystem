@@ -11,7 +11,7 @@
 #define TRACK_INT 0
 
 //External declarations for the public access functions
-extern void configBase(void);
+//extern void configBase(void);
 extern void search(void);
 extern TrackingData edge(void);
 extern void trackingISR(void);

@@ -240,48 +240,6 @@ This function finds the edge of the target in both the azimuth and declination d
 
 \subsubsection{Criteria:}
 
-
-\subsection{moveBase:}
-\subsubsection{Status:}
-Currently incomplete and untested as of 1:20pm 26/9/2014 - Grant
-
-\subsubsection{Description:} 
-This function will move the pan tilt mechanism to the given inclination and declination.
-
-\subsubsection{Criteria:}
-
-\subsection{Validate:}
-\subsubsection{Status:}
-Currently working as of 1:30pm 26/9/2014 - Grant
-
-\subsubsection{Description:}
-This function validates a given delay to ensure that it is between 1000ms and 2000ms, coercing it if not.
-
-\subsubsection{Criteria:}
-This function was tested by passing it values of 100, 1500 and 10000, which includes one of each possible case. In each case the function responded appropriately and gave the desired response.
-
-\subsubsection{Working Code:}
-void validate(unsigned int *delay)
-{
-	if (*delay < 1000)
-	{
-		*delay = 1000;
-	}
-	if (*delay > 2000)
-	{
-		*delay = 2000;
-	}
-}
-
-\subsection{direction2Delay:}
-\subsubsection{Status:}
-Currently incomplete and untested as of 1:30pm 26/9/2014
-
-\subsubsection{Description:}
-This function converts a desired direction into a pwm delay format that can then be used to generate the appropriate pwm.
-
-\subsubsection{Criteria:}
-
 \newpage
 \section{Serial}
 \subsection{Push Macro:}
@@ -448,6 +406,185 @@ Untested as of 3:10pm 26/9/2014 - Grant
 
 \subsubsection{Description:}
 This function acts as the interrupt service routine for the serial module. The primary purpose will be to handle the receive and transmit interrupts.
+
+\subsubsection{Criteria:}
+
+\section{Pan Tilt:}
+
+\subsection{SERVO\_TOGGLE Macro}
+
+\subsubsection{Status:}
+Working as of 12:30 28/9/2014 - Grant
+
+\subsubsection{Description:}
+Toggles the pins used to generate the PWM signal to the servos. There is a SERVO\_INIT() macro which initialises the pins, and AZ\_PWM\_PIN and IN\_PWM\_PIN macros to pass this this macro. At the moment this macro uses PORTC for the PWM pins. The exact pins in PORTC are determined by the AZ\_PWM\_PIN and IN\_PWM\_PIN macros.
+
+\subsubsection{Criteria:}
+This macro was tested with different combinations of AZ\_PWM\_PIN and IN\_PWM\_PIN arguments, as well as different starting conditions. In each case the result was as documented.
+
+\subsubsection{ConfigureBase:}
+\subsubsection{Status:}
+Working as of 11:15pm 28/9/2014 - Grant
+
+\subsubsection{Description:}
+Configures the PWM mechanisms to control the pan tilt servo's.
+
+\subsubsection{Criteria:}
+This function has been tested by calling the function and checking the output on RC0 and RC1, the PWM outputs.
+
+\subsubsection{Working code:}
+void configureBase(void) \newline
+\{ \newline
+unsigned char config; \newline
+DirectionState zero = { 14, 0 }; \newline
+global\_delay = direction2Delay(zero);\newline
+INTCONbits.GIEH = 1;\newline
+INTCONbits.GIEL = 1;\newline
+RCONbits.IPEN = 1;\newline
+SERVO\_INIT();\newline
+config = T1\_16BIT\_RW \& T1\_PS\_1\_1 \& T1\_OSC1EN\_OFF \& T1\_SYNC\_EXT\_OFF \& T1\_SOURCE\_INT; \newline
+OpenTimer1(config);\newline
+SetTmrCCPSrc(T1\_CCP1\_T3\_CCP2);\newline
+config = COM\_INT\_ON \& COM\_UNCHG\_MATCH;\newline
+OpenCompare1(config, PWM\_PERIOD);\newline
+\}
+
+\subsection{panTiltISR:}
+\subsubsection{Status:}
+Working as of 11:20pm 28/9/2014 - Grant
+
+\subsubsection{Description:}
+This function acts as the Interrupt Service Routine for the pan tilt mechanism. This function creates the PWM's on the output pins.
+
+\subsubsection{Criteria:}
+This function has been tested on a range of different periods on each of the degrees of freedom.
+
+\subsubsection{Working Code:}
+void panTiltISR(void)\newline
+\{ \newline
+	unsigned int timer\_value;\newline
+	static Delay current\_delay;\newline
+	unsigned char i = 0;\newline
+	
+	if (CCP1\_INT)\newline
+	\{\newline
+		timer\_value = ReadTimer1();\newline
+		
+		if (timer\_value > PWM\_PERIOD - LATENCY)\newline
+		\{\newline
+			SERVO\_INIT();\newline
+			WriteTimer1(0);\newline
+			current\_delay = global\_delay;\newline
+			OpenCompare1(COM\_INT\_ON \& COM\_UNCHG\_MATCH, current\_delay.short\_delay.delay\_time);\newline
+		\}\newline
+		else if (timer\_value > current\_delay.long\_delay.delay\_time)\newline
+		\{\newline
+			SERVO\_TOGGLE(current\_delay.long\_delay.toggle\_bits);\newline
+			OpenCompare1(COM\_INT\_ON \& COM\_UNCHG\_MATCH, PWM\_PERIOD); \newline
+		\}\newline
+		else if (timer\_value > current\_delay.short\_delay.delay\_time)\newline
+		\{\newline
+			SERVO\_TOGGLE(current\_delay.short\_delay.toggle\_bits);\newline
+			for (; i < current\_delay.micro\_delay.iterations; i++);\newline
+			SERVO\_TOGGLE(current\_delay.micro\_delay.toggle\_bits);\newline
+			OpenCompare1(COM\_INT\_ON \& COM\_UNCHG\_MATCH, current\_delay.long\_delay.delay\_time);\newline
+		\}\newline
+		
+		PIR1bits.CCP1IF = 0;\newline
+	\}\newline
+\}\newline
+
+\subsection{direction2Delay:}
+\subsubsection{Status:}
+Working as of 11:25pm 28/9/2014 - Grant
+
+\subsubsection{Description:}
+This function converts a given Azimuth and Inclination into a delay struct which is then used to create the desired PWM which will result in the given azimuth and inclination.
+
+\subsubsection{Criteria:}
+This function has been tested with a range of different azimuths and inclinations both mathematically, and by inputting the PWM's into the servo's to check the actual position.
+
+\subsubsection{Working Code:}
+Delay direction2Delay(DirectionState dir) \newline
+\{\newline
+	Delay result;\newline
+	unsigned int az\_delay;\newline
+	unsigned int in\_delay;\newline
+	unsigned int micro\_delay;\newline
+	
+	az\_delay = dir.azimuth * (unsigned long int)1000 / ARC\_RANGE + 1000;\newline
+	in\_delay = dir.inclination * (unsigned long int)1000 / ARC\_RANGE + 1000;\newline
+	
+	validate(\&az\_delay);\newline
+	validate(\&in\_delay);\newline
+	
+	if (az\_delay < in\_delay)\newline
+	\{\newline
+		result.short\_delay.delay\_time = az\_delay - LATENCY;\newline
+		result.long\_delay.delay\_time = in\_delay - LATENCY;\newline
+		result.short\_delay.toggle\_bits = AZ\_PWM\_PIN;\newline
+		result.long\_delay.toggle\_bits = IN\_PWM\_PIN;\newline
+	\}\newline
+	else\newline
+	\{\newline
+		result.long\_delay.delay\_time = az\_delay - LATENCY;\newline
+		result.short\_delay.delay\_time = in\_delay - LATENCY;\newline
+		result.long\_delay.toggle\_bits = AZ\_PWM\_PIN;\newline
+		result.short\_delay.toggle\_bits = IN\_PWM\_PIN;\newline
+	\}\newline
+	
+	micro\_delay = result.long\_delay.delay\_time - result.short\_delay.delay\_time;\newline
+	if (micro\_delay < min\_sep)\newline
+	\{\newline
+		result.short\_delay.toggle\_bits = AZ\_PWM\_PIN | IN\_PWM\_PIN;\newline
+		result.micro\_delay.iterations = 0;\newline
+		result.micro\_delay.toggle\_bits = 0;\newline
+		result.long\_delay.delay\_time = PWM\_PERIOD;\newline
+	\}\newline
+	else if (micro\_delay < LATENCY)\newline
+	\{\newline
+		result.micro\_delay.iterations = (micro\_delay - min\_sep) / min\_inc;\newline
+		result.micro\_delay.toggle\_bits = az\_delay > in\_delay ? AZ\_PWM\_PIN : IN\_PWM\_PIN;\newline\
+		result.long\_delay.delay\_time = PWM\_PERIOD;\newline
+	\}\newline
+	else\newline
+	\{\newline
+		result.micro\_delay.iterations = 0;\newline
+		result.micro\_delay.toggle\_bits = 0;\newline
+	\}\newline
+	
+	return result;\newline
+\}\newline
+
+\subsection{Validate:}
+\subsubsection{Status:}
+Currently working as of 1:30pm 26/9/2014 - Grant
+
+\subsubsection{Description:}
+This function validates a given delay to ensure that it is between 1000ms and 2000ms, coercing it if not.
+
+\subsubsection{Criteria:}
+This function was tested by passing it values of 100, 1500 and 10000, which includes one of each possible case. In each case the function responded appropriately and gave the desired response.
+
+\subsubsection{Working Code:}
+void validate(unsigned int *delay)
+{
+	if (*delay < 1000)
+	{
+		*delay = 1000;
+	}
+	if (*delay > 2000)
+	{
+		*delay = 2000;
+	}
+}
+
+\subsection{moveBase:}
+\subsubsection{Status:}
+Currently incomplete and untested as of 1:20pm 26/9/2014 - Grant
+
+\subsubsection{Description:} 
+This function will move the pan tilt mechanism to the given inclination and declination.
 
 \subsubsection{Criteria:}
 

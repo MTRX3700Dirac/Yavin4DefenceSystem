@@ -12,6 +12,7 @@
 
 //(Approximate) speed of sound calculation macro
 #define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
+#define IR_CONV(ad) (71680 / (5 * ad)  - 8)
 
 //Hardware Related macros
 #define INIT_PIN PORTBbits.RB0
@@ -50,12 +51,22 @@ unsigned int speed_sound(unsigned char temp);
 void configureRange(void)
 {
     //Configure Stuff
+    unsigned char config1, config2, config3;
+    unsigned long int i = 0;
 
+    TRISA = 0xFF;
 
+    config1 = ADC_FOSC_64 & ADC_20_TAD & ADC_INT_OFF;
+    config2 = ADC_REF_VDD_VREFMINUS & ADC_RIGHT_JUST & ADC_8ANA;
+    config3 = ADC_CH0;
+
+    OpenADC(config1, config2, config3);
+
+    for (i = 0; i < 60000; i++);
 
     //Open Capture 1 set for every rising edge with interrupts on the rising edge
-    OpenCapture1(CAP_EVERY_RISE_EDGE & CAPTURE_INT_ON);
-    CP1_TRIS = 1;         //Set TRISC<2> input
+    //OpenCapture1(CAP_EVERY_RISE_EDGE & CAPTURE_INT_ON);
+    //CP1_TRIS = 1;         //Set TRISC<2> input
 }
 
 /* **********************************************************************
@@ -271,7 +282,10 @@ unsigned int rangeIR(void)
     while(BusyADC());
     ad_result = ReadADC();
 
-    //Presumably convert to range in mm
+    //Convert voltage (0-5v) into range (mm)
+    range = IR_CONV(ad_result);
+
+    ad_result = ad_result + 1 - 1;
 
     return range;
 }

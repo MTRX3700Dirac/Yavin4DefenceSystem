@@ -8,6 +8,11 @@
  * Created on 7 September 2014, 4:12 PM
  */
 
+#pragma config WDT = OFF
+#pragma config OSC = HS
+#pragma config LVP = OFF
+#pragma config DEBUG = ON
+
 #include "Common.h"
 
 #include "Tracking.h"
@@ -40,6 +45,8 @@ void post_edge(TrackingData *target);
 void lowISR(void);
 void highISR(void);
 
+extern unsigned int rangeIR(void);
+
 
 /* **********************************************************************
  * Function: main(void)
@@ -55,6 +62,27 @@ void highISR(void);
 void main() {
     systemState state = {INIT, UNDEF};
     TrackingData target;
+
+    //unsigned char i;
+    //TRISC = 0;
+    //PORTC = 0;
+//    for (;;)
+//    {
+//        PORTCbits.RC0 = PORTCbits.RC0 ^ 1;
+//        //_asm nop _endasm
+//        for (i = 0; i < 4; i++);
+//        PORTCbits.RC0 = PORTCbits.RC0 ^ 1;
+//    }
+
+    configureBase();
+    for(;;);
+
+//    unsigned int range;
+//    configureRange();
+//    for (;;)
+//    {
+//        range = rangeIR();
+//    }
     
     for (;;)
     {
@@ -279,13 +307,13 @@ void lowISR(void)
 #pragma interrupt highISR
 void highISR(void)
 {
-    if (SERIAL_INT)
-    {
-        serialISR();
-    }
-    else if (PAN_TILT_ISR)
+    if (PAN_TILT_ISR)
     {
         panTiltISR();
+    }
+    else if (SERIAL_INT)
+    {
+        serialISR();
     }
     else if (RANGE_INT)
     {
