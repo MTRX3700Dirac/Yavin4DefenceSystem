@@ -13,21 +13,39 @@
 
 typedef struct
 {
-    unsigned int AzimuthDelay;
-    unsigned int InclinationDelay;
+    struct
+    {
+        unsigned int delay_time;
+        unsigned char toggle_bits;
+    } short_delay;
+    struct
+    {
+        unsigned int delay_time;
+        unsigned char toggle_bits;
+    } long_delay;
+
+    struct
+    {
+        unsigned char iterations;
+        unsigned char toggle_bits;
+    } micro_delay;
 } Delay;
 
 //Define the PWM output pins
-#define AZ_PWM_PIN PORTCbits.RC0
-#define IN_PWM_PIN PORTCbits.RC1
+#define AZ_PWM_PIN 0b00000001
+#define IN_PWM_PIN 0b00000010
+#define PWM_PINS 0b00000011
 
 //Interrupt Latency
 #define LATENCY 340
 #define PWM_PERIOD 20000 //The period for 50Hz at 1MHz
-#define PWM_HALF_PERIOD 10000 //Half the period for 50Hz at 1MHz
-#define ARC_RANGE 245 //Max arc of servos
+#define ARC_RANGE 240 //Max arc of servos
 
-#define SERVO_INIT() TRISCbits.RC0 = 0; TRISCbits.RC1 = 0; PORTCbits.RC0 = 0; PORTCbits.RC1 = 0
+#define min_sep 19
+#define min_inc 13
+
+#define SERVO_INIT() TRISCbits.RC0 = 0; TRISCbits.RC1 = 0; PORTCbits.RC0 = 1; PORTCbits.RC1 = 1
+#define SERVO_TOGGLE(tog) (PORTC = (PORTC & ~PWM_PINS) | ((PORTC & PWM_PINS) ^ (tog)))
 
 void validate(unsigned int *delay);
 Delay direction2Delay(DirectionState dir);
@@ -165,25 +183,24 @@ void panTiltISR(void)
 
         if (timer_value > PWM_PERIOD - LATENCY)
         {
-            IN_PWM_PIN = 1;
+            SERVO_INIT();       //Clear PWM pins
             WriteTimer1(0);     //Clear timer2
             current_delay = global_delay;   //update the static delay
-            OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, current_delay.InclinationDelay);
+            OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, current_delay.short_delay.delay_time);
         }
-        else if (timer_value > current_delay.AzimuthDelay)
+        else if (timer_value > current_delay.long_delay.delay_time)
         {
-            AZ_PWM_PIN = 0;
+            SERVO_TOGGLE(current_delay.long_delay.toggle_bits);
             OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, PWM_PERIOD);
         }
-        else if (timer_value > PWM_HALF_PERIOD - LATENCY)
+        else if (timer_value > current_delay.short_delay.delay_time)
         {
-            AZ_PWM_PIN = 1;
-            OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, current_delay.AzimuthDelay);
-        }
-        else if (timer_value > current_delay.InclinationDelay)
-        {
-            IN_PWM_PIN = 0;
-            OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, PWM_HALF_PERIOD);
+            SERVO_TOGGLE(current_delay.short_delay.toggle_bits);
+            //_asm nop _endasm
+            for (; i < current_delay.micro_delay.iterations; i++);
+            SERVO_TOGGLE(current_delay.micro_delay.toggle_bits);
+            OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, current_delay.long_delay.delay_time);
+            //OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, PWM_PERIOD - LATENCY);
         }
 
         PIR1bits.CCP1IF = 0;
@@ -208,9 +225,38 @@ void panTiltISR(void)
 DirectionState delay2Direction(Delay dly)
 {
     DirectionState ret;
+    unsigned int large_angle, small_angle, micro_angle;
 
-    ret.azimuth = ((dly.AzimuthDelay - PWM_HALF_PERIOD - 1000) * (long int)ARC_RANGE + 500) / 1000;
-    ret.inclination = ((dly.InclinationDelay + LATENCY - 1000) * (long int)ARC_RANGE + 500) / 1000;
+    micro_angle = dly.short_delay.delay_time - LATENCY + min_sep + dly.micro_delay.iterations * min_inc;
+    micro_angle *= (long int)ARC_RANGE / 1000;
+    small_angle = (dly.short_delay.delay_time - LATENCY) * (long int)ARC_RANGE / 1000;
+    large_angle = (dly.long_delay.delay_time - LATENCY) * (long int)ARC_RANGE / 1000;
+
+    if (dly.micro_delay.toggle_bits == AZ_PWM_PIN)
+    {
+        ret.azimuth = micro_angle;
+        ret.inclination = small_angle;
+    }
+    else if (dly.micro_delay.toggle_bits == IN_PWM_PIN)
+    {
+        ret.inclination = micro_angle;
+        ret.azimuth = small_angle;
+    }
+    else if (dly.short_delay.toggle_bits == AZ_PWM_PIN)
+    {
+        ret.azimuth = small_angle;
+        ret.inclination = large_angle;
+    }
+    else if (dly.short_delay.toggle_bits == IN_PWM_PIN)
+    {
+        ret.inclination = small_angle;
+        ret.azimuth = large_angle;
+    }
+    else if (dly.short_delay.toggle_bits == (AZ_PWM_PIN | IN_PWM_PIN))
+    {
+        ret.azimuth = small_angle;
+        ret.inclination = small_angle;
+    }
 
     return ret;
 }
@@ -233,20 +279,56 @@ DirectionState delay2Direction(Delay dly)
 Delay direction2Delay(DirectionState dir)
 {
     Delay result;
-    unsigned int az, inc;
+    unsigned int az_delay;
+    unsigned int in_delay;
+    unsigned int micro_delay;
 
-    az = 1000 + dir.azimuth * (long int)1000 / ARC_RANGE;
-    inc = 1000 + dir.inclination * (long int)1000 / ARC_RANGE;
+    //Note: This uses integer division, so the multiplication MUST be performed first
+    az_delay = dir.azimuth * (unsigned long int)1000 / ARC_RANGE + 1000;
+    in_delay = dir.inclination * (unsigned long int)1000 / ARC_RANGE + 1000;
 
-    validate(&az);
-    validate(&inc);
+    validate(&az_delay);
+    validate(&in_delay);
 
-    result.AzimuthDelay = az + PWM_HALF_PERIOD;
-    result.InclinationDelay = inc - LATENCY;
+    if (az_delay < in_delay)
+    {
+        result.short_delay.delay_time = az_delay - LATENCY;
+        result.long_delay.delay_time = in_delay - LATENCY;
+        result.short_delay.toggle_bits = AZ_PWM_PIN;
+        result.long_delay.toggle_bits = IN_PWM_PIN;
+    }
+    else
+    {
+        result.long_delay.delay_time = az_delay - LATENCY;
+        result.short_delay.delay_time = in_delay - LATENCY;
+        result.long_delay.toggle_bits = AZ_PWM_PIN;
+        result.short_delay.toggle_bits = IN_PWM_PIN;
+    }
+
+    micro_delay = result.long_delay.delay_time - result.short_delay.delay_time;
+    if (micro_delay < min_sep)
+    {
+        result.short_delay.toggle_bits = AZ_PWM_PIN | IN_PWM_PIN;
+        result.micro_delay.iterations = 0;
+        result.micro_delay.toggle_bits = 0;
+        result.long_delay.delay_time = PWM_PERIOD;
+    }
+    else if (micro_delay < LATENCY)
+    {
+        //result.micro_delay.iterations = 3;
+        result.micro_delay.iterations = (micro_delay - min_sep) / min_inc;
+        result.micro_delay.toggle_bits = az_delay > in_delay ? AZ_PWM_PIN : IN_PWM_PIN;
+        //result.short_delay.toggle_bits = AZ_PWM_PIN | IN_PWM_PIN;
+        result.long_delay.delay_time = PWM_PERIOD;
+    }
+    else
+    {
+        result.micro_delay.iterations = 0;
+        result.micro_delay.toggle_bits = 0;
+    }
 
     return result;
 }
-
 
 /*! **********************************************************************
  * Function: validate(unsigned int *delaay)

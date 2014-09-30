@@ -48,8 +48,10 @@ void highISR(void);
 extern unsigned int rangeIR(void);
 
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: main(void)
+ *
+ * \brief Program entry point
  *
  * Include: 
  *
@@ -62,27 +64,41 @@ extern unsigned int rangeIR(void);
 void main() {
     systemState state = {INIT, UNDEF};
     TrackingData target;
+    unsigned int i, j;
+    unsigned int range = 0;
 
-    //unsigned char i;
-    //TRISC = 0;
-    //PORTC = 0;
-//    for (;;)
-//    {
-//        PORTCbits.RC0 = PORTCbits.RC0 ^ 1;
-//        //_asm nop _endasm
-//        for (i = 0; i < 4; i++);
-//        PORTCbits.RC0 = PORTCbits.RC0 ^ 1;
-//    }
+    Direction dir;
 
     configureBase();
-    for(;;);
 
-//    unsigned int range;
-//    configureRange();
-//    for (;;)
-//    {
-//        range = rangeIR();
-//    }
+    dir.azimuth = 180;
+    dir.inclination = 180;
+    move(dir);
+
+    configureRange();
+    for (;;)
+    {
+        range = rangeIR();
+        range += 0;
+    }
+/*
+    for (;;)
+    {
+    for (i = 0; i < 240; i++)
+    {
+        for (j = 0; j < 100; j++);
+        dir.azimuth = i;
+        dir.inclination = i;
+        move(dir);
+    }
+    for (i = 240; i > 0; i--)
+    {
+        for (j = 0; j < 100; j++);
+        dir.azimuth = i;
+        dir.inclination = i;
+        move(dir);
+    }
+    }*/
     
     for (;;)
     {
@@ -108,7 +124,7 @@ void main() {
 
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: initialization(systemState *state)
  *
  * Include: 
@@ -140,7 +156,7 @@ void initialization(systemState *state)
     NEXT_STATE_PTR(MEAS);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: change_direction(systemState *state)
  *
  * Include: Tracking.h
@@ -160,7 +176,7 @@ void change_direction(systemState *state)
     NEXT_STATE_PTR(MEAS);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: measure_distance(systemState *state, TrackingData *target)
  *
  * Include: range.h
@@ -192,7 +208,7 @@ void measure_distance(systemState *state, TrackingData *target)
 
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: find_edge(TrackingData &target, DirectionState &direction)
  *
  * Include: main_head.h
@@ -219,7 +235,7 @@ void find_edge(systemState *state, TrackingData *target)
 }
 
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: highVector(void)
  *
  * Include:
@@ -239,7 +255,7 @@ void highVector(void)
     _asm GOTO highISR _endasm
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: lowVector(void)
  *
  * Include:
@@ -259,7 +275,7 @@ void lowVector(void)
     _asm GOTO lowISR _endasm
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: lowISR(void)
  *
  * Include: Interrupt_head.h
@@ -292,7 +308,7 @@ void lowISR(void)
     }
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: highISR(void)
  *
  * Include:

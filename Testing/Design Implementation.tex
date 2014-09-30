@@ -1,0 +1,41 @@
+\documentclass[]{article}
+
+\usepackage{graphicx}
+\usepackage{bookmark}
+
+%opening
+\title{Design Implementation}
+\author{Grant Louat}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\begin{abstract}
+This document describes the unexpected difficulties and problems which arise during the implementation of the initial design, and how they are overcome, and the design altered to accommodate these unexpected problems.
+\end{abstract}
+
+\newpage
+\section{Driving Servos (30/9/2014):}
+\subsubsection{PDM Generation:}
+In order to drive the servos we need to generate a PDM (Pulse Duration Modulated) reference signal at 50Hz with the duration of the pulses between 1000$\mu$s and 2000$\mu$s. Unfortunately we need one of the two CCP timers for an input compare on the ultrasonic sensor, leaving only 1 with which to generate 2 PDM signals. \newline
+The idea was to use output compares in a similar manner to in some of the software exersises, where we simply calculate the delay time and use that in an output compare, generate a software interrupt and toggle the bit. This can easily be expanded to creating two PWM's on two separate pins. However, there is a latency associated with interrupts which was found to be ~300$\mu$s. This does not make much difference at the 50Hz scale, but controlling the pulse durations, this is almost a third of the maximum resolution.
+
+\subsubsection{Initial Solution:}
+In order to get the subsystem working a fudge factor was introduced which simply reduced the delay in the output compare to accommodate for the interrupt latency, assuming it is constant each time. For now this seems to be working, but it may have a problem when the rest of the program begins using interrupts for other things. Furthermore there is still a problem when the angles of the servos are very close together. However this problem can be overcome simply by staggering the PDM's.
+
+\subsubsection{PDM Output}
+When the PDM's (which were first checked on an oscilloscope) were sent to the servos the servo controlling the inclination seemed to oscillate around the reference position quite quickly. This was quite odd because the servo controlling the azimuth was fine, and went to the correct location even with the same signal.
+
+\subsubsection{Solution:}
+After checking the PDM on the oscilloscope (while running the servo) we found that the servo was actually distorting the PDM signal, but only some of the time, which causes the servo to move to different locations rapidly. This might be a short within the servo or something that is causing an unusually low impedance across the input periodically, but for now a voltage follower seems to have stabilised it.
+
+\section{ADC 30/9/2014:}
+\subsubsection{Noise:}
+Upon testing our sensors we found that there was a considerable amount of high frequency noise, particularly in the IR sensor. We plan on having multiple samples per measurement, which will help reduce this, however, this will take extra time for the code to run, and we wish to minimise the number of samples needed for reliable results. For this reason we built a simple low pass filter with a time scale of 2ms (as high as possible while still smaller than our expected sampling rate).
+
+\subsubsection{Input Impedance:}
+When we were testing the IR and Temperature sensors the output voltage seemed reasonable when connected to a scope, however, when sampling with the A/D converter we were getting unusual results. After first verifying the A/D code was working as expected we put a scope on the input connected to the A/D and found that it was no longer changing (very much). Upon consulting the datasheet we found that the input impedence for the ADC is only $2.5k\Omega$. To solve this we used a voltage follower to buffer the signal before it goes into the ADC.
+
+\end{document}
