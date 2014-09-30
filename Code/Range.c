@@ -37,7 +37,7 @@ unsigned int rangeUS(unsigned char temp);
 unsigned int speed_sound(unsigned char temp);
 
 /* **********************************************************************
- * Function: configureRange(void)
+ * Function: configureAD(void)
  *
  * Include: ultrasonic.h
  *
@@ -48,7 +48,7 @@ unsigned int speed_sound(unsigned char temp);
  *
  * Returns: None
  *************************************************************************/
-void configureRange(void)
+void configureAD(void)
 {
     //Configure Stuff
     unsigned char config1, config2, config3;
