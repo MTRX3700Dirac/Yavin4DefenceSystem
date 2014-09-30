@@ -8,9 +8,9 @@
  * Created on 7 September 2014, 4:12 PM
  */
 
-#pragma config WDT = OFF
-#pragma config OSC = HS
-#pragma config LVP = OFF
+#pragma config WDT = OFF	//Turns watchdog Timer off
+#pragma config OSC = HS		//The crystal oscillator set to "High Speed"
+#pragma config LVP = OFF	//
 #pragma config DEBUG = ON
 
 #include "Common.h"
