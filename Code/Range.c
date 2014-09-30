@@ -271,6 +271,9 @@ unsigned int rangeIR(void)
 
     ad_result = sampleIR(10);
 
+    //Return 0 if there is no target detected
+    if (ad_result < 100) return 0;
+
     //Convert voltage (0-5v) into range (mm)
     range = IR_CONV(ad_result);
 

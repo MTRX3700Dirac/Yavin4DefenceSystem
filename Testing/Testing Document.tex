@@ -58,13 +58,13 @@ The function simply calls the ReadTempx2 function and divides the result by 2.
 
 \subsubsection{Working Code:}
 unsigned char readTemp(void) \newline
-{ \newline
+\{ \newline
 	unsigned char temp; \newline
 	
 	temp = readTempx2(); \newline
 	
 	return DIV\_2(temp); \newline
-} \newline
+\} \newline
 
 \subsection{RawTemp:}
 
@@ -80,9 +80,9 @@ This function cannot be completely tested in isolation as it requires an externa
 
 \subsubsection{Working Code:}
 unsigned char rawTemp(void) \newline
-{ \newline
+\{ \newline
 	return DIV\_2(lastTempx2); \newline
-} \newline
+\} \newline
 
 \subsection{Calibrate Temp:}
 \subsubsection{Status:}
@@ -200,16 +200,18 @@ This function has been tested with a range of different ranges (using a book and
 
 \subsubsection{Working Code:}
 unsigned int rangeIR(void) \newline
-{ \newline
+\{ \newline
 	unsigned int ad\_result; \newline
 	unsigned int range; \newline
 	
 	ad\_result = sampleIR(10); \newline
 	
+	if (ad\_result $<$ 100) return 0; \newline
+	
 	range = IR\_CONV(ad\_result); \newline
 	
 	return range + calibration\_offset\_IR; \newline
-} \newline
+\} \newline
 
 \subsection{SampleIR:}
 \subsubsection{Status:}
@@ -772,17 +774,17 @@ This function validates a given delay to ensure that it is between 1000ms and 20
 This function was tested by passing it values of 100, 1500 and 10000, which includes one of each possible case. In each case the function responded appropriately and gave the desired response.
 
 \subsubsection{Working Code:}
-void validate(unsigned int *delay)
-{
-	if (*delay < 1000)
-	{
-		*delay = 1000;
-	}
-	if (*delay > 2000)
-	{
-		*delay = 2000;
-	}
-}
+void validate(unsigned int *delay) \newline
+\{ \newline
+	if (*delay $<$ 1000) \newline
+	\{ \newline
+		*delay = 1000; \newline
+	\} \newline
+	if (*delay $>$ 2000) \newline
+	\{ \newline
+		*delay = 2000; \newline
+	\} \newline
+\}\newline
 
 \subsection{moveBase:}
 \subsubsection{Status:}
