@@ -11,6 +11,8 @@
 
 \maketitle
 
+\newpage
+
 \begin{abstract}
 This document details the testing of all functions, and their current state. Each function will be tested in isolation. This document should detail by what criteria the function has been deemed correct, the date and who did the testing. It should also have a listing of the working code so there is no confusion over different versions. This will quickly tell everyone which functions have been confirmed correct, and the rigour to which that assertion was made. It will also tell them when it was confirmed in case they have been working on a local copy of the code, and who deemed it correct in case they have questions. This document should also have a description of the function so that people know what the function should be doing when it is working.\newline
 The document deals only with the isolation testing of each function. The functions will also need to be tested in an integration phase later. \newline
@@ -55,14 +57,14 @@ This function was tested in isolation of the ReadTempx2, and the assertion only 
 The function simply calls the ReadTempx2 function and divides the result by 2.
 
 \subsubsection{Working Code:}
-unsigned char readTemp(void)
-{
-	unsigned char temp;
+unsigned char readTemp(void) \newline
+{ \newline
+	unsigned char temp; \newline
 	
-	temp = readTempx2();
+	temp = readTempx2(); \newline
 	
-	return DIV\_2(temp);
-}
+	return DIV\_2(temp); \newline
+} \newline
 
 \subsection{RawTemp:}
 
@@ -77,10 +79,10 @@ This function returns the uncalibrated result of the last temperature read. E.g.
 This function cannot be completely tested in isolation as it requires an external static declaration of the lastTempx2 variable. It also requires the ReadTemp and ReadTempx2 functions to write to this variable when they perform a read.
 
 \subsubsection{Working Code:}
-unsigned char rawTemp(void)
-{
-	return DIV\_2(lastTempx2);
-} 
+unsigned char rawTemp(void) \newline
+{ \newline
+	return DIV\_2(lastTempx2); \newline
+} \newline
 
 \subsection{Calibrate Temp:}
 \subsubsection{Status:}
@@ -93,10 +95,10 @@ Calibrates the last temperature read to the passed reference value by updating a
 This function was tested in isolation of the readTemp functions. a dummy readTempx2 function which just returned 15deg (and set the static variable) was written, and the calibration function called to calibrate it to 20 deg, and then 10 deg. In both cases a second call of readTempx2 returned the desired value even though the 'raw data' was simply hard coded in.
 
 \subsubsection{Working Code:}
-void calibrateTemp(unsigned char reference)
-{
-	calibration\_offset = 2 * (reference - DIV\_2(lastTempx2));
-}
+void calibrateTemp(unsigned char reference) \newline
+{ \newline
+	calibration\_offset = 2 * (reference - DIV\_2(lastTempx2)); \newline
+} \newline
 
 \subsection{GetTemp:}
 
@@ -108,6 +110,12 @@ Returns the result of the last temperature read.
 
 \subsubsection{Criteria:}
 This is just an accessor function, so it simply returns the value of a static variable.
+
+\subsubsection{Working Code:}
+unsigned char getTemp(void) \newline
+{ \newline
+	return DIV\_2(lastTempx2); \newline
+} \newline
 
 \newpage
 \section{Range}
@@ -140,7 +148,18 @@ Working as of 1:40pm 30/9/2014 - Grant
 This macro converts the AD result into a range in mm, based on experimental readings from the IR Sensor.
 
 \subsubsection{Criteria:}
+This macro has been tested with a range of different input values. Each input returned a distance within a couple of centimetres of the experimental data (which was within the experimental error). See Fig. \ref{fig:IRExperimentalData} for the sensor profile.
 
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth]{"IR Experimental Data"}
+\caption{IR Experimental Data - Sensor output profile}
+\label{fig:IRExperimentalData}
+\end{figure}
+
+
+\subsubsection{Working Code:}
+\#define IR\_CONV(ad) ((unsigned long)237411 / (ad) - 65) 
 
 \subsection{calibrateRange:}
 \subsubsection{Status:}
@@ -177,6 +196,51 @@ Untested as of 11am 26/9/14 - Grant
 This function performs a read of the IR sensor, calibrates it and returns the result.
 
 \subsubsection{Criteria:}
+This function has been tested with a range of different ranges (using a book and measuring the distance from the IR sensor with a tape measure). In each case the calculated distance was within around 30mm of the actual distance.
+
+\subsubsection{Working Code:}
+unsigned int rangeIR(void) \newline
+{ \newline
+	unsigned int ad\_result; \newline
+	unsigned int range; \newline
+	
+	ad\_result = sampleIR(10); \newline
+	
+	range = IR\_CONV(ad\_result); \newline
+	
+	return range + calibration\_offset\_IR; \newline
+} \newline
+
+\subsection{SampleIR:}
+\subsubsection{Status:}
+Working as of 4pm 30/9/2014 - Grant
+
+\subsubsection{Description:}
+This function performs a specified number of reads of the IR sensor and returns the average.
+
+\subsubsection{Criteria:}
+This function has been tested using different ranges for the IR sensor, and each time it has returned the (approximately) correct result.
+
+\subsubsection{Working Code:}
+unsigned int sampleIR(char numSamples) \newline
+{\newline
+	unsigned long int sum = 0; \newline
+	unsigned int temp; \newline
+	char i = 0; \newline
+	
+	SetChanADC(ADC\_IR\_READ); \newline
+	
+	for (i = 0; i $<$ numSamples; i++) \newline
+	{ \newline
+		ADCON0bits.GO = 1; \newline
+		while (ADCON0bits.GO\_NOT\_DONE); \newline
+		temp = ADRES $>>$ 6; \newline
+		sum += temp; \newline
+	} \newline
+	
+	temp = sum / (unsigned int)numSamples; \newline
+	return temp; \newline
+}
 
 \subsection{rangeUS:}
 \subsubsection{Status:}
@@ -185,14 +249,27 @@ Untested as of 11am 26/9/2014 - Grant
 \subsubsection{Description:}
 This function performs a read of the Ultrasonic sensor (if not already started), calibrates it and returns the result.
 
-\subsection{ConfigureRange:}
+\subsection{ConfigureAD:}
 \subsubsection{Status:}
-Untested as of 12pm 26/9/14
+Working as of 4pm 30/9/2014 - Grant
 
 \subsubsection{Description:}
-This function configures everything needed in the Range module to begin sampling the range.
+This function configures the ADC so that it can subsequently be used (immediately after).
 
 \subsubsection{Criteria:}
+There are few testing methods that can be applied to this function in isolation, but after running this function the ADC sampling functions are running properly, so we assume that it is correct. Any future ADC problems should begin with an analysis of this function.
+
+\subsubsection{Working Code:}
+void configureAD(void) \newline
+{ \newline
+	int i = 0; \newline
+	TRISA = 0xFF; \newline
+	 
+	ADCON0 = 0x41; \newline
+	ADCON1 = 0x0E; \newline
+	
+	for (i = 0; i < 1000; i++); \newline
+} \newline
 
 \subsection{BeginUS:}
 \subsubsection{Status:}
@@ -423,6 +500,9 @@ This function acts as the interrupt service routine for the serial module. The p
 
 \subsection{SERVO\_TOGGLE Macro}
 
+\subsubsection{REVISION:}
+In the latest version of the code this macro is no longer included. It is kept in this document for record purposes. Grant 4:10pm 30/9/2014.
+
 \subsubsection{Status:}
 Working as of 12:30 28/9/2014 - Grant
 
@@ -432,7 +512,13 @@ Toggles the pins used to generate the PWM signal to the servos. There is a SERVO
 \subsubsection{Criteria:}
 This macro was tested with different combinations of AZ\_PWM\_PIN and IN\_PWM\_PIN arguments, as well as different starting conditions. In each case the result was as documented.
 
-\subsubsection{ConfigureBase:}
+\subsubsection{Working Code:}
+\#define SERVO\_TOGGLE(tog) (PORTC = (PORTC \& ~PWM\_PINS) | ((PORTC \& PWM\_PINS) \^ (tog)))
+
+\subsection{ConfigureBase:}
+\subsubsection{REVISION:}
+This function has changed significantly in the latest version. The previous version is kept for archive purposes.
+
 \subsubsection{Status:}
 Working as of 11:15pm 28/9/2014 - Grant
 
@@ -443,6 +529,32 @@ Configures the PWM mechanisms to control the pan tilt servo's.
 This function has been tested by calling the function and checking the output on RC0 and RC1, the PWM outputs.
 
 \subsubsection{Working code:}
+void configureBase(void) \newline
+\{\newline
+	unsigned char config;\newline
+	
+	DirectionState zero = { 0, 0 };\newline
+	global\_delay = direction2Delay(zero);\newline
+	
+	INTCONbits.GIEH = 1;\newline
+	INTCONbits.GIEL = 1;\newline
+	
+	RCONbits.IPEN = 1;\newline
+	
+	SERVO\_INIT();\newline
+	
+	config = T1\_16BIT\_RW \& T1\_PS\_1\_1 \& T1\_OSC1EN\_OFF \& T1\_SYNC\_EXT\_OFF \& T1\_SOURCE\_INT;\newline
+	
+	OpenTimer1(config);\newline
+	
+	SetTmrCCPSrc(T1\_CCP1\_T3\_CCP2);\newline
+	
+	config = COM\_INT\_ON \& COM\_UNCHG\_MATCH;\newline
+	
+	OpenCompare1(config, PWM\_PERIOD);\newline
+\}\newline
+
+\subsubsection{Working code (OBSOLETE):}
 void configureBase(void) \newline
 \{ \newline
 unsigned char config; \newline
@@ -460,6 +572,9 @@ OpenCompare1(config, PWM\_PERIOD);\newline
 \}
 
 \subsection{panTiltISR:}
+\subsubsection{REVISION:}
+In the latest version this function has changed significantly - while its function has remained the same. For archive purposes the original code is kept.
+
 \subsubsection{Status:}
 Working as of 11:20pm 28/9/2014 - Grant
 
@@ -470,6 +585,44 @@ This function acts as the Interrupt Service Routine for the pan tilt mechanism. 
 This function has been tested on a range of different periods on each of the degrees of freedom.
 
 \subsubsection{Working Code:}
+void panTiltISR(void) \newline
+\{ \newline
+	unsigned int timer\_value; \newline
+	static Delay current\_delay;\newline
+	unsigned char i = 0;\newline
+	
+	if (CCP1\_INT) \newline
+	\{ \newline
+		timer\_value = ReadTimer1();\newline
+		
+		if (timer\_value > PWM\_PERIOD - LATENCY) \newline
+		\{ \newline
+			IN\_PWM\_PIN = 1;\newline
+			WriteTimer1(0);\newline     //Clear timer2
+			current\_delay = global\_delay;\newline   //update the static delay
+			OpenCompare1(COM\_INT\_ON \& COM\_UNCHG\_MATCH, current\_delay.InclinationDelay);\newline
+		\} \newline
+		else if (timer\_value $>$ current\_delay.AzimuthDelay) \newline
+		\{ \newline
+			AZ\_PWM\_PIN = 0;\newline
+			OpenCompare1(COM\_INT\_ON \& COM\_UNCHG\_MATCH, PWM\_PERIOD);\newline
+		\} \newline
+		else if (timer\_value $>$ PWM\_HALF\_PERIOD - LATENCY) \newline
+		\{ \newline
+			AZ\_PWM\_PIN = 1;\newline
+			OpenCompare1(COM\_INT\_ON \& COM\_UNCHG\_MATCH, current\_delay.AzimuthDelay);\newline
+		\} \newline
+		else if (timer\_value $>$ current\_delay.InclinationDelay) \newline
+		\{ \newline
+			IN\_PWM\_PIN = 0;\newline
+			OpenCompare1(COM\_INT\_ON \& COM\_UNCHG\_MATCH, PWM\_HALF\_PERIOD);\newline
+		\} \newline
+		
+		PIR1bits.CCP1IF = 0;\newline
+	\} \newline
+\} \newline
+
+\subsubsection{Working Code (OBSOLETE):}
 void panTiltISR(void)\newline
 \{ \newline
 	unsigned int timer\_value;\newline
@@ -505,6 +658,9 @@ void panTiltISR(void)\newline
 \}\newline
 
 \subsection{direction2Delay:}
+\subsubsection{REVISION:}
+This function has been changed significantly in the most recent revision. The previous version has been retained in this document for archival purposes.
+
 \subsubsection{Status:}
 Working as of 11:25pm 28/9/2014 - Grant
 
@@ -515,6 +671,24 @@ This function converts a given Azimuth and Inclination into a delay struct which
 This function has been tested with a range of different azimuths and inclinations both mathematically, and by inputting the PWM's into the servo's to check the actual position.
 
 \subsubsection{Working Code:}
+Delay direction2Delay(DirectionState dir) \newline
+\{\newline
+	Delay result; \newline
+	unsigned int az, inc; \newline
+	
+	az = 1000 + dir.azimuth * (long int)1000 / ARC\_RANGE; \newline
+	inc = 1000 + dir.inclination * (long int)1000 / ARC\_RANGE; \newline
+	
+	validate(\&az); \newline
+	validate(\&inc); \newline
+	
+	result.AzimuthDelay = az + PWM\_HALF\_PERIOD; \newline
+	result.InclinationDelay = inc - LATENCY; \newline
+	
+	return result; \newline
+\} \newline
+
+\subsubsection{Working Code (OBSELETE):}
 Delay direction2Delay(DirectionState dir) \newline
 \{\newline
 	Delay result;\newline
@@ -565,6 +739,27 @@ Delay direction2Delay(DirectionState dir) \newline
 	
 	return result;\newline
 \}\newline
+
+\subsection{delay2Direction:}
+\subsubsection{Status:}
+Working as of 4:30pm 30/9/2014 - Grant
+
+\subsubsection{Description:}
+This function converts a delay back into into the direction object that would be used to create it via the direction2Delay function.
+
+\subsubsection{Criteria:}
+This function has been tested by specifying a direction, then converting it into a delay via the direction2delay function. This was then sent to the servos to make sure the delay is correct, and then sent to the delay2Direction function and compared to the original direction object.
+
+\subsubsection{Working Code:}
+DirectionState delay2Direction(Delay dly) \newline
+\{ \newline
+	DirectionState ret; \newline
+	
+	ret.azimuth = ((dly.AzimuthDelay - PWM\_HALF\_PERIOD - 1000) * (long int)ARC\_RANGE + 500) / 1000; \newline
+	ret.inclination = ((dly.InclinationDelay + LATENCY - 1000) * (long int)ARC\_RANGE + 500) / 1000; \newline
+	
+	return ret; \newline
+\} \newline
 
 \subsection{Validate:}
 \subsubsection{Status:}
