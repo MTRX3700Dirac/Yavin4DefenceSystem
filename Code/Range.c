@@ -12,8 +12,9 @@
 
 //(Approximate) speed of sound calculation macro
 #define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
-//#define IR_CONV(ad) (71680 / (5 * ad)  - 8)
 #define IR_CONV(ad) ((unsigned long)237411 / (ad) - 65)
+
+#define NUM_IR_READS 10 //The number of IR reads per measurement
 
 //Hardware Related macros
 #define INIT_PIN PORTBbits.RB0
@@ -42,10 +43,9 @@ unsigned int sampleIR(char numSamples);
 /* **********************************************************************
  * Function: configureAD(void)
  *
- * Include: ultrasonic.h
+ * Include: Range.h
  *
- * Description: Configures the ultrasonic and IR sensors and everything required to
- *              Use them
+ * Description: Configures the ADC
  *
  * Arguments: None
  *
@@ -53,25 +53,15 @@ unsigned int sampleIR(char numSamples);
  *************************************************************************/
 void configureAD(void)
 {
-    //Configure Stuff
-    unsigned char config1, config2, config3;
-    unsigned int i = 0;
-
+    int i = 0;
     TRISA = 0xFF;
 
-    //config1 = ADC_FOSC_64 & ADC_20_TAD & ADC_INT_OFF;
-    //config2 = ADC_REF_VDD_VREFMINUS & ADC_RIGHT_JUST & ADC_8ANA;
-    //config2 = ADC_REF_VDD_VREFMINUS & ADC_LEFT_JUST & ADC_8ANA;
-    //config3 = ADC_CH0;
-
-    //OpenADC(config1, config2, config3);
-    //for (i = 0; i < 1000; i++);
-
-    //Open Capture 1 set for every rising edge with interrupts on the rising edge
-    //OpenCapture1(CAP_EVERY_RISE_EDGE & CAPTURE_INT_ON);
-    //CP1_TRIS = 1;         //Set TRISC<2> input
+    //Write the configuration values into the configuration registers
     ADCON0 = 0x41;
     ADCON1 = 0x0E;
+
+    //Arbitrary wait period to allow the ADC to initialise
+    for (i = 0; i < 1000; i++);
 }
 
 /* **********************************************************************
@@ -279,23 +269,12 @@ unsigned int rangeIR(void)
     unsigned int ad_result;
     unsigned int range;
 
-    /*
-    //Sets the ADC channel to IR read
-    SetChanADC(ADC_IR_READ);
-
-    //Perform convertion
-    ConvertADC();
-    while(BusyADC());
-    ad_result = ReadADC();
-     * */
-
     ad_result = sampleIR(10);
 
-    //range = (unsigned long)237411 / (ad_result) - 65;
     //Convert voltage (0-5v) into range (mm)
     range = IR_CONV(ad_result);
 
-    return range;
+    return range + calibration_offset_IR;
 }
 
 /* **********************************************************************
@@ -326,9 +305,6 @@ unsigned int sampleIR(char numSamples)
         ADCON0bits.GO = 1;
         while (ADCON0bits.GO_NOT_DONE);
         temp = ADRES >> 6;
-        //ConvertADC();
-        //while(BusyADC());
-        //temp = ReadADC();
         sum += temp;
     }
 
