@@ -28,6 +28,11 @@
 #define TX_INT_DISABLE() PIE1bits.TXIE = 0
 #define RC_INT_DISABLE() PIE1bits.RCIE = 0
 
+//ASCII definitions
+#define CR 0x0D
+#define NL 0x0A
+#define ESC 0x1B
+#define TAB 0x09
 
 #define BUFFERLENGTH 30
 
@@ -39,10 +44,11 @@ typedef struct
     unsigned char data[BUFFERLENGTH];
 } circularBuffer;
 
-circularBuffer receive_buffer;
-circularBuffer transmit_buffer;
+static volatile circularBuffer receive_buffer;
+static volatile circularBuffer transmit_buffer;
+static volatile char carriageReturn = 0;
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: configureSerial(void)
  *
  * Include:
@@ -62,13 +68,14 @@ void configureSerial(void)
     //Initialise the serial buffers
     init(transmit_buffer);
     init(receive_buffer);
+    carriageReturn = 0;
 
     //Open the USART module
     //OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
     OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 64);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: transmit(char *string)
  *
  * Include:
@@ -94,7 +101,7 @@ void transmit(char *string)
     TX_INT_ENABLE();
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: receiveEmpty(void)
  *
  * Include:
@@ -110,7 +117,7 @@ char receiveEmpty(void)
     return empty(receive_buffer);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: receivePeek(void)
  *
  * Include:
@@ -127,7 +134,7 @@ char receivePeek(void)
     return peek(receive_buffer);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: receivePop(void)
  *
  * Include:
@@ -144,7 +151,52 @@ char receivePop(void)
     return c;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
+ * Function: receiveCR(void)
+ *
+ * Include:
+ *
+ * Description: Indicates whether a Carriage Return has been received
+ *
+ * Arguments: None
+ *
+ * Returns: non-zero if CR has been received, zero otherwise
+ *************************************************************************/
+char receiveCR(void)
+{
+    return carriageReturn;
+}
+
+/*! **********************************************************************
+ * Function: readString(char *string)
+ *
+ * Include: Serial.h
+ *
+ * Description: Writes all received data up to a carriage return into given
+ *              location.
+ *
+ * Arguments: string - Pointer to location to store received data
+ *
+ * Returns: Received data up to a carriage return
+ *
+ * Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the
+ *          location pointed to by string before calling this function.
+ *************************************************************************/
+void readString(char *string)
+{
+    char c, e;
+    e = empty(receive_buffer);
+    c = pop(receive_buffer);
+    while (c != CR && !e)
+    {
+        *(string++) = c;
+        e = empty(receive_buffer);
+        c = pop(receive_buffer);
+    }
+    carriageReturn--;
+}
+
+/*! **********************************************************************
  * Function: serialISR(void)
  *
  * Include:
@@ -181,6 +233,7 @@ void serialISR(void)
 
         //push the received data onto the received buffer
         push(data, receive_buffer);
+        if (data == CR) carriageReturn++;
 
         //Clear interrupt flag
         RC_INT_CLEAR();

@@ -73,8 +73,8 @@ void main() {
     configureBase();
 
 
-    dir.azimuth = 0;
-    dir.inclination = 45;
+    dir.azimuth = 30;
+    dir.inclination = -20;
     move(dir);
     
     for(;;);

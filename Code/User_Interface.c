@@ -9,6 +9,14 @@
 
 #include "Common.h"
 
+struct user_state
+{
+    enum { ROOT, MODULE, FUNCTION } level;
+    enum { AZIMUTH, ELEVATION, RANGE, TEMP, RAW, TRACK } module;
+    enum { MIN, MAX, GOTO } function;
+} InterfaceState;
+
+
 /* **********************************************************************
  * Function: display(TrackingData data)
  *
@@ -56,7 +64,8 @@ void userISR(void)
  *************************************************************************/
 void configUSER(void)
 {
-    
+    InterfaceState.module = InterfaceState.ROOT;
+    InterfaceState.module = InterfaceState.TRACK;
 }
 
 /* **********************************************************************
