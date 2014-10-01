@@ -71,7 +71,7 @@ typedef struct
 
 //Interrupt macros
 #define TX_INT (PIR1bits.TXIF && PIE1bits.TXIE)       //serial transmit interrupt fired
-#define RC_INT (PIR1bits.RCIF && PIE1bits.TXIE)       //serial receive interrupt fired
+#define RC_INT (PIR1bits.RCIF && PIE1bits.RCIE)       //serial receive interrupt fired
 #define CCP1_INT (PIR1bits.CCP1IF && PIE1bits.CCP1IE) //Whether CCP1 fired the interrupt
 #define CCP2_INT (PIR2bits.CCP2IF && PIE2bits.CCP2IE) //Whether CCP2 fired the interrupt
 #define INT0_INT (INTCONbits.INT0IF && INTCONbits.INT0IE) //Whether the external interrupt fired

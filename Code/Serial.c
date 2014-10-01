@@ -55,12 +55,17 @@ circularBuffer transmit_buffer;
  *************************************************************************/
 void configureSerial(void)
 {
+    INTCONbits.GIEH = 1;
+    INTCONbits.GIEL = 1;
+    RCONbits.IPEN = 1;
+
     //Initialise the serial buffers
     init(transmit_buffer);
     init(receive_buffer);
 
     //Open the USART module
-    OpenUSART(USART_TX_INT_OFF & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
+    //OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
+    OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 64);
 }
 
 /* **********************************************************************
@@ -135,7 +140,8 @@ char receivePeek(void)
  *************************************************************************/
 char receivePop(void)
 {
-    return pop(receive_buffer);
+    char c = pop(receive_buffer);
+    return c;
 }
 
 /* **********************************************************************
