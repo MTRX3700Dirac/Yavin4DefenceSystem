@@ -66,24 +66,18 @@ extern unsigned int rangeIR(void);
 void main() {
     systemState state = {INIT, UNDEF};
     TrackingData target;
-    unsigned int i, j, k;
     Direction dir;
-    char string[] = "Serial Transmit\n";
-    char c;
 
-    //configureBase();
 
-    configureSerial();
 
-    for(;;)
-    {
-        if (!receiveEmpty())
-        {
-            string[0] = receivePop();
-            string[1] = 0;
-            transmit(string);
-        }
-    }
+    configureBase();
+
+
+    dir.azimuth = 0;
+    dir.inclination = 45;
+    move(dir);
+    
+    for(;;);
     
     for (;;)
     {
