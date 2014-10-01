@@ -423,22 +423,54 @@ This macro has been tested with a range of values from 0 to BUFFERLENGTH. In eac
 \#define incMod(ptr) (ptr = ++ptr \% BUFFERLENGTH)
 
 \subsection{ConfigureSerial:}
+\subsubsection{Remark:}
+The baud rate set in this function is dependant on the clock speed of the processor. On the PICDEM board, and other PIC's this is 4MHz. On the minimal board it is a 10MHz clock.
+
 \subsubsection{Status:}
-Untested as of 2:45pm 26/9/2014 - Grant
+Working as of 11:25am 1/10/2014 - Grant
 
 \subsubsection{Description:}
 This function sets up and configures the serial UART for communication to the remote terminal.
 
 \subsubsection{Criteria:}
+While there is no way to properly test this function in isolation the serial is working after this function has configured the serial.
+
+\subsubsection{Working Code:}
+void configureSerial(void) \newline
+\{ \newline
+	INTCONbits.GIEH = 1; \newline
+	INTCONbits.GIEL = 1; \newline
+	RCONbits.IPEN = 1; \newline
+	
+	init(transmit\_buffer); \newline
+	init(receive\_buffer); \newline
+	
+	//OpenUSART(USART\_TX\_INT\_ON \& USART\_RX\_INT\_ON \& USART\_BRGH\_HIGH \& USART\_EIGHT\_BIT \& USART\_ASYNCH\_MODE, 25);
+	OpenUSART(USART\_TX\_INT\_ON \& USART\_RX\_INT\_ON \& USART\_BRGH\_HIGH \& USART\_EIGHT\_BIT \& USART\_ASYNCH\_MODE, 64);
+\}
 
 \subsection{Transmit:}
 \subsubsection{Status:}
-Untested as of 2:50pm 26/9/2014 - Grant
+Working as of 11:20am 1/10/2014 - Grant
 
 \subsubsection{Description:}
 This function pushes a string onto the serial transmit buffer and enables the transmit interrupt to begin transmitting the buffer (if not already transmitting).
 
 \subsubsection{Criteria:}
+This function has been tested by sending strings of different lengths and observing the transmission on terra term. The function appears to be transmitting all strings properly.
+
+\subsubsection{Working Code:}
+void transmit(char *string) \newline
+\{ \newline
+	for (; *string; string++) \newline
+	\{ \newline
+		push(*string, transmit\_buffer); \newline
+	\} \newline
+	
+	if (empty(transmit\_buffer)) return; \newline
+	
+	TX\_INT\_ENABLE(); \newline
+\} \newline
 
 \subsection{receiveEmpty:}
 \subsubsection{Status:}
@@ -478,7 +510,7 @@ char receivePeek(void)
 Working as of 3pm 26/9/2014 - Grant
 
 \subsubsection{Description:}
-This function applies the pop macro to the receive buffer and returns the result.
+This function applies the pop macro to the receive buffer and returns the result. Note: the push, pop and init macros are multiple lines and cannot by used in a single return statement like peek and empty.
 
 \subsubsection{Criteria:}
 The function was tested in isolation on a circular buffer in full, empty and non-empty cases. Each time the result was as outlined in the documentation.
@@ -486,17 +518,47 @@ The function was tested in isolation on a circular buffer in full, empty and non
 \subsubsection{Working Code:}
 char receivePop(void)
 {
-	return pop(receive\_buffer);
+	char c = pop(receive\_buffer);
+	return c;
 }
 
 \subsection{serialISR:}
 \subsubsection{Status:}
-Untested as of 3:10pm 26/9/2014 - Grant
+Working as of 11:15am 1/10/2014 - Grant
 
 \subsubsection{Description:}
 This function acts as the interrupt service routine for the serial module. The primary purpose will be to handle the receive and transmit interrupts.
 
 \subsubsection{Criteria:}
+This function has been tested with transmit and receive operations. The module has been tested transmitting strings and receiving data, so the ISR function is working as all serial goes through the interrupt.
+
+\subsubsection{Working Code:}
+void serialISR(void) \newline
+\{ \newline
+	unsigned char data; \newline
+	
+	if (TX\_INT) \newline
+	\{ \newline
+		if (empty(transmit\_buffer))
+		\{ \newline
+			TX\_INT\_DISABLE(); \newline
+			return; \newline
+		\} \newline
+		
+		data = pop(transmit\_buffer); \newline
+		WriteUSART(data); \newline
+		
+		TX\_INT\_CLEAR(); \newline
+	\} \newline
+	else if (RC\_INT) \newline
+	\{ \newline
+		data = ReadUSART(); \newline
+		
+		push(data, receive\_buffer); \newline
+		
+		RC\_INT\_CLEAR(); \newline
+	\} \newline
+\} \newline
 
 \section{Pan Tilt:}
 
@@ -678,8 +740,8 @@ Delay direction2Delay(DirectionState dir) \newline
 	Delay result; \newline
 	unsigned int az, inc; \newline
 	
-	az = 1000 + dir.azimuth * (long int)1000 / ARC\_RANGE; \newline
-	inc = 1000 + dir.inclination * (long int)1000 / ARC\_RANGE; \newline
+	az = 1000 + (dir.azimuth + DIV\_2(arcRange.azimuth) + calibration\_offset.azimuth) * (long int)1000 / arcRange.azimuth; \newline
+	inc = 1000 + (dir.inclination + DIV\_2(arcRange.inclination) + calibration\_offset.inclination) * (long int)1000 / arcRange.inclination;  \newline
 	
 	validate(\&az); \newline
 	validate(\&inc); \newline
@@ -757,8 +819,8 @@ DirectionState delay2Direction(Delay dly) \newline
 \{ \newline
 	DirectionState ret; \newline
 	
-	ret.azimuth = ((dly.AzimuthDelay - PWM\_HALF\_PERIOD - 1000) * (long int)ARC\_RANGE + 500) / 1000; \newline
-	ret.inclination = ((dly.InclinationDelay + LATENCY - 1000) * (long int)ARC\_RANGE + 500) / 1000; \newline
+	ret.azimuth = ((dly.AzimuthDelay - PWM\_HALF\_PERIOD - 1000) * (long int)arcRange.azimuth + 500) / 1000 - DIV\_2(arcRange.azimuth) - calibration\_offset.azimuth; \newline
+	ret.inclination = ((dly.InclinationDelay + LATENCY - 1000) * (long int)arcRange.inclination + 500) / 1000 - DIV\_2(arcRange.inclination) - calibration\_offset.inclination; \newline
 	
 	return ret; \newline
 \} \newline

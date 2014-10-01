@@ -45,8 +45,9 @@ unsigned int sampleIR(char numSamples);
  *
  * Include: Range.h
  *
- * Description: Configures the ADC
- *
+ * Description: Configures the ADC,
+ * In ADCON1, we set right-justified mode, and select AN0 as the input channel.
+ * In ADCON0, we set a sample rate of Fosc/64, select AN0, and enable the ADC.
  * Arguments: None
  *
  * Returns: None
@@ -57,8 +58,9 @@ void configureAD(void)
     TRISA = 0xFF;
 
     //Write the configuration values into the configuration registers
+    ADCON1 = 0x8E;
     ADCON0 = 0x41;
-    ADCON1 = 0x0E;
+    
 
     //Arbitrary wait period to allow the ADC to initialise
     for (i = 0; i < 1000; i++);

@@ -13,8 +13,8 @@
 
 typedef struct
 {
-    unsigned int AzimuthDelay;
-    unsigned int InclinationDelay;
+    signed int AzimuthDelay;
+    signed int InclinationDelay;
 } Delay;
 
 //Define the PWM output pins
@@ -25,7 +25,8 @@ typedef struct
 #define LATENCY 340
 #define PWM_PERIOD 20000 //The period for 50Hz at 1MHz
 #define PWM_HALF_PERIOD 10000 //Half the period for 50Hz at 1MHz
-#define ARC_RANGE 245 //Max arc of servos
+//#define ARC_RANGE 94 //Max arc of servos
+//#define HALF_RANGE 47   //Half the range of the servos
 
 #define SERVO_INIT() TRISCbits.RC0 = 0; TRISCbits.RC1 = 0; PORTCbits.RC0 = 0; PORTCbits.RC1 = 0
 
@@ -34,7 +35,8 @@ Delay direction2Delay(DirectionState dir);
 Delay direction2Delay(DirectionState dir);
 
 //Static calibration offset
-static Direction calibration_offset = { 0, 0 };
+static Direction calibration_offset = { 0, 3 };
+static Direction arcRange = { 94, 103 };
 static Delay global_delay;
 
 //Static Max/Min
@@ -304,7 +306,7 @@ void panTiltISR(void)
     {
         timer_value = ReadTimer1();
 
-        if (timer_value > PWM_PERIOD - LATENCY)
+        if (timer_value > PWM_PERIOD)
         {
             IN_PWM_PIN = 1;
             WriteTimer1(0);     //Clear timer2
@@ -316,7 +318,7 @@ void panTiltISR(void)
             AZ_PWM_PIN = 0;
             OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, PWM_PERIOD);
         }
-        else if (timer_value > PWM_HALF_PERIOD - LATENCY)
+        else if (timer_value > PWM_HALF_PERIOD)
         {
             AZ_PWM_PIN = 1;
             OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, current_delay.AzimuthDelay);
@@ -350,8 +352,8 @@ DirectionState delay2Direction(Delay dly)
 {
     DirectionState ret;
 
-    ret.azimuth = ((dly.AzimuthDelay - PWM_HALF_PERIOD - 1000) * (long int)ARC_RANGE + 500) / 1000;
-    ret.inclination = ((dly.InclinationDelay + LATENCY - 1000) * (long int)ARC_RANGE + 500) / 1000;
+    //ret.azimuth = ((dly.AzimuthDelay - PWM_HALF_PERIOD - 1000) * (long int)arcRange.azimuth + 500) / 1000 - DIV_2(arcRange.azimuth) - calibration_offset.azimuth;
+    //ret.inclination = ((dly.InclinationDelay + LATENCY - 1000) * (long int)arcRange.inclination + 500) / 1000 - DIV_2(arcRange.inclination) - calibration_offset.inclination;
 
     return ret;
 }
@@ -376,8 +378,8 @@ Delay direction2Delay(DirectionState dir)
     Delay result;
     unsigned int az, inc;
 
-    az = 1000 + dir.azimuth * (long int)1000 / ARC_RANGE;
-    inc = 1000 + dir.inclination * (long int)1000 / ARC_RANGE;
+    az = 1000 + (dir.azimuth + DIV_2(arcRange.azimuth) + calibration_offset.azimuth) * (long int)1000 / arcRange.azimuth;
+    inc = 1000 + (-dir.inclination + DIV_2(arcRange.inclination) + calibration_offset.inclination) * (long int)1000 / arcRange.inclination;
 
     validate(&az);
     validate(&inc);

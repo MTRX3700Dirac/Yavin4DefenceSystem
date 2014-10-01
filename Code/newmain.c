@@ -66,50 +66,18 @@ extern unsigned int rangeIR(void);
 void main() {
     systemState state = {INIT, UNDEF};
     TrackingData target;
-    unsigned int i, j, k;
     Direction dir;
+
+
 
     configureBase();
 
-    for (;;)
-    {
-    for (i = 0; i < 240; i+=10)
-    {
-        for (k = 0; k < 240; k++)
-        {
-        for (j = 0; j < 50; j++);
-        dir.azimuth = k;
-        dir.inclination = i;
-        move(dir);
-        }
-        i+=10;
-        for (k = 240; k > 0; k--)
-        {
-            for (j = 0; j < 50; j++);
-        dir.azimuth = k;
-        dir.inclination = i;
-        move(dir);
-        }
-    }
-    for (i = 240; i > 0; i-=10)
-    {
-        for (k = 0; k < 240; k++)
-        {
-        for (j = 0; j < 50; j++);
-        dir.azimuth = i;
-        dir.inclination = k;
-        move(dir);
-        }
-        i-=10;
-        for (k = 240; k > 0; k--)
-        {
-           for (j = 0; j < 50; j++);
-        dir.azimuth = i;
-        dir.inclination = k;
-        move(dir);
-        }
-    }
-    }
+
+    dir.azimuth = 0;
+    dir.inclination = 45;
+    move(dir);
+    
+    for(;;);
     
     for (;;)
     {
