@@ -16,5 +16,7 @@ extern void transmit(char *string);
 extern char receiveEmpty(void);
 extern char receivePeek(void);
 extern char receivePop(void);
+extern char receiveCR(void);
+extern void readString(char *string);
 
 
