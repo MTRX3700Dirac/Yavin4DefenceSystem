@@ -17,7 +17,7 @@ This document describes the unexpected difficulties and problems which arise dur
 \end{abstract}
 
 \newpage
-\section{Driving Servos (30/9/2014):}
+\section{Driving Servos (30/9/2014- 1/10/2014):}
 \subsubsection{PDM Generation:}
 In order to drive the servos we need to generate a PDM (Pulse Duration Modulated) reference signal at 50Hz with the duration of the pulses between 1000$\mu$s and 2000$\mu$s. Unfortunately we need one of the two CCP timers for an input compare on the ultrasonic sensor, leaving only 1 with which to generate 2 PDM signals. \newline
 The idea was to use output compares in a similar manner to in some of the software exersises, where we simply calculate the delay time and use that in an output compare, generate a software interrupt and toggle the bit. This can easily be expanded to creating two PWM's on two separate pins. However, there is a latency associated with interrupts which was found to be ~300$\mu$s. This does not make much difference at the 50Hz scale, but controlling the pulse durations, this is almost a third of the maximum resolution.
@@ -31,11 +31,21 @@ When the PDM's (which were first checked on an oscilloscope) were sent to the se
 \subsubsection{Solution:}
 After checking the PDM on the oscilloscope (while running the servo) we found that the servo was actually distorting the PDM signal, but only some of the time, which causes the servo to move to different locations rapidly. This might be a short within the servo or something that is causing an unusually low impedance across the input periodically, but for now a voltage follower seems to have stabilised it.
 
-\section{ADC 30/9/2014:}
+\subsubsection{PDM Frequency}
+During development of the subsystem, a PICDEM 2 Plus Board or a PIC18F4520 with an external clock oscillator were used. Both these devices used a 4MHz oscillator, whereas the final implementation using the MNML PIC 18 board has oscillator frequency of 10MHz. This clock frequency is used to drive the PIC's timers, which is used to calculate the frequency for the PDM to control the two servo motors. However, these servo motors will only take a frequency of 50Hz (and slightly below). By putting the same code to both boards, the PDM frequency will be higher than the acceptable frequency required by the Servo motors, and the motors will be damaged.
+
+\subsubsection{Solution:}
+A note was made about this difference, for when the system is integrated onto the MNML board. During the testing and integration stages of the project, whilst it is still most convinient to test using multiple PICDEM boards, the frequency calculates will be based on the 4MHz clock. Once the Servo and Rangefinding modules are completed, all testing will be performed on the MNML board, and the Servo module code will be changed to adjust to the new clock speed.   
+
+\section{ADC (30/9/2014):}
 \subsubsection{Noise:}
 Upon testing our sensors we found that there was a considerable amount of high frequency noise, particularly in the IR sensor. We plan on having multiple samples per measurement, which will help reduce this, however, this will take extra time for the code to run, and we wish to minimise the number of samples needed for reliable results. For this reason we built a simple low pass filter with a time scale of 2ms (as high as possible while still smaller than our expected sampling rate).
 
 \subsubsection{Input Impedance:}
 When we were testing the IR and Temperature sensors the output voltage seemed reasonable when connected to a scope, however, when sampling with the A/D converter we were getting unusual results. After first verifying the A/D code was working as expected we put a scope on the input connected to the A/D and found that it was no longer changing (very much). Upon consulting the datasheet we found that the input impedence for the ADC is only $2.5k\Omega$. To solve this we used a voltage follower to buffer the signal before it goes into the ADC.
+
+\section{Serial (1/10/2014)}
+\subsubsection{Baud Rate:}
+When testing the Serial module, we had found that the received characters were incorrect, and only worked whilst in a loop. We found that this was due to an incorrect setting in the baud rate of the PIC18F, as we had previously been testing using a 4MHz clock frequency, and the MNML board has a 10MHz oscillator. Once we had noticed this, the serial code was modified to have a 9600kbps in both cases, with a commented line to change between the two. 
 
 \end{document}
