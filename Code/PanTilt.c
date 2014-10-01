@@ -37,6 +37,15 @@ Delay direction2Delay(DirectionState dir);
 static Direction calibration_offset = { 0, 0 };
 static Delay global_delay;
 
+//Static Max/Min
+static signed char azimuth_angle_max;
+static signed char azimuth_angle_min;
+static signed char elevation_angle_max;
+static signed char elevation_angle_min;
+
+//Static Current direction
+static Direction current_direction;
+
 /*! **********************************************************************
  * Function: config(void)
  *
@@ -73,6 +82,11 @@ void configureBase(void)
     config = COM_INT_ON & COM_UNCHG_MATCH;
 
     OpenCompare1(config, PWM_PERIOD);
+
+    azimuth_angle_max = 45;
+    azimuth_angle_min = -45;
+    elevation_angle_max = 45;
+    elevation_angle_min = -45;
 }
 
 /*! **********************************************************************
@@ -89,6 +103,7 @@ void configureBase(void)
 void move(Direction destination)
 {
     global_delay = direction2Delay(destination);
+    current_direction = destination;
 }
 
 /*! **********************************************************************
@@ -104,7 +119,133 @@ void move(Direction destination)
  *************************************************************************/
 Direction getDir(void)
 {
-    
+    return current_direction;
+}
+
+/*! **********************************************************************
+ * Function: getMaxAzimuthAngle
+ *
+ * Include: PanTilt.h
+ *
+ * Description: returns the maximum angle of the azimuth servo
+ *
+ * Arguments: None
+ *
+ * Returns: A char with the maximum azimuth angle.
+ *************************************************************************/
+char getMaxAzimuthAngle(void)
+{
+    return azimuth_angle_max;
+}
+
+/*! **********************************************************************
+ * Function: getMinAzimuthAngle
+ *
+ * Include: PanTilt.h
+ *
+ * Description: returns the minimum angle of the azimuth servo
+ *
+ * Arguments: None
+ *
+ * Returns: A char with the minimum azimuth angle.
+ *************************************************************************/
+char getMinAzimuthAngle(void)
+{
+    return azimuth_angle_min;
+}
+
+/*! **********************************************************************
+ * Function: getMaxElevationAngle
+ *
+ * Include: PanTilt.h
+ *
+ * Description: returns the maximum angle of the elevation servo
+ *
+ * Arguments: None
+ *
+ * Returns: A char with the maximum elevation angle.
+ *************************************************************************/
+char getMaxElevationAngle(void)
+{
+    return elevation_angle_max;
+}
+
+/*! **********************************************************************
+ * Function: getMinElevationAngle
+ *
+ * Include: PanTilt.h
+ *
+ * Description: returns the minimum angle of the elevation servo
+ *
+ * Arguments: None
+ *
+ * Returns: A char with the minimum elevation angle.
+ *************************************************************************/
+char getMinElevationAngle(void)
+{
+    return elevation_angle_min;
+}
+
+/*! **********************************************************************
+ * Function: setMaxAzimuthAngle
+ *
+ * Include: PanTilt.h
+ *
+ * Description: sets the maximum angle of the azimuth servo
+ *
+ * Arguments: The maximum angle (as char) to set for the azimuth servo
+ *
+ * Returns: None.
+ *************************************************************************/
+void setMaxAzimuthAngle(char p_angle)
+{
+    azimuth_angle_max = p_angle;
+}
+/*! **********************************************************************
+ * Function: setMinAzimuthAngle
+ *
+ * Include: PanTilt.h
+ *
+ * Description: sets the minimum angle of the azimuth servo
+ *
+ * Arguments: The minimum angle (as char) to set for the azimuth servo
+ *
+ * Returns: None.
+ *************************************************************************/
+void setMinAzimuthAngle(char p_angle)
+{
+    azimuth_angle_min = p_angle;
+}
+/*! **********************************************************************
+ * Function: setMaxElevationAngle
+ *
+ * Include: PanTilt.h
+ *
+ * Description: sets the maximum angle of the elevation servo
+ *
+ * Arguments: The maximum angle (as char) to set for the elevation servo
+ *
+ * Returns: None.
+ *************************************************************************/
+void setMaxElevationAngle(char p_angle)
+{
+    elevation_angle_max = p_angle;
+}
+
+/*! **********************************************************************
+ * Function: setMinElevationAngle
+ *
+ * Include: PanTilt.h
+ *
+ * Description: sets the minimum angle of the elevation servo
+ *
+ * Arguments: The minimum angle (as char) to set for the elevation servo
+ *
+ * Returns: None.
+ *************************************************************************/
+void setMinElevationAngle(char p_angle)
+{
+    elevation_angle_min = p_angle;
 }
 
 /*! **********************************************************************

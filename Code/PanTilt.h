@@ -16,3 +16,12 @@ extern void move(Direction destination);
 extern Direction getDir(void);
 extern void calibratePanTilt(Direction reference);
 extern Direction rawDir(void);
+extern char getMaxAzimuthAngle();
+extern char getMinAzimuthAngle();
+extern char getMaxElevationAngle();
+extern char getMinElevationAngle();
+
+extern void setMaxAzimuthAngle(char p_angle);
+extern void setMinAzimuthAngle(char p_angle);
+extern void setMaxElevationAngle(char p_angle);
+extern void setMinElevationAngle(char p_angle);
