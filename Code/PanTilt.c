@@ -47,6 +47,7 @@ static signed char elevation_angle_min;
 
 //Static Current direction
 static Direction current_direction;
+static volatile char changed = 0;
 
 /*! **********************************************************************
  * Function: config(void)
@@ -106,6 +107,48 @@ void move(Direction destination)
 {
     global_delay = direction2Delay(destination);
     current_direction = destination;
+}
+
+/*! **********************************************************************
+ * Function: increment(Direction difference)
+ *
+ * Include: PanTilt.h
+ *
+ * Description: Moves the pan tilt actuator to the specified destination
+ *
+ * Arguments: destionation - A struct containing the desired azimuth and inclination
+ *
+ * Returns: None
+ *************************************************************************/
+void increment(Direction difference)
+{
+    global_delay.AzimuthDelay += difference.azimuth * 1000 / arcRange.azimuth;
+    global_delay.InclinationDelay += difference.inclination * 1000 / arcRange.inclination;
+
+    //Ensure that the delays are still within the max and min duty cycles
+    validate(&(global_delay.AzimuthDelay));
+    validate(&(global_delay.InclinationDelay));
+}
+
+/*! **********************************************************************
+ * Function: move(Direction destination)
+ *
+ * Include: PanTilt.h
+ *
+ * Description: Moves the pan tilt actuator to the specified destination
+ *
+ * Arguments: destionation - A struct containing the desired azimuth and inclination
+ *
+ * Returns: None
+ *************************************************************************/
+void incrementFine(Direction difference)
+{
+    global_delay.AzimuthDelay += difference.azimuth;
+    global_delay.InclinationDelay += difference.inclination;
+
+    //Ensure that the delays are still within the max and min duty cycles
+    validate(&(global_delay.AzimuthDelay));
+    validate(&(global_delay.InclinationDelay));
 }
 
 /*! **********************************************************************
@@ -311,6 +354,7 @@ void panTiltISR(void)
             IN_PWM_PIN = 1;
             WriteTimer1(0);     //Clear timer2
             current_delay = global_delay;   //update the static delay
+            changed = 1;        //Indicate the change has been loaded
             OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, current_delay.InclinationDelay);
         }
         else if (timer_value > current_delay.AzimuthDelay)
@@ -392,7 +436,7 @@ Delay direction2Delay(DirectionState dir)
 
 
 /*! **********************************************************************
- * Function: validate(unsigned int *delaay)
+ * Function: validate(unsigned int *delay)
  *
  * Include:
  *
@@ -412,4 +456,23 @@ void validate(unsigned int *delay)
     {
         *delay = 2000;
     }
+}
+
+/*! **********************************************************************
+ * Function: updated(void)
+ *
+ * Include: PanTilt.h
+ *
+ * Description: returns true if the last move or increment or incrementFine
+ *              function has taken effect. The new direction is only loaded
+ *              in at the end of the PDM, so it could take up to 0.02 seconds
+ *              for the change to take effect.
+ *
+ * Arguments: delay - a pointer to the delay variable
+ *
+ * Returns: None
+ *************************************************************************/
+char updated(void)
+{
+    return changed;
 }

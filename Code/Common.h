@@ -31,24 +31,24 @@
 //direction to point the pan tilt.
 typedef struct
 {
-    unsigned int azimuth;
-    unsigned int inclination;
+    int azimuth;
+    int inclination;
 } Direction;
 
 
 //Stores the current system configuration
 typedef struct
 {
-    unsigned int azimuth;           //The current system azimuth
-    unsigned int inclination;       //The current system inclination
+    int azimuth;           //The current system azimuth
+    int inclination;       //The current system inclination
 } DirectionState;
 
 //Tracking Data definition: Stores the current target information
 typedef struct
 {
     unsigned int distance;      //Distance to the target
-    unsigned int azimuth;       //Azimuth to the target
-    unsigned int inclination;   //inclination to the target
+    int azimuth;       //Azimuth to the target
+    int inclination;   //inclination to the target
 } TrackingData;
 
 //Efficient Division macros
@@ -63,6 +63,7 @@ typedef struct
 #define DIV_512(v) ((v) >> 9)     //Divide by 512
 #define DIV_1024(v) ((v) >> 10)   //Divide by 1024
 
+#define SWAP(x, y) (y = (y ^ (x = (x ^ (y = (x ^ y))))))
 
 //ADC Channel Select macros
 #define ADC_IR_READ 0            //Sets ADC to read the IR

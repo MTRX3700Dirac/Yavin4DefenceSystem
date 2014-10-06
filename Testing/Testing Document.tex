@@ -22,7 +22,7 @@ WARNING: DO NOT INCLUDE ANYTHING IN THIS DOCUMENT UNLESS YOU ARE CERTAIN THAT IT
 \newpage
 \section{Common}
 
-\subsection{DIV\_X:}
+\subsection{DIV\_X Macros:}
 \subsubsection{Status:}
 Working as of 11:30 25/9/2014 - Grant
 
@@ -34,6 +34,19 @@ The value of 1024 was tested for each of the macros, and due to the simplicity a
 
 \subsubsection{Working code:}
 \#define DIV\_2(v) ((v) $>>$ 1)       //Divide by 2
+
+\subsection{SWAP Macro}
+\subsubsection{Status:}
+Working as of 10:00pm 6/10/2014 - Grant
+
+\subsubsection{Description:}
+This macro provides an efficient way of swapping the values in two variables using xor operations.
+
+\subsubsection{Criteria:}
+The macro was tested on the values x = 7, y = 3, the macro returned x = 3, y = 7. As this was the expected result and any error in the macro would have manifested an error in the result, the macro was thus assumed to be correct.
+
+\subsubsection{Working Code:}
+\#define SWAP(x, y) (y = (y \textasciicircum (x = (x \textasciicircum (y = (x \textasciicircum y))))))
 
 \newpage
 \section{Temperature Module:}

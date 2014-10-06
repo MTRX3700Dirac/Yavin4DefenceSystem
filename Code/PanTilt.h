@@ -13,13 +13,17 @@
 //External declarations of public access functions
 extern void configureBase(void);
 extern void move(Direction destination);
+extern void increment(Direction difference);
+extern void incrementFine(Direction difference);
 extern Direction getDir(void);
 extern void calibratePanTilt(Direction reference);
 extern Direction rawDir(void);
-extern char getMaxAzimuthAngle();
-extern char getMinAzimuthAngle();
-extern char getMaxElevationAngle();
-extern char getMinElevationAngle();
+extern char updated(void);
+
+extern char getMaxAzimuthAngle(void);
+extern char getMinAzimuthAngle(void);
+extern char getMaxElevationAngle(void);
+extern char getMinElevationAngle(void);
 
 extern void setMaxAzimuthAngle(char p_angle);
 extern void setMinAzimuthAngle(char p_angle);

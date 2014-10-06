@@ -76,5 +76,29 @@ void trackingISR(void)
  *************************************************************************/
 TrackingData edge(void)
 {
-    
+    TrackingData result;
+    Direction inc;
+
+    char i;
+
+    inc.azimuth = 5;
+    inc.inclination = 0;
+
+    //Check if the target is in range of the IR
+    if (rangeIR())
+    {
+        for (i = 0; i < 2; i++)
+        {
+            //Find first edge
+            while (rangeIR()) increment(inc);
+
+            //Change direction
+            inc.azimuth = -inc.azimuth;
+            inc.inclination = -inc.inclination;
+
+            //Refind target, and find other edge
+            while (!rangeIR()) increment(inc);
+            while(rangeIR()) increment(inc);
+        }
+    }
 }
