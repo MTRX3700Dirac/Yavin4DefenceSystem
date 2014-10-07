@@ -197,6 +197,23 @@ void readString(char *string)
 }
 
 /*! **********************************************************************
+ * Function: transmitted(void)
+ *
+ * Include: Serial.h
+ *
+ * Description: returns non-zero if the message has been completely transmited
+ *              e.g. if the transmit buffer is empty
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+char transmitted(void)
+{
+    return empty(transmit_buffer);
+}
+
+/*! **********************************************************************
  * Function: serialISR(void)
  *
  * Include:

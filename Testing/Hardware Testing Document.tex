@@ -1,0 +1,30 @@
+\documentclass[]{article}
+
+\usepackage{graphicx}
+\usepackage{bookmark}
+
+%opening
+\title{Hardware Testing Document}
+\author{Bastiaan Uytterhoeven-Spark}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\begin{abstract}
+This document details the testing of all hardware components and the software functions which interact with them.
+\end{abstract}
+
+\newpage
+\section{InfraRed Rangefinder}
+\subsectrion{Setup}
+The IR sesnor was connected to AD module of a PIC18F4520, where the results from the AD Registers was stored in the testing document. The AD register was set to measure from AN1, with a left justified result between ADRESH and ADRESL. 
+\subsection{Testing Proceedure}
+The PanTilt sensor was set to place the IR rangefinder to measure along a horizontal axis. A measureing tape was set up in parallel to the IR rangefinder. A book was placed at a distance of 150mm from the glass base on which the IR rangefinder is mounted. 
+
+\subsection{Results}	
+\section{Ultrasonic Rangefinder}
+\section{Servo Motors}
+

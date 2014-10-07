@@ -18,5 +18,5 @@ extern char receivePeek(void);
 extern char receivePop(void);
 extern char receiveCR(void);
 extern void readString(char *string);
-
+extern char transmitted(void);
 
