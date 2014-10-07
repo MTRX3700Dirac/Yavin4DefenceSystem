@@ -82,12 +82,22 @@ void configureRange(void)
 {
     unsigned char config;
 
+    //Enable global interrupts and interrupt priority
+    INTCONbits.GIEH = 1;
+    INTCONbits.GIEL = 1;
+    RCONbits.IPEN = 1;
+    
+    PIE1bits.CCP1IE = 1;    //Enable CCP1 interrupts
+
     //Make sure the AD is configured
     configureAD();
 
     INIT_TRIS = 0;  //Make the INIT
 
     config = CAPTURE_INT_ON | CAP_EVERY_RISE_EDGE;
+
+    //CloseCapture1, which will clear any interrupt flags etc
+    CloseCapture1();
 
     //Open the input capture on compare1
     OpenCapture1(config);
