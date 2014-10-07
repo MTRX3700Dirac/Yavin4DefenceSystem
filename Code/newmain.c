@@ -67,8 +67,8 @@ void main() {
     TrackingData target;
     Direction dir;
 
-    rangeUltrasonic();
-    
+    menu(top1);
+
     configureBase();
     
     dir.azimuth = 30;
