@@ -15,3 +15,7 @@
 extern void display(TrackingData data);
 extern void userISR(void);
 extern void configUSER(void);
+
+extern char userEmpty(void);
+extern char userPop(void);
+extern char userPeek(void);

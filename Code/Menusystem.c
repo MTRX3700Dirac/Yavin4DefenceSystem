@@ -1,4 +1,6 @@
 #include "Common.h"
+#include "Serial.h"
+#include "User_Interface.h"
 
 #define width 80
 #define height 24
@@ -93,4 +95,64 @@ void menu(void){
     //get pointer to menu option(horizontal)
     //call correct subroutine for menu
     //remain in that menu as dictated by operation
+}
+
+/*! **********************************************************************
+ * Function: initialiseMenu(void)
+ *
+ * \brief Initialises the menu system
+ *
+ * Include: Menusystem.h
+ *
+ * Description: initialises the menu system so that it is fully operational
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void initialiseMenu(void)
+{
+    configureSerial();
+    configLCD();
+    configUSER();
+}
+
+/*! **********************************************************************
+ * Function: serviceMenu(void)
+ *
+ * \brief services any user interface with the menu
+ *
+ * Include:
+ *
+ * Description: Checks if the user has made any inputs to the system. If not
+ *              the function simply returns. If they have then it services
+ *              the inputs, displays the correct outputs and performs the
+ *              specified actions
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void serviceMenu(void)
+{
+    //Return if there is no user input
+    if (receiveEmpty() && userEmpty()) return;
+}
+
+/*! **********************************************************************
+ * Function: menuISR(void)
+ *
+ * \brief ISR function for the menu subsystem
+ *
+ * Include: Menusystem.h
+ *
+ * Description: services any interrupts associated with the menu system
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void menuISR(void)
+{
+    
 }
