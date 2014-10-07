@@ -64,8 +64,8 @@ void userISR(void)
  *************************************************************************/
 void configUSER(void)
 {
-    InterfaceState.module = InterfaceState.ROOT;
-    InterfaceState.module = InterfaceState.TRACK;
+    //InterfaceState.module = InterfaceState.ROOT;
+    //InterfaceState.module = InterfaceState.TRACK;
 }
 
 /* **********************************************************************
