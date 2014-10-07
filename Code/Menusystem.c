@@ -23,6 +23,7 @@ char topoption5[] = "\t5:\tSleep\n";
 void menu(void);
 void topmenu(void);
 void topmenudisp(void);
+void disptoptions(void);
 void clearscreen(char length);
 void filler(char length);
 
@@ -66,14 +67,24 @@ void topmenudisp(void){
     filler(width);
 }
 
-    void topmenu(void){
+void topmenu(void){
+    char e;
+    char userget;
+    e=1;
     //display menu via serial
     topmenudisp();
     //wait for/get serial input
     //make decision based on input
+
+    while(e){
+        e=receiveEmpty();
+    }
+
+    readString(userget);
+    transmit(userget);
 }
 
-    void menu(void){
+void menu(void){
     //setup();
     configureSerial();
     topmenu();
@@ -83,6 +94,3 @@ void topmenudisp(void){
     //call correct subroutine for menu
     //remain in that menu as dictated by operation
 }
-
-
-
