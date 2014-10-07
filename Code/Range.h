@@ -12,6 +12,7 @@
 #define RANGE_INT 0
 
 //External declarations of the public access functions
+extern void configureRange(void);
 extern void configureAD(void);
 extern unsigned int range();
 extern void rangeISR(void);

@@ -18,6 +18,7 @@
 
 //Hardware Related macros
 #define INIT_PIN PORTBbits.RB0
+#define INIT_TRIS TRISBbits.RB0
 
 //Static calibration offset
 static signed int calibration_offset = 0;
@@ -64,6 +65,32 @@ void configureAD(void)
 
     //Arbitrary wait period to allow the ADC to initialise
     for (i = 0; i < 1000; i++);
+}
+
+/* **********************************************************************
+ * Function: configureRange(void)
+ *
+ * Include: Range.h
+ *
+ * Description: Configures the Range module
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void configureRange(void)
+{
+    unsigned char config;
+
+    //Make sure the AD is configured
+    configureAD();
+
+    INIT_TRIS = 0;  //Make the INIT
+
+    config = CAPTURE_INT_ON | CAP_EVERY_RISE_EDGE;
+
+    //Open the input capture on compare1
+    OpenCapture1(config);
 }
 
 /* **********************************************************************
