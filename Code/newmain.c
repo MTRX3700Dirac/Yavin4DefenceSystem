@@ -23,6 +23,8 @@
 #include "PanTilt.h"
 #include "Temp.h"
 
+#include "Menusystem.h"
+
 //Define Macros to change the state of the system
 #define NEXT_STATE(s) state.previous = state.current; state.current = s
 #define NEXT_STATE_PTR(s) state->previous = state->current; state->current = s
@@ -69,10 +71,9 @@ void main() {
     Direction dir;
 
     rangeUltrasonic();
-
+    
     configureBase();
-
-
+    
     dir.azimuth = 30;
     dir.inclination = -20;
     move(dir);
