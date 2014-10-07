@@ -224,6 +224,21 @@ This function will simple move the pan tilt mechanism to the specified Azimuth a
 The move function will take a struct Direction defined in Common.h which contains the destination azimuth and inclination. The function will return nothing. The function will use the following prototype: \newline \newline 
 void move(Direction destination);
 
+\subsubsection{Increment:}
+This function adds the given values onto the current pan tilt direction, making it a relative movement system instead of an absolute as implemented by the move function
+
+\subsubsection{Increment Prototype:}
+The Increment function will take a single argument in the form of a Direction struct (defined in Common.h), which contains the value by which to change the azimuth and elevation. The function will return nothing, and take the following prototype: \newline \newline
+void increment(Direction difference);
+
+\subsubsection{IncrementFine:}
+This function does the same thing as the Increment function, but the input is not calibrated at all. This means that the resolution possible from this function is not whole degrees as with all other movement functions, but the finest resolution available by the system. This corresponds to 1/2.5 $\mu$s difference in the duty cycle, giving 2500 possible states in the full servo range, which equates to a possible resolution of ~0.04deg. \newline
+NOTE: Factors such as interrupt latencies mean the system cannot guarantee the duty cycle to that accuracy, much less the physical direction of the servos, but this does allow the control reference to be changed very precisely.
+
+\subsubsection{IncrementFine:}
+This function will take a single argument in the form of a Direction struct (defined in Common.h), which contains the value by which to change the azimuth and elevation. The function will return nothing, and take the following prototype: \newline \newline
+void incrementFine(Direction difference);
+
 \subsubsection{Return Direction:}
 This function will return the current position (direction) of the pan tilt mechanism.
 
@@ -251,6 +266,9 @@ This function configures the pan tilt mechanism, beginning PWM generation for th
 \subsubsection{Configuration Prototype:}
 This function will take no arguments and return nothing. The function will use the following prototype: \newline \newline
 void configPanTilt(void);
+
+\subsection{Changed:}
+This function returns non-zero if the changes from the last move or increment or incrementFine function call have taken effect. This is because the new delay is only loaded in at the end of the duty cycle to ensure a 50Hz wave. This means that it could take as long as 0.02sec for a position change to actually be loaded in 
 
 \subsubsection{Pan Tilt ISR:}
 The pan tilt ISR is called whenever an interrupt service routine concerning the pan tilt module is called. It will then act as the ISR for this module.
