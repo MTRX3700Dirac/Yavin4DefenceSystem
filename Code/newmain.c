@@ -70,6 +70,8 @@ void main() {
     TrackingData target;
     Direction dir;
 
+    menu(top1);
+
     configureBase();
     
     dir.azimuth = 30;
