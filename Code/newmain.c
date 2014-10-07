@@ -68,7 +68,7 @@ void main() {
     TrackingData target;
     Direction dir;
 
-
+    rangeUltrasonic();
 
     configureBase();
 

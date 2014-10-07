@@ -86,3 +86,7 @@ typedef struct
 #define SSP_INT (PIR1bits.SSPIF && PIE1bits.SSPIE)      //Whether the SSP module fired the interrupt
 #define BCL_INT (PIR2bits.BCLIF && PIE2bits.BCLIE)      //Bus collision interrupt fired
 #define LVD_INT (PIR2bits.LVDIF && PIE2bits.LVDIE)      //Low voltage detect interrupt fired
+
+
+#define CLOCK   10000000    //10MHz clock source
+#define FOSC_4  2500000     //2.5MHz Fosc_4
