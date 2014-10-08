@@ -24,3 +24,19 @@ void configLCD(void)
 {
     
 }
+
+/*! **********************************************************************
+ * Function: displayLCD(char *string)
+ *
+ * Include: LCD.h
+ *
+ * Description: Displays the given string on the LCD
+ *
+ * Arguments: string - pointer to the data to display
+ *
+ * Returns: None
+ *************************************************************************/
+void displayLCD(char *string)
+{
+    
+}

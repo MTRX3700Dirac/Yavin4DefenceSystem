@@ -79,6 +79,7 @@ void main() {
     
     for (;;)
     {
+        if (TMR1H > 10000) serviceMenu();
         switch (state.current)
         {
             case INIT:
