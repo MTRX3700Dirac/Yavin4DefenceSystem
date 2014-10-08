@@ -9,4 +9,4 @@
 
 //External declarations of public access functions
 extern void configLCD(void);
-
+extern void displayLCD(char *string);
