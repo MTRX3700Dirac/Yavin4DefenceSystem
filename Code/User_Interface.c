@@ -8,16 +8,12 @@
  */
 
 #include "Common.h"
+#include "CircularBuffers.h"
 
-struct user_state
-{
-    enum { ROOT, MODULE, FUNCTION } level;
-    enum { AZIMUTH, ELEVATION, RANGE, TEMP, RAW, TRACK } module;
-    enum { MIN, MAX, GOTO } function;
-} InterfaceState;
+//Store anything entered by the user
+circularBuffer receive;
 
-
-/* **********************************************************************
+/*! **********************************************************************
  * Function: display(TrackingData data)
  *
  * Include: User_Interface.h
@@ -35,7 +31,7 @@ void display(TrackingData data)
     
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: userISR(void)
  *
  * Include: User_Interface.h
@@ -51,7 +47,7 @@ void userISR(void)
     
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: configUSER(void)
  *
  * Include: User_Interface.h
@@ -64,14 +60,14 @@ void userISR(void)
  *************************************************************************/
 void configUSER(void)
 {
-    InterfaceState.level = InterfaceState.ROOT;
-    InterfaceState.module = InterfaceState.TRACK;
+    //Initialises the receive buffer
+    init(receive);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: readDial(void)
  *
- * Include: ADC.h
+ * Include:
  *
  * Description: Read the position of the dial
  *
@@ -96,4 +92,56 @@ unsigned int readDial(unsigned int max)
     value = DIV_1024(value * max);
 
     return value;
+}
+
+/*! **********************************************************************
+ * Function: userEmpty(void)
+ *
+ * Include: User_Interface.h
+ *
+ * Description: returns non-zero if the user interface buffer is empty (i.e.
+ *              no user input has been detected)
+ *
+ * Arguments: None
+ *
+ * Returns: if the user input buffer is empty
+ *************************************************************************/
+char userEmpty(void)
+{
+    return empty(receive);
+}
+
+/*! **********************************************************************
+ * Function: userPop(void)
+ *
+ * Include: User_Interface.h
+ *
+ * Description: pops a character from the user interface receive buffer
+ *
+ * Arguments: None
+ *
+ * Returns: a character poped from the user Interface buffer
+ *************************************************************************/
+extern char userPop(void)
+{
+    char c;
+    c = pop(receive);
+    return c;
+}
+
+/*! **********************************************************************
+ * Function: userPeek(void)
+ *
+ * Include: User_Interface.h
+ *
+ * Description: returns a character in the user_Interface buffer without
+ *              removing it from the buffer
+ *
+ * Arguments: None
+ *
+ * Returns: a character in the user interface buffer
+ *************************************************************************/
+extern char userPeek(void)
+{
+    return peek(receive);
 }
