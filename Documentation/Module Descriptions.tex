@@ -348,6 +348,59 @@ The Temperature module will make use of the following processor resources:
 \end{itemize}
 
 \newpage
+\section{Menu System}
+\subsection{Description:}
+This module is responsible for all the functionality for the user interface menu system. This includes recording the state of the menu (e.g. what option they are currently in), displaying correct information and prompts, parsing inputs etc.
+
+\subsection{Public interface:}
+The menu system will have the following public access functions:
+
+\subsubsection{Initialise Menu}
+The initialise function will initialise the menu subsystem. It will display a welcome message, and reset the menu state to the 'root' menu option. It will begin by initialising the serial system and the LCD so that it can display data.
+
+\subsubsection{Initialise Menu Prototype}
+The initialise function will take no arguments are will return nothing. It will take the following prototype: \newline \newline
+void initialiseMenu(void);
+
+\subsubsection{serviceMenu}
+This function will be called periodically by the main program. It will service the menu subsystem by checking is the user has input any data (either over serial or on the local interface), and if so it will service the input. This means parsing the input, displaying the results, and performing any commanded actions. \newline
+This function acts similarly to a user input ISR, handling the data they input. This function is not in an interrupt service routine as the required computations will most probably be computationally demanding, and we wish to avoid extended computation in the service routines which could easily interfere with the rest of the program. For this reason all the input modules use ISR's to store any entered data in circular buffers which can then be read by this module when it needs to. \newline
+This function will be called every few milliseconds or so to ensure no noticeable delay between user input and the system response.
+
+\subsubsection{ServiceMenu prototype}
+The serviceMenu function will take no arguments and return nothing. It will use the following prototype: \newline \newline
+void serviceMenu(void);
+
+\subsubsection{Menu ISR}
+This function acts as an interrupt service routine for the menu subsystem, should it need any interrupts. It is called when an interrupt fires and the MENU\_ISR macro defined in Menusystem.h returns true.
+
+\subsubsection{Menu ISR prototype}
+This function will take no arguments and return nothing. It will use the following prototype: \newline \newline
+void menuISR(void);
+
+\subsection{Functions:}
+In addition to the public access functions outlined above, the menu system module will also contain the following functions: \newline
+
+\begin{itemize}
+	\item Parse Input
+	\item Display menu
+\end{itemize}
+
+\subsection{Hardware:}
+The menu subsystem will contain the following hardware:
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsection{Processor Resources:}
+The menu subsystem will make use of the following processor resources: 
+
+\begin{itemize}
+	\item
+\end{itemize}
+
+\newpage
 \section{Serial}
 
 \subsection{Description:}

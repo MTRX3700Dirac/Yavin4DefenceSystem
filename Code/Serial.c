@@ -9,16 +9,7 @@
 
 #include "Common.h"
 #include <usart.h>
-
-//Buffer related macro functionality
-#define incMod(ptr) (ptr = ++ptr % BUFFERLENGTH)
-#define empty(buf) (buf.head == buf.tail)
-#define full(buf) (buf.tail == (buf.head + 1) % BUFFERLENGTH)
-#define peek(buf) buf.data[buf.tail]
-
-#define push(byte, buf) buf.data[buf.head] = byte; if(full(buf)) incMod(buf.tail); incMod(buf.head)
-#define pop(buf) buf.data[buf.tail]; if (!empty(buf)) incMod(buf.tail)
-#define init(buf) buf.head = 0; buf.tail = 0
+#include "CircularBuffers.h"
 
 //Interrupt macros
 #define TX_INT_CLEAR() PIR1bits.TXIF = 0
@@ -33,16 +24,6 @@
 #define NL 0x0A
 #define ESC 0x1B
 #define TAB 0x09
-
-#define BUFFERLENGTH 30
-
-//Cicular Buffer data type
-typedef struct
-{
-    unsigned char head;
-    unsigned char tail;
-    unsigned char data[BUFFERLENGTH];
-} circularBuffer;
 
 static volatile circularBuffer receive_buffer;
 static volatile circularBuffer transmit_buffer;
@@ -71,8 +52,8 @@ void configureSerial(void)
     carriageReturn = 0;
 
     //Open the USART module
-    //OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
-    OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 64);
+    OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
+    //OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 64);
 }
 
 /*! **********************************************************************

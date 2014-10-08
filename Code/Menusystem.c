@@ -1,7 +1,22 @@
 #include "Common.h"
+#include "Serial.h"
+#include "User_Interface.h"
 
 #define width 80
 #define height 24
+
+#define top1 0xFF
+#define auto11 0x10
+#define manu12 0x20
+#define manugoto121 0x21
+#define manusetl122 0x22
+#define manushow123 0x23
+//#define manugoup124 0x24
+#define stat13 0x30
+#define swap14 0x40
+#define slee15 0x50
+
+extern void menu(void);
 
 //Global
 char tMESSAGE[] = "Hello 123\n";
@@ -20,9 +35,10 @@ char topoption4[] = "\t4:\tGo To Local Mode\n";
 char topoption5[] = "\t5:\tSleep\n";
 //
 
-void menu(void);
+void menu(char menuselect);
 void topmenu(void);
 void topmenudisp(void);
+void disptoptions(void);
 void clearscreen(char length);
 void filler(char length);
 
@@ -66,23 +82,136 @@ void topmenudisp(void){
     filler(width);
 }
 
-    void topmenu(void){
-    //display menu via serial
-    topmenudisp();
-    //wait for/get serial input
-    //make decision based on input
+void topmenu(void){
+    char e;
+    char userget;
+    e=1;
+    
+    topmenudisp();      //!Display the menu screen via serial
+                        //!wait for/get serial input
+                        //!make decision based on input
+
+    while(e){
+        e=receiveEmpty();   //!Wait until the receive buffer is no longer empty
+    }                       //!Indicating that a command has been passed
+    e=1;                    //!Reset status flag
+
+    readString(userget);    //!Get the input string and store it in @userget
+    transmit(userget);      //!test
+
+    switch(userget){
+        case 1 :
+            //auto();
+            break;
+        case 2 :
+            //manual();
+            break;
+        case 3 :
+            //status();
+            break;
+        case 4 :
+            //swapmode();
+            break;
+        case 5 :
+            //sleep();
+            break;
+        default :
+            //error();
+            break;
+    }
 }
 
-    void menu(void){
-    //setup();
+/*! **********************************************************************
+ * Function: initialiseMenu(void)
+ *
+ * \brief Initialises the menu system
+ *
+ * Include: Menusystem.h
+ *
+ * Description: initialises the menu system so that it is fully operational
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void initialiseMenu(void)
+{
     configureSerial();
-    topmenu();
-    //while(1){}
-    //get pointer to menu level(vertical)
-    //get pointer to menu option(horizontal)
-    //call correct subroutine for menu
-    //remain in that menu as dictated by operation
+    configLCD();
+    configUSER();
 }
 
+/*! **********************************************************************
+ * Function: serviceMenu(void)
+ *
+ * \brief services any user interface with the menu
+ *
+ * Include:
+ *
+ * Description: Checks if the user has made any inputs to the system. If not
+ *              the function simply returns. If they have then it services
+ *              the inputs, displays the correct outputs and performs the
+ *              specified actions
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void serviceMenu(void)
+{
+    //Return if there is no user input
+    if (receiveEmpty() && userEmpty()) return;
+}
 
+/*! **********************************************************************
+ * Function: menuISR(void)
+ *
+ * \brief ISR function for the menu subsystem
+ *
+ * Include: Menusystem.h
+ *
+ * Description: services any interrupts associated with the menu system
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void menuISR(void)
+{
+    
+}
+    
+void menu(char menuselect)
+{
+    
+    configureSerial();      //!Call the serial configuration to enable USART Subsysten
 
+    switch(menuselect){
+        case top1 :
+            topmenu();
+            break;
+        case auto11 :
+            //auto();
+            break;
+        case manu12 :
+            //manual();
+            break;
+        case stat13 :
+            //status();
+            break;
+        case swap14 :
+            //swapmode();
+            break;
+        case slee15 :
+            //sleep();
+        case manugoto121 :
+            //manopt1();
+        case manusetl122 :
+            //manopt2();
+        case manushow123 :
+            //manopt3();
+        default :
+            //error();
+            break;
+    }
+}

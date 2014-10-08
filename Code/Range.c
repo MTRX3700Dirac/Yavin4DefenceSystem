@@ -17,7 +17,9 @@
 #define NUM_IR_READS 10 //The number of IR reads per measurement
 
 //Hardware Related macros
-#define INIT_PIN PORTBbits.RB0
+#define INIT_PIN PORTCbits.RC3
+#define INIT_TRIS TRISCbits.RC3
+#define CCP1_INPT TRISCbits.RC1
 
 //Static calibration offset
 static signed int calibration_offset = 0;
@@ -36,7 +38,8 @@ signed int calibration_offset_US = 0;
 void beginUS(void);
 unsigned int rangeIR(void);
 unsigned int rangeUS(unsigned char temp);
-//unsigned int speed_sound(unsigned char temp);
+
+void configureRange(void);
 
 unsigned int sampleIR(char numSamples);
 
@@ -67,6 +70,53 @@ void configureAD(void)
 }
 
 /* **********************************************************************
+ * Function: configureRange(void)
+ *
+ * Include: Range.h
+ *
+ * Description: Configures the Range module
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void configureRange(void)
+{
+    unsigned char config;
+    
+    INIT_PIN = 0;
+
+    //Enable global interrupts and interrupt priority
+    INTCONbits.GIEH = 1;
+    INTCONbits.GIEL = 1;
+    RCONbits.IPEN = 1;
+    
+    PIE1bits.CCP1IE = 1;    //Enable CCP1 interrupts
+
+    //Make sure the AD is configured
+    configureAD();
+
+    CCP1_INPT = 1;
+    INIT_TRIS = 0;  //Make the INIT
+
+    //Open  Timer
+    config = T3_16BIT_RW & T3_SOURCE_INT & T3_PS_1_4 & T3_SYNC_EXT_OFF;
+    OpenTimer3(config);
+
+    //Configure CCP Source timer
+    config = T1_CCP1_T3_CCP2;
+    SetTmrCCPSrc(config);
+
+    config = CAPTURE_INT_ON | CAP_EVERY_RISE_EDGE;
+
+    //CloseCapture1, which will clear any interrupt flags etc
+    CloseCapture2();
+
+    //Open the input capture on compare1
+    OpenCapture2(config);
+}
+
+/* **********************************************************************
  * Function: beginUS(void)
  *
  * Include: ultrasonic.h
@@ -81,6 +131,10 @@ void beginUS(void)
 {
     //Set the INIT_PIN high to begin ultrasonic 'read'
     INIT_PIN = 1;
+
+    //Clear the timer, so the CCP input value is the delay
+    TMR1H = 0;
+    TMR1L = 0;
 
     //Set the measuring flag
     measuringUS = 1;
@@ -102,11 +156,14 @@ unsigned int rangeUS(unsigned char temp)
 {
     unsigned int range;
     //Continue to poll while measurement is still in progress
-    while (measuringUS);
+    while (measuringUS) //&& TMR3H < 0xB0);
+
+    //if (TMR3H > 0xB0) return 0;
 
     //Perform calculation (ReadCapture in us, speed of sound in m/s->um)
     // um/1024 = ~mm
-    range = DIV_1024(ReadCapture1() * SPD_SND(temp));
+    range = ReadCapture2() * SPD_SND(temp) * (long int)1000 / (long int)FOSC_4;
+    //range = DIV_1024(ReadCapture1() * SPD_SND(temp));
     //DIV_1024(ReadCapture1() * speed_sound(tempx2));
     
     return range;
@@ -126,13 +183,10 @@ unsigned int rangeUS(unsigned char temp)
  *************************************************************************/
 void rangeISR(void)
 {
-    if (CCP1_INT)
-    {   //Checks if the CCP1 module fired the interrupt
-        measuringUS = 0;
-    }
-    else if (CCP2_INT)
+    if (CCP2_INT)
     {   //Checks if the CCP2 module fired the interrupt
-
+        measuringUS = 0;
+        INIT_PIN = 0;
     }
 }
 
@@ -283,17 +337,45 @@ unsigned int rangeIR(void)
 }
 
 /* **********************************************************************
- * Function: rangeIR(void)
+ * Function: rangeUS(void)
  *
  * Include:
  *
- * Description: Reads the range from the IR Sensor
+ * Description: performs an ultrasonic range reading
  *
  * Arguments: None
  *
- * Returns: Range (in mm) as an unsigned int.
+ * Returns: the average of the samples
+ *************************************************************************/
+unsigned int rangeUltrasonic(void)
+{
+    unsigned int rng;
+    char temp;
+
+    for (;;)
+    {
+        configureRange();
+
+        beginUS();
+
+        rng = rangeUS(25);
+
+        INIT_PIN = 0;
+
+        temp = 1;
+    }
+}
+
+/* **********************************************************************
+ * Function: sampleIR(void)
  *
- * Remark: Returns 0 if there is no target found
+ * Include:
+ *
+ * Description: takes numSamples samples of the IR sensor and returns the average
+ *
+ * Arguments: None
+ *
+ * Returns: the average of the samples
  *************************************************************************/
 unsigned int sampleIR(char numSamples)
 {

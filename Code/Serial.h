@@ -7,16 +7,19 @@
 
 //Serial interrupt flag
 #define SERIAL_INT (TX_INT || RC_INT)
-//#define SERIAL_INT
 
 //External declarations of public functions
 extern void configureSerial(void);
 extern void serialISR(void);
+
+//Transmit functions:
 extern void transmit(char *string);
+extern char transmitted(void);
+
+//Receive functions:
 extern char receiveEmpty(void);
 extern char receivePeek(void);
 extern char receivePop(void);
 extern char receiveCR(void);
 extern void readString(char *string);
-extern char transmitted(void);
 
