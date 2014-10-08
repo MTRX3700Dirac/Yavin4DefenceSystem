@@ -8,6 +8,8 @@
  */
 
 #include "Common.h"
+#include "Range.h"
+#include "PanTilt.h"
 
 //Variable to store where the sensors are currently pointing
 //DirectionState current_direction;
