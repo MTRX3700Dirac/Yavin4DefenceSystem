@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <p18f4520.h>
+#include <string.h>
 
 //Peripherial headers
 #include <timers.h>

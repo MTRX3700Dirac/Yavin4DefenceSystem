@@ -19,4 +19,5 @@
 #define swap14 0x40
 #define slee15 0x50
 
-extern void menu(void);
+extern void menu(char menuselect);
+

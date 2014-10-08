@@ -3,20 +3,45 @@
 #include "Menusystem.h"
 
 //Global
-char tMESSAGE[] = "Hello 123\n";
-char fillerthing[] = "+";
-char newline[] = "\n";
-char choose[] = "\tPlease select your option (eg. 2): \n";
-char goup[] = "\tUp a level\n";
+const static rom char tMESSAGE[] = "Hello 123\n";
+const static rom char fillerthing[] = "+";
+const static rom char newline[] = "\n";
+const static rom char choose[] = "\tPlease select your option (eg. 2): \n";
+const static rom char goup[] = "\tUp a level\n";
 //
 
 //1: Top
-char welcome[] = "Welcome to Yavin IV Defence System";
-char topoption1[] = "\t1:\tAutomatic Tracking\n";
-char topoption2[] = "\t2:\tManual Tracking\n";
-char topoption3[] = "\t3:\tStatus\n";
-char topoption4[] = "\t4:\tGo To Local Mode\n";
-char topoption5[] = "\t5:\tSleep\n";
+const static rom char welcome[] = "Welcome to Yavin IV Defence System";
+const static rom char topoption1[] = "\t1:\tAutomatic Tracking\n";
+const static rom char topoption2[] = "\t2:\tManual Tracking\n";
+const static rom char topoption3[] = "\t3:\tStatus\n";
+const static rom char topoption4[] = "\t4:\tGo To Local Mode\n";
+const static rom char topoption5[] = "\t5:\tSleep\n";
+//
+
+//1.1: Auto
+const static rom char automessage[] = "Automatic Tracking Mode";
+const static rom char autoinit[] = "\tInitialising Automatic Tracking...";
+const static rom char autohelp1[] = "\tEnter any key to end session";
+//const static rom char autohelp2[] = "\tRange, Elevation, Azimuth and Tracking";
+//const static rom char autohelp3[] = " Status will be displayed every X seconds:";
+const static rom char autogo[] = "\t3...\n\t2...\n\t1...\n";
+const static rom char autorange[] = "\tRange:\t";
+const static rom char autoeleva[] = "\tElevation:\t";
+const static rom char autoazimu[] = "\tAzimuth:\t";
+const static rom char autostatu[] = "\tTarget Status:\t";
+const static rom char autoend[] = "Tracking Session Terminated";
+//
+
+//1.3: Status
+const static rom char statmessage[] = "Display Target Status";
+const static rom char statopt1[] = "\t1:"; //go up
+const static rom char stattargety[] = "\tTarget Acquired:\t";
+const static rom char stattargetn[] = "\tNo Target:\t";
+const static rom char statrange[] = "Range:";
+const static rom char statazimu[] = "Azimuth:";
+const static rom char stateleva[] = "Elevation:";
+const static rom char stattempe[] = "Temperature:";
 //
 
 void menu(char menuselect);
@@ -25,43 +50,52 @@ void topmenudisp(void);
 void disptoptions(void);
 void clearscreen(char length);
 void filler(char length);
+void autodisp(void);
+void send(const static rom char *romchar);
+
+void send(const static rom char *romchar){
+    auto char temp[];
+    strcpypgm2ram(temp, romchar);
+    transmit(temp);
+}
 
 void clearscreen(char length){
     while(length){
-        transmit(newline);
+        send(newline);
         length--;
     }
 }
 
 void filler(char length){
     while(length){
-        transmit(fillerthing);
+        send(fillerthing);
         length--;
     }
 }
 
 void disptoptions(void){
-    transmit(topoption1);
-    transmit(topoption2);
-    transmit(topoption3);
-    transmit(topoption4);
-    transmit(topoption5);
+
+    send(topoption1);
+    send(topoption2);
+    send(topoption3);
+    send(topoption4);
+    send(topoption5);
 }
 
 void topmenudisp(void){
     clearscreen(height);
     filler(width);
-    transmit(newline);
+    send(newline);
     filler(23);
-    transmit(welcome);
+    send(welcome);
     filler(23);
-    transmit(newline);
+    send(newline);
     filler(width);
-    transmit(newline);
+    send(newline);
     clearscreen(2);
     disptoptions();
     clearscreen(2);
-    transmit(choose);
+    send(choose);
     clearscreen((height-14));
     filler(width);
 }
@@ -81,11 +115,12 @@ void topmenu(void){
     e=1;                    //!Reset status flag
 
     readString(userget);    //!Get the input string and store it in @userget
-    transmit(userget);      //!test
+    send(userget);      //!test
 
     switch(userget){
         case 1 :
             //auto();
+            send(userget);
             break;
         case 2 :
             //manual();
@@ -103,6 +138,26 @@ void topmenu(void){
             //error();
             break;
     }
+}
+
+void autodisp(void){
+    clearscreen(height);
+    filler(width);
+    send(newline);
+    filler(23);
+    send(automessage);
+    filler(23);
+    send(newline);
+    filler(width);
+    send(newline);
+    clearscreen(2);
+    send(autoinit);
+    clearscreen(2);
+    send(autohelp1);
+    send(newline);
+    //send(autohelp2);
+    //send(autohelp3);
+
 }
 
 
