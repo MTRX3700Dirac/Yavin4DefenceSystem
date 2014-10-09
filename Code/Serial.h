@@ -15,6 +15,7 @@ extern void serialISR(void);
 //Transmit functions:
 extern void transmit(char *string);
 extern char transmitted(void);
+extern void transChar(char c);
 
 //Receive functions:
 extern char receiveEmpty(void);
