@@ -2,6 +2,7 @@
 
 \usepackage[bookmarks=true]{hyperref}
 \usepackage{bookmark}
+\usepackage{listings}
 
 
 % Title Page
@@ -422,6 +423,24 @@ This function will begin a serial transmission of a given string. It will also e
 \subsubsection{Transmit prototype:}
 The transmission function will take an argument of a character pointer, which is equivalent to a string. It will return nothing, and have the following prototype: \newline \newline
 void transmit(char *string);
+
+\subsubsection{transChar:}
+Transmits a single character over serial. Actually pushes it onto the transmit buffer and enables transmit interrupts, so it cannot interfere with any transmit action which could still be running.
+
+\subsubsection{TransChar prototype:}
+The transChar will take a single argument of the character to transmit, and return nothing. It will use the following prototype: \newline
+\begin{lstlisting}
+void transChar(char c);
+\end{lstlisting}
+
+\subsubsection{transmitted}
+Returns non-zero if the transmit buffer is empty - indicating that all transmit actions have been completed.
+
+\subsubsection{transmitted prototype:}
+The transmitted function will take no arguments and return a single character. It will use the following prototype: \newline
+\begin{lstlisting}
+char transmitted(void);
+\end{lstlisting}
 
 \subsubsection{Serial ISR:}
 This function is called whenever a serial related ISR is thrown. It will act as the interrupt service routine for the serial module.

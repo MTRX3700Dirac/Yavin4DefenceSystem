@@ -1,0 +1,342 @@
+\documentclass[]{report}
+
+\usepackage{listings}
+\usepackage{bookmark}
+
+
+% Title Page
+\title{Technical Manual}
+\author{}
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	This document describes how each of the modules (including both software and hardware) work, and how to use them.
+\end{abstract}
+
+\chapter{Serial}
+\section{Description:}
+The serial module takes care of all communication (transmit and receive) over the serial UART (rs-232) port.
+
+\section{How It Works:}
+The serial module is INTERRUPT DRIVEN. This means that any background code can be running while the module is transmitting and/or receiving data over the serial line. \newline
+The module contains two circular buffers: a transmit buffer and a receive buffer. These buffers are NOT accessible by the rest of the program. Rather, the module provides a public function transmit() which takes a string, and places it into the transmit buffer. Anything in this buffer is then transmitted character by character when the transmit ready interrupt fires. \newline
+Whenever a character is received over serial it is stored in the received buffer by an interrupt. Again this buffer is NOT accessible to the rest of the program. Rather it provides a number of functions to interact with it. The most commonly used of which is the readString() function, which returns everything in the buffer up to a carriage return (e.g. a line of input entered by the user). \newline
+This serial module also allows users the opportunity to remove or change data they have already transmitted. If a backspace is received, then instead of storing it in the receive buffer it will remove the last received character from the buffer if that character is not a Carriage Return, Newline, or Escape operator. This enables a much more more user friendly system as otherwise there would be no way to fix any syntax error without pressing enter, getting an error and starting again. Furthermore, without this feature, if a user did backspace and change an input it would result in completely unexpected behaviour.
+
+\section{How To Use It:}
+\begin{itemize}
+	\item Make sure Interrupts.c is included in the project
+	\item Call the configureSerial() function to set up serial
+	\item Call transmit() to begin transmitting something
+	\item Use receiveEmpty() to check if anything has been received
+	\item Use readString() to read everything received up to a carriage return
+\end{itemize}
+
+\section{List of Public Functions}
+Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
+
+\subsection{configureSerial}
+\subsubsection{Usage:}
+Used to set up the serial module for use. This function MUST be called before any serial functions will work. It need only be called ONCE at the beginning of the program.
+
+\subsection{transmit}
+\subsubsection{Usage:}
+Used to transmit a string over serial UART. NOTE: The string MUST be NULL TERMINATED. The function will continue pushing data onto the transmit buffer until it hits a null terminator, which could fill the buffer and overwrite the given string if it is not properly null terminated. \newline
+IMPORTANT: This function CANNOT be passed a literal. E.g. the following code will not work:
+\begin{lstlisting}
+transmit("Some Message");
+\end{lstlisting} 
+The literal is stored in ROM, and the pointer argument the function uses cannot access ROM memory. This will result in unexpected behaviour. Instead use the following code:
+\begin{lstlisting}
+char message[] = "Some Message";
+transmit(message);
+\end{lstlisting}
+This loads the literal into RAM when the program begins.
+
+\subsubsection{Arguments:}
+A pointer to the start of a null-terminated string to begin transmitting.
+
+\subsubsection{Return value:}
+No return value
+
+\subsection{transmitted}
+\subsubsection{Usage:}
+Used to determine if a transmit action has been completed. For example if coordination between serial transmissions and other actions is required then this function must be used.
+
+\subsubsection{Arguments:}
+This function takes no arguments
+
+\subsubsection{Return Value:}
+non-zero (true) if all transmit actions have been completed (i.e. the transmit buffer is empty).
+
+\subsection{transChar}
+\subsubsection{Usage}
+Used to transmit a single character over serial. Works exactly the same way as transmit, and will thus not interfere with any other transmit function. Use of this function will remove the necessity of defining a string and null terminating it when only a single character has to be transmitted.
+
+\subsubsection{Arguments:}
+A character to transmit over serial
+
+\subsubsection{Return Value:}
+No return value
+
+\subsection{receiveEmpty}
+\subsubsection{Usage:}
+Used to determine if anything has been received over serial.
+
+\subsubsection{Arguments:}
+No Arguments
+
+\subsubsection{Return Value:}
+Non-zero if the the receive buffer is empty (nothing new has been received).
+
+\subsection{receivePeek}
+\subsubsection{Usage:}
+Used to inspect the next character received over serial without removing it from the buffer. (e.g. a subsequent receivePeek, or receivePop operation will return the same character).
+
+\subsubsection{Arguments:}
+No arguments
+
+\subsubsection{Return Value:}
+The next character received over serial
+
+\subsection{receivePop}
+\subsubsection{Usage:}
+Used to read a character received over serial.
+
+\subsubsection{Arguments:}
+No Arguments
+
+\subsubsection{Return Value:}
+the next character received over serial
+
+\subsection{receiveCR}
+\subsubsection{Usage:}
+Used to determine whether a Carriage Return has been detected over serial. Carriage Return is used as a "user input confirm" button.
+
+\subsubsection{Arguments:}
+No Arguments
+
+\subsubsection{Return Value:}
+Non-zero if a carriage return has been detected (i.e. there is a CR in the receive buffer)
+
+\subsection{readString}
+\subsubsection{Usage:}
+Used to read an entire string received over serial.
+
+\subsubsection{Arguments:}
+Pointer to memory address to store received characters. \newline
+NOTE: To avoid possible memory errors, Make sure to reserve the maximum number of characters that can be returned. The macro BUFFERLENGTH (the length of the receive buffer) is defined in CircularBuffers.h. E.g. the following code is advisable:
+\begin{lstlisting}
+#include "CircularBuffers.h"
+...
+char [BUFFERLENGTH] receivedData; 	//Reserve the max number of characters
+readString(receivedData);		//Read string into address
+\end{lstlisting}
+
+\subsubsection{Return Value:}
+No return value
+
+
+\section{Example Code:}
+\begin{lstlisting}
+#include "Common.h"
+#include "Serial.h"
+#include "CircularBuffers.h"	//Only used for BUFFERLENGTH definition
+
+void main()
+{
+	char message[] = "Serial Example";
+	char received[BUFFERLENGTH];
+
+	//Set up the Serial module for use
+	configureSerial();
+	
+	//Transmit the message
+	transmit(message);
+	
+	//Wait for a carriage return
+	while(!receiveCR());
+		
+	//Read in returned string
+	readString(received);
+		
+	//Transmit received string
+	transmit(received);
+	
+	for (;;)
+	{
+		//Poll received data
+		while (receiveEmpty());
+		
+		//Re-transmit received character
+		transChar(receivePop());
+	}
+}
+\end{lstlisting}
+
+\chapter{PanTilt}
+\section{Description:}
+The Pan Tilt module is the module which controls the servo actuators which point the sensors in the correct direction. As such it generates the PDM's (Pulse Duration Modulated waves) necessary to run the servo's, and has public functions such as move, which directs the Pan Tilt mechanism to a certain direction.
+
+\section{How It Works:}
+
+\section{How To Use It:}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{List of Public Functions}
+Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
+
+\subsection{}
+\subsubsection{Usage:}
+
+\subsubsection{Arguments:}
+
+\subsubsection{Return Value:}
+
+\section{Example Code:}
+
+
+\chapter{Temp}
+\section{Description}
+The Temperature module controls the sampling and calibration of the temperature sensor.
+
+\section{How It Works:}
+
+\section{How To Use It:}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{List of Public Functions}
+Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
+
+\subsection{}
+\subsubsection{Usage:}
+
+\subsubsection{Arguments:}
+
+\subsubsection{Return Value:}
+
+\section{Example Code:}
+
+\chapter{Tracking}
+\section{Description}
+The tracking module contains the high level tracking and search algorithms used by the system. It then uses the Pan Tilt and Range modules to enact these modules.
+
+\section{How It Works:}
+
+\section{How To Use It:}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{List of Public Functions}
+Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
+
+\subsection{}
+\subsubsection{Usage:}
+
+\subsubsection{Arguments:}
+
+\subsubsection{Return Value:}
+
+\section{Example Code:}
+
+\chapter{User\_Interface}
+\section{Description}
+The user interface module is the equivalent of the serial module for the local user interface. It has a circular buffer and stores all the user inputs to the system to be handled later.
+
+\section{How It Works:}
+
+\section{How To Use It:}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{List of Public Functions}
+Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
+
+\subsection{}
+\subsubsection{Usage:}
+
+\subsubsection{Arguments:}
+
+\subsubsection{Return Value:}
+
+\section{Example Code:}
+
+\chapter{Range}
+\section{Description}
+The Rang module is responsible for sampling the range from the IR and ultrasonic sensors. It is also used to detect the object as the functions return zero if the object is out of range.
+
+\section{How It Works:}
+
+\section{How To Use It:}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{List of Public Functions}
+Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
+
+\subsection{}
+\subsubsection{Usage:}
+
+\subsubsection{Arguments:}
+
+\subsubsection{Return Value:}
+
+\section{Example Code:}
+
+\chapter{MenuSystem}
+\section{Description}
+The Menu System Module is responsible for keeping track of the menu state, and parses all user inputs. The module interfaces with the serial and user interface modules to handle all inputs to the system.
+
+\section{How It Works:}
+
+\section{How To Use It:}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{List of Public Functions}
+Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
+
+\subsection{}
+\subsubsection{Usage:}
+
+\subsubsection{Arguments:}
+
+\subsubsection{Return Value:}
+
+\section{Example Code:}
+
+\chapter{LCD}
+\section{Description}
+The LCD module is responsible for interfacing with the LCD component and displaying LCD data in the local user mode.
+
+\section{How It Works:}
+
+\section{How To Use It:}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{List of Public Functions}
+Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
+
+\subsection{}
+\subsubsection{Usage:}
+
+\subsubsection{Arguments:}
+
+\subsubsection{Return Value:}
+
+\section{Example Code:}
+
+\end{document}          
