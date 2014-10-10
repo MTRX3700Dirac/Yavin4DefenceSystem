@@ -64,7 +64,6 @@ void configureAD(void)
     ADCON1 = 0x8E;
     ADCON0 = 0x41;
     
-
     //Arbitrary wait period to allow the ADC to initialise
     for (i = 0; i < 1000; i++);
 }
