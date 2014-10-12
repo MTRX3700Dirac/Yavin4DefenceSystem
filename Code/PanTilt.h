@@ -8,7 +8,7 @@
  */
 
 //True if Pan ISR concerns pan tilt module
-#define PAN_TILT_ISR    CCP1_INT
+#define PAN_TILT_ISR    CCP2_INT
 
 //External declarations of public access functions
 extern void configureBase(void);

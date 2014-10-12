@@ -9,6 +9,7 @@
 
 #include "Common.h"
 #include "Temp.h"
+#include "p18f4520.h"
 
 //(Approximate) speed of sound calculation macro
 #define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
@@ -19,7 +20,7 @@
 //Hardware Related macros
 #define INIT_PIN PORTCbits.RC3
 #define INIT_TRIS TRISCbits.RC3
-#define CCP1_INPT TRISCbits.RC1
+#define CCP1_INPT TRISCbits.RC2
 
 //Static calibration offset
 static signed int calibration_offset = 0;
@@ -99,20 +100,20 @@ void configureRange(void)
     INIT_TRIS = 0;  //Make the INIT
 
     //Open  Timer
-    config = T3_16BIT_RW & T3_SOURCE_INT & T3_PS_1_4 & T3_SYNC_EXT_OFF;
-    OpenTimer3(config);
+    config = T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_1 & T1_SYNC_EXT_OFF &TIMER_INT_ON;
+    OpenTimer1(config);
 
     //Configure CCP Source timer
     config = T1_CCP1_T3_CCP2;
     SetTmrCCPSrc(config);
 
-    config = CAPTURE_INT_ON | CAP_EVERY_RISE_EDGE;
+    config = CAPTURE_INT_ON & CAP_EVERY_RISE_EDGE;
 
     //CloseCapture1, which will clear any interrupt flags etc
-    CloseCapture2();
+    CloseCapture1();
 
     //Open the input capture on compare1
-    OpenCapture2(config);
+    OpenCapture1(config);
 }
 
 /* **********************************************************************
@@ -128,12 +129,16 @@ void configureRange(void)
  *************************************************************************/
 void beginUS(void)
 {
+    CCPR1H = 0;
+    CCPR1L = 0;
     //Set the INIT_PIN high to begin ultrasonic 'read'
     INIT_PIN = 1;
 
     //Clear the timer, so the CCP input value is the delay
-    TMR1H = 0;
-    TMR1L = 0;
+    TMR3H = 0;
+    TMR3L = 0;
+
+    PIE1bits.CCP1IE = 1;
 
     //Set the measuring flag
     measuringUS = 1;
@@ -154,14 +159,27 @@ void beginUS(void)
 unsigned int rangeUS(unsigned char temp)
 {
     unsigned int range;
+    unsigned long int t;
     //Continue to poll while measurement is still in progress
-    while (measuringUS) //&& TMR3H < 0xB0);
+    while (measuringUS);
 
-    //if (TMR3H > 0xB0) return 0;
+    if (CCPR1 < 0x1770) return 0;
 
     //Perform calculation (ReadCapture in us, speed of sound in m/s->um)
     // um/1024 = ~mm
-    range = ReadCapture2() * SPD_SND(temp) * (long int)1000 / (long int)FOSC_4;
+
+    //T = DIV_4096(CCPR1 * 285) - 18
+
+    t = (unsigned long int)CCPR1 * (long int)4000;
+
+    t = t * SPD_SND(temp);
+
+    t = t / (long int)FOSC_4;
+
+    range = t;
+
+    //range = (unsigned int)CCPR1 * SPD_SND(temp) * (long int)4000 / (long int)FOSC_4;
+    //range = ReadCapture1() * SPD_SND(temp) * (long int)1000 / (long int)FOSC_4;
     //range = DIV_1024(ReadCapture1() * SPD_SND(temp));
     //DIV_1024(ReadCapture1() * speed_sound(tempx2));
     
@@ -182,11 +200,21 @@ unsigned int rangeUS(unsigned char temp)
  *************************************************************************/
 void rangeISR(void)
 {
-    if (CCP2_INT)
+    if (CCP1_INT && CCPR1 > 0x5DC)
     {   //Checks if the CCP2 module fired the interrupt
         measuringUS = 0;
         INIT_PIN = 0;
+        PIE1bits.CCP1IE = 0;
     }
+    if (TMR1_INT)
+    {
+        measuringUS = 0;
+        CCPR1 = 0;
+        INIT_PIN = 0;
+        PIR1bits.TMR1IF = 0;
+        PIE1bits.TMR1IE = 0;
+    }
+    CCP1_CLEAR;
 }
 
 /* **********************************************************************
@@ -340,7 +368,8 @@ unsigned int rangeIR(void)
  *
  * Include:
  *
- * Description: performs an ultrasonic range reading
+ * Description: performs an ultrasonic range reading.
+ * Pins:
  *
  * Arguments: None
  *
@@ -349,10 +378,7 @@ unsigned int rangeIR(void)
 unsigned int rangeUltrasonic(void)
 {
     unsigned int rng;
-    char temp;
 
-    for (;;)
-    {
         configureRange();
 
         beginUS();
@@ -360,9 +386,11 @@ unsigned int rangeUltrasonic(void)
         rng = rangeUS(25);
 
         INIT_PIN = 0;
+        CloseCapture1();
+        CloseTimer1();
 
-        temp = 1;
-    }
+        return rng;
+
 }
 
 /* **********************************************************************
