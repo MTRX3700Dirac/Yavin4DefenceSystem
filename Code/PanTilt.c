@@ -21,10 +21,19 @@ typedef struct
 #define AZ_PWM_PIN PORTCbits.RC0
 #define IN_PWM_PIN PORTCbits.RC1
 
+#ifdef MNML
+#define DUTY_CYCLE_TIME 2500
+#define PWM_PERIOD 50000 //The period for 50Hz at 2.5MHz
+#define PWM_HALF_PERIOD 25000 //Half the period for 50Hz at 1MHz
+#else
+#define DUTY_CYCLE_TIME 1000
+#define PWM_PERIOD 20000 //The period for 50Hz at 2.5MHz
+#define PWM_HALF_PERIOD 10000 //Half the period for 50Hz at 1MHz
+#endif
+
 //Interrupt Latency
 #define LATENCY 340
-#define PWM_PERIOD 20000 //The period for 50Hz at 1MHz
-#define PWM_HALF_PERIOD 10000 //Half the period for 50Hz at 1MHz
+
 //#define ARC_RANGE 94 //Max arc of servos
 //#define HALF_RANGE 47   //Half the range of the servos
 
@@ -75,16 +84,16 @@ void configureBase(void)
     
     SERVO_INIT();
 
-    config = T1_16BIT_RW & T1_PS_1_1 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF & T1_SOURCE_INT;
+    config = T3_16BIT_RW & T3_PS_1_1& T3_SYNC_EXT_OFF & T3_SOURCE_INT;
 
-    OpenTimer1(config);
+    OpenTimer3(config);
 
     //Timer1 source for CCP1, and timer3 source for CCP2
     SetTmrCCPSrc(T1_CCP1_T3_CCP2);
 
     config = COM_INT_ON & COM_UNCHG_MATCH;
 
-    OpenCompare1(config, PWM_PERIOD);
+    OpenCompare2(config, PWM_PERIOD);
 
     azimuth_angle_max = 45;
     azimuth_angle_min = -45;
@@ -122,8 +131,8 @@ void move(Direction destination)
  *************************************************************************/
 void increment(Direction difference)
 {
-    global_delay.AzimuthDelay += difference.azimuth * 1000 / arcRange.azimuth;
-    global_delay.InclinationDelay += difference.inclination * 1000 / arcRange.inclination;
+    global_delay.AzimuthDelay += difference.azimuth * DUTY_CYCLE_TIME / arcRange.azimuth;
+    global_delay.InclinationDelay += difference.inclination * DUTY_CYCLE_TIME / arcRange.inclination;
 
     //Ensure that the delays are still within the max and min duty cycles
     validate(&(global_delay.AzimuthDelay));
@@ -345,32 +354,32 @@ void panTiltISR(void)
     static Delay current_delay;
     unsigned char i = 0;
 
-    if (CCP1_INT)
+    if (CCP2_INT)
     {
-        timer_value = ReadTimer1();
+        timer_value = ReadTimer3();
 
         if (timer_value > PWM_PERIOD)
         {
             IN_PWM_PIN = 1;
-            WriteTimer1(0);     //Clear timer2
+            WriteTimer3(0);     //Clear timer2
             current_delay = global_delay;   //update the static delay
             changed = 1;        //Indicate the change has been loaded
-            OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, current_delay.InclinationDelay);
+            OpenCompare2(COM_INT_ON & COM_UNCHG_MATCH, current_delay.InclinationDelay);
         }
         else if (timer_value > current_delay.AzimuthDelay)
         {
             AZ_PWM_PIN = 0;
-            OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, PWM_PERIOD);
+            OpenCompare2(COM_INT_ON & COM_UNCHG_MATCH, PWM_PERIOD);
         }
         else if (timer_value > PWM_HALF_PERIOD)
         {
             AZ_PWM_PIN = 1;
-            OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, current_delay.AzimuthDelay);
+            OpenCompare2(COM_INT_ON & COM_UNCHG_MATCH, current_delay.AzimuthDelay);
         }
         else if (timer_value > current_delay.InclinationDelay)
         {
             IN_PWM_PIN = 0;
-            OpenCompare1(COM_INT_ON & COM_UNCHG_MATCH, PWM_HALF_PERIOD);
+            OpenCompare2(COM_INT_ON & COM_UNCHG_MATCH, PWM_HALF_PERIOD);
         }
 
         PIR1bits.CCP1IF = 0;
@@ -396,8 +405,8 @@ DirectionState delay2Direction(Delay dly)
 {
     DirectionState ret;
 
-    //ret.azimuth = ((dly.AzimuthDelay - PWM_HALF_PERIOD - 1000) * (long int)arcRange.azimuth + 500) / 1000 - DIV_2(arcRange.azimuth) - calibration_offset.azimuth;
-    //ret.inclination = ((dly.InclinationDelay + LATENCY - 1000) * (long int)arcRange.inclination + 500) / 1000 - DIV_2(arcRange.inclination) - calibration_offset.inclination;
+    //ret.azimuth = ((dly.AzimuthDelay - PWM_HALF_PERIOD - DUTY_CYCLE_TIME) * (long int)arcRange.azimuth + 500) / DUTY_CYCLE_TIME - DIV_2(arcRange.azimuth) - calibration_offset.azimuth;
+    //ret.inclination = ((dly.InclinationDelay + LATENCY - DUTY_CYCLE_TIME) * (long int)arcRange.inclination + 500) / DUTY_CYCLE_TIME - DIV_2(arcRange.inclination) - calibration_offset.inclination;
 
     return ret;
 }
@@ -422,8 +431,8 @@ Delay direction2Delay(DirectionState dir)
     Delay result;
     unsigned int az, inc;
 
-    az = 1000 + (dir.azimuth + DIV_2(arcRange.azimuth) + calibration_offset.azimuth) * (long int)1000 / arcRange.azimuth;
-    inc = 1000 + (-dir.inclination + DIV_2(arcRange.inclination) + calibration_offset.inclination) * (long int)1000 / arcRange.inclination;
+    az = DUTY_CYCLE_TIME + (dir.azimuth + DIV_2(arcRange.azimuth) + calibration_offset.azimuth) * (long int)DUTY_CYCLE_TIME / arcRange.azimuth;
+    inc = DUTY_CYCLE_TIME + (-dir.inclination + DIV_2(arcRange.inclination) + calibration_offset.inclination) * (long int)DUTY_CYCLE_TIME / arcRange.inclination;
 
     validate(&az);
     validate(&inc);
@@ -448,13 +457,13 @@ Delay direction2Delay(DirectionState dir)
  *************************************************************************/
 void validate(unsigned int *delay)
 {
-    if (*delay < 1000)
+    if (*delay < DUTY_CYCLE_TIME)
     {
-        *delay = 1000;
+        *delay = DUTY_CYCLE_TIME;
     }
-    if (*delay > 2000)
+    if (*delay > 2*DUTY_CYCLE_TIME)
     {
-        *delay = 2000;
+        *delay = 2 * DUTY_CYCLE_TIME;
     }
 }
 

@@ -52,6 +52,9 @@ typedef struct
     int inclination;   //inclination to the target
 } TrackingData;
 
+// Use the MNML Board
+#define MNML
+
 //Efficient Division macros
 #define DIV_2(v) ((v) >> 1)       //Divide by 2
 #define DIV_4(v) ((v) >> 2)       //Divide by 4
@@ -63,6 +66,7 @@ typedef struct
 #define DIV_256(v) ((v) >> 8)     //Divide by 256
 #define DIV_512(v) ((v) >> 9)     //Divide by 512
 #define DIV_1024(v) ((v) >> 10)   //Divide by 1024
+#define DIV_4096(v) ((v) >> 12)   //Divide by 1024
 
 #define SWAP(x, y) (y = (y ^ (x = (x ^ (y = (x ^ y))))))
 
@@ -87,6 +91,9 @@ typedef struct
 #define SSP_INT (PIR1bits.SSPIF && PIE1bits.SSPIE)      //Whether the SSP module fired the interrupt
 #define BCL_INT (PIR2bits.BCLIF && PIE2bits.BCLIE)      //Bus collision interrupt fired
 #define LVD_INT (PIR2bits.LVDIF && PIE2bits.LVDIE)      //Low voltage detect interrupt fired
+
+#define CCP1_CLEAR (PIR1bits.CCP1IF = 0)
+#define CCP2_CLEAR (PIR2bits.CCP2IF = 0)
 
 
 #define CLOCK   10000000    //10MHz clock source
