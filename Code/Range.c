@@ -90,8 +90,8 @@ void configureRange(void)
     INTCONbits.GIEH = 1;
     INTCONbits.GIEL = 1;
     RCONbits.IPEN = 1;
-    
-    PIE1bits.CCP1IE = 1;    //Enable CCP1 interrupts
+
+    readTemp();
 
     //Make sure the AD is configured
     configureAD();
@@ -100,12 +100,12 @@ void configureRange(void)
     INIT_TRIS = 0;  //Make the INIT
 
     //Open  Timer
-    config = T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_1 & T1_SYNC_EXT_OFF &TIMER_INT_ON;
+    config = T1_16BIT_RW & T1_SOURCE_INT & T1_OSC1EN_OFF & T1_PS_1_1 & T1_SYNC_EXT_OFF &TIMER_INT_ON;
     OpenTimer1(config);
 
     //Configure CCP Source timer
-    config = T1_CCP1_T3_CCP2;
-    SetTmrCCPSrc(config);
+//    config = T1_CCP1_T3_CCP2;
+//    SetTmrCCPSrc(config);
 
     config = CAPTURE_INT_ON & CAP_EVERY_RISE_EDGE;
 
@@ -135,8 +135,8 @@ void beginUS(void)
     INIT_PIN = 1;
 
     //Clear the timer, so the CCP input value is the delay
-    TMR3H = 0;
-    TMR3L = 0;
+    TMR1H = 0;
+    TMR1L = 0;
 
     PIE1bits.CCP1IE = 1;
 
@@ -168,20 +168,9 @@ unsigned int rangeUS(unsigned char temp)
     //Perform calculation (ReadCapture in us, speed of sound in m/s->um)
     // um/1024 = ~mm
 
-    //T = DIV_4096(CCPR1 * 285) - 18
+    t = DIV_4096((unsigned long int) CCPR1 * (unsigned long int) 285) - 18;
 
-    t = (unsigned long int)CCPR1 * (long int)4000;
-
-    t = t * SPD_SND(temp);
-
-    t = t / (long int)FOSC_4;
-
-    range = t;
-
-    //range = (unsigned int)CCPR1 * SPD_SND(temp) * (long int)4000 / (long int)FOSC_4;
-    //range = ReadCapture1() * SPD_SND(temp) * (long int)1000 / (long int)FOSC_4;
-    //range = DIV_1024(ReadCapture1() * SPD_SND(temp));
-    //DIV_1024(ReadCapture1() * speed_sound(tempx2));
+    range = (unsigned int) t;
     
     return range;
 }
@@ -293,7 +282,7 @@ unsigned int range(void)
     beginUS();
 
     //Read the temperature
-    temp = readTemp();
+    temp = getTemp();
 
     //Measure the IR range
     range_IR = rangeIR();
@@ -308,14 +297,31 @@ unsigned int range(void)
         range_US += calibration_offset_US;
         range_IR += calibration_offset_IR;
 
-        //Average the ultrasonic and IR ranges
+        // CASE 1: Range: 150-450mm
+        // Ignore US reading as it is inaccurate at these ranges
+        if (range_IR >= 150 && range_IR <= 450)
+        {
+            range = range_IR;
+        }
+        // CASE 2: Range: 1m - 1.5m
+        // Don't trust the IR ranges much
+        else if (range_US >= 1000)
+        {
+            range = range_US;
+        }
+
+        // CASE 3: Range: 450mm - 1m
+        // Average the ultrasonic and IR ranges
+        // TODO: Do we want to average these completely?
         range = DIV_2(range_US + range_IR);
     }
+    // CASE 4: Range: 1.5m+
+    // Rely on Ultrasound
     else if (range_US)
     {
         //Calibrate the ultrasonic range
         range_US += calibration_offset_US;
-        
+       
         range = range_US;
     }
     else if (range_IR)
@@ -327,6 +333,7 @@ unsigned int range(void)
     }
     else
     {
+        // TODO: Report Error?
         range = 0;
     }
 
