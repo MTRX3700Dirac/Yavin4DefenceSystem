@@ -66,16 +66,66 @@ void main() {
     systemState state = {INIT, UNDEF};
     TrackingData target;
     Direction dir;
-
-    menu(top1);
-
+    signed int i = -40;
+    unsigned int j;
+    char stringUS[] = "US Range:";
+    char stringIR[] = "IR Range:";
+    char newLine[] = "\n\r";
+    char num[5];
+	
+	menu(top1);
     configureBase();
-    
-    dir.azimuth = 30;
-    dir.inclination = -20;
+
+    dir.azimuth = -20;
+    dir.inclination = 40;
     move(dir);
-    
-    for(;;);
+
+    configureSerial();
+
+    for (;;)
+    {
+        transmit(stringUS);
+        sprintf(num, "%u", rangeUltrasonic());
+
+        transmit(num);
+        transmit(newLine);
+        for (j=0; j<60000;j++);
+        for (j=0; j<60000;j++);
+//
+//        transmit(stringIR);
+//        sprintf(num, "%u", rangeIR());
+//        transmit(num);
+//        transmit(newLine);
+//        transmit(newLine);
+//        for (j=0; j<60000;j++);
+//        for (j=0; j<60000;j++);
+    }
+//    for(;;)
+//    {
+//        dir.azimuth = i;
+//        dir.inclination = i;
+//        move(dir);
+//
+//        // wait
+//        for (j = 0; j<10000;j++);
+//
+//        //rangeUltrasonic();
+//
+//        if (i < 40)
+//        {
+//            i = i + 5;
+//        }
+//        else
+//        {
+//            dir.azimuth = -45;
+//            dir.inclination = -45;
+//            move(dir);
+//            for (j = 0; j<50000;j++);
+//            i = -40;
+//            configureRange();
+//        }
+//    }
+
     
     for (;;)
     {

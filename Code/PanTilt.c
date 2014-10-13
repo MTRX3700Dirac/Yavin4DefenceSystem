@@ -382,7 +382,7 @@ void panTiltISR(void)
             OpenCompare2(COM_INT_ON & COM_UNCHG_MATCH, PWM_HALF_PERIOD);
         }
 
-        PIR1bits.CCP1IF = 0;
+        PIR2bits.CCP2IF = 0;
     }
 }
 
