@@ -52,6 +52,9 @@ typedef struct
     int inclination;   //inclination to the target
 } TrackingData;
 
+//           !(IR||US)  (US&&!IR) (US&&!IR), (US&&IR)    (IR&&!US)
+typedef enum{NO_TARGET, OUT_OF_IR, BAD_DIR, GOOD_TRACK, CLOSE_RANGE} TargetState;
+
 // Use the MNML Board
 #define MNML
 
@@ -66,7 +69,8 @@ typedef struct
 #define DIV_256(v) ((v) >> 8)     //Divide by 256
 #define DIV_512(v) ((v) >> 9)     //Divide by 512
 #define DIV_1024(v) ((v) >> 10)   //Divide by 1024
-#define DIV_4096(v) ((v) >> 12)   //Divide by 1024
+#define DIV_4096(v) ((v) >> 12)   //Divide by 4096
+#define DIV_65536(v) ((v) >> 16)    //Divide by 65536
 
 #define SWAP(x, y) (y = (y ^ (x = (x ^ (y = (x ^ y))))))
 

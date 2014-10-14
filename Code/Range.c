@@ -14,6 +14,7 @@
 //(Approximate) speed of sound calculation macro
 #define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
 #define IR_CONV(ad) ((unsigned long)237411 / (ad) - 65)
+#define ULTRA_CONV(tme, T) DIV_65536(tme * (unsigned long)(DIV_65536(519078 * T) + (unsigned long)4362)) - 18
 
 #define NUM_IR_READS 10 //The number of IR reads per measurement
 
@@ -44,7 +45,7 @@ void configureRange(void);
 
 unsigned int sampleIR(char numSamples);
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: configureAD(void)
  *
  * Include: Range.h
@@ -69,7 +70,7 @@ void configureAD(void)
     for (i = 0; i < 1000; i++);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: configureRange(void)
  *
  * Include: Range.h
@@ -116,7 +117,7 @@ void configureRange(void)
     OpenCapture1(config);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: beginUS(void)
  *
  * Include: ultrasonic.h
@@ -144,7 +145,7 @@ void beginUS(void)
     measuringUS = 1;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: rangeUS(unsigned char temp)
  *
  * Include: ultrasonic.h
@@ -175,7 +176,7 @@ unsigned int rangeUS(unsigned char temp)
     return range;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: rangeISR(void)
  *
  * Include: ultrasonic.h
@@ -206,7 +207,7 @@ void rangeISR(void)
     CCP1_CLEAR;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: calibrateRange(unsigned int reference)
  *
  * Include:
@@ -246,7 +247,7 @@ void calibrateRange(unsigned int reference)
     }
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: speed_sound(unsigned char tempx2)
  *
  * Include:
@@ -262,7 +263,7 @@ unsigned int rawRange(void)
     return lastRange;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: range()
  *
  * Include:
@@ -341,7 +342,7 @@ unsigned int range(void)
     return range;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: rangeIR(void)
  *
  * Include: 
@@ -370,7 +371,7 @@ unsigned int rangeIR(void)
     return range + calibration_offset_IR;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: rangeUS(void)
  *
  * Include:
@@ -400,7 +401,7 @@ unsigned int rangeUltrasonic(void)
 
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: sampleIR(void)
  *
  * Include:
@@ -432,4 +433,20 @@ unsigned int sampleIR(char numSamples)
     //Average all samples taken
     temp = sum / (unsigned int)numSamples;
     return temp;
+}
+
+/*! **********************************************************************
+ * Function: sampleIR(void)
+ *
+ * Include:
+ *
+ * Description: takes numSamples samples of the IR sensor and returns the average
+ *
+ * Arguments: None
+ *
+ * Returns: the average of the samples
+ *************************************************************************/
+TargetState getTargetState(void)
+{
+    
 }

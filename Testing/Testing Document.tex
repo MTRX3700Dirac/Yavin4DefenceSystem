@@ -172,7 +172,8 @@ Each temperature from 0 to 100 deg C was tested and compared to the actual formu
 
 \subsection{IR\_CONV Macro:}
 \subsubsection{Status:}
-Working as of 1:40pm 30/9/2014 - Grant
+Working as of 1:40pm 30/9/2014 - Grant \newline
+As of 13/10/2014 The calibration on the minimal board seems to differ. As of yet we have no idea why, and mean to re-calibrate it
 
 \subsubsection{Description:}
 This macro converts the AD result into a range in mm, based on experimental readings from the IR Sensor.
@@ -192,6 +193,25 @@ This macro has been tested with a range of different input values. Each input re
 \begin{lstlisting}
 #define IR_CONV(ad) ((unsigned long)237411 / (ad) - 65)
 \end{lstlisting}
+
+\subsection{US\_CONV}
+\subsubsection{Status:}
+Currently working as of 3:15 13/10/2014 - Grant
+
+\subsubsection{Description:}
+This function converts a timing value returned by the input capture into an actual range for the ultrasonic sensor. \newline
+NOTE: This macro was designed for, and tested on the MINIMAL board. The ticks on the demo board will be 4x longer (as the clock is 4MHz instead of 10MHz). If using the demo board, multiply the system ticks by 4.
+
+\subsubsection{Criteria:}
+This function has been tested at different ranges, by comparing the range result to the measured distance to a target. The function was created from experimental data and a linear fit as seen in Fig. \ref{fig:UltrasonicProfile}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"Ultrasonic Profile"}
+\caption{Ultrasonic Range profile. The measured distance against the time delay (in system ticks at 2.5MHz)}
+\label{fig:UltrasonicProfile}
+\end{figure}
+
 
 \subsection{calibrateRange:}
 \subsubsection{Status:}
@@ -287,10 +307,14 @@ return temp;
 
 \subsection{rangeUS:}
 \subsubsection{Status:}
-Untested as of 11am 26/9/2014 - Grant
+Working as of 13/10/2014 - Grant
 
 \subsubsection{Description:}
 This function performs a read of the Ultrasonic sensor (if not already started), calibrates it and returns the result.
+
+\subsubsection{Criteria:}
+This function has been tested over a number of different ranges, and a calibration curve fitted as seen in Fig. \ref{fig:UltrasonicProfile}.
+
 
 \subsection{ConfigureAD:}
 \subsubsection{Status:}
