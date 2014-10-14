@@ -23,3 +23,5 @@ extern TargetState getTargetState(void);
 
 extern unsigned int rangeIR(void);
 extern unsigned int rangeUltrasonic(void);
+
+#define RANGE_H

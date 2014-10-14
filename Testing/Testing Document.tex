@@ -200,7 +200,8 @@ Currently working as of 3:15 13/10/2014 - Grant
 
 \subsubsection{Description:}
 This function converts a timing value returned by the input capture into an actual range for the ultrasonic sensor. \newline
-NOTE: This macro was designed for, and tested on the MINIMAL board. The ticks on the demo board will be 4x longer (as the clock is 4MHz instead of 10MHz). If using the demo board, multiply the system ticks by 4.
+NOTE: This macro was designed for, and tested on the MINIMAL board. The ticks on the demo board will be 4x longer (as the clock is 4MHz instead of 10MHz). If using the demo board, multiply the system ticks by 4. \newline
+This macro also uses a linearisation of the effect on speed of sound by temperature to change the gradient of the delay to distance conversion. This has not been tested as there is no easy way to change the temperature and test the result. 
 
 \subsubsection{Criteria:}
 This function has been tested at different ranges, by comparing the range result to the measured distance to a target. The function was created from experimental data and a linear fit as seen in Fig. \ref{fig:UltrasonicProfile}.
@@ -211,6 +212,11 @@ This function has been tested at different ranges, by comparing the range result
 \caption{Ultrasonic Range profile. The measured distance against the time delay (in system ticks at 2.5MHz)}
 \label{fig:UltrasonicProfile}
 \end{figure}
+
+\subsubsection{Working Code:}
+\begin{lstlisting}
+#define ULTRA_CONV(tme, T) DIV_65536(tme * (unsigned long)(DIV_65536(519078 * T) + (unsigned long)4362)) - 18
+\end{lstlisting}
 
 
 \subsection{calibrateRange:}
@@ -242,7 +248,8 @@ This function performs a read of both the ultrasonic and IR sensors, fuses them 
 
 \subsection{rangeIR:}
 \subsubsection{Status:}
-Untested as of 11am 26/9/14 - Grant
+Working as of 11am 26/9/14 - Grant \newline
+We have found the calibration to have changed (on the minimal board) since the last we tested the sensor - 13/10/2014 Grant. The operation of the function is otherwise fine.
 
 \subsubsection{Description:}
 This function performs a read of the IR sensor, calibrates it and returns the result.
@@ -315,6 +322,28 @@ This function performs a read of the Ultrasonic sensor (if not already started),
 \subsubsection{Criteria:}
 This function has been tested over a number of different ranges, and a calibration curve fitted as seen in Fig. \ref{fig:UltrasonicProfile}.
 
+\subsubsection{Working Code:}
+\begin{lstlisting}
+unsigned int rangeUS(unsigned char temp)
+{
+unsigned int range;
+unsigned long int t;
+//Continue to poll while measurement is still in progress
+while (measuringUS);
+
+if (CCPR1 < 0x1770) return 0;
+
+//Perform calculation (ReadCapture in us, speed of sound in m/s->um)
+// um/1024 = ~mm
+
+t = DIV_4096((unsigned long int) CCPR1 * (unsigned long int) 285) - 18;
+
+range = (unsigned int) t;
+
+return range;
+}
+\end{lstlisting}
+
 
 \subsection{ConfigureAD:}
 \subsubsection{Status:}
@@ -344,10 +373,33 @@ for (i = 0; i < 1000; i++);
 
 \subsection{BeginUS:}
 \subsubsection{Status:}
-Untested as of 12pm 26/9/2014
+Working as of 12:30pm 14/10/2014 - Grant
 
 \subsubsection{Description:}
 This function begins an ultrasonic scan and returns. The returning echo will be serviced by an interrupt and the value will be stored in the range module for the next rangeUS call.
+
+\subsubsection{Criteria:}
+This function was deemed to be working correctly as the ultrasonic read is successfully initiated, which is evidenced by the correct result in other subsequent Ultrasonic functions. E.g. the entire rangeUS function is working, and matching measured data.
+
+\subsubsection{Working Code:}
+\begin{lstlisting}
+void beginUS(void)
+{
+CCPR1H = 0;
+CCPR1L = 0;
+//Set the INIT_PIN high to begin ultrasonic 'read'
+INIT_PIN = 1;
+
+//Clear the timer, so the CCP input value is the delay
+TMR1H = 0;
+TMR1L = 0;
+
+PIE1bits.CCP1IE = 1;
+
+//Set the measuring flag
+measuringUS = 1;
+}
+\end{lstlisting}
 
 \subsection{rangeISR:}
 \subsubsection{Status:}
@@ -361,7 +413,7 @@ This function acts as the service routine for the range module. The exact functi
 \newpage
 \section{Tracking}
 
-\subsection{ConfigureBase:}
+\subsection{ConfigureTracking:}
 \subsubsection{Status:}
 Currently incomplete and untested as of 12:15pm 26/9/2014 - Grant
 
@@ -372,7 +424,7 @@ This function configures the pan tilt mechanism (which is acting as the base) so
 
 \subsection{Search:}
 \subsubsection{Status:}
-Currently incomplete and untested as of 12:15pm 26/9/2014 - Grant
+Currently untested as of 12:15pm 26/9/2014 - Grant
 
 \subsubsection{Description:}
 This function increments the pan tilt mechanism in a search pattern.
@@ -990,16 +1042,35 @@ Delay direction2Delay(DirectionState dir) \newline
 \}\newline
 
 \subsection{delay2Direction:}
+\subsubsection{REVISION}
+The code has changed somewhat since 30/9/2014. The obselete code is kept for archival purposes.
+
 \subsubsection{Status:}
-Working as of 4:30pm 30/9/2014 - Grant -> System has changed since 30/9/2014, and code will no longer function. Must be rewritten and tested - Grant 10/10/2014
+Working as of 2:15pm 14/10/2014 - Grant
 
 \subsubsection{Description:}
 This function converts a delay back into into the direction object that would be used to create it via the direction2Delay function.
 
 \subsubsection{Criteria:}
-This function has been tested by specifying a direction, then converting it into a delay via the direction2delay function. This was then sent to the servos to make sure the delay is correct, and then sent to the delay2Direction function and compared to the original direction object.
+This function has been tested by specifying a direction, then converting it into a delay via the direction2delay function. This was then sent to the servos to make sure the delay is correct, and then sent to the delay2Direction function and compared to the original direction object. This was tested for a number of different directions.
 
 \subsubsection{Working Code:}
+\begin{lstlisting}
+Direction delay2Direction(Delay dly)
+{
+Direction ret;
+
+ret.azimuth = ((dly.AzimuthDelay - DUTY_CYCLE_TIME - PWM_HALF_PERIOD) * (long int)arcRange.azimuth + DIV_2(DUTY_CYCLE_TIME)) / DUTY_CYCLE_TIME;
+ret.inclination = ((dly.InclinationDelay - DUTY_CYCLE_TIME + LATENCY) * (long int)arcRange.inclination + DIV_2(DUTY_CYCLE_TIME))/ DUTY_CYCLE_TIME;
+
+ret.azimuth = ret.azimuth - DIV_2(arcRange.azimuth) - calibration_offset.azimuth;
+ret.inclination = -(ret.inclination - DIV_2(arcRange.inclination) - calibration_offset.inclination);
+
+return ret;
+}
+\end{lstlisting}
+
+\subsubsection{Working Code (OBSELETE):}
 DirectionState delay2Direction(Delay dly) \newline
 \{ \newline
 	DirectionState ret; \newline
@@ -1070,8 +1141,208 @@ Currently untested as of 5pm 10/10/2014 - Grant
 \subsubsection{Description:}
 This function increments the direction of the pan tilt sensor using the previous direction as a starting position. The increment argument is not specified in deg, but the smallest resolution available to generate the PWM's, which is around 0.04 deg (see )
 
-\newpage
+\subsection{getDir}
+\subsubsection{Status:}
+Untested as of 2:30pm 14/10/2014 - Grant
 
+\subsubsection{Description:}
+Returns the current direction of the pan tilt assembly. Note: This just goes off the current delay, and does not sense the actual position of the servos. Also This value may differ from the commanded position e.g. due to maximum and minimum angle ranges. The function also does not allow time for the servos to move, or for the new delay to be put into the interrupt. The updated function does some of these.
+
+\subsubsection{Criteria:}
+
+\subsection{RawDir}
+\subsubsection{Status:}
+Untested and incomplete as of 2:30pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+This function returns the raw servo direction, that is without the calibration. This is essentially the same as the getDir function.
+
+\subsubsection{Criteria:}
+
+\subsection{Updated:}
+\subsubsection{Status:}
+Untested as of 2:40pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+This function returns true if the latest move direction (either a move function, or a increment function call) has been loaded into the interrupt delay. This is because a new set of PDM delays is only loaded into the interrupt at the end of the cycle to ensure the 50Hz frequency.
+
+\subsubsection{Criteria:}
+
+
+
+\newpage
+\section{MenuSystem:}
+\subsection{Initialise Menu}
+\subsubsection{Status:}
+Untested as of 1pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+Initialises the menu system for operation when the system is turned on. It sets the menu state to the default setting, and initialises the serial, LCD, and user interface modules.
+
+\subsubsection{Criteria:}
+
+\subsection{service Menu}
+\subsubsection{Status:}
+Currently untested 1pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+Checks if anything as been inputted to the system, updates the outputs.
+
+\subsubsection{Criteria:}
+
+\subsection{menu ISR}
+\subsubsection{Status:}
+Untested as of 1pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+Handles any interrupt calls associated with the menu system
+
+\subsubsection{Criteria:}
+
+\subsection{parse Input}
+\subsubsection{Status:}
+Untested as of 1pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+This function takes any input detected by the system and performs the associated response
+
+\subsubsection{Criteria:}
+
+\subsection{parse Numeric:}
+\subsubsection{Status:}
+untested and incomplete as of 1pm 14/10/2014- Grant
+
+\subsubsection{Description:}
+Parses data a user has inputted into the system into an integer value
+
+\subsubsection{Criteria:}
+
+\subsection{State Entry:}
+\subsubsection{Status:}
+Untested as of 1pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+Performs actions needed for when the system first enters a menu state
+
+
+\newpage
+\section{User Interface}
+
+
+\newpage
+\section{Interrupts}
+\subsection{Description:}
+This file is not really a module, the interrupt ISR's and vectors have simply been moved into a separate file for readability.
+
+\subsection{highVector}
+\subsubsection{Status:}
+Working as of 1:15 pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+This is a vector function which simply writes a goto statement pointing to the high ISR at the address 0x0008 using pragmas.
+
+\subsubsection{Criteria:}
+This function has been deemed to work as multiple functions requiring ISR's are working, and the interrupts are definitely firing, and calling the ISR's.
+
+\subsubsection{Working Code:}
+\begin{lstlisting}
+#pragma code highPriorityInterruptAddress=0x0008
+void highVector(void)
+{
+_asm GOTO highISR _endasm
+}
+\end{lstlisting}
+
+\subsection{lowVector}
+\subsubsection{Status:}
+Working as of 1:15 pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+This is a vector function which simply writes a goto statement pointing to the low ISR at the address 0x0018 using pragmas.
+
+\subsubsection{Criteria:}
+This function has been deemed to work as multiple functions requiring ISR's are working, and the interrupts are definitely firing, and calling the ISR's.
+
+\subsubsection{Working Code:}
+\begin{lstlisting}
+#pragma code lowPriorityInterruptAddress=0x0018
+void lowVector(void)
+{
+_asm GOTO lowISR _endasm
+}
+\end{lstlisting}
+
+\subsection{lowISR}
+\subsubsection{Status:}
+Working as of 1:15pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+This is the ISR for all low priority interrupts on the PIC. This function checks which interrupt has been called, and matches the interrupt to the module which called it. Modules define macros such as SERIAL\_INT which are the criteria for one of its interrupts having fired.
+
+\subsubsection{Criteria:}
+This function has been deemed to work because multiple functions requiring ISR's are working, and the interrupts are definitely firing, and calling the ISR's.
+
+\subsubsection{Working Code:}
+\begin{lstlisting}
+#pragma interruptlow lowISR
+void lowISR(void)
+{
+if (SERIAL_INT)
+{
+serialISR();
+}
+if (PAN_TILT_ISR)
+{
+panTiltISR();
+}
+if (RANGE_INT)
+{
+rangeISR();
+}
+if (USER_INT)
+{
+userISR();
+}
+}
+\end{lstlisting}
+
+\subsection{highISR}
+\subsubsection{Status:}
+Working as of 1:15pm 14/10/2014 - Grant
+
+\subsubsection{Description:}
+This is the ISR for all high priority interrupts on the PIC. This function checks which interrupt has been called, and matches the interrupt to the module which called it. Modules define macros such as SERIAL\_INT which are the criteria for one of its interrupts having fired.
+
+\subsubsection{Criteria:}
+This function has been deemed to work because multiple functions requiring ISR's are working, and the interrupts are definitely firing, and calling the ISR's.
+
+\subsubsection{Working Code:}
+\begin{lstlisting}
+#pragma interrupt highISR
+void highISR(void)
+{
+if (PAN_TILT_ISR)
+{
+panTiltISR();
+}
+if (SERIAL_INT)
+{
+serialISR();
+}
+if (RANGE_INT)
+{
+rangeISR();
+}
+if (USER_INT)
+{
+userISR();
+}
+}
+\end{lstlisting}
+
+
+\newpage
+\section{LCD}
 
 
 \end{document}

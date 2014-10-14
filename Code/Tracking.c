@@ -44,12 +44,14 @@ void configureTracking(void)
  *************************************************************************/
 void search(void)
 {
+    //Vertical and laterial incremental movements
     static Direction lateral = {1, 0};
     static Direction vertical = {1, 0};
     Direction dir;
     
     dir = getDir();
 
+    //If max azimuth range, increment vertical and change azimuth direction
     if (dir.azimuth > 30 || dir.azimuth < -30)
     {
         increment(vertical);                //Move up (or down) vertically 1 degree
@@ -57,15 +59,17 @@ void search(void)
         if (dir.azimuth > 0 && dir.azimuth > 0) lateral.azimuth = -lateral.azimuth;
         increment(lateral);
     }
+    //If max inclination range, change vertical direction and increment vertical
     else if (dir.inclination > 20 || dir.inclination < -40)
     {
         if (dir.inclination < 0 && dir.inclination < 0) lateral.inclination = -lateral.inclination; //Move in the opposite azimuth
         if (dir.inclination > 0 && dir.inclination > 0) lateral.inclination = -lateral.inclination;
         increment(vertical);
     }
+    //Alse just move in azimuth
     else
     {
-        increment();
+        increment(lateral);
     }
 }
 

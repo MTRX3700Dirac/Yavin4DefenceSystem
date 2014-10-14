@@ -36,14 +36,6 @@ typedef struct
     int inclination;
 } Direction;
 
-
-//Stores the current system configuration
-typedef struct
-{
-    int azimuth;           //The current system azimuth
-    int inclination;       //The current system inclination
-} DirectionState;
-
 //Tracking Data definition: Stores the current target information
 typedef struct
 {
