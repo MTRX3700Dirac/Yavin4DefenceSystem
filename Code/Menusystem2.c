@@ -8,14 +8,14 @@
 #define MAX_LCD_MSG_LEN 20
 #define MAX_NUM_OPTIONS 5
 
-typedef struct
+typedef struct SubMenu
 {
     char serialMessage[MAX_SER_MSG_LEN];    //Serial Message to be displayed on entering the state
     char lcdMessage[MAX_LCD_MSG_LEN];       //LCD Message to be displayed on entering the state
     char serialOptions[MAX_NUM_OPTIONS];    //The serial options available in this state
     char inptOptions[MAX_NUM_OPTIONS];      //The user input options available in this state
 
-    SubMenu *subMenues[MAX_NUM_OPTIONS];    //Pointers to Available sub menues
+    struct SubMenu *subMenues;    //Pointers to Available sub menues
     void (*numericFunction)(int);
     void (*defaultFunction)(void);
 } SubMenu;
