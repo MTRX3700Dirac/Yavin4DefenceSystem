@@ -7,14 +7,18 @@
 
 var indexSectionsWithContent =
 {
-  0: "cdstu",
-  1: "cdstu"
+  0: "cdst",
+  1: "cdst",
+  2: "c",
+  3: "t"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "classes"
+  1: "classes",
+  2: "files",
+  3: "pages"
 };
 
 function convertToId(search)

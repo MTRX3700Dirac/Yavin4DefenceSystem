@@ -19,5 +19,7 @@ extern void rangeISR(void);
 extern void calibrateRange(signed int distance);
 extern signed int rawRange(void);
 
+extern TargetState getTargetState(void);
+
 extern unsigned int rangeIR(void);
 extern unsigned int rangeUltrasonic(void);

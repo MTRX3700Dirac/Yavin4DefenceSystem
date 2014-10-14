@@ -8,13 +8,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-  $(document).ready(initResizable);
-  $(window).load(resizeHeight);
-</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -44,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,26 +64,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){initNavTree('_common_8h_source.html','');});
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -156,54 +136,61 @@ $(document).ready(function(){initNavTree('_common_8h_source.html','');});
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> inclination;   <span class="comment">//inclination to the target</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} <a class="code" href="struct_tracking_data.html">TrackingData</a>;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">//Efficient Division macros</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define DIV_2(v) ((v) &gt;&gt; 1)       //Divide by 2</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define DIV_4(v) ((v) &gt;&gt; 2)       //Divide by 4</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define DIV_8(v) ((v) &gt;&gt; 3)       //Divide by 8</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define DIV_16(v) ((v) &gt;&gt; 4)      //Divide by 16</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define DIV_32(v) ((v) &gt;&gt; 5)      //Divide by 32</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define DIV_64(v) ((v) &gt;&gt; 6)      //Divide by 64</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define DIV_128(v) ((v) &gt;&gt; 7)     //Divide by 128</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define DIV_256(v) ((v) &gt;&gt; 8)     //Divide by 256</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define DIV_512(v) ((v) &gt;&gt; 9)     //Divide by 512</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define DIV_1024(v) ((v) &gt;&gt; 10)   //Divide by 1024</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define SWAP(x, y) (y = (y ^ (x = (x ^ (y = (x ^ y))))))</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">//ADC Channel Select macros</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define ADC_IR_READ 0            //Sets ADC to read the IR</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define ADC_TEMP_READ 1          //Sets the ADC to read the temp</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define ADC_DIAL_READ 2          //Sets the ADC to read the DIAL</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">//Interrupt macros</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#define TX_INT (PIR1bits.TXIF &amp;&amp; PIE1bits.TXIE)       //serial transmit interrupt fired</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define RC_INT (PIR1bits.RCIF &amp;&amp; PIE1bits.RCIE)       //serial receive interrupt fired</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#define CCP1_INT (PIR1bits.CCP1IF &amp;&amp; PIE1bits.CCP1IE) //Whether CCP1 fired the interrupt</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#define CCP2_INT (PIR2bits.CCP2IF &amp;&amp; PIE2bits.CCP2IE) //Whether CCP2 fired the interrupt</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#define INT0_INT (INTCONbits.INT0IF &amp;&amp; INTCONbits.INT0IE) //Whether the external interrupt fired</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#define RB_INT   (INTCONbits.RBIF &amp;&amp; INTCONbits.RBIE)  //Whether the RB port change interrupt fired</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define TMR2_INT (PIR1bits.TMR2IF &amp;&amp; PIE1bits.TMR2IE)   //TMR2 matching PR2 fired the interrupt</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define TMR0_INT (INTCONbits.TMR0IF &amp;&amp; INTCONbits.TMR0IE) //Whether the timer0 overflow fired the interrupt</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define TMR1_INT (PIR1bits.TMR1IF &amp;&amp; PIE1bits.TMR1IE)   //TMR1 overflow fired interrupt</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#define TMR3_INT (PIR2bits.TMR3IF &amp;&amp; PIE2bits.TMR3IE)   //TMR3 overflow fired interrupt</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#define ADC_INT (PIR1bits.ADIF &amp;&amp; PIE1bits.ADIE)        //Whether the ADC fired the interrupt</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#define SSP_INT (PIR1bits.SSPIF &amp;&amp; PIE1bits.SSPIE)      //Whether the SSP module fired the interrupt</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#define BCL_INT (PIR2bits.BCLIF &amp;&amp; PIE2bits.BCLIE)      //Bus collision interrupt fired</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#define LVD_INT (PIR2bits.LVDIF &amp;&amp; PIE2bits.LVDIE)      //Low voltage detect interrupt fired</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// Use the MNML Board</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define MNML</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">//Efficient Division macros</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define DIV_2(v) ((v) &gt;&gt; 1)       //Divide by 2</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define DIV_4(v) ((v) &gt;&gt; 2)       //Divide by 4</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define DIV_8(v) ((v) &gt;&gt; 3)       //Divide by 8</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define DIV_16(v) ((v) &gt;&gt; 4)      //Divide by 16</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define DIV_32(v) ((v) &gt;&gt; 5)      //Divide by 32</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define DIV_64(v) ((v) &gt;&gt; 6)      //Divide by 64</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define DIV_128(v) ((v) &gt;&gt; 7)     //Divide by 128</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define DIV_256(v) ((v) &gt;&gt; 8)     //Divide by 256</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define DIV_512(v) ((v) &gt;&gt; 9)     //Divide by 512</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#define DIV_1024(v) ((v) &gt;&gt; 10)   //Divide by 1024</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#define DIV_4096(v) ((v) &gt;&gt; 12)   //Divide by 1024</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define SWAP(x, y) (y = (y ^ (x = (x ^ (y = (x ^ y))))))</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">//ADC Channel Select macros</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define ADC_IR_READ 0            //Sets ADC to read the IR</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#define ADC_TEMP_READ 1          //Sets the ADC to read the temp</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define ADC_DIAL_READ 2          //Sets the ADC to read the DIAL</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">//Interrupt macros</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#define TX_INT (PIR1bits.TXIF &amp;&amp; PIE1bits.TXIE)       //serial transmit interrupt fired</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#define RC_INT (PIR1bits.RCIF &amp;&amp; PIE1bits.RCIE)       //serial receive interrupt fired</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define CCP1_INT (PIR1bits.CCP1IF &amp;&amp; PIE1bits.CCP1IE) //Whether CCP1 fired the interrupt</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define CCP2_INT (PIR2bits.CCP2IF &amp;&amp; PIE2bits.CCP2IE) //Whether CCP2 fired the interrupt</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define INT0_INT (INTCONbits.INT0IF &amp;&amp; INTCONbits.INT0IE) //Whether the external interrupt fired</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define RB_INT   (INTCONbits.RBIF &amp;&amp; INTCONbits.RBIE)  //Whether the RB port change interrupt fired</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#define TMR2_INT (PIR1bits.TMR2IF &amp;&amp; PIE1bits.TMR2IE)   //TMR2 matching PR2 fired the interrupt</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#define TMR0_INT (INTCONbits.TMR0IF &amp;&amp; INTCONbits.TMR0IE) //Whether the timer0 overflow fired the interrupt</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#define TMR1_INT (PIR1bits.TMR1IF &amp;&amp; PIE1bits.TMR1IE)   //TMR1 overflow fired interrupt</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#define TMR3_INT (PIR2bits.TMR3IF &amp;&amp; PIE2bits.TMR3IE)   //TMR3 overflow fired interrupt</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#define ADC_INT (PIR1bits.ADIF &amp;&amp; PIE1bits.ADIE)        //Whether the ADC fired the interrupt</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#define SSP_INT (PIR1bits.SSPIF &amp;&amp; PIE1bits.SSPIE)      //Whether the SSP module fired the interrupt</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#define BCL_INT (PIR2bits.BCLIF &amp;&amp; PIE2bits.BCLIE)      //Bus collision interrupt fired</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#define LVD_INT (PIR2bits.LVDIF &amp;&amp; PIE2bits.LVDIE)      //Low voltage detect interrupt fired</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#define CCP1_CLEAR (PIR1bits.CCP1IF = 0)</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#define CCP2_CLEAR (PIR2bits.CCP2IF = 0)</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#define CLOCK   10000000    //10MHz clock source</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#define FOSC_4  2500000     //2.5MHz Fosc_4</span></div>
 <div class="ttc" id="struct_direction_state_html"><div class="ttname"><a href="struct_direction_state.html">DirectionState</a></div><div class="ttdef"><b>Definition:</b> Common.h:40</div></div>
 <div class="ttc" id="struct_direction_html"><div class="ttname"><a href="struct_direction.html">Direction</a></div><div class="ttdef"><b>Definition:</b> Common.h:32</div></div>
 <div class="ttc" id="struct_tracking_data_html"><div class="ttname"><a href="struct_tracking_data.html">TrackingData</a></div><div class="ttdef"><b>Definition:</b> Common.h:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><b>Common.h</b></li>
-    <li class="footer">Generated on Tue Oct 7 2014 14:58:04 for My Project by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated on Mon Oct 13 2014 11:05:23 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
 </body>
 </html>

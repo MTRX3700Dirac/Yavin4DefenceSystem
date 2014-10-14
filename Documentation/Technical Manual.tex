@@ -42,6 +42,12 @@ Below is a definitive list of all the public functions contained in this module,
 \subsubsection{Usage:}
 Used to set up the serial module for use. This function MUST be called before any serial functions will work. It need only be called ONCE at the beginning of the program.
 
+\subsubsection{Arguments:}
+This function takes no arguments
+
+\subsubsection{Return Value:}
+This function does not return anything.
+
 \subsection{transmit}
 \subsubsection{Usage:}
 Used to transmit a string over serial UART. NOTE: The string MUST be NULL TERMINATED. The function will continue pushing data onto the transmit buffer until it hits a null terminator, which could fill the buffer and overwrite the given string if it is not properly null terminated. \newline
@@ -182,24 +188,74 @@ void main()
 The Pan Tilt module is the module which controls the servo actuators which point the sensors in the correct direction. As such it generates the PDM's (Pulse Duration Modulated waves) necessary to run the servo's, and has public functions such as move, which directs the Pan Tilt mechanism to a certain direction.
 
 \section{How It Works:}
+This module uses a single output compare module to create the delays necessary to generate the PDM's of the desired duty cycle. Due to the interrupt latency of approximately 300$\mu$s, the PDM's are staggered so that the interrupt calls will never be closer than approximately 0.04 seconds. The full available duty cycle (1000$\mu$s) is divided over the given angular range. There is also an angular offset for calibration reasons. The Delay object is then created to define the necessary delays to create the desired PDM.
+NOTE: This module is interrupt driven, so the Interrupt.c file must be included in the project for it to work.
 
 \section{How To Use It:}
 \begin{itemize}
-	\item 
+	\item Ensure Interrupt.c is included in the project
+	\item Include PanTilt.h in the file you want to use the module
+	\item Call configureBase() function to set up the module
+	\item Call Move() to send the base to a specific direction
+	\item Call increment() or incrementFine() to move the base from that direction
+	\item CalibratePanTilt() to calibrate the base direction
+	\item RawDir() returns the calibrated direction
 \end{itemize}
 
 \section{List of Public Functions}
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
-\subsection{}
+\subsection{configureBase}
 \subsubsection{Usage:}
+This function is used to setup the Pan Tilt module so that one can direct the sensors to any direction desired. After this function is called the module moves to its default position. Then the module is fully possibly moving to any desired direction with the move or the increment functions. This function need only be called once at the beginning of the program (or whenever you want to start using the PanTilt).
 
 \subsubsection{Arguments:}
+This function takes no arguments.
 
 \subsubsection{Return Value:}
+This function takes no arguments.
+
+\subsection{Move}
+\subsubsection{Description}
+This function commands the pan tilt mechanism to the given position. For this function (0, 0) is defined as the midpoint in both the elevation and azimuth. In azimuth this means pointing along the length of the pan tilt mechanism, and in elevation this means pointing 45 degrees above the ground.
+
+\subsubsection{Arguments}
+This function takes a single object of type direction which contains the desired azimuth and elevation in degrees
+
+\subsubsection{Return Value}
+This function returns nothing.
+
+\subsection{Increment}
+\subsubsection{Description}
+This function adds an offset onto the current pan tilt direction
+
+\subsubsection{Arguments}
+This function takes a single object of type Direction, which contains the incremental value in both the azimuth and elevation directions in degrees.
+
+\subsubsection{Return Value}
+This function returns nothing
 
 \section{Example Code:}
+\begin{lstlisting}
+#include "Common.h"
+#include "PanTilt.h"
 
+void main()
+{
+	Direction dir;
+	configureBase();	//Configure the base module
+
+	dir.azimuth = 0;	//Define a direction to move to
+	dir.inclination = 0;
+	
+	move(dir);			//Move the base to the defined direction
+	
+	dir.azimuth = 1;	//Define an increment
+	dir.inclination = 1;
+	
+	increment(dir);		//Increment the current direction by 1 degree in the azimuth and the elevation
+}
+\end{lstlisting}
 
 \chapter{Temp}
 \section{Description}
