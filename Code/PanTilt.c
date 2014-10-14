@@ -21,7 +21,7 @@ typedef struct
 #define AZ_PWM_PIN PORTCbits.RC0
 #define IN_PWM_PIN PORTCbits.RC1
 
-#ifdef MNML
+#ifdef MNML     //Using minimal board, or piddem - Clock speeds differ by x4
 #define DUTY_CYCLE_TIME 2500
 #define PWM_PERIOD 50000 //The period for 50Hz at 2.5MHz
 #define PWM_HALF_PERIOD 25000 //Half the period for 50Hz at 1MHz
@@ -40,8 +40,8 @@ typedef struct
 #define SERVO_INIT() TRISCbits.RC0 = 0; TRISCbits.RC1 = 0; PORTCbits.RC0 = 0; PORTCbits.RC1 = 0
 
 void validate(unsigned int *delay);
-Delay direction2Delay(DirectionState dir);
-Delay direction2Delay(DirectionState dir);
+Direction delay2Direction(Delay dly);
+Delay direction2Delay(Direction dir);
 
 //Static calibration offset
 static Direction calibration_offset = { 0, 3 };
@@ -74,7 +74,7 @@ void configureBase(void)
     unsigned char config;
 
     //Set the initial servo PWM's to zeros
-    DirectionState zero = { 0, 0 };
+    Direction zero = { 0, 0 };
     global_delay = direction2Delay(zero);
     
     INTCONbits.GIEH = 1;
@@ -115,7 +115,9 @@ void configureBase(void)
 void move(Direction destination)
 {
     global_delay = direction2Delay(destination);
-    current_direction = destination;
+
+    //Update the current_direction
+    current_direction = delay2Direction(global_delay);
 }
 
 /*! **********************************************************************
@@ -137,6 +139,9 @@ void increment(Direction difference)
     //Ensure that the delays are still within the max and min duty cycles
     validate(&(global_delay.AzimuthDelay));
     validate(&(global_delay.InclinationDelay));
+
+    //Update the current_direction
+    current_direction = delay2Direction(global_delay);
 }
 
 /*! **********************************************************************
@@ -158,6 +163,9 @@ void incrementFine(Direction difference)
     //Ensure that the delays are still within the max and min duty cycles
     validate(&(global_delay.AzimuthDelay));
     validate(&(global_delay.InclinationDelay));
+
+    //Update the current_direction
+    current_direction = delay2Direction(global_delay);
 }
 
 /*! **********************************************************************
@@ -401,12 +409,15 @@ void panTiltISR(void)
  * Remark: This function relies on the ARC_RANGE macro being set correctly. This
  *         should hold the value of the maximum angle that the servos can be commanded
  *************************************************************************/
-DirectionState delay2Direction(Delay dly)
+Direction delay2Direction(Delay dly)
 {
-    DirectionState ret;
+    Direction ret;
 
-    //ret.azimuth = ((dly.AzimuthDelay - PWM_HALF_PERIOD - DUTY_CYCLE_TIME) * (long int)arcRange.azimuth + 500) / DUTY_CYCLE_TIME - DIV_2(arcRange.azimuth) - calibration_offset.azimuth;
-    //ret.inclination = ((dly.InclinationDelay + LATENCY - DUTY_CYCLE_TIME) * (long int)arcRange.inclination + 500) / DUTY_CYCLE_TIME - DIV_2(arcRange.inclination) - calibration_offset.inclination;
+    ret.azimuth = ((dly.AzimuthDelay - DUTY_CYCLE_TIME - PWM_HALF_PERIOD) * (long int)arcRange.azimuth + DIV_2(DUTY_CYCLE_TIME)) / DUTY_CYCLE_TIME;
+    ret.inclination = ((dly.InclinationDelay - DUTY_CYCLE_TIME + LATENCY) * (long int)arcRange.inclination + DIV_2(DUTY_CYCLE_TIME))/ DUTY_CYCLE_TIME;
+
+    ret.azimuth = ret.azimuth - DIV_2(arcRange.azimuth) - calibration_offset.azimuth;
+    ret.inclination = -(ret.inclination - DIV_2(arcRange.inclination) - calibration_offset.inclination);
 
     return ret;
 }
@@ -426,7 +437,7 @@ DirectionState delay2Direction(Delay dly)
  * Remark: This function relies on the ARC_RANGE macro being set correctly. This
  *         should hold the value of the maximum angle that the servos can be commanded
  *************************************************************************/
-Delay direction2Delay(DirectionState dir)
+Delay direction2Delay(Direction dir)
 {
     Delay result;
     unsigned int az, inc;

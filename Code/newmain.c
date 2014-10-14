@@ -73,7 +73,6 @@ void main() {
     char newLine[] = "\n\r";
     char num[5];
 	
-	menu(top1);
     configureBase();
 
     dir.azimuth = -20;

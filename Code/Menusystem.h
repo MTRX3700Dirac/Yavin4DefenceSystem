@@ -12,3 +12,5 @@ extern void serviceMenu(void);
 extern void menuISR(void);
 
 extern void menu(void);
+
+#define MENU_H

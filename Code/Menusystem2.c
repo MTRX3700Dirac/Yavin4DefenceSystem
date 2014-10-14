@@ -172,6 +172,9 @@ static void parseInput(char input)
  *************************************************************************/
 static int parseNumeric(char *number)
 {
+    char digits = 0;
+    for (digits = 0; number[digits]; digits++);    //Coun number of digits
+
     
 }
 

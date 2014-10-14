@@ -16,8 +16,6 @@
 #define swap14 0x40
 #define slee15 0x50
 
-extern void menu(void);
-
 //Global
 char tMESSAGE[] = "Hello 123\n";
 char fillerthing[] = "+";
