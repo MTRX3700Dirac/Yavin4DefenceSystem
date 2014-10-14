@@ -36,6 +36,8 @@ static unsigned int lastRange = 0;
 signed int calibration_offset_IR = 0;
 signed int calibration_offset_US = 0;
 
+TargetState current_target_state;
+
 //Private function prototypes:
 void beginUS(void);
 unsigned int rangeIR(void);
@@ -310,11 +312,13 @@ unsigned int range(void)
         {
             range = range_US;
         }
-
+        
         // CASE 3: Range: 450mm - 1m
         // Average the ultrasonic and IR ranges
         // TODO: Do we want to average these completely?
         range = DIV_2(range_US + range_IR);
+        current_target_state = GOOD_TRACK;
+        
     }
     // CASE 4: Range: 1.5m+
     // Rely on Ultrasound
@@ -324,6 +328,10 @@ unsigned int range(void)
         range_US += calibration_offset_US;
        
         range = range_US;
+
+        //Check whether No IR is because out of IR range, or just bad direction
+        if (range > 1500) current_target_state = OUT_OF_IR;
+        else current_target_state = BAD_DIR;
     }
     else if (range_IR)
     {
@@ -331,11 +339,13 @@ unsigned int range(void)
         range_IR += calibration_offset_IR;
         
         range = range_IR;
+        current_target_state = CLOSE_RANGE;
     }
     else
     {
         // TODO: Report Error?
         range = 0;
+        current_target_state = NO_TARGET;
     }
 
     lastRange = range;
@@ -436,17 +446,19 @@ unsigned int sampleIR(char numSamples)
 }
 
 /*! **********************************************************************
- * Function: sampleIR(void)
+ * Function: getTargetState(void)
  *
- * Include:
+ * Include: Range.h
  *
- * Description: takes numSamples samples of the IR sensor and returns the average
+ * Description: Returns the target state from the last range reading. E.g.
+ *              Good track, or direction not quite correct as US returned,
+ *              but IR didn't and was within IR range etc.
  *
  * Arguments: None
  *
- * Returns: the average of the samples
+ * Returns: the target state
  *************************************************************************/
 TargetState getTargetState(void)
 {
-    
+    return current_target_state;
 }
