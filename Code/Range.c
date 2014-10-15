@@ -13,7 +13,7 @@
 
 //(Approximate) speed of sound calculation macro
 #define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
-#define IR_CONV(ad) ((unsigned long)237411 / (ad) - 65)
+#define IR_CONV(ad) ((unsigned long)137800 / (ad) - 40)
 #define ULTRA_CONV(tme, T) DIV_65536(tme * (unsigned long)(DIV_65536(519078 * T) + (unsigned long)4362)) - 18
 
 #define NUM_IR_READS 10 //The number of IR reads per measurement
@@ -228,6 +228,7 @@ void calibrateRange(unsigned int reference)
     unsigned int range_US, range_IR, range;
 
     //Begin the Ultrasonic measurement
+    configureRange();
     beginUS();
 
     //Read the temperature
@@ -281,11 +282,14 @@ unsigned int range(void)
     unsigned char temp;
     unsigned int range_US, range_IR, range;
 
+    configureRange();
+    
     //Begin the Ultrasonic measurement
     beginUS();
 
     //Read the temperature
-    temp = getTemp();
+    //temp = getTemp();
+    temp = 25;
 
     //Measure the IR range
     range_IR = rangeIR();
@@ -305,19 +309,24 @@ unsigned int range(void)
         if (range_IR >= 150 && range_IR <= 450)
         {
             range = range_IR;
+             current_target_state = CLOSE_RANGE;
         }
         // CASE 2: Range: 1m - 1.5m
         // Don't trust the IR ranges much
-        else if (range_US >= 1000)
+        else if (range_US >= 1000 && range_IR >=1000)
         {
+            // @TODO Implement IR in here a little?
             range = range_US;
+            current_target_state = OUT_OF_IR;
         }
-        
-        // CASE 3: Range: 450mm - 1m
-        // Average the ultrasonic and IR ranges
-        // TODO: Do we want to average these completely?
-        range = DIV_2(range_US + range_IR);
-        current_target_state = GOOD_TRACK;
+        else
+        {
+            // CASE 3: Range: 450mm - 1m
+            // Average the ultrasonic and IR ranges
+            // TODO: Do we want to average these completely?
+            range = DIV_2(range_US + range_IR);
+            current_target_state = GOOD_TRACK;
+        }
         
     }
     // CASE 4: Range: 1.5m+
@@ -378,7 +387,7 @@ unsigned int rangeIR(void)
     //Convert voltage (0-5v) into range (mm)
     range = IR_CONV(ad_result);
 
-    return range + calibration_offset_IR;
+    return range;
 }
 
 /*! **********************************************************************

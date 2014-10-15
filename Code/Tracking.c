@@ -11,8 +11,8 @@
 #include "Range.h"
 #include "PanTilt.h"
 
+#define diff 5
 #include <delays.h>
-//#include <math.h>
 
 //Variable to store where the sensors are currently pointing
 //DirectionState current_direction;
@@ -46,11 +46,9 @@ void configureTracking(void)
  *************************************************************************/
 void search(void)
 {
-    unsigned int delay = 60000;
-    signed int diff = 1;
     //Vertical and laterial incremental movements
-    static Direction lateral = {1, 0};
-    static Direction vertical = {0, 1};
+    static Direction lateral = {diff, 0};
+    static Direction vertical = {0, diff};
     Direction dir;
     
     dir = getDir();
@@ -75,7 +73,6 @@ void search(void)
     {
         increment(lateral);
     }
-    Delay10TCYx(delay);     //Delay allows time for the servos to move, and stops the ultrasonic breaking
 }
 
 /* **********************************************************************
@@ -110,12 +107,13 @@ void trackingISR(void)
  *************************************************************************/
 TrackingData edge(void)
 {
-    char i;
-    unsigned int delay = 100;       //Delay time in x10us between each range reading
+    char i, j;
+    unsigned int k;
+    unsigned int delay = 0;       //Delay time in x10us between each range reading
     Direction centre;
     TrackingData result;
     Direction edge1, edge2;
-    Direction inc = {100, 0}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
+    Direction inc = {1, 0}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
 
     
 
@@ -125,10 +123,11 @@ TrackingData edge(void)
         for (i = 0; i < 2; i++)
         {
             //Find first edge
-            while (readTargetState() == GOOD_TRACK)
+            for (j = 0; readTargetState() == GOOD_TRACK && j <= 10;j++)
+            //while (readTargetState() == GOOD_TRACK)
             {
-                incrementFine(inc);
-                Delay10TCYx(delay);
+                increment(inc);
+                for (delay = 0; delay<25000;delay++);
             }
             edge1 = getDir();       //Stores the first edge
 
@@ -137,14 +136,23 @@ TrackingData edge(void)
             inc.inclination = -inc.inclination;
 
             //Refind target, and find other edge
-            while (readTargetState() != GOOD_TRACK) incrementFine(inc);
-            while(rangeIR() == GOOD_TRACK) increment(inc);
+            for (j = 0; readTargetState() != GOOD_TRACK && j <= 10;j++)
+            //while (readTargetState() != GOOD_TRACK)
+            {
+                increment(inc);
+            }
+            for(j=0; readTargetState() == GOOD_TRACK && j <= 10; j++)
+            //while (readTargetState() == GOOD_TRACK)
+            {
+                increment(inc);
+            }
             edge2 = getDir();       //Stores the second edge
 
-            centre.azimuth = DIV_2(edge1.azimuth + edge2.azimuth);
-            centre.inclination = DIV_2(edge1.inclination + edge2.inclination);
+            centre.azimuth = (edge1.azimuth + edge2.azimuth)/2;
+            centre.inclination = (edge1.inclination + edge2.inclination)/2;
 
             move(centre);   //Go back to the centre of the target
+            for (k = 0; k < 20000; k++);
             SWAP(inc.azimuth, inc.inclination);     //Test the other degree of freedom
         }
     }
