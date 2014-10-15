@@ -462,3 +462,21 @@ TargetState getTargetState(void)
 {
     return current_target_state;
 }
+
+/*! **********************************************************************
+ * Function: readTargetState(void)
+ *
+ * Include: Range.h
+ *
+ * Description: Does the same thing as getTargetState, but actually performs
+ *              a range() read
+ *
+ * Arguments: None
+ *
+ * Returns: the target state
+ *************************************************************************/
+TargetState readTargetState(void)
+{
+    range();
+    return getTargetState();
+}
