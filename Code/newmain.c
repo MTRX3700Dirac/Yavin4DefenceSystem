@@ -48,6 +48,27 @@ void post_edge(TrackingData *target);
 
 extern unsigned int rangeIR(void);
 
+void transRange(void)
+{
+    int j;
+    char stringUS[] = "US Range:";
+    char stringIR[] = "IR Range:";
+    char newLine[] = "\n\r";
+    char num[5];
+
+    sprintf(num, "%u", rangeUltrasonic());
+
+        transmit(num);
+        transmit(newLine);
+        for (j=0; j<60000;j++);
+        for (j=0; j<60000;j++);
+
+    transmit(stringIR);
+        sprintf(num, "%u", rangeIR());
+        transmit(num);
+        transmit(newLine);
+        transmit(newLine);
+}
 
 /*! **********************************************************************
  * Function: main(void)
@@ -66,83 +87,17 @@ void main() {
     systemState state = {INIT, UNDEF};
     TrackingData target;
     Direction dir;
-    signed int i = -40;
-    unsigned int j;
-    char stringUS[] = "US Range:";
-    char stringIR[] = "IR Range:";
-    char newLine[] = "\n\r";
-    char num[5];
+
+    configureSerial();
+    configureRange();
+
+    for (;;) transRange();
 	
     configureBase();
 
     dir.azimuth = 0;
     dir.inclination = -45;
     move(dir);
-
-    //configureSerial();
-    configureAD();
-
-    for (;;)
-    {
-        // Read IR Range
-        rangeIR();
-
-//        dir.azimuth = -40;
-//        move(dir);
-
-
-        //dir.azimuth = 1;
-        //dir.inclination = 0;
-        //incrementFine(dir);
-//        transmit(stringUS);
-//        sprintf(num, "%u", rangeUltrasonic());
-//
-//        transmit(num);
-//        transmit(newLine);
-//        for (j=0; j<60000;j++);
-//        for (j=0; j<60000;j++);
-//
-//        transmit(stringIR);
-//        sprintf(num, "%u", rangeIR());
-//        transmit(num);
-//        transmit(newLine);
-//        transmit(newLine);
-
-//        for (j=0; j<50000;j++);
-//        for (j=0; j<50000;j++);
-//        for (j=0; j<50000;j++);
-//
-//        dir.azimuth = 40;
-//        move(dir);
-//
-//        for (j=0; j<50000;j++);
-//        for (j=0; j<50000;j++);
-        for (j=0; j<2000;j++);
-
-    }
-
-//    for(;;)
-//    {
-//        dir.azimuth = i;
-//        dir.inclination = i;
-//        move(dir);
-//
-//        // wait
-//        for (j = 0; j<10000;j++);
-//
-//        if (i < 40)
-//        {
-//            i = i + 5;
-//        }
-//        else
-//        {
-//            dir.azimuth = -45;
-//            dir.inclination = -45;
-//            move(dir);
-//            for (j = 0; j<50000;j++);
-//            i = -40;
-//        }
-//    }
 
     
     for (;;)
