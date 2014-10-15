@@ -133,15 +133,19 @@ void move(Direction destination)
  *************************************************************************/
 void increment(Direction difference)
 {
-    global_delay.AzimuthDelay += difference.azimuth * DUTY_CYCLE_TIME / arcRange.azimuth;
-    global_delay.InclinationDelay += difference.inclination * DUTY_CYCLE_TIME / arcRange.inclination;
+//    global_delay.AzimuthDelay += difference.azimuth * DUTY_CYCLE_TIME / arcRange.azimuth;
+//    global_delay.InclinationDelay += difference.inclination * DUTY_CYCLE_TIME / arcRange.inclination;
+//
+//    //Ensure that the delays are still within the max and min duty cycles
+//    validate(&(global_delay.AzimuthDelay));
+//    validate(&(global_delay.InclinationDelay));
+//
+//    //Update the current_direction
+//    current_direction = delay2Direction(global_delay);
+    current_direction.azimuth += difference.azimuth;
+    current_direction.inclination += difference.inclination;
 
-    //Ensure that the delays are still within the max and min duty cycles
-    validate(&(global_delay.AzimuthDelay));
-    validate(&(global_delay.InclinationDelay));
-
-    //Update the current_direction
-    current_direction = delay2Direction(global_delay);
+    move(current_direction);
 }
 
 /*! **********************************************************************
@@ -157,12 +161,16 @@ void increment(Direction difference)
  *************************************************************************/
 void incrementFine(Direction difference)
 {
-    global_delay.AzimuthDelay += difference.azimuth;
-    global_delay.InclinationDelay += difference.inclination;
+    unsigned int az, inc;
+    az = global_delay.AzimuthDelay + difference.azimuth - PWM_HALF_PERIOD;
+    inc = global_delay.InclinationDelay + difference.inclination + LATENCY;
 
     //Ensure that the delays are still within the max and min duty cycles
-    validate(&(global_delay.AzimuthDelay));
-    validate(&(global_delay.InclinationDelay));
+    validate(&az);
+    validate(&inc);
+
+    global_delay.AzimuthDelay = az + PWM_HALF_PERIOD;
+    global_delay.InclinationDelay = inc - LATENCY;
 
     //Update the current_direction
     current_direction = delay2Direction(global_delay);
