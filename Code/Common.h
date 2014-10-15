@@ -51,7 +51,7 @@ typedef enum{NO_TARGET, OUT_OF_IR, BAD_DIR, GOOD_TRACK, CLOSE_RANGE} TargetState
 #define MNML
 
 //Efficient Division macros
-#define DIV_2(v) ((v) >> 1)       //Divide by 2
+#define DIV_2(v) ((v) >> 1)       //Divide by 2, Cannot be used on negative numbers
 #define DIV_4(v) ((v) >> 2)       //Divide by 4
 #define DIV_8(v) ((v) >> 3)       //Divide by 8
 #define DIV_16(v) ((v) >> 4)      //Divide by 16

@@ -174,6 +174,8 @@ void incrementFine(Direction difference)
 
     //Update the current_direction
     current_direction = delay2Direction(global_delay);
+    // Delay
+    for(az = 0;az < 20000;az++);
 }
 
 /*! **********************************************************************
