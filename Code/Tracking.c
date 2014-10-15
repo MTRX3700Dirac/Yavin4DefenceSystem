@@ -115,20 +115,20 @@ TrackingData edge(void)
     inc.inclination = 0;
 
     //Check if the target is in range of the IR
-    if (rangeIR())
+    if (readTargetState() == GOOD_TRACK)
     {
         for (i = 0; i < 2; i++)
         {
             //Find first edge
-            while (rangeIR()) increment(inc);
+            while (readTargetState() == GOOD_TRACK) increment(inc);
 
             //Change direction
             inc.azimuth = -inc.azimuth;
             inc.inclination = -inc.inclination;
 
             //Refind target, and find other edge
-            while (!rangeIR()) increment(inc);
-            while(rangeIR()) increment(inc);
+            while (readTargetState() != GOOD_TRACK) increment(inc);
+            while(rangeIR() == GOOD_TRACK) increment(inc);
         }
     }
 }
