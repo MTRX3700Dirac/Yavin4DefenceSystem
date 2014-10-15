@@ -75,30 +75,52 @@ void main() {
 	
     configureBase();
 
-    dir.azimuth = -20;
-    dir.inclination = 40;
+    dir.azimuth = 0;
+    dir.inclination = -45;
     move(dir);
 
-    configureSerial();
+    //configureSerial();
+    configureAD();
 
     for (;;)
     {
-        transmit(stringUS);
-        sprintf(num, "%u", rangeUltrasonic());
+        // Read IR Range
+        rangeIR();
 
-        transmit(num);
-        transmit(newLine);
-        for (j=0; j<60000;j++);
-        for (j=0; j<60000;j++);
+//        dir.azimuth = -40;
+//        move(dir);
+
+
+        //dir.azimuth = 1;
+        //dir.inclination = 0;
+        //incrementFine(dir);
+//        transmit(stringUS);
+//        sprintf(num, "%u", rangeUltrasonic());
+//
+//        transmit(num);
+//        transmit(newLine);
+//        for (j=0; j<60000;j++);
+//        for (j=0; j<60000;j++);
 //
 //        transmit(stringIR);
 //        sprintf(num, "%u", rangeIR());
 //        transmit(num);
 //        transmit(newLine);
 //        transmit(newLine);
-//        for (j=0; j<60000;j++);
-//        for (j=0; j<60000;j++);
+
+//        for (j=0; j<50000;j++);
+//        for (j=0; j<50000;j++);
+//        for (j=0; j<50000;j++);
+//
+//        dir.azimuth = 40;
+//        move(dir);
+//
+//        for (j=0; j<50000;j++);
+//        for (j=0; j<50000;j++);
+        for (j=0; j<2000;j++);
+
     }
+
 //    for(;;)
 //    {
 //        dir.azimuth = i;
@@ -107,8 +129,6 @@ void main() {
 //
 //        // wait
 //        for (j = 0; j<10000;j++);
-//
-//        //rangeUltrasonic();
 //
 //        if (i < 40)
 //        {
@@ -121,7 +141,6 @@ void main() {
 //            move(dir);
 //            for (j = 0; j<50000;j++);
 //            i = -40;
-//            configureRange();
 //        }
 //    }
 
