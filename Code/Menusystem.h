@@ -5,6 +5,14 @@
  * Created on 7 October 2014, 9:56 PM
  */
 
+#define MENU_ISR 0
+
+extern void initialiseMenu(void);
+extern void serviceMenu(void);
+extern void menuISR(void);
+
+extern void menu(char menuselect);
+
 #define width 80
 #define height 24
 
@@ -18,6 +26,3 @@
 #define stat13 0x30
 #define swap14 0x40
 #define slee15 0x50
-
-extern void menu(char menuselect);
-

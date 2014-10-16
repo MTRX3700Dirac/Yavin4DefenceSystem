@@ -24,6 +24,7 @@
 #include "Temp.h"
 
 #include "Menusystem.h"
+#include "HardUItest.h"
 
 //Define Macros to change the state of the system
 #define NEXT_STATE(s) state.previous = state.current; state.current = s
@@ -46,9 +47,6 @@ void measure_distance(systemState *state, TrackingData *target);
 void find_edge(systemState *state, TrackingData *target);
 void post_edge(TrackingData *target);
 
-void lowISR(void);
-void highISR(void);
-
 extern unsigned int rangeIR(void);
 
 
@@ -65,18 +63,16 @@ extern unsigned int rangeIR(void);
  *
  * Returns: None
  *************************************************************************/
-void main() {
+void main(void) {
     systemState state = {INIT, UNDEF};
     TrackingData target;
     Direction dir;
 
-//<<<<<<< HEAD
+    configureSerial();      //!Call the serial configuration to enable USART Subsysten
     menu(top1);
 
-//=======
     rangeUltrasonic();
     
-//>>>>>>> d456eb5c743f575ecbeef55780d1ccef6fa272a0
     configureBase();
     
     dir.azimuth = 30;
@@ -218,111 +214,3 @@ void find_edge(systemState *state, TrackingData *target)
     //Select next state
     NEXT_STATE_PTR(MEAS);
 }
-
-
-/*! **********************************************************************
- * Function: highVector(void)
- *
- * Include:
- *
- * Description: Sends program control to the high priority ISR
- *
- * Arguments: None
- *
- * Returns: None
- *
- * Remarks: This is an interrupt vector, placing a goto in the
- *          high priority interrupt table to call the high priority ISR
- *************************************************************************/
-#pragma code highPriorityInterruptAddress=0x0008
-void highVector(void)
-{
-    _asm GOTO highISR _endasm
-}
-
-/*! **********************************************************************
- * Function: lowVector(void)
- *
- * Include:
- *
- * Description: Sends program control to the low priority ISR
- *
- * Arguments: None
- *
- * Returns: None
- *
- * Remarks: This is an interrupt vector, placing a goto in the
- *          low priority interrupt table to call the low priority ISR
- *************************************************************************/
-#pragma code lowPriorityInterruptAddress=0x0018
-void lowVector(void)
-{
-    _asm GOTO lowISR _endasm
-}
-
-/*! **********************************************************************
- * Function: lowISR(void)
- *
- * Include: Interrupt_head.h
- *
- * Description: Interrupt Service Routine to check what condition initiated
- *              a low priority interrupt call, and perform the nessicary action
- *
- * Arguments: None
- *
- * Returns: None
- *************************************************************************/
-#pragma interruptlow lowISR
-void lowISR(void)
-{
-    if (SERIAL_INT)
-    {
-        serialISR();
-    }
-    else if (PAN_TILT_ISR)
-    {
-        panTiltISR();
-    }
-    else if (RANGE_INT)
-    {
-        rangeISR();
-    }
-    else if (USER_INT)
-    {
-        userISR();
-    }
-}
-
-/*! **********************************************************************
- * Function: highISR(void)
- *
- * Include:
- *
- * Description: Interrupt Service Routine to check what condition initiated
- *              a high priority interrupt call, and perform the nessicary action
- *
- * Arguments: None
- *
- * Returns: None
- *************************************************************************/
-#pragma interrupt highISR
-void highISR(void)
-{
-    if (PAN_TILT_ISR)
-    {
-        panTiltISR();
-    }
-    else if (SERIAL_INT)
-    {
-        serialISR();
-    }
-    else if (RANGE_INT)
-    {
-        rangeISR();
-    }
-    else if (USER_INT)
-    {
-        userISR();
-    }
-}
-
