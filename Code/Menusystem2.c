@@ -15,28 +15,29 @@ typedef struct SubMenu
     char serialOptions[MAX_NUM_OPTIONS];    //The serial options available in this state
     char inptOptions[MAX_NUM_OPTIONS];      //The user input options available in this state
 
-    struct SubMenu *subMenues;    //Pointers to Available sub menues
     void (*numericFunction)(int);
     void (*defaultFunction)(void);
+    struct SubMenu *subMenues;    //Pointers to Available sub menues
 } SubMenu;
 
 typedef enum{ROOT, SUB, FUNC} MenuLevel;
 
 
 //Sub menu objects:
-static SubMenu Min = { "Set Minimum", "Set Min", {}, {}, {}, setMinAzimuthAngle, 0};
-static SubMenu Max = { "Set Maximum", "Set Max", {}, {}, {}, setMaxAzimuthAngle, 0};
+static SubMenu Min;// = { "Set Minimum", "Set Min", {}, {}, {}, setMinAzimuthAngle, 0};
+static SubMenu Max;// = { "Set Maximum", "Set Max", {}, {}, {}, setMaxAzimuthAngle, 0};
 
-static SubMenu AutoTrack = {"Auto Tracking", "Auto Tracking", {}, {}, {}, 0, 0};
+static SubMenu AutoTrack;// = {"Auto Tracking", "Auto Tracking", {}, {}, {}, 0, 0};
 static SubMenu ManTrack;
 static SubMenu Az;
 static SubMenu Elev;
 
-static SubMenu Root = { "Welcome to Yavin IV Defence System", "Welcome", { '1', '2', '3', '4' }, { &AutoTrack, &ManTrack, &Az, &Elev }, 0, 0 };
+static SubMenu Root;// = { "Welcome to Yavin IV Defence System", "Welcome", { '1', '2', '3', '4' }, { &AutoTrack, &ManTrack, &Az, &Elev }, 0, 0 };
 
 
 static MenuLevel level = ROOT;
-static SubMenu menus[3] = { Root, AutoTrack, Min };
+static SubMenu *test = &Root;
+static SubMenu menus[3];// = { Root, AutoTrack, Min };
 
 
 static void parseInput(char input);
@@ -62,7 +63,9 @@ void initialiseMenu(void)
     //configLCD();
     configUSER();
 
-    
+    menus[0] = Root;
+    menus[1] = AutoTrack;
+    menus[2] = Min;
 }
 
 /*! **********************************************************************
