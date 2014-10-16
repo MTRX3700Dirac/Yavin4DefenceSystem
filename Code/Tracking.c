@@ -76,6 +76,58 @@ void search(void)
 }
 
 /* **********************************************************************
+ * Function: search2(void)
+ *
+ * Include: Tracking.h
+ *
+ * Description: Performs an incrimental change in position. Local variables
+ *              store previous movements to create a search pattern
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+TargetState search2(void)
+{
+    unsigned int delay = 60000;
+    signed int diff = 1;
+    int i;
+    //Vertical and laterial incremental movements
+    static Direction lateral = {1, 0};
+    static Direction vertical = {0, 1};
+    static TargetState previousState;
+    TargetState currentState;
+    Direction dir;
+
+    dir = getDir();
+
+    //If max azimuth range, increment vertical and change azimuth direction
+    if (dir.azimuth > 40 || dir.azimuth < -40)
+    {
+        increment(vertical);                //Move up (or down) vertically 1 degree
+        if (dir.azimuth < 0 && dir.azimuth < 0) lateral.azimuth = diff; //Move in the opposite azimuth
+        if (dir.azimuth > 0 && dir.azimuth > 0) lateral.azimuth = -diff;
+        increment(lateral);
+    }
+    //If max inclination range, change vertical direction and increment vertical
+    else if (dir.inclination > 10 || dir.inclination < -40)
+    {
+        if (dir.inclination < 0 && dir.inclination < 0) vertical.inclination = diff; //Move in the opposite azimuth
+        if (dir.inclination > 0 && dir.inclination > 0) vertical.inclination = -diff;
+        increment(vertical);
+    }
+    //Alse just move in azimuth
+    else
+    {
+        increment(lateral);
+    }
+    for (i = 0; i < 10000; i++);    //Arbitrary delay
+
+    currentState = readTargetState();
+    previousState = readTargetState();
+}
+
+/* **********************************************************************
  * Function: trackingISR(void)
  *
  * Include: Tracking.h

@@ -28,7 +28,7 @@ This serial module also allows users the opportunity to remove or change data th
 
 \section{How To Use It:}
 \begin{itemize}
-	\item Make sure Interrupts.c is included in the project
+	\item Make sure Interrupts.c is included in the build
 	\item Call the configureSerial() function to set up serial
 	\item Call transmit() to begin transmitting something
 	\item Use receiveEmpty() to check if anything has been received
@@ -193,13 +193,14 @@ NOTE: This module is interrupt driven, so the Interrupt.c file must be included 
 
 \section{How To Use It:}
 \begin{itemize}
-	\item Ensure Interrupt.c is included in the project
+	\item Ensure Interrupt.c is included in the build
 	\item Include PanTilt.h in the file you want to use the module
 	\item Call configureBase() function to set up the module
-	\item Call Move() to send the base to a specific direction
-	\item Call increment() or incrementFine() to move the base from that direction
+	\item Call Move() to send the base to an absolute direction
+	\item Call increment() or incrementFine() to move the base to a relative direction (relative to its current)
 	\item CalibratePanTilt() to calibrate the base direction
 	\item RawDir() returns the calibrated direction
+	\item getDir() returns the current direction
 \end{itemize}
 
 \section{List of Public Functions}
@@ -234,6 +235,13 @@ This function takes a single object of type Direction, which contains the increm
 
 \subsubsection{Return Value}
 This function returns nothing
+
+\subsection{IncrementFine}
+\subsubsection{Usage}
+This function is used in lieu of increment when greater angular resolution is required, such as the tracking algorithm.
+
+\subsubsection{Arguments}
+This function takes a single object of type Direction (defined in common.h) which represents the desired relative direction. Unlike the increment function this argument is \emph{not in degrees}, but the smallest possible resolution, individual clock ticks on the high time. For the 10MHz clock on the minimal board this is expected to be ~0.04deg.
 
 \section{Example Code:}
 \begin{lstlisting}
