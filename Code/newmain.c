@@ -49,6 +49,27 @@ void post_edge(TrackingData *target);
 
 extern unsigned int rangeIR(void);
 
+void transRange(void)
+{
+    int j;
+    char stringUS[] = "US Range:";
+    char stringIR[] = "IR Range:";
+    char newLine[] = "\n\r";
+    char num[5];
+
+    sprintf(num, "%u", rangeUltrasonic());
+
+        transmit(num);
+        transmit(newLine);
+        for (j=0; j<60000;j++);
+        for (j=0; j<60000;j++);
+
+    transmit(stringIR);
+        sprintf(num, "%u", rangeIR());
+        transmit(num);
+        transmit(newLine);
+        transmit(newLine);
+}
 
 /*! **********************************************************************
  * Function: main(void)
@@ -68,21 +89,29 @@ void main(void) {
     TrackingData target;
     Direction dir;
 
+<<<<<<< HEAD
     configureSerial();      //!Call the serial configuration to enable USART Subsysten
     menu(top1);
 
     rangeUltrasonic();
     
+=======
+    configureSerial();
+    configureRange();
+
+    for (;;) transRange();
+	
+>>>>>>> 6d2f10e32723cb638cc08e215c543e8a6e3044ad
     configureBase();
-    
-    dir.azimuth = 30;
-    dir.inclination = -20;
+
+    dir.azimuth = 0;
+    dir.inclination = -45;
     move(dir);
-    
-    for(;;);
+
     
     for (;;)
     {
+        if (TMR1H > 10000) serviceMenu();
         switch (state.current)
         {
             case INIT:

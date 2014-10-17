@@ -11,6 +11,7 @@ extern void initialiseMenu(void);
 extern void serviceMenu(void);
 extern void menuISR(void);
 
+<<<<<<< HEAD
 extern void menu(char menuselect);
 
 #define width 80
@@ -26,3 +27,8 @@ extern void menu(char menuselect);
 #define stat13 0x30
 #define swap14 0x40
 #define slee15 0x50
+=======
+extern void menu(void);
+
+#define MENU_H
+>>>>>>> 6d2f10e32723cb638cc08e215c543e8a6e3044ad

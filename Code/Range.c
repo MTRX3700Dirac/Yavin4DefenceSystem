@@ -9,17 +9,19 @@
 
 #include "Common.h"
 #include "Temp.h"
+#include "p18f4520.h"
 
 //(Approximate) speed of sound calculation macro
 #define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
-#define IR_CONV(ad) ((unsigned long)237411 / (ad) - 65)
+#define IR_CONV(ad) ((unsigned long)137800 / (ad) - 40)
+#define ULTRA_CONV(tme, T) DIV_65536(tme * (unsigned long)(DIV_65536(519078 * T) + (unsigned long)4362)) - 18
 
 #define NUM_IR_READS 10 //The number of IR reads per measurement
 
 //Hardware Related macros
 #define INIT_PIN PORTCbits.RC3
 #define INIT_TRIS TRISCbits.RC3
-#define CCP1_INPT TRISCbits.RC1
+#define CCP1_INPT TRISCbits.RC2
 
 //Static calibration offset
 static signed int calibration_offset = 0;
@@ -34,6 +36,8 @@ static unsigned int lastRange = 0;
 signed int calibration_offset_IR = 0;
 signed int calibration_offset_US = 0;
 
+TargetState current_target_state;
+
 //Private function prototypes:
 void beginUS(void);
 unsigned int rangeIR(void);
@@ -43,14 +47,14 @@ void configureRange(void);
 
 unsigned int sampleIR(char numSamples);
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: configureAD(void)
  *
  * Include: Range.h
  *
  * Description: Configures the ADC,
  * In ADCON1, we set right-justified mode, and select AN0 as the input channel.
- * In ADCON0, we set a sample rate of Fosc/64, select AN0, and enable the ADC.
+ * In ADCON0, we set a sample rate of Fosc/8, select AN0, and enable the ADC.
  * Arguments: None
  *
  * Returns: None
@@ -61,15 +65,14 @@ void configureAD(void)
     TRISA = 0xFF;
 
     //Write the configuration values into the configuration registers
-    ADCON1 = 0x8E;
+    ADCON1 = 0x8E;      // ADFM set
     ADCON0 = 0x41;
     
-
     //Arbitrary wait period to allow the ADC to initialise
     for (i = 0; i < 1000; i++);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: configureRange(void)
  *
  * Include: Range.h
@@ -90,8 +93,8 @@ void configureRange(void)
     INTCONbits.GIEH = 1;
     INTCONbits.GIEL = 1;
     RCONbits.IPEN = 1;
-    
-    PIE1bits.CCP1IE = 1;    //Enable CCP1 interrupts
+
+    readTemp();
 
     //Make sure the AD is configured
     configureAD();
@@ -100,23 +103,23 @@ void configureRange(void)
     INIT_TRIS = 0;  //Make the INIT
 
     //Open  Timer
-    config = T3_16BIT_RW & T3_SOURCE_INT & T3_PS_1_4 & T3_SYNC_EXT_OFF;
-    OpenTimer3(config);
+    config = T1_16BIT_RW & T1_SOURCE_INT & T1_OSC1EN_OFF & T1_PS_1_1 & T1_SYNC_EXT_OFF &TIMER_INT_ON;
+    OpenTimer1(config);
 
     //Configure CCP Source timer
-    config = T1_CCP1_T3_CCP2;
-    SetTmrCCPSrc(config);
+//    config = T1_CCP1_T3_CCP2;
+//    SetTmrCCPSrc(config);
 
-    config = CAPTURE_INT_ON | CAP_EVERY_RISE_EDGE;
+    config = CAPTURE_INT_ON & CAP_EVERY_RISE_EDGE;
 
     //CloseCapture1, which will clear any interrupt flags etc
-    CloseCapture2();
+    CloseCapture1();
 
     //Open the input capture on compare1
-    OpenCapture2(config);
+    OpenCapture1(config);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: beginUS(void)
  *
  * Include: ultrasonic.h
@@ -129,6 +132,8 @@ void configureRange(void)
  *************************************************************************/
 void beginUS(void)
 {
+    CCPR1H = 0;
+    CCPR1L = 0;
     //Set the INIT_PIN high to begin ultrasonic 'read'
     INIT_PIN = 1;
 
@@ -136,11 +141,13 @@ void beginUS(void)
     TMR1H = 0;
     TMR1L = 0;
 
+    PIE1bits.CCP1IE = 1;
+
     //Set the measuring flag
     measuringUS = 1;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: rangeUS(unsigned char temp)
  *
  * Include: ultrasonic.h
@@ -155,21 +162,23 @@ void beginUS(void)
 unsigned int rangeUS(unsigned char temp)
 {
     unsigned int range;
+    unsigned long int t;
     //Continue to poll while measurement is still in progress
-    while (measuringUS) //&& TMR3H < 0xB0);
+    while (measuringUS);
 
-    //if (TMR3H > 0xB0) return 0;
+    if (CCPR1 < 0x1770) return 0;
 
     //Perform calculation (ReadCapture in us, speed of sound in m/s->um)
     // um/1024 = ~mm
-    range = ReadCapture2() * SPD_SND(temp) * (long int)1000 / (long int)FOSC_4;
-    //range = DIV_1024(ReadCapture1() * SPD_SND(temp));
-    //DIV_1024(ReadCapture1() * speed_sound(tempx2));
+
+    t = DIV_4096((unsigned long int) CCPR1 * (unsigned long int) 285) - 18;
+
+    range = (unsigned int) t;
     
     return range;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: rangeISR(void)
  *
  * Include: ultrasonic.h
@@ -183,14 +192,24 @@ unsigned int rangeUS(unsigned char temp)
  *************************************************************************/
 void rangeISR(void)
 {
-    if (CCP2_INT)
+    if (CCP1_INT && CCPR1 > 0x5DC)
     {   //Checks if the CCP2 module fired the interrupt
         measuringUS = 0;
         INIT_PIN = 0;
+        PIE1bits.CCP1IE = 0;
     }
+    if (TMR1_INT)
+    {
+        measuringUS = 0;
+        CCPR1 = 0;
+        INIT_PIN = 0;
+        PIR1bits.TMR1IF = 0;
+        PIE1bits.TMR1IE = 0;
+    }
+    CCP1_CLEAR;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: calibrateRange(unsigned int reference)
  *
  * Include:
@@ -209,6 +228,7 @@ void calibrateRange(unsigned int reference)
     unsigned int range_US, range_IR, range;
 
     //Begin the Ultrasonic measurement
+    configureRange();
     beginUS();
 
     //Read the temperature
@@ -230,7 +250,7 @@ void calibrateRange(unsigned int reference)
     }
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: speed_sound(unsigned char tempx2)
  *
  * Include:
@@ -246,7 +266,7 @@ unsigned int rawRange(void)
     return lastRange;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: range()
  *
  * Include:
@@ -262,11 +282,14 @@ unsigned int range(void)
     unsigned char temp;
     unsigned int range_US, range_IR, range;
 
+    configureRange();
+    
     //Begin the Ultrasonic measurement
     beginUS();
 
     //Read the temperature
-    temp = readTemp();
+    //temp = getTemp();
+    temp = 25;
 
     //Measure the IR range
     range_IR = rangeIR();
@@ -281,15 +304,43 @@ unsigned int range(void)
         range_US += calibration_offset_US;
         range_IR += calibration_offset_IR;
 
-        //Average the ultrasonic and IR ranges
-        range = DIV_2(range_US + range_IR);
+        // CASE 1: Range: 150-450mm
+        // Ignore US reading as it is inaccurate at these ranges
+        if (range_IR >= 150 && range_IR <= 450)
+        {
+            range = range_IR;
+             current_target_state = CLOSE_RANGE;
+        }
+        // CASE 2: Range: 1m - 1.5m
+        // Don't trust the IR ranges much
+        else if (range_US >= 1000 && range_IR >=1000)
+        {
+            // @TODO Implement IR in here a little?
+            range = range_US;
+            current_target_state = OUT_OF_IR;
+        }
+        else
+        {
+            // CASE 3: Range: 450mm - 1m
+            // Average the ultrasonic and IR ranges
+            // TODO: Do we want to average these completely?
+            range = DIV_2(range_US + range_IR);
+            current_target_state = GOOD_TRACK;
+        }
+        
     }
+    // CASE 4: Range: 1.5m+
+    // Rely on Ultrasound
     else if (range_US)
     {
         //Calibrate the ultrasonic range
         range_US += calibration_offset_US;
-        
+       
         range = range_US;
+
+        //Check whether No IR is because out of IR range, or just bad direction
+        if (range > 1500) current_target_state = OUT_OF_IR;
+        else current_target_state = BAD_DIR;
     }
     else if (range_IR)
     {
@@ -297,17 +348,20 @@ unsigned int range(void)
         range_IR += calibration_offset_IR;
         
         range = range_IR;
+        current_target_state = CLOSE_RANGE;
     }
     else
     {
+        // TODO: Report Error?
         range = 0;
+        current_target_state = NO_TARGET;
     }
 
     lastRange = range;
     return range;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: rangeIR(void)
  *
  * Include: 
@@ -333,15 +387,16 @@ unsigned int rangeIR(void)
     //Convert voltage (0-5v) into range (mm)
     range = IR_CONV(ad_result);
 
-    return range + calibration_offset_IR;
+    return range;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: rangeUS(void)
  *
  * Include:
  *
- * Description: performs an ultrasonic range reading
+ * Description: performs an ultrasonic range reading.
+ * Pins:
  *
  * Arguments: None
  *
@@ -350,10 +405,7 @@ unsigned int rangeIR(void)
 unsigned int rangeUltrasonic(void)
 {
     unsigned int rng;
-    char temp;
 
-    for (;;)
-    {
         configureRange();
 
         beginUS();
@@ -361,12 +413,14 @@ unsigned int rangeUltrasonic(void)
         rng = rangeUS(25);
 
         INIT_PIN = 0;
+        CloseCapture1();
+        CloseTimer1();
 
-        temp = 1;
-    }
+        return rng;
+
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: sampleIR(void)
  *
  * Include:
@@ -398,4 +452,40 @@ unsigned int sampleIR(char numSamples)
     //Average all samples taken
     temp = sum / (unsigned int)numSamples;
     return temp;
+}
+
+/*! **********************************************************************
+ * Function: getTargetState(void)
+ *
+ * Include: Range.h
+ *
+ * Description: Returns the target state from the last range reading. E.g.
+ *              Good track, or direction not quite correct as US returned,
+ *              but IR didn't and was within IR range etc.
+ *
+ * Arguments: None
+ *
+ * Returns: the target state
+ *************************************************************************/
+TargetState getTargetState(void)
+{
+    return current_target_state;
+}
+
+/*! **********************************************************************
+ * Function: readTargetState(void)
+ *
+ * Include: Range.h
+ *
+ * Description: Does the same thing as getTargetState, but actually performs
+ *              a range() read
+ *
+ * Arguments: None
+ *
+ * Returns: the target state
+ *************************************************************************/
+TargetState readTargetState(void)
+{
+    range();
+    return getTargetState();
 }

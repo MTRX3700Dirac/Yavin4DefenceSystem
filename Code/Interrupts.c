@@ -81,15 +81,15 @@ void lowISR(void)
     {
         serialISR();
     }
-    else if (PAN_TILT_ISR)
+    if (PAN_TILT_ISR)
     {
         panTiltISR();
     }
-    else if (RANGE_INT)
+    if (RANGE_INT)
     {
         rangeISR();
     }
-    else if (USER_INT)
+    if (USER_INT)
     {
         userISR();
     }
@@ -114,15 +114,15 @@ void highISR(void)
     {
         panTiltISR();
     }
-    else if (SERIAL_INT)
+    if (SERIAL_INT)
     {
         serialISR();
     }
-    else if (RANGE_INT)
+    if (RANGE_INT)
     {
         rangeISR();
     }
-    else if (USER_INT)
+    if (USER_INT)
     {
         userISR();
     }

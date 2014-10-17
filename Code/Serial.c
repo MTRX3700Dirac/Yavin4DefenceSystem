@@ -24,6 +24,7 @@
 #define NL 0x0A
 #define ESC 0x1B
 #define TAB 0x09
+#define BS 0x07
 
 static volatile circularBuffer receive_buffer;
 static volatile circularBuffer transmit_buffer;
@@ -52,8 +53,8 @@ void configureSerial(void)
     carriageReturn = 0;
 
     //Open the USART module
-    OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
-    //OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 64);
+    //OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
+    OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 64);
 }
 
 /*! **********************************************************************
@@ -77,6 +78,26 @@ void transmit(char *string)
 
     //Return if there is nothing to transmit
     if (empty(transmit_buffer)) return;
+
+    //Enable TX interrupts
+    TX_INT_ENABLE();
+}
+
+/*! **********************************************************************
+ * Function: transChar(char c)
+ *
+ * Include:
+ *
+ * Description: Transmits a single character
+ *
+ * Arguments: c - character to transmit
+ *
+ * Returns: None
+ *************************************************************************/
+void transChar(char c)
+{
+    //Push character onto the transmit buffer
+    push(c, transmit_buffer);
 
     //Enable TX interrupts
     TX_INT_ENABLE();
@@ -208,6 +229,7 @@ char transmitted(void)
 void serialISR(void)
 {
     unsigned char data;
+    char last;
     
     //Check which serial interrupt instance was thrown
     if (TX_INT)
@@ -228,12 +250,21 @@ void serialISR(void)
     else if (RC_INT)
     {
         data = ReadUSART();
+        last = peek(receive_buffer);
 
-        //push the received data onto the received buffer
-        push(data, receive_buffer);
-        if (data == CR) carriageReturn++;
+        //Allows the user to remove/change transmitted data
+        if (data == BS && last != CR && last != ESC && last != NL )
+        {
+            pop(receive_buffer);
+        }
+        else
+        {
+            //push the received data onto the received buffer
+            push(data, receive_buffer);
+            if (data == CR) carriageReturn++;
 
-        //Clear interrupt flag
-        RC_INT_CLEAR();
+            //Clear interrupt flag
+            RC_INT_CLEAR();
+        }
     }
 }

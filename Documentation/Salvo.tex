@@ -1,0 +1,31 @@
+\documentclass[]{article}
+
+%opening
+\title{Using Salvo}
+\author{Grant Louat}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document describes how to set up salvo to run on an MPLAB X project.
+\end{abstract}
+
+\section{Installing Salvo:}
+First download and install salvo from here: http://www.pumpkininc.com/content/get\_lite.htm. Simply enter some details and download the installation executable. \newline
+Make sure you also download the file named salvo-lite-pic-3.2.3-c.zip.
+
+\section{Before Setting up a Project:}
+There is a compatibility issue with the c18 compiler we are using and salvo. This is resolved in the salvo-lite-pic-3.2.3-c.zip file. So go into ../salvo/lib/mcc18/ directory and copy all the files in the zip folder into this directory (replace the ones that are currently there).
+
+\section{Setting up a Project:}
+There are a couple of things you must do in the project before you can begin using salvo. First set up a new project (using c18 compiler), and the follow the following steps:
+\begin{enumerate}
+	\item Go to file->Project Properties. Then under c18->mcc18 and on the include directories tab click ..., and navigate to ../salvo/inc/. This tells the compiler where to find the salvo header files.
+	\item Then in the project window (where you can see you source files) right click on libraries and click Add Library/Object file. Then in the window navigate to ../salvo/lib/mcc18/sfc18snt.lib.
+	\item 
+\end{enumerate}
+To use the salvo libraries
+
+\end{document}

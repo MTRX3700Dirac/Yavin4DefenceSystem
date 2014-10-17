@@ -81,6 +81,7 @@ void configLCD(void)
     
 }
 
+<<<<<<< HEAD
 
 void lcdLine1(void){}
 void lcdLine2(void){}
@@ -92,3 +93,20 @@ void lcdBusy(void){}
 void lcdWriteNibble(char *betelguese){}
 void lcdRead(void){}
 void delayXCycles(char delay){}
+=======
+/*! **********************************************************************
+ * Function: displayLCD(char *string)
+ *
+ * Include: LCD.h
+ *
+ * Description: Displays the given string on the LCD
+ *
+ * Arguments: string - pointer to the data to display
+ *
+ * Returns: None
+ *************************************************************************/
+void displayLCD(char *string)
+{
+    
+}
+>>>>>>> 6d2f10e32723cb638cc08e215c543e8a6e3044ad

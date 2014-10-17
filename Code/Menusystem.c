@@ -1,7 +1,24 @@
 #include "Common.h"
 #include "Serial.h"
 #include "User_Interface.h"
+<<<<<<< HEAD
 #include "Menusystem.h"
+=======
+
+#define width 80
+#define height 24
+
+#define top1 0xFF
+#define auto11 0x10
+#define manu12 0x20
+#define manugoto121 0x21
+#define manusetl122 0x22
+#define manushow123 0x23
+//#define manugoup124 0x24
+#define stat13 0x30
+#define swap14 0x40
+#define slee15 0x50
+>>>>>>> 6d2f10e32723cb638cc08e215c543e8a6e3044ad
 
 //Global
 const static rom char tMESSAGE[] = "Hello 123\n";
