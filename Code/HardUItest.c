@@ -11,6 +11,29 @@ char LEDson[]={0x00, 0x08, 0x0C, 0x0E, 0x0F};
 char * LEDtestpntr;
 char * LEDsonpntr;
 
+const static rom char LCDWELCOME1[] = "Welcome to Yavin";
+const static rom char LCDWELCOME2[] = "Orbital Tracking";
+
+const static rom char TOPMESSAGE1[] = "Top Menu  xxxxx";
+const static rom char TOPMEAUTO12[] = " Auto Tracking ";
+const static rom char TOPMEMANU22[] = "Manual Tracking";
+const static rom char TOPMESTAT32[] = "    Status     ";
+const static rom char TOPMESWAP42[] = "  Remote Mode  ";
+const static rom char TOPMESLEE52[] = "     Sleep     ";
+
+const char TOPMEHOLDER[] = {TOPMEAUTO12, TOPMEMANU22, TOPMESTAT32, TOPMESWAP42, TOPMESLEE52};
+char *topMenuPtr;
+
+const static rom char AUTOMENUTO1[] = "Auto Mode xxxxx";
+const static rom char AUTOMENUV12[] = "R:** E:***A:***";
+const static rom char AUTOMENUV22[] = "Range:   ****mm";
+const static rom char AUTOMENUV32[] = "Elevation: ***o";
+const static rom char AUTOMENUV42[] = "Azimuth:   ***o";
+const static rom char AUTOMENUV52[] = " Stop Tracking ";
+
+const char AUTOMHOLDER[] = {AUTOMENUV12, AUTOMENUV22, AUTOMENUV32, AUTOMENUV42, AUTOMENUV52};
+char *autoMenuPtr;
+
 void PORTconfig(void);
 void LEDselect(char val);
 void setup(void);
