@@ -9,7 +9,7 @@
 
 #include "Common.h"
 
-//Any module that uses interrupts will need to be included heree:
+//Any module that uses interrupts will need to be included here:
 #include "Tracking.h"
 #include "Range.h"
 #include "User_Interface.h"
@@ -17,6 +17,7 @@
 #include "PanTilt.h"
 #include "Temp.h"
 #include "Menusystem.h"
+//Add your module header file here...
 
 //ISR prototypes
 void lowISR(void);
@@ -93,6 +94,7 @@ void lowISR(void)
     {
         userISR();
     }
+    //Add additional checks here
 }
 
 /*! **********************************************************************
@@ -126,4 +128,5 @@ void highISR(void)
     {
         userISR();
     }
+    //Add additional checks here
 }

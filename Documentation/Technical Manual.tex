@@ -2,11 +2,13 @@
 
 \usepackage{listings}
 \usepackage{bookmark}
+\usepackage{graphicx}
+\usepackage{pdfpages}
 
 
 % Title Page
 \title{Technical Manual}
-\author{}
+\author{Grant Louat}
 
 
 \begin{document}
@@ -15,6 +17,99 @@
 \begin{abstract}
 	This document describes how each of the modules (including both software and hardware) work, and how to use them.
 \end{abstract}
+
+\part{Overview}
+\chapter{Software Overview}
+\section{Description}
+This system is a state machine; there is a primary loop in main() which repeatedly calls functions based on the current state. Each of these functions can alter the state to transition based on their function.
+
+\section{State Functions}
+\begin{itemize}
+	\item Initialisation
+	\item Search - Tracking Module
+	\item Track - Tracking Module
+\end{itemize}
+
+\part{Functionality}
+\chapter{Factory Mode}
+\section{Description}
+The Yavin IV Death Star Tracker includes a Factory Mode not available to general users. This mode is used for in-factory calibration and testing.
+
+\section{Entering/Exiting the Factory Mode}
+The factory mode can be entered by ... Similarly ... will exit the factory mode, and the system will return to the standard operational mode.
+
+\section{Functionality}
+The Factory Mode adds the following functionality and commands to the standard Mode
+\begin{itemize}
+	\item
+\end{itemize}
+
+
+\part{Software}
+
+\chapter{Interrupts}
+\section{Description}
+Many of the functions within different modules use interrupts, however there is only one service routine for high and low priority. Thus the ISR's and vectors have been moved into their own separate module, which call Module scope ISR functions.
+
+\section{How It Works:}
+For convenience interrupt macros have been defined in Common.h for each possible interrupt call. Querying one of these macros will return true if that interrupt fired an interrupt. These macros look like: TX\_INT, CCP1\_INT.\newline
+Each module defines a macro (in its header file) which indicates which interrupts that module is using, by or-ing together the previously mentioned macros. When an interrupt fires it checks these macros for each module, and if true calls a 'module scope ISR'. These macros look like: SERIAL\_INT, RANGE\_INT etc. \newline
+These module scope ISR's are just functions defined within each interrupt driven module, which are called whenever an interrupt associated with that macro is called. Thus these functions act as ISR's for the module without conflicting with anything else in the program.
+
+\section{How To Use It:}
+Follow the following steps to use an interrupt within a module.
+\begin{enumerate}
+	\item Make sure Interrupts.c is included in the build
+	\item Define/Update the module macro in the module header file
+	\item Check header file is included in Interrupts.c
+	\item Check module macro is tested in ISR's (High and low ISR's)
+	\item Use module ISR as general ISR
+\end{enumerate}
+
+\section{List of Public Functions}
+This module has no public functions, or any real public interface as nothing within this module is called by anything within the program. Rather the list of included header files, and the macro checks must be updated when a new module is added.
+
+\section{Example Code}
+\subsection{Defining Module macro}
+\begin{lstlisting}
+//Serial Interrupt macro Defn. within Serial.h
+#define SERIAL_INT (TX_INT || RC_INT)
+\end{lstlisting}
+
+\subsection{Updating Interrupt Includes}
+\begin{lstlisting}
+//Includes at the top of Interrupt.c
+//Any module that uses interrupts will need to be included here:
+#include "Tracking.h"
+#include "Range.h"
+#include "User_Interface.h"
+#include "Serial.h"
+#include "PanTilt.h"
+#include "Temp.h"
+#include "Menusystem.h"
+//Add your module header file here...
+\end{lstlisting}
+
+\subsection{Updating ISR Check}
+\begin{lstlisting}
+if (SERIAL_INT)
+{
+serialISR();
+}
+if (PAN_TILT_ISR)
+{
+panTiltISR();
+}
+if (RANGE_INT)
+{
+rangeISR();
+}
+if (USER_INT)
+{
+userISR();
+}
+//Add additional checks here
+\end{lstlisting}
 
 \chapter{Serial}
 \section{Description:}
@@ -207,8 +302,11 @@ NOTE: This module is interrupt driven, so the Interrupt.c file must be included 
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
 \subsection{configureBase}
+\subsubsection{Description:}
+Configures the Pan Tilt module. After this function is called the module moves to its default position. Then the module is fully possibly moving to any desired direction with the move or the increment functions. This function need only be called once at the beginning of the program (or whenever you want to start using the PanTilt).
+
 \subsubsection{Usage:}
-This function is used to setup the Pan Tilt module so that one can direct the sensors to any direction desired. After this function is called the module moves to its default position. Then the module is fully possibly moving to any desired direction with the move or the increment functions. This function need only be called once at the beginning of the program (or whenever you want to start using the PanTilt).
+This function is used to setup the Pan Tilt module so that one can direct the sensors to any direction desired. 
 
 \subsubsection{Arguments:}
 This function takes no arguments.
@@ -220,6 +318,9 @@ This function takes no arguments.
 \subsubsection{Description}
 This function commands the pan tilt mechanism to the given position. For this function (0, 0) is defined as the midpoint in both the elevation and azimuth. In azimuth this means pointing along the length of the pan tilt mechanism, and in elevation this means pointing 45 degrees above the ground.
 
+\subsubsection{Usage}
+This function is used when you want to point at an absolute direction.
+
 \subsubsection{Arguments}
 This function takes a single object of type direction which contains the desired azimuth and elevation in degrees
 
@@ -230,6 +331,9 @@ This function returns nothing.
 \subsubsection{Description}
 This function adds an offset onto the current pan tilt direction
 
+\subsubsection{Usage}
+This function is used when you want to move the direction pointed to by some amount, without particularly caring about the absolute direction.
+
 \subsubsection{Arguments}
 This function takes a single object of type Direction, which contains the incremental value in both the azimuth and elevation directions in degrees.
 
@@ -237,11 +341,17 @@ This function takes a single object of type Direction, which contains the increm
 This function returns nothing
 
 \subsection{IncrementFine}
+\subsubsection{Description:}
+This function does the same thing as the Increment function, but it increments in the smallest possible resolution of the pan Tilt module, not degrees.
+
 \subsubsection{Usage}
 This function is used in lieu of increment when greater angular resolution is required, such as the tracking algorithm.
 
 \subsubsection{Arguments}
 This function takes a single object of type Direction (defined in common.h) which represents the desired relative direction. Unlike the increment function this argument is \emph{not in degrees}, but the smallest possible resolution, individual clock ticks on the high time. For the 10MHz clock on the minimal board this is expected to be ~0.04deg.
+
+\subsubsection{Return Value}
+None
 
 \section{Example Code:}
 \begin{lstlisting}
@@ -270,46 +380,153 @@ void main()
 The Temperature module controls the sampling and calibration of the temperature sensor.
 
 \section{How It Works:}
+The temperature module is very simply and mostly revolves around the AD sampling of the temperature sensor. The temperature is not expected to fluctuate much over a short period of time. For this reason the temperature is only sampled over reasonably long intervals (e.g. a minute). The temperature module simply stores the last measured temperature and returns this in the getTemp() function.
 
 \section{How To Use It:}
 \begin{itemize}
-	\item 
+	\item Include Temp.h in your source code file
+	\item Call configureTemp() to setup the module
+	\item Call readTemp() or readTempx2() to re-sample the temperature
+	\item Call getTemp() to return the last sample temperature
 \end{itemize}
 
 \section{List of Public Functions}
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
-\subsection{}
+\subsection{configureTemp}
+\subsubsection{Description}
+Configures the temperature module so that it can be used
+
 \subsubsection{Usage:}
+This function is used once at the beginning of the program to configure the temperature module for use.
 
 \subsubsection{Arguments:}
+None
 
 \subsubsection{Return Value:}
+None
+
+\subsection{rawTemp}
+\subsubsection{Description:}
+This function returns the raw temperature, the sensor data without any calibration offset.
+
+\subsubsection{Usage}
+This function is primarily for when the user wants to display the raw temperature reading
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value}
+The raw temperature reading in degrees
+
+\subsection{readTemp}
+\subsubsection{Description}
+This function takes a sensor read of the temperature, returns the result and stores it in the temperature module
+
+\subsubsection{Usage}
+This function is called periodically to re-sample the temperature, to account for environmental differences during use.
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value}
+The temperature read by the sensor (and calibrated).
+
+\subsection{readTempx2}
+\subsubsection{Description}
+This function does the same thing as readTemp, but it returns twice the temperature in degrees, allowing for better resolution.
+
+\subsubsection{Usage}
+Used in lieu of readTemp when better resolution is required
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value}
+Twice the temperature x2
+
+\subsection{calibrateTemp}
+\subsubsection{Description}
+Calibrates the current sensor reading to a given value
+
+\subsubsection{Usage}
+Used to calibrate an offset in the temperature sensor module
+
+\subsubsection{Arguments}
+Takes the temperature to calibrate the temperature sensor to
+
+\subsubsection{Return Value}
+None
+
+\subsection{getTemp}
+\subsubsection{Description}
+Returns the temperature from the last sample taken
+
+\subsubsection{Usage}
+Used to get the temperature without having to re-sample the temperature sensor.
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value}
+The temperature from the last sample
 
 \section{Example Code:}
+\begin{lstlisting}
+#include "Temp.h"
+
+void main(void)
+{
+	unsigned char temperature;
+	
+	configureTemp();
+	calibrateTemp(25); //Calibrate temperature sensor to 25deg
+	
+	temperature = readTemp();
+	
+	//Just keeps returning the same temperature
+	for (;;) temperature = getTemp();
+}
+\end{lstlisting}
 
 \chapter{Tracking}
 \section{Description}
 The tracking module contains the high level tracking and search algorithms used by the system. It then uses the Pan Tilt and Range modules to enact these modules.
 
 \section{How It Works:}
+The Tracking module contains two primary functions: search and track. Each of these functions is 'incremental' in nature. This means a single call will perform a single 'step', and these functions are called continuously to perform a constant action. \newline
+The search algorithm is based on a simple raster like scan. The tracking algorithm tracks the centre of the target by finding the edges in both azimuth and elevation, and moving back to the centre. \newline
+This module makes use of the panTilt, range and temp modules which in turn use interrupts. This means that Interrupts.c must be included it the build for the tracking module to work. A user need not worry about configuring the modules used by tracking, as everything is set up in the configureTracking function
 
 \section{How To Use It:}
 \begin{itemize}
-	\item 
+	\item Include "Tracking.h"
+	\item Call configureTracking()
+	\item Repeatedly Call Search()
 \end{itemize}
 
 \section{List of Public Functions}
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
-\subsection{}
+\subsection{ConfigureTracking}
+\subsubsection{Description:}
+Configures the tracking module, and all subsequent modules used by the tracking module.
+
 \subsubsection{Usage:}
+This function must be called before making use of any functions within the tracking module.
 
 \subsubsection{Arguments:}
+None
 
 \subsubsection{Return Value:}
+None
+
+\subsection{Search}
+\subsubsection{Description:}
+Performs a single increment of the Pan Tilt mechanism in a defined search pattern.
 
 \section{Example Code:}
+
 
 \chapter{User\_Interface}
 \section{Description}
@@ -402,5 +619,87 @@ Below is a definitive list of all the public functions contained in this module,
 \subsubsection{Return Value:}
 
 \section{Example Code:}
+
+\part{Hardware}
+\chapter{Assembly Instructions}
+Follow the following instructions to assemble the system. (see the following sections for detailed information about each step)
+
+\begin{enumerate}
+	\item Connect the Power
+	\item Connect the Servos
+	\item Connect the ultrasonic
+	\item Connect the IR sensor
+	\item Connect the Temperature sensor
+	\item Plug in Serial cable (if used)
+\end{enumerate}
+
+\section{Power Connections}
+The system runs of a 5v regulated line powered by a 9v battery. The ultrasonic sensor has its own regulator to account for its power surges, so it is treated differently. All other components can be powered off the remaining 5v bus.
+
+\begin{enumerate}
+	\item Make sure battery is inserted, and has charge
+	\item 
+\end{enumerate}
+
+\chapter{Pin Connections}
+\subsection{Ultrasonic}
+The ultrasonic sensor uses the following pins: 
+\begin{itemize}
+	\item INIT - RC3 (Ultrasound pin 4)
+	\item ECHO - RC2 (Ultrasound pin 7)
+	\item V+ - Ultrasonic 5v bus  (Ultrasound pin 9)
+	\item GND - Ultrasonic 0v (Ultrasound pin 1)
+\end{itemize}
+Refer to the diagrams \ref{PanTiltPins} below for the Ultrasonic and other pan tilt module pins.
+
+\includepdf[pages={2}]{"../Datasheets/Servos and PanTilt/Notes_on_Pan-Tilt_Assembly"};
+\label{PanTiltPins}
+
+\subsection{IR}
+The IR uses the following pins:
+\begin{itemize}
+	\item Output - AN0 (IR pin 1)
+	\item Vcc - 5v bus (IR pin 3)
+	\item GND - 0v bus (IR pin 2)
+\end{itemize}
+
+\subsection{Servos}
+The servos make use of the following pins:
+\begin{itemize}
+	\item PDM (Az.) - RC0 (YEL)
+	\item PDM (El.) - RC1 (YEL)
+	\item V+ - 5v bus (RED)
+	\item GND - 0v bus (BWN)
+\end{itemize}
+
+\subsection{Temperature Sensor}
+The temperature sensor makes use of the following pins:
+\begin{itemize}
+	\item Output - AN1 
+	\item V+ - 5v bus
+	\item GND - 0v bus
+\end{itemize}
+Refer to the diagram below for the pin placements of the temperature sensor.
+
+\includepdf[pages={2}]{"../Datasheets/Temp Sensor/TI_LM35"};
+\label{TempSensorPins}
+
+
+\subsection{LCD}
+
+\subsection{Buttons (Interface)}
+
+\chapter{Power Bus}
+\subsection{Description}
+The power bus is responsible for supplying power to the entire system. It must be capable of running off a single 9v battery, and supplying the regulated 5v required for all of the components used.
+
+\subsection{Circuit Diagram}
+Fig. \ref{fig:PowerBus} is a schematic of the power bus used in this system. The bypass capacitors are used to reduce current draw during sudden voltage switching. The ultrasonic sensor has a separate voltage regulator as even the 1mF bypass capacitor cannot completely regulate the 2A power spike when the ultrasonic sensor emits. By decoupling the regulators all other components aren't affected by current draw on the ultrasonic unless the internal battery voltage drop lowers the input of the regulator below 6v.
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{"../Diagrams/Power Bus Rotated"}
+\caption{Power Bus Circuit Diagram}
+\label{fig:PowerBus}
+\end{figure}
 
 \end{document}          

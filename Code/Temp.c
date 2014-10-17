@@ -14,9 +14,25 @@ static signed char calibration_offset = 0;
 static unsigned char lastTempx2;
 
 /* **********************************************************************
+ * Function: configureTemp(void)
+ *
+ * Include: Temp
+ *
+ * Description: Configures the temperature module for use
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void configureTemp(void)
+{
+    
+}
+
+/* **********************************************************************
  * Function: readTempx2(void)
  *
- * Include: ADC.h
+ * Include: Temp.h
  *
  * Description: Reads the temperature from the Temp sensor
  *
@@ -48,7 +64,7 @@ unsigned char readTempx2(void)
 /* **********************************************************************
  * Function: readTemp(void)
  *
- * Include: ADC.h
+ * Include: Temp.h
  *
  * Description: Reads the temperature from the TEMP sensor
  *

@@ -6,6 +6,7 @@
  */
 
 //External public access function prototypes
+extern void configureTemp(void);
 extern unsigned char rawTemp(void);
 extern unsigned char readTemp(void);
 extern unsigned char readTempx2(void);

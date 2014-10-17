@@ -93,3 +93,7 @@ typedef enum{NO_TARGET, OUT_OF_IR, BAD_DIR, GOOD_TRACK, CLOSE_RANGE} TargetState
 
 #define CLOCK   10000000    //10MHz clock source
 #define FOSC_4  2500000     //2.5MHz Fosc_4
+
+/*
+ * Pins 
+ */

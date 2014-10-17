@@ -18,7 +18,7 @@
 //DirectionState current_direction;
 
 /* **********************************************************************
- * Function: configBase(void)
+ * Function: configureTracking(void)
  *
  * Include: Tracking.h
  *
