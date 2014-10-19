@@ -133,6 +133,7 @@ void search2(systemState *state)
             break;
         case BAD_DIR:
             //In the correct vicinity, but not exact
+            NEXT_STATE_PTR(TRCK, state);
             break;
         default:
             break;
@@ -249,38 +250,58 @@ TrackingData track(systemState *state)
  *************************************************************************/
 TrackingData track2(systemState *state)
 {
-    char i, j;
-    unsigned int k;
-    char count = 0;
-    Direction centre, new_centre;
+    char i, count = 0;
+    char weight;
+    unsigned int j;
+    Direction centre;
+    signed long int inclination = 0;
+    signed long int azimuth = 0;
     TrackingData result;
-    Direction dir, inc = {5, 0}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
+    Direction dir;
+    Direction inc[] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
     char angle;
 
-    angle = TARGET_RAD * (unsigned int)57 / range();
+    //angle = TARGET_RAD * (unsigned int)57 / range();
+    angle = 8;
 
     centre = getDir();
 
-    dir.azimuth = centre.azimuth + inc.azimuth;
-    dir.inclination = centre.inclination + inc.inclination;
-
-    if (getTargetState() == GOOD_TRACK)
+    for (i = 0; i < 4; i++)
     {
-        count += 4;
-        new_centre.azimuth += 4 * centre.azimuth;
-        new_centre.inclination += 4 * centre.inclination;
+        //Calc new direction
+        dir.azimuth = centre.azimuth + inc[i].azimuth * angle;
+        dir.inclination = centre.inclination + inc[i].inclination * angle;
+
+        //Move to new direction
+        move(dir);
+
+        //Get target state (stored in weight temporarily)
+        weight = readTargetState();
+
+        //Calculate weighting of that sample
+        weight = (weight == GOOD_TRACK) * 4 + (weight == BAD_DIR);
+        
+        count += weight;
+        azimuth += (int)weight * dir.azimuth;
+        inclination += (int)weight * dir.inclination;
     }
 
-    increment(inc);     //Alter the direction of the pan tilt
-
-    result.distance = range();
-    result.azimuth = centre.azimuth;
-    result.inclination = centre.inclination;
-
-    //Go back to searching if there is not a good track
-    if (!count)
+    //Go back to searching if there is not a good track, else stay in track
+    if (count == 0)
     {
         NEXT_STATE_PTR(SRCH, state);
+    }
+    else
+    {
+        //Calculate weighted average of the results
+        centre.azimuth = azimuth / count;
+        centre.inclination = inclination / count;
+
+        move(centre);
+
+        result.distance = range();
+        result.azimuth = centre.azimuth;
+        result.inclination = centre.inclination;
     }
 
     return result;

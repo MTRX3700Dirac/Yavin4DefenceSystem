@@ -17,5 +17,6 @@ extern TrackingData track(systemState *state);
 extern void trackingISR(void);
 
 extern void search2(systemState *state);
+extern TrackingData track2(systemState *state);
 
 #define TRACK_H

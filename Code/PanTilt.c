@@ -120,7 +120,7 @@ void move(Direction destination)
     //Update the current_direction
     current_direction = delay2Direction(global_delay);
 
-    for (i = 0; i < 10000; i++);
+    for (i = 0; i < 20000; i++);
 }
 
 /*! **********************************************************************

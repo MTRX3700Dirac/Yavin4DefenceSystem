@@ -91,7 +91,7 @@ void main() {
                 search2(&state);
                 break;
             case TRCK:
-                target = track(&state);
+                target = track2(&state);
                 break;
             case EDGE:
                 find_edge(&state, &target);
