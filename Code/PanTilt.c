@@ -21,7 +21,7 @@ typedef struct
 #define AZ_PWM_PIN PORTCbits.RC0
 #define IN_PWM_PIN PORTCbits.RC1
 
-#ifdef MNML     //Using minimal board, or piddem - Clock speeds differ by x4
+#ifdef MNML     //Using minimal board, or picdem - Clock speeds differ by x4
 #define DUTY_CYCLE_TIME 2500
 #define PWM_PERIOD 50000 //The period for 50Hz at 2.5MHz
 #define PWM_HALF_PERIOD 25000 //Half the period for 50Hz at 1MHz
@@ -114,10 +114,13 @@ void configureBase(void)
  *************************************************************************/
 void move(Direction destination)
 {
+    int i = 0;
     global_delay = direction2Delay(destination);
 
     //Update the current_direction
     current_direction = delay2Direction(global_delay);
+
+    for (i = 0; i < 10000; i++);
 }
 
 /*! **********************************************************************
@@ -133,15 +136,6 @@ void move(Direction destination)
  *************************************************************************/
 void increment(Direction difference)
 {
-//    global_delay.AzimuthDelay += difference.azimuth * DUTY_CYCLE_TIME / arcRange.azimuth;
-//    global_delay.InclinationDelay += difference.inclination * DUTY_CYCLE_TIME / arcRange.inclination;
-//
-//    //Ensure that the delays are still within the max and min duty cycles
-//    validate(&(global_delay.AzimuthDelay));
-//    validate(&(global_delay.InclinationDelay));
-//
-//    //Update the current_direction
-//    current_direction = delay2Direction(global_delay);
     current_direction.azimuth += difference.azimuth;
     current_direction.inclination += difference.inclination;
 

@@ -25,19 +25,6 @@
 
 #include "Menusystem.h"
 
-//Define Macros to change the state of the system
-#define NEXT_STATE(s) state.previous = state.current; state.current = s
-#define NEXT_STATE_PTR(s) state->previous = state->current; state->current = s
-
-#define IR_CONV(ad) (237411 / ad - 65)
-
-//Define the enum and struct to store the current system state
-typedef enum{UNDEF, INIT, CHANGE, MEAS, EDGE} possible_states;
-typedef struct {
-    possible_states current;
-    possible_states previous;
-} systemState;
-
 //Function Prototypes:
 void initialization(systemState *state);
 void check_target(systemState *state);
@@ -45,6 +32,8 @@ void change_direction(systemState *state);
 void measure_distance(systemState *state, TrackingData *target);
 void find_edge(systemState *state, TrackingData *target);
 void post_edge(TrackingData *target);
+
+
 
 extern unsigned int rangeIR(void);
 
@@ -86,23 +75,10 @@ void transRange(void)
 void main() {
     systemState state = {INIT, UNDEF};
     TrackingData target;
-    Direction dir;
 
-    configureSerial();
-    configureRange();
-
-    for (;;) transRange();
-	
-    configureBase();
-
-    dir.azimuth = 0;
-    dir.inclination = -45;
-    move(dir);
-
-    
     for (;;)
     {
-        if (TMR1H > 10000) serviceMenu();
+        //if (TMR1H > 10000) serviceMenu();
         switch (state.current)
         {
             case INIT:
@@ -111,6 +87,12 @@ void main() {
             case CHANGE:
                 change_direction(&state);
                 break;
+            case SRCH:
+                search2(&state);
+                break;
+            case TRCK:
+                target = track(&state);
+                break;
             case EDGE:
                 find_edge(&state, &target);
                 break;
@@ -118,7 +100,7 @@ void main() {
                 measure_distance(&state, &target);
                 break;
             default:     //Any other undefined state
-                NEXT_STATE(INIT);       //Set the next state to be Initialize
+                NEXT_STATE(INIT, state);       //Set the next state to be Initialize
                 break;
         }
     }
@@ -139,22 +121,10 @@ void main() {
  *************************************************************************/
 void initialization(systemState *state)
 {
-    //Initialise the Interrupts
-    PIR1 = 0x00;            //Clear all interrupt flags
-    PIR2 = 0x00;
-    INTCONbits.GIEH = 1;    //Unmask global high interrupts
-    INTCONbits.GIEL = 1;    //Unmask global low interrupts
-    RCONbits.IPEN = 1;      //Enable interrupt priority
+    configureSerial();
+    configureTracking();
 
-    //Open ADC. Set A/D conversion Clock to Fosc/2, Acuisition time is 20TAD (10 microseconds)
-    //Read from channel 0, and disable A/D interrupts
-    //OpenADC(ADC_FOSC_2 & ADC_RIGHT_JUST & ADC_20_TAD, ADC_CH0 & ADC_INT_OFF);
-    OpenADC(ADC_FOSC_2 & ADC_0_TAD & ADC_INT_OFF, ADC_RIGHT_JUST & ADC_1ANA, ADC_CH0);
-    TRISAbits.TRISA0 = 1;   //Set channel 0 on port A input
-    TRISAbits.TRISA1 = 1;   //Set channel 1 on port A input
-    TRISAbits.TRISA2 = 1;   //Set channel 2 on port A input
-
-    NEXT_STATE_PTR(MEAS);
+    NEXT_STATE_PTR(SRCH, state);   //Go to the searching state
 }
 
 /*! **********************************************************************
@@ -174,7 +144,7 @@ void change_direction(systemState *state)
     search();
 
     //Set the next state to target check
-    NEXT_STATE_PTR(MEAS);
+    NEXT_STATE_PTR(MEAS, state);
 }
 
 /*! **********************************************************************
@@ -200,11 +170,11 @@ void measure_distance(systemState *state, TrackingData *target)
 
     if (target->distance)
     {
-        NEXT_STATE_PTR(EDGE);
+        NEXT_STATE_PTR(EDGE, state);
     }
     else
     {
-        NEXT_STATE_PTR(CHANGE);
+        NEXT_STATE_PTR(CHANGE, state);
     }
 
 }
@@ -229,10 +199,10 @@ void measure_distance(systemState *state, TrackingData *target)
 void find_edge(systemState *state, TrackingData *target)
 {
     //Call the edge function in the targeting module
-    *target = edge();
+    //*target = edge();
 
     //Select next state
-    NEXT_STATE_PTR(MEAS);
+    NEXT_STATE_PTR(MEAS, state);
 }
 
 

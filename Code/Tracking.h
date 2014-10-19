@@ -13,6 +13,9 @@
 //External declarations for the public access functions
 extern void configureTracking(void);
 extern void search(void);
-extern TrackingData edge(void);
+extern TrackingData track(systemState *state);
 extern void trackingISR(void);
 
+extern void search2(systemState *state);
+
+#define TRACK_H

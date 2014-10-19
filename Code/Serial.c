@@ -53,8 +53,12 @@ void configureSerial(void)
     carriageReturn = 0;
 
     //Open the USART module
-    //OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
+#ifdef MNML
     OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 64);
+#else
+    OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
+#endif
+    
 }
 
 /*! **********************************************************************

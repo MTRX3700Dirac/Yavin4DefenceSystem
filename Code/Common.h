@@ -5,19 +5,19 @@
  * Created on 11 September 2014, 12:24 PM
  */
 
-/*
-//System configurations
-#pragma config WDR = OFF
-#pragma config OSC = HS
-#pragma config LVP = OFF
-#pragma config DEBUG = ON
-*/
+// Use the MNML Board. Comment this out for the PICDEM
+#define MNML
 
 //Include files
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+
+#ifdef MNML
 #include <p18f4520.h>
+#else
+#include <p18f452.h>
+#endif
 
 //Peripherial headers
 #include <timers.h>
@@ -26,6 +26,14 @@
 #include <usart.h>
 #include <capture.h>
 #include <compare.h>
+
+#ifndef MNML
+//System configurations
+#pragma config WDR = OFF
+#pragma config OSC = HS
+#pragma config LVP = OFF
+#pragma config DEBUG = ON
+#endif
 
 //Direction definition: Stores an inclination and azimuth - i.e. a fully defined
 //direction to point the pan tilt.
@@ -46,8 +54,17 @@ typedef struct
 //           !(IR||US)  (US&&!IR) (US&&!IR), (US&&IR)    (IR&&!US)
 typedef enum{NO_TARGET, OUT_OF_IR, BAD_DIR, GOOD_TRACK, CLOSE_RANGE} TargetState;
 
-// Use the MNML Board
-#define MNML
+
+//Define Macros to change the state of the system
+#define NEXT_STATE(s, state) state.previous = state.current; state.current = s
+#define NEXT_STATE_PTR(s, state) state->previous = state->current; state->current = s
+
+//Define the enum and struct to store the current system state
+typedef enum{UNDEF, INIT, CHANGE, MEAS, EDGE, SRCH, TRCK} possible_states;
+typedef struct {
+    possible_states current;
+    possible_states previous;
+} systemState;
 
 //Efficient Division macros
 #define DIV_2(v) ((v) >> 1)       //Divide by 2, Cannot be used on negative numbers
@@ -90,9 +107,13 @@ typedef enum{NO_TARGET, OUT_OF_IR, BAD_DIR, GOOD_TRACK, CLOSE_RANGE} TargetState
 #define CCP1_CLEAR (PIR1bits.CCP1IF = 0)
 #define CCP2_CLEAR (PIR2bits.CCP2IF = 0)
 
-
+#ifdef MNML
 #define CLOCK   10000000    //10MHz clock source
 #define FOSC_4  2500000     //2.5MHz Fosc_4
+#else
+#define CLOCK 4000000   //2.5MHz clock source
+#define FOSC_4 1000000   //1MHz Fosc_4
+#endif
 
 /*
  * Pins 

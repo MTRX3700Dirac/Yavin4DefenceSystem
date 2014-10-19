@@ -12,6 +12,7 @@
 #include "PanTilt.h"
 
 #define diff 5
+#define TARGET_RAD 30  //The diameter of the target in mm (slightly larger)
 #include <delays.h>
 
 //Variable to store where the sensors are currently pointing
@@ -30,6 +31,8 @@
  *************************************************************************/
 void configureTracking(void)
 {
+    configureBase();
+    configureRange();
 }
 
 /* **********************************************************************
@@ -87,20 +90,19 @@ void search(void)
  *
  * Returns: None
  *************************************************************************/
-TargetState search2(void)
+void search2(systemState *state)
 {
-    unsigned int delay = 60000;
-    signed int diff = 1;
-    int i;
+    unsigned int j;
     //Vertical and laterial incremental movements
-    static Direction lateral = {1, 0};
-    static Direction vertical = {0, 1};
+    static Direction lateral = {diff, 0};
+    static Direction vertical = {0, diff};
     static TargetState previousState;
     TargetState currentState;
     Direction dir;
 
     dir = getDir();
 
+    for (j = 0; j < 10000; j++);
     //If max azimuth range, increment vertical and change azimuth direction
     if (dir.azimuth > 40 || dir.azimuth < -40)
     {
@@ -121,10 +123,20 @@ TargetState search2(void)
     {
         increment(lateral);
     }
-    for (i = 0; i < 10000; i++);    //Arbitrary delay
 
+    previousState = currentState;
     currentState = readTargetState();
-    previousState = readTargetState();
+    switch (currentState)
+    {
+        case GOOD_TRACK:
+            NEXT_STATE_PTR(TRCK, state);
+            break;
+        case BAD_DIR:
+            //In the correct vicinity, but not exact
+            break;
+        default:
+            break;
+    }
 }
 
 /* **********************************************************************
@@ -144,7 +156,7 @@ void trackingISR(void)
 }
 
 /* **********************************************************************
- * Function: edge(void)
+ * Function: track(void)
  *
  * Include: Tracking.h
  *
@@ -157,18 +169,16 @@ void trackingISR(void)
  *                       and range to the target). This information is then used
  *                       for the Display in the User interface module.
  *************************************************************************/
-TrackingData edge(void)
+TrackingData track(systemState *state)
 {
     char i, j;
     unsigned int k;
-    unsigned int delay = 0;       //Delay time in x10us between each range reading
     Direction centre;
     TrackingData result;
     Direction edge1, edge2;
-    Direction inc = {1, 0}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
+    Direction inc = {5, 0}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
 
     
-
     //Check if the target is in range of the IR
     if (readTargetState() == GOOD_TRACK)
     {
@@ -176,10 +186,9 @@ TrackingData edge(void)
         {
             //Find first edge
             for (j = 0; readTargetState() == GOOD_TRACK && j <= 10;j++)
-            //while (readTargetState() == GOOD_TRACK)
             {
                 increment(inc);
-                for (delay = 0; delay<25000;delay++);
+                //for (k = 0; k < 20000; k++);
             }
             edge1 = getDir();       //Stores the first edge
 
@@ -189,14 +198,14 @@ TrackingData edge(void)
 
             //Refind target, and find other edge
             for (j = 0; readTargetState() != GOOD_TRACK && j <= 10;j++)
-            //while (readTargetState() != GOOD_TRACK)
             {
                 increment(inc);
+                //for (k = 0; k < 20000; k++);
             }
             for(j=0; readTargetState() == GOOD_TRACK && j <= 10; j++)
-            //while (readTargetState() == GOOD_TRACK)
             {
                 increment(inc);
+                //for (k = 0; k < 20000; k++);
             }
             edge2 = getDir();       //Stores the second edge
 
@@ -204,14 +213,75 @@ TrackingData edge(void)
             centre.inclination = (edge1.inclination + edge2.inclination)/2;
 
             move(centre);   //Go back to the centre of the target
-            for (k = 0; k < 20000; k++);
             SWAP(inc.azimuth, inc.inclination);     //Test the other degree of freedom
         }
+    }
+    else
+    {
     }
 
     result.distance = range();
     result.azimuth = centre.azimuth;
     result.inclination = centre.inclination;
+
+    //Go back to searching if there is not a good track
+    if (getTargetState() != GOOD_TRACK)
+    {
+        NEXT_STATE_PTR(SRCH, state);
+    }
+
+    return result;
+}
+
+/* **********************************************************************
+ * Function: track2(void)
+ *
+ * Include: Tracking.h
+ *
+ * Description: Finds the Edge of the target in both the azimuth and inclination
+ *              and uses this to find (and move to) the center of the target.
+ *
+ * Arguments: None
+ *
+ * Returns: TargetData - The current target information (Azimuth, inclination
+ *                       and range to the target). This information is then used
+ *                       for the Display in the User interface module.
+ *************************************************************************/
+TrackingData track2(systemState *state)
+{
+    char i, j;
+    unsigned int k;
+    char count = 0;
+    Direction centre, new_centre;
+    TrackingData result;
+    Direction dir, inc = {5, 0}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
+    char angle;
+
+    angle = TARGET_RAD * (unsigned int)57 / range();
+
+    centre = getDir();
+
+    dir.azimuth = centre.azimuth + inc.azimuth;
+    dir.inclination = centre.inclination + inc.inclination;
+
+    if (getTargetState() == GOOD_TRACK)
+    {
+        count += 4;
+        new_centre.azimuth += 4 * centre.azimuth;
+        new_centre.inclination += 4 * centre.inclination;
+    }
+
+    increment(inc);     //Alter the direction of the pan tilt
+
+    result.distance = range();
+    result.azimuth = centre.azimuth;
+    result.inclination = centre.inclination;
+
+    //Go back to searching if there is not a good track
+    if (!count)
+    {
+        NEXT_STATE_PTR(SRCH, state);
+    }
 
     return result;
 }
