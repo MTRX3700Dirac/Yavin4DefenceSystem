@@ -15,7 +15,7 @@
 
 //(Approximate) speed of sound calculation macro
 #define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
-#define IR_CONV(ad) ((unsigned long)137800 / (ad) - 40)
+#define IR_CONV(ad) ((unsigned long)135174 / (ad) - 28)
 
 #ifdef MNML
 #define ULTRA_CONV(tme, T) DIV_65536(tme * (unsigned long)(DIV_65536((unsigned long)519078 * T) + (unsigned long)4362)) - 18
