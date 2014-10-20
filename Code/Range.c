@@ -47,7 +47,7 @@ static TargetState current_target_state;
 
 //Private function prototypes:
 static void beginUS(void);
-static unsigned int rangeIR(void);
+unsigned int rangeIR(void);
 static unsigned int rangeUS(unsigned char temp);
 
 void configureRange(void);

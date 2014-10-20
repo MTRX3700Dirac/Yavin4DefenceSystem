@@ -108,14 +108,13 @@ static void transRange(void)
     char num[5];
 
     sprintf(num, "%u", rangeUltrasonic());
-
         transmit(num);
         transmit(newLine);
         for (j=0; j<60000;j++);
         for (j=0; j<60000;j++);
 
     transmit(stringIR);
-        //sprintf(num, "%u", rangeIR());
+        sprintf(num, "%u", rangeIR());
         transmit(num);
         transmit(newLine);
         transmit(newLine);
