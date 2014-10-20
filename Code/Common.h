@@ -60,7 +60,7 @@ typedef enum{NO_TARGET, OUT_OF_IR, BAD_DIR, GOOD_TRACK, CLOSE_RANGE} TargetState
 #define NEXT_STATE_PTR(s, state) state->previous = state->current; state->current = s
 
 //Define the enum and struct to store the current system state
-typedef enum{UNDEF, INIT, CHANGE, MEAS, EDGE, SRCH, TRCK} possible_states;
+typedef enum{UNDEF, INIT, SRCH, TRCK} possible_states;
 typedef struct {
     possible_states current;
     possible_states previous;

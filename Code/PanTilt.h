@@ -19,6 +19,7 @@ extern Direction getDir(void);
 extern void calibratePanTilt(Direction reference);
 extern Direction rawDir(void);
 extern char updated(void);
+extern void panTiltISR(void);
 
 extern char getMaxAzimuthAngle(void);
 extern char getMinAzimuthAngle(void);

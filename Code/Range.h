@@ -14,7 +14,7 @@
 //External declarations of the public access functions
 extern void configureRange(void);
 extern void configureAD(void);
-extern unsigned int range();
+extern unsigned int range(void);
 extern void rangeISR(void);
 extern void calibrateRange(signed int distance);
 extern signed int rawRange(void);

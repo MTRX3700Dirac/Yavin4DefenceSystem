@@ -39,9 +39,9 @@ typedef struct
 
 #define SERVO_INIT() TRISCbits.RC0 = 0; TRISCbits.RC1 = 0; PORTCbits.RC0 = 0; PORTCbits.RC1 = 0
 
-void validate(unsigned int *delay);
-Direction delay2Direction(Delay dly);
-Delay direction2Delay(Direction dir);
+static void validate(unsigned int *delay);
+static Direction delay2Direction(Delay dly);
+static Delay direction2Delay(Direction dir);
 
 //Static calibration offset
 static Direction calibration_offset = { 0, 3 };
@@ -413,7 +413,7 @@ void panTiltISR(void)
  * Remark: This function relies on the ARC_RANGE macro being set correctly. This
  *         should hold the value of the maximum angle that the servos can be commanded
  *************************************************************************/
-Direction delay2Direction(Delay dly)
+static Direction delay2Direction(Delay dly)
 {
     Direction ret;
 
@@ -441,7 +441,7 @@ Direction delay2Direction(Delay dly)
  * Remark: This function relies on the ARC_RANGE macro being set correctly. This
  *         should hold the value of the maximum angle that the servos can be commanded
  *************************************************************************/
-Delay direction2Delay(Direction dir)
+static Delay direction2Delay(Direction dir)
 {
     Delay result;
     unsigned int az, inc;
@@ -470,7 +470,7 @@ Delay direction2Delay(Direction dir)
  *
  * Returns: None
  *************************************************************************/
-void validate(unsigned int *delay)
+static void validate(unsigned int *delay)
 {
     if (*delay < DUTY_CYCLE_TIME)
     {

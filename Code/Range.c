@@ -40,19 +40,19 @@ volatile static char measuringUS = 0;
 static unsigned int lastRange = 0;
 
 //Calibration offsets
-signed int calibration_offset_IR = 0;
-signed int calibration_offset_US = 0;
+static signed int calibration_offset_IR = 0;
+static signed int calibration_offset_US = 0;
 
-TargetState current_target_state;
+static TargetState current_target_state;
 
 //Private function prototypes:
-void beginUS(void);
-unsigned int rangeIR(void);
-unsigned int rangeUS(unsigned char temp);
+static void beginUS(void);
+static unsigned int rangeIR(void);
+static unsigned int rangeUS(unsigned char temp);
 
 void configureRange(void);
 
-unsigned int sampleIR(char numSamples);
+static unsigned int sampleIR(char numSamples);
 
 /*! **********************************************************************
  * Function: configureAD(void)
@@ -137,7 +137,7 @@ void configureRange(void)
  *
  * Returns: None
  *************************************************************************/
-void beginUS(void)
+static void beginUS(void)
 {
     CCPR1H = 0;
     CCPR1L = 0;
@@ -166,7 +166,7 @@ void beginUS(void)
  *
  * Returns: Distance in mm (unsigned int)
  *************************************************************************/
-unsigned int rangeUS(unsigned char temp)
+static unsigned int rangeUS(unsigned char temp)
 {
     unsigned int range;
     unsigned long int t;
@@ -451,7 +451,7 @@ unsigned int rangeUltrasonic(void)
  *
  * Returns: the average of the samples
  *************************************************************************/
-unsigned int sampleIR(char numSamples)
+static unsigned int sampleIR(char numSamples)
 {
     unsigned long int sum = 0;
     unsigned int temp;
