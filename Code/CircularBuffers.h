@@ -8,14 +8,14 @@
  */
 
 //Buffer related macro functionality
-#define incMod(ptr) (ptr = ++ptr % BUFFERLENGTH)
-#define empty(buf) (buf.head == buf.tail)
-#define full(buf) (buf.tail == (buf.head + 1) % BUFFERLENGTH)
-#define peek(buf) buf.data[buf.tail]
+#define incMod(ptr) if(ptr==BUFFERLENGTH-1) ptr = 0; else ptr++;
+#define empty(buf) (buf.tail == buf.head)
+#define full(buf) (buf.head == (buf.tail + 1) % BUFFERLENGTH)
+#define peek(buf) buf.data[buf.head]
 
-#define push(byte, buf) buf.data[buf.head] = byte; if(full(buf)) incMod(buf.tail); incMod(buf.head)
-#define pop(buf) buf.data[buf.tail]; if (!empty(buf)) incMod(buf.tail)
-#define init(buf) buf.head = 0; buf.tail = 0
+#define push(byte, buf) buf.data[buf.tail] = byte; if(full(buf)) incMod(buf.head); incMod(buf.tail)
+#define pop(buf) buf.data[buf.head]; if (!empty(buf)) incMod(buf.head)
+#define init(buf) buf.tail = 0; buf.head = 0
 
 //NOTE: The BUFFERLENGTH can be redefined at the top of any module if a different length is desired
 #define BUFFERLENGTH 30

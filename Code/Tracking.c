@@ -306,3 +306,12 @@ TrackingData track2(systemState *state)
 
     return result;
 }
+
+Direction prediction(Direction current)
+{
+#define TIMER   TMR2        //General purpose timer
+    static Direction previous = {0, 0};
+    static unsigned int prev_time;
+    static Direction next_predict;
+    return next_predict;
+}
