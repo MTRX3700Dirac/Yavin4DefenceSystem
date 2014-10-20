@@ -1,0 +1,155 @@
+\hypertarget{_user___interface_8c}{\section{User\+\_\+\+Interface.\+c File Reference}
+\label{_user___interface_8c}\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+}
+{\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Circular\+Buffers.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_user___interface_8c_a5711e8cdb2a3943783f50f60a15bde31}{display} (\hyperlink{struct_tracking_data}{Tracking\+Data} data)
+\item 
+void \hyperlink{_user___interface_8c_a3c2574813b4d75b20d43aa67ec0af650}{user\+I\+S\+R} (void)
+\item 
+void \hyperlink{_user___interface_8c_a58e473ed40d00e18bd61277428e4d36c}{config\+U\+S\+E\+R} (void)
+\item 
+unsigned int \hyperlink{_user___interface_8c_aa1e69bd94580864cea0b4563e5d56bc3}{read\+Dial} (unsigned int max)
+\item 
+char \hyperlink{_user___interface_8c_a62fd5de2781acb67fe5133d79ae580cc}{user\+Empty} (void)
+\item 
+char \hyperlink{_user___interface_8c_a3f61f7acd05df7af4bb136a5f98c3e54}{user\+Pop} (void)
+\item 
+char \hyperlink{_user___interface_8c_a3d17c3d0eb62b407b6badfd343da5181}{user\+Peek} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structcircular_buffer}{circular\+Buffer} \hyperlink{_user___interface_8c_ad7a739640da23ada15ee5822350aaf60}{receive}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_user___interface_8c_a58e473ed40d00e18bd61277428e4d36c}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!config\+U\+S\+E\+R@{config\+U\+S\+E\+R}}
+\index{config\+U\+S\+E\+R@{config\+U\+S\+E\+R}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{config\+U\+S\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}void config\+U\+S\+E\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_user___interface_8c_a58e473ed40d00e18bd61277428e4d36c}
+
+
+ Function\+: \hyperlink{_user___interface_8c_a58e473ed40d00e18bd61277428e4d36c}{config\+U\+S\+E\+R(void)}
+
+Include\+: \hyperlink{_user___interface_8h}{User\+\_\+\+Interface.\+h}
+
+Description\+: Configures the user interface for use
+
+Arguments\+: None
+
+Returns\+: None \hypertarget{_user___interface_8c_a5711e8cdb2a3943783f50f60a15bde31}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!display@{display}}
+\index{display@{display}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{display}]{\setlength{\rightskip}{0pt plus 5cm}void display (
+\begin{DoxyParamCaption}
+\item[{{\bf Tracking\+Data}}]{data}
+\end{DoxyParamCaption}
+)}}\label{_user___interface_8c_a5711e8cdb2a3943783f50f60a15bde31}
+
+
+ Function\+: \hyperlink{_user___interface_8c_a5711e8cdb2a3943783f50f60a15bde31}{display(\+Tracking\+Data data)}
+
+Include\+: \hyperlink{_user___interface_8h}{User\+\_\+\+Interface.\+h}
+
+Description\+: displays the current tracking information
+
+Arguments\+: data -\/ Struct which contains all known data concerning the The position of the target. A Range of 0 indicates that no target was observed.
+
+Returns\+: None \hypertarget{_user___interface_8c_aa1e69bd94580864cea0b4563e5d56bc3}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!read\+Dial@{read\+Dial}}
+\index{read\+Dial@{read\+Dial}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{read\+Dial}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int read\+Dial (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{max}
+\end{DoxyParamCaption}
+)}}\label{_user___interface_8c_aa1e69bd94580864cea0b4563e5d56bc3}
+
+
+ Function\+: read\+Dial(void)
+
+Include\+:
+
+Description\+: Read the position of the dial
+
+Arguments\+: None
+
+Returns\+: The dial position scaled by \hypertarget{_user___interface_8c_a62fd5de2781acb67fe5133d79ae580cc}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!user\+Empty@{user\+Empty}}
+\index{user\+Empty@{user\+Empty}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{user\+Empty}]{\setlength{\rightskip}{0pt plus 5cm}char user\+Empty (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_user___interface_8c_a62fd5de2781acb67fe5133d79ae580cc}
+
+
+ Function\+: \hyperlink{_user___interface_8c_a62fd5de2781acb67fe5133d79ae580cc}{user\+Empty(void)}
+
+Include\+: \hyperlink{_user___interface_8h}{User\+\_\+\+Interface.\+h}
+
+Description\+: returns non-\/zero if the user interface buffer is empty (i.\+e. no user input has been detected)
+
+Arguments\+: None
+
+Returns\+: if the user input buffer is empty \hypertarget{_user___interface_8c_a3c2574813b4d75b20d43aa67ec0af650}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!user\+I\+S\+R@{user\+I\+S\+R}}
+\index{user\+I\+S\+R@{user\+I\+S\+R}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{user\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}void user\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_user___interface_8c_a3c2574813b4d75b20d43aa67ec0af650}
+
+
+ Function\+: \hyperlink{_user___interface_8c_a3c2574813b4d75b20d43aa67ec0af650}{user\+I\+S\+R(void)}
+
+Include\+: \hyperlink{_user___interface_8h}{User\+\_\+\+Interface.\+h}
+
+Description\+: Acts as the I\+S\+R for the User\+\_\+interface module
+
+Arguments\+: None
+
+Returns\+: None \hypertarget{_user___interface_8c_a3d17c3d0eb62b407b6badfd343da5181}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!user\+Peek@{user\+Peek}}
+\index{user\+Peek@{user\+Peek}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{user\+Peek}]{\setlength{\rightskip}{0pt plus 5cm}char user\+Peek (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_user___interface_8c_a3d17c3d0eb62b407b6badfd343da5181}
+
+
+ Function\+: \hyperlink{_user___interface_8c_a3d17c3d0eb62b407b6badfd343da5181}{user\+Peek(void)}
+
+Include\+: \hyperlink{_user___interface_8h}{User\+\_\+\+Interface.\+h}
+
+Description\+: returns a character in the user\+\_\+\+Interface buffer without removing it from the buffer
+
+Arguments\+: None
+
+Returns\+: a character in the user interface buffer \hypertarget{_user___interface_8c_a3f61f7acd05df7af4bb136a5f98c3e54}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!user\+Pop@{user\+Pop}}
+\index{user\+Pop@{user\+Pop}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{user\+Pop}]{\setlength{\rightskip}{0pt plus 5cm}char user\+Pop (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_user___interface_8c_a3f61f7acd05df7af4bb136a5f98c3e54}
+
+
+ Function\+: \hyperlink{_user___interface_8c_a3f61f7acd05df7af4bb136a5f98c3e54}{user\+Pop(void)}
+
+Include\+: \hyperlink{_user___interface_8h}{User\+\_\+\+Interface.\+h}
+
+Description\+: pops a character from the user interface receive buffer
+
+Arguments\+: None
+
+Returns\+: a character poped from the user Interface buffer 
+
+\subsection{Variable Documentation}
+\hypertarget{_user___interface_8c_ad7a739640da23ada15ee5822350aaf60}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!receive@{receive}}
+\index{receive@{receive}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{receive}]{\setlength{\rightskip}{0pt plus 5cm}{\bf circular\+Buffer} receive}}\label{_user___interface_8c_ad7a739640da23ada15ee5822350aaf60}

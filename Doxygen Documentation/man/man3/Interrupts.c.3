@@ -1,0 +1,119 @@
+.TH "Interrupts.c" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Interrupts.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Common\&.h'\fP
+.br
+\fC#include 'Tracking\&.h'\fP
+.br
+\fC#include 'Range\&.h'\fP
+.br
+\fC#include 'User_Interface\&.h'\fP
+.br
+\fC#include 'Serial\&.h'\fP
+.br
+\fC#include 'PanTilt\&.h'\fP
+.br
+\fC#include 'Temp\&.h'\fP
+.br
+\fC#include 'Menusystem\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTRACK_H\fP"
+.br
+.ti -1c
+.RI "#define \fBRANGE_H\fP"
+.br
+.ti -1c
+.RI "#define \fBMENU_H\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlowISR\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhighISR\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhighVector\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlowVector\fP (void)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define MENU_H"
+
+.SS "#define RANGE_H"
+
+.SS "#define TRACK_H"
+
+.SH "Function Documentation"
+.PP 
+.SS "void highISR (void)"
+
+.PP
+ Function: \fBhighISR(void)\fP
+.PP
+Include:
+.PP
+Description: Interrupt Service Routine to check what condition initiated a high priority interrupt call, and perform the nessicary action
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "void highVector (void)"
+
+.PP
+ Function: \fBhighVector(void)\fP
+.PP
+Include:
+.PP
+Description: Sends program control to the high priority ISR
+.PP
+Arguments: None
+.PP
+Returns: None
+.PP
+Remarks: This is an interrupt vector, placing a goto in the high priority interrupt table to call the high priority ISR 
+.SS "void lowISR (void)"
+
+.PP
+ Function: \fBlowISR(void)\fP
+.PP
+Include: Interrupt_head\&.h
+.PP
+Description: Interrupt Service Routine to check what condition initiated a low priority interrupt call, and perform the nessicary action
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "void lowVector (void)"
+
+.PP
+ Function: \fBlowVector(void)\fP
+.PP
+Include:
+.PP
+Description: Sends program control to the low priority ISR
+.PP
+Arguments: None
+.PP
+Returns: None
+.PP
+Remarks: This is an interrupt vector, placing a goto in the low priority interrupt table to call the low priority ISR 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

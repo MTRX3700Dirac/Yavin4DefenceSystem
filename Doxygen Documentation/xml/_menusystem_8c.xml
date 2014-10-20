@@ -1,0 +1,748 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="_menusystem_8c" kind="file">
+    <compoundname>Menusystem.c</compoundname>
+    <includes refid="_common_8h" local="yes">Common.h</includes>
+    <includes refid="_serial_8h" local="yes">Serial.h</includes>
+    <includes refid="_user___interface_8h" local="yes">User_Interface.h</includes>
+    <incdepgraph>
+      <node id="63">
+        <label>Menusystem.c</label>
+        <link refid="Menusystem.c"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>stdlib.h</label>
+      </node>
+      <node id="70">
+        <label>adc.h</label>
+      </node>
+      <node id="64">
+        <label>Common.h</label>
+        <link refid="_common_8h"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>Serial.h</label>
+        <link refid="_serial_8h"/>
+      </node>
+      <node id="69">
+        <label>timers.h</label>
+      </node>
+      <node id="73">
+        <label>compare.h</label>
+      </node>
+      <node id="71">
+        <label>capture.h</label>
+      </node>
+      <node id="67">
+        <label>math.h</label>
+      </node>
+      <node id="68">
+        <label>p18f4520.h</label>
+        <link refid="p18f4520_8h"/>
+      </node>
+      <node id="72">
+        <label>usart.h</label>
+      </node>
+      <node id="65">
+        <label>stdio.h</label>
+      </node>
+      <node id="75">
+        <label>User_Interface.h</label>
+        <link refid="_user___interface_8h"/>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_menusystem_8c_1a667b04d7fb6ef46db4da4af554c5b6f7" prot="public" static="no">
+        <name>width</name>
+        <initializer>80</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="5" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="5" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="65" endline="81">topmenudisp</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_menusystem_8c_1a64f9f90ece96c7bab4aee3deacf170e0" prot="public" static="no">
+        <name>height</name>
+        <initializer>24</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="6" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="6" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="65" endline="81">topmenudisp</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_menusystem_8c_1a59e24be624462b0016d40f9ada6bbb69" prot="public" static="no">
+        <name>top1</name>
+        <initializer>0xFF</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="8" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="8" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="182" endline="215">menu</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_menusystem_8c_1ac6732d277bcb2f666784f4f3f5e17f39" prot="public" static="no">
+        <name>auto11</name>
+        <initializer>0x10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="9" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="9" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="182" endline="215">menu</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_menusystem_8c_1abed1ba920ec7390cfb509ce3d3b514eb" prot="public" static="no">
+        <name>manu12</name>
+        <initializer>0x20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="10" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="10" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="182" endline="215">menu</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_menusystem_8c_1a65912490d63985a47ca283029e911b2b" prot="public" static="no">
+        <name>manugoto121</name>
+        <initializer>0x21</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="11" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="11" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="182" endline="215">menu</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_menusystem_8c_1abae4a42361e301d3ac9dbb5aad94f03d" prot="public" static="no">
+        <name>manusetl122</name>
+        <initializer>0x22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="12" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="12" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="182" endline="215">menu</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_menusystem_8c_1a257270ed391fc5cf1577e20beb72b82d" prot="public" static="no">
+        <name>manushow123</name>
+        <initializer>0x23</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="13" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="13" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="182" endline="215">menu</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_menusystem_8c_1ae60b73d9ad027f8210c2a7789349428b" prot="public" static="no">
+        <name>stat13</name>
+        <initializer>0x30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="15" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="15" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="182" endline="215">menu</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_menusystem_8c_1a99fdb7c018e6ad7decf89ca228db518f" prot="public" static="no">
+        <name>swap14</name>
+        <initializer>0x40</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="16" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="16" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="182" endline="215">menu</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_menusystem_8c_1a38bd38059a23acf74ca3559d13c2a6d5" prot="public" static="no">
+        <name>slee15</name>
+        <initializer>0x50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="17" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="17" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="182" endline="215">menu</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_menusystem_8c_1a5ba864b4bbe4a84e0ca85b979ec2c10b" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char tMESSAGE[]</definition>
+        <argsstring>[]</argsstring>
+        <name>tMESSAGE</name>
+        <initializer>= &quot;Hello 123\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_menusystem_8c_1ae6c5caedc34899ea80a6b011fec5f2a4" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char fillerthing[]</definition>
+        <argsstring>[]</argsstring>
+        <name>fillerthing</name>
+        <initializer>= &quot;+&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="21" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="21" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" compoundref="_menusystem_8c" startline="50" endline="55">filler</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char newline[]</definition>
+        <argsstring>[]</argsstring>
+        <name>newline</name>
+        <initializer>= &quot;\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="22" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="22" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" compoundref="_menusystem_8c" startline="43" endline="48">clearscreen</referencedby>
+        <referencedby refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="65" endline="81">topmenudisp</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_menusystem_8c_1a9cb97c7ce3babec16a2e500625985994" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char choose[]</definition>
+        <argsstring>[]</argsstring>
+        <name>choose</name>
+        <initializer>= &quot;\tPlease select your option (eg. 2): \n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="23" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="65" endline="81">topmenudisp</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_menusystem_8c_1a009126ac947a1079b52555366ac7b7f3" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char goup[]</definition>
+        <argsstring>[]</argsstring>
+        <name>goup</name>
+        <initializer>= &quot;\tUp a level\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="24" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_menusystem_8c_1a532e72c4b620eecff97eee6b0eed5bdd" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char welcome[]</definition>
+        <argsstring>[]</argsstring>
+        <name>welcome</name>
+        <initializer>= &quot;Welcome to Yavin IV Defence System&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="28" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="28" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="65" endline="81">topmenudisp</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_menusystem_8c_1a1985e3f1b27ce97bff59359bed67bd58" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char topoption1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topoption1</name>
+        <initializer>= &quot;\t1:\tAutomatic Tracking\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="29" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="29" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" compoundref="_menusystem_8c" startline="57" endline="63">disptoptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_menusystem_8c_1acefc91d5187b4570470476a6cd0b68e9" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char topoption2[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topoption2</name>
+        <initializer>= &quot;\t2:\tManual Tracking\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="30" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="30" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" compoundref="_menusystem_8c" startline="57" endline="63">disptoptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_menusystem_8c_1ac241270fe5f174769b3034e81c0a574e" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char topoption3[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topoption3</name>
+        <initializer>= &quot;\t3:\tStatus\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="31" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="31" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" compoundref="_menusystem_8c" startline="57" endline="63">disptoptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_menusystem_8c_1a5d44776e05294f14fa1a49e2c9b4820f" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char topoption4[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topoption4</name>
+        <initializer>= &quot;\t4:\tGo To Local Mode\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="32" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="32" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" compoundref="_menusystem_8c" startline="57" endline="63">disptoptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="_menusystem_8c_1a53c72e5e662134afa6e04b4f2aa2863c" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char topoption5[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topoption5</name>
+        <initializer>= &quot;\t5:\tSleep\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="33" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="33" bodyend="-1"/>
+        <referencedby refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" compoundref="_menusystem_8c" startline="57" endline="63">disptoptions</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_menusystem_8c_1afa234d458057237e03e355d30fafac84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void menu</definition>
+        <argsstring>(char menuselect)</argsstring>
+        <name>menu</name>
+        <param>
+          <type>char</type>
+          <declname>menuselect</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>Call the serial configuration to enable USART Subsysten </para>        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="36" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="182" bodyend="215"/>
+        <references refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="44" endline="62">configureSerial</references>
+        <references refid="_menusystem_8c_1a59e24be624462b0016d40f9ada6bbb69" compoundref="_menusystem_8c" startline="8">top1</references>
+        <references refid="_menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" compoundref="_menusystem_8c" startline="83" endline="120">topmenu</references>
+        <references refid="_menusystem_8c_1ac6732d277bcb2f666784f4f3f5e17f39" compoundref="_menusystem_8c" startline="9">auto11</references>
+        <references refid="_menusystem_8c_1abed1ba920ec7390cfb509ce3d3b514eb" compoundref="_menusystem_8c" startline="10">manu12</references>
+        <references refid="_menusystem_8c_1ae60b73d9ad027f8210c2a7789349428b" compoundref="_menusystem_8c" startline="15">stat13</references>
+        <references refid="_menusystem_8c_1a99fdb7c018e6ad7decf89ca228db518f" compoundref="_menusystem_8c" startline="16">swap14</references>
+        <references refid="_menusystem_8c_1a38bd38059a23acf74ca3559d13c2a6d5" compoundref="_menusystem_8c" startline="17">slee15</references>
+        <references refid="_menusystem_8c_1a65912490d63985a47ca283029e911b2b" compoundref="_menusystem_8c" startline="11">manugoto121</references>
+        <references refid="_menusystem_8c_1abae4a42361e301d3ac9dbb5aad94f03d" compoundref="_menusystem_8c" startline="12">manusetl122</references>
+        <references refid="_menusystem_8c_1a257270ed391fc5cf1577e20beb72b82d" compoundref="_menusystem_8c" startline="13">manushow123</references>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void topmenu</definition>
+        <argsstring>(void)</argsstring>
+        <name>topmenu</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>Display the menu screen via serial wait for/get serial input make decision based on input</para><para>Wait until the receive buffer is no longer empty</para><para>Indicating that a command has been passed</para><para>Reset status flag</para><para>Get the input string and store it in </para><para>test </para>        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="37" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="83" bodyend="120"/>
+        <references refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="65" endline="81">topmenudisp</references>
+        <references refid="_serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="_serial_8c" startline="121" endline="124">receiveEmpty</references>
+        <references refid="_serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="191" endline="203">readString</references>
+        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</references>
+        <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="182" endline="215">menu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void topmenudisp</definition>
+        <argsstring>(void)</argsstring>
+        <name>topmenudisp</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="38" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="65" bodyend="81"/>
+        <references refid="_menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" compoundref="_menusystem_8c" startline="43" endline="48">clearscreen</references>
+        <references refid="_menusystem_8c_1a64f9f90ece96c7bab4aee3deacf170e0" compoundref="_menusystem_8c" startline="6">height</references>
+        <references refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" compoundref="_menusystem_8c" startline="50" endline="55">filler</references>
+        <references refid="_menusystem_8c_1a667b04d7fb6ef46db4da4af554c5b6f7" compoundref="_menusystem_8c" startline="5">width</references>
+        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</references>
+        <references refid="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" compoundref="_menusystem_8c" startline="22">newline</references>
+        <references refid="_menusystem_8c_1a532e72c4b620eecff97eee6b0eed5bdd" compoundref="_menusystem_8c" startline="28">welcome</references>
+        <references refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" compoundref="_menusystem_8c" startline="57" endline="63">disptoptions</references>
+        <references refid="_menusystem_8c_1a9cb97c7ce3babec16a2e500625985994" compoundref="_menusystem_8c" startline="23">choose</references>
+        <referencedby refid="_menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" compoundref="_menusystem_8c" startline="83" endline="120">topmenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void disptoptions</definition>
+        <argsstring>(void)</argsstring>
+        <name>disptoptions</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="39" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="57" bodyend="63"/>
+        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</references>
+        <references refid="_menusystem_8c_1a1985e3f1b27ce97bff59359bed67bd58" compoundref="_menusystem_8c" startline="29">topoption1</references>
+        <references refid="_menusystem_8c_1acefc91d5187b4570470476a6cd0b68e9" compoundref="_menusystem_8c" startline="30">topoption2</references>
+        <references refid="_menusystem_8c_1ac241270fe5f174769b3034e81c0a574e" compoundref="_menusystem_8c" startline="31">topoption3</references>
+        <references refid="_menusystem_8c_1a5d44776e05294f14fa1a49e2c9b4820f" compoundref="_menusystem_8c" startline="32">topoption4</references>
+        <references refid="_menusystem_8c_1a53c72e5e662134afa6e04b4f2aa2863c" compoundref="_menusystem_8c" startline="33">topoption5</references>
+        <referencedby refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="65" endline="81">topmenudisp</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void clearscreen</definition>
+        <argsstring>(char length)</argsstring>
+        <name>clearscreen</name>
+        <param>
+          <type>char</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="40" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="43" bodyend="48"/>
+        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</references>
+        <references refid="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" compoundref="_menusystem_8c" startline="22">newline</references>
+        <referencedby refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="65" endline="81">topmenudisp</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void filler</definition>
+        <argsstring>(char length)</argsstring>
+        <name>filler</name>
+        <param>
+          <type>char</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="41" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="50" bodyend="55"/>
+        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</references>
+        <references refid="_menusystem_8c_1ae6c5caedc34899ea80a6b011fec5f2a4" compoundref="_menusystem_8c" startline="21">fillerthing</references>
+        <referencedby refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="65" endline="81">topmenudisp</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void initialiseMenu</definition>
+        <argsstring>(void)</argsstring>
+        <name>initialiseMenu</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialises the menu system. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_menusystem_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" kindref="member">initialiseMenu(void)</ref></para><para>Include: <ref refid="_menusystem_8h" kindref="compound">Menusystem.h</ref></para><para>Description: initialises the menu system so that it is fully operational</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="135" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="135" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8c_1afc5a5c12a076ae6c7424df4f4124a521" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void serviceMenu</definition>
+        <argsstring>(void)</argsstring>
+        <name>serviceMenu</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>services any user interface with the menu </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_menusystem_8c_1afc5a5c12a076ae6c7424df4f4124a521" kindref="member">serviceMenu(void)</ref></para><para>Include:</para><para>Description: Checks if the user has made any inputs to the system. If not the function simply returns. If they have then it services the inputs, displays the correct outputs and performs the specified actions</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="158" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="158" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8c_1a0f329206447b1f40e6f730b346aaaf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void menuISR</definition>
+        <argsstring>(void)</argsstring>
+        <name>menuISR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>ISR function for the menu subsystem. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_menusystem_8c_1a0f329206447b1f40e6f730b346aaaf44" kindref="member">menuISR(void)</ref></para><para>Include: <ref refid="_menusystem_8h" kindref="compound">Menusystem.h</ref></para><para>Description: services any interrupts associated with the menu system</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="177" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="177" bodyend="180"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_serial_8h" kindref="compound">Serial.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="_menusystem_8c_1a667b04d7fb6ef46db4da4af554c5b6f7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>width<sp/>80</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="_menusystem_8c_1a64f9f90ece96c7bab4aee3deacf170e0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>height<sp/>24</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="_menusystem_8c_1a59e24be624462b0016d40f9ada6bbb69" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>top1<sp/>0xFF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="_menusystem_8c_1ac6732d277bcb2f666784f4f3f5e17f39" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>auto11<sp/>0x10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="_menusystem_8c_1abed1ba920ec7390cfb509ce3d3b514eb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>manu12<sp/>0x20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="_menusystem_8c_1a65912490d63985a47ca283029e911b2b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>manugoto121<sp/>0x21</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="_menusystem_8c_1abae4a42361e301d3ac9dbb5aad94f03d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>manusetl122<sp/>0x22</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="_menusystem_8c_1a257270ed391fc5cf1577e20beb72b82d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>manushow123<sp/>0x23</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>manugoup124<sp/>0x24</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="_menusystem_8c_1ae60b73d9ad027f8210c2a7789349428b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>stat13<sp/>0x30</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="_menusystem_8c_1a99fdb7c018e6ad7decf89ca228db518f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>swap14<sp/>0x40</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="_menusystem_8c_1a38bd38059a23acf74ca3559d13c2a6d5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>slee15<sp/>0x50</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//Global</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="_menusystem_8c_1a5ba864b4bbe4a84e0ca85b979ec2c10b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a5ba864b4bbe4a84e0ca85b979ec2c10b" kindref="member">tMESSAGE</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Hello<sp/>123\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21" refid="_menusystem_8c_1ae6c5caedc34899ea80a6b011fec5f2a4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1ae6c5caedc34899ea80a6b011fec5f2a4" kindref="member">fillerthing</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;+&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22" refid="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" kindref="member">newline</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23" refid="_menusystem_8c_1a9cb97c7ce3babec16a2e500625985994" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a9cb97c7ce3babec16a2e500625985994" kindref="member">choose</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\tPlease<sp/>select<sp/>your<sp/>option<sp/>(eg.<sp/>2):<sp/>\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24" refid="_menusystem_8c_1a009126ac947a1079b52555366ac7b7f3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a009126ac947a1079b52555366ac7b7f3" kindref="member">goup</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\tUp<sp/>a<sp/>level\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//1:<sp/>Top</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="_menusystem_8c_1a532e72c4b620eecff97eee6b0eed5bdd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a532e72c4b620eecff97eee6b0eed5bdd" kindref="member">welcome</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Welcome<sp/>to<sp/>Yavin<sp/>IV<sp/>Defence<sp/>System&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29" refid="_menusystem_8c_1a1985e3f1b27ce97bff59359bed67bd58" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a1985e3f1b27ce97bff59359bed67bd58" kindref="member">topoption1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t1:\tAutomatic<sp/>Tracking\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30" refid="_menusystem_8c_1acefc91d5187b4570470476a6cd0b68e9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1acefc91d5187b4570470476a6cd0b68e9" kindref="member">topoption2</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t2:\tManual<sp/>Tracking\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31" refid="_menusystem_8c_1ac241270fe5f174769b3034e81c0a574e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1ac241270fe5f174769b3034e81c0a574e" kindref="member">topoption3</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t3:\tStatus\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32" refid="_menusystem_8c_1a5d44776e05294f14fa1a49e2c9b4820f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a5d44776e05294f14fa1a49e2c9b4820f" kindref="member">topoption4</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t4:\tGo<sp/>To<sp/>Local<sp/>Mode\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33" refid="_menusystem_8c_1a53c72e5e662134afa6e04b4f2aa2863c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a53c72e5e662134afa6e04b4f2aa2863c" kindref="member">topoption5</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t5:\tSleep\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" kindref="member">menu</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>menuselect);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" kindref="member">topmenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" kindref="member">topmenudisp</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" kindref="member">disptoptions</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" kindref="member">clearscreen</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" kindref="member">filler</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="_menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" kindref="member">clearscreen</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>length){</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(length){</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" kindref="member">newline</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>length--;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" kindref="member">filler</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>length){</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(length){</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1ae6c5caedc34899ea80a6b011fec5f2a4" kindref="member">fillerthing</ref>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>length--;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" kindref="member">disptoptions</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1a1985e3f1b27ce97bff59359bed67bd58" kindref="member">topoption1</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1acefc91d5187b4570470476a6cd0b68e9" kindref="member">topoption2</ref>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1ac241270fe5f174769b3034e81c0a574e" kindref="member">topoption3</ref>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1a5d44776e05294f14fa1a49e2c9b4820f" kindref="member">topoption4</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1a53c72e5e662134afa6e04b4f2aa2863c" kindref="member">topoption5</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" kindref="member">topmenudisp</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" kindref="member">clearscreen</ref>(<ref refid="_menusystem_8c_1a64f9f90ece96c7bab4aee3deacf170e0" kindref="member">height</ref>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" kindref="member">filler</ref>(<ref refid="_menusystem_8c_1a667b04d7fb6ef46db4da4af554c5b6f7" kindref="member">width</ref>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" kindref="member">newline</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" kindref="member">filler</ref>(23);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1a532e72c4b620eecff97eee6b0eed5bdd" kindref="member">welcome</ref>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" kindref="member">filler</ref>(23);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" kindref="member">newline</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" kindref="member">filler</ref>(<ref refid="_menusystem_8c_1a667b04d7fb6ef46db4da4af554c5b6f7" kindref="member">width</ref>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" kindref="member">newline</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" kindref="member">clearscreen</ref>(2);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" kindref="member">disptoptions</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" kindref="member">clearscreen</ref>(2);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(<ref refid="_menusystem_8c_1a9cb97c7ce3babec16a2e500625985994" kindref="member">choose</ref>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" kindref="member">clearscreen</ref>((<ref refid="_menusystem_8c_1a64f9f90ece96c7bab4aee3deacf170e0" kindref="member">height</ref>-14));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" kindref="member">filler</ref>(<ref refid="_menusystem_8c_1a667b04d7fb6ef46db4da4af554c5b6f7" kindref="member">width</ref>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="_menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" kindref="member">topmenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>e;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>userget;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>e=1;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" kindref="member">topmenudisp</ref>();<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(e){</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e=<ref refid="_serial_8c_1a42f5165187634304f89709eebe7c9f8c" kindref="member">receiveEmpty</ref>();<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>e=1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" kindref="member">readString</ref>(userget);<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(userget);<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(userget){</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1<sp/>:</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//auto();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2<sp/>:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//manual();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3<sp/>:</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//status();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4<sp/>:</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//swapmode();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>5<sp/>:</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//sleep();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal"><sp/>:</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//error();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="_menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" kindref="member">initialiseMenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" kindref="member">configureSerial</ref>();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_l_c_d_8c_1aaab6233be65b7399b3422eee9782508c" kindref="member">configLCD</ref>();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER</ref>();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="_menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1afc5a5c12a076ae6c7424df4f4124a521" kindref="member">serviceMenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Return<sp/>if<sp/>there<sp/>is<sp/>no<sp/>user<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="_serial_8c_1a42f5165187634304f89709eebe7c9f8c" kindref="member">receiveEmpty</ref>()<sp/>&amp;&amp;<sp/><ref refid="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty</ref>())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="_menusystem_8h_1a0f329206447b1f40e6f730b346aaaf44" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a0f329206447b1f40e6f730b346aaaf44" kindref="member">menuISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="182" refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" kindref="member">menu</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>menuselect)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" kindref="member">configureSerial</ref>();<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(menuselect){</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a59e24be624462b0016d40f9ada6bbb69" kindref="member">top1</ref><sp/>:</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" kindref="member">topmenu</ref>();</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1ac6732d277bcb2f666784f4f3f5e17f39" kindref="member">auto11</ref><sp/>:</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//auto();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1abed1ba920ec7390cfb509ce3d3b514eb" kindref="member">manu12</ref><sp/>:</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//manual();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1ae60b73d9ad027f8210c2a7789349428b" kindref="member">stat13</ref><sp/>:</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//status();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a99fdb7c018e6ad7decf89ca228db518f" kindref="member">swap14</ref><sp/>:</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//swapmode();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a38bd38059a23acf74ca3559d13c2a6d5" kindref="member">slee15</ref><sp/>:</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//sleep();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a65912490d63985a47ca283029e911b2b" kindref="member">manugoto121</ref><sp/>:</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//manopt1();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1abae4a42361e301d3ac9dbb5aad94f03d" kindref="member">manusetl122</ref><sp/>:</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//manopt2();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8c_1a257270ed391fc5cf1577e20beb72b82d" kindref="member">manushow123</ref><sp/>:</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//manopt3();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal"><sp/>:</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//error();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c"/>
+  </compounddef>
+</doxygen>

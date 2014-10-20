@@ -1,0 +1,304 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="_range_8h" kind="file">
+    <compoundname>Range.h</compoundname>
+    <includedby refid="_interrupts_8c" local="yes">Interrupts.c</includedby>
+    <includedby refid="newmain_8c" local="yes">newmain.c</includedby>
+    <includedby refid="_tracking_8c" local="yes">Tracking.c</includedby>
+    <invincdepgraph>
+      <node id="166">
+        <label>Tracking.c</label>
+        <link refid="_tracking_8c"/>
+      </node>
+      <node id="164">
+        <label>Interrupts.c</label>
+        <link refid="_interrupts_8c"/>
+      </node>
+      <node id="163">
+        <label>Range.h</label>
+        <link refid="Range.h"/>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+      </node>
+      <node id="165">
+        <label>newmain.c</label>
+        <link refid="newmain_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_range_8h_1acbdd28592e68851fc99aa81a3b917fc9" prot="public" static="no">
+        <name>RANGE_INT</name>
+        <initializer><ref refid="_common_8h_1a1673a1a80febeafd51f3f02508a0ea71" kindref="member">CCP1_INT</ref> | <ref refid="_common_8h_1af1b5f2499fdbb5b83800325b12a062cf" kindref="member">TMR1_INT</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="12" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" bodystart="12" bodyend="-1"/>
+        <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="79" endline="98">lowISR</referencedby>
+        <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="113" endline="132">highISR</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configureRange</definition>
+        <argsstring>(void)</argsstring>
+        <name>configureRange</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" kindref="member">configureRange(void)</ref></para><para>Include: <ref refid="_range_8h" kindref="compound">Range.h</ref></para><para>Description: Configures the Range module</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="15" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="93" bodyend="127"/>
+        <references refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" compoundref="_range_8c" startline="29">INIT_PIN</references>
+        <references refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772">INTCONbits</references>
+        <references refid="p18f4520_8h_1a00ea63e57cd6582e6e73158695e2b088">RCONbits</references>
+        <references refid="_temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" compoundref="_temp_8c" startline="75" endline="84">readTemp</references>
+        <references refid="_range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="_range_8c" startline="69" endline="80">configureAD</references>
+        <references refid="_range_8c_1aa42da5a67cdb563f37b56c1674dd67bb" compoundref="_range_8c" startline="31">CCP1_INPT</references>
+        <references refid="_range_8c_1a6e6430371976f713ccccb6372b19b810" compoundref="_range_8c" startline="30">INIT_TRIS</references>
+        <referencedby refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="_range_8c" startline="242" endline="269">calibrateRange</referencedby>
+        <referencedby refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="298" endline="382">range</referencedby>
+        <referencedby refid="_range_8h_1a5b063989d39d2958d2ecebc0106cb1da" compoundref="_range_8c" startline="425" endline="441">rangeUltrasonic</referencedby>
+        <referencedby refid="_tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" compoundref="_tracking_8c" startline="32" endline="36">configureTracking</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8h_1ac7337ef2da4c9ab03257562ec33bbb8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configureAD</definition>
+        <argsstring>(void)</argsstring>
+        <name>configureAD</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" kindref="member">configureAD(void)</ref></para><para>Include: <ref refid="_range_8h" kindref="compound">Range.h</ref></para><para>Description: Configures the ADC, In ADCON1, we set right-justified mode, and select AN0 as the input channel. In ADCON0, we set a sample rate of Fosc/8, select AN0, and enable the ADC. Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="16" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="69" bodyend="80"/>
+        <references refid="p18f4520_8h_1a09522caca1ee06372c915b773f6b5bdd">TRISA</references>
+        <references refid="p18f4520_8h_1a5c6e5143ca62f650ce1dd607cda0970e">ADCON1</references>
+        <references refid="p18f4520_8h_1a84d1543e4da7b93ba59cba345ae5c222">ADCON0</references>
+        <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="93" endline="127">configureRange</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int range</definition>
+        <argsstring>(void)</argsstring>
+        <name>range</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range()</ref></para><para>Include:</para><para>Description: Uses the IR and Ultrasonic sensors to find the range</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="17" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="298" bodyend="382"/>
+        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="298" endline="382">range</references>
+        <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="93" endline="127">configureRange</references>
+        <references refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" compoundref="_range_8c" startline="397" endline="411">rangeIR</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" compoundref="_common_8h" startline="55">CLOSE_RANGE</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275" compoundref="_common_8h" startline="55">OUT_OF_IR</references>
+        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="70">DIV_2</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="55">GOOD_TRACK</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="55">BAD_DIR</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" compoundref="_common_8h" startline="55">NO_TARGET</references>
+        <referencedby refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="_range_8c" startline="242" endline="269">calibrateRange</referencedby>
+        <referencedby refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="298" endline="382">range</referencedby>
+        <referencedby refid="_range_8h_1a91b55894b9e6d74e4495ea610246c856" compoundref="_range_8c" startline="397" endline="411">rangeIR</referencedby>
+        <referencedby refid="_range_8h_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="507" endline="513">readTargetState</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8h_1a64e9d21d140ac54a306dab455b49adcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rangeISR</definition>
+        <argsstring>(void)</argsstring>
+        <name>rangeISR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a64e9d21d140ac54a306dab455b49adcf" kindref="member">rangeISR(void)</ref></para><para>Include: ultrasonic.h</para><para>Description: Called when an range related interrupt is fired, acts as the service routine for the rangefinding module.</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="18" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="210" bodyend="227"/>
+        <references refid="_common_8h_1a1673a1a80febeafd51f3f02508a0ea71" compoundref="_common_8h" startline="93">CCP1_INT</references>
+        <references refid="p18f4520_8h_1acf62977c2300a77c993cc9bde8f98124">CCPR1</references>
+        <references refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" compoundref="_range_8c" startline="29">INIT_PIN</references>
+        <references refid="p18f4520_8h_1a0da258d430dd4e57d8f750549f9ee883">PIE1bits</references>
+        <references refid="_common_8h_1af1b5f2499fdbb5b83800325b12a062cf" compoundref="_common_8h" startline="100">TMR1_INT</references>
+        <references refid="p18f4520_8h_1ac4d6310cb479c743b217189b91114508">PIR1bits</references>
+        <references refid="_common_8h_1ae8aa3ab3a23a388dab62ac86ee5e2545" compoundref="_common_8h" startline="107">CCP1_CLEAR</references>
+        <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="79" endline="98">lowISR</referencedby>
+        <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="113" endline="132">highISR</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8h_1ae2fb7c6f16c048f7f3247b7b5a3d403a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calibrateRange</definition>
+        <argsstring>(signed int distance)</argsstring>
+        <name>calibrateRange</name>
+        <param>
+          <type>signed int</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="19" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_range_8h_1a2c0a42fe463e1d8bd954fe3679aef5c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>signed int</type>
+        <definition>signed int rawRange</definition>
+        <argsstring>(void)</argsstring>
+        <name>rawRange</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: speed_sound(unsigned char tempx2)</para><para>Include:</para><para>Description: Returns the calibration offset to calculate the raw data</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="282" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="_range_8h_1a3e5554f5a076ded63b937d50b7e5c9db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref></type>
+        <definition>TargetState getTargetState</definition>
+        <argsstring>(void)</argsstring>
+        <name>getTargetState</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a3e5554f5a076ded63b937d50b7e5c9db" kindref="member">getTargetState(void)</ref></para><para>Include: <ref refid="_range_8h" kindref="compound">Range.h</ref></para><para>Description: Returns the target state from the last range reading. E.g. Good track, or direction not quite correct as US returned, but IR didn&apos;t and was within IR range etc.</para><para>Arguments: None</para><para>Returns: the target state </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="22" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="490" bodyend="493"/>
+        <referencedby refid="_range_8h_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="507" endline="513">readTargetState</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8h_1a87c8e64ddc596f3e6b72ee861f671168" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref></type>
+        <definition>TargetState readTargetState</definition>
+        <argsstring>(void)</argsstring>
+        <name>readTargetState</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" kindref="member">readTargetState(void)</ref></para><para>Include: <ref refid="_range_8h" kindref="compound">Range.h</ref></para><para>Description: Does the same thing as getTargetState, but actually performs a <ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range()</ref> read</para><para>Arguments: None</para><para>Returns: the target state </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="507" bodyend="513"/>
+        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="298" endline="382">range</references>
+        <references refid="_range_8c_1a3e5554f5a076ded63b937d50b7e5c9db" compoundref="_range_8c" startline="490" endline="493">getTargetState</references>
+        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="50" endline="98">search</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8h_1a91b55894b9e6d74e4495ea610246c856" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int rangeIR</definition>
+        <argsstring>(void)</argsstring>
+        <name>rangeIR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" kindref="member">rangeIR(void)</ref></para><para>Include:</para><para>Description: Reads the range from the IR Sensor</para><para>Arguments: None</para><para>Returns: Range (in mm) as an unsigned int.</para><para>Remark: Returns 0 if there is no target found </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="25" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="397" bodyend="411"/>
+        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="298" endline="382">range</references>
+        <references refid="_range_8c_1a13235bb583d24031d4129a10c126ef8e" compoundref="_range_8c" startline="18">IR_CONV</references>
+        <referencedby refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="_range_8c" startline="242" endline="269">calibrateRange</referencedby>
+        <referencedby refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="298" endline="382">range</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8h_1a5b063989d39d2958d2ecebc0106cb1da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int rangeUltrasonic</definition>
+        <argsstring>(void)</argsstring>
+        <name>rangeUltrasonic</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: rangeUS(void)</para><para>Include:</para><para>Description: performs an ultrasonic range reading. Pins:</para><para>Arguments: None</para><para>Returns: the average of the samples </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" line="26" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="425" bodyend="441"/>
+        <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="93" endline="127">configureRange</references>
+        <references refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" compoundref="_range_8c" startline="29">INIT_PIN</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>ultrasonic.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Grant</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Contains<sp/>the<sp/>public<sp/>interface<sp/>for<sp/>the<sp/>ultrasonic<sp/>module</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>15<sp/>September<sp/>2014,<sp/>11:24<sp/>AM</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//Ultrasonic<sp/>module<sp/>interrupt<sp/>macro</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>RANGE_INT<sp/><sp/>(PIR1bits.CCP1IF<sp/>&amp;&amp;<sp/>PIE1bits.CCP1IE)<sp/>||<sp/>(PIR1bits.CCP2IF<sp/>&amp;&amp;<sp/>PIE1bits.CCP2IE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="_range_8h_1acbdd28592e68851fc99aa81a3b917fc9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RANGE_INT<sp/>CCP1_INT<sp/>|<sp/>TMR1_INT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//External<sp/>declarations<sp/>of<sp/>the<sp/>public<sp/>access<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" kindref="member">configureRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_range_8h_1ac7337ef2da4c9ab03257562ec33bbb8a" kindref="member">configureAD</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_range_8h_1a64e9d21d140ac54a306dab455b49adcf" kindref="member">rangeISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_range_8h_1ae2fb7c6f16c048f7f3247b7b5a3d403a" kindref="member">calibrateRange</ref>(</highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>distance);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8h_1a2c0a42fe463e1d8bd954fe3679aef5c2" kindref="member">rawRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref><sp/><ref refid="_range_8h_1a3e5554f5a076ded63b937d50b7e5c9db" kindref="member">getTargetState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref><sp/><ref refid="_range_8h_1a87c8e64ddc596f3e6b72ee861f671168" kindref="member">readTargetState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8h_1a91b55894b9e6d74e4495ea610246c856" kindref="member">rangeIR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8h_1a5b063989d39d2958d2ecebc0106cb1da" kindref="member">rangeUltrasonic</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RANGE_H</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h"/>
+  </compounddef>
+</doxygen>

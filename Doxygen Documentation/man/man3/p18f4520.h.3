@@ -1,0 +1,5328 @@
+.TH "p18f4520.h" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+p18f4520.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBACCESS\fP   0"
+.br
+.ti -1c
+.RI "#define \fBBANKED\fP   1"
+.br
+.ti -1c
+.RI "#define \fBNop\fP()   {_asm nop _endasm}"
+.br
+.ti -1c
+.RI "#define \fBClrWdt\fP()   {_asm clrwdt _endasm}"
+.br
+.ti -1c
+.RI "#define \fBSleep\fP()   {_asm sleep _endasm}"
+.br
+.ti -1c
+.RI "#define \fBReset\fP()   {_asm reset _endasm}"
+.br
+.ti -1c
+.RI "#define \fBRlcf\fP(f, dest, access)   {_asm movlb f rlcf f,dest,access _endasm}"
+.br
+.ti -1c
+.RI "#define \fBRlncf\fP(f, dest, access)   {_asm movlb f rlncf f,dest,access _endasm}"
+.br
+.ti -1c
+.RI "#define \fBRrcf\fP(f, dest, access)   {_asm movlb f rrcf f,dest,access _endasm}"
+.br
+.ti -1c
+.RI "#define \fBRrncf\fP(f, dest, access)   {_asm movlb f rrncf f,dest,access _endasm}"
+.br
+.ti -1c
+.RI "#define \fBSwapf\fP(f, dest, access)   {_asm movlb f swapf f,dest,access _endasm }"
+.br
+.ti -1c
+.RI "#define \fBINTSAVELOCS\fP   \fBTBLPTR\fP, \fBTABLAT\fP, \fBPROD\fP"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "volatile near unsigned char \fBPORTA\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRA0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBAN0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBAN1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBAN2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBAN3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT0CKI\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBAN4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBOSC2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBOSC1\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBVREFN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBVREFP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCLKO\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCLKI\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBCVREF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_SS\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:5"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDIN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:5"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDIN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBC1OUT\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBC2OUT\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBPORTAbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPORTB\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRB0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBINT0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBKBI0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBKBI1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBKBI2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBKBI3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBAN12\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBAN10\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBAN8\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBAN9\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBAN11\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPGM\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPGC\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPGD\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBFLT0\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBPORTBbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPORTC\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRC0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBT1OSO\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT1OSI\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSCK\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSDI\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSDO\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTX\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRX\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBT13CKI\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSCL\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSDA\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCK\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBDT\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBT1CKI\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBP1A\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBPORTCbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPORTD\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRD0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPSP0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSP1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSP2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSP3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSP4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSP5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSP6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSP7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:5"
+.br
+.ti -1c
+.RI "      unsigned \fBP1B\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBP1C\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBP1D\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBPORTDbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPORTE\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRE0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRE1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRE2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRE3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRD\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBWR\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBMCLR\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_RD\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_WR\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_CS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_MCLR\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBAN5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBAN6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBAN7\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBVPP\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBPORTEbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBLATA\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBLATA0\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATA1\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATA2\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATA3\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATA4\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATA5\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATA6\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATA7\fP:1"
+.br
+.ti -1c
+.RI "} \fBLATAbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBLATB\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBLATB0\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATB1\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATB2\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATB3\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATB4\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATB5\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATB6\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATB7\fP:1"
+.br
+.ti -1c
+.RI "} \fBLATBbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBLATC\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBLATC0\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATC1\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATC2\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATC3\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATC4\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATC5\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATC6\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATC7\fP:1"
+.br
+.ti -1c
+.RI "} \fBLATCbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBLATD\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBLATD0\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATD1\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATD2\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATD3\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATD4\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATD5\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATD6\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATD7\fP:1"
+.br
+.ti -1c
+.RI "} \fBLATDbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBLATE\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBLATE0\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATE1\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBLATE2\fP:1"
+.br
+.ti -1c
+.RI "} \fBLATEbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBDDRA\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRA0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBDDRAbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTRISA\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISA7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRA0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRA7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBTRISAbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBDDRB\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRB0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBDDRBbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTRISB\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISB7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRB0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRB7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBTRISBbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBDDRC\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRC0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBDDRCbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTRISC\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISC7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRC0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRC7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBTRISCbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBDDRD\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRD0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBDDRDbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTRISD\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISD7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRD0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD6\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD7\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBTRISDbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBDDRE\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISE0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISE1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISE2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSPMODE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIBOV\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBOBF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIBF\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRE0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRE1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRE2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRE3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBDDREbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTRISE\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISE0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISE1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTRISE2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSPMODE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIBOV\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBOBF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIBF\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRE0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRE1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRE2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRE3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBTRISEbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBOSCTUNE\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTUN\fP:5"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPLLEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINTSRC\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTUN0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTUN1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTUN2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTUN3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTUN4\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBOSCTUNEbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPIE1\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBTMR1IE\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBTMR2IE\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBCCP1IE\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBSSPIE\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBTXIE\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBRCIE\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBADIE\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBPSPIE\fP:1"
+.br
+.ti -1c
+.RI "} \fBPIE1bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPIR1\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBTMR1IF\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBTMR2IF\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBCCP1IF\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBSSPIF\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBTXIF\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBRCIF\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBADIF\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBPSPIF\fP:1"
+.br
+.ti -1c
+.RI "} \fBPIR1bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBIPR1\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBTMR1IP\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBTMR2IP\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBCCP1IP\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBSSPIP\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBTXIP\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBRCIP\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBADIP\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBPSPIP\fP:1"
+.br
+.ti -1c
+.RI "} \fBIPR1bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPIE2\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2IE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR3IE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDIE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBBCLIE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBEEIE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCMIE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBOSCFIE\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDIE\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBPIE2bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPIR2\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2IF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR3IF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDIF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBBCLIF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBEEIF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCMIF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBOSCFIF\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDIF\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBPIR2bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBIPR2\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2IP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR3IP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDIP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBBCLIP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBEEIP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCMIP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBOSCFIP\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDIP\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBIPR2bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBEECON1\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBRD\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBWR\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBWREN\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBWRERR\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBFREE\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBCFGS\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBEEPGD\fP:1"
+.br
+.ti -1c
+.RI "} \fBEECON1bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBEECON2\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBEEDATA\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBEEADR\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBRCSTA\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRX9D\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBOERR\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBFERR\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBADDEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCREN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSREN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRX9\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSPEN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:3"
+.br
+.ti -1c
+.RI "      unsigned \fBADEN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBRCSTAbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTXSTA\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBTX9D\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBTRMT\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBBRGH\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBSENDB\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBSYNC\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBTXEN\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBTX9\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBCSRC\fP:1"
+.br
+.ti -1c
+.RI "} \fBTXSTAbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTXREG\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBRCREG\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBSPBRG\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBSPBRGH\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBT3CON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR3ON\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR3CS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_T3SYNC\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT3CCP1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT3CKPS\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBT3CCP2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD16\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBT3SYNC\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT3CKPS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT3CKPS1\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBT3CONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTMR3L\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTMR3H\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBCMCON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCM\fP:3"
+.br
+.ti -1c
+.RI "      unsigned \fBCIS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBC1INV\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBC2INV\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBC1OUT\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBC2OUT\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCM0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCM1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCM2\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBCMCONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBCVRCON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCVR\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBCVRSS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCVRR\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCVROE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCVREN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCVR0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCVR1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCVR2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCVR3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBCVRCONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBECCP1AS\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSBD\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSAC\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBECCPAS\fP:3"
+.br
+.ti -1c
+.RI "      unsigned \fBECCPASE\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSBD0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSBD1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSAC0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSAC1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBECCPAS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBECCPAS1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBECCPAS2\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBECCP1ASbits\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSBD\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSAC\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBECCPAS\fP:3"
+.br
+.ti -1c
+.RI "      unsigned \fBECCPASE\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSBD0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSBD1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSAC0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPSSAC1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBECCPAS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBECCPAS1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBECCPAS2\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBECCPASbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBECCP1DEL\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC\fP:7"
+.br
+.ti -1c
+.RI "      unsigned \fBPRSEN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC6\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBECCP1DELbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPWM1CON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC\fP:7"
+.br
+.ti -1c
+.RI "      unsigned \fBPRSEN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC5\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPDC6\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBPWM1CONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBBAUDCON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBABDEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBWUE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBBRG16\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTXCKP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRXDTP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRCIDL\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBABDOVF\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBSCKP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRCMT\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBBAUDCONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBBAUDCTL\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBABDEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBWUE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBBRG16\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTXCKP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRXDTP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRCIDL\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBABDOVF\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBSCKP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRCMT\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBBAUDCTLbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBCCP2CON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2M\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBDC2B\fP:2"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2M0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2M1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2M2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2M3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2Y\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP2X\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBDC2B0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBDC2B1\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBCCP2CONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned \fBCCPR2\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBCCPR2L\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBCCPR2H\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBCCP1CON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP1M\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBDC1B\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBP1M\fP:2"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP1M0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP1M1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP1M2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP1M3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP1Y\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCCP1X\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBP1M0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBP1M1\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBDC1B0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBDC1B1\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBCCP1CONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned \fBCCPR1\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBCCPR1L\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBCCPR1H\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBADCON2\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBADCS\fP:3"
+.br
+.ti -1c
+.RI "      unsigned \fBACQT\fP:3"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBADFM\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBADCS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBADCS1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBADCS2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBACQT0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBACQT1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBACQT2\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBADCON2bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBADCON1\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPCFG\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBVCFG\fP:2"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBPCFG0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPCFG1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPCFG2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPCFG3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBVCFG0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBVCFG1\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBADCON1bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBADCON0\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBADON\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBGO_NOT_DONE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCHS\fP:4"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBGO\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCHS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCHS1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCHS2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCHS3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBDONE\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_DONE\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBGO_DONE\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBADCON0bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned \fBADRES\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBADRESL\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBADRESH\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBSSPCON2\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBSEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRSEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRCEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBACKEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBACKDT\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBACKSTAT\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBGCEN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBADMSK1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBADMSK2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBADMSK3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBADMSK4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBADMSK5\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBSSPCON2bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBSSPCON1\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBSSPM\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBCKP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSSPEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSSPOV\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBWCOL\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBSSPM0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSSPM1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSSPM2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSSPM3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBSSPCON1bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBSSPSTAT\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBBF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBUA\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBR_NOT_W\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBD_NOT_A\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBCKE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSMP\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBR\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBD\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBW\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBA\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_W\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_A\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBR_W\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBD_A\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_WRITE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_ADDRESS\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBSSPSTATbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBSSPADD\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBSSPBUF\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBT2CON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBT2CKPS\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR2ON\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT2OUTPS\fP:4"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBT2CKPS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT2CKPS1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT2OUTPS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT2OUTPS1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT2OUTPS2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT2OUTPS3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:3"
+.br
+.ti -1c
+.RI "      unsigned \fBTOUTPS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTOUTPS1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTOUTPS2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTOUTPS3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBT2CONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPR2\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTMR2\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBT1CON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR1ON\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR1CS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_T1SYNC\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT1OSCEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT1CKPS\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBT1RUN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRD16\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBT1SYNC\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT1CKPS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT1CKPS1\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBT1CONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTMR1L\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTMR1H\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBRCON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_BOR\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_POR\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_PD\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_TO\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_RI\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSBOREN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIPEN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBBOR\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPOR\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPD\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTO\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRI\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBRCONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBWDTCON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBSWDTEN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBSWDTE\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBWDTCONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBHLVDCON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDL\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIVRST\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBVDIRMAG\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDL0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDL1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDL2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDL3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDL0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDL1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDL2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDL3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIRVST\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBLVV0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVV1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVV2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVV3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBBGST\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBHLVDCONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBLVDCON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDL\fP:4"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIVRST\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBVDIRMAG\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDL0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDL1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDL2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBHLVDL3\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDL0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDL1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDL2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDL3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVDEN\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIRVST\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBLVV0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVV1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVV2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBLVV3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBBGST\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBLVDCONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBOSCCON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBSCS\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBIOFS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBOSTS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIRCF\fP:3"
+.br
+.ti -1c
+.RI "      unsigned \fBIDLEN\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBSCS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSCS1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBFLTS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIRCF0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIRCF1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBIRCF2\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBOSCCONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBT0CON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBT0PS\fP:3"
+.br
+.ti -1c
+.RI "      unsigned \fBPSA\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT0SE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT0CS\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT08BIT\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR0ON\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBT0PS0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT0PS1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT0PS2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT0PS3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBT016BIT\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBT0CONbits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTMR0L\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTMR0H\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBSTATUS\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   unsigned \fBC\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBDC\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBZ\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBOV\fP:1"
+.br
+.ti -1c
+.RI "   unsigned \fBN\fP:1"
+.br
+.ti -1c
+.RI "} \fBSTATUSbits\fP"
+.br
+.ti -1c
+.RI "near unsigned \fBFSR2\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBFSR2L\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBFSR2H\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPLUSW2\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPREINC2\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPOSTDEC2\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPOSTINC2\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBINDF2\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBBSR\fP"
+.br
+.ti -1c
+.RI "near unsigned \fBFSR1\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBFSR1L\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBFSR1H\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPLUSW1\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPREINC1\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPOSTDEC1\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPOSTINC1\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBINDF1\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBWREG\fP"
+.br
+.ti -1c
+.RI "near unsigned \fBFSR0\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBFSR0L\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBFSR0H\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPLUSW0\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPREINC0\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPOSTDEC0\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPOSTINC0\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBINDF0\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBINTCON3\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBINT1IF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT2IF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT1IE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT2IE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT1IP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT2IP\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBINT1F\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT2F\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT1E\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT2E\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT1P\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT2P\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBINTCON3bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBINTCON2\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRBIP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR0IP\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINTEDG2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINTEDG1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINTEDG0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBNOT_RBPU\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:7"
+.br
+.ti -1c
+.RI "      unsigned \fBRBPU\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBINTCON2bits\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBINTCON\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBRBIF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT0IF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR0IF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBRBIE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT0IE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBTMR0IE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPEIE_GIEL\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBGIE_GIEH\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT0F\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT0IF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad1__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBINT0E\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBT0IE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBPEIE\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBGIE\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:6"
+.br
+.ti -1c
+.RI "      unsigned \fBGIEL\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBGIEH\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBINTCONbits\fP"
+.br
+.ti -1c
+.RI "near unsigned \fBPROD\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBPRODL\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBPRODH\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTABLAT\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned short long \fBTBLPTR\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTBLPTRL\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTBLPTRH\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBTBLPTRU\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned short long \fBPC\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPCL\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPCLATH\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBPCLATU\fP"
+.br
+.ti -1c
+.RI "volatile near unsigned char \fBSTKPTR\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBSTKPTR\fP:5"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSTKUNF\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSTKFUL\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "      unsigned \fBSP0\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSP1\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSP2\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSP3\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fBSP4\fP:1"
+.br
+.ti -1c
+.RI "      unsigned \fB__pad0__\fP:2"
+.br
+.ti -1c
+.RI "      unsigned \fBSTKOVF\fP:1"
+.br
+.ti -1c
+.RI "   } "
+.br
+.ti -1c
+.RI "} \fBSTKPTRbits\fP"
+.br
+.ti -1c
+.RI "near unsigned short long \fBTOS\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBTOSL\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBTOSH\fP"
+.br
+.ti -1c
+.RI "near unsigned char \fBTOSU\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ACCESS   0"
+
+.SS "#define BANKED   1"
+
+.SS "#define ClrWdt()   {_asm clrwdt _endasm}"
+
+.SS "#define INTSAVELOCS   \fBTBLPTR\fP, \fBTABLAT\fP, \fBPROD\fP"
+
+.SS "#define Nop()   {_asm nop _endasm}"
+
+.SS "#define Reset()   {_asm reset _endasm}"
+
+.SS "#define Rlcf(f, dest, access)   {_asm movlb f rlcf f,dest,access _endasm}"
+
+.SS "#define Rlncf(f, dest, access)   {_asm movlb f rlncf f,dest,access _endasm}"
+
+.SS "#define Rrcf(f, dest, access)   {_asm movlb f rrcf f,dest,access _endasm}"
+
+.SS "#define Rrncf(f, dest, access)   {_asm movlb f rrncf f,dest,access _endasm}"
+
+.SS "#define Sleep()   {_asm sleep _endasm}"
+
+.SS "#define Swapf(f, dest, access)   {_asm movlb f swapf f,dest,access _endasm }"
+
+.SH "Variable Documentation"
+.PP 
+.SS "unsigned __pad0__"
+
+.SS "unsigned __pad1__"
+
+.SS "unsigned A"
+
+.SS "unsigned ABDEN"
+
+.SS "unsigned ABDOVF"
+
+.SS "unsigned ACKDT"
+
+.SS "unsigned ACKEN"
+
+.SS "unsigned ACKSTAT"
+
+.SS "unsigned ACQT"
+
+.SS "unsigned ACQT0"
+
+.SS "unsigned ACQT1"
+
+.SS "unsigned ACQT2"
+
+.SS "volatile near unsigned char ADCON0"
+
+.SS "volatile { \&.\&.\&. }   ADCON0bits"
+
+.SS "volatile near unsigned char ADCON1"
+
+.SS "volatile { \&.\&.\&. }   ADCON1bits"
+
+.SS "volatile near unsigned char ADCON2"
+
+.SS "volatile { \&.\&.\&. }   ADCON2bits"
+
+.SS "unsigned ADCS"
+
+.SS "unsigned ADCS0"
+
+.SS "unsigned ADCS1"
+
+.SS "unsigned ADCS2"
+
+.SS "unsigned ADDEN"
+
+.SS "unsigned ADEN"
+
+.SS "unsigned ADFM"
+
+.SS "unsigned ADIE"
+
+.SS "unsigned ADIF"
+
+.SS "unsigned ADIP"
+
+.SS "unsigned ADMSK1"
+
+.SS "unsigned ADMSK2"
+
+.SS "unsigned ADMSK3"
+
+.SS "unsigned ADMSK4"
+
+.SS "unsigned ADMSK5"
+
+.SS "unsigned ADON"
+
+.SS "volatile near unsigned ADRES"
+
+.SS "volatile near unsigned char ADRESH"
+
+.SS "volatile near unsigned char ADRESL"
+
+.SS "unsigned AN0"
+
+.SS "unsigned AN1"
+
+.SS "unsigned AN10"
+
+.SS "unsigned AN11"
+
+.SS "unsigned AN12"
+
+.SS "unsigned AN2"
+
+.SS "unsigned AN3"
+
+.SS "unsigned AN4"
+
+.SS "unsigned AN5"
+
+.SS "unsigned AN6"
+
+.SS "unsigned AN7"
+
+.SS "unsigned AN8"
+
+.SS "unsigned AN9"
+
+.SS "volatile near unsigned char BAUDCON"
+
+.SS "volatile { \&.\&.\&. }   BAUDCONbits"
+
+.SS "volatile near unsigned char BAUDCTL"
+
+.SS "volatile { \&.\&.\&. }   BAUDCTLbits"
+
+.SS "unsigned BCLIE"
+
+.SS "unsigned BCLIF"
+
+.SS "unsigned BCLIP"
+
+.SS "unsigned BF"
+
+.SS "unsigned BGST"
+
+.SS "unsigned BOR"
+
+.SS "unsigned BRG16"
+
+.SS "unsigned BRGH"
+
+.SS "near unsigned char BSR"
+
+.SS "unsigned C"
+
+.SS "unsigned C1INV"
+
+.SS "unsigned C1OUT"
+
+.SS "unsigned C2INV"
+
+.SS "unsigned C2OUT"
+
+.SS "unsigned CCP1"
+
+.SS "volatile near unsigned char CCP1CON"
+
+.SS "volatile { \&.\&.\&. }   CCP1CONbits"
+
+.SS "unsigned CCP1IE"
+
+.SS "unsigned CCP1IF"
+
+.SS "unsigned CCP1IP"
+
+.SS "unsigned CCP1M"
+
+.SS "unsigned CCP1M0"
+
+.SS "unsigned CCP1M1"
+
+.SS "unsigned CCP1M2"
+
+.SS "unsigned CCP1M3"
+
+.SS "unsigned CCP1X"
+
+.SS "unsigned CCP1Y"
+
+.SS "unsigned CCP2"
+
+.SS "volatile near unsigned char CCP2CON"
+
+.SS "volatile { \&.\&.\&. }   CCP2CONbits"
+
+.SS "unsigned CCP2IE"
+
+.SS "unsigned CCP2IF"
+
+.SS "unsigned CCP2IP"
+
+.SS "unsigned CCP2M"
+
+.SS "unsigned CCP2M0"
+
+.SS "unsigned CCP2M1"
+
+.SS "unsigned CCP2M2"
+
+.SS "unsigned CCP2M3"
+
+.SS "unsigned CCP2X"
+
+.SS "unsigned CCP2Y"
+
+.SS "volatile near unsigned CCPR1"
+
+.SS "volatile near unsigned char CCPR1H"
+
+.SS "volatile near unsigned char CCPR1L"
+
+.SS "volatile near unsigned CCPR2"
+
+.SS "volatile near unsigned char CCPR2H"
+
+.SS "volatile near unsigned char CCPR2L"
+
+.SS "unsigned CFGS"
+
+.SS "unsigned CHS"
+
+.SS "unsigned CHS0"
+
+.SS "unsigned CHS1"
+
+.SS "unsigned CHS2"
+
+.SS "unsigned CHS3"
+
+.SS "unsigned CIS"
+
+.SS "unsigned CK"
+
+.SS "unsigned CKE"
+
+.SS "unsigned CKP"
+
+.SS "unsigned CLKI"
+
+.SS "unsigned CLKO"
+
+.SS "unsigned CM"
+
+.SS "unsigned CM0"
+
+.SS "unsigned CM1"
+
+.SS "unsigned CM2"
+
+.SS "volatile near unsigned char CMCON"
+
+.SS "volatile { \&.\&.\&. }   CMCONbits"
+
+.SS "unsigned CMIE"
+
+.SS "unsigned CMIF"
+
+.SS "unsigned CMIP"
+
+.SS "unsigned CREN"
+
+.SS "unsigned CS"
+
+.SS "unsigned CSRC"
+
+.SS "unsigned CVR"
+
+.SS "unsigned CVR0"
+
+.SS "unsigned CVR1"
+
+.SS "unsigned CVR2"
+
+.SS "unsigned CVR3"
+
+.SS "volatile near unsigned char CVRCON"
+
+.SS "volatile { \&.\&.\&. }   CVRCONbits"
+
+.SS "unsigned CVREF"
+
+.SS "unsigned CVREN"
+
+.SS "unsigned CVROE"
+
+.SS "unsigned CVRR"
+
+.SS "unsigned CVRSS"
+
+.SS "unsigned D"
+
+.SS "unsigned D_A"
+
+.SS "unsigned D_NOT_A"
+
+.SS "unsigned DC"
+
+.SS "unsigned DC1B"
+
+.SS "unsigned DC1B0"
+
+.SS "unsigned DC1B1"
+
+.SS "unsigned DC2B"
+
+.SS "unsigned DC2B0"
+
+.SS "unsigned DC2B1"
+
+.SS "volatile near unsigned char DDRA"
+
+.SS "volatile { \&.\&.\&. }   DDRAbits"
+
+.SS "volatile near unsigned char DDRB"
+
+.SS "volatile { \&.\&.\&. }   DDRBbits"
+
+.SS "volatile near unsigned char DDRC"
+
+.SS "volatile { \&.\&.\&. }   DDRCbits"
+
+.SS "volatile near unsigned char DDRD"
+
+.SS "volatile { \&.\&.\&. }   DDRDbits"
+
+.SS "volatile near unsigned char DDRE"
+
+.SS "volatile { \&.\&.\&. }   DDREbits"
+
+.SS "unsigned DONE"
+
+.SS "unsigned DT"
+
+.SS "volatile near unsigned char ECCP1AS"
+
+.SS "volatile { \&.\&.\&. }   ECCP1ASbits"
+
+.SS "volatile near unsigned char ECCP1DEL"
+
+.SS "volatile { \&.\&.\&. }   ECCP1DELbits"
+
+.SS "volatile near unsigned char ECCPAS"
+
+.SS "unsigned ECCPAS0"
+
+.SS "unsigned ECCPAS1"
+
+.SS "unsigned ECCPAS2"
+
+.SS "volatile { \&.\&.\&. }   ECCPASbits"
+
+.SS "unsigned ECCPASE"
+
+.SS "volatile near unsigned char EEADR"
+
+.SS "volatile near unsigned char EECON1"
+
+.SS "volatile { \&.\&.\&. }   EECON1bits"
+
+.SS "volatile near unsigned char EECON2"
+
+.SS "volatile near unsigned char EEDATA"
+
+.SS "unsigned EEIE"
+
+.SS "unsigned EEIF"
+
+.SS "unsigned EEIP"
+
+.SS "unsigned EEPGD"
+
+.SS "unsigned FERR"
+
+.SS "unsigned FLT0"
+
+.SS "unsigned FLTS"
+
+.SS "unsigned FREE"
+
+.SS "near unsigned FSR0"
+
+.SS "near unsigned char FSR0H"
+
+.SS "near unsigned char FSR0L"
+
+.SS "near unsigned FSR1"
+
+.SS "near unsigned char FSR1H"
+
+.SS "near unsigned char FSR1L"
+
+.SS "near unsigned FSR2"
+
+.SS "near unsigned char FSR2H"
+
+.SS "near unsigned char FSR2L"
+
+.SS "unsigned GCEN"
+
+.SS "unsigned GIE"
+
+.SS "unsigned GIE_GIEH"
+
+.SS "unsigned GIEH"
+
+.SS "unsigned GIEL"
+
+.SS "unsigned GO"
+
+.SS "unsigned GO_DONE"
+
+.SS "unsigned GO_NOT_DONE"
+
+.SS "volatile near unsigned char HLVDCON"
+
+.SS "volatile { \&.\&.\&. }   HLVDCONbits"
+
+.SS "unsigned HLVDEN"
+
+.SS "unsigned HLVDIE"
+
+.SS "unsigned HLVDIF"
+
+.SS "unsigned HLVDIN"
+
+.SS "unsigned HLVDIP"
+
+.SS "unsigned HLVDL"
+
+.SS "unsigned HLVDL0"
+
+.SS "unsigned HLVDL1"
+
+.SS "unsigned HLVDL2"
+
+.SS "unsigned HLVDL3"
+
+.SS "unsigned IBF"
+
+.SS "unsigned IBOV"
+
+.SS "unsigned IDLEN"
+
+.SS "near unsigned char INDF0"
+
+.SS "near unsigned char INDF1"
+
+.SS "near unsigned char INDF2"
+
+.SS "unsigned INT0"
+
+.SS "unsigned INT0E"
+
+.SS "unsigned INT0F"
+
+.SS "unsigned INT0IE"
+
+.SS "unsigned INT0IF"
+
+.SS "unsigned INT1"
+
+.SS "unsigned INT1E"
+
+.SS "unsigned INT1F"
+
+.SS "unsigned INT1IE"
+
+.SS "unsigned INT1IF"
+
+.SS "unsigned INT1IP"
+
+.SS "unsigned INT1P"
+
+.SS "unsigned INT2"
+
+.SS "unsigned INT2E"
+
+.SS "unsigned INT2F"
+
+.SS "unsigned INT2IE"
+
+.SS "unsigned INT2IF"
+
+.SS "unsigned INT2IP"
+
+.SS "unsigned INT2P"
+
+.SS "volatile near unsigned char INTCON"
+
+.SS "volatile near unsigned char INTCON2"
+
+.SS "volatile { \&.\&.\&. }   INTCON2bits"
+
+.SS "volatile near unsigned char INTCON3"
+
+.SS "volatile { \&.\&.\&. }   INTCON3bits"
+
+.SS "volatile { \&.\&.\&. }   INTCONbits"
+
+.SS "unsigned INTEDG0"
+
+.SS "unsigned INTEDG1"
+
+.SS "unsigned INTEDG2"
+
+.SS "unsigned INTSRC"
+
+.SS "unsigned IOFS"
+
+.SS "unsigned IPEN"
+
+.SS "volatile near unsigned char IPR1"
+
+.SS "volatile { \&.\&.\&. }   IPR1bits"
+
+.SS "volatile near unsigned char IPR2"
+
+.SS "volatile { \&.\&.\&. }   IPR2bits"
+
+.SS "unsigned IRCF"
+
+.SS "unsigned IRCF0"
+
+.SS "unsigned IRCF1"
+
+.SS "unsigned IRCF2"
+
+.SS "unsigned IRVST"
+
+.SS "unsigned IVRST"
+
+.SS "unsigned KBI0"
+
+.SS "unsigned KBI1"
+
+.SS "unsigned KBI2"
+
+.SS "unsigned KBI3"
+
+.SS "volatile near unsigned char LATA"
+
+.SS "unsigned LATA0"
+
+.SS "unsigned LATA1"
+
+.SS "unsigned LATA2"
+
+.SS "unsigned LATA3"
+
+.SS "unsigned LATA4"
+
+.SS "unsigned LATA5"
+
+.SS "unsigned LATA6"
+
+.SS "unsigned LATA7"
+
+.SS "volatile { \&.\&.\&. }   LATAbits"
+
+.SS "volatile near unsigned char LATB"
+
+.SS "unsigned LATB0"
+
+.SS "unsigned LATB1"
+
+.SS "unsigned LATB2"
+
+.SS "unsigned LATB3"
+
+.SS "unsigned LATB4"
+
+.SS "unsigned LATB5"
+
+.SS "unsigned LATB6"
+
+.SS "unsigned LATB7"
+
+.SS "volatile { \&.\&.\&. }   LATBbits"
+
+.SS "volatile near unsigned char LATC"
+
+.SS "unsigned LATC0"
+
+.SS "unsigned LATC1"
+
+.SS "unsigned LATC2"
+
+.SS "unsigned LATC3"
+
+.SS "unsigned LATC4"
+
+.SS "unsigned LATC5"
+
+.SS "unsigned LATC6"
+
+.SS "unsigned LATC7"
+
+.SS "volatile { \&.\&.\&. }   LATCbits"
+
+.SS "volatile near unsigned char LATD"
+
+.SS "unsigned LATD0"
+
+.SS "unsigned LATD1"
+
+.SS "unsigned LATD2"
+
+.SS "unsigned LATD3"
+
+.SS "unsigned LATD4"
+
+.SS "unsigned LATD5"
+
+.SS "unsigned LATD6"
+
+.SS "unsigned LATD7"
+
+.SS "volatile { \&.\&.\&. }   LATDbits"
+
+.SS "volatile near unsigned char LATE"
+
+.SS "unsigned LATE0"
+
+.SS "unsigned LATE1"
+
+.SS "unsigned LATE2"
+
+.SS "volatile { \&.\&.\&. }   LATEbits"
+
+.SS "volatile near unsigned char LVDCON"
+
+.SS "volatile { \&.\&.\&. }   LVDCONbits"
+
+.SS "unsigned LVDEN"
+
+.SS "unsigned LVDIE"
+
+.SS "unsigned LVDIF"
+
+.SS "unsigned LVDIN"
+
+.SS "unsigned LVDIP"
+
+.SS "unsigned LVDL0"
+
+.SS "unsigned LVDL1"
+
+.SS "unsigned LVDL2"
+
+.SS "unsigned LVDL3"
+
+.SS "unsigned LVV0"
+
+.SS "unsigned LVV1"
+
+.SS "unsigned LVV2"
+
+.SS "unsigned LVV3"
+
+.SS "unsigned MCLR"
+
+.SS "unsigned N"
+
+.SS "unsigned NOT_A"
+
+.SS "unsigned NOT_ADDRESS"
+
+.SS "unsigned NOT_BOR"
+
+.SS "unsigned NOT_CS"
+
+.SS "unsigned NOT_DONE"
+
+.SS "unsigned NOT_MCLR"
+
+.SS "unsigned NOT_PD"
+
+.SS "unsigned NOT_POR"
+
+.SS "unsigned NOT_RBPU"
+
+.SS "unsigned NOT_RD"
+
+.SS "unsigned NOT_RI"
+
+.SS "unsigned NOT_SS"
+
+.SS "unsigned NOT_T1SYNC"
+
+.SS "unsigned NOT_T3SYNC"
+
+.SS "unsigned NOT_TO"
+
+.SS "unsigned NOT_W"
+
+.SS "unsigned NOT_WR"
+
+.SS "unsigned NOT_WRITE"
+
+.SS "unsigned OBF"
+
+.SS "unsigned OERR"
+
+.SS "unsigned OSC1"
+
+.SS "unsigned OSC2"
+
+.SS "volatile near unsigned char OSCCON"
+
+.SS "volatile { \&.\&.\&. }   OSCCONbits"
+
+.SS "unsigned OSCFIE"
+
+.SS "unsigned OSCFIF"
+
+.SS "unsigned OSCFIP"
+
+.SS "volatile near unsigned char OSCTUNE"
+
+.SS "volatile { \&.\&.\&. }   OSCTUNEbits"
+
+.SS "unsigned OSTS"
+
+.SS "unsigned OV"
+
+.SS "unsigned P"
+
+.SS "unsigned P1A"
+
+.SS "unsigned P1B"
+
+.SS "unsigned P1C"
+
+.SS "unsigned P1D"
+
+.SS "unsigned P1M"
+
+.SS "unsigned P1M0"
+
+.SS "unsigned P1M1"
+
+.SS "volatile near unsigned short long PC"
+
+.SS "unsigned PCFG"
+
+.SS "unsigned PCFG0"
+
+.SS "unsigned PCFG1"
+
+.SS "unsigned PCFG2"
+
+.SS "unsigned PCFG3"
+
+.SS "volatile near unsigned char PCL"
+
+.SS "volatile near unsigned char PCLATH"
+
+.SS "volatile near unsigned char PCLATU"
+
+.SS "unsigned PD"
+
+.SS "unsigned PDC"
+
+.SS "unsigned PDC0"
+
+.SS "unsigned PDC1"
+
+.SS "unsigned PDC2"
+
+.SS "unsigned PDC3"
+
+.SS "unsigned PDC4"
+
+.SS "unsigned PDC5"
+
+.SS "unsigned PDC6"
+
+.SS "unsigned PEIE"
+
+.SS "unsigned PEIE_GIEL"
+
+.SS "unsigned PEN"
+
+.SS "unsigned PGC"
+
+.SS "unsigned PGD"
+
+.SS "unsigned PGM"
+
+.SS "volatile near unsigned char PIE1"
+
+.SS "volatile { \&.\&.\&. }   PIE1bits"
+
+.SS "volatile near unsigned char PIE2"
+
+.SS "volatile { \&.\&.\&. }   PIE2bits"
+
+.SS "volatile near unsigned char PIR1"
+
+.SS "volatile { \&.\&.\&. }   PIR1bits"
+
+.SS "volatile near unsigned char PIR2"
+
+.SS "volatile { \&.\&.\&. }   PIR2bits"
+
+.SS "unsigned PLLEN"
+
+.SS "volatile near unsigned char PLUSW0"
+
+.SS "volatile near unsigned char PLUSW1"
+
+.SS "volatile near unsigned char PLUSW2"
+
+.SS "unsigned POR"
+
+.SS "volatile near unsigned char PORTA"
+
+.SS "volatile { \&.\&.\&. }   PORTAbits"
+
+.SS "volatile near unsigned char PORTB"
+
+.SS "volatile { \&.\&.\&. }   PORTBbits"
+
+.SS "volatile near unsigned char PORTC"
+
+.SS "volatile { \&.\&.\&. }   PORTCbits"
+
+.SS "volatile near unsigned char PORTD"
+
+.SS "volatile { \&.\&.\&. }   PORTDbits"
+
+.SS "volatile near unsigned char PORTE"
+
+.SS "volatile { \&.\&.\&. }   PORTEbits"
+
+.SS "volatile near unsigned char POSTDEC0"
+
+.SS "volatile near unsigned char POSTDEC1"
+
+.SS "volatile near unsigned char POSTDEC2"
+
+.SS "volatile near unsigned char POSTINC0"
+
+.SS "volatile near unsigned char POSTINC1"
+
+.SS "volatile near unsigned char POSTINC2"
+
+.SS "volatile near unsigned char PR2"
+
+.SS "volatile near unsigned char PREINC0"
+
+.SS "volatile near unsigned char PREINC1"
+
+.SS "volatile near unsigned char PREINC2"
+
+.SS "near unsigned PROD"
+
+.SS "near unsigned char PRODH"
+
+.SS "near unsigned char PRODL"
+
+.SS "unsigned PRSEN"
+
+.SS "unsigned PSA"
+
+.SS "unsigned PSP0"
+
+.SS "unsigned PSP1"
+
+.SS "unsigned PSP2"
+
+.SS "unsigned PSP3"
+
+.SS "unsigned PSP4"
+
+.SS "unsigned PSP5"
+
+.SS "unsigned PSP6"
+
+.SS "unsigned PSP7"
+
+.SS "unsigned PSPIE"
+
+.SS "unsigned PSPIF"
+
+.SS "unsigned PSPIP"
+
+.SS "unsigned PSPMODE"
+
+.SS "unsigned PSSAC"
+
+.SS "unsigned PSSAC0"
+
+.SS "unsigned PSSAC1"
+
+.SS "unsigned PSSBD"
+
+.SS "unsigned PSSBD0"
+
+.SS "unsigned PSSBD1"
+
+.SS "volatile near unsigned char PWM1CON"
+
+.SS "volatile { \&.\&.\&. }   PWM1CONbits"
+
+.SS "unsigned R"
+
+.SS "unsigned R_NOT_W"
+
+.SS "unsigned R_W"
+
+.SS "unsigned RA0"
+
+.SS "unsigned RA1"
+
+.SS "unsigned RA2"
+
+.SS "unsigned RA3"
+
+.SS "unsigned RA4"
+
+.SS "unsigned RA5"
+
+.SS "unsigned RA6"
+
+.SS "unsigned RA7"
+
+.SS "unsigned RB0"
+
+.SS "unsigned RB1"
+
+.SS "unsigned RB2"
+
+.SS "unsigned RB3"
+
+.SS "unsigned RB4"
+
+.SS "unsigned RB5"
+
+.SS "unsigned RB6"
+
+.SS "unsigned RB7"
+
+.SS "unsigned RBIE"
+
+.SS "unsigned RBIF"
+
+.SS "unsigned RBIP"
+
+.SS "unsigned RBPU"
+
+.SS "unsigned RC0"
+
+.SS "unsigned RC1"
+
+.SS "unsigned RC2"
+
+.SS "unsigned RC3"
+
+.SS "unsigned RC4"
+
+.SS "unsigned RC5"
+
+.SS "unsigned RC6"
+
+.SS "unsigned RC7"
+
+.SS "unsigned RCEN"
+
+.SS "unsigned RCIDL"
+
+.SS "unsigned RCIE"
+
+.SS "unsigned RCIF"
+
+.SS "unsigned RCIP"
+
+.SS "unsigned RCMT"
+
+.SS "volatile near unsigned char RCON"
+
+.SS "volatile { \&.\&.\&. }   RCONbits"
+
+.SS "volatile near unsigned char RCREG"
+
+.SS "volatile near unsigned char RCSTA"
+
+.SS "volatile { \&.\&.\&. }   RCSTAbits"
+
+.SS "unsigned RD"
+
+.SS "unsigned RD0"
+
+.SS "unsigned RD1"
+
+.SS "unsigned RD16"
+
+.SS "unsigned RD2"
+
+.SS "unsigned RD3"
+
+.SS "unsigned RD4"
+
+.SS "unsigned RD5"
+
+.SS "unsigned RD6"
+
+.SS "unsigned RD7"
+
+.SS "unsigned RE0"
+
+.SS "unsigned RE1"
+
+.SS "unsigned RE2"
+
+.SS "unsigned RE3"
+
+.SS "unsigned RI"
+
+.SS "unsigned RSEN"
+
+.SS "unsigned RX"
+
+.SS "unsigned RX9"
+
+.SS "unsigned RX9D"
+
+.SS "unsigned RXDTP"
+
+.SS "unsigned S"
+
+.SS "unsigned SBOREN"
+
+.SS "unsigned SCK"
+
+.SS "unsigned SCKP"
+
+.SS "unsigned SCL"
+
+.SS "unsigned SCS"
+
+.SS "unsigned SCS0"
+
+.SS "unsigned SCS1"
+
+.SS "unsigned SDA"
+
+.SS "unsigned SDI"
+
+.SS "unsigned SDO"
+
+.SS "unsigned SEN"
+
+.SS "unsigned SENDB"
+
+.SS "unsigned SMP"
+
+.SS "unsigned SP0"
+
+.SS "unsigned SP1"
+
+.SS "unsigned SP2"
+
+.SS "unsigned SP3"
+
+.SS "unsigned SP4"
+
+.SS "volatile near unsigned char SPBRG"
+
+.SS "volatile near unsigned char SPBRGH"
+
+.SS "unsigned SPEN"
+
+.SS "unsigned SREN"
+
+.SS "unsigned SS"
+
+.SS "volatile near unsigned char SSPADD"
+
+.SS "volatile near unsigned char SSPBUF"
+
+.SS "volatile near unsigned char SSPCON1"
+
+.SS "volatile { \&.\&.\&. }   SSPCON1bits"
+
+.SS "volatile near unsigned char SSPCON2"
+
+.SS "volatile { \&.\&.\&. }   SSPCON2bits"
+
+.SS "unsigned SSPEN"
+
+.SS "unsigned SSPIE"
+
+.SS "unsigned SSPIF"
+
+.SS "unsigned SSPIP"
+
+.SS "unsigned SSPM"
+
+.SS "unsigned SSPM0"
+
+.SS "unsigned SSPM1"
+
+.SS "unsigned SSPM2"
+
+.SS "unsigned SSPM3"
+
+.SS "unsigned SSPOV"
+
+.SS "volatile near unsigned char SSPSTAT"
+
+.SS "volatile { \&.\&.\&. }   SSPSTATbits"
+
+.SS "near unsigned char STATUS"
+
+.SS "near { \&.\&.\&. }   STATUSbits"
+
+.SS "unsigned STKFUL"
+
+.SS "unsigned STKOVF"
+
+.SS "unsigned STKPTR"
+
+.SS "volatile { \&.\&.\&. }   STKPTRbits"
+
+.SS "unsigned STKUNF"
+
+.SS "unsigned SWDTE"
+
+.SS "unsigned SWDTEN"
+
+.SS "unsigned SYNC"
+
+.SS "unsigned T016BIT"
+
+.SS "unsigned T08BIT"
+
+.SS "unsigned T0CKI"
+
+.SS "volatile near unsigned char T0CON"
+
+.SS "volatile { \&.\&.\&. }   T0CONbits"
+
+.SS "unsigned T0CS"
+
+.SS "unsigned T0IE"
+
+.SS "unsigned T0IF"
+
+.SS "unsigned T0PS"
+
+.SS "unsigned T0PS0"
+
+.SS "unsigned T0PS1"
+
+.SS "unsigned T0PS2"
+
+.SS "unsigned T0PS3"
+
+.SS "unsigned T0SE"
+
+.SS "unsigned T13CKI"
+
+.SS "unsigned T1CKI"
+
+.SS "unsigned T1CKPS"
+
+.SS "unsigned T1CKPS0"
+
+.SS "unsigned T1CKPS1"
+
+.SS "volatile near unsigned char T1CON"
+
+.SS "volatile { \&.\&.\&. }   T1CONbits"
+
+.SS "unsigned T1OSCEN"
+
+.SS "unsigned T1OSI"
+
+.SS "unsigned T1OSO"
+
+.SS "unsigned T1RUN"
+
+.SS "unsigned T1SYNC"
+
+.SS "unsigned T2CKPS"
+
+.SS "unsigned T2CKPS0"
+
+.SS "unsigned T2CKPS1"
+
+.SS "volatile near unsigned char T2CON"
+
+.SS "volatile { \&.\&.\&. }   T2CONbits"
+
+.SS "unsigned T2OUTPS"
+
+.SS "unsigned T2OUTPS0"
+
+.SS "unsigned T2OUTPS1"
+
+.SS "unsigned T2OUTPS2"
+
+.SS "unsigned T2OUTPS3"
+
+.SS "unsigned T3CCP1"
+
+.SS "unsigned T3CCP2"
+
+.SS "unsigned T3CKPS"
+
+.SS "unsigned T3CKPS0"
+
+.SS "unsigned T3CKPS1"
+
+.SS "volatile near unsigned char T3CON"
+
+.SS "volatile { \&.\&.\&. }   T3CONbits"
+
+.SS "unsigned T3SYNC"
+
+.SS "volatile near unsigned char TABLAT"
+
+.SS "volatile near unsigned short long TBLPTR"
+
+.SS "volatile near unsigned char TBLPTRH"
+
+.SS "volatile near unsigned char TBLPTRL"
+
+.SS "volatile near unsigned char TBLPTRU"
+
+.SS "volatile near unsigned char TMR0H"
+
+.SS "unsigned TMR0IE"
+
+.SS "unsigned TMR0IF"
+
+.SS "unsigned TMR0IP"
+
+.SS "volatile near unsigned char TMR0L"
+
+.SS "unsigned TMR0ON"
+
+.SS "unsigned TMR1CS"
+
+.SS "volatile near unsigned char TMR1H"
+
+.SS "unsigned TMR1IE"
+
+.SS "unsigned TMR1IF"
+
+.SS "unsigned TMR1IP"
+
+.SS "volatile near unsigned char TMR1L"
+
+.SS "unsigned TMR1ON"
+
+.SS "volatile near unsigned char TMR2"
+
+.SS "unsigned TMR2IE"
+
+.SS "unsigned TMR2IF"
+
+.SS "unsigned TMR2IP"
+
+.SS "unsigned TMR2ON"
+
+.SS "unsigned TMR3CS"
+
+.SS "volatile near unsigned char TMR3H"
+
+.SS "unsigned TMR3IE"
+
+.SS "unsigned TMR3IF"
+
+.SS "unsigned TMR3IP"
+
+.SS "volatile near unsigned char TMR3L"
+
+.SS "unsigned TMR3ON"
+
+.SS "unsigned TO"
+
+.SS "near unsigned short long TOS"
+
+.SS "near unsigned char TOSH"
+
+.SS "near unsigned char TOSL"
+
+.SS "near unsigned char TOSU"
+
+.SS "unsigned TOUTPS0"
+
+.SS "unsigned TOUTPS1"
+
+.SS "unsigned TOUTPS2"
+
+.SS "unsigned TOUTPS3"
+
+.SS "volatile near unsigned char TRISA"
+
+.SS "unsigned TRISA0"
+
+.SS "unsigned TRISA1"
+
+.SS "unsigned TRISA2"
+
+.SS "unsigned TRISA3"
+
+.SS "unsigned TRISA4"
+
+.SS "unsigned TRISA5"
+
+.SS "unsigned TRISA6"
+
+.SS "unsigned TRISA7"
+
+.SS "volatile { \&.\&.\&. }   TRISAbits"
+
+.SS "volatile near unsigned char TRISB"
+
+.SS "unsigned TRISB0"
+
+.SS "unsigned TRISB1"
+
+.SS "unsigned TRISB2"
+
+.SS "unsigned TRISB3"
+
+.SS "unsigned TRISB4"
+
+.SS "unsigned TRISB5"
+
+.SS "unsigned TRISB6"
+
+.SS "unsigned TRISB7"
+
+.SS "volatile { \&.\&.\&. }   TRISBbits"
+
+.SS "volatile near unsigned char TRISC"
+
+.SS "unsigned TRISC0"
+
+.SS "unsigned TRISC1"
+
+.SS "unsigned TRISC2"
+
+.SS "unsigned TRISC3"
+
+.SS "unsigned TRISC4"
+
+.SS "unsigned TRISC5"
+
+.SS "unsigned TRISC6"
+
+.SS "unsigned TRISC7"
+
+.SS "volatile { \&.\&.\&. }   TRISCbits"
+
+.SS "volatile near unsigned char TRISD"
+
+.SS "unsigned TRISD0"
+
+.SS "unsigned TRISD1"
+
+.SS "unsigned TRISD2"
+
+.SS "unsigned TRISD3"
+
+.SS "unsigned TRISD4"
+
+.SS "unsigned TRISD5"
+
+.SS "unsigned TRISD6"
+
+.SS "unsigned TRISD7"
+
+.SS "volatile { \&.\&.\&. }   TRISDbits"
+
+.SS "volatile near unsigned char TRISE"
+
+.SS "unsigned TRISE0"
+
+.SS "unsigned TRISE1"
+
+.SS "unsigned TRISE2"
+
+.SS "volatile { \&.\&.\&. }   TRISEbits"
+
+.SS "unsigned TRMT"
+
+.SS "unsigned TUN"
+
+.SS "unsigned TUN0"
+
+.SS "unsigned TUN1"
+
+.SS "unsigned TUN2"
+
+.SS "unsigned TUN3"
+
+.SS "unsigned TUN4"
+
+.SS "unsigned TX"
+
+.SS "unsigned TX9"
+
+.SS "unsigned TX9D"
+
+.SS "unsigned TXCKP"
+
+.SS "unsigned TXEN"
+
+.SS "unsigned TXIE"
+
+.SS "unsigned TXIF"
+
+.SS "unsigned TXIP"
+
+.SS "volatile near unsigned char TXREG"
+
+.SS "volatile near unsigned char TXSTA"
+
+.SS "volatile { \&.\&.\&. }   TXSTAbits"
+
+.SS "unsigned UA"
+
+.SS "unsigned VCFG"
+
+.SS "unsigned VCFG0"
+
+.SS "unsigned VCFG1"
+
+.SS "unsigned VDIRMAG"
+
+.SS "unsigned VPP"
+
+.SS "unsigned VREFN"
+
+.SS "unsigned VREFP"
+
+.SS "near unsigned char W"
+
+.SS "unsigned WCOL"
+
+.SS "volatile near unsigned char WDTCON"
+
+.SS "volatile { \&.\&.\&. }   WDTCONbits"
+
+.SS "unsigned WR"
+
+.SS "near unsigned char WREG"
+
+.SS "unsigned WREN"
+
+.SS "unsigned WRERR"
+
+.SS "unsigned WUE"
+
+.SS "unsigned Z"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

@@ -1,0 +1,808 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="_common_8h" kind="file">
+    <compoundname>Common.h</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">math.h</includes>
+    <includes refid="p18f4520_8h" local="no">p18f4520.h</includes>
+    <includes local="no">timers.h</includes>
+    <includes local="no">adc.h</includes>
+    <includes local="no">capture.h</includes>
+    <includes local="no">usart.h</includes>
+    <includes local="no">compare.h</includes>
+    <includedby refid="_interrupts_8c" local="yes">Interrupts.c</includedby>
+    <includedby refid="_l_c_d_8c" local="yes">LCD.c</includedby>
+    <includedby refid="_menusystem_8c" local="yes">Menusystem.c</includedby>
+    <includedby refid="_menusystem2_8c" local="yes">Menusystem2.c</includedby>
+    <includedby refid="newmain_8c" local="yes">newmain.c</includedby>
+    <includedby refid="_pan_tilt_8c" local="yes">PanTilt.c</includedby>
+    <includedby refid="_range_8c" local="yes">Range.c</includedby>
+    <includedby refid="_serial_8c" local="yes">Serial.c</includedby>
+    <includedby refid="_temp_8c" local="yes">Temp.c</includedby>
+    <includedby refid="_tracking_8c" local="yes">Tracking.c</includedby>
+    <includedby refid="_user___interface_8c" local="yes">User_Interface.c</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>stdlib.h</label>
+      </node>
+      <node id="10">
+        <label>adc.h</label>
+      </node>
+      <node id="4">
+        <label>Common.h</label>
+        <link refid="Common.h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>timers.h</label>
+      </node>
+      <node id="13">
+        <label>compare.h</label>
+      </node>
+      <node id="11">
+        <label>capture.h</label>
+      </node>
+      <node id="7">
+        <label>math.h</label>
+      </node>
+      <node id="8">
+        <label>p18f4520.h</label>
+        <link refid="p18f4520_8h"/>
+      </node>
+      <node id="12">
+        <label>usart.h</label>
+      </node>
+      <node id="5">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="17">
+        <label>Menusystem.c</label>
+        <link refid="_menusystem_8c"/>
+      </node>
+      <node id="24">
+        <label>Tracking.c</label>
+        <link refid="_tracking_8c"/>
+      </node>
+      <node id="15">
+        <label>Interrupts.c</label>
+        <link refid="_interrupts_8c"/>
+      </node>
+      <node id="21">
+        <label>Range.c</label>
+        <link refid="_range_8c"/>
+      </node>
+      <node id="19">
+        <label>newmain.c</label>
+        <link refid="newmain_8c"/>
+      </node>
+      <node id="14">
+        <label>Common.h</label>
+        <link refid="Common.h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>Serial.c</label>
+        <link refid="_serial_8c"/>
+      </node>
+      <node id="23">
+        <label>Temp.c</label>
+        <link refid="_temp_8c"/>
+      </node>
+      <node id="16">
+        <label>LCD.c</label>
+        <link refid="_l_c_d_8c"/>
+      </node>
+      <node id="25">
+        <label>User_Interface.c</label>
+        <link refid="_user___interface_8c"/>
+      </node>
+      <node id="20">
+        <label>PanTilt.c</label>
+        <link refid="_pan_tilt_8c"/>
+      </node>
+      <node id="18">
+        <label>Menusystem2.c</label>
+        <link refid="_menusystem2_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_direction" prot="public">Direction</innerclass>
+    <innerclass refid="struct_tracking_data" prot="public">TrackingData</innerclass>
+    <innerclass refid="structsystem_state" prot="public">systemState</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_common_8h_1ad0d718ce41d188a939567abd92667796" prot="public" static="no">
+        <name>MNML</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="9" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1ad9fa804805fca2632643680804f7e911" prot="public" static="no">
+        <name>NEXT_STATE</name>
+        <param><defname>s</defname></param>
+        <param><defname>state</defname></param>
+        <initializer>state.previous = state.current; state.current = s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="59" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="59" bodyend="-1"/>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="45" endline="69">main</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" prot="public" static="no">
+        <name>NEXT_STATE_PTR</name>
+        <param><defname>s</defname></param>
+        <param><defname>state</defname></param>
+        <initializer>state-&gt;previous = state-&gt;current; state-&gt;current = s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="60" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="60" bodyend="-1"/>
+        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="50" endline="98">search</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" prot="public" static="no">
+        <name>DIV_2</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="70" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="70" bodyend="-1"/>
+        <referencedby refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="298" endline="382">range</referencedby>
+        <referencedby refid="_temp_8h_1afd08db2b1a6d6af19e39f10dc453332c" compoundref="_temp_8c" startline="75" endline="84">readTemp</referencedby>
+        <referencedby refid="_temp_8h_1a5b64a66aae4a5a3d92a1711956fb4eb8" compoundref="_temp_8c" startline="97" endline="100">rawTemp</referencedby>
+        <referencedby refid="_temp_8h_1aa416413a05e38b982abc19a7c9ea4c3c" compoundref="_temp_8c" startline="117" endline="120">calibrateTemp</referencedby>
+        <referencedby refid="_temp_8h_1a31747860f4fe18bee4fc23c0d33b17d7" compoundref="_temp_8c" startline="134" endline="137">getTemp</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1abe112bea83dc5d8fb3a5a7ccc80b7abb" prot="public" static="no">
+        <name>DIV_4</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="71" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a4f978d22e3309b4121d0a95a74a1faba" prot="public" static="no">
+        <name>DIV_8</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="72" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1aaf396e0300e6c0cd62ba67c6b6ab4bff" prot="public" static="no">
+        <name>DIV_16</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="73" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a6cd2ce042188839a264c5ba1627df97e" prot="public" static="no">
+        <name>DIV_32</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 5)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="74" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1abcbec04588cd79b47e54f7259474e854" prot="public" static="no">
+        <name>DIV_64</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 6)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="75" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1abdf4b624268c124f05cbb2954854f80c" prot="public" static="no">
+        <name>DIV_128</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 7)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="76" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1ad36de0b0221fc009ad6b3a8671da028f" prot="public" static="no">
+        <name>DIV_256</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 8)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="77" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a6606c956e93ac0da035a298ec8073174" prot="public" static="no">
+        <name>DIV_512</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 9)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="78" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a740656a5f724d0a99e528def8ce50125" prot="public" static="no">
+        <name>DIV_1024</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 10)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="79" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="79" bodyend="-1"/>
+        <referencedby refid="_user___interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" compoundref="_user___interface_8c" startline="78" endline="95">readDial</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a8d2e675fd4bbca53be91ffadf0c11673" prot="public" static="no">
+        <name>DIV_4096</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 12)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="80" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a9469c415aff989522dac534ab8adb35e" prot="public" static="no">
+        <name>DIV_65536</name>
+        <param><defname>v</defname></param>
+        <initializer>((v) &gt;&gt; 16)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="81" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a5d9d454d4b9f2ff8106d5199ac0d0186" prot="public" static="no">
+        <name>SWAP</name>
+        <param><defname>x</defname></param>
+        <param><defname>y</defname></param>
+        <initializer>(y = (y ^ (x = (x ^ (y = (x ^ y))))))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="83" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a5b107d0db5d9abf4a7219b5d13d2c54e" prot="public" static="no">
+        <name>ADC_IR_READ</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="86" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a135151cc09e1094dbb0163c3d696e630" prot="public" static="no">
+        <name>ADC_TEMP_READ</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="87" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="87" bodyend="-1"/>
+        <referencedby refid="_temp_8h_1a4946ccbc1990e831667bffded1147c4f" compoundref="_temp_8c" startline="43" endline="62">readTempx2</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a1518840d35b90121383f93c00eba9164" prot="public" static="no">
+        <name>ADC_DIAL_READ</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="88" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="88" bodyend="-1"/>
+        <referencedby refid="_user___interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" compoundref="_user___interface_8c" startline="78" endline="95">readDial</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1aef3509d0d4bc8291df1b76f894a1e251" prot="public" static="no">
+        <name>TX_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a045c6555e7e82fcf68e608d4404fb9ed" kindref="member">PIR1bits.TXIF</ref> &amp;&amp; <ref refid="p18f4520_8h_1ae7b3b4752a0a4b6c084f1599ea98e724" kindref="member">PIE1bits.TXIE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="91" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="91" bodyend="-1"/>
+        <referencedby refid="_serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="_serial_8c" startline="233" endline="274">serialISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a62ad39277340a9f95c1464e4a4b1b5a1" prot="public" static="no">
+        <name>RC_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a8ff1127552738fc483a7e1887045e8d2" kindref="member">PIR1bits.RCIF</ref> &amp;&amp; <ref refid="p18f4520_8h_1a756f5bf99764eb500a4a22b0693efb03" kindref="member">PIE1bits.RCIE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="92" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="92" bodyend="-1"/>
+        <referencedby refid="_serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="_serial_8c" startline="233" endline="274">serialISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a1673a1a80febeafd51f3f02508a0ea71" prot="public" static="no">
+        <name>CCP1_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a6daa84b9e3f6496da3121a80506f444e" kindref="member">PIR1bits.CCP1IF</ref> &amp;&amp; <ref refid="p18f4520_8h_1a25d4adacdc481717b9c89f8352bc4bc6" kindref="member">PIE1bits.CCP1IE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="93" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="93" bodyend="-1"/>
+        <referencedby refid="_range_8h_1a64e9d21d140ac54a306dab455b49adcf" compoundref="_range_8c" startline="210" endline="227">rangeISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1aee2ef60613898be37c57266698616e33" prot="public" static="no">
+        <name>CCP2_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a7d689151681a8a50c953ecefd618eeb4" kindref="member">PIR2bits.CCP2IF</ref> &amp;&amp; <ref refid="p18f4520_8h_1af032cd1ef97761506102829f69feb189" kindref="member">PIE2bits.CCP2IE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="94" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="94" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="_pan_tilt_8c" startline="363" endline="399">panTiltISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1ace4d61c3a12d8faab31305402fe1e074" prot="public" static="no">
+        <name>INT0_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a9879ca934031776b77a0c19f1dce1b54" kindref="member">INTCONbits.INT0IF</ref> &amp;&amp; <ref refid="p18f4520_8h_1a35711f92541b36401c4a6a1575cb18ea" kindref="member">INTCONbits.INT0IE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="95" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1afeb5099420bb15f8f59a24c3426de8f1" prot="public" static="no">
+        <name>RB_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1ad8f6df4237b4615b8389534a9bd451da" kindref="member">INTCONbits.RBIF</ref> &amp;&amp; <ref refid="p18f4520_8h_1ab20cb587b32c351a91e1b912ce3e29f4" kindref="member">INTCONbits.RBIE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="96" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1af6baae9385e65b47397c25f253cd8893" prot="public" static="no">
+        <name>TMR2_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a3e1791e78ad5d0e6b89e44e50c74f2c6" kindref="member">PIR1bits.TMR2IF</ref> &amp;&amp; <ref refid="p18f4520_8h_1a2616057e89e17857a0232b45825b8a4a" kindref="member">PIE1bits.TMR2IE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="97" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a5d4ee5c980131f617eac819f887ccff8" prot="public" static="no">
+        <name>TMR0_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a0301f42bbd887e533352a52d65e0f73d" kindref="member">INTCONbits.TMR0IF</ref> &amp;&amp; <ref refid="p18f4520_8h_1aa9618f14f6542a5dac7d44cf1d7e1023" kindref="member">INTCONbits.TMR0IE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="99" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1af1b5f2499fdbb5b83800325b12a062cf" prot="public" static="no">
+        <name>TMR1_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a1ca0d1f4b314bcc9d4a42d92d4512118" kindref="member">PIR1bits.TMR1IF</ref> &amp;&amp; <ref refid="p18f4520_8h_1a41b95c767b7f4f9d788d421633333f25" kindref="member">PIE1bits.TMR1IE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="100" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="100" bodyend="-1"/>
+        <referencedby refid="_range_8h_1a64e9d21d140ac54a306dab455b49adcf" compoundref="_range_8c" startline="210" endline="227">rangeISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a37a3fed60a18eefca9f30c8929272a35" prot="public" static="no">
+        <name>TMR3_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a3543e05a68f8aaf308e3abf391109a47" kindref="member">PIR2bits.TMR3IF</ref> &amp;&amp; <ref refid="p18f4520_8h_1a0f9cc64ee6e86633138b4e186eae33e2" kindref="member">PIE2bits.TMR3IE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="101" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1ae19ae26fb5206ab6d949596d972ca430" prot="public" static="no">
+        <name>ADC_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1aca1613e7087914be4d69c5770eb8f4a3" kindref="member">PIR1bits.ADIF</ref> &amp;&amp; <ref refid="p18f4520_8h_1ace69098082b2fd1d0929e31e71c1d5a9" kindref="member">PIE1bits.ADIE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="102" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a2fa3b4c4837187612ff9b0236d0d705f" prot="public" static="no">
+        <name>SSP_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a8001253a95878a1eab217642803eb655" kindref="member">PIR1bits.SSPIF</ref> &amp;&amp; <ref refid="p18f4520_8h_1acf24cc2186d69e72711aea0c30b99228" kindref="member">PIE1bits.SSPIE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="103" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1ad9822079fd16e03a52bf566ce3fe221c" prot="public" static="no">
+        <name>BCL_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a903514afa08123232b8209785a448348" kindref="member">PIR2bits.BCLIF</ref> &amp;&amp; <ref refid="p18f4520_8h_1aae975fe98fee9b9a8c3beaa9964bbc8f" kindref="member">PIE2bits.BCLIE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="104" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1ab3771f37588656c8d037de34edf2a88f" prot="public" static="no">
+        <name>LVD_INT</name>
+        <initializer>(<ref refid="p18f4520_8h_1a7eed8d56af8d3063c286adba368d8dff" kindref="member">PIR2bits.LVDIF</ref> &amp;&amp; <ref refid="p18f4520_8h_1a957b8cf8198b7ca9c30cf9c730960a94" kindref="member">PIE2bits.LVDIE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="105" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1ae8aa3ab3a23a388dab62ac86ee5e2545" prot="public" static="no">
+        <name>CCP1_CLEAR</name>
+        <initializer>(<ref refid="p18f4520_8h_1a6daa84b9e3f6496da3121a80506f444e" kindref="member">PIR1bits.CCP1IF</ref> = 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="107" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="107" bodyend="-1"/>
+        <referencedby refid="_range_8h_1a64e9d21d140ac54a306dab455b49adcf" compoundref="_range_8c" startline="210" endline="227">rangeISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a4e461245300e8ea7e5c6af0741a33855" prot="public" static="no">
+        <name>CCP2_CLEAR</name>
+        <initializer>(<ref refid="p18f4520_8h_1a7d689151681a8a50c953ecefd618eeb4" kindref="member">PIR2bits.CCP2IF</ref> = 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="108" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a3be7ef61d339af381862a81d4b363efb" prot="public" static="no">
+        <name>CLOCK</name>
+        <initializer>10000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="111" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_common_8h_1a644329678dec72e39b8847963e59c35d" prot="public" static="no">
+        <name>FOSC_4</name>
+        <initializer>2500000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="112" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_common_8h_1a2db986326a654991cce9b1c2b1670677" prot="public" static="no">
+        <name>TargetState</name>
+        <enumvalue id="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" prot="public">
+          <name>NO_TARGET</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_common_8h_1a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275" prot="public">
+          <name>OUT_OF_IR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" prot="public">
+          <name>BAD_DIR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" prot="public">
+          <name>GOOD_TRACK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" prot="public">
+          <name>CLOSE_RANGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="55" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="enum" id="_common_8h_1a05931287b056487cf89495f39026fbe1" prot="public" static="no">
+        <name>possible_states</name>
+        <enumvalue id="_common_8h_1a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647" prot="public">
+          <name>UNDEF</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_common_8h_1a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36" prot="public">
+          <name>INIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" prot="public">
+          <name>SRCH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" prot="public">
+          <name>TRCK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="63" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>Common.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Grant</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>11<sp/>September<sp/>2014,<sp/>12:24<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>the<sp/>MNML<sp/>Board.<sp/>Comment<sp/>this<sp/>out<sp/>for<sp/>the<sp/>PICDEM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="_common_8h_1ad0d718ce41d188a939567abd92667796" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MNML</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//Include<sp/>files</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MNML</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="p18f4520_8h" kindref="compound">p18f4520.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;p18f452.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//Peripherial<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;timers.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;adc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;capture.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;usart.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;capture.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;compare.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MNML</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//System<sp/>configurations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>config<sp/>WDR<sp/>=<sp/>OFF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>config<sp/>OSC<sp/>=<sp/>HS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>config<sp/>LVP<sp/>=<sp/>OFF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>config<sp/>DEBUG<sp/>=<sp/>ON</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//Direction<sp/>definition:<sp/>Stores<sp/>an<sp/>inclination<sp/>and<sp/>azimuth<sp/>-<sp/>i.e.<sp/>a<sp/>fully<sp/>defined</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//direction<sp/>to<sp/>point<sp/>the<sp/>pan<sp/>tilt.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="struct_direction" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42" refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>;</highlight></codeline>
+<codeline lineno="43" refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}<sp/><ref refid="struct_direction" kindref="compound">Direction</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//Tracking<sp/>Data<sp/>definition:<sp/>Stores<sp/>the<sp/>current<sp/>target<sp/>information</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="struct_tracking_data" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49" refid="struct_tracking_data_1a4bb47863775a37236bda65273c01b275" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_tracking_data_1a4bb47863775a37236bda65273c01b275" kindref="member">distance</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Distance<sp/>to<sp/>the<sp/>target</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="struct_tracking_data_1a866e78e12cb32dcaf1ded89bda8be8f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_tracking_data_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Azimuth<sp/>to<sp/>the<sp/>target</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="struct_tracking_data_1af308b9934394c8bcf7614eb1df2d863f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_tracking_data_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//inclination<sp/>to<sp/>the<sp/>target</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}<sp/><ref refid="struct_tracking_data" kindref="compound">TrackingData</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!(IR||US)<sp/><sp/>(US&amp;&amp;!IR)<sp/>(US&amp;&amp;!IR),<sp/>(US&amp;&amp;IR)<sp/><sp/><sp/><sp/>(IR&amp;&amp;!US)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal">{<ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" kindref="member">NO_TARGET</ref>,<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275" kindref="member">OUT_OF_IR</ref>,<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" kindref="member">BAD_DIR</ref>,<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" kindref="member">GOOD_TRACK</ref>,<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" kindref="member">CLOSE_RANGE</ref>}<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//Define<sp/>Macros<sp/>to<sp/>change<sp/>the<sp/>state<sp/>of<sp/>the<sp/>system</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="_common_8h_1ad9fa804805fca2632643680804f7e911" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NEXT_STATE(s,<sp/>state)<sp/>state.previous<sp/>=<sp/>state.current;<sp/>state.current<sp/>=<sp/>s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NEXT_STATE_PTR(s,<sp/>state)<sp/>state-&gt;previous<sp/>=<sp/>state-&gt;current;<sp/>state-&gt;current<sp/>=<sp/>s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//Define<sp/>the<sp/>enum<sp/>and<sp/>struct<sp/>to<sp/>store<sp/>the<sp/>current<sp/>system<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="_common_8h_1a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal">{<ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647" kindref="member">UNDEF</ref>,<sp/><ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36" kindref="member">INIT</ref>,<sp/><ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" kindref="member">SRCH</ref>,<sp/><ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" kindref="member">TRCK</ref>}<sp/><ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1" kindref="member">possible_states</ref>;</highlight></codeline>
+<codeline lineno="64" refid="structsystem_state" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65" refid="structsystem_state_1a18284a4a782e71c070e1d2e80734509d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1" kindref="member">possible_states</ref><sp/><ref refid="structsystem_state_1a18284a4a782e71c070e1d2e80734509d" kindref="member">current</ref>;</highlight></codeline>
+<codeline lineno="66" refid="structsystem_state_1af2f2716b4afa23c8b53a9351a0924b6b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1" kindref="member">possible_states</ref><sp/><ref refid="structsystem_state_1af2f2716b4afa23c8b53a9351a0924b6b" kindref="member">previous</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}<sp/><ref refid="structsystem_state" kindref="compound">systemState</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//Efficient<sp/>Division<sp/>macros</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_2(v)<sp/>((v)<sp/>&gt;&gt;<sp/>1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//Divide<sp/>by<sp/>2,<sp/>Cannot<sp/>be<sp/>used<sp/>on<sp/>negative<sp/>numbers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="_common_8h_1abe112bea83dc5d8fb3a5a7ccc80b7abb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_4(v)<sp/>((v)<sp/>&gt;&gt;<sp/>2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//Divide<sp/>by<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="_common_8h_1a4f978d22e3309b4121d0a95a74a1faba" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_8(v)<sp/>((v)<sp/>&gt;&gt;<sp/>3)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//Divide<sp/>by<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="_common_8h_1aaf396e0300e6c0cd62ba67c6b6ab4bff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_16(v)<sp/>((v)<sp/>&gt;&gt;<sp/>4)<sp/><sp/><sp/><sp/><sp/><sp/>//Divide<sp/>by<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="_common_8h_1a6cd2ce042188839a264c5ba1627df97e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_32(v)<sp/>((v)<sp/>&gt;&gt;<sp/>5)<sp/><sp/><sp/><sp/><sp/><sp/>//Divide<sp/>by<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="_common_8h_1abcbec04588cd79b47e54f7259474e854" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_64(v)<sp/>((v)<sp/>&gt;&gt;<sp/>6)<sp/><sp/><sp/><sp/><sp/><sp/>//Divide<sp/>by<sp/>64</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="_common_8h_1abdf4b624268c124f05cbb2954854f80c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_128(v)<sp/>((v)<sp/>&gt;&gt;<sp/>7)<sp/><sp/><sp/><sp/><sp/>//Divide<sp/>by<sp/>128</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="_common_8h_1ad36de0b0221fc009ad6b3a8671da028f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_256(v)<sp/>((v)<sp/>&gt;&gt;<sp/>8)<sp/><sp/><sp/><sp/><sp/>//Divide<sp/>by<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="_common_8h_1a6606c956e93ac0da035a298ec8073174" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_512(v)<sp/>((v)<sp/>&gt;&gt;<sp/>9)<sp/><sp/><sp/><sp/><sp/>//Divide<sp/>by<sp/>512</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="_common_8h_1a740656a5f724d0a99e528def8ce50125" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_1024(v)<sp/>((v)<sp/>&gt;&gt;<sp/>10)<sp/><sp/><sp/>//Divide<sp/>by<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="_common_8h_1a8d2e675fd4bbca53be91ffadf0c11673" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_4096(v)<sp/>((v)<sp/>&gt;&gt;<sp/>12)<sp/><sp/><sp/>//Divide<sp/>by<sp/>4096</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="_common_8h_1a9469c415aff989522dac534ab8adb35e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIV_65536(v)<sp/>((v)<sp/>&gt;&gt;<sp/>16)<sp/><sp/><sp/><sp/>//Divide<sp/>by<sp/>65536</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="_common_8h_1a5d9d454d4b9f2ff8106d5199ac0d0186" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SWAP(x,<sp/>y)<sp/>(y<sp/>=<sp/>(y<sp/>^<sp/>(x<sp/>=<sp/>(x<sp/>^<sp/>(y<sp/>=<sp/>(x<sp/>^<sp/>y))))))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//ADC<sp/>Channel<sp/>Select<sp/>macros</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="_common_8h_1a5b107d0db5d9abf4a7219b5d13d2c54e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_IR_READ<sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//Sets<sp/>ADC<sp/>to<sp/>read<sp/>the<sp/>IR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="_common_8h_1a135151cc09e1094dbb0163c3d696e630" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_TEMP_READ<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//Sets<sp/>the<sp/>ADC<sp/>to<sp/>read<sp/>the<sp/>temp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="_common_8h_1a1518840d35b90121383f93c00eba9164" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_DIAL_READ<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//Sets<sp/>the<sp/>ADC<sp/>to<sp/>read<sp/>the<sp/>DIAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//Interrupt<sp/>macros</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="_common_8h_1aef3509d0d4bc8291df1b76f894a1e251" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TX_INT<sp/>(PIR1bits.TXIF<sp/>&amp;&amp;<sp/>PIE1bits.TXIE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//serial<sp/>transmit<sp/>interrupt<sp/>fired</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="_common_8h_1a62ad39277340a9f95c1464e4a4b1b5a1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RC_INT<sp/>(PIR1bits.RCIF<sp/>&amp;&amp;<sp/>PIE1bits.RCIE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//serial<sp/>receive<sp/>interrupt<sp/>fired</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="_common_8h_1a1673a1a80febeafd51f3f02508a0ea71" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CCP1_INT<sp/>(PIR1bits.CCP1IF<sp/>&amp;&amp;<sp/>PIE1bits.CCP1IE)<sp/>//Whether<sp/>CCP1<sp/>fired<sp/>the<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="_common_8h_1aee2ef60613898be37c57266698616e33" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CCP2_INT<sp/>(PIR2bits.CCP2IF<sp/>&amp;&amp;<sp/>PIE2bits.CCP2IE)<sp/>//Whether<sp/>CCP2<sp/>fired<sp/>the<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="_common_8h_1ace4d61c3a12d8faab31305402fe1e074" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INT0_INT<sp/>(INTCONbits.INT0IF<sp/>&amp;&amp;<sp/>INTCONbits.INT0IE)<sp/>//Whether<sp/>the<sp/>external<sp/>interrupt<sp/>fired</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="_common_8h_1afeb5099420bb15f8f59a24c3426de8f1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RB_INT<sp/><sp/><sp/>(INTCONbits.RBIF<sp/>&amp;&amp;<sp/>INTCONbits.RBIE)<sp/><sp/>//Whether<sp/>the<sp/>RB<sp/>port<sp/>change<sp/>interrupt<sp/>fired</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="_common_8h_1af6baae9385e65b47397c25f253cd8893" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMR2_INT<sp/>(PIR1bits.TMR2IF<sp/>&amp;&amp;<sp/>PIE1bits.TMR2IE)<sp/><sp/><sp/>//TMR2<sp/>matching<sp/>PR2<sp/>fired<sp/>the<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="_common_8h_1a5d4ee5c980131f617eac819f887ccff8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMR0_INT<sp/>(INTCONbits.TMR0IF<sp/>&amp;&amp;<sp/>INTCONbits.TMR0IE)<sp/>//Whether<sp/>the<sp/>timer0<sp/>overflow<sp/>fired<sp/>the<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="_common_8h_1af1b5f2499fdbb5b83800325b12a062cf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMR1_INT<sp/>(PIR1bits.TMR1IF<sp/>&amp;&amp;<sp/>PIE1bits.TMR1IE)<sp/><sp/><sp/>//TMR1<sp/>overflow<sp/>fired<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="_common_8h_1a37a3fed60a18eefca9f30c8929272a35" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMR3_INT<sp/>(PIR2bits.TMR3IF<sp/>&amp;&amp;<sp/>PIE2bits.TMR3IE)<sp/><sp/><sp/>//TMR3<sp/>overflow<sp/>fired<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="_common_8h_1ae19ae26fb5206ab6d949596d972ca430" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_INT<sp/>(PIR1bits.ADIF<sp/>&amp;&amp;<sp/>PIE1bits.ADIE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//Whether<sp/>the<sp/>ADC<sp/>fired<sp/>the<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="_common_8h_1a2fa3b4c4837187612ff9b0236d0d705f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SSP_INT<sp/>(PIR1bits.SSPIF<sp/>&amp;&amp;<sp/>PIE1bits.SSPIE)<sp/><sp/><sp/><sp/><sp/><sp/>//Whether<sp/>the<sp/>SSP<sp/>module<sp/>fired<sp/>the<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="_common_8h_1ad9822079fd16e03a52bf566ce3fe221c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BCL_INT<sp/>(PIR2bits.BCLIF<sp/>&amp;&amp;<sp/>PIE2bits.BCLIE)<sp/><sp/><sp/><sp/><sp/><sp/>//Bus<sp/>collision<sp/>interrupt<sp/>fired</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="_common_8h_1ab3771f37588656c8d037de34edf2a88f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LVD_INT<sp/>(PIR2bits.LVDIF<sp/>&amp;&amp;<sp/>PIE2bits.LVDIE)<sp/><sp/><sp/><sp/><sp/><sp/>//Low<sp/>voltage<sp/>detect<sp/>interrupt<sp/>fired</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="_common_8h_1ae8aa3ab3a23a388dab62ac86ee5e2545" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CCP1_CLEAR<sp/>(PIR1bits.CCP1IF<sp/>=<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="_common_8h_1a4e461245300e8ea7e5c6af0741a33855" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CCP2_CLEAR<sp/>(PIR2bits.CCP2IF<sp/>=<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MNML</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="_common_8h_1a3be7ef61d339af381862a81d4b363efb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CLOCK<sp/><sp/><sp/>10000000<sp/><sp/><sp/><sp/>//10MHz<sp/>clock<sp/>source</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="_common_8h_1a644329678dec72e39b8847963e59c35d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FOSC_4<sp/><sp/>2500000<sp/><sp/><sp/><sp/><sp/>//2.5MHz<sp/>Fosc_4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CLOCK<sp/>4000000<sp/><sp/><sp/>//2.5MHz<sp/>clock<sp/>source</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FOSC_4<sp/>1000000<sp/><sp/><sp/>//1MHz<sp/>Fosc_4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/>Pins<sp/></highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*/</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,119 @@
+\hypertarget{_interrupts_8c}{\section{Interrupts.\+c File Reference}
+\label{_interrupts_8c}\index{Interrupts.\+c@{Interrupts.\+c}}
+}
+{\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Tracking.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Range.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}User\+\_\+\+Interface.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Serial.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Pan\+Tilt.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Temp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Menusystem.\+h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_interrupts_8c_ade0c81a4e99033806e084f2fa298575c}{T\+R\+A\+C\+K\+\_\+\+H}
+\item 
+\#define \hyperlink{_interrupts_8c_a4e591dd86c476b236ffdb3c26e266469}{R\+A\+N\+G\+E\+\_\+\+H}
+\item 
+\#define \hyperlink{_interrupts_8c_a9552ba249c0540ffe9a08a05d1b92504}{M\+E\+N\+U\+\_\+\+H}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_interrupts_8c_ac835f50b358d0d663df1b8b835f9bb87}{low\+I\+S\+R} (void)
+\item 
+void \hyperlink{_interrupts_8c_ae1ef1358e10604d046f54fc0b93c514c}{high\+I\+S\+R} (void)
+\item 
+void \hyperlink{_interrupts_8c_a6b8605436b00e1a9db52f2cb2094fdfd}{high\+Vector} (void)
+\item 
+void \hyperlink{_interrupts_8c_a0bf42af14e1d16197d7eb27ac5addca0}{low\+Vector} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_interrupts_8c_a9552ba249c0540ffe9a08a05d1b92504}{\index{Interrupts.\+c@{Interrupts.\+c}!M\+E\+N\+U\+\_\+\+H@{M\+E\+N\+U\+\_\+\+H}}
+\index{M\+E\+N\+U\+\_\+\+H@{M\+E\+N\+U\+\_\+\+H}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{M\+E\+N\+U\+\_\+\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+H}}\label{_interrupts_8c_a9552ba249c0540ffe9a08a05d1b92504}
+\hypertarget{_interrupts_8c_a4e591dd86c476b236ffdb3c26e266469}{\index{Interrupts.\+c@{Interrupts.\+c}!R\+A\+N\+G\+E\+\_\+\+H@{R\+A\+N\+G\+E\+\_\+\+H}}
+\index{R\+A\+N\+G\+E\+\_\+\+H@{R\+A\+N\+G\+E\+\_\+\+H}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{R\+A\+N\+G\+E\+\_\+\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+A\+N\+G\+E\+\_\+\+H}}\label{_interrupts_8c_a4e591dd86c476b236ffdb3c26e266469}
+\hypertarget{_interrupts_8c_ade0c81a4e99033806e084f2fa298575c}{\index{Interrupts.\+c@{Interrupts.\+c}!T\+R\+A\+C\+K\+\_\+\+H@{T\+R\+A\+C\+K\+\_\+\+H}}
+\index{T\+R\+A\+C\+K\+\_\+\+H@{T\+R\+A\+C\+K\+\_\+\+H}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{T\+R\+A\+C\+K\+\_\+\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+A\+C\+K\+\_\+\+H}}\label{_interrupts_8c_ade0c81a4e99033806e084f2fa298575c}
+
+
+\subsection{Function Documentation}
+\hypertarget{_interrupts_8c_ae1ef1358e10604d046f54fc0b93c514c}{\index{Interrupts.\+c@{Interrupts.\+c}!high\+I\+S\+R@{high\+I\+S\+R}}
+\index{high\+I\+S\+R@{high\+I\+S\+R}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{high\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}void high\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_interrupts_8c_ae1ef1358e10604d046f54fc0b93c514c}
+
+
+ Function\+: \hyperlink{_interrupts_8c_ae1ef1358e10604d046f54fc0b93c514c}{high\+I\+S\+R(void)}
+
+Include\+:
+
+Description\+: Interrupt Service Routine to check what condition initiated a high priority interrupt call, and perform the nessicary action
+
+Arguments\+: None
+
+Returns\+: None \hypertarget{_interrupts_8c_a6b8605436b00e1a9db52f2cb2094fdfd}{\index{Interrupts.\+c@{Interrupts.\+c}!high\+Vector@{high\+Vector}}
+\index{high\+Vector@{high\+Vector}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{high\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void high\+Vector (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_interrupts_8c_a6b8605436b00e1a9db52f2cb2094fdfd}
+
+
+ Function\+: \hyperlink{_interrupts_8c_a6b8605436b00e1a9db52f2cb2094fdfd}{high\+Vector(void)}
+
+Include\+:
+
+Description\+: Sends program control to the high priority I\+S\+R
+
+Arguments\+: None
+
+Returns\+: None
+
+Remarks\+: This is an interrupt vector, placing a goto in the high priority interrupt table to call the high priority I\+S\+R \hypertarget{_interrupts_8c_ac835f50b358d0d663df1b8b835f9bb87}{\index{Interrupts.\+c@{Interrupts.\+c}!low\+I\+S\+R@{low\+I\+S\+R}}
+\index{low\+I\+S\+R@{low\+I\+S\+R}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{low\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}void low\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_interrupts_8c_ac835f50b358d0d663df1b8b835f9bb87}
+
+
+ Function\+: \hyperlink{_interrupts_8c_ac835f50b358d0d663df1b8b835f9bb87}{low\+I\+S\+R(void)}
+
+Include\+: Interrupt\+\_\+head.\+h
+
+Description\+: Interrupt Service Routine to check what condition initiated a low priority interrupt call, and perform the nessicary action
+
+Arguments\+: None
+
+Returns\+: None \hypertarget{_interrupts_8c_a0bf42af14e1d16197d7eb27ac5addca0}{\index{Interrupts.\+c@{Interrupts.\+c}!low\+Vector@{low\+Vector}}
+\index{low\+Vector@{low\+Vector}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{low\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void low\+Vector (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_interrupts_8c_a0bf42af14e1d16197d7eb27ac5addca0}
+
+
+ Function\+: \hyperlink{_interrupts_8c_a0bf42af14e1d16197d7eb27ac5addca0}{low\+Vector(void)}
+
+Include\+:
+
+Description\+: Sends program control to the low priority I\+S\+R
+
+Arguments\+: None
+
+Returns\+: None
+
+Remarks\+: This is an interrupt vector, placing a goto in the low priority interrupt table to call the low priority I\+S\+R 

@@ -1,0 +1,168 @@
+.TH "Range.h" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Range.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBRANGE_INT\fP   \fBCCP1_INT\fP | \fBTMR1_INT\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBconfigureRange\fP (void)"
+.br
+.ti -1c
+.RI "void \fBconfigureAD\fP (void)"
+.br
+.ti -1c
+.RI "unsigned int \fBrange\fP (void)"
+.br
+.ti -1c
+.RI "void \fBrangeISR\fP (void)"
+.br
+.ti -1c
+.RI "void \fBcalibrateRange\fP (signed int distance)"
+.br
+.ti -1c
+.RI "signed int \fBrawRange\fP (void)"
+.br
+.ti -1c
+.RI "\fBTargetState\fP \fBgetTargetState\fP (void)"
+.br
+.ti -1c
+.RI "\fBTargetState\fP \fBreadTargetState\fP (void)"
+.br
+.ti -1c
+.RI "unsigned int \fBrangeIR\fP (void)"
+.br
+.ti -1c
+.RI "unsigned int \fBrangeUltrasonic\fP (void)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define RANGE_INT   \fBCCP1_INT\fP | \fBTMR1_INT\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "void calibrateRange (signed intdistance)"
+
+.SS "void configureAD (void)"
+
+.PP
+ Function: \fBconfigureAD(void)\fP
+.PP
+Include: \fBRange\&.h\fP
+.PP
+Description: Configures the ADC, In ADCON1, we set right-justified mode, and select AN0 as the input channel\&. In ADCON0, we set a sample rate of Fosc/8, select AN0, and enable the ADC\&. Arguments: None
+.PP
+Returns: None 
+.SS "void configureRange (void)"
+
+.PP
+ Function: \fBconfigureRange(void)\fP
+.PP
+Include: \fBRange\&.h\fP
+.PP
+Description: Configures the Range module
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "\fBTargetState\fP getTargetState (void)"
+
+.PP
+ Function: \fBgetTargetState(void)\fP
+.PP
+Include: \fBRange\&.h\fP
+.PP
+Description: Returns the target state from the last range reading\&. E\&.g\&. Good track, or direction not quite correct as US returned, but IR didn't and was within IR range etc\&.
+.PP
+Arguments: None
+.PP
+Returns: the target state 
+.SS "unsigned int range (void)"
+
+.PP
+ Function: \fBrange()\fP
+.PP
+Include:
+.PP
+Description: Uses the IR and Ultrasonic sensors to find the range
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "unsigned int rangeIR (void)"
+
+.PP
+ Function: \fBrangeIR(void)\fP
+.PP
+Include:
+.PP
+Description: Reads the range from the IR Sensor
+.PP
+Arguments: None
+.PP
+Returns: Range (in mm) as an unsigned int\&.
+.PP
+Remark: Returns 0 if there is no target found 
+.SS "void rangeISR (void)"
+
+.PP
+ Function: \fBrangeISR(void)\fP
+.PP
+Include: ultrasonic\&.h
+.PP
+Description: Called when an range related interrupt is fired, acts as the service routine for the rangefinding module\&.
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "unsigned int rangeUltrasonic (void)"
+
+.PP
+ Function: rangeUS(void)
+.PP
+Include:
+.PP
+Description: performs an ultrasonic range reading\&. Pins:
+.PP
+Arguments: None
+.PP
+Returns: the average of the samples 
+.SS "signed int rawRange (void)"
+
+.PP
+ Function: speed_sound(unsigned char tempx2)
+.PP
+Include:
+.PP
+Description: Returns the calibration offset to calculate the raw data
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "\fBTargetState\fP readTargetState (void)"
+
+.PP
+ Function: \fBreadTargetState(void)\fP
+.PP
+Include: \fBRange\&.h\fP
+.PP
+Description: Does the same thing as getTargetState, but actually performs a \fBrange()\fP read
+.PP
+Arguments: None
+.PP
+Returns: the target state 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

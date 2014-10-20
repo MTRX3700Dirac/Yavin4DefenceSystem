@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="_user___interface_8h" kind="file">
+    <compoundname>User_Interface.h</compoundname>
+    <includedby refid="_interrupts_8c" local="yes">Interrupts.c</includedby>
+    <includedby refid="_menusystem_8c" local="yes">Menusystem.c</includedby>
+    <includedby refid="_menusystem2_8c" local="yes">Menusystem2.c</includedby>
+    <includedby refid="newmain_8c" local="yes">newmain.c</includedby>
+    <invincdepgraph>
+      <node id="238">
+        <label>Menusystem.c</label>
+        <link refid="_menusystem_8c"/>
+      </node>
+      <node id="237">
+        <label>Interrupts.c</label>
+        <link refid="_interrupts_8c"/>
+      </node>
+      <node id="240">
+        <label>newmain.c</label>
+        <link refid="newmain_8c"/>
+      </node>
+      <node id="236">
+        <label>User_Interface.h</label>
+        <link refid="User_Interface.h"/>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
+        <childnode refid="239" relation="include">
+        </childnode>
+        <childnode refid="240" relation="include">
+        </childnode>
+      </node>
+      <node id="239">
+        <label>Menusystem2.c</label>
+        <link refid="_menusystem2_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_user___interface_8h_1a4358ad34c2ebafd83f49cb8e73fed3d5" prot="public" static="no">
+        <name>USER_INT</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="12" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" bodystart="12" bodyend="-1"/>
+        <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="79" endline="98">lowISR</referencedby>
+        <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="113" endline="132">highISR</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_user___interface_8h_1a5711e8cdb2a3943783f50f60a15bde31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void display</definition>
+        <argsstring>(TrackingData data)</argsstring>
+        <name>display</name>
+        <param>
+          <type><ref refid="struct_tracking_data" kindref="compound">TrackingData</ref></type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display(TrackingData data)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: displays the current tracking information</para><para>Arguments: data - Struct which contains all known data concerning the The position of the target. A Range of 0 indicates that no target was observed.</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="15" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void userISR</definition>
+        <argsstring>(void)</argsstring>
+        <name>userISR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: Acts as the ISR for the User_interface module</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="16" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="45" bodyend="48"/>
+        <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="79" endline="98">lowISR</referencedby>
+        <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="113" endline="132">highISR</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8h_1a58e473ed40d00e18bd61277428e4d36c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configUSER</definition>
+        <argsstring>(void)</argsstring>
+        <name>configUSER</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: Configures the user interface for use</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="17" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="61" bodyend="65"/>
+        <references refid="_circular_buffers_8h_1a526002aa17fac30d010d4d7315d5d81c" compoundref="_circular_buffers_8h" startline="18">init</references>
+        <referencedby refid="_menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="_menusystem_8c" startline="135" endline="140">initialiseMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char userEmpty</definition>
+        <argsstring>(void)</argsstring>
+        <name>userEmpty</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: returns non-zero if the user interface buffer is empty (i.e. no user input has been detected)</para><para>Arguments: None</para><para>Returns: if the user input buffer is empty </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="19" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="109" bodyend="112"/>
+        <references refid="_circular_buffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="_circular_buffers_8h" startline="12">empty</references>
+        <referencedby refid="_menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="_menusystem_8c" startline="158" endline="162">serviceMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char userPop</definition>
+        <argsstring>(void)</argsstring>
+        <name>userPop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: pops a character from the user interface receive buffer</para><para>Arguments: None</para><para>Returns: a character poped from the user Interface buffer </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="125" bodyend="130"/>
+        <references refid="_circular_buffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="_circular_buffers_8h" startline="17">pop</references>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char userPeek</definition>
+        <argsstring>(void)</argsstring>
+        <name>userPeek</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: returns a character in the user_Interface buffer without removing it from the buffer</para><para>Arguments: None</para><para>Returns: a character in the user interface buffer </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="21" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="144" bodyend="147"/>
+        <references refid="_circular_buffers_8h_1ab6770f937bcc348970693cd84824bf9f" compoundref="_circular_buffers_8h" startline="14">peek</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>User_Interface.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Grant</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Contains<sp/>the<sp/>public<sp/>interface<sp/>for<sp/>the<sp/>User_Interface<sp/>module</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>15<sp/>September<sp/>2014,<sp/>1:20<sp/>PM</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//User<sp/>interface<sp/>related<sp/>interrupts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>USER_INT<sp/>(RB_INT<sp/>||<sp/>INT0_INT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="_user___interface_8h_1a4358ad34c2ebafd83f49cb8e73fed3d5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>USER_INT<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//Public<sp/>function<sp/>external<sp/>declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8h_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display</ref>(<ref refid="struct_tracking_data" kindref="compound">TrackingData</ref><sp/>data);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8h_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h"/>
+  </compounddef>
+</doxygen>

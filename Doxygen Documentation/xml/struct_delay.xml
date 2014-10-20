@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="struct_delay" kind="struct" prot="public">
+    <compoundname>Delay</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_delay_1aacc83952fc6c5812597bc96d622f5317" prot="public" static="no" mutable="no">
+        <type>signed int</type>
+        <definition>signed int AzimuthDelay</definition>
+        <argsstring></argsstring>
+        <name>AzimuthDelay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="16" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="16" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="_pan_tilt_8c" startline="156" endline="173">incrementFine</referencedby>
+        <referencedby refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="_pan_tilt_8c" startline="363" endline="399">panTiltISR</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" prot="public" static="no" mutable="no">
+        <type>signed int</type>
+        <definition>signed int InclinationDelay</definition>
+        <argsstring></argsstring>
+        <name>InclinationDelay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="17" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="17" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="_pan_tilt_8c" startline="156" endline="173">incrementFine</referencedby>
+        <referencedby refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="_pan_tilt_8c" startline="363" endline="399">panTiltISR</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="15" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="14" bodyend="18"/>
+    <listofallmembers>
+      <member refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" prot="public" virt="non-virtual"><scope>Delay</scope><name>AzimuthDelay</name></member>
+      <member refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" prot="public" virt="non-virtual"><scope>Delay</scope><name>InclinationDelay</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

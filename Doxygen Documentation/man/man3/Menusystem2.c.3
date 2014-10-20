@@ -1,0 +1,141 @@
+.TH "Menusystem2.c" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Menusystem2.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Common\&.h'\fP
+.br
+\fC#include 'Serial\&.h'\fP
+.br
+\fC#include 'User_Interface\&.h'\fP
+.br
+\fC#include 'LCD\&.h'\fP
+.br
+\fC#include 'PanTilt\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBSubMenu\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBMAX_SER_MSG_LEN\fP   30"
+.br
+.ti -1c
+.RI "#define \fBMAX_LCD_MSG_LEN\fP   20"
+.br
+.ti -1c
+.RI "#define \fBMAX_NUM_OPTIONS\fP   5"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBSubMenu\fP \fBSubMenu\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMenuLevel\fP { \fBROOT\fP, \fBSUB\fP, \fBFUNC\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinitialiseMenu\fP (void)"
+.br
+.RI "\fIInitialises the menu system\&. \fP"
+.ti -1c
+.RI "void \fBserviceMenu\fP (void)"
+.br
+.RI "\fIservices any user interface with the menu \fP"
+.ti -1c
+.RI "void \fBmenuISR\fP (void)"
+.br
+.RI "\fIISR function for the menu subsystem\&. \fP"
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define MAX_LCD_MSG_LEN   20"
+
+.SS "#define MAX_NUM_OPTIONS   5"
+
+.SS "#define MAX_SER_MSG_LEN   30"
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBSubMenu\fP  \fBSubMenu\fP"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBMenuLevel\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIROOT \fP\fP
+.TP
+\fB\fISUB \fP\fP
+.TP
+\fB\fIFUNC \fP\fP
+.SH "Function Documentation"
+.PP 
+.SS "void initialiseMenu (void)"
+
+.PP
+Initialises the menu system\&. 
+.PP
+ Function: \fBinitialiseMenu(void)\fP
+.PP
+Include: \fBMenusystem\&.h\fP
+.PP
+Description: initialises the menu system so that it is fully operational
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "void menuISR (void)"
+
+.PP
+ISR function for the menu subsystem\&. 
+.PP
+ Function: \fBmenuISR(void)\fP
+.PP
+Include: \fBMenusystem\&.h\fP
+.PP
+Description: services any interrupts associated with the menu system
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "void serviceMenu (void)"
+
+.PP
+services any user interface with the menu 
+.PP
+ Function: \fBserviceMenu(void)\fP
+.PP
+Include:
+.PP
+Description: Checks if the user has made any inputs to the system\&. If not the function simply returns\&. If they have then it services the inputs, displays the correct outputs and performs the specified actions
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

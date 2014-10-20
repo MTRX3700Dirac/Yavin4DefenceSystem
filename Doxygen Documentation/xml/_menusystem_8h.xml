@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="_menusystem_8h" kind="file">
+    <compoundname>Menusystem.h</compoundname>
+    <includedby refid="_interrupts_8c" local="yes">Interrupts.c</includedby>
+    <includedby refid="newmain_8c" local="yes">newmain.c</includedby>
+    <invincdepgraph>
+      <node id="78">
+        <label>Menusystem.h</label>
+        <link refid="Menusystem.h"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>Interrupts.c</label>
+        <link refid="_interrupts_8c"/>
+      </node>
+      <node id="80">
+        <label>newmain.c</label>
+        <link refid="newmain_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_menusystem_8h_1abe3db97a849df459252001e1f4b3721c" prot="public" static="no">
+        <name>MENU_ISR</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="8" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void initialiseMenu</definition>
+        <argsstring>(void)</argsstring>
+        <name>initialiseMenu</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialises the menu system. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_menusystem_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" kindref="member">initialiseMenu(void)</ref></para><para>Include: <ref refid="_menusystem_8h" kindref="compound">Menusystem.h</ref></para><para>Description: initialises the menu system so that it is fully operational</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="10" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="135" bodyend="140"/>
+        <references refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="44" endline="62">configureSerial</references>
+        <references refid="_l_c_d_8c_1aaab6233be65b7399b3422eee9782508c" compoundref="_l_c_d_8c" startline="23" endline="26">configLCD</references>
+        <references refid="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" compoundref="_user___interface_8c" startline="61" endline="65">configUSER</references>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void serviceMenu</definition>
+        <argsstring>(void)</argsstring>
+        <name>serviceMenu</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>services any user interface with the menu </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_menusystem_8c_1afc5a5c12a076ae6c7424df4f4124a521" kindref="member">serviceMenu(void)</ref></para><para>Include:</para><para>Description: Checks if the user has made any inputs to the system. If not the function simply returns. If they have then it services the inputs, displays the correct outputs and performs the specified actions</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="11" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="158" bodyend="162"/>
+        <references refid="_serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="_serial_8c" startline="121" endline="124">receiveEmpty</references>
+        <references refid="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="_user___interface_8c" startline="109" endline="112">userEmpty</references>
+        <references refid="struct_sub_menu_1a1dae2f8dad8e2d2a30b13ee69ea542db" compoundref="_menusystem2_8c" startline="18">SubMenu::numericFunction</references>
+        <references refid="_serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="_serial_8c" startline="171" endline="174">receiveCR</references>
+        <references refid="_serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="191" endline="203">readString</references>
+        <references refid="_serial_8c_1abb74ccb0bd81e0e4779854c93851c804" compoundref="_serial_8c" startline="154" endline="158">receivePop</references>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8h_1a0f329206447b1f40e6f730b346aaaf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void menuISR</definition>
+        <argsstring>(void)</argsstring>
+        <name>menuISR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>ISR function for the menu subsystem. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_menusystem_8c_1a0f329206447b1f40e6f730b346aaaf44" kindref="member">menuISR(void)</ref></para><para>Include: <ref refid="_menusystem_8h" kindref="compound">Menusystem.h</ref></para><para>Description: services any interrupts associated with the menu system</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="12" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="177" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="_menusystem_8h_1ad16e5e62f3579a7048e6b981b172885e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void menu</definition>
+        <argsstring>(void)</argsstring>
+        <name>menu</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="14" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>Menusystem.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Jacob</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>7<sp/>October<sp/>2014,<sp/>9:56<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="_menusystem_8h_1abe3db97a849df459252001e1f4b3721c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MENU_ISR<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" kindref="member">initialiseMenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" kindref="member">serviceMenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8h_1a0f329206447b1f40e6f730b346aaaf44" kindref="member">menuISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_menusystem_8h_1ad16e5e62f3579a7048e6b981b172885e" kindref="member">menu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MENU_H</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h"/>
+  </compounddef>
+</doxygen>

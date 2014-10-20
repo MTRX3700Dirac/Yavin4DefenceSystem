@@ -1,0 +1,64 @@
+.TH "CircularBuffers.h" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CircularBuffers.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBcircularBuffer\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBincMod\fP(ptr)   if(ptr==\fBBUFFERLENGTH\fP-1) ptr = 0; else ptr++;"
+.br
+.ti -1c
+.RI "#define \fBempty\fP(buf)   (buf\&.tail == buf\&.head)"
+.br
+.ti -1c
+.RI "#define \fBfull\fP(buf)   (buf\&.head == (buf\&.tail + 1) % \fBBUFFERLENGTH\fP)"
+.br
+.ti -1c
+.RI "#define \fBpeek\fP(buf)   buf\&.data[buf\&.head]"
+.br
+.ti -1c
+.RI "#define \fBpush\fP(byte, buf)   buf\&.data[buf\&.tail] = byte; if(\fBfull\fP(buf)) \fBincMod\fP(buf\&.head); \fBincMod\fP(buf\&.tail)"
+.br
+.ti -1c
+.RI "#define \fBpop\fP(buf)   buf\&.data[buf\&.head]; if (!\fBempty\fP(buf)) \fBincMod\fP(buf\&.head)"
+.br
+.ti -1c
+.RI "#define \fBinit\fP(buf)   buf\&.tail = 0; buf\&.head = 0"
+.br
+.ti -1c
+.RI "#define \fBBUFFERLENGTH\fP   30"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BUFFERLENGTH   30"
+
+.SS "#define empty(buf)   (buf\&.tail == buf\&.head)"
+
+.SS "#define full(buf)   (buf\&.head == (buf\&.tail + 1) % \fBBUFFERLENGTH\fP)"
+
+.SS "#define incMod(ptr)   if(ptr==\fBBUFFERLENGTH\fP-1) ptr = 0; else ptr++;"
+
+.SS "#define init(buf)   buf\&.tail = 0; buf\&.head = 0"
+
+.SS "#define peek(buf)   buf\&.data[buf\&.head]"
+
+.SS "#define pop(buf)   buf\&.data[buf\&.head]; if (!\fBempty\fP(buf)) \fBincMod\fP(buf\&.head)"
+
+.SS "#define push(byte, buf)   buf\&.data[buf\&.tail] = byte; if(\fBfull\fP(buf)) \fBincMod\fP(buf\&.head); \fBincMod\fP(buf\&.tail)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

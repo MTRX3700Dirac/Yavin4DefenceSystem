@@ -1,0 +1,87 @@
+.TH "Menusystem.h" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Menusystem.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBMENU_ISR\fP   0"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinitialiseMenu\fP (void)"
+.br
+.RI "\fIInitialises the menu system\&. \fP"
+.ti -1c
+.RI "void \fBserviceMenu\fP (void)"
+.br
+.RI "\fIservices any user interface with the menu \fP"
+.ti -1c
+.RI "void \fBmenuISR\fP (void)"
+.br
+.RI "\fIISR function for the menu subsystem\&. \fP"
+.ti -1c
+.RI "void \fBmenu\fP (void)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define MENU_ISR   0"
+
+.SH "Function Documentation"
+.PP 
+.SS "void initialiseMenu (void)"
+
+.PP
+Initialises the menu system\&. 
+.PP
+ Function: \fBinitialiseMenu(void)\fP
+.PP
+Include: \fBMenusystem\&.h\fP
+.PP
+Description: initialises the menu system so that it is fully operational
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "void menu (void)"
+
+.SS "void menuISR (void)"
+
+.PP
+ISR function for the menu subsystem\&. 
+.PP
+ Function: \fBmenuISR(void)\fP
+.PP
+Include: \fBMenusystem\&.h\fP
+.PP
+Description: services any interrupts associated with the menu system
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "void serviceMenu (void)"
+
+.PP
+services any user interface with the menu 
+.PP
+ Function: \fBserviceMenu(void)\fP
+.PP
+Include:
+.PP
+Description: Checks if the user has made any inputs to the system\&. If not the function simply returns\&. If they have then it services the inputs, displays the correct outputs and performs the specified actions
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

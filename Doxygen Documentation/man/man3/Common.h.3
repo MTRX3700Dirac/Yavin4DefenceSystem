@@ -1,0 +1,274 @@
+.TH "Common.h" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Common.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+\fC#include <p18f4520\&.h>\fP
+.br
+\fC#include <timers\&.h>\fP
+.br
+\fC#include <adc\&.h>\fP
+.br
+\fC#include <capture\&.h>\fP
+.br
+\fC#include <usart\&.h>\fP
+.br
+\fC#include <compare\&.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBDirection\fP"
+.br
+.ti -1c
+.RI "struct \fBTrackingData\fP"
+.br
+.ti -1c
+.RI "struct \fBsystemState\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBMNML\fP"
+.br
+.ti -1c
+.RI "#define \fBNEXT_STATE\fP(s, state)   state\&.previous = state\&.current; state\&.current = s"
+.br
+.ti -1c
+.RI "#define \fBNEXT_STATE_PTR\fP(s, state)   state->previous = state->current; state->current = s"
+.br
+.ti -1c
+.RI "#define \fBDIV_2\fP(v)   ((v) >> 1)"
+.br
+.ti -1c
+.RI "#define \fBDIV_4\fP(v)   ((v) >> 2)"
+.br
+.ti -1c
+.RI "#define \fBDIV_8\fP(v)   ((v) >> 3)"
+.br
+.ti -1c
+.RI "#define \fBDIV_16\fP(v)   ((v) >> 4)"
+.br
+.ti -1c
+.RI "#define \fBDIV_32\fP(v)   ((v) >> 5)"
+.br
+.ti -1c
+.RI "#define \fBDIV_64\fP(v)   ((v) >> 6)"
+.br
+.ti -1c
+.RI "#define \fBDIV_128\fP(v)   ((v) >> 7)"
+.br
+.ti -1c
+.RI "#define \fBDIV_256\fP(v)   ((v) >> 8)"
+.br
+.ti -1c
+.RI "#define \fBDIV_512\fP(v)   ((v) >> 9)"
+.br
+.ti -1c
+.RI "#define \fBDIV_1024\fP(v)   ((v) >> 10)"
+.br
+.ti -1c
+.RI "#define \fBDIV_4096\fP(v)   ((v) >> 12)"
+.br
+.ti -1c
+.RI "#define \fBDIV_65536\fP(v)   ((v) >> 16)"
+.br
+.ti -1c
+.RI "#define \fBSWAP\fP(x, y)   (y = (y ^ (x = (x ^ (y = (x ^ y))))))"
+.br
+.ti -1c
+.RI "#define \fBADC_IR_READ\fP   0"
+.br
+.ti -1c
+.RI "#define \fBADC_TEMP_READ\fP   1"
+.br
+.ti -1c
+.RI "#define \fBADC_DIAL_READ\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTX_INT\fP   (\fBPIR1bits\&.TXIF\fP && \fBPIE1bits\&.TXIE\fP)"
+.br
+.ti -1c
+.RI "#define \fBRC_INT\fP   (\fBPIR1bits\&.RCIF\fP && \fBPIE1bits\&.RCIE\fP)"
+.br
+.ti -1c
+.RI "#define \fBCCP1_INT\fP   (\fBPIR1bits\&.CCP1IF\fP && \fBPIE1bits\&.CCP1IE\fP)"
+.br
+.ti -1c
+.RI "#define \fBCCP2_INT\fP   (\fBPIR2bits\&.CCP2IF\fP && \fBPIE2bits\&.CCP2IE\fP)"
+.br
+.ti -1c
+.RI "#define \fBINT0_INT\fP   (\fBINTCONbits\&.INT0IF\fP && \fBINTCONbits\&.INT0IE\fP)"
+.br
+.ti -1c
+.RI "#define \fBRB_INT\fP   (\fBINTCONbits\&.RBIF\fP && \fBINTCONbits\&.RBIE\fP)"
+.br
+.ti -1c
+.RI "#define \fBTMR2_INT\fP   (\fBPIR1bits\&.TMR2IF\fP && \fBPIE1bits\&.TMR2IE\fP)"
+.br
+.ti -1c
+.RI "#define \fBTMR0_INT\fP   (\fBINTCONbits\&.TMR0IF\fP && \fBINTCONbits\&.TMR0IE\fP)"
+.br
+.ti -1c
+.RI "#define \fBTMR1_INT\fP   (\fBPIR1bits\&.TMR1IF\fP && \fBPIE1bits\&.TMR1IE\fP)"
+.br
+.ti -1c
+.RI "#define \fBTMR3_INT\fP   (\fBPIR2bits\&.TMR3IF\fP && \fBPIE2bits\&.TMR3IE\fP)"
+.br
+.ti -1c
+.RI "#define \fBADC_INT\fP   (\fBPIR1bits\&.ADIF\fP && \fBPIE1bits\&.ADIE\fP)"
+.br
+.ti -1c
+.RI "#define \fBSSP_INT\fP   (\fBPIR1bits\&.SSPIF\fP && \fBPIE1bits\&.SSPIE\fP)"
+.br
+.ti -1c
+.RI "#define \fBBCL_INT\fP   (\fBPIR2bits\&.BCLIF\fP && \fBPIE2bits\&.BCLIE\fP)"
+.br
+.ti -1c
+.RI "#define \fBLVD_INT\fP   (\fBPIR2bits\&.LVDIF\fP && \fBPIE2bits\&.LVDIE\fP)"
+.br
+.ti -1c
+.RI "#define \fBCCP1_CLEAR\fP   (\fBPIR1bits\&.CCP1IF\fP = 0)"
+.br
+.ti -1c
+.RI "#define \fBCCP2_CLEAR\fP   (\fBPIR2bits\&.CCP2IF\fP = 0)"
+.br
+.ti -1c
+.RI "#define \fBCLOCK\fP   10000000"
+.br
+.ti -1c
+.RI "#define \fBFOSC_4\fP   2500000"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTargetState\fP { \fBNO_TARGET\fP, \fBOUT_OF_IR\fP, \fBBAD_DIR\fP, \fBGOOD_TRACK\fP, \fBCLOSE_RANGE\fP }"
+.br
+.ti -1c
+.RI "enum \fBpossible_states\fP { \fBUNDEF\fP, \fBINIT\fP, \fBSRCH\fP, \fBTRCK\fP }"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ADC_DIAL_READ   2"
+
+.SS "#define ADC_INT   (\fBPIR1bits\&.ADIF\fP && \fBPIE1bits\&.ADIE\fP)"
+
+.SS "#define ADC_IR_READ   0"
+
+.SS "#define ADC_TEMP_READ   1"
+
+.SS "#define BCL_INT   (\fBPIR2bits\&.BCLIF\fP && \fBPIE2bits\&.BCLIE\fP)"
+
+.SS "#define CCP1_CLEAR   (\fBPIR1bits\&.CCP1IF\fP = 0)"
+
+.SS "#define CCP1_INT   (\fBPIR1bits\&.CCP1IF\fP && \fBPIE1bits\&.CCP1IE\fP)"
+
+.SS "#define CCP2_CLEAR   (\fBPIR2bits\&.CCP2IF\fP = 0)"
+
+.SS "#define CCP2_INT   (\fBPIR2bits\&.CCP2IF\fP && \fBPIE2bits\&.CCP2IE\fP)"
+
+.SS "#define CLOCK   10000000"
+
+.SS "#define DIV_1024(v)   ((v) >> 10)"
+
+.SS "#define DIV_128(v)   ((v) >> 7)"
+
+.SS "#define DIV_16(v)   ((v) >> 4)"
+
+.SS "#define DIV_2(v)   ((v) >> 1)"
+
+.SS "#define DIV_256(v)   ((v) >> 8)"
+
+.SS "#define DIV_32(v)   ((v) >> 5)"
+
+.SS "#define DIV_4(v)   ((v) >> 2)"
+
+.SS "#define DIV_4096(v)   ((v) >> 12)"
+
+.SS "#define DIV_512(v)   ((v) >> 9)"
+
+.SS "#define DIV_64(v)   ((v) >> 6)"
+
+.SS "#define DIV_65536(v)   ((v) >> 16)"
+
+.SS "#define DIV_8(v)   ((v) >> 3)"
+
+.SS "#define FOSC_4   2500000"
+
+.SS "#define INT0_INT   (\fBINTCONbits\&.INT0IF\fP && \fBINTCONbits\&.INT0IE\fP)"
+
+.SS "#define LVD_INT   (\fBPIR2bits\&.LVDIF\fP && \fBPIE2bits\&.LVDIE\fP)"
+
+.SS "#define MNML"
+
+.SS "#define NEXT_STATE(s, state)   state\&.previous = state\&.current; state\&.current = s"
+
+.SS "#define NEXT_STATE_PTR(s, state)   state->previous = state->current; state->current = s"
+
+.SS "#define RB_INT   (\fBINTCONbits\&.RBIF\fP && \fBINTCONbits\&.RBIE\fP)"
+
+.SS "#define RC_INT   (\fBPIR1bits\&.RCIF\fP && \fBPIE1bits\&.RCIE\fP)"
+
+.SS "#define SSP_INT   (\fBPIR1bits\&.SSPIF\fP && \fBPIE1bits\&.SSPIE\fP)"
+
+.SS "#define SWAP(x, y)   (y = (y ^ (x = (x ^ (y = (x ^ y))))))"
+
+.SS "#define TMR0_INT   (\fBINTCONbits\&.TMR0IF\fP && \fBINTCONbits\&.TMR0IE\fP)"
+
+.SS "#define TMR1_INT   (\fBPIR1bits\&.TMR1IF\fP && \fBPIE1bits\&.TMR1IE\fP)"
+
+.SS "#define TMR2_INT   (\fBPIR1bits\&.TMR2IF\fP && \fBPIE1bits\&.TMR2IE\fP)"
+
+.SS "#define TMR3_INT   (\fBPIR2bits\&.TMR3IF\fP && \fBPIE2bits\&.TMR3IE\fP)"
+
+.SS "#define TX_INT   (\fBPIR1bits\&.TXIF\fP && \fBPIE1bits\&.TXIE\fP)"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBpossible_states\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIUNDEF \fP\fP
+.TP
+\fB\fIINIT \fP\fP
+.TP
+\fB\fISRCH \fP\fP
+.TP
+\fB\fITRCK \fP\fP
+.SS "enum \fBTargetState\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINO_TARGET \fP\fP
+.TP
+\fB\fIOUT_OF_IR \fP\fP
+.TP
+\fB\fIBAD_DIR \fP\fP
+.TP
+\fB\fIGOOD_TRACK \fP\fP
+.TP
+\fB\fICLOSE_RANGE \fP\fP
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

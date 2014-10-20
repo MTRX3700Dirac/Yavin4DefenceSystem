@@ -1,0 +1,67 @@
+.TH "Tracking.c" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tracking.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Common\&.h'\fP
+.br
+\fC#include 'Range\&.h'\fP
+.br
+\fC#include 'PanTilt\&.h'\fP
+.br
+\fC#include <delays\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBdiff\fP   5"
+.br
+.ti -1c
+.RI "#define \fBTARGET_RAD\fP   30"
+.br
+.ti -1c
+.RI "#define \fBTIMER\fP   \fBTMR2\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBconfigureTracking\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsearch\fP (\fBsystemState\fP *state)"
+.br
+.ti -1c
+.RI "void \fBtrackingISR\fP (void)"
+.br
+.ti -1c
+.RI "\fBTrackingData\fP \fBtrack\fP (\fBsystemState\fP *state)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define diff   5"
+
+.SS "#define TARGET_RAD   30"
+
+.SS "#define TIMER   \fBTMR2\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "void configureTracking (void)"
+
+.SS "void search (\fBsystemState\fP *state)"
+
+.SS "\fBTrackingData\fP track (\fBsystemState\fP *state)"
+
+.SS "void trackingISR (void)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

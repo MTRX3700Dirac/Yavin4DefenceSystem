@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="_user___interface_8c" kind="file">
+    <compoundname>User_Interface.c</compoundname>
+    <includes refid="_common_8h" local="yes">Common.h</includes>
+    <includes refid="_circular_buffers_8h" local="yes">CircularBuffers.h</includes>
+    <incdepgraph>
+      <node id="225">
+        <label>stdlib.h</label>
+      </node>
+      <node id="229">
+        <label>adc.h</label>
+      </node>
+      <node id="223">
+        <label>Common.h</label>
+        <link refid="_common_8h"/>
+        <childnode refid="224" relation="include">
+        </childnode>
+        <childnode refid="225" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="228" relation="include">
+        </childnode>
+        <childnode refid="229" relation="include">
+        </childnode>
+        <childnode refid="230" relation="include">
+        </childnode>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="232" relation="include">
+        </childnode>
+      </node>
+      <node id="228">
+        <label>timers.h</label>
+      </node>
+      <node id="232">
+        <label>compare.h</label>
+      </node>
+      <node id="230">
+        <label>capture.h</label>
+      </node>
+      <node id="226">
+        <label>math.h</label>
+      </node>
+      <node id="227">
+        <label>p18f4520.h</label>
+        <link refid="p18f4520_8h"/>
+      </node>
+      <node id="231">
+        <label>usart.h</label>
+      </node>
+      <node id="224">
+        <label>stdio.h</label>
+      </node>
+      <node id="222">
+        <label>User_Interface.c</label>
+        <link refid="User_Interface.c"/>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="233" relation="include">
+        </childnode>
+      </node>
+      <node id="233">
+        <label>CircularBuffers.h</label>
+        <link refid="_circular_buffers_8h"/>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_user___interface_8c_1ad7a739640da23ada15ee5822350aaf60" prot="public" static="no" mutable="no">
+        <type><ref refid="structcircular_buffer" kindref="compound">circularBuffer</ref></type>
+        <definition>circularBuffer receive</definition>
+        <argsstring></argsstring>
+        <name>receive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="14" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_user___interface_8c_1a5711e8cdb2a3943783f50f60a15bde31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void display</definition>
+        <argsstring>(TrackingData data)</argsstring>
+        <name>display</name>
+        <param>
+          <type><ref refid="struct_tracking_data" kindref="compound">TrackingData</ref></type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display(TrackingData data)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: displays the current tracking information</para><para>Arguments: data - Struct which contains all known data concerning the The position of the target. A Range of 0 indicates that no target was observed.</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="29" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void userISR</definition>
+        <argsstring>(void)</argsstring>
+        <name>userISR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: Acts as the ISR for the User_interface module</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="45" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="45" bodyend="48"/>
+        <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="79" endline="98">lowISR</referencedby>
+        <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="113" endline="132">highISR</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configUSER</definition>
+        <argsstring>(void)</argsstring>
+        <name>configUSER</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: Configures the user interface for use</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="61" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="61" bodyend="65"/>
+        <references refid="_circular_buffers_8h_1a526002aa17fac30d010d4d7315d5d81c" compoundref="_circular_buffers_8h" startline="18">init</references>
+        <referencedby refid="_menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="_menusystem_8c" startline="135" endline="140">initialiseMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int readDial</definition>
+        <argsstring>(unsigned int max)</argsstring>
+        <name>readDial</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: readDial(void)</para><para>Include:</para><para>Description: Read the position of the dial</para><para>Arguments: None</para><para>Returns: The dial position scaled by </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="78" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="78" bodyend="95"/>
+        <references refid="_common_8h_1a1518840d35b90121383f93c00eba9164" compoundref="_common_8h" startline="88">ADC_DIAL_READ</references>
+        <references refid="_common_8h_1a740656a5f724d0a99e528def8ce50125" compoundref="_common_8h" startline="79">DIV_1024</references>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char userEmpty</definition>
+        <argsstring>(void)</argsstring>
+        <name>userEmpty</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: returns non-zero if the user interface buffer is empty (i.e. no user input has been detected)</para><para>Arguments: None</para><para>Returns: if the user input buffer is empty </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="109" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="109" bodyend="112"/>
+        <references refid="_circular_buffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="_circular_buffers_8h" startline="12">empty</references>
+        <referencedby refid="_menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="_menusystem_8c" startline="158" endline="162">serviceMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char userPop</definition>
+        <argsstring>(void)</argsstring>
+        <name>userPop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: pops a character from the user interface receive buffer</para><para>Arguments: None</para><para>Returns: a character poped from the user Interface buffer </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="125" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="125" bodyend="130"/>
+        <references refid="_circular_buffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="_circular_buffers_8h" startline="17">pop</references>
+      </memberdef>
+      <memberdef kind="function" id="_user___interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char userPeek</definition>
+        <argsstring>(void)</argsstring>
+        <name>userPeek</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_user___interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: returns a character in the user_Interface buffer without removing it from the buffer</para><para>Arguments: None</para><para>Returns: a character in the user interface buffer </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="144" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="144" bodyend="147"/>
+        <references refid="_circular_buffers_8h_1ab6770f937bcc348970693cd84824bf9f" compoundref="_circular_buffers_8h" startline="14">peek</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>User_Interface.c</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Grant</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Contains<sp/>all<sp/>the<sp/>functionality<sp/>for<sp/>the<sp/>User_Interface<sp/>module</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>15<sp/>September<sp/>2014,<sp/>1:21<sp/>PM</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_circular_buffers_8h" kindref="compound">CircularBuffers.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//Store<sp/>anything<sp/>entered<sp/>by<sp/>the<sp/>user</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="_user___interface_8c_1ad7a739640da23ada15ee5822350aaf60" refkind="member"><highlight class="normal"><ref refid="structcircular_buffer" kindref="compound">circularBuffer</ref><sp/><ref refid="_user___interface_8c_1ad7a739640da23ada15ee5822350aaf60" kindref="member">receive</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="_user___interface_8h_1a5711e8cdb2a3943783f50f60a15bde31" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8c_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display</ref>(<ref refid="struct_tracking_data" kindref="compound">TrackingData</ref><sp/>data)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="_user___interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="_user___interface_8h_1a58e473ed40d00e18bd61277428e4d36c" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Initialises<sp/>the<sp/>receive<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_circular_buffers_8h_1a526002aa17fac30d010d4d7315d5d81c" kindref="member">init</ref>(receive);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="_user___interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" kindref="member">readDial</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Sets<sp/>the<sp/>AD<sp/>channel<sp/>for<sp/>the<sp/>DIAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>SetChanADC(<ref refid="_common_8h_1a1518840d35b90121383f93c00eba9164" kindref="member">ADC_DIAL_READ</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Begin<sp/>convertion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>ConvertADC();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(BusyADC());</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>value<sp/>=<sp/>ReadADC();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Scale<sp/>the<sp/>value<sp/>to<sp/>the<sp/>maximum<sp/>(by<sp/>multiplying<sp/>and<sp/>then<sp/>dividing<sp/>by<sp/>1024)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//The<sp/>1024<sp/>division<sp/>creates<sp/>a<sp/>value<sp/>from<sp/>0-1<sp/>from<sp/>the<sp/>ADC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>value<sp/>=<sp/><ref refid="_common_8h_1a740656a5f724d0a99e528def8ce50125" kindref="member">DIV_1024</ref>(value<sp/>*<sp/>max);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="_user___interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" refkind="member"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_circular_buffers_8h_1aeabcb3d395f687162520f9f72c926edf" kindref="member">empty</ref>(receive);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="_user___interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" refkind="member"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>=<sp/><ref refid="_circular_buffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" kindref="member">pop</ref>(receive);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>c;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="_user___interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" refkind="member"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_user___interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_circular_buffers_8h_1ab6770f937bcc348970693cd84824bf9f" kindref="member">peek</ref>(receive);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c"/>
+  </compounddef>
+</doxygen>

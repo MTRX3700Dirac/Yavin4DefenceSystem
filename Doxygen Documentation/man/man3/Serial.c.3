@@ -1,0 +1,242 @@
+.TH "Serial.c" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Serial.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Common\&.h'\fP
+.br
+\fC#include <usart\&.h>\fP
+.br
+\fC#include 'CircularBuffers\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBthing\fP   0"
+.br
+.ti -1c
+.RI "#define \fBTX_INT_CLEAR\fP()   \fBPIR1bits\&.TXIF\fP = 0"
+.br
+.ti -1c
+.RI "#define \fBRC_INT_CLEAR\fP()   \fBPIR1bits\&.RCIF\fP = 0"
+.br
+.ti -1c
+.RI "#define \fBTX_INT_ENABLE\fP()   \fBTX_INT_CLEAR\fP(); \fBPIE1bits\&.TXIE\fP = 1"
+.br
+.ti -1c
+.RI "#define \fBRC_INT_ENABLE\fP()   \fBRC_INT_CLEAR\fP(); \fBPIE1bits\&.RCIE\fP = 1"
+.br
+.ti -1c
+.RI "#define \fBTX_INT_DISABLE\fP()   \fBPIE1bits\&.TXIE\fP = 0"
+.br
+.ti -1c
+.RI "#define \fBRC_INT_DISABLE\fP()   \fBPIE1bits\&.RCIE\fP = 0"
+.br
+.ti -1c
+.RI "#define \fBCR\fP   0x0D"
+.br
+.ti -1c
+.RI "#define \fBNL\fP   0x0A"
+.br
+.ti -1c
+.RI "#define \fBESC\fP   0x1B"
+.br
+.ti -1c
+.RI "#define \fBTAB\fP   0x09"
+.br
+.ti -1c
+.RI "#define \fBBS\fP   0x07"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBconfigureSerial\fP (void)"
+.br
+.ti -1c
+.RI "void \fBtransmit\fP (char *string)"
+.br
+.ti -1c
+.RI "void \fBtransChar\fP (char c)"
+.br
+.ti -1c
+.RI "char \fBreceiveEmpty\fP (void)"
+.br
+.ti -1c
+.RI "char \fBreceivePeek\fP (void)"
+.br
+.ti -1c
+.RI "char \fBreceivePop\fP (void)"
+.br
+.ti -1c
+.RI "char \fBreceiveCR\fP (void)"
+.br
+.ti -1c
+.RI "void \fBreadString\fP (char *string)"
+.br
+.ti -1c
+.RI "char \fBtransmitted\fP (void)"
+.br
+.ti -1c
+.RI "void \fBserialISR\fP (void)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BS   0x07"
+
+.SS "#define CR   0x0D"
+
+.SS "#define ESC   0x1B"
+
+.SS "#define NL   0x0A"
+
+.SS "#define RC_INT_CLEAR()   \fBPIR1bits\&.RCIF\fP = 0"
+
+.SS "#define RC_INT_DISABLE()   \fBPIE1bits\&.RCIE\fP = 0"
+
+.SS "#define RC_INT_ENABLE()   \fBRC_INT_CLEAR\fP(); \fBPIE1bits\&.RCIE\fP = 1"
+
+.SS "#define TAB   0x09"
+
+.SS "#define thing   0"
+
+.SS "#define TX_INT_CLEAR()   \fBPIR1bits\&.TXIF\fP = 0"
+
+.SS "#define TX_INT_DISABLE()   \fBPIE1bits\&.TXIE\fP = 0"
+
+.SS "#define TX_INT_ENABLE()   \fBTX_INT_CLEAR\fP(); \fBPIE1bits\&.TXIE\fP = 1"
+
+.SH "Function Documentation"
+.PP 
+.SS "void configureSerial (void)"
+
+.PP
+ Function: \fBconfigureSerial(void)\fP
+.PP
+Include:
+.PP
+Description: Configures the serial ready for communication
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "void readString (char *string)"
+
+.PP
+ Function: \fBreadString(char *string)\fP
+.PP
+Include: \fBSerial\&.h\fP
+.PP
+Description: Writes all received data up to a carriage return into given location\&.
+.PP
+Arguments: string - Pointer to location to store received data
+.PP
+Returns: Received data up to a carriage return
+.PP
+Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the location pointed to by string before calling this function\&. 
+.SS "char receiveCR (void)"
+
+.PP
+ Function: \fBreceiveCR(void)\fP
+.PP
+Include:
+.PP
+Description: Indicates whether a Carriage Return has been received
+.PP
+Arguments: None
+.PP
+Returns: non-zero if CR has been received, zero otherwise 
+.SS "char receiveEmpty (void)"
+
+.PP
+ Function: \fBreceiveEmpty(void)\fP
+.PP
+Include:
+.PP
+Description: Indicates if the receive buffer is empty
+.PP
+Arguments: None
+.PP
+Returns: returns true if the recieve buffer is empty 
+.SS "char receivePeek (void)"
+
+.PP
+ Function: \fBreceivePeek(void)\fP
+.PP
+Include:
+.PP
+Description: Returns the next character in the receive buffer without removing it from the buffer
+.PP
+Arguments: None
+.PP
+Returns: The next received character 
+.SS "char receivePop (void)"
+
+.PP
+ Function: \fBreceivePop(void)\fP
+.PP
+Include:
+.PP
+Description: Pops the next received character from the received buffer
+.PP
+Arguments: None
+.PP
+Returns: The next character from the receive buffer 
+.SS "void serialISR (void)"
+
+.PP
+ Function: \fBserialISR(void)\fP
+.PP
+Include:
+.PP
+Description: Acts as the interrupt service routine for the serial module
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "void transChar (charc)"
+
+.PP
+ Function: \fBtransChar(char c)\fP
+.PP
+Include:
+.PP
+Description: Transmits a single character
+.PP
+Arguments: c - character to transmit
+.PP
+Returns: None 
+.SS "void transmit (char *string)"
+
+.PP
+ Function: \fBtransmit(char *string)\fP
+.PP
+Include:
+.PP
+Description: Begins transmitting the string over serial (interrupt driven)
+.PP
+Arguments: string - pointer to the beginning of the string to transmit
+.PP
+Returns: None 
+.SS "char transmitted (void)"
+
+.PP
+ Function: \fBtransmitted(void)\fP
+.PP
+Include: \fBSerial\&.h\fP
+.PP
+Description: returns non-zero if the message has been completely transmited e\&.g\&. if the transmit buffer is empty
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

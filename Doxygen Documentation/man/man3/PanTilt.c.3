@@ -1,0 +1,327 @@
+.TH "PanTilt.c" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PanTilt.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Common\&.h'\fP
+.br
+\fC#include <pwm\&.h>\fP
+.br
+\fC#include <timers\&.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBDelay\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBAZ_PWM_PIN\fP   \fBPORTCbits\&.RC0\fP"
+.br
+.ti -1c
+.RI "#define \fBIN_PWM_PIN\fP   \fBPORTCbits\&.RC1\fP"
+.br
+.ti -1c
+.RI "#define \fBDUTY_CYCLE_TIME\fP   2500"
+.br
+.ti -1c
+.RI "#define \fBPWM_PERIOD\fP   50000"
+.br
+.ti -1c
+.RI "#define \fBPWM_HALF_PERIOD\fP   25000"
+.br
+.ti -1c
+.RI "#define \fBLATENCY\fP   340"
+.br
+.ti -1c
+.RI "#define \fBSERVO_INIT\fP()   \fBTRISCbits\&.RC0\fP = 0; \fBTRISCbits\&.RC1\fP = 0; \fBPORTCbits\&.RC0\fP = 0; \fBPORTCbits\&.RC1\fP = 0"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBconfigureBase\fP (void)"
+.br
+.ti -1c
+.RI "void \fBmove\fP (\fBDirection\fP destination)"
+.br
+.ti -1c
+.RI "void \fBincrement\fP (\fBDirection\fP difference)"
+.br
+.ti -1c
+.RI "void \fBincrementFine\fP (\fBDirection\fP difference)"
+.br
+.ti -1c
+.RI "\fBDirection\fP \fBgetDir\fP (void)"
+.br
+.ti -1c
+.RI "char \fBgetMaxAzimuthAngle\fP (void)"
+.br
+.ti -1c
+.RI "char \fBgetMinAzimuthAngle\fP (void)"
+.br
+.ti -1c
+.RI "char \fBgetMaxElevationAngle\fP (void)"
+.br
+.ti -1c
+.RI "char \fBgetMinElevationAngle\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetMaxAzimuthAngle\fP (char p_angle)"
+.br
+.ti -1c
+.RI "void \fBsetMinAzimuthAngle\fP (char p_angle)"
+.br
+.ti -1c
+.RI "void \fBsetMaxElevationAngle\fP (char p_angle)"
+.br
+.ti -1c
+.RI "void \fBsetMinElevationAngle\fP (char p_angle)"
+.br
+.ti -1c
+.RI "void \fBcalibratePanTilt\fP (\fBDirection\fP reference)"
+.br
+.ti -1c
+.RI "\fBDirection\fP \fBrawDir\fP (void)"
+.br
+.ti -1c
+.RI "void \fBpanTiltISR\fP (void)"
+.br
+.ti -1c
+.RI "char \fBupdated\fP (void)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define AZ_PWM_PIN   \fBPORTCbits\&.RC0\fP"
+
+.SS "#define DUTY_CYCLE_TIME   2500"
+
+.SS "#define IN_PWM_PIN   \fBPORTCbits\&.RC1\fP"
+
+.SS "#define LATENCY   340"
+
+.SS "#define PWM_HALF_PERIOD   25000"
+
+.SS "#define PWM_PERIOD   50000"
+
+.SS "#define SERVO_INIT()   \fBTRISCbits\&.RC0\fP = 0; \fBTRISCbits\&.RC1\fP = 0; \fBPORTCbits\&.RC0\fP = 0; \fBPORTCbits\&.RC1\fP = 0"
+
+.SH "Function Documentation"
+.PP 
+.SS "void calibratePanTilt (\fBDirection\fPreference)"
+
+.PP
+ Function: \fBcalibratePanTilt(Direction reference)\fP
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: Calibrates the pan tile mechanism so that any future reference to move to the reference value specified in the function call will move the pan tilt back to the current position\&.
+.PP
+Arguments: reference - A struct containing the azimuth and inclinaion you wish to define as this position\&.
+.PP
+Returns: None 
+.SS "void configureBase (void)"
+
+.PP
+ Function: config(void)
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: Configures the Pan Tilt mechanism for operation
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "\fBDirection\fP getDir (void)"
+
+.PP
+ Function: \fBgetDir(void)\fP
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: returns the current position of the pan tilt mechanism
+.PP
+Arguments: None
+.PP
+Returns: A struct containing the azimuth and inclination 
+.SS "char getMaxAzimuthAngle (void)"
+
+.PP
+ Function: getMaxAzimuthAngle
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: returns the maximum angle of the azimuth servo
+.PP
+Arguments: None
+.PP
+Returns: A char with the maximum azimuth angle\&. 
+.SS "char getMaxElevationAngle (void)"
+
+.PP
+ Function: getMaxElevationAngle
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: returns the maximum angle of the elevation servo
+.PP
+Arguments: None
+.PP
+Returns: A char with the maximum elevation angle\&. 
+.SS "char getMinAzimuthAngle (void)"
+
+.PP
+ Function: getMinAzimuthAngle
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: returns the minimum angle of the azimuth servo
+.PP
+Arguments: None
+.PP
+Returns: A char with the minimum azimuth angle\&. 
+.SS "char getMinElevationAngle (void)"
+
+.PP
+ Function: getMinElevationAngle
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: returns the minimum angle of the elevation servo
+.PP
+Arguments: None
+.PP
+Returns: A char with the minimum elevation angle\&. 
+.SS "void increment (\fBDirection\fPdifference)"
+
+.PP
+ Function: \fBincrement(Direction difference)\fP
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: Moves the pan tilt actuator to the specified destination
+.PP
+Arguments: destionation - A struct containing the desired azimuth and inclination
+.PP
+Returns: None 
+.SS "void incrementFine (\fBDirection\fPdifference)"
+
+.PP
+ Function: \fBmove(Direction destination)\fP
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: Moves the pan tilt actuator to the specified destination
+.PP
+Arguments: destionation - A struct containing the desired azimuth and inclination
+.PP
+Returns: None 
+.SS "void move (\fBDirection\fPdestination)"
+
+.PP
+ Function: \fBmove(Direction destination)\fP
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: Moves the pan tilt actuator to the specified destination
+.PP
+Arguments: destionation - A struct containing the desired azimuth and inclination
+.PP
+Returns: None 
+.SS "void panTiltISR (void)"
+
+.PP
+ Function: \fBpanTiltISR(void)\fP
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: Acts as the ISR for the PanTilt module
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "\fBDirection\fP rawDir (void)"
+
+.PP
+ Function: \fBrawDir(void)\fP
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: returns the current PanTile position without calibrating
+.PP
+Arguments: None
+.PP
+Returns: The position of the pan tilt without any calibration 
+.SS "void setMaxAzimuthAngle (charp_angle)"
+
+.PP
+ Function: setMaxAzimuthAngle
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: sets the maximum angle of the azimuth servo
+.PP
+Arguments: The maximum angle (as char) to set for the azimuth servo
+.PP
+Returns: None\&. 
+.SS "void setMaxElevationAngle (charp_angle)"
+
+.PP
+ Function: setMaxElevationAngle
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: sets the maximum angle of the elevation servo
+.PP
+Arguments: The maximum angle (as char) to set for the elevation servo
+.PP
+Returns: None\&. 
+.SS "void setMinAzimuthAngle (charp_angle)"
+
+.PP
+ Function: setMinAzimuthAngle
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: sets the minimum angle of the azimuth servo
+.PP
+Arguments: The minimum angle (as char) to set for the azimuth servo
+.PP
+Returns: None\&. 
+.SS "void setMinElevationAngle (charp_angle)"
+
+.PP
+ Function: setMinElevationAngle
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: sets the minimum angle of the elevation servo
+.PP
+Arguments: The minimum angle (as char) to set for the elevation servo
+.PP
+Returns: None\&. 
+.SS "char updated (void)"
+
+.PP
+ Function: \fBupdated(void)\fP
+.PP
+Include: \fBPanTilt\&.h\fP
+.PP
+Description: returns true if the last move or increment or incrementFine function has taken effect\&. The new direction is only loaded in at the end of the PDM, so it could take up to 0\&.02 seconds for the change to take effect\&.
+.PP
+Arguments: delay - a pointer to the delay variable
+.PP
+Returns: None 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

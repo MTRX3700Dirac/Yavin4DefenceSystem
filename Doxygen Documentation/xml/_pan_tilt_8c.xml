@@ -1,0 +1,942 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="_pan_tilt_8c" kind="file">
+    <compoundname>PanTilt.c</compoundname>
+    <includes refid="_common_8h" local="yes">Common.h</includes>
+    <includes local="no">pwm.h</includes>
+    <includes local="no">timers.h</includes>
+    <incdepgraph>
+      <node id="141">
+        <label>pwm.h</label>
+      </node>
+      <node id="133">
+        <label>stdlib.h</label>
+      </node>
+      <node id="137">
+        <label>adc.h</label>
+      </node>
+      <node id="131">
+        <label>Common.h</label>
+        <link refid="_common_8h"/>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+      </node>
+      <node id="136">
+        <label>timers.h</label>
+      </node>
+      <node id="140">
+        <label>compare.h</label>
+      </node>
+      <node id="138">
+        <label>capture.h</label>
+      </node>
+      <node id="134">
+        <label>math.h</label>
+      </node>
+      <node id="135">
+        <label>p18f4520.h</label>
+        <link refid="p18f4520_8h"/>
+      </node>
+      <node id="139">
+        <label>usart.h</label>
+      </node>
+      <node id="132">
+        <label>stdio.h</label>
+      </node>
+      <node id="130">
+        <label>PanTilt.c</label>
+        <link refid="PanTilt.c"/>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="struct_delay" prot="public">Delay</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_pan_tilt_8c_1a5875ffe458eee073cec6bd62e08679c9" prot="public" static="no">
+        <name>AZ_PWM_PIN</name>
+        <initializer><ref refid="p18f4520_8h_1a7ea5e081e0d3ea33ca014db57540107d" kindref="member">PORTCbits.RC0</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="21" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="21" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="_pan_tilt_8c" startline="363" endline="399">panTiltISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_pan_tilt_8c_1aeccd74b3aafd22092066790005320b98" prot="public" static="no">
+        <name>IN_PWM_PIN</name>
+        <initializer><ref refid="p18f4520_8h_1acbac2bc4f50222ec7e8549d800993842" kindref="member">PORTCbits.RC1</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="22" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="22" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="_pan_tilt_8c" startline="363" endline="399">panTiltISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" prot="public" static="no">
+        <name>DUTY_CYCLE_TIME</name>
+        <initializer>2500</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="25" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_pan_tilt_8c_1aacaca0988244bd3a888ca5befa89f44b" prot="public" static="no">
+        <name>PWM_PERIOD</name>
+        <initializer>50000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="26" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="26" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="_pan_tilt_8c" startline="72" endline="102">configureBase</referencedby>
+        <referencedby refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="_pan_tilt_8c" startline="363" endline="399">panTiltISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" prot="public" static="no">
+        <name>PWM_HALF_PERIOD</name>
+        <initializer>25000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="27" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="27" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="_pan_tilt_8c" startline="156" endline="173">incrementFine</referencedby>
+        <referencedby refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="_pan_tilt_8c" startline="363" endline="399">panTiltISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_pan_tilt_8c_1a32ba76cc676dc9b248bce3b722e811e5" prot="public" static="no">
+        <name>LATENCY</name>
+        <initializer>340</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="35" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="35" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="_pan_tilt_8c" startline="156" endline="173">incrementFine</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_pan_tilt_8c_1afed42813fde734ec03d642316c880a8f" prot="public" static="no">
+        <name>SERVO_INIT</name>
+        <param></param>
+        <initializer><ref refid="p18f4520_8h_1a7ea5e081e0d3ea33ca014db57540107d" kindref="member">TRISCbits.RC0</ref> = 0; <ref refid="p18f4520_8h_1acbac2bc4f50222ec7e8549d800993842" kindref="member">TRISCbits.RC1</ref> = 0; <ref refid="p18f4520_8h_1a7ea5e081e0d3ea33ca014db57540107d" kindref="member">PORTCbits.RC0</ref> = 0; <ref refid="p18f4520_8h_1acbac2bc4f50222ec7e8549d800993842" kindref="member">PORTCbits.RC1</ref> = 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="40" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="40" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="_pan_tilt_8c" startline="72" endline="102">configureBase</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_pan_tilt_8c_1a2bfbe11a1bd1926f4e803006a7039120" prot="public" static="yes" mutable="no">
+        <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+        <definition>Direction calibration_offset</definition>
+        <argsstring></argsstring>
+        <name>calibration_offset</name>
+        <initializer>= { 0, 3 }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="47" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_pan_tilt_8c_1aef9a9f54b74039d7b9f8789155a3dce6" prot="public" static="yes" mutable="no">
+        <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+        <definition>Direction arcRange</definition>
+        <argsstring></argsstring>
+        <name>arcRange</name>
+        <initializer>= { 94, 103 }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="48" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_pan_tilt_8c_1a5c15d1f4273099e9b416d2e1f9a2f570" prot="public" static="yes" mutable="no">
+        <type><ref refid="struct_delay" kindref="compound">Delay</ref></type>
+        <definition>Delay global_delay</definition>
+        <argsstring></argsstring>
+        <name>global_delay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="49" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_pan_tilt_8c_1a66860c53bfe53cb83293dced526226aa" prot="public" static="yes" mutable="no">
+        <type>signed char</type>
+        <definition>signed char azimuth_angle_max</definition>
+        <argsstring></argsstring>
+        <name>azimuth_angle_max</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="52" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_pan_tilt_8c_1a58dfba1b3d8bb3d01daa95c48f4718a8" prot="public" static="yes" mutable="no">
+        <type>signed char</type>
+        <definition>signed char azimuth_angle_min</definition>
+        <argsstring></argsstring>
+        <name>azimuth_angle_min</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="53" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_pan_tilt_8c_1a955ba3af78fb52f91cbcc6d0946b4377" prot="public" static="yes" mutable="no">
+        <type>signed char</type>
+        <definition>signed char elevation_angle_max</definition>
+        <argsstring></argsstring>
+        <name>elevation_angle_max</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="54" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_pan_tilt_8c_1a31600a9d5d5ee579b21294939a29f29b" prot="public" static="yes" mutable="no">
+        <type>signed char</type>
+        <definition>signed char elevation_angle_min</definition>
+        <argsstring></argsstring>
+        <name>elevation_angle_min</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="55" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_pan_tilt_8c_1a13975daacd911b86f59406a226829309" prot="public" static="yes" mutable="no">
+        <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+        <definition>Direction current_direction</definition>
+        <argsstring></argsstring>
+        <name>current_direction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="58" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_pan_tilt_8c_1a9f097b2a247dc76d2d6e796f0d8599e1" prot="public" static="yes" mutable="no">
+        <type>char</type>
+        <definition>volatile char changed</definition>
+        <argsstring></argsstring>
+        <name>changed</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="59" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_pan_tilt_8c_1a339d46c81d3203b479d9731ef06590d3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void validate</definition>
+        <argsstring>(unsigned int *delay)</argsstring>
+        <name>validate</name>
+        <param>
+          <type>unsigned int *</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: validate(unsigned int *delay)</para><para>Include:</para><para>Description: Limits the duration of the PDM to between 1000us and 2000us</para><para>Arguments: delay - a pointer to the delay variable</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="42" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="473" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+        <definition>static Direction delay2Direction</definition>
+        <argsstring>(Delay dly)</argsstring>
+        <name>delay2Direction</name>
+        <param>
+          <type><ref refid="struct_delay" kindref="compound">Delay</ref></type>
+          <declname>dly</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: direction2Delay(DirectionState dir)</para><para>Include:</para><para>Description: Converts an azimuth and inclination direction into a pwm period</para><para>Arguments: dir - Locally defined struct containing the desired Azimuth and Inclination</para><para>Returns: <ref refid="struct_delay" kindref="compound">Delay</ref> - The required PDM delay to move the servos to the given direction</para><para>Remark: This function relies on the ARC_RANGE macro being set correctly. This should hold the value of the maximum angle that the servos can be commanded </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="43" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="416" bodyend="427"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_delay" kindref="compound">Delay</ref></type>
+        <definition>static Delay direction2Delay</definition>
+        <argsstring>(Direction dir)</argsstring>
+        <name>direction2Delay</name>
+        <param>
+          <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: direction2Delay(DirectionState dir)</para><para>Include:</para><para>Description: Converts an azimuth and inclination direction into a pwm period</para><para>Arguments: dir - Locally defined struct containing the desired Azimuth and Inclination</para><para>Returns: <ref refid="struct_delay" kindref="compound">Delay</ref> - The required PDM delay to move the servos to the given direction</para><para>Remark: This function relies on the ARC_RANGE macro being set correctly. This should hold the value of the maximum angle that the servos can be commanded </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="44" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="444" bodyend="459"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configureBase</definition>
+        <argsstring>(void)</argsstring>
+        <name>configureBase</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: config(void)</para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Configures the Pan Tilt mechanism for operation</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="72" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="72" bodyend="102"/>
+        <references refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772">INTCONbits</references>
+        <references refid="p18f4520_8h_1a00ea63e57cd6582e6e73158695e2b088">RCONbits</references>
+        <references refid="_pan_tilt_8c_1afed42813fde734ec03d642316c880a8f" compoundref="_pan_tilt_8c" startline="40">SERVO_INIT</references>
+        <references refid="_pan_tilt_8c_1aacaca0988244bd3a888ca5befa89f44b" compoundref="_pan_tilt_8c" startline="26">PWM_PERIOD</references>
+        <referencedby refid="_tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" compoundref="_tracking_8c" startline="32" endline="36">configureTracking</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void move</definition>
+        <argsstring>(Direction destination)</argsstring>
+        <name>move</name>
+        <param>
+          <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+          <declname>destination</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move(Direction destination)</ref></para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Moves the pan tilt actuator to the specified destination</para><para>Arguments: destionation - A struct containing the desired azimuth and inclination</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="115" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="115" bodyend="124"/>
+        <referencedby refid="_pan_tilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="_pan_tilt_8c" startline="137" endline="143">increment</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void increment</definition>
+        <argsstring>(Direction difference)</argsstring>
+        <name>increment</name>
+        <param>
+          <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+          <declname>difference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_pan_tilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment(Direction difference)</ref></para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Moves the pan tilt actuator to the specified destination</para><para>Arguments: destionation - A struct containing the desired azimuth and inclination</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="137" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="137" bodyend="143"/>
+        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="42">Direction::azimuth</references>
+        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="43">Direction::inclination</references>
+        <references refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="_pan_tilt_8c" startline="115" endline="124">move</references>
+        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="50" endline="98">search</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a5350e3f473fb25899612d382c1baa642" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void incrementFine</definition>
+        <argsstring>(Direction difference)</argsstring>
+        <name>incrementFine</name>
+        <param>
+          <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+          <declname>difference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move(Direction destination)</ref></para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Moves the pan tilt actuator to the specified destination</para><para>Arguments: destionation - A struct containing the desired azimuth and inclination</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="156" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="156" bodyend="173"/>
+        <references refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" compoundref="_pan_tilt_8c" startline="16">Delay::AzimuthDelay</references>
+        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="42">Direction::azimuth</references>
+        <references refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" compoundref="_pan_tilt_8c" startline="27">PWM_HALF_PERIOD</references>
+        <references refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" compoundref="_pan_tilt_8c" startline="17">Delay::InclinationDelay</references>
+        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="43">Direction::inclination</references>
+        <references refid="_pan_tilt_8c_1a32ba76cc676dc9b248bce3b722e811e5" compoundref="_pan_tilt_8c" startline="35">LATENCY</references>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+        <definition>Direction getDir</definition>
+        <argsstring>(void)</argsstring>
+        <name>getDir</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" kindref="member">getDir(void)</ref></para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the current position of the pan tilt mechanism</para><para>Arguments: None</para><para>Returns: A struct containing the azimuth and inclination </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="186" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="186" bodyend="189"/>
+        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="50" endline="98">search</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1ae8f9ea5919de15d1b5614be2e5e65be3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char getMaxAzimuthAngle</definition>
+        <argsstring>(void)</argsstring>
+        <name>getMaxAzimuthAngle</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: getMaxAzimuthAngle</para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the maximum angle of the azimuth servo</para><para>Arguments: None</para><para>Returns: A char with the maximum azimuth angle. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="202" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="202" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1af45dd498eebe7f5ba7b228c15e7221c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char getMinAzimuthAngle</definition>
+        <argsstring>(void)</argsstring>
+        <name>getMinAzimuthAngle</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: getMinAzimuthAngle</para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the minimum angle of the azimuth servo</para><para>Arguments: None</para><para>Returns: A char with the minimum azimuth angle. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="218" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="218" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a4278dbef7fe9034a7a54d02bcbb16de9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char getMaxElevationAngle</definition>
+        <argsstring>(void)</argsstring>
+        <name>getMaxElevationAngle</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: getMaxElevationAngle</para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the maximum angle of the elevation servo</para><para>Arguments: None</para><para>Returns: A char with the maximum elevation angle. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="234" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="234" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1af7fafa63e9c645a80f28aca253bba5cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char getMinElevationAngle</definition>
+        <argsstring>(void)</argsstring>
+        <name>getMinElevationAngle</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: getMinElevationAngle</para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the minimum angle of the elevation servo</para><para>Arguments: None</para><para>Returns: A char with the minimum elevation angle. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="250" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="250" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a1f5e600a2655aeb9dd24b8325a777931" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setMaxAzimuthAngle</definition>
+        <argsstring>(char p_angle)</argsstring>
+        <name>setMaxAzimuthAngle</name>
+        <param>
+          <type>char</type>
+          <declname>p_angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: setMaxAzimuthAngle</para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: sets the maximum angle of the azimuth servo</para><para>Arguments: The maximum angle (as char) to set for the azimuth servo</para><para>Returns: None. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="266" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="266" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a157ea38d68fcd31082dc2eaba2944ef3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setMinAzimuthAngle</definition>
+        <argsstring>(char p_angle)</argsstring>
+        <name>setMinAzimuthAngle</name>
+        <param>
+          <type>char</type>
+          <declname>p_angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: setMinAzimuthAngle</para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: sets the minimum angle of the azimuth servo</para><para>Arguments: The minimum angle (as char) to set for the azimuth servo</para><para>Returns: None. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="281" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="281" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1aa956697480994a26cb592b2cfcf3436c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setMaxElevationAngle</definition>
+        <argsstring>(char p_angle)</argsstring>
+        <name>setMaxElevationAngle</name>
+        <param>
+          <type>char</type>
+          <declname>p_angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: setMaxElevationAngle</para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: sets the maximum angle of the elevation servo</para><para>Arguments: The maximum angle (as char) to set for the elevation servo</para><para>Returns: None. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="296" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="296" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a001917f3c38b200d142ab6932991e001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setMinElevationAngle</definition>
+        <argsstring>(char p_angle)</argsstring>
+        <name>setMinElevationAngle</name>
+        <param>
+          <type>char</type>
+          <declname>p_angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: setMinElevationAngle</para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: sets the minimum angle of the elevation servo</para><para>Arguments: The minimum angle (as char) to set for the elevation servo</para><para>Returns: None. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="312" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="312" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a60e08860a1b4ca9efdc2dd43983731d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calibratePanTilt</definition>
+        <argsstring>(Direction reference)</argsstring>
+        <name>calibratePanTilt</name>
+        <param>
+          <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+          <declname>reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_pan_tilt_8c_1a60e08860a1b4ca9efdc2dd43983731d5" kindref="member">calibratePanTilt(Direction reference)</ref></para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Calibrates the pan tile mechanism so that any future reference to move to the reference value specified in the function call will move the pan tilt back to the current position.</para><para>Arguments: reference - A struct containing the azimuth and inclinaion you wish to define as this position.</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="331" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="331" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a251ee95d75c68e21c4bb933ac99e5108" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>
+        <definition>Direction rawDir</definition>
+        <argsstring>(void)</argsstring>
+        <name>rawDir</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_pan_tilt_8c_1a251ee95d75c68e21c4bb933ac99e5108" kindref="member">rawDir(void)</ref></para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the current PanTile position without calibrating</para><para>Arguments: None</para><para>Returns: The position of the pan tilt without any calibration </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="347" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="347" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a7f353056fb02f0d95fd997198f5b186f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void panTiltISR</definition>
+        <argsstring>(void)</argsstring>
+        <name>panTiltISR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_pan_tilt_8c_1a7f353056fb02f0d95fd997198f5b186f" kindref="member">panTiltISR(void)</ref></para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Acts as the ISR for the PanTilt module</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="363" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="363" bodyend="399"/>
+        <references refid="_common_8h_1aee2ef60613898be37c57266698616e33" compoundref="_common_8h" startline="94">CCP2_INT</references>
+        <references refid="_pan_tilt_8c_1aacaca0988244bd3a888ca5befa89f44b" compoundref="_pan_tilt_8c" startline="26">PWM_PERIOD</references>
+        <references refid="_pan_tilt_8c_1aeccd74b3aafd22092066790005320b98" compoundref="_pan_tilt_8c" startline="22">IN_PWM_PIN</references>
+        <references refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" compoundref="_pan_tilt_8c" startline="17">Delay::InclinationDelay</references>
+        <references refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" compoundref="_pan_tilt_8c" startline="16">Delay::AzimuthDelay</references>
+        <references refid="_pan_tilt_8c_1a5875ffe458eee073cec6bd62e08679c9" compoundref="_pan_tilt_8c" startline="21">AZ_PWM_PIN</references>
+        <references refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" compoundref="_pan_tilt_8c" startline="27">PWM_HALF_PERIOD</references>
+        <references refid="p18f4520_8h_1a390de697cff026cc2b7b68fa8f97b9ea">PIR2bits</references>
+        <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="79" endline="98">lowISR</referencedby>
+        <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="113" endline="132">highISR</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_pan_tilt_8c_1a3362a0aacdd7037d0329989d353c60b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char updated</definition>
+        <argsstring>(void)</argsstring>
+        <name>updated</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_pan_tilt_8c_1a3362a0aacdd7037d0329989d353c60b7" kindref="member">updated(void)</ref></para><para>Include: <ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns true if the last move or increment or incrementFine function has taken effect. The new direction is only loaded in at the end of the PDM, so it could take up to 0.02 seconds for the change to take effect.</para><para>Arguments: delay - a pointer to the delay variable</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="499" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="499" bodyend="502"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>ADC.c</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Grant</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Contains<sp/>all<sp/>the<sp/>functionality<sp/>for<sp/>the<sp/>Pan<sp/>Tilt<sp/>module</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>16<sp/>September<sp/>2014,<sp/>6:47<sp/>PM</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pwm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;timers.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="struct_delay" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16" refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" kindref="member">AzimuthDelay</ref>;</highlight></codeline>
+<codeline lineno="17" refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" kindref="member">InclinationDelay</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}<sp/><ref refid="struct_delay" kindref="compound">Delay</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//Define<sp/>the<sp/>PWM<sp/>output<sp/>pins</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="_pan_tilt_8c_1a5875ffe458eee073cec6bd62e08679c9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>AZ_PWM_PIN<sp/>PORTCbits.RC0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="_pan_tilt_8c_1aeccd74b3aafd22092066790005320b98" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IN_PWM_PIN<sp/>PORTCbits.RC1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MNML<sp/><sp/><sp/><sp/><sp/>//Using<sp/>minimal<sp/>board,<sp/>or<sp/>picdem<sp/>-<sp/>Clock<sp/>speeds<sp/>differ<sp/>by<sp/>x4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DUTY_CYCLE_TIME<sp/>2500</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="_pan_tilt_8c_1aacaca0988244bd3a888ca5befa89f44b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_PERIOD<sp/>50000<sp/>//The<sp/>period<sp/>for<sp/>50Hz<sp/>at<sp/>2.5MHz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_HALF_PERIOD<sp/>25000<sp/>//Half<sp/>the<sp/>period<sp/>for<sp/>50Hz<sp/>at<sp/>1MHz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DUTY_CYCLE_TIME<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_PERIOD<sp/>20000<sp/>//The<sp/>period<sp/>for<sp/>50Hz<sp/>at<sp/>2.5MHz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_HALF_PERIOD<sp/>10000<sp/>//Half<sp/>the<sp/>period<sp/>for<sp/>50Hz<sp/>at<sp/>1MHz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//Interrupt<sp/>Latency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="_pan_tilt_8c_1a32ba76cc676dc9b248bce3b722e811e5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LATENCY<sp/>340</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>ARC_RANGE<sp/>94<sp/>//Max<sp/>arc<sp/>of<sp/>servos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>HALF_RANGE<sp/>47<sp/><sp/><sp/>//Half<sp/>the<sp/>range<sp/>of<sp/>the<sp/>servos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="_pan_tilt_8c_1afed42813fde734ec03d642316c880a8f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERVO_INIT()<sp/>TRISCbits.RC0<sp/>=<sp/>0;<sp/>TRISCbits.RC1<sp/>=<sp/>0;<sp/>PORTCbits.RC0<sp/>=<sp/>0;<sp/>PORTCbits.RC1<sp/>=<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>validate(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*delay);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_direction" kindref="compound">Direction</ref><sp/>delay2Direction(<ref refid="struct_delay" kindref="compound">Delay</ref><sp/>dly);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_delay" kindref="compound">Delay</ref><sp/>direction2Delay(<ref refid="struct_direction" kindref="compound">Direction</ref><sp/>dir);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//Static<sp/>calibration<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_direction" kindref="compound">Direction</ref><sp/>calibration_offset<sp/>=<sp/>{<sp/>0,<sp/>3<sp/>};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_direction" kindref="compound">Direction</ref><sp/>arcRange<sp/>=<sp/>{<sp/>94,<sp/>103<sp/>};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_delay" kindref="compound">Delay</ref><sp/>global_delay;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//Static<sp/>Max/Min</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>azimuth_angle_max;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>azimuth_angle_min;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>elevation_angle_max;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>elevation_angle_min;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//Static<sp/>Current<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_direction" kindref="compound">Direction</ref><sp/>current_direction;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>changed<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="_pan_tilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" kindref="member">configureBase</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>config;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>the<sp/>initial<sp/>servo<sp/>PWM&apos;s<sp/>to<sp/>zeros</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_direction" kindref="compound">Direction</ref><sp/>zero<sp/>=<sp/>{<sp/>0,<sp/>0<sp/>};</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>global_delay<sp/>=<sp/>direction2Delay(zero);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772" kindref="member">INTCONbits</ref>.GIEH<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772" kindref="member">INTCONbits</ref>.GIEL<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a00ea63e57cd6582e6e73158695e2b088" kindref="member">RCONbits</ref>.IPEN<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_pan_tilt_8c_1afed42813fde734ec03d642316c880a8f" kindref="member">SERVO_INIT</ref>();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>config<sp/>=<sp/>T3_16BIT_RW<sp/>&amp;<sp/>T3_PS_1_1&amp;<sp/>T3_SYNC_EXT_OFF<sp/>&amp;<sp/>T3_SOURCE_INT;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>OpenTimer3(config);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Timer1<sp/>source<sp/>for<sp/>CCP1,<sp/>and<sp/>timer3<sp/>source<sp/>for<sp/>CCP2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>SetTmrCCPSrc(T1_CCP1_T3_CCP2);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>config<sp/>=<sp/>COM_INT_ON<sp/>&amp;<sp/>COM_UNCHG_MATCH;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>OpenCompare2(config,<sp/><ref refid="_pan_tilt_8c_1aacaca0988244bd3a888ca5befa89f44b" kindref="member">PWM_PERIOD</ref>);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>azimuth_angle_max<sp/>=<sp/>45;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>azimuth_angle_min<sp/>=<sp/>-45;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>elevation_angle_max<sp/>=<sp/>45;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>elevation_angle_min<sp/>=<sp/>-45;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="_pan_tilt_8h_1a032fbfc434ca24d27d89b6d768455a42" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move</ref>(<ref refid="struct_direction" kindref="compound">Direction</ref><sp/>destination)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>global_delay<sp/>=<sp/>direction2Delay(destination);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Update<sp/>the<sp/>current_direction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>current_direction<sp/>=<sp/>delay2Direction(global_delay);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>20000;<sp/>i++);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="_pan_tilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment</ref>(<ref refid="struct_direction" kindref="compound">Direction</ref><sp/>difference)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>current_direction.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>+=<sp/>difference.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>current_direction.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>+=<sp/>difference.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move</ref>(current_direction);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="_pan_tilt_8h_1a5350e3f473fb25899612d382c1baa642" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1a5350e3f473fb25899612d382c1baa642" kindref="member">incrementFine</ref>(<ref refid="struct_direction" kindref="compound">Direction</ref><sp/>difference)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>az,<sp/>inc;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>az<sp/>=<sp/>global_delay.<ref refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" kindref="member">AzimuthDelay</ref><sp/>+<sp/>difference.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>-<sp/><ref refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" kindref="member">PWM_HALF_PERIOD</ref>;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>inc<sp/>=<sp/>global_delay.<ref refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" kindref="member">InclinationDelay</ref><sp/>+<sp/>difference.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>+<sp/><ref refid="_pan_tilt_8c_1a32ba76cc676dc9b248bce3b722e811e5" kindref="member">LATENCY</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Ensure<sp/>that<sp/>the<sp/>delays<sp/>are<sp/>still<sp/>within<sp/>the<sp/>max<sp/>and<sp/>min<sp/>duty<sp/>cycles</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>validate(&amp;az);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>validate(&amp;inc);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>global_delay.<ref refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" kindref="member">AzimuthDelay</ref><sp/>=<sp/>az<sp/>+<sp/><ref refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" kindref="member">PWM_HALF_PERIOD</ref>;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>global_delay.<ref refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" kindref="member">InclinationDelay</ref><sp/>=<sp/>inc<sp/>-<sp/><ref refid="_pan_tilt_8c_1a32ba76cc676dc9b248bce3b722e811e5" kindref="member">LATENCY</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Update<sp/>the<sp/>current_direction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>current_direction<sp/>=<sp/>delay2Direction(global_delay);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Delay</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(az<sp/>=<sp/>0;az<sp/>&lt;<sp/>20000;az++);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="_pan_tilt_8h_1ad1d9638bad5a5021969d19769e70c775" refkind="member"><highlight class="normal"><ref refid="struct_direction" kindref="compound">Direction</ref><sp/><ref refid="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" kindref="member">getDir</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>current_direction;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="_pan_tilt_8h_1ae8f9ea5919de15d1b5614be2e5e65be3" refkind="member"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1ae8f9ea5919de15d1b5614be2e5e65be3" kindref="member">getMaxAzimuthAngle</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>azimuth_angle_max;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="_pan_tilt_8h_1af45dd498eebe7f5ba7b228c15e7221c1" refkind="member"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1af45dd498eebe7f5ba7b228c15e7221c1" kindref="member">getMinAzimuthAngle</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>azimuth_angle_min;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="_pan_tilt_8h_1a4278dbef7fe9034a7a54d02bcbb16de9" refkind="member"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1a4278dbef7fe9034a7a54d02bcbb16de9" kindref="member">getMaxElevationAngle</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>elevation_angle_max;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250" refid="_pan_tilt_8h_1af7fafa63e9c645a80f28aca253bba5cc" refkind="member"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1af7fafa63e9c645a80f28aca253bba5cc" kindref="member">getMinElevationAngle</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="251"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>elevation_angle_min;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266" refid="_pan_tilt_8h_1a1f5e600a2655aeb9dd24b8325a777931" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1a1f5e600a2655aeb9dd24b8325a777931" kindref="member">setMaxAzimuthAngle</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>p_angle)</highlight></codeline>
+<codeline lineno="267"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>azimuth_angle_max<sp/>=<sp/>p_angle;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281" refid="_pan_tilt_8h_1a157ea38d68fcd31082dc2eaba2944ef3" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1a157ea38d68fcd31082dc2eaba2944ef3" kindref="member">setMinAzimuthAngle</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>p_angle)</highlight></codeline>
+<codeline lineno="282"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>azimuth_angle_min<sp/>=<sp/>p_angle;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="296" refid="_pan_tilt_8h_1aa956697480994a26cb592b2cfcf3436c" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1aa956697480994a26cb592b2cfcf3436c" kindref="member">setMaxElevationAngle</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>p_angle)</highlight></codeline>
+<codeline lineno="297"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>elevation_angle_max<sp/>=<sp/>p_angle;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312" refid="_pan_tilt_8h_1a001917f3c38b200d142ab6932991e001" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1a001917f3c38b200d142ab6932991e001" kindref="member">setMinElevationAngle</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>p_angle)</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>elevation_angle_min<sp/>=<sp/>p_angle;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331" refid="_pan_tilt_8h_1a60e08860a1b4ca9efdc2dd43983731d5" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1a60e08860a1b4ca9efdc2dd43983731d5" kindref="member">calibratePanTilt</ref>(<ref refid="struct_direction" kindref="compound">Direction</ref><sp/>reference)</highlight></codeline>
+<codeline lineno="332"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="334"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347" refid="_pan_tilt_8h_1a251ee95d75c68e21c4bb933ac99e5108" refkind="member"><highlight class="normal"><ref refid="struct_direction" kindref="compound">Direction</ref><sp/><ref refid="_pan_tilt_8c_1a251ee95d75c68e21c4bb933ac99e5108" kindref="member">rawDir</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="348"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="350"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363" refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1a7f353056fb02f0d95fd997198f5b186f" kindref="member">panTiltISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="364"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>timer_value;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_delay" kindref="compound">Delay</ref><sp/>current_delay;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="_common_8h_1aee2ef60613898be37c57266698616e33" kindref="member">CCP2_INT</ref>)</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>timer_value<sp/>=<sp/>ReadTimer3();</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(timer_value<sp/>&gt;<sp/><ref refid="_pan_tilt_8c_1aacaca0988244bd3a888ca5befa89f44b" kindref="member">PWM_PERIOD</ref>)</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_pan_tilt_8c_1aeccd74b3aafd22092066790005320b98" kindref="member">IN_PWM_PIN</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WriteTimer3(0);<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Clear<sp/>timer2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_delay<sp/>=<sp/>global_delay;<sp/><sp/><sp/></highlight><highlight class="comment">//update<sp/>the<sp/>static<sp/>delay</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>changed<sp/>=<sp/>1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Indicate<sp/>the<sp/>change<sp/>has<sp/>been<sp/>loaded</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OpenCompare2(COM_INT_ON<sp/>&amp;<sp/>COM_UNCHG_MATCH,<sp/>current_delay.<ref refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" kindref="member">InclinationDelay</ref>);</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(timer_value<sp/>&gt;<sp/>current_delay.<ref refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" kindref="member">AzimuthDelay</ref>)</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_pan_tilt_8c_1a5875ffe458eee073cec6bd62e08679c9" kindref="member">AZ_PWM_PIN</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OpenCompare2(COM_INT_ON<sp/>&amp;<sp/>COM_UNCHG_MATCH,<sp/><ref refid="_pan_tilt_8c_1aacaca0988244bd3a888ca5befa89f44b" kindref="member">PWM_PERIOD</ref>);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(timer_value<sp/>&gt;<sp/><ref refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" kindref="member">PWM_HALF_PERIOD</ref>)</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_pan_tilt_8c_1a5875ffe458eee073cec6bd62e08679c9" kindref="member">AZ_PWM_PIN</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OpenCompare2(COM_INT_ON<sp/>&amp;<sp/>COM_UNCHG_MATCH,<sp/>current_delay.<ref refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" kindref="member">AzimuthDelay</ref>);</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(timer_value<sp/>&gt;<sp/>current_delay.<ref refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" kindref="member">InclinationDelay</ref>)</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_pan_tilt_8c_1aeccd74b3aafd22092066790005320b98" kindref="member">IN_PWM_PIN</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OpenCompare2(COM_INT_ON<sp/>&amp;<sp/>COM_UNCHG_MATCH,<sp/><ref refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" kindref="member">PWM_HALF_PERIOD</ref>);</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a390de697cff026cc2b7b68fa8f97b9ea" kindref="member">PIR2bits</ref>.CCP2IF<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="399"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_direction" kindref="compound">Direction</ref><sp/>delay2Direction(<ref refid="struct_delay" kindref="compound">Delay</ref><sp/>dly)</highlight></codeline>
+<codeline lineno="417"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_direction" kindref="compound">Direction</ref><sp/>ret;</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/>((dly.<ref refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" kindref="member">AzimuthDelay</ref><sp/>-<sp/><ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref><sp/>-<sp/><ref refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" kindref="member">PWM_HALF_PERIOD</ref>)<sp/>*<sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)arcRange.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>+<sp/><ref refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(<ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref>))<sp/>/<sp/><ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref>;</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/>((dly.<ref refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" kindref="member">InclinationDelay</ref><sp/>-<sp/><ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref><sp/>+<sp/><ref refid="_pan_tilt_8c_1a32ba76cc676dc9b248bce3b722e811e5" kindref="member">LATENCY</ref>)<sp/>*<sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)arcRange.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>+<sp/><ref refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(<ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref>))/<sp/><ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref>;</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/>ret.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>-<sp/><ref refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(arcRange.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>)<sp/>-<sp/>calibration_offset.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>;</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/>-(ret.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>-<sp/><ref refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(arcRange.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>)<sp/>-<sp/>calibration_offset.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>);</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"></highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="427"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"></highlight></codeline>
+<codeline lineno="444"><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_delay" kindref="compound">Delay</ref><sp/>direction2Delay(<ref refid="struct_direction" kindref="compound">Direction</ref><sp/>dir)</highlight></codeline>
+<codeline lineno="445"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_delay" kindref="compound">Delay</ref><sp/>result;</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>az,<sp/>inc;</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"></highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/>az<sp/>=<sp/><ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref><sp/>+<sp/>(dir.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>+<sp/><ref refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(arcRange.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>)<sp/>+<sp/>calibration_offset.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>)<sp/>*<sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref><sp/>/<sp/>arcRange.<ref refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>;</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/>inc<sp/>=<sp/><ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref><sp/>+<sp/>(-dir.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>+<sp/><ref refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(arcRange.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>)<sp/>+<sp/>calibration_offset.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>)<sp/>*<sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref><sp/>/<sp/>arcRange.<ref refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>;</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"></highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/>validate(&amp;az);</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/>validate(&amp;inc);</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/>result.<ref refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" kindref="member">AzimuthDelay</ref><sp/>=<sp/>az<sp/>+<sp/><ref refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" kindref="member">PWM_HALF_PERIOD</ref>;</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/>result.<ref refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" kindref="member">InclinationDelay</ref><sp/>=<sp/>inc<sp/>-<sp/><ref refid="_pan_tilt_8c_1a32ba76cc676dc9b248bce3b722e811e5" kindref="member">LATENCY</ref>;</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"></highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="459"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight></codeline>
+<codeline lineno="461"><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>validate(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*delay)</highlight></codeline>
+<codeline lineno="474"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*delay<sp/>&lt;<sp/><ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref>)</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*delay<sp/>=<sp/><ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref>;</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*delay<sp/>&gt;<sp/>2*<ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref>)</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*delay<sp/>=<sp/>2<sp/>*<sp/><ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref>;</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="483"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"></highlight></codeline>
+<codeline lineno="499" refid="_pan_tilt_8h_1a3362a0aacdd7037d0329989d353c60b7" refkind="member"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="_pan_tilt_8c_1a3362a0aacdd7037d0329989d353c60b7" kindref="member">updated</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="500"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>changed;</highlight></codeline>
+<codeline lineno="502"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c"/>
+  </compounddef>
+</doxygen>
