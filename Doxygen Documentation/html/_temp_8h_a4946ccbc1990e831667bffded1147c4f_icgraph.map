@@ -1,0 +1,13 @@
+<map id="readTempx2" name="readTempx2">
+<area shape="rect" id="node2" href="$_temp_8h.html#afd08db2b1a6d6af19e39f10dc453332c" title="readTemp" alt="" coords="147,259,225,285"/>
+<area shape="rect" id="node3" href="$_range_8h.html#a07a4c592815b5e6ae178f93a7764ceb2" title="configureRange" alt="" coords="273,208,384,235"/>
+<area shape="rect" id="node4" href="$_range_8c.html#a8606bd1052dde0e7c32eddad8699f4f4" title="calibrateRange" alt="" coords="765,183,873,209"/>
+<area shape="rect" id="node5" href="$_range_8h.html#aff3698f3a7b3b5963d8e6b305a165d71" title="range" alt="" coords="466,107,521,133"/>
+<area shape="rect" id="node11" href="$_range_8h.html#a5b063989d39d2958d2ecebc0106cb1da" title="rangeUltrasonic" alt="" coords="437,259,549,285"/>
+<area shape="rect" id="node12" href="$_tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6" title="configureTracking" alt="" coords="432,32,555,59"/>
+<area shape="rect" id="node6" href="$_range_8h.html#a91b55894b9e6d74e4495ea610246c856" title="rangeIR" alt="" coords="627,107,693,133"/>
+<area shape="rect" id="node7" href="$_range_8h.html#a87c8e64ddc596f3e6b72ee861f671168" title="readTargetState" alt="" coords="603,56,717,83"/>
+<area shape="rect" id="node10" href="$_tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30" title="track" alt="" coords="794,5,845,32"/>
+<area shape="rect" id="node8" href="$_tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9" title="search" alt="" coords="789,56,850,83"/>
+<area shape="rect" id="node9" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="921,31,972,57"/>
+</map>

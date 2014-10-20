@@ -6,67 +6,67 @@
     <includes local="no">usart.h</includes>
     <includes refid="_circular_buffers_8h" local="yes">CircularBuffers.h</includes>
     <incdepgraph>
-      <node id="170">
+      <node id="411">
         <label>stdlib.h</label>
       </node>
-      <node id="174">
+      <node id="415">
         <label>adc.h</label>
       </node>
-      <node id="168">
+      <node id="409">
         <label>Common.h</label>
         <link refid="_common_8h"/>
-        <childnode refid="169" relation="include">
+        <childnode refid="410" relation="include">
         </childnode>
-        <childnode refid="170" relation="include">
+        <childnode refid="411" relation="include">
         </childnode>
-        <childnode refid="171" relation="include">
+        <childnode refid="412" relation="include">
         </childnode>
-        <childnode refid="172" relation="include">
+        <childnode refid="413" relation="include">
         </childnode>
-        <childnode refid="173" relation="include">
+        <childnode refid="414" relation="include">
         </childnode>
-        <childnode refid="174" relation="include">
+        <childnode refid="415" relation="include">
         </childnode>
-        <childnode refid="175" relation="include">
+        <childnode refid="416" relation="include">
         </childnode>
-        <childnode refid="176" relation="include">
+        <childnode refid="417" relation="include">
         </childnode>
-        <childnode refid="177" relation="include">
+        <childnode refid="418" relation="include">
         </childnode>
       </node>
-      <node id="167">
+      <node id="408">
         <label>Serial.c</label>
         <link refid="Serial.c"/>
-        <childnode refid="168" relation="include">
+        <childnode refid="409" relation="include">
         </childnode>
-        <childnode refid="176" relation="include">
+        <childnode refid="417" relation="include">
         </childnode>
-        <childnode refid="178" relation="include">
+        <childnode refid="419" relation="include">
         </childnode>
       </node>
-      <node id="173">
+      <node id="414">
         <label>timers.h</label>
       </node>
-      <node id="177">
+      <node id="418">
         <label>compare.h</label>
       </node>
-      <node id="175">
+      <node id="416">
         <label>capture.h</label>
       </node>
-      <node id="171">
+      <node id="412">
         <label>math.h</label>
       </node>
-      <node id="172">
+      <node id="413">
         <label>p18f4520.h</label>
         <link refid="p18f4520_8h"/>
       </node>
-      <node id="176">
+      <node id="417">
         <label>usart.h</label>
       </node>
-      <node id="169">
+      <node id="410">
         <label>stdio.h</label>
       </node>
-      <node id="178">
+      <node id="419">
         <label>CircularBuffers.h</label>
         <link refid="_circular_buffers_8h"/>
       </node>

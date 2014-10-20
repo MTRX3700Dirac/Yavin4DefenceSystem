@@ -101,10 +101,10 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="7">
+      <node id="19">
         <label>SubMenu</label>
         <link refid="struct_sub_menu"/>
-        <childnode refid="7" relation="usage">
+        <childnode refid="19" relation="usage">
           <edgelabel>subMenues</edgelabel>
         </childnode>
       </node>

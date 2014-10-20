@@ -6,67 +6,67 @@
     <includes local="no">pwm.h</includes>
     <includes local="no">timers.h</includes>
     <incdepgraph>
-      <node id="141">
+      <node id="382">
         <label>pwm.h</label>
       </node>
-      <node id="133">
+      <node id="374">
         <label>stdlib.h</label>
       </node>
-      <node id="137">
+      <node id="378">
         <label>adc.h</label>
       </node>
-      <node id="131">
+      <node id="372">
         <label>Common.h</label>
         <link refid="_common_8h"/>
-        <childnode refid="132" relation="include">
+        <childnode refid="373" relation="include">
         </childnode>
-        <childnode refid="133" relation="include">
+        <childnode refid="374" relation="include">
         </childnode>
-        <childnode refid="134" relation="include">
+        <childnode refid="375" relation="include">
         </childnode>
-        <childnode refid="135" relation="include">
+        <childnode refid="376" relation="include">
         </childnode>
-        <childnode refid="136" relation="include">
+        <childnode refid="377" relation="include">
         </childnode>
-        <childnode refid="137" relation="include">
+        <childnode refid="378" relation="include">
         </childnode>
-        <childnode refid="138" relation="include">
+        <childnode refid="379" relation="include">
         </childnode>
-        <childnode refid="139" relation="include">
+        <childnode refid="380" relation="include">
         </childnode>
-        <childnode refid="140" relation="include">
+        <childnode refid="381" relation="include">
         </childnode>
       </node>
-      <node id="136">
+      <node id="377">
         <label>timers.h</label>
       </node>
-      <node id="140">
+      <node id="381">
         <label>compare.h</label>
       </node>
-      <node id="138">
+      <node id="379">
         <label>capture.h</label>
       </node>
-      <node id="134">
+      <node id="375">
         <label>math.h</label>
       </node>
-      <node id="135">
+      <node id="376">
         <label>p18f4520.h</label>
         <link refid="p18f4520_8h"/>
       </node>
-      <node id="139">
+      <node id="380">
         <label>usart.h</label>
       </node>
-      <node id="132">
+      <node id="373">
         <label>stdio.h</label>
       </node>
-      <node id="130">
+      <node id="371">
         <label>PanTilt.c</label>
         <link refid="PanTilt.c"/>
-        <childnode refid="131" relation="include">
+        <childnode refid="372" relation="include">
         </childnode>
-        <childnode refid="141" relation="include">
+        <childnode refid="382" relation="include">
         </childnode>
-        <childnode refid="136" relation="include">
+        <childnode refid="377" relation="include">
         </childnode>
       </node>
     </incdepgraph>
