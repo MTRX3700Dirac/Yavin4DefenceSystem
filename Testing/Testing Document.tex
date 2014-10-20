@@ -595,6 +595,15 @@ return result;
 }
 \end{lstlisting}
 
+\subsection{Prediction}
+\subsubsection{Status:}
+Currently incomplete and untested 20/10/2014 - Grant
+
+\subsubsection{Description:}
+This function returns a prediction of where the object is likely to be found based on previous movement and prediction algorithms.
+
+\subsubsection{Criteria:}
+
 \newpage
 \section{Circular Buffers}
 \subsection{Push Macro:}
@@ -782,7 +791,7 @@ This function transmits a single character over serial
 \subsection{Criteria:}
 This function has been tested by testing on several different characters,  including just after a transmit function call.
 
-\subsection{Working Code:}
+\subsubsection{Working Code:}
 \begin{lstlisting}
 void transChar(char c)
 {

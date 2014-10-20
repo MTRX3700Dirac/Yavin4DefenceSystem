@@ -186,6 +186,18 @@ TrackingData track(systemState *state)
     return result;
 }
 
+/* **********************************************************************
+ * Function: prediction(Direction current)
+ *
+ * Include: 
+ *
+ * Description: Predicts where the object is likely to be found based on previous
+ *              movement and prediction algorithms
+ *
+ * Arguments: current - The current position of the target
+ *
+ * Returns: Direction - The Predicted likely location
+ *************************************************************************/
 static Direction prediction(Direction current)
 {
 #define TIMER   TMR2        //General purpose timer
