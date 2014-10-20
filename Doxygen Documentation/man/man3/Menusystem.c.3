@@ -1,4 +1,4 @@
-.TH "Menusystem.c" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Menusystem.c" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -125,34 +125,62 @@ Menusystem.c \-
 .PP 
 .SS "#define auto11   0x10"
 
+.PP
+Definition at line 9 of file Menusystem\&.c\&.
 .SS "#define height   24"
 
+.PP
+Definition at line 6 of file Menusystem\&.c\&.
 .SS "#define manu12   0x20"
 
+.PP
+Definition at line 10 of file Menusystem\&.c\&.
 .SS "#define manugoto121   0x21"
 
+.PP
+Definition at line 11 of file Menusystem\&.c\&.
 .SS "#define manusetl122   0x22"
 
+.PP
+Definition at line 12 of file Menusystem\&.c\&.
 .SS "#define manushow123   0x23"
 
+.PP
+Definition at line 13 of file Menusystem\&.c\&.
 .SS "#define slee15   0x50"
 
+.PP
+Definition at line 17 of file Menusystem\&.c\&.
 .SS "#define stat13   0x30"
 
+.PP
+Definition at line 15 of file Menusystem\&.c\&.
 .SS "#define swap14   0x40"
 
+.PP
+Definition at line 16 of file Menusystem\&.c\&.
 .SS "#define top1   0xFF"
 
+.PP
+Definition at line 8 of file Menusystem\&.c\&.
 .SS "#define width   80"
 
+.PP
+Definition at line 5 of file Menusystem\&.c\&.
 .SH "Function Documentation"
 .PP 
 .SS "void clearscreen (charlength)"
 
+.PP
+Definition at line 43 of file Menusystem\&.c\&.
 .SS "void disptoptions (void)"
 
+.PP
+Definition at line 57 of file Menusystem\&.c\&.
 .SS "void filler (charlength)"
 
+.PP
+Definition at line 50 of file Menusystem\&.c\&.
 .SS "void initialiseMenu (void)"
 
 .PP
@@ -167,8 +195,12 @@ Description: initialises the menu system so that it is fully operational
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 135 of file Menusystem\&.c\&.
 .SS "void menu (charmenuselect)"
 Call the serial configuration to enable USART Subsysten 
+.PP
+Definition at line 182 of file Menusystem\&.c\&.
 .SS "void menuISR (void)"
 
 .PP
@@ -183,6 +215,8 @@ Description: services any interrupts associated with the menu system
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 177 of file Menusystem\&.c\&.
 .SS "void serviceMenu (void)"
 
 .PP
@@ -197,6 +231,8 @@ Description: Checks if the user has made any inputs to the system\&. If not the 
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 158 of file Menusystem\&.c\&.
 .SS "void topmenu (void)"
 Display the menu screen via serial wait for/get serial input make decision based on input
 .PP
@@ -209,32 +245,58 @@ Reset status flag
 Get the input string and store it in 
 .PP
 test 
+.PP
+Definition at line 83 of file Menusystem\&.c\&.
 .SS "void topmenudisp (void)"
 
+.PP
+Definition at line 65 of file Menusystem\&.c\&.
 .SH "Variable Documentation"
 .PP 
 .SS "char choose[] = '\\tPlease select your option (eg\&. 2): \\n'"
 
+.PP
+Definition at line 23 of file Menusystem\&.c\&.
 .SS "char fillerthing[] = '+'"
 
+.PP
+Definition at line 21 of file Menusystem\&.c\&.
 .SS "char goup[] = '\\tUp a level\\n'"
 
+.PP
+Definition at line 24 of file Menusystem\&.c\&.
 .SS "char newline[] = '\\n'"
 
+.PP
+Definition at line 22 of file Menusystem\&.c\&.
 .SS "char tMESSAGE[] = 'Hello 123\\n'"
 
+.PP
+Definition at line 20 of file Menusystem\&.c\&.
 .SS "char topoption1[] = '\\t1:\\tAutomatic Tracking\\n'"
 
+.PP
+Definition at line 29 of file Menusystem\&.c\&.
 .SS "char topoption2[] = '\\t2:\\tManual Tracking\\n'"
 
+.PP
+Definition at line 30 of file Menusystem\&.c\&.
 .SS "char topoption3[] = '\\t3:\\tStatus\\n'"
 
+.PP
+Definition at line 31 of file Menusystem\&.c\&.
 .SS "char topoption4[] = '\\t4:\\tGo To Local Mode\\n'"
 
+.PP
+Definition at line 32 of file Menusystem\&.c\&.
 .SS "char topoption5[] = '\\t5:\\tSleep\\n'"
 
+.PP
+Definition at line 33 of file Menusystem\&.c\&.
 .SS "char welcome[] = 'Welcome to Yavin IV Defence System'"
 
+.PP
+Definition at line 28 of file Menusystem\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

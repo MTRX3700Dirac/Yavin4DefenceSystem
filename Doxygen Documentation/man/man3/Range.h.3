@@ -1,4 +1,4 @@
-.TH "Range.h" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Range.h" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -51,6 +51,8 @@ Range.h \-
 .PP 
 .SS "#define RANGE_INT   \fBCCP1_INT\fP | \fBTMR1_INT\fP"
 
+.PP
+Definition at line 12 of file Range\&.h\&.
 .SH "Function Documentation"
 .PP 
 .SS "void calibrateRange (signed intdistance)"
@@ -65,6 +67,8 @@ Include: \fBRange\&.h\fP
 Description: Configures the ADC, In ADCON1, we set right-justified mode, and select AN0 as the input channel\&. In ADCON0, we set a sample rate of Fosc/8, select AN0, and enable the ADC\&. Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 69 of file Range\&.c\&.
 .SS "void configureRange (void)"
 
 .PP
@@ -77,6 +81,8 @@ Description: Configures the Range module
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 93 of file Range\&.c\&.
 .SS "\fBTargetState\fP getTargetState (void)"
 
 .PP
@@ -89,6 +95,8 @@ Description: Returns the target state from the last range reading\&. E\&.g\&. Go
 Arguments: None
 .PP
 Returns: the target state 
+.PP
+Definition at line 490 of file Range\&.c\&.
 .SS "unsigned int range (void)"
 
 .PP
@@ -101,6 +109,8 @@ Description: Uses the IR and Ultrasonic sensors to find the range
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 298 of file Range\&.c\&.
 .SS "unsigned int rangeIR (void)"
 
 .PP
@@ -115,6 +125,8 @@ Arguments: None
 Returns: Range (in mm) as an unsigned int\&.
 .PP
 Remark: Returns 0 if there is no target found 
+.PP
+Definition at line 397 of file Range\&.c\&.
 .SS "void rangeISR (void)"
 
 .PP
@@ -127,6 +139,8 @@ Description: Called when an range related interrupt is fired, acts as the servic
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 210 of file Range\&.c\&.
 .SS "unsigned int rangeUltrasonic (void)"
 
 .PP
@@ -139,6 +153,8 @@ Description: performs an ultrasonic range reading\&. Pins:
 Arguments: None
 .PP
 Returns: the average of the samples 
+.PP
+Definition at line 425 of file Range\&.c\&.
 .SS "signed int rawRange (void)"
 
 .PP
@@ -151,6 +167,8 @@ Description: Returns the calibration offset to calculate the raw data
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 282 of file Range\&.c\&.
 .SS "\fBTargetState\fP readTargetState (void)"
 
 .PP
@@ -163,6 +181,8 @@ Description: Does the same thing as getTargetState, but actually performs a \fBr
 Arguments: None
 .PP
 Returns: the target state 
+.PP
+Definition at line 507 of file Range\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

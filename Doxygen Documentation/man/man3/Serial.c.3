@@ -1,4 +1,4 @@
-.TH "Serial.c" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Serial.c" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -91,28 +91,50 @@ Serial.c \-
 .PP 
 .SS "#define BS   0x07"
 
+.PP
+Definition at line 27 of file Serial\&.c\&.
 .SS "#define CR   0x0D"
 
+.PP
+Definition at line 23 of file Serial\&.c\&.
 .SS "#define ESC   0x1B"
 
+.PP
+Definition at line 25 of file Serial\&.c\&.
 .SS "#define NL   0x0A"
 
+.PP
+Definition at line 24 of file Serial\&.c\&.
 .SS "#define RC_INT_CLEAR()   \fBPIR1bits\&.RCIF\fP = 0"
 
+.PP
+Definition at line 16 of file Serial\&.c\&.
 .SS "#define RC_INT_DISABLE()   \fBPIE1bits\&.RCIE\fP = 0"
 
+.PP
+Definition at line 20 of file Serial\&.c\&.
 .SS "#define RC_INT_ENABLE()   \fBRC_INT_CLEAR\fP(); \fBPIE1bits\&.RCIE\fP = 1"
 
+.PP
+Definition at line 18 of file Serial\&.c\&.
 .SS "#define TAB   0x09"
 
+.PP
+Definition at line 26 of file Serial\&.c\&.
 .SS "#define thing   0"
 
 .SS "#define TX_INT_CLEAR()   \fBPIR1bits\&.TXIF\fP = 0"
 
+.PP
+Definition at line 15 of file Serial\&.c\&.
 .SS "#define TX_INT_DISABLE()   \fBPIE1bits\&.TXIE\fP = 0"
 
+.PP
+Definition at line 19 of file Serial\&.c\&.
 .SS "#define TX_INT_ENABLE()   \fBTX_INT_CLEAR\fP(); \fBPIE1bits\&.TXIE\fP = 1"
 
+.PP
+Definition at line 17 of file Serial\&.c\&.
 .SH "Function Documentation"
 .PP 
 .SS "void configureSerial (void)"
@@ -127,6 +149,8 @@ Description: Configures the serial ready for communication
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 44 of file Serial\&.c\&.
 .SS "void readString (char *string)"
 
 .PP
@@ -141,6 +165,8 @@ Arguments: string - Pointer to location to store received data
 Returns: Received data up to a carriage return
 .PP
 Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the location pointed to by string before calling this function\&. 
+.PP
+Definition at line 191 of file Serial\&.c\&.
 .SS "char receiveCR (void)"
 
 .PP
@@ -153,6 +179,8 @@ Description: Indicates whether a Carriage Return has been received
 Arguments: None
 .PP
 Returns: non-zero if CR has been received, zero otherwise 
+.PP
+Definition at line 171 of file Serial\&.c\&.
 .SS "char receiveEmpty (void)"
 
 .PP
@@ -165,6 +193,8 @@ Description: Indicates if the receive buffer is empty
 Arguments: None
 .PP
 Returns: returns true if the recieve buffer is empty 
+.PP
+Definition at line 121 of file Serial\&.c\&.
 .SS "char receivePeek (void)"
 
 .PP
@@ -177,6 +207,8 @@ Description: Returns the next character in the receive buffer without removing i
 Arguments: None
 .PP
 Returns: The next received character 
+.PP
+Definition at line 138 of file Serial\&.c\&.
 .SS "char receivePop (void)"
 
 .PP
@@ -189,6 +221,8 @@ Description: Pops the next received character from the received buffer
 Arguments: None
 .PP
 Returns: The next character from the receive buffer 
+.PP
+Definition at line 154 of file Serial\&.c\&.
 .SS "void serialISR (void)"
 
 .PP
@@ -201,6 +235,8 @@ Description: Acts as the interrupt service routine for the serial module
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 233 of file Serial\&.c\&.
 .SS "void transChar (charc)"
 
 .PP
@@ -213,6 +249,8 @@ Description: Transmits a single character
 Arguments: c - character to transmit
 .PP
 Returns: None 
+.PP
+Definition at line 101 of file Serial\&.c\&.
 .SS "void transmit (char *string)"
 
 .PP
@@ -225,6 +263,8 @@ Description: Begins transmitting the string over serial (interrupt driven)
 Arguments: string - pointer to the beginning of the string to transmit
 .PP
 Returns: None 
+.PP
+Definition at line 75 of file Serial\&.c\&.
 .SS "char transmitted (void)"
 
 .PP
@@ -237,6 +277,8 @@ Description: returns non-zero if the message has been completely transmited e\&.
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 217 of file Serial\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

@@ -31,6 +31,10 @@ struct \hyperlink{structcircular_buffer}{circular\+Buffer}
 \hypertarget{_circular_buffers_8h_a5a69f707d5405fe875b322c6bfbace46}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H@{B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H}}
 \index{B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H@{B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
 \subsubsection[{B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H~30}}\label{_circular_buffers_8h_a5a69f707d5405fe875b322c6bfbace46}
+
+
+Definition at line 21 of file Circular\+Buffers.\+h.
+
 \hypertarget{_circular_buffers_8h_aeabcb3d395f687162520f9f72c926edf}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!empty@{empty}}
 \index{empty@{empty}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
 \subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}\#define empty(
@@ -38,6 +42,10 @@ struct \hyperlink{structcircular_buffer}{circular\+Buffer}
 \item[{}]{buf}
 \end{DoxyParamCaption}
 )~(buf.\+tail == buf.\+head)}}\label{_circular_buffers_8h_aeabcb3d395f687162520f9f72c926edf}
+
+
+Definition at line 12 of file Circular\+Buffers.\+h.
+
 \hypertarget{_circular_buffers_8h_a380cd5dd5680e22e1b6d839a57781661}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!full@{full}}
 \index{full@{full}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
 \subsubsection[{full}]{\setlength{\rightskip}{0pt plus 5cm}\#define full(
@@ -45,6 +53,10 @@ struct \hyperlink{structcircular_buffer}{circular\+Buffer}
 \item[{}]{buf}
 \end{DoxyParamCaption}
 )~(buf.\+head == (buf.\+tail + 1) \% {\bf B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H})}}\label{_circular_buffers_8h_a380cd5dd5680e22e1b6d839a57781661}
+
+
+Definition at line 13 of file Circular\+Buffers.\+h.
+
 \hypertarget{_circular_buffers_8h_ac70e6264441e929fe13460353eb275c8}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!inc\+Mod@{inc\+Mod}}
 \index{inc\+Mod@{inc\+Mod}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
 \subsubsection[{inc\+Mod}]{\setlength{\rightskip}{0pt plus 5cm}\#define inc\+Mod(
@@ -52,6 +64,10 @@ struct \hyperlink{structcircular_buffer}{circular\+Buffer}
 \item[{}]{ptr}
 \end{DoxyParamCaption}
 )~if(ptr=={\bf B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H}-\/1) ptr = 0; else ptr++;}}\label{_circular_buffers_8h_ac70e6264441e929fe13460353eb275c8}
+
+
+Definition at line 11 of file Circular\+Buffers.\+h.
+
 \hypertarget{_circular_buffers_8h_a526002aa17fac30d010d4d7315d5d81c}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!init@{init}}
 \index{init@{init}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
 \subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}\#define init(
@@ -59,6 +75,10 @@ struct \hyperlink{structcircular_buffer}{circular\+Buffer}
 \item[{}]{buf}
 \end{DoxyParamCaption}
 )~buf.\+tail = 0; buf.\+head = 0}}\label{_circular_buffers_8h_a526002aa17fac30d010d4d7315d5d81c}
+
+
+Definition at line 18 of file Circular\+Buffers.\+h.
+
 \hypertarget{_circular_buffers_8h_ab6770f937bcc348970693cd84824bf9f}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!peek@{peek}}
 \index{peek@{peek}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
 \subsubsection[{peek}]{\setlength{\rightskip}{0pt plus 5cm}\#define peek(
@@ -66,6 +86,10 @@ struct \hyperlink{structcircular_buffer}{circular\+Buffer}
 \item[{}]{buf}
 \end{DoxyParamCaption}
 )~buf.\+data\mbox{[}buf.\+head\mbox{]}}}\label{_circular_buffers_8h_ab6770f937bcc348970693cd84824bf9f}
+
+
+Definition at line 14 of file Circular\+Buffers.\+h.
+
 \hypertarget{_circular_buffers_8h_aea34ae72df51f27dbb0562f5d9a23de0}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!pop@{pop}}
 \index{pop@{pop}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
 \subsubsection[{pop}]{\setlength{\rightskip}{0pt plus 5cm}\#define pop(
@@ -73,6 +97,10 @@ struct \hyperlink{structcircular_buffer}{circular\+Buffer}
 \item[{}]{buf}
 \end{DoxyParamCaption}
 )~buf.\+data\mbox{[}buf.\+head\mbox{]}; if (!{\bf empty}(buf)) {\bf inc\+Mod}(buf.\+head)}}\label{_circular_buffers_8h_aea34ae72df51f27dbb0562f5d9a23de0}
+
+
+Definition at line 17 of file Circular\+Buffers.\+h.
+
 \hypertarget{_circular_buffers_8h_aba30707c86c50590824a646a3ef26fbb}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!push@{push}}
 \index{push@{push}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
 \subsubsection[{push}]{\setlength{\rightskip}{0pt plus 5cm}\#define push(
@@ -81,3 +109,7 @@ struct \hyperlink{structcircular_buffer}{circular\+Buffer}
 \item[{}]{buf}
 \end{DoxyParamCaption}
 )~buf.\+data\mbox{[}buf.\+tail\mbox{]} = byte; if({\bf full}(buf)) {\bf inc\+Mod}(buf.\+head); {\bf inc\+Mod}(buf.\+tail)}}\label{_circular_buffers_8h_aba30707c86c50590824a646a3ef26fbb}
+
+
+Definition at line 16 of file Circular\+Buffers.\+h.
+

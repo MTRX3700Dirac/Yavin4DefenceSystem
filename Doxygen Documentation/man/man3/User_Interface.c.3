@@ -1,4 +1,4 @@
-.TH "User_Interface.c" 3 "Mon Oct 20 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "User_Interface.c" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -57,6 +57,8 @@ Description: Configures the user interface for use
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 61 of file User_Interface\&.c\&.
 .SS "void display (\fBTrackingData\fPdata)"
 
 .PP
@@ -69,6 +71,8 @@ Description: displays the current tracking information
 Arguments: data - Struct which contains all known data concerning the The position of the target\&. A Range of 0 indicates that no target was observed\&.
 .PP
 Returns: None 
+.PP
+Definition at line 29 of file User_Interface\&.c\&.
 .SS "unsigned int readDial (unsigned intmax)"
 
 .PP
@@ -81,6 +85,8 @@ Description: Read the position of the dial
 Arguments: None
 .PP
 Returns: The dial position scaled by 
+.PP
+Definition at line 78 of file User_Interface\&.c\&.
 .SS "char userEmpty (void)"
 
 .PP
@@ -93,6 +99,8 @@ Description: returns non-zero if the user interface buffer is empty (i\&.e\&. no
 Arguments: None
 .PP
 Returns: if the user input buffer is empty 
+.PP
+Definition at line 109 of file User_Interface\&.c\&.
 .SS "void userISR (void)"
 
 .PP
@@ -105,6 +113,8 @@ Description: Acts as the ISR for the User_interface module
 Arguments: None
 .PP
 Returns: None 
+.PP
+Definition at line 45 of file User_Interface\&.c\&.
 .SS "char userPeek (void)"
 
 .PP
@@ -117,6 +127,8 @@ Description: returns a character in the user_Interface buffer without removing i
 Arguments: None
 .PP
 Returns: a character in the user interface buffer 
+.PP
+Definition at line 144 of file User_Interface\&.c\&.
 .SS "char userPop (void)"
 
 .PP
@@ -129,10 +141,14 @@ Description: pops a character from the user interface receive buffer
 Arguments: None
 .PP
 Returns: a character poped from the user Interface buffer 
+.PP
+Definition at line 125 of file User_Interface\&.c\&.
 .SH "Variable Documentation"
 .PP 
 .SS "\fBcircularBuffer\fP receive"
 
+.PP
+Definition at line 14 of file User_Interface\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.
