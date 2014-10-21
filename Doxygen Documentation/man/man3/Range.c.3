@@ -75,31 +75,41 @@ Range.c \-
 .SS "#define CCP1_INPT   \fBTRISCbits\&.RC2\fP"
 
 .PP
-Definition at line 31 of file Range\&.c\&.
+Definition at line 40 of file Range\&.c\&.
 .SS "#define INIT_PIN   \fBPORTCbits\&.RC3\fP"
 
 .PP
-Definition at line 29 of file Range\&.c\&.
+Definition at line 38 of file Range\&.c\&.
 .SS "#define INIT_TRIS   \fBTRISCbits\&.RC3\fP"
 
 .PP
-Definition at line 30 of file Range\&.c\&.
+Definition at line 39 of file Range\&.c\&.
 .SS "#define IR_CONV(ad)   ((unsigned long)135174 / (ad) - 28)"
 
 .PP
-Definition at line 18 of file Range\&.c\&.
+Definition at line 27 of file Range\&.c\&.
 .SS "#define NUM_IR_READS   10"
 
 .PP
-Definition at line 26 of file Range\&.c\&.
+Definition at line 35 of file Range\&.c\&.
 .SS "#define SPD_SND(T)   (\fBDIV_1024\fP(T * (unsigned int)614) + 331)"
 
 .PP
-Definition at line 17 of file Range\&.c\&.
+ File: \fBRange\&.c\fP Author: Grant
+.PP
+Description: Contains all the functionality for the range module\&. All variables and settings concerning the range module including the the max distance, timeouts etc are private to this module\&. The interface functions allow all valid access to the module\&.
+.PP
+Duties: -Interface to the IR and Ultrasonic sensors -Read the range from the IR and ultrasonic sensors -Fuse distances from the IR and ultrasonic sensors -Calibrate the IR and ultrasonic sensors
+.PP
+Functions:
+.PP
+Created on 15 September 2014, 11:27 AM 
+.PP
+Definition at line 26 of file Range\&.c\&.
 .SS "#define ULTRA_CONV(tme, T)   \fBDIV_65536\fP(tme * (unsigned long)(\fBDIV_65536\fP((unsigned long)519078 * T) + (unsigned long)4362)) - 18"
 
 .PP
-Definition at line 21 of file Range\&.c\&.
+Definition at line 30 of file Range\&.c\&.
 .SH "Function Documentation"
 .PP 
 .SS "void calibrateRange (unsigned intreference)"
@@ -115,7 +125,7 @@ Arguments: reference - The distance in mm to calibrate the current measurements 
 .PP
 Returns: None 
 .PP
-Definition at line 242 of file Range\&.c\&.
+Definition at line 251 of file Range\&.c\&.
 .SS "void configureAD (void)"
 
 .PP
@@ -127,7 +137,7 @@ Description: Configures the ADC, In ADCON1, we set right-justified mode, and sel
 .PP
 Returns: None 
 .PP
-Definition at line 69 of file Range\&.c\&.
+Definition at line 78 of file Range\&.c\&.
 .SS "void configureRange (void)"
 
 .PP
@@ -141,7 +151,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 93 of file Range\&.c\&.
+Definition at line 102 of file Range\&.c\&.
 .SS "\fBTargetState\fP getTargetState (void)"
 
 .PP
@@ -155,7 +165,7 @@ Arguments: None
 .PP
 Returns: the target state 
 .PP
-Definition at line 490 of file Range\&.c\&.
+Definition at line 499 of file Range\&.c\&.
 .SS "unsigned int range (void)"
 
 .PP
@@ -169,7 +179,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 298 of file Range\&.c\&.
+Definition at line 307 of file Range\&.c\&.
 .SS "unsigned int rangeIR (void)"
 
 .PP
@@ -185,7 +195,7 @@ Returns: Range (in mm) as an unsigned int\&.
 .PP
 Remark: Returns 0 if there is no target found 
 .PP
-Definition at line 397 of file Range\&.c\&.
+Definition at line 406 of file Range\&.c\&.
 .SS "void rangeISR (void)"
 
 .PP
@@ -199,7 +209,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 210 of file Range\&.c\&.
+Definition at line 219 of file Range\&.c\&.
 .SS "unsigned int rangeUltrasonic (void)"
 
 .PP
@@ -213,7 +223,7 @@ Arguments: None
 .PP
 Returns: the average of the samples 
 .PP
-Definition at line 425 of file Range\&.c\&.
+Definition at line 434 of file Range\&.c\&.
 .SS "unsigned int rawRange (void)"
 
 .PP
@@ -227,7 +237,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 282 of file Range\&.c\&.
+Definition at line 291 of file Range\&.c\&.
 .SS "\fBTargetState\fP readTargetState (void)"
 
 .PP
@@ -241,7 +251,7 @@ Arguments: None
 .PP
 Returns: the target state 
 .PP
-Definition at line 507 of file Range\&.c\&.
+Definition at line 516 of file Range\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

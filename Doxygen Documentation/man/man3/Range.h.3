@@ -12,6 +12,9 @@ Range.h \-
 .ti -1c
 .RI "#define \fBRANGE_INT\fP   \fBCCP1_INT\fP | \fBTMR1_INT\fP"
 .br
+.ti -1c
+.RI "#define \fBRANGE_H\fP"
+.br
 .in -1c
 .SS "Functions"
 
@@ -49,10 +52,14 @@ Range.h \-
 .in -1c
 .SH "Macro Definition Documentation"
 .PP 
+.SS "#define RANGE_H"
+
+.PP
+Definition at line 33 of file Range\&.h\&.
 .SS "#define RANGE_INT   \fBCCP1_INT\fP | \fBTMR1_INT\fP"
 
 .PP
-Definition at line 12 of file Range\&.h\&.
+Definition at line 17 of file Range\&.h\&.
 .SH "Function Documentation"
 .PP 
 .SS "void calibrateRange (signed intdistance)"
@@ -68,7 +75,7 @@ Description: Configures the ADC, In ADCON1, we set right-justified mode, and sel
 .PP
 Returns: None 
 .PP
-Definition at line 69 of file Range\&.c\&.
+Definition at line 78 of file Range\&.c\&.
 .SS "void configureRange (void)"
 
 .PP
@@ -82,7 +89,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 93 of file Range\&.c\&.
+Definition at line 102 of file Range\&.c\&.
 .SS "\fBTargetState\fP getTargetState (void)"
 
 .PP
@@ -96,7 +103,7 @@ Arguments: None
 .PP
 Returns: the target state 
 .PP
-Definition at line 490 of file Range\&.c\&.
+Definition at line 499 of file Range\&.c\&.
 .SS "unsigned int range (void)"
 
 .PP
@@ -110,7 +117,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 298 of file Range\&.c\&.
+Definition at line 307 of file Range\&.c\&.
 .SS "unsigned int rangeIR (void)"
 
 .PP
@@ -126,7 +133,7 @@ Returns: Range (in mm) as an unsigned int\&.
 .PP
 Remark: Returns 0 if there is no target found 
 .PP
-Definition at line 397 of file Range\&.c\&.
+Definition at line 406 of file Range\&.c\&.
 .SS "void rangeISR (void)"
 
 .PP
@@ -140,7 +147,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 210 of file Range\&.c\&.
+Definition at line 219 of file Range\&.c\&.
 .SS "unsigned int rangeUltrasonic (void)"
 
 .PP
@@ -154,7 +161,7 @@ Arguments: None
 .PP
 Returns: the average of the samples 
 .PP
-Definition at line 425 of file Range\&.c\&.
+Definition at line 434 of file Range\&.c\&.
 .SS "signed int rawRange (void)"
 
 .PP
@@ -168,7 +175,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 282 of file Range\&.c\&.
+Definition at line 291 of file Range\&.c\&.
 .SS "\fBTargetState\fP readTargetState (void)"
 
 .PP
@@ -182,7 +189,7 @@ Arguments: None
 .PP
 Returns: the target state 
 .PP
-Definition at line 507 of file Range\&.c\&.
+Definition at line 516 of file Range\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

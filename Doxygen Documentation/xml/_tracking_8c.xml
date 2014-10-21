@@ -7,34 +7,42 @@
     <includes refid="_pan_tilt_8h" local="yes">PanTilt.h</includes>
     <includes local="no">delays.h</includes>
     <incdepgraph>
-      <node id="457">
+      <node id="453">
         <label>delays.h</label>
       </node>
-      <node id="444">
+      <node id="440">
         <label>Tracking.c</label>
         <link refid="Tracking.c"/>
-        <childnode refid="445" relation="include">
+        <childnode refid="441" relation="include">
         </childnode>
-        <childnode refid="455" relation="include">
+        <childnode refid="451" relation="include">
         </childnode>
-        <childnode refid="456" relation="include">
+        <childnode refid="452" relation="include">
         </childnode>
-        <childnode refid="457" relation="include">
+        <childnode refid="453" relation="include">
         </childnode>
       </node>
-      <node id="447">
+      <node id="443">
         <label>stdlib.h</label>
       </node>
-      <node id="451">
+      <node id="447">
         <label>adc.h</label>
       </node>
-      <node id="455">
+      <node id="451">
         <label>Range.h</label>
         <link refid="_range_8h"/>
       </node>
-      <node id="445">
+      <node id="441">
         <label>Common.h</label>
         <link refid="_common_8h"/>
+        <childnode refid="442" relation="include">
+        </childnode>
+        <childnode refid="443" relation="include">
+        </childnode>
+        <childnode refid="444" relation="include">
+        </childnode>
+        <childnode refid="445" relation="include">
+        </childnode>
         <childnode refid="446" relation="include">
         </childnode>
         <childnode refid="447" relation="include">
@@ -45,38 +53,30 @@
         </childnode>
         <childnode refid="450" relation="include">
         </childnode>
-        <childnode refid="451" relation="include">
-        </childnode>
-        <childnode refid="452" relation="include">
-        </childnode>
-        <childnode refid="453" relation="include">
-        </childnode>
-        <childnode refid="454" relation="include">
-        </childnode>
       </node>
-      <node id="450">
+      <node id="446">
         <label>timers.h</label>
       </node>
-      <node id="454">
+      <node id="450">
         <label>compare.h</label>
       </node>
-      <node id="452">
+      <node id="448">
         <label>capture.h</label>
       </node>
-      <node id="448">
+      <node id="444">
         <label>math.h</label>
       </node>
-      <node id="449">
+      <node id="445">
         <label>p18f4520.h</label>
         <link refid="p18f4520_8h"/>
       </node>
-      <node id="453">
+      <node id="449">
         <label>usart.h</label>
       </node>
-      <node id="446">
+      <node id="442">
         <label>stdio.h</label>
       </node>
-      <node id="456">
+      <node id="452">
         <label>PanTilt.h</label>
         <link refid="_pan_tilt_8h"/>
       </node>
@@ -133,8 +133,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="32" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="32" bodyend="36"/>
-        <references refid="_pan_tilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="_pan_tilt_8c" startline="72" endline="102">configureBase</references>
-        <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="93" endline="127">configureRange</references>
+        <references refid="_pan_tilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="_pan_tilt_8c" startline="105" endline="135">configureBase</references>
+        <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</references>
       </memberdef>
       <memberdef kind="function" id="_tracking_8c_1ac80b505821d79e98e9108b12d12c5db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -153,16 +153,16 @@
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="50" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="50" bodyend="98"/>
         <references refid="_tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" compoundref="_tracking_8c" startline="14">diff</references>
-        <references refid="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="_pan_tilt_8c" startline="186" endline="189">getDir</references>
-        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="42">Direction::azimuth</references>
-        <references refid="_pan_tilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="_pan_tilt_8c" startline="137" endline="143">increment</references>
-        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="43">Direction::inclination</references>
-        <references refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="507" endline="513">readTargetState</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="55">GOOD_TRACK</references>
-        <references refid="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="_common_8h" startline="60">NEXT_STATE_PTR</references>
-        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" compoundref="_common_8h" startline="63">TRCK</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="55">BAD_DIR</references>
-        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="45" endline="69">main</referencedby>
+        <references refid="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="_pan_tilt_8c" startline="219" endline="222">getDir</references>
+        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="45">Direction::azimuth</references>
+        <references refid="_pan_tilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="_pan_tilt_8c" startline="170" endline="176">increment</references>
+        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="46">Direction::inclination</references>
+        <references refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="516" endline="522">readTargetState</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="58">GOOD_TRACK</references>
+        <references refid="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="_common_8h" startline="63">NEXT_STATE_PTR</references>
+        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" compoundref="_common_8h" startline="66">TRCK</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="58">BAD_DIR</references>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="44" endline="68">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="_tracking_8c_1ae3fa9fb57cd18477215f58aa448ce9d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -196,20 +196,20 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="130" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="130" bodyend="187"/>
-        <references refid="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="_pan_tilt_8c" startline="186" endline="189">getDir</references>
-        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="42">Direction::azimuth</references>
-        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="43">Direction::inclination</references>
-        <references refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="_pan_tilt_8c" startline="115" endline="124">move</references>
-        <references refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="507" endline="513">readTargetState</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="55">GOOD_TRACK</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="55">BAD_DIR</references>
-        <references refid="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="_common_8h" startline="60">NEXT_STATE_PTR</references>
-        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" compoundref="_common_8h" startline="63">SRCH</references>
-        <references refid="struct_tracking_data_1a4bb47863775a37236bda65273c01b275" compoundref="_common_8h" startline="49">TrackingData::distance</references>
-        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="298" endline="382">range</references>
-        <references refid="struct_tracking_data_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="50">TrackingData::azimuth</references>
-        <references refid="struct_tracking_data_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="51">TrackingData::inclination</references>
-        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="45" endline="69">main</referencedby>
+        <references refid="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="_pan_tilt_8c" startline="219" endline="222">getDir</references>
+        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="45">Direction::azimuth</references>
+        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="46">Direction::inclination</references>
+        <references refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="_pan_tilt_8c" startline="148" endline="157">move</references>
+        <references refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="516" endline="522">readTargetState</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="58">GOOD_TRACK</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="58">BAD_DIR</references>
+        <references refid="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="_common_8h" startline="63">NEXT_STATE_PTR</references>
+        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" compoundref="_common_8h" startline="66">SRCH</references>
+        <references refid="struct_tracking_data_1a4bb47863775a37236bda65273c01b275" compoundref="_common_8h" startline="52">TrackingData::distance</references>
+        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</references>
+        <references refid="struct_tracking_data_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="53">TrackingData::azimuth</references>
+        <references refid="struct_tracking_data_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="54">TrackingData::inclination</references>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="44" endline="68">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="_tracking_8c_1ab3681bb15cfeebcc7b27d0c063dafc89" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_direction" kindref="compound">Direction</ref></type>

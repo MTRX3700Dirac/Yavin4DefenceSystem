@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="49" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="49" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="52" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="52" bodyend="-1"/>
         <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
       </memberdef>
       <memberdef kind="variable" id="struct_tracking_data_1a866e78e12cb32dcaf1ded89bda8be8f5" prot="public" static="no" mutable="no">
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="50" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="50" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="53" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="53" bodyend="-1"/>
         <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
       </memberdef>
       <memberdef kind="variable" id="struct_tracking_data_1af308b9934394c8bcf7614eb1df2d863f" prot="public" static="no" mutable="no">
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="51" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="51" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="54" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="54" bodyend="-1"/>
         <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
       </memberdef>
       </sectiondef>
@@ -51,7 +51,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="48" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="47" bodyend="52"/>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="51" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="50" bodyend="55"/>
     <listofallmembers>
       <member refid="struct_tracking_data_1a866e78e12cb32dcaf1ded89bda8be8f5" prot="public" virt="non-virtual"><scope>TrackingData</scope><name>azimuth</name></member>
       <member refid="struct_tracking_data_1a4bb47863775a37236bda65273c01b275" prot="public" virt="non-virtual"><scope>TrackingData</scope><name>distance</name></member>

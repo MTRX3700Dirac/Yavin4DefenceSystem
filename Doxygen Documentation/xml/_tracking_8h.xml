@@ -5,19 +5,19 @@
     <includedby refid="_interrupts_8c" local="yes">Interrupts.c</includedby>
     <includedby refid="newmain_8c" local="yes">newmain.c</includedby>
     <invincdepgraph>
-      <node id="460">
+      <node id="456">
         <label>Tracking.h</label>
         <link refid="Tracking.h"/>
-        <childnode refid="461" relation="include">
+        <childnode refid="457" relation="include">
         </childnode>
-        <childnode refid="462" relation="include">
+        <childnode refid="458" relation="include">
         </childnode>
       </node>
-      <node id="461">
+      <node id="457">
         <label>Interrupts.c</label>
         <link refid="_interrupts_8c"/>
       </node>
-      <node id="462">
+      <node id="458">
         <label>newmain.c</label>
         <link refid="newmain_8c"/>
       </node>
@@ -32,7 +32,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="11" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" bodystart="11" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="14" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tracking_8h_1ade0c81a4e99033806e084f2fa298575c" prot="public" static="no">
+        <name>TRACK_H</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="22" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -50,9 +60,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="14" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="32" bodyend="36"/>
-        <references refid="_pan_tilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="_pan_tilt_8c" startline="72" endline="102">configureBase</references>
-        <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="93" endline="127">configureRange</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="17" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="32" bodyend="36"/>
+        <references refid="_pan_tilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="_pan_tilt_8c" startline="105" endline="135">configureBase</references>
+        <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</references>
       </memberdef>
       <memberdef kind="function" id="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -69,18 +79,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="15" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="50" bodyend="98"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="18" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="50" bodyend="98"/>
         <references refid="_tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" compoundref="_tracking_8c" startline="14">diff</references>
-        <references refid="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="_pan_tilt_8c" startline="186" endline="189">getDir</references>
-        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="42">Direction::azimuth</references>
-        <references refid="_pan_tilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="_pan_tilt_8c" startline="137" endline="143">increment</references>
-        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="43">Direction::inclination</references>
-        <references refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="507" endline="513">readTargetState</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="55">GOOD_TRACK</references>
-        <references refid="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="_common_8h" startline="60">NEXT_STATE_PTR</references>
-        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" compoundref="_common_8h" startline="63">TRCK</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="55">BAD_DIR</references>
-        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="45" endline="69">main</referencedby>
+        <references refid="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="_pan_tilt_8c" startline="219" endline="222">getDir</references>
+        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="45">Direction::azimuth</references>
+        <references refid="_pan_tilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="_pan_tilt_8c" startline="170" endline="176">increment</references>
+        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="46">Direction::inclination</references>
+        <references refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="516" endline="522">readTargetState</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="58">GOOD_TRACK</references>
+        <references refid="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="_common_8h" startline="63">NEXT_STATE_PTR</references>
+        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" compoundref="_common_8h" startline="66">TRCK</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="58">BAD_DIR</references>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="44" endline="68">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_tracking_data" kindref="compound">TrackingData</ref></type>
@@ -97,21 +107,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="16" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="130" bodyend="187"/>
-        <references refid="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="_pan_tilt_8c" startline="186" endline="189">getDir</references>
-        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="42">Direction::azimuth</references>
-        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="43">Direction::inclination</references>
-        <references refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="_pan_tilt_8c" startline="115" endline="124">move</references>
-        <references refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="507" endline="513">readTargetState</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="55">GOOD_TRACK</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="55">BAD_DIR</references>
-        <references refid="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="_common_8h" startline="60">NEXT_STATE_PTR</references>
-        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" compoundref="_common_8h" startline="63">SRCH</references>
-        <references refid="struct_tracking_data_1a4bb47863775a37236bda65273c01b275" compoundref="_common_8h" startline="49">TrackingData::distance</references>
-        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="298" endline="382">range</references>
-        <references refid="struct_tracking_data_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="50">TrackingData::azimuth</references>
-        <references refid="struct_tracking_data_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="51">TrackingData::inclination</references>
-        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="45" endline="69">main</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="19" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="130" bodyend="187"/>
+        <references refid="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="_pan_tilt_8c" startline="219" endline="222">getDir</references>
+        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="45">Direction::azimuth</references>
+        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="46">Direction::inclination</references>
+        <references refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="_pan_tilt_8c" startline="148" endline="157">move</references>
+        <references refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="516" endline="522">readTargetState</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="58">GOOD_TRACK</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="58">BAD_DIR</references>
+        <references refid="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="_common_8h" startline="63">NEXT_STATE_PTR</references>
+        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" compoundref="_common_8h" startline="66">SRCH</references>
+        <references refid="struct_tracking_data_1a4bb47863775a37236bda65273c01b275" compoundref="_common_8h" startline="52">TrackingData::distance</references>
+        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</references>
+        <references refid="struct_tracking_data_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="53">TrackingData::azimuth</references>
+        <references refid="struct_tracking_data_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="54">TrackingData::inclination</references>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="44" endline="68">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="_tracking_8h_1ae3fa9fb57cd18477215f58aa448ce9d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -127,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="17" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="111" bodyend="114"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="111" bodyend="114"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -144,16 +154,20 @@
 <codeline lineno="7"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>15<sp/>September<sp/>2014,<sp/>1:41<sp/>PM</highlight></codeline>
 <codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>TRACK_INT<sp/>(CCP2_INT)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11" refid="_tracking_8h_1a6ca0b1676fe27fee5166ac22ce6eb3dc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRACK_INT<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//Ensure<sp/>that<sp/>there<sp/>is<sp/>only<sp/>1<sp/>inclusion<sp/>of<sp/>this<sp/>file<sp/>in<sp/>the<sp/>preprocessor<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TRACK_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//External<sp/>declarations<sp/>for<sp/>the<sp/>public<sp/>access<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" kindref="member">configureTracking</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" kindref="member">search</ref>(<ref refid="structsystem_state" kindref="compound">systemState</ref><sp/>*state);</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="struct_tracking_data" kindref="compound">TrackingData</ref><sp/><ref refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" kindref="member">track</ref>(<ref refid="structsystem_state" kindref="compound">systemState</ref><sp/>*state);</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_tracking_8h_1ae3fa9fb57cd18477215f58aa448ce9d1" kindref="member">trackingISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRACK_H</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>TRACK_INT<sp/>(CCP2_INT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="_tracking_8h_1a6ca0b1676fe27fee5166ac22ce6eb3dc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRACK_INT<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//External<sp/>declarations<sp/>for<sp/>the<sp/>public<sp/>access<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" kindref="member">configureTracking</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" kindref="member">search</ref>(<ref refid="structsystem_state" kindref="compound">systemState</ref><sp/>*state);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="struct_tracking_data" kindref="compound">TrackingData</ref><sp/><ref refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" kindref="member">track</ref>(<ref refid="structsystem_state" kindref="compound">systemState</ref><sp/>*state);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_tracking_8h_1ae3fa9fb57cd18477215f58aa448ce9d1" kindref="member">trackingISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="_tracking_8h_1ade0c81a4e99033806e084f2fa298575c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRACK_H</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.h"/>
   </compounddef>

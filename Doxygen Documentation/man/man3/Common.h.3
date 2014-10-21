@@ -152,6 +152,9 @@ Common.h \-
 .ti -1c
 .RI "#define \fBFOSC_4\fP   2500000"
 .br
+.ti -1c
+.RI "#define \fBCOMMON_H\fP"
+.br
 .in -1c
 .SS "Enumerations"
 
@@ -168,151 +171,155 @@ Common.h \-
 .SS "#define ADC_DIAL_READ   2"
 
 .PP
-Definition at line 88 of file Common\&.h\&.
+Definition at line 91 of file Common\&.h\&.
 .SS "#define ADC_INT   (\fBPIR1bits\&.ADIF\fP && \fBPIE1bits\&.ADIE\fP)"
 
 .PP
-Definition at line 102 of file Common\&.h\&.
+Definition at line 105 of file Common\&.h\&.
 .SS "#define ADC_IR_READ   0"
 
 .PP
-Definition at line 86 of file Common\&.h\&.
+Definition at line 89 of file Common\&.h\&.
 .SS "#define ADC_TEMP_READ   1"
 
 .PP
-Definition at line 87 of file Common\&.h\&.
+Definition at line 90 of file Common\&.h\&.
 .SS "#define BCL_INT   (\fBPIR2bits\&.BCLIF\fP && \fBPIE2bits\&.BCLIE\fP)"
 
 .PP
-Definition at line 104 of file Common\&.h\&.
+Definition at line 107 of file Common\&.h\&.
 .SS "#define CCP1_CLEAR   (\fBPIR1bits\&.CCP1IF\fP = 0)"
 
 .PP
-Definition at line 107 of file Common\&.h\&.
+Definition at line 110 of file Common\&.h\&.
 .SS "#define CCP1_INT   (\fBPIR1bits\&.CCP1IF\fP && \fBPIE1bits\&.CCP1IE\fP)"
 
 .PP
-Definition at line 93 of file Common\&.h\&.
+Definition at line 96 of file Common\&.h\&.
 .SS "#define CCP2_CLEAR   (\fBPIR2bits\&.CCP2IF\fP = 0)"
 
 .PP
-Definition at line 108 of file Common\&.h\&.
+Definition at line 111 of file Common\&.h\&.
 .SS "#define CCP2_INT   (\fBPIR2bits\&.CCP2IF\fP && \fBPIE2bits\&.CCP2IE\fP)"
 
 .PP
-Definition at line 94 of file Common\&.h\&.
+Definition at line 97 of file Common\&.h\&.
 .SS "#define CLOCK   10000000"
 
 .PP
-Definition at line 111 of file Common\&.h\&.
+Definition at line 114 of file Common\&.h\&.
+.SS "#define COMMON_H"
+
+.PP
+Definition at line 125 of file Common\&.h\&.
 .SS "#define DIV_1024(v)   ((v) >> 10)"
 
 .PP
-Definition at line 79 of file Common\&.h\&.
+Definition at line 82 of file Common\&.h\&.
 .SS "#define DIV_128(v)   ((v) >> 7)"
 
 .PP
-Definition at line 76 of file Common\&.h\&.
+Definition at line 79 of file Common\&.h\&.
 .SS "#define DIV_16(v)   ((v) >> 4)"
 
 .PP
-Definition at line 73 of file Common\&.h\&.
+Definition at line 76 of file Common\&.h\&.
 .SS "#define DIV_2(v)   ((v) >> 1)"
 
 .PP
-Definition at line 70 of file Common\&.h\&.
+Definition at line 73 of file Common\&.h\&.
 .SS "#define DIV_256(v)   ((v) >> 8)"
 
 .PP
-Definition at line 77 of file Common\&.h\&.
+Definition at line 80 of file Common\&.h\&.
 .SS "#define DIV_32(v)   ((v) >> 5)"
 
 .PP
-Definition at line 74 of file Common\&.h\&.
+Definition at line 77 of file Common\&.h\&.
 .SS "#define DIV_4(v)   ((v) >> 2)"
 
 .PP
-Definition at line 71 of file Common\&.h\&.
+Definition at line 74 of file Common\&.h\&.
 .SS "#define DIV_4096(v)   ((v) >> 12)"
 
 .PP
-Definition at line 80 of file Common\&.h\&.
+Definition at line 83 of file Common\&.h\&.
 .SS "#define DIV_512(v)   ((v) >> 9)"
 
 .PP
-Definition at line 78 of file Common\&.h\&.
+Definition at line 81 of file Common\&.h\&.
 .SS "#define DIV_64(v)   ((v) >> 6)"
 
 .PP
-Definition at line 75 of file Common\&.h\&.
+Definition at line 78 of file Common\&.h\&.
 .SS "#define DIV_65536(v)   ((v) >> 16)"
 
 .PP
-Definition at line 81 of file Common\&.h\&.
+Definition at line 84 of file Common\&.h\&.
 .SS "#define DIV_8(v)   ((v) >> 3)"
 
 .PP
-Definition at line 72 of file Common\&.h\&.
+Definition at line 75 of file Common\&.h\&.
 .SS "#define FOSC_4   2500000"
 
 .PP
-Definition at line 112 of file Common\&.h\&.
+Definition at line 115 of file Common\&.h\&.
 .SS "#define INT0_INT   (\fBINTCONbits\&.INT0IF\fP && \fBINTCONbits\&.INT0IE\fP)"
 
 .PP
-Definition at line 95 of file Common\&.h\&.
+Definition at line 98 of file Common\&.h\&.
 .SS "#define LVD_INT   (\fBPIR2bits\&.LVDIF\fP && \fBPIE2bits\&.LVDIE\fP)"
 
 .PP
-Definition at line 105 of file Common\&.h\&.
+Definition at line 108 of file Common\&.h\&.
 .SS "#define MNML"
 
 .PP
-Definition at line 9 of file Common\&.h\&.
+Definition at line 12 of file Common\&.h\&.
 .SS "#define NEXT_STATE(s, state)   state\&.previous = state\&.current; state\&.current = s"
 
 .PP
-Definition at line 59 of file Common\&.h\&.
+Definition at line 62 of file Common\&.h\&.
 .SS "#define NEXT_STATE_PTR(s, state)   state->previous = state->current; state->current = s"
 
 .PP
-Definition at line 60 of file Common\&.h\&.
+Definition at line 63 of file Common\&.h\&.
 .SS "#define RB_INT   (\fBINTCONbits\&.RBIF\fP && \fBINTCONbits\&.RBIE\fP)"
 
 .PP
-Definition at line 96 of file Common\&.h\&.
+Definition at line 99 of file Common\&.h\&.
 .SS "#define RC_INT   (\fBPIR1bits\&.RCIF\fP && \fBPIE1bits\&.RCIE\fP)"
 
 .PP
-Definition at line 92 of file Common\&.h\&.
+Definition at line 95 of file Common\&.h\&.
 .SS "#define SSP_INT   (\fBPIR1bits\&.SSPIF\fP && \fBPIE1bits\&.SSPIE\fP)"
 
 .PP
-Definition at line 103 of file Common\&.h\&.
+Definition at line 106 of file Common\&.h\&.
 .SS "#define SWAP(x, y)   (y = (y ^ (x = (x ^ (y = (x ^ y))))))"
 
 .PP
-Definition at line 83 of file Common\&.h\&.
+Definition at line 86 of file Common\&.h\&.
 .SS "#define TMR0_INT   (\fBINTCONbits\&.TMR0IF\fP && \fBINTCONbits\&.TMR0IE\fP)"
 
 .PP
-Definition at line 99 of file Common\&.h\&.
+Definition at line 102 of file Common\&.h\&.
 .SS "#define TMR1_INT   (\fBPIR1bits\&.TMR1IF\fP && \fBPIE1bits\&.TMR1IE\fP)"
 
 .PP
-Definition at line 100 of file Common\&.h\&.
+Definition at line 103 of file Common\&.h\&.
 .SS "#define TMR2_INT   (\fBPIR1bits\&.TMR2IF\fP && \fBPIE1bits\&.TMR2IE\fP)"
 
 .PP
-Definition at line 97 of file Common\&.h\&.
+Definition at line 100 of file Common\&.h\&.
 .SS "#define TMR3_INT   (\fBPIR2bits\&.TMR3IF\fP && \fBPIE2bits\&.TMR3IE\fP)"
 
 .PP
-Definition at line 101 of file Common\&.h\&.
+Definition at line 104 of file Common\&.h\&.
 .SS "#define TX_INT   (\fBPIR1bits\&.TXIF\fP && \fBPIE1bits\&.TXIE\fP)"
 
 .PP
-Definition at line 91 of file Common\&.h\&.
+Definition at line 94 of file Common\&.h\&.
 .SH "Enumeration Type Documentation"
 .PP 
 .SS "enum \fBpossible_states\fP"
@@ -329,7 +336,7 @@ Definition at line 91 of file Common\&.h\&.
 .TP
 \fB\fITRCK \fP\fP
 .PP
-Definition at line 63 of file Common\&.h\&.
+Definition at line 66 of file Common\&.h\&.
 .SS "enum \fBTargetState\fP"
 
 .PP
@@ -346,7 +353,7 @@ Definition at line 63 of file Common\&.h\&.
 .TP
 \fB\fICLOSE_RANGE \fP\fP
 .PP
-Definition at line 55 of file Common\&.h\&.
+Definition at line 58 of file Common\&.h\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

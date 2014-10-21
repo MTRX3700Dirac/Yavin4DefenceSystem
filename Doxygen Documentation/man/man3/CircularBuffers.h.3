@@ -40,41 +40,48 @@ CircularBuffers.h \-
 .ti -1c
 .RI "#define \fBBUFFERLENGTH\fP   30"
 .br
+.ti -1c
+.RI "#define \fBBUFFERS_H\fP   0"
+.br
 .in -1c
 .SH "Macro Definition Documentation"
 .PP 
 .SS "#define BUFFERLENGTH   30"
 
 .PP
-Definition at line 21 of file CircularBuffers\&.h\&.
+Definition at line 24 of file CircularBuffers\&.h\&.
+.SS "#define BUFFERS_H   0"
+
+.PP
+Definition at line 34 of file CircularBuffers\&.h\&.
 .SS "#define empty(buf)   (buf\&.tail == buf\&.head)"
 
 .PP
-Definition at line 12 of file CircularBuffers\&.h\&.
+Definition at line 15 of file CircularBuffers\&.h\&.
 .SS "#define full(buf)   (buf\&.head == (buf\&.tail + 1) % \fBBUFFERLENGTH\fP)"
 
 .PP
-Definition at line 13 of file CircularBuffers\&.h\&.
+Definition at line 16 of file CircularBuffers\&.h\&.
 .SS "#define incMod(ptr)   if(ptr==\fBBUFFERLENGTH\fP-1) ptr = 0; else ptr++;"
 
 .PP
-Definition at line 11 of file CircularBuffers\&.h\&.
+Definition at line 14 of file CircularBuffers\&.h\&.
 .SS "#define init(buf)   buf\&.tail = 0; buf\&.head = 0"
 
 .PP
-Definition at line 18 of file CircularBuffers\&.h\&.
+Definition at line 21 of file CircularBuffers\&.h\&.
 .SS "#define peek(buf)   buf\&.data[buf\&.head]"
 
 .PP
-Definition at line 14 of file CircularBuffers\&.h\&.
+Definition at line 17 of file CircularBuffers\&.h\&.
 .SS "#define pop(buf)   buf\&.data[buf\&.head]; if (!\fBempty\fP(buf)) \fBincMod\fP(buf\&.head)"
 
 .PP
-Definition at line 17 of file CircularBuffers\&.h\&.
+Definition at line 20 of file CircularBuffers\&.h\&.
 .SS "#define push(byte, buf)   buf\&.data[buf\&.tail] = byte; if(\fBfull\fP(buf)) \fBincMod\fP(buf\&.head); \fBincMod\fP(buf\&.tail)"
 
 .PP
-Definition at line 16 of file CircularBuffers\&.h\&.
+Definition at line 19 of file CircularBuffers\&.h\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

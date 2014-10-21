@@ -7,6 +7,9 @@
  * Created on 8 October 2014, 10:30 AM
  */
 
+//Ensure there is only 1 inclusion of this file in the preprocessor execution
+#ifndef BUFFERS_H
+
 //Buffer related macro functionality
 #define incMod(ptr) if(ptr==BUFFERLENGTH-1) ptr = 0; else ptr++;
 #define empty(buf) (buf.tail == buf.head)
@@ -28,5 +31,5 @@ typedef struct
     unsigned char data[BUFFERLENGTH];
 } circularBuffer;
 
-//Don't ask, this just stops MPLAB X flipping out about the circularBuffer typedef
-#define thing 0
+#define BUFFERS_H 0
+#endif

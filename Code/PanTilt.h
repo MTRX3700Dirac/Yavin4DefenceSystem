@@ -7,6 +7,9 @@
  * Created on 16 September 2014, 6:33 PM
  */
 
+//Ensure that there is only 1 inclusion of this file in the preprocessor execution
+#ifndef PANTILT_H
+
 //True if Pan ISR concerns pan tilt module
 #define PAN_TILT_ISR    CCP2_INT
 
@@ -30,3 +33,6 @@ extern void setMaxAzimuthAngle(char p_angle);
 extern void setMinAzimuthAngle(char p_angle);
 extern void setMaxElevationAngle(char p_angle);
 extern void setMinElevationAngle(char p_angle);
+
+#define PANTILT_H
+#endif

@@ -1,5 +1,6 @@
 var _serial_8h =
 [
+    [ "SERIAL_H", "_serial_8h.html#abd89d9fc65aaf89bc50e9b1252ca1bdd", null ],
     [ "SERIAL_INT", "_serial_8h.html#ae04db6660499dd827d53abe148780fe5", null ],
     [ "configureSerial", "_serial_8h.html#ae2cdcda889fcfed4b6b851835bf2b538", null ],
     [ "readString", "_serial_8h.html#ad5d0bd1e5c7b8380e3567f8dc474b6db", null ],

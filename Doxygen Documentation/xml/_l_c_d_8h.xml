@@ -4,17 +4,29 @@
     <compoundname>LCD.h</compoundname>
     <includedby refid="_menusystem2_8c" local="yes">Menusystem2.c</includedby>
     <invincdepgraph>
-      <node id="302">
+      <node id="300">
         <label>LCD.h</label>
         <link refid="LCD.h"/>
-        <childnode refid="303" relation="include">
+        <childnode refid="301" relation="include">
         </childnode>
       </node>
-      <node id="303">
+      <node id="301">
         <label>Menusystem2.c</label>
         <link refid="_menusystem2_8c"/>
       </node>
     </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_l_c_d_8h_1a137b94e8638bc4b6a0740668aefe5a58" prot="public" static="no">
+        <name>LCD_H</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h" line="17" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="func">
       <memberdef kind="function" id="_l_c_d_8h_1aaab6233be65b7399b3422eee9782508c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -27,11 +39,12 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><hruler/>
+ File: <ref refid="_user___interface_8c" kindref="compound">User_Interface.c</ref> Author: Grant</para><para>Description: Contains all the interface to the LCD hardware</para><para>Created on 15 September 2014, 1:21 PM </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h" line="11" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c" bodystart="23" bodyend="26"/>
-        <referencedby refid="_menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="_menusystem_8c" startline="135" endline="140">initialiseMenu</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h" line="14" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c" bodystart="23" bodyend="26"/>
+        <referencedby refid="_menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="_menusystem_8c" startline="148" endline="153">initialiseMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="_l_c_d_8h_1a8190804aeb1375a5a6b775f8e2b5d698" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -49,7 +62,7 @@
  Function: <ref refid="_l_c_d_8c_1a8190804aeb1375a5a6b775f8e2b5d698" kindref="member">displayLCD(char *string)</ref></para><para>Include: <ref refid="_l_c_d_8h" kindref="compound">LCD.h</ref></para><para>Description: Displays the given string on the LCD</para><para>Arguments: string - pointer to the data to display</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h" line="12" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c" bodystart="39" bodyend="42"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h" line="15" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c" bodystart="39" bodyend="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -66,9 +79,15 @@
 <codeline lineno="7"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>17<sp/>September<sp/>2014,<sp/>9:01<sp/>PM</highlight></codeline>
 <codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//External<sp/>declarations<sp/>of<sp/>public<sp/>access<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_c_d_8h_1aaab6233be65b7399b3422eee9782508c" kindref="member">configLCD</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_c_d_8h_1a8190804aeb1375a5a6b775f8e2b5d698" kindref="member">displayLCD</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//Ensure<sp/>that<sp/>there<sp/>is<sp/>only<sp/>1<sp/>inclusion<sp/>of<sp/>this<sp/>file<sp/>in<sp/>the<sp/>preprocessor<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LCD_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//External<sp/>declarations<sp/>of<sp/>public<sp/>access<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_c_d_8h_1aaab6233be65b7399b3422eee9782508c" kindref="member">configLCD</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_c_d_8h_1a8190804aeb1375a5a6b775f8e2b5d698" kindref="member">displayLCD</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="_l_c_d_8h_1a137b94e8638bc4b6a0740668aefe5a58" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_H</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h"/>
   </compounddef>

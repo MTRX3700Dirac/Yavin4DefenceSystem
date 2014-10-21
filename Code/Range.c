@@ -1,13 +1,22 @@
-/*
- * File:   ultrasonic.c
+/*!*****************************************************************************
+ * File:   Range.c
  * Author: Grant
  *
- * Description: Contains all the functionality for the ultrasonic module
+ * Description:
+ * Contains all the functionality for the range module. All variables and settings
+ * concerning the range module including the the max distance, timeouts etc are
+ * private to this module. The interface functions allow all valid access to the module.
+ *
+ * Duties:
+ *      -Interface to the IR and Ultrasonic sensors
+ *      -Read the range from the IR and ultrasonic sensors
+ *      -Fuse distances from the IR and ultrasonic sensors
+ *      -Calibrate the IR and ultrasonic sensors
  *
  * Functions: 
  *
  * Created on 15 September 2014, 11:27 AM
- */
+ *******************************************************************************/
 
 #include "Common.h"
 #include "Temp.h"
@@ -371,7 +380,7 @@ unsigned int range(void)
     }
     else
     {
-        // TODO: Report Error?
+        // @TODO: Report Error?
         range = 0;
         current_target_state = NO_TARGET;
     }

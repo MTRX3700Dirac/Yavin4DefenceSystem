@@ -13,6 +13,7 @@ var _common_8h =
     [ "CCP2_CLEAR", "_common_8h.html#a4e461245300e8ea7e5c6af0741a33855", null ],
     [ "CCP2_INT", "_common_8h.html#aee2ef60613898be37c57266698616e33", null ],
     [ "CLOCK", "_common_8h.html#a3be7ef61d339af381862a81d4b363efb", null ],
+    [ "COMMON_H", "_common_8h.html#a0a1448a83b84de478fdbd7612e81acb1", null ],
     [ "DIV_1024", "_common_8h.html#a740656a5f724d0a99e528def8ce50125", null ],
     [ "DIV_128", "_common_8h.html#abdf4b624268c124f05cbb2954854f80c", null ],
     [ "DIV_16", "_common_8h.html#aaf396e0300e6c0cd62ba67c6b6ab4bff", null ],

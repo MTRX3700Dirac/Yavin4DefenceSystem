@@ -8,7 +8,6 @@ var _serial_8c =
     [ "RC_INT_DISABLE", "_serial_8c.html#ab51d510f3bbabed67acc83033a617418", null ],
     [ "RC_INT_ENABLE", "_serial_8c.html#a0d56b2320d22882f5a8d230f140c7ea3", null ],
     [ "TAB", "_serial_8c.html#ad58a1fbfc85c7e4790fc55e654f50221", null ],
-    [ "thing", "_serial_8c.html#aad6c9657ae358a299230e30c92a62d7f", null ],
     [ "TX_INT_CLEAR", "_serial_8c.html#ae75715981e20452ec65e09240954c901", null ],
     [ "TX_INT_DISABLE", "_serial_8c.html#af4550af5f0b07a9dae44eaca1e30d809", null ],
     [ "TX_INT_ENABLE", "_serial_8c.html#aed05378c71b5932db9fe75240763fcec", null ],

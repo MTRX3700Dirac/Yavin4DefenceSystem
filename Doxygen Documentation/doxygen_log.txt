@@ -134,25 +134,122 @@ Generating docs for file CircularBuffers.h...
 Generating docs for file Common.h...
 Generating docs for file ConfigRegs18f4520.h...
 Generating docs for file Interrupts.c...
+Generating call graph for function highISR
+Generating caller graph for function highISR
+Generating call graph for function highVector
+Generating call graph for function lowISR
+Generating caller graph for function lowISR
+Generating call graph for function lowVector
 Generating docs for file LCD.c...
+Generating caller graph for function configLCD
 Generating docs for file LCD.h...
+Generating caller graph for function configLCD
 Generating docs for file Menusystem.c...
+Generating call graph for function clearscreen
+Generating caller graph for function clearscreen
+Generating call graph for function disptoptions
+Generating caller graph for function disptoptions
+Generating call graph for function filler
+Generating caller graph for function filler
+Generating call graph for function menu
+Generating call graph for function topmenu
+Generating caller graph for function topmenu
+Generating call graph for function topmenudisp
+Generating caller graph for function topmenudisp
 Generating docs for file Menusystem.h...
+Generating call graph for function initialiseMenu
+Generating call graph for function serviceMenu
 Generating docs for file Menusystem2.c...
+Generating call graph for function initialiseMenu
+Generating call graph for function serviceMenu
 Generating docs for file newmain.c...
+Generating call graph for function main
 Generating docs for file p18f4520.h...
 Generating docs for file PanTilt.c...
+Generating caller graph for function configureBase
+Generating caller graph for function getDir
+Generating call graph for function increment
+Generating caller graph for function increment
+Generating caller graph for function move
+Generating caller graph for function panTiltISR
 Generating docs for file PanTilt.h...
+Generating caller graph for function configureBase
+Generating caller graph for function getDir
+Generating call graph for function increment
+Generating caller graph for function increment
+Generating caller graph for function move
+Generating caller graph for function panTiltISR
 Generating docs for file Range.c...
+Generating call graph for function calibrateRange
+Generating caller graph for function configureAD
+Generating call graph for function configureRange
+Generating caller graph for function configureRange
+Generating caller graph for function getTargetState
+Generating call graph for function range
+Generating caller graph for function range
+Generating call graph for function rangeIR
+Generating caller graph for function rangeIR
+Generating caller graph for function rangeISR
+Generating call graph for function rangeUltrasonic
+Generating call graph for function readTargetState
+Generating caller graph for function readTargetState
 Generating docs for file Range.h...
+Generating caller graph for function configureAD
+Generating call graph for function configureRange
+Generating caller graph for function configureRange
+Generating caller graph for function getTargetState
+Generating call graph for function range
+Generating caller graph for function range
+Generating call graph for function rangeIR
+Generating caller graph for function rangeIR
+Generating caller graph for function rangeISR
+Generating call graph for function rangeUltrasonic
+Generating call graph for function readTargetState
+Generating caller graph for function readTargetState
 Generating docs for file Serial.c...
+Generating caller graph for function configureSerial
+Generating caller graph for function readString
+Generating caller graph for function receiveCR
+Generating caller graph for function receiveEmpty
+Generating caller graph for function receivePop
+Generating caller graph for function serialISR
+Generating caller graph for function transmit
 Generating docs for file Serial.h...
+Generating caller graph for function configureSerial
+Generating caller graph for function readString
+Generating caller graph for function receiveCR
+Generating caller graph for function receiveEmpty
+Generating caller graph for function receivePop
+Generating caller graph for function serialISR
+Generating caller graph for function transmit
 Generating docs for file Temp.c...
+Generating call graph for function readTemp
+Generating caller graph for function readTemp
+Generating caller graph for function readTempx2
 Generating docs for file Temp.h...
+Generating call graph for function readTemp
+Generating caller graph for function readTemp
+Generating caller graph for function readTempx2
 Generating docs for file Tracking.c...
+Generating call graph for function configureTracking
+Generating call graph for function search
+Generating caller graph for function search
+Generating call graph for function track
+Generating caller graph for function track
 Generating docs for file Tracking.h...
+Generating call graph for function configureTracking
+Generating call graph for function search
+Generating caller graph for function search
+Generating call graph for function track
+Generating caller graph for function track
 Generating docs for file User_Interface.c...
+Generating caller graph for function configUSER
+Generating caller graph for function userEmpty
+Generating caller graph for function userISR
 Generating docs for file User_Interface.h...
+Generating caller graph for function configUSER
+Generating caller graph for function userEmpty
+Generating caller graph for function userISR
 Generating page documentation...
 Generating docs for page todo...
 Generating group documentation...
@@ -174,13 +271,463 @@ Generating namespace member index...
 Generating annotated compound index...
 Generating alphabetical compound index...
 Generating hierarchical class index...
+Generating graphical class hierarchy...
 Generating member index...
 Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 1049/65536 hits=2687 misses=1052
+Generating XML output...
+Generating XML output for class circularBuffer
+Generating XML output for class Delay
+Generating XML output for class Direction
+Generating XML output for class SubMenu
+Generating XML output for class systemState
+Generating XML output for class TrackingData
+Generating XML output for file CircularBuffers.h
+Generating XML output for file Common.h
+Generating XML output for file ConfigRegs18f4520.h
+Generating XML output for file Interrupts.c
+Generating XML output for file LCD.c
+Generating XML output for file LCD.h
+Generating XML output for file Menusystem.c
+Generating XML output for file Menusystem.h
+Generating XML output for file Menusystem2.c
+Generating XML output for file newmain.c
+Generating XML output for file p18f4520.h
+Generating XML output for file PanTilt.c
+Generating XML output for file PanTilt.h
+Generating XML output for file Range.c
+Generating XML output for file Range.h
+Generating XML output for file Serial.c
+Generating XML output for file Serial.h
+Generating XML output for file Temp.c
+Generating XML output for file Temp.h
+Generating XML output for file Tracking.c
+Generating XML output for file Tracking.h
+Generating XML output for file User_Interface.c
+Generating XML output for file User_Interface.h
+Generating XML output for page todo
+Combining RTF output...
+Running dot...
+Generating dot graphs using 5 parallel threads...
+Running dot for graph 1/367
+Running dot for graph 2/367
+Running dot for graph 3/367
+Running dot for graph 4/367
+Running dot for graph 5/367
+Running dot for graph 6/367
+Running dot for graph 7/367
+Running dot for graph 8/367
+Running dot for graph 9/367
+Running dot for graph 10/367
+Running dot for graph 11/367
+Running dot for graph 12/367
+Running dot for graph 13/367
+Running dot for graph 14/367
+Running dot for graph 15/367
+Running dot for graph 16/367
+Running dot for graph 17/367
+Running dot for graph 18/367
+Running dot for graph 19/367
+Running dot for graph 20/367
+Running dot for graph 21/367
+Running dot for graph 22/367
+Running dot for graph 23/367
+Running dot for graph 24/367
+Running dot for graph 25/367
+Running dot for graph 26/367
+Running dot for graph 27/367
+Running dot for graph 28/367
+Running dot for graph 29/367
+Running dot for graph 30/367
+Running dot for graph 31/367
+Running dot for graph 32/367
+Running dot for graph 33/367
+Running dot for graph 34/367
+Running dot for graph 35/367
+Running dot for graph 36/367
+Running dot for graph 37/367
+Running dot for graph 38/367
+Running dot for graph 39/367
+Running dot for graph 40/367
+Running dot for graph 41/367
+Running dot for graph 42/367
+Running dot for graph 43/367
+Running dot for graph 44/367
+Running dot for graph 45/367
+Running dot for graph 46/367
+Running dot for graph 47/367
+Running dot for graph 48/367
+Running dot for graph 49/367
+Running dot for graph 50/367
+Running dot for graph 51/367
+Running dot for graph 52/367
+Running dot for graph 53/367
+Running dot for graph 54/367
+Running dot for graph 55/367
+Running dot for graph 56/367
+Running dot for graph 57/367
+Running dot for graph 58/367
+Running dot for graph 59/367
+Running dot for graph 60/367
+Running dot for graph 61/367
+Running dot for graph 62/367
+Running dot for graph 63/367
+Running dot for graph 64/367
+Running dot for graph 65/367
+Running dot for graph 66/367
+Running dot for graph 67/367
+Running dot for graph 68/367
+Running dot for graph 69/367
+Running dot for graph 70/367
+Running dot for graph 71/367
+Running dot for graph 72/367
+Running dot for graph 73/367
+Running dot for graph 74/367
+Running dot for graph 75/367
+Running dot for graph 76/367
+Running dot for graph 77/367
+Running dot for graph 78/367
+Running dot for graph 79/367
+Running dot for graph 80/367
+Running dot for graph 81/367
+Running dot for graph 82/367
+Running dot for graph 83/367
+Running dot for graph 84/367
+Running dot for graph 85/367
+Running dot for graph 86/367
+Running dot for graph 87/367
+Running dot for graph 88/367
+Running dot for graph 89/367
+Running dot for graph 90/367
+Running dot for graph 91/367
+Running dot for graph 92/367
+Running dot for graph 93/367
+Running dot for graph 94/367
+Running dot for graph 95/367
+Running dot for graph 96/367
+Running dot for graph 97/367
+Running dot for graph 98/367
+Running dot for graph 99/367
+Running dot for graph 100/367
+Running dot for graph 101/367
+Running dot for graph 102/367
+Running dot for graph 103/367
+Running dot for graph 104/367
+Running dot for graph 105/367
+Running dot for graph 106/367
+Running dot for graph 107/367
+Running dot for graph 108/367
+Running dot for graph 109/367
+Running dot for graph 110/367
+Running dot for graph 111/367
+Running dot for graph 112/367
+Running dot for graph 113/367
+Running dot for graph 114/367
+Running dot for graph 115/367
+Running dot for graph 116/367
+Running dot for graph 117/367
+Running dot for graph 118/367
+Running dot for graph 119/367
+Running dot for graph 120/367
+Running dot for graph 121/367
+Running dot for graph 122/367
+Running dot for graph 123/367
+Running dot for graph 124/367
+Running dot for graph 125/367
+Running dot for graph 126/367
+Running dot for graph 127/367
+Running dot for graph 128/367
+Running dot for graph 129/367
+Running dot for graph 130/367
+Running dot for graph 131/367
+Running dot for graph 132/367
+Running dot for graph 133/367
+Running dot for graph 134/367
+Running dot for graph 135/367
+Running dot for graph 136/367
+Running dot for graph 137/367
+Running dot for graph 138/367
+Running dot for graph 139/367
+Running dot for graph 140/367
+Running dot for graph 141/367
+Running dot for graph 142/367
+Running dot for graph 143/367
+Running dot for graph 144/367
+Running dot for graph 145/367
+Running dot for graph 146/367
+Running dot for graph 147/367
+Running dot for graph 148/367
+Running dot for graph 149/367
+Running dot for graph 150/367
+Running dot for graph 151/367
+Running dot for graph 152/367
+Running dot for graph 153/367
+Running dot for graph 154/367
+Running dot for graph 155/367
+Running dot for graph 156/367
+Running dot for graph 157/367
+Running dot for graph 158/367
+Running dot for graph 159/367
+Running dot for graph 160/367
+Running dot for graph 161/367
+Running dot for graph 162/367
+Running dot for graph 163/367
+Running dot for graph 164/367
+Running dot for graph 165/367
+Running dot for graph 166/367
+Running dot for graph 167/367
+Running dot for graph 168/367
+Running dot for graph 169/367
+Running dot for graph 170/367
+Running dot for graph 171/367
+Running dot for graph 172/367
+Running dot for graph 173/367
+Running dot for graph 174/367
+Running dot for graph 175/367
+Running dot for graph 176/367
+Running dot for graph 177/367
+Running dot for graph 178/367
+Running dot for graph 179/367
+Running dot for graph 180/367
+Running dot for graph 181/367
+Running dot for graph 182/367
+Running dot for graph 183/367
+Running dot for graph 184/367
+Running dot for graph 185/367
+Running dot for graph 186/367
+Running dot for graph 187/367
+Running dot for graph 188/367
+Running dot for graph 189/367
+Running dot for graph 190/367
+Running dot for graph 191/367
+Running dot for graph 192/367
+Running dot for graph 193/367
+Running dot for graph 194/367
+Running dot for graph 195/367
+Running dot for graph 196/367
+Running dot for graph 197/367
+Running dot for graph 198/367
+Running dot for graph 199/367
+Running dot for graph 200/367
+Running dot for graph 201/367
+Running dot for graph 202/367
+Running dot for graph 203/367
+Running dot for graph 204/367
+Running dot for graph 205/367
+Running dot for graph 206/367
+Running dot for graph 207/367
+Running dot for graph 208/367
+Running dot for graph 209/367
+Running dot for graph 210/367
+Running dot for graph 211/367
+Running dot for graph 212/367
+Running dot for graph 213/367
+Running dot for graph 214/367
+Running dot for graph 215/367
+Running dot for graph 216/367
+Running dot for graph 217/367
+Running dot for graph 218/367
+Running dot for graph 219/367
+Running dot for graph 220/367
+Running dot for graph 221/367
+Running dot for graph 222/367
+Running dot for graph 223/367
+Running dot for graph 224/367
+Running dot for graph 225/367
+Running dot for graph 226/367
+Running dot for graph 227/367
+Running dot for graph 228/367
+Running dot for graph 229/367
+Running dot for graph 230/367
+Running dot for graph 231/367
+Running dot for graph 232/367
+Running dot for graph 233/367
+Running dot for graph 234/367
+Running dot for graph 235/367
+Running dot for graph 236/367
+Running dot for graph 237/367
+Running dot for graph 238/367
+Running dot for graph 239/367
+Running dot for graph 240/367
+Running dot for graph 241/367
+Running dot for graph 242/367
+Running dot for graph 243/367
+Running dot for graph 244/367
+Running dot for graph 245/367
+Running dot for graph 246/367
+Running dot for graph 247/367
+Running dot for graph 248/367
+Running dot for graph 249/367
+Running dot for graph 250/367
+Running dot for graph 251/367
+Running dot for graph 252/367
+Running dot for graph 253/367
+Running dot for graph 254/367
+Running dot for graph 255/367
+Running dot for graph 256/367
+Running dot for graph 257/367
+Running dot for graph 258/367
+Running dot for graph 259/367
+Running dot for graph 260/367
+Running dot for graph 261/367
+Running dot for graph 262/367
+Running dot for graph 263/367
+Running dot for graph 264/367
+Running dot for graph 265/367
+Running dot for graph 266/367
+Running dot for graph 267/367
+Running dot for graph 268/367
+Running dot for graph 269/367
+Running dot for graph 270/367
+Running dot for graph 271/367
+Running dot for graph 272/367
+Running dot for graph 273/367
+Running dot for graph 274/367
+Running dot for graph 275/367
+Running dot for graph 276/367
+Running dot for graph 277/367
+Running dot for graph 278/367
+Running dot for graph 279/367
+Running dot for graph 280/367
+Running dot for graph 281/367
+Running dot for graph 282/367
+Running dot for graph 283/367
+Running dot for graph 284/367
+Running dot for graph 285/367
+Running dot for graph 286/367
+Running dot for graph 287/367
+Running dot for graph 288/367
+Running dot for graph 289/367
+Running dot for graph 290/367
+Running dot for graph 291/367
+Running dot for graph 292/367
+Running dot for graph 293/367
+Running dot for graph 294/367
+Running dot for graph 295/367
+Running dot for graph 296/367
+Running dot for graph 297/367
+Running dot for graph 298/367
+Running dot for graph 299/367
+Running dot for graph 300/367
+Running dot for graph 301/367
+Running dot for graph 302/367
+Running dot for graph 303/367
+Running dot for graph 304/367
+Running dot for graph 305/367
+Running dot for graph 306/367
+Running dot for graph 307/367
+Running dot for graph 308/367
+Running dot for graph 309/367
+Running dot for graph 310/367
+Running dot for graph 311/367
+Running dot for graph 312/367
+Running dot for graph 313/367
+Running dot for graph 314/367
+Running dot for graph 315/367
+Running dot for graph 316/367
+Running dot for graph 317/367
+Running dot for graph 318/367
+Running dot for graph 319/367
+Running dot for graph 320/367
+Running dot for graph 321/367
+Running dot for graph 322/367
+Running dot for graph 323/367
+Running dot for graph 324/367
+Running dot for graph 325/367
+Running dot for graph 326/367
+Running dot for graph 327/367
+Running dot for graph 328/367
+Running dot for graph 329/367
+Running dot for graph 330/367
+Running dot for graph 331/367
+Running dot for graph 332/367
+Running dot for graph 333/367
+Running dot for graph 334/367
+Running dot for graph 335/367
+Running dot for graph 336/367
+Running dot for graph 337/367
+Running dot for graph 338/367
+Running dot for graph 339/367
+Running dot for graph 340/367
+Running dot for graph 341/367
+Running dot for graph 342/367
+Running dot for graph 343/367
+Running dot for graph 344/367
+Running dot for graph 345/367
+Running dot for graph 346/367
+Running dot for graph 347/367
+Running dot for graph 348/367
+Running dot for graph 349/367
+Running dot for graph 350/367
+Running dot for graph 351/367
+Running dot for graph 352/367
+Running dot for graph 353/367
+Running dot for graph 354/367
+Running dot for graph 355/367
+Running dot for graph 356/367
+Running dot for graph 357/367
+Running dot for graph 358/367
+Running dot for graph 359/367
+Running dot for graph 360/367
+Running dot for graph 361/367
+Running dot for graph 362/367
+Running dot for graph 363/367
+Running dot for graph 364/367
+Running dot for graph 365/367
+Running dot for graph 366/367
+Running dot for graph 367/367
+Patching output file 1/48
+Patching output file 2/48
+Patching output file 3/48
+Patching output file 4/48
+Patching output file 5/48
+Patching output file 6/48
+Patching output file 7/48
+Patching output file 8/48
+Patching output file 9/48
+Patching output file 10/48
+Patching output file 11/48
+Patching output file 12/48
+Patching output file 13/48
+Patching output file 14/48
+Patching output file 15/48
+Patching output file 16/48
+Patching output file 17/48
+Patching output file 18/48
+Patching output file 19/48
+Patching output file 20/48
+Patching output file 21/48
+Patching output file 22/48
+Patching output file 23/48
+Patching output file 24/48
+Patching output file 25/48
+Patching output file 26/48
+Patching output file 27/48
+Patching output file 28/48
+Patching output file 29/48
+Patching output file 30/48
+Patching output file 31/48
+Patching output file 32/48
+Patching output file 33/48
+Patching output file 34/48
+Patching output file 35/48
+Patching output file 36/48
+Patching output file 37/48
+Patching output file 38/48
+Patching output file 39/48
+Patching output file 40/48
+Patching output file 41/48
+Patching output file 42/48
+Patching output file 43/48
+Patching output file 44/48
+Patching output file 45/48
+Patching output file 46/48
+Patching output file 47/48
+Patching output file 48/48
+lookup cache used 1049/65536 hits=4150 misses=1052
 finished...
-Warning: the dot tool could not be found at C:/Program Files (x86)/Graphviz2.38
 C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c:98: warning: Found unknown command `\userget'
+<topmenu>:98: warning: Found unknown command `\userget'
 *** Doxygen has finished

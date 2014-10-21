@@ -1,11 +1,11 @@
-/*
+/*!**********************************************************************
  * File:   User_Interface.c
  * Author: Grant
  *
  * Description: Contains all the interface to the LCD hardware
  *
  * Created on 15 September 2014, 1:21 PM
- */
+ **********************************************************************/
 
 #include "Common.h"
 

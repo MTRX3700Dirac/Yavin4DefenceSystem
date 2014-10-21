@@ -1,12 +1,14 @@
-/* 
+/*!****************************************************************************
  * File:   newmain.c
+ * 
  * Author: Grant
  *
- * Description: Controls the main system state of the product based on a state
- *              transition type template
+ * Description: 
+ * Controls the main system state of the product based on a state transition
+ * type template.
  *
  * Created on 7 September 2014, 4:12 PM
- */
+ ****************************************************************************/
 
 #pragma config WDT = OFF	//Turns watchdog Timer off
 #pragma config OSC = HS		//The crystal oscillator set to "High Speed"
@@ -19,13 +21,10 @@
 #include "Range.h"
 #include "User_Interface.h"
 #include "Serial.h"
-
 #include "PanTilt.h"
-#include "Temp.h"
-
 #include "Menusystem.h"
 
-//Function Prototypes:
+//Local Function Prototypes:
 static void initialization(systemState *state);
 static void transRange(void);
 
@@ -34,7 +33,7 @@ static void transRange(void);
  *
  * \brief Program entry point
  *
- * Include: 
+ * Include: Local to newmain.c
  *
  * Description: stores the current system state and manages all transitions
  *
@@ -71,7 +70,7 @@ void main() {
 /*! **********************************************************************
  * Function: initialization(systemState *state)
  *
- * Include: 
+ * Include: Local to newmain.c
  *
  * Description: Initializes the system, turns on the sensors and checks if
  * they are ready to begin working
@@ -91,7 +90,7 @@ static void initialization(systemState *state)
 /*! **********************************************************************
  * Function: transRange(void)
  *
- * Include:
+ * Include: Local to newmain.c
  *
  * Description: Measures and Transmits the range -> for testing purposes only
  *

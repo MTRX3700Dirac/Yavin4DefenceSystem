@@ -1,11 +1,46 @@
-/*
+/*!******************************************************************************
  * File:   ADC.c
  * Author: Grant
  *
- * Description: Contains all the functionality for the Pan Tilt module
+ * Description:
+ * Contains all the functionality for the Pan Tilt module. All variables and settings
+ * concerning the pan tilt module including the current direction, PDM delay info, min
+ * and max settings are private to this module. The interface functions allow all valid
+ * access to the module.
+ *
+ * Duties:
+ *          -Software interface to the Pan Tilt Module
+ *          -Moves Pan Tilt
+ *          -Reads current Pan Tilt position (based on PDM's)
+ *          -Generate PDM signals
+ *
+ * Functions:
+ *      Local:
+ *           void validate(unsigned int *delay);
+ *           Direction delay2Direction(Delay dly);
+ *           Delay direction2Delay(Direction dir);
+ * 
+ *      Public Interface:
+ *          void configureBase(void);
+ *          void move(Direction destination);
+ *          void increment(Direction difference);
+ *          void incrementFine(Direction difference);
+ *          Direction getDir(void);
+ *          void calibratePanTilt(Direction reference);
+ *          Direction rawDir(void);
+ *          char updated(void);
+ *          void panTiltISR(void);
+ *          char getMaxAzimuthAngle(void);
+ *          char getMinAzimuthAngle(void);
+ *          char getMaxElevationAngle(void);
+ *          char getMinElevationAngle(void);
+ *          void setMaxAzimuthAngle(char p_angle);
+ *          void setMinAzimuthAngle(char p_angle);
+ *          void setMaxElevationAngle(char p_angle);
+ *          void setMinElevationAngle(char p_angle);
  *
  * Created on 16 September 2014, 6:47 PM
- */
+ *******************************************************************************/
 
 #include "Common.h"
 #include <pwm.h>
@@ -34,11 +69,9 @@ typedef struct
 //Interrupt Latency
 #define LATENCY 340
 
-//#define ARC_RANGE 94 //Max arc of servos
-//#define HALF_RANGE 47   //Half the range of the servos
-
 #define SERVO_INIT() TRISCbits.RC0 = 0; TRISCbits.RC1 = 0; PORTCbits.RC0 = 0; PORTCbits.RC1 = 0
 
+//Local Function Prototypes
 static void validate(unsigned int *delay);
 static Direction delay2Direction(Delay dly);
 static Delay direction2Delay(Direction dir);
@@ -59,7 +92,7 @@ static Direction current_direction;
 static volatile char changed = 0;
 
 /*! **********************************************************************
- * Function: config(void)
+ * Function: configureBase(void)
  *
  * Include: PanTilt.h
  *
@@ -143,11 +176,11 @@ void increment(Direction difference)
 }
 
 /*! **********************************************************************
- * Function: move(Direction destination)
+ * Function: incrementFine(Direction difference)
  *
  * Include: PanTilt.h
  *
- * Description: Moves the pan tilt actuator to the specified destination
+ * Description: Moves the pan tilt actuator to the specified (Relative) destination
  *
  * Arguments: destionation - A struct containing the desired azimuth and inclination
  *
@@ -189,7 +222,7 @@ Direction getDir(void)
 }
 
 /*! **********************************************************************
- * Function: getMaxAzimuthAngle
+ * Function: getMaxAzimuthAngle(void)
  *
  * Include: PanTilt.h
  *
@@ -205,7 +238,7 @@ char getMaxAzimuthAngle(void)
 }
 
 /*! **********************************************************************
- * Function: getMinAzimuthAngle
+ * Function: getMinAzimuthAngle(void)
  *
  * Include: PanTilt.h
  *
@@ -221,7 +254,7 @@ char getMinAzimuthAngle(void)
 }
 
 /*! **********************************************************************
- * Function: getMaxElevationAngle
+ * Function: getMaxElevationAngle(void)
  *
  * Include: PanTilt.h
  *
@@ -237,7 +270,7 @@ char getMaxElevationAngle(void)
 }
 
 /*! **********************************************************************
- * Function: getMinElevationAngle
+ * Function: getMinElevationAngle(void)
  *
  * Include: PanTilt.h
  *
@@ -253,7 +286,7 @@ char getMinElevationAngle(void)
 }
 
 /*! **********************************************************************
- * Function: setMaxAzimuthAngle
+ * Function: setMaxAzimuthAngle(void)
  *
  * Include: PanTilt.h
  *
@@ -268,7 +301,7 @@ void setMaxAzimuthAngle(char p_angle)
     azimuth_angle_max = p_angle;
 }
 /*! **********************************************************************
- * Function: setMinAzimuthAngle
+ * Function: setMinAzimuthAngle(void)
  *
  * Include: PanTilt.h
  *
@@ -283,7 +316,7 @@ void setMinAzimuthAngle(char p_angle)
     azimuth_angle_min = p_angle;
 }
 /*! **********************************************************************
- * Function: setMaxElevationAngle
+ * Function: setMaxElevationAngle(void)
  *
  * Include: PanTilt.h
  *
@@ -299,7 +332,7 @@ void setMaxElevationAngle(char p_angle)
 }
 
 /*! **********************************************************************
- * Function: setMinElevationAngle
+ * Function: setMinElevationAngle(void)
  *
  * Include: PanTilt.h
  *
@@ -401,7 +434,7 @@ void panTiltISR(void)
 /*! **********************************************************************
  * Function: direction2Delay(DirectionState dir)
  *
- * Include:
+ * Include: Local to PanTilt.c
  *
  * Description: Converts an azimuth and inclination direction into a pwm period
  *
@@ -429,7 +462,7 @@ static Direction delay2Direction(Delay dly)
 /*! **********************************************************************
  * Function: direction2Delay(DirectionState dir)
  *
- * Include:
+ * Include: Local to PanTilt.c
  *
  * Description: Converts an azimuth and inclination direction into a pwm period
  *
@@ -462,7 +495,7 @@ static Delay direction2Delay(Direction dir)
 /*! **********************************************************************
  * Function: validate(unsigned int *delay)
  *
- * Include:
+ * Include: Local to PanTilt.c
  *
  * Description: Limits the duration of the PDM to between 1000us and 2000us
  *

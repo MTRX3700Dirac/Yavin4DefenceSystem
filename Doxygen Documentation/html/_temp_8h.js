@@ -1,5 +1,6 @@
 var _temp_8h =
 [
+    [ "TEMP_H", "_temp_8h.html#a8af7e8495d73677176799f2873de21ce", null ],
     [ "calibrateTemp", "_temp_8h.html#aa416413a05e38b982abc19a7c9ea4c3c", null ],
     [ "configureTemp", "_temp_8h.html#af6785da0c9b3c637b09522617d3f9dba", null ],
     [ "getTemp", "_temp_8h.html#a31747860f4fe18bee4fc23c0d33b17d7", null ],

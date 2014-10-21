@@ -10,16 +10,14 @@
 {\ttfamily \#include $<$capture.\+h$>$}\\*
 {\ttfamily \#include $<$usart.\+h$>$}\\*
 {\ttfamily \#include $<$compare.\+h$>$}\\*
-Include dependency graph for Common.\+h\+:
-\nopagebreak
+Include dependency graph for Common.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{_common_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -111,6 +109,8 @@ struct \hyperlink{structsystem_state}{system\+State}
 \#define \hyperlink{_common_8h_a3be7ef61d339af381862a81d4b363efb}{C\+L\+O\+C\+K}~10000000
 \item 
 \#define \hyperlink{_common_8h_a644329678dec72e39b8847963e59c35d}{F\+O\+S\+C\+\_\+4}~2500000
+\item 
+\#define \hyperlink{_common_8h_a0a1448a83b84de478fdbd7612e81acb1}{C\+O\+M\+M\+O\+N\+\_\+\+H}
 \end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -138,70 +138,77 @@ enum \hyperlink{_common_8h_a05931287b056487cf89495f39026fbe1}{possible\+\_\+stat
 \subsubsection[{A\+D\+C\+\_\+\+D\+I\+A\+L\+\_\+\+R\+E\+A\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+D\+C\+\_\+\+D\+I\+A\+L\+\_\+\+R\+E\+A\+D~2}}\label{_common_8h_a1518840d35b90121383f93c00eba9164}
 
 
-Definition at line 88 of file Common.\+h.
+Definition at line 91 of file Common.\+h.
 
 \hypertarget{_common_8h_ae19ae26fb5206ab6d949596d972ca430}{\index{Common.\+h@{Common.\+h}!A\+D\+C\+\_\+\+I\+N\+T@{A\+D\+C\+\_\+\+I\+N\+T}}
 \index{A\+D\+C\+\_\+\+I\+N\+T@{A\+D\+C\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{A\+D\+C\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+D\+C\+\_\+\+I\+N\+T~({\bf P\+I\+R1bits.\+A\+D\+I\+F} \&\& {\bf P\+I\+E1bits.\+A\+D\+I\+E})}}\label{_common_8h_ae19ae26fb5206ab6d949596d972ca430}
 
 
-Definition at line 102 of file Common.\+h.
+Definition at line 105 of file Common.\+h.
 
 \hypertarget{_common_8h_a5b107d0db5d9abf4a7219b5d13d2c54e}{\index{Common.\+h@{Common.\+h}!A\+D\+C\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D@{A\+D\+C\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D}}
 \index{A\+D\+C\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D@{A\+D\+C\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D}!Common.\+h@{Common.\+h}}
 \subsubsection[{A\+D\+C\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+D\+C\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D~0}}\label{_common_8h_a5b107d0db5d9abf4a7219b5d13d2c54e}
 
 
-Definition at line 86 of file Common.\+h.
+Definition at line 89 of file Common.\+h.
 
 \hypertarget{_common_8h_a135151cc09e1094dbb0163c3d696e630}{\index{Common.\+h@{Common.\+h}!A\+D\+C\+\_\+\+T\+E\+M\+P\+\_\+\+R\+E\+A\+D@{A\+D\+C\+\_\+\+T\+E\+M\+P\+\_\+\+R\+E\+A\+D}}
 \index{A\+D\+C\+\_\+\+T\+E\+M\+P\+\_\+\+R\+E\+A\+D@{A\+D\+C\+\_\+\+T\+E\+M\+P\+\_\+\+R\+E\+A\+D}!Common.\+h@{Common.\+h}}
 \subsubsection[{A\+D\+C\+\_\+\+T\+E\+M\+P\+\_\+\+R\+E\+A\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+D\+C\+\_\+\+T\+E\+M\+P\+\_\+\+R\+E\+A\+D~1}}\label{_common_8h_a135151cc09e1094dbb0163c3d696e630}
 
 
-Definition at line 87 of file Common.\+h.
+Definition at line 90 of file Common.\+h.
 
 \hypertarget{_common_8h_ad9822079fd16e03a52bf566ce3fe221c}{\index{Common.\+h@{Common.\+h}!B\+C\+L\+\_\+\+I\+N\+T@{B\+C\+L\+\_\+\+I\+N\+T}}
 \index{B\+C\+L\+\_\+\+I\+N\+T@{B\+C\+L\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{B\+C\+L\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+C\+L\+\_\+\+I\+N\+T~({\bf P\+I\+R2bits.\+B\+C\+L\+I\+F} \&\& {\bf P\+I\+E2bits.\+B\+C\+L\+I\+E})}}\label{_common_8h_ad9822079fd16e03a52bf566ce3fe221c}
 
 
-Definition at line 104 of file Common.\+h.
+Definition at line 107 of file Common.\+h.
 
 \hypertarget{_common_8h_ae8aa3ab3a23a388dab62ac86ee5e2545}{\index{Common.\+h@{Common.\+h}!C\+C\+P1\+\_\+\+C\+L\+E\+A\+R@{C\+C\+P1\+\_\+\+C\+L\+E\+A\+R}}
 \index{C\+C\+P1\+\_\+\+C\+L\+E\+A\+R@{C\+C\+P1\+\_\+\+C\+L\+E\+A\+R}!Common.\+h@{Common.\+h}}
 \subsubsection[{C\+C\+P1\+\_\+\+C\+L\+E\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+C\+P1\+\_\+\+C\+L\+E\+A\+R~({\bf P\+I\+R1bits.\+C\+C\+P1\+I\+F} = 0)}}\label{_common_8h_ae8aa3ab3a23a388dab62ac86ee5e2545}
 
 
-Definition at line 107 of file Common.\+h.
+Definition at line 110 of file Common.\+h.
 
 \hypertarget{_common_8h_a1673a1a80febeafd51f3f02508a0ea71}{\index{Common.\+h@{Common.\+h}!C\+C\+P1\+\_\+\+I\+N\+T@{C\+C\+P1\+\_\+\+I\+N\+T}}
 \index{C\+C\+P1\+\_\+\+I\+N\+T@{C\+C\+P1\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{C\+C\+P1\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+C\+P1\+\_\+\+I\+N\+T~({\bf P\+I\+R1bits.\+C\+C\+P1\+I\+F} \&\& {\bf P\+I\+E1bits.\+C\+C\+P1\+I\+E})}}\label{_common_8h_a1673a1a80febeafd51f3f02508a0ea71}
 
 
-Definition at line 93 of file Common.\+h.
+Definition at line 96 of file Common.\+h.
 
 \hypertarget{_common_8h_a4e461245300e8ea7e5c6af0741a33855}{\index{Common.\+h@{Common.\+h}!C\+C\+P2\+\_\+\+C\+L\+E\+A\+R@{C\+C\+P2\+\_\+\+C\+L\+E\+A\+R}}
 \index{C\+C\+P2\+\_\+\+C\+L\+E\+A\+R@{C\+C\+P2\+\_\+\+C\+L\+E\+A\+R}!Common.\+h@{Common.\+h}}
 \subsubsection[{C\+C\+P2\+\_\+\+C\+L\+E\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+C\+P2\+\_\+\+C\+L\+E\+A\+R~({\bf P\+I\+R2bits.\+C\+C\+P2\+I\+F} = 0)}}\label{_common_8h_a4e461245300e8ea7e5c6af0741a33855}
 
 
-Definition at line 108 of file Common.\+h.
+Definition at line 111 of file Common.\+h.
 
 \hypertarget{_common_8h_aee2ef60613898be37c57266698616e33}{\index{Common.\+h@{Common.\+h}!C\+C\+P2\+\_\+\+I\+N\+T@{C\+C\+P2\+\_\+\+I\+N\+T}}
 \index{C\+C\+P2\+\_\+\+I\+N\+T@{C\+C\+P2\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{C\+C\+P2\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+C\+P2\+\_\+\+I\+N\+T~({\bf P\+I\+R2bits.\+C\+C\+P2\+I\+F} \&\& {\bf P\+I\+E2bits.\+C\+C\+P2\+I\+E})}}\label{_common_8h_aee2ef60613898be37c57266698616e33}
 
 
-Definition at line 94 of file Common.\+h.
+Definition at line 97 of file Common.\+h.
 
 \hypertarget{_common_8h_a3be7ef61d339af381862a81d4b363efb}{\index{Common.\+h@{Common.\+h}!C\+L\+O\+C\+K@{C\+L\+O\+C\+K}}
 \index{C\+L\+O\+C\+K@{C\+L\+O\+C\+K}!Common.\+h@{Common.\+h}}
 \subsubsection[{C\+L\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+L\+O\+C\+K~10000000}}\label{_common_8h_a3be7ef61d339af381862a81d4b363efb}
 
 
-Definition at line 111 of file Common.\+h.
+Definition at line 114 of file Common.\+h.
+
+\hypertarget{_common_8h_a0a1448a83b84de478fdbd7612e81acb1}{\index{Common.\+h@{Common.\+h}!C\+O\+M\+M\+O\+N\+\_\+\+H@{C\+O\+M\+M\+O\+N\+\_\+\+H}}
+\index{C\+O\+M\+M\+O\+N\+\_\+\+H@{C\+O\+M\+M\+O\+N\+\_\+\+H}!Common.\+h@{Common.\+h}}
+\subsubsection[{C\+O\+M\+M\+O\+N\+\_\+\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+M\+M\+O\+N\+\_\+\+H}}\label{_common_8h_a0a1448a83b84de478fdbd7612e81acb1}
+
+
+Definition at line 125 of file Common.\+h.
 
 \hypertarget{_common_8h_a740656a5f724d0a99e528def8ce50125}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+1024@{D\+I\+V\+\_\+1024}}
 \index{D\+I\+V\+\_\+1024@{D\+I\+V\+\_\+1024}!Common.\+h@{Common.\+h}}
@@ -212,7 +219,7 @@ Definition at line 111 of file Common.\+h.
 )~((v) $>$$>$ 10)}}\label{_common_8h_a740656a5f724d0a99e528def8ce50125}
 
 
-Definition at line 79 of file Common.\+h.
+Definition at line 82 of file Common.\+h.
 
 \hypertarget{_common_8h_abdf4b624268c124f05cbb2954854f80c}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+128@{D\+I\+V\+\_\+128}}
 \index{D\+I\+V\+\_\+128@{D\+I\+V\+\_\+128}!Common.\+h@{Common.\+h}}
@@ -223,7 +230,7 @@ Definition at line 79 of file Common.\+h.
 )~((v) $>$$>$ 7)}}\label{_common_8h_abdf4b624268c124f05cbb2954854f80c}
 
 
-Definition at line 76 of file Common.\+h.
+Definition at line 79 of file Common.\+h.
 
 \hypertarget{_common_8h_aaf396e0300e6c0cd62ba67c6b6ab4bff}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+16@{D\+I\+V\+\_\+16}}
 \index{D\+I\+V\+\_\+16@{D\+I\+V\+\_\+16}!Common.\+h@{Common.\+h}}
@@ -234,7 +241,7 @@ Definition at line 76 of file Common.\+h.
 )~((v) $>$$>$ 4)}}\label{_common_8h_aaf396e0300e6c0cd62ba67c6b6ab4bff}
 
 
-Definition at line 73 of file Common.\+h.
+Definition at line 76 of file Common.\+h.
 
 \hypertarget{_common_8h_a4d6bb91285c504f7a5a882961cf405a9}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+2@{D\+I\+V\+\_\+2}}
 \index{D\+I\+V\+\_\+2@{D\+I\+V\+\_\+2}!Common.\+h@{Common.\+h}}
@@ -245,7 +252,7 @@ Definition at line 73 of file Common.\+h.
 )~((v) $>$$>$ 1)}}\label{_common_8h_a4d6bb91285c504f7a5a882961cf405a9}
 
 
-Definition at line 70 of file Common.\+h.
+Definition at line 73 of file Common.\+h.
 
 \hypertarget{_common_8h_ad36de0b0221fc009ad6b3a8671da028f}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+256@{D\+I\+V\+\_\+256}}
 \index{D\+I\+V\+\_\+256@{D\+I\+V\+\_\+256}!Common.\+h@{Common.\+h}}
@@ -256,7 +263,7 @@ Definition at line 70 of file Common.\+h.
 )~((v) $>$$>$ 8)}}\label{_common_8h_ad36de0b0221fc009ad6b3a8671da028f}
 
 
-Definition at line 77 of file Common.\+h.
+Definition at line 80 of file Common.\+h.
 
 \hypertarget{_common_8h_a6cd2ce042188839a264c5ba1627df97e}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+32@{D\+I\+V\+\_\+32}}
 \index{D\+I\+V\+\_\+32@{D\+I\+V\+\_\+32}!Common.\+h@{Common.\+h}}
@@ -267,7 +274,7 @@ Definition at line 77 of file Common.\+h.
 )~((v) $>$$>$ 5)}}\label{_common_8h_a6cd2ce042188839a264c5ba1627df97e}
 
 
-Definition at line 74 of file Common.\+h.
+Definition at line 77 of file Common.\+h.
 
 \hypertarget{_common_8h_abe112bea83dc5d8fb3a5a7ccc80b7abb}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+4@{D\+I\+V\+\_\+4}}
 \index{D\+I\+V\+\_\+4@{D\+I\+V\+\_\+4}!Common.\+h@{Common.\+h}}
@@ -278,7 +285,7 @@ Definition at line 74 of file Common.\+h.
 )~((v) $>$$>$ 2)}}\label{_common_8h_abe112bea83dc5d8fb3a5a7ccc80b7abb}
 
 
-Definition at line 71 of file Common.\+h.
+Definition at line 74 of file Common.\+h.
 
 \hypertarget{_common_8h_a8d2e675fd4bbca53be91ffadf0c11673}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+4096@{D\+I\+V\+\_\+4096}}
 \index{D\+I\+V\+\_\+4096@{D\+I\+V\+\_\+4096}!Common.\+h@{Common.\+h}}
@@ -289,7 +296,7 @@ Definition at line 71 of file Common.\+h.
 )~((v) $>$$>$ 12)}}\label{_common_8h_a8d2e675fd4bbca53be91ffadf0c11673}
 
 
-Definition at line 80 of file Common.\+h.
+Definition at line 83 of file Common.\+h.
 
 \hypertarget{_common_8h_a6606c956e93ac0da035a298ec8073174}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+512@{D\+I\+V\+\_\+512}}
 \index{D\+I\+V\+\_\+512@{D\+I\+V\+\_\+512}!Common.\+h@{Common.\+h}}
@@ -300,7 +307,7 @@ Definition at line 80 of file Common.\+h.
 )~((v) $>$$>$ 9)}}\label{_common_8h_a6606c956e93ac0da035a298ec8073174}
 
 
-Definition at line 78 of file Common.\+h.
+Definition at line 81 of file Common.\+h.
 
 \hypertarget{_common_8h_abcbec04588cd79b47e54f7259474e854}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+64@{D\+I\+V\+\_\+64}}
 \index{D\+I\+V\+\_\+64@{D\+I\+V\+\_\+64}!Common.\+h@{Common.\+h}}
@@ -311,7 +318,7 @@ Definition at line 78 of file Common.\+h.
 )~((v) $>$$>$ 6)}}\label{_common_8h_abcbec04588cd79b47e54f7259474e854}
 
 
-Definition at line 75 of file Common.\+h.
+Definition at line 78 of file Common.\+h.
 
 \hypertarget{_common_8h_a9469c415aff989522dac534ab8adb35e}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+65536@{D\+I\+V\+\_\+65536}}
 \index{D\+I\+V\+\_\+65536@{D\+I\+V\+\_\+65536}!Common.\+h@{Common.\+h}}
@@ -322,7 +329,7 @@ Definition at line 75 of file Common.\+h.
 )~((v) $>$$>$ 16)}}\label{_common_8h_a9469c415aff989522dac534ab8adb35e}
 
 
-Definition at line 81 of file Common.\+h.
+Definition at line 84 of file Common.\+h.
 
 \hypertarget{_common_8h_a4f978d22e3309b4121d0a95a74a1faba}{\index{Common.\+h@{Common.\+h}!D\+I\+V\+\_\+8@{D\+I\+V\+\_\+8}}
 \index{D\+I\+V\+\_\+8@{D\+I\+V\+\_\+8}!Common.\+h@{Common.\+h}}
@@ -333,35 +340,35 @@ Definition at line 81 of file Common.\+h.
 )~((v) $>$$>$ 3)}}\label{_common_8h_a4f978d22e3309b4121d0a95a74a1faba}
 
 
-Definition at line 72 of file Common.\+h.
+Definition at line 75 of file Common.\+h.
 
 \hypertarget{_common_8h_a644329678dec72e39b8847963e59c35d}{\index{Common.\+h@{Common.\+h}!F\+O\+S\+C\+\_\+4@{F\+O\+S\+C\+\_\+4}}
 \index{F\+O\+S\+C\+\_\+4@{F\+O\+S\+C\+\_\+4}!Common.\+h@{Common.\+h}}
 \subsubsection[{F\+O\+S\+C\+\_\+4}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+O\+S\+C\+\_\+4~2500000}}\label{_common_8h_a644329678dec72e39b8847963e59c35d}
 
 
-Definition at line 112 of file Common.\+h.
+Definition at line 115 of file Common.\+h.
 
 \hypertarget{_common_8h_ace4d61c3a12d8faab31305402fe1e074}{\index{Common.\+h@{Common.\+h}!I\+N\+T0\+\_\+\+I\+N\+T@{I\+N\+T0\+\_\+\+I\+N\+T}}
 \index{I\+N\+T0\+\_\+\+I\+N\+T@{I\+N\+T0\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{I\+N\+T0\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+T0\+\_\+\+I\+N\+T~({\bf I\+N\+T\+C\+O\+Nbits.\+I\+N\+T0\+I\+F} \&\& {\bf I\+N\+T\+C\+O\+Nbits.\+I\+N\+T0\+I\+E})}}\label{_common_8h_ace4d61c3a12d8faab31305402fe1e074}
 
 
-Definition at line 95 of file Common.\+h.
+Definition at line 98 of file Common.\+h.
 
 \hypertarget{_common_8h_ab3771f37588656c8d037de34edf2a88f}{\index{Common.\+h@{Common.\+h}!L\+V\+D\+\_\+\+I\+N\+T@{L\+V\+D\+\_\+\+I\+N\+T}}
 \index{L\+V\+D\+\_\+\+I\+N\+T@{L\+V\+D\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{L\+V\+D\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+V\+D\+\_\+\+I\+N\+T~({\bf P\+I\+R2bits.\+L\+V\+D\+I\+F} \&\& {\bf P\+I\+E2bits.\+L\+V\+D\+I\+E})}}\label{_common_8h_ab3771f37588656c8d037de34edf2a88f}
 
 
-Definition at line 105 of file Common.\+h.
+Definition at line 108 of file Common.\+h.
 
 \hypertarget{_common_8h_ad0d718ce41d188a939567abd92667796}{\index{Common.\+h@{Common.\+h}!M\+N\+M\+L@{M\+N\+M\+L}}
 \index{M\+N\+M\+L@{M\+N\+M\+L}!Common.\+h@{Common.\+h}}
 \subsubsection[{M\+N\+M\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+N\+M\+L}}\label{_common_8h_ad0d718ce41d188a939567abd92667796}
 
 
-Definition at line 9 of file Common.\+h.
+Definition at line 12 of file Common.\+h.
 
 \hypertarget{_common_8h_ad9fa804805fca2632643680804f7e911}{\index{Common.\+h@{Common.\+h}!N\+E\+X\+T\+\_\+\+S\+T\+A\+T\+E@{N\+E\+X\+T\+\_\+\+S\+T\+A\+T\+E}}
 \index{N\+E\+X\+T\+\_\+\+S\+T\+A\+T\+E@{N\+E\+X\+T\+\_\+\+S\+T\+A\+T\+E}!Common.\+h@{Common.\+h}}
@@ -373,7 +380,7 @@ Definition at line 9 of file Common.\+h.
 )~state.\+previous = state.\+current; state.\+current = s}}\label{_common_8h_ad9fa804805fca2632643680804f7e911}
 
 
-Definition at line 59 of file Common.\+h.
+Definition at line 62 of file Common.\+h.
 
 \hypertarget{_common_8h_a26a5416cb7bb43bd2f2eaaa7feaff84d}{\index{Common.\+h@{Common.\+h}!N\+E\+X\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+P\+T\+R@{N\+E\+X\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+P\+T\+R}}
 \index{N\+E\+X\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+P\+T\+R@{N\+E\+X\+T\+\_\+\+S\+T\+A\+T\+E\+\_\+\+P\+T\+R}!Common.\+h@{Common.\+h}}
@@ -385,28 +392,28 @@ Definition at line 59 of file Common.\+h.
 )~state-\/$>$previous = state-\/$>$current; state-\/$>$current = s}}\label{_common_8h_a26a5416cb7bb43bd2f2eaaa7feaff84d}
 
 
-Definition at line 60 of file Common.\+h.
+Definition at line 63 of file Common.\+h.
 
 \hypertarget{_common_8h_afeb5099420bb15f8f59a24c3426de8f1}{\index{Common.\+h@{Common.\+h}!R\+B\+\_\+\+I\+N\+T@{R\+B\+\_\+\+I\+N\+T}}
 \index{R\+B\+\_\+\+I\+N\+T@{R\+B\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{R\+B\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+B\+\_\+\+I\+N\+T~({\bf I\+N\+T\+C\+O\+Nbits.\+R\+B\+I\+F} \&\& {\bf I\+N\+T\+C\+O\+Nbits.\+R\+B\+I\+E})}}\label{_common_8h_afeb5099420bb15f8f59a24c3426de8f1}
 
 
-Definition at line 96 of file Common.\+h.
+Definition at line 99 of file Common.\+h.
 
 \hypertarget{_common_8h_a62ad39277340a9f95c1464e4a4b1b5a1}{\index{Common.\+h@{Common.\+h}!R\+C\+\_\+\+I\+N\+T@{R\+C\+\_\+\+I\+N\+T}}
 \index{R\+C\+\_\+\+I\+N\+T@{R\+C\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{R\+C\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+C\+\_\+\+I\+N\+T~({\bf P\+I\+R1bits.\+R\+C\+I\+F} \&\& {\bf P\+I\+E1bits.\+R\+C\+I\+E})}}\label{_common_8h_a62ad39277340a9f95c1464e4a4b1b5a1}
 
 
-Definition at line 92 of file Common.\+h.
+Definition at line 95 of file Common.\+h.
 
 \hypertarget{_common_8h_a2fa3b4c4837187612ff9b0236d0d705f}{\index{Common.\+h@{Common.\+h}!S\+S\+P\+\_\+\+I\+N\+T@{S\+S\+P\+\_\+\+I\+N\+T}}
 \index{S\+S\+P\+\_\+\+I\+N\+T@{S\+S\+P\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{S\+S\+P\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+S\+P\+\_\+\+I\+N\+T~({\bf P\+I\+R1bits.\+S\+S\+P\+I\+F} \&\& {\bf P\+I\+E1bits.\+S\+S\+P\+I\+E})}}\label{_common_8h_a2fa3b4c4837187612ff9b0236d0d705f}
 
 
-Definition at line 103 of file Common.\+h.
+Definition at line 106 of file Common.\+h.
 
 \hypertarget{_common_8h_a5d9d454d4b9f2ff8106d5199ac0d0186}{\index{Common.\+h@{Common.\+h}!S\+W\+A\+P@{S\+W\+A\+P}}
 \index{S\+W\+A\+P@{S\+W\+A\+P}!Common.\+h@{Common.\+h}}
@@ -418,42 +425,42 @@ Definition at line 103 of file Common.\+h.
 )~(y = (y $^\wedge$ (x = (x $^\wedge$ (y = (x $^\wedge$ y))))))}}\label{_common_8h_a5d9d454d4b9f2ff8106d5199ac0d0186}
 
 
-Definition at line 83 of file Common.\+h.
+Definition at line 86 of file Common.\+h.
 
 \hypertarget{_common_8h_a5d4ee5c980131f617eac819f887ccff8}{\index{Common.\+h@{Common.\+h}!T\+M\+R0\+\_\+\+I\+N\+T@{T\+M\+R0\+\_\+\+I\+N\+T}}
 \index{T\+M\+R0\+\_\+\+I\+N\+T@{T\+M\+R0\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{T\+M\+R0\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+M\+R0\+\_\+\+I\+N\+T~({\bf I\+N\+T\+C\+O\+Nbits.\+T\+M\+R0\+I\+F} \&\& {\bf I\+N\+T\+C\+O\+Nbits.\+T\+M\+R0\+I\+E})}}\label{_common_8h_a5d4ee5c980131f617eac819f887ccff8}
 
 
-Definition at line 99 of file Common.\+h.
+Definition at line 102 of file Common.\+h.
 
 \hypertarget{_common_8h_af1b5f2499fdbb5b83800325b12a062cf}{\index{Common.\+h@{Common.\+h}!T\+M\+R1\+\_\+\+I\+N\+T@{T\+M\+R1\+\_\+\+I\+N\+T}}
 \index{T\+M\+R1\+\_\+\+I\+N\+T@{T\+M\+R1\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{T\+M\+R1\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+M\+R1\+\_\+\+I\+N\+T~({\bf P\+I\+R1bits.\+T\+M\+R1\+I\+F} \&\& {\bf P\+I\+E1bits.\+T\+M\+R1\+I\+E})}}\label{_common_8h_af1b5f2499fdbb5b83800325b12a062cf}
 
 
-Definition at line 100 of file Common.\+h.
+Definition at line 103 of file Common.\+h.
 
 \hypertarget{_common_8h_af6baae9385e65b47397c25f253cd8893}{\index{Common.\+h@{Common.\+h}!T\+M\+R2\+\_\+\+I\+N\+T@{T\+M\+R2\+\_\+\+I\+N\+T}}
 \index{T\+M\+R2\+\_\+\+I\+N\+T@{T\+M\+R2\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{T\+M\+R2\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+M\+R2\+\_\+\+I\+N\+T~({\bf P\+I\+R1bits.\+T\+M\+R2\+I\+F} \&\& {\bf P\+I\+E1bits.\+T\+M\+R2\+I\+E})}}\label{_common_8h_af6baae9385e65b47397c25f253cd8893}
 
 
-Definition at line 97 of file Common.\+h.
+Definition at line 100 of file Common.\+h.
 
 \hypertarget{_common_8h_a37a3fed60a18eefca9f30c8929272a35}{\index{Common.\+h@{Common.\+h}!T\+M\+R3\+\_\+\+I\+N\+T@{T\+M\+R3\+\_\+\+I\+N\+T}}
 \index{T\+M\+R3\+\_\+\+I\+N\+T@{T\+M\+R3\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{T\+M\+R3\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+M\+R3\+\_\+\+I\+N\+T~({\bf P\+I\+R2bits.\+T\+M\+R3\+I\+F} \&\& {\bf P\+I\+E2bits.\+T\+M\+R3\+I\+E})}}\label{_common_8h_a37a3fed60a18eefca9f30c8929272a35}
 
 
-Definition at line 101 of file Common.\+h.
+Definition at line 104 of file Common.\+h.
 
 \hypertarget{_common_8h_aef3509d0d4bc8291df1b76f894a1e251}{\index{Common.\+h@{Common.\+h}!T\+X\+\_\+\+I\+N\+T@{T\+X\+\_\+\+I\+N\+T}}
 \index{T\+X\+\_\+\+I\+N\+T@{T\+X\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{T\+X\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+X\+\_\+\+I\+N\+T~({\bf P\+I\+R1bits.\+T\+X\+I\+F} \&\& {\bf P\+I\+E1bits.\+T\+X\+I\+E})}}\label{_common_8h_aef3509d0d4bc8291df1b76f894a1e251}
 
 
-Definition at line 91 of file Common.\+h.
+Definition at line 94 of file Common.\+h.
 
 
 
@@ -476,7 +483,7 @@ Definition at line 91 of file Common.\+h.
 \end{Desc}
 
 
-Definition at line 63 of file Common.\+h.
+Definition at line 66 of file Common.\+h.
 
 \hypertarget{_common_8h_a2db986326a654991cce9b1c2b1670677}{\index{Common.\+h@{Common.\+h}!Target\+State@{Target\+State}}
 \index{Target\+State@{Target\+State}!Common.\+h@{Common.\+h}}
@@ -498,5 +505,5 @@ Definition at line 63 of file Common.\+h.
 \end{Desc}
 
 
-Definition at line 55 of file Common.\+h.
+Definition at line 58 of file Common.\+h.
 

@@ -5,15 +5,23 @@
     <includes refid="_common_8h" local="yes">Common.h</includes>
     <includes refid="_circular_buffers_8h" local="yes">CircularBuffers.h</includes>
     <incdepgraph>
-      <node id="466">
+      <node id="462">
         <label>stdlib.h</label>
       </node>
-      <node id="470">
+      <node id="466">
         <label>adc.h</label>
       </node>
-      <node id="464">
+      <node id="460">
         <label>Common.h</label>
         <link refid="_common_8h"/>
+        <childnode refid="461" relation="include">
+        </childnode>
+        <childnode refid="462" relation="include">
+        </childnode>
+        <childnode refid="463" relation="include">
+        </childnode>
+        <childnode refid="464" relation="include">
+        </childnode>
         <childnode refid="465" relation="include">
         </childnode>
         <childnode refid="466" relation="include">
@@ -24,46 +32,38 @@
         </childnode>
         <childnode refid="469" relation="include">
         </childnode>
-        <childnode refid="470" relation="include">
-        </childnode>
-        <childnode refid="471" relation="include">
-        </childnode>
-        <childnode refid="472" relation="include">
-        </childnode>
-        <childnode refid="473" relation="include">
-        </childnode>
       </node>
-      <node id="469">
+      <node id="465">
         <label>timers.h</label>
       </node>
-      <node id="473">
+      <node id="469">
         <label>compare.h</label>
       </node>
-      <node id="471">
+      <node id="467">
         <label>capture.h</label>
       </node>
-      <node id="467">
+      <node id="463">
         <label>math.h</label>
       </node>
-      <node id="468">
+      <node id="464">
         <label>p18f4520.h</label>
         <link refid="p18f4520_8h"/>
       </node>
-      <node id="472">
+      <node id="468">
         <label>usart.h</label>
       </node>
-      <node id="465">
+      <node id="461">
         <label>stdio.h</label>
       </node>
-      <node id="463">
+      <node id="459">
         <label>User_Interface.c</label>
         <link refid="User_Interface.c"/>
-        <childnode refid="464" relation="include">
+        <childnode refid="460" relation="include">
         </childnode>
-        <childnode refid="474" relation="include">
+        <childnode refid="470" relation="include">
         </childnode>
       </node>
-      <node id="474">
+      <node id="470">
         <label>CircularBuffers.h</label>
         <link refid="_circular_buffers_8h"/>
       </node>
@@ -118,8 +118,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="45" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="45" bodyend="48"/>
-        <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="79" endline="98">lowISR</referencedby>
-        <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="113" endline="132">highISR</referencedby>
+        <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="88" endline="107">lowISR</referencedby>
+        <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="122" endline="141">highISR</referencedby>
       </memberdef>
       <memberdef kind="function" id="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -137,8 +137,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="61" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="61" bodyend="65"/>
-        <references refid="_circular_buffers_8h_1a526002aa17fac30d010d4d7315d5d81c" compoundref="_circular_buffers_8h" startline="18">init</references>
-        <referencedby refid="_menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="_menusystem_8c" startline="135" endline="140">initialiseMenu</referencedby>
+        <references refid="_circular_buffers_8h_1a526002aa17fac30d010d4d7315d5d81c" compoundref="_circular_buffers_8h" startline="21">init</references>
+        <referencedby refid="_menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="_menusystem_8c" startline="148" endline="153">initialiseMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="_user___interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned int</type>
@@ -157,8 +157,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="78" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="78" bodyend="95"/>
-        <references refid="_common_8h_1a1518840d35b90121383f93c00eba9164" compoundref="_common_8h" startline="88">ADC_DIAL_READ</references>
-        <references refid="_common_8h_1a740656a5f724d0a99e528def8ce50125" compoundref="_common_8h" startline="79">DIV_1024</references>
+        <references refid="_common_8h_1a1518840d35b90121383f93c00eba9164" compoundref="_common_8h" startline="91">ADC_DIAL_READ</references>
+        <references refid="_common_8h_1a740656a5f724d0a99e528def8ce50125" compoundref="_common_8h" startline="82">DIV_1024</references>
       </memberdef>
       <memberdef kind="function" id="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -176,8 +176,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="109" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="109" bodyend="112"/>
-        <references refid="_circular_buffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="_circular_buffers_8h" startline="12">empty</references>
-        <referencedby refid="_menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="_menusystem_8c" startline="158" endline="162">serviceMenu</referencedby>
+        <references refid="_circular_buffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="_circular_buffers_8h" startline="15">empty</references>
+        <referencedby refid="_menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="_menusystem_8c" startline="171" endline="175">serviceMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="_user___interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -195,7 +195,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="125" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="125" bodyend="130"/>
-        <references refid="_circular_buffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="_circular_buffers_8h" startline="17">pop</references>
+        <references refid="_circular_buffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="_circular_buffers_8h" startline="20">pop</references>
       </memberdef>
       <memberdef kind="function" id="_user___interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -213,7 +213,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="144" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="144" bodyend="147"/>
-        <references refid="_circular_buffers_8h_1ab6770f937bcc348970693cd84824bf9f" compoundref="_circular_buffers_8h" startline="14">peek</references>
+        <references refid="_circular_buffers_8h_1ab6770f937bcc348970693cd84824bf9f" compoundref="_circular_buffers_8h" startline="17">peek</references>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -1,6 +1,7 @@
 var _pan_tilt_8h =
 [
     [ "PAN_TILT_ISR", "_pan_tilt_8h.html#a9f6dec47561ba32094f46e58db44f964", null ],
+    [ "PANTILT_H", "_pan_tilt_8h.html#a12311b605a58b1d9a311dbb71a160045", null ],
     [ "calibratePanTilt", "_pan_tilt_8h.html#a60e08860a1b4ca9efdc2dd43983731d5", null ],
     [ "configureBase", "_pan_tilt_8h.html#ab7b8c8f7bf051b4f8e3b151f7b567127", null ],
     [ "getDir", "_pan_tilt_8h.html#ad1d9638bad5a5021969d19769e70c775", null ],

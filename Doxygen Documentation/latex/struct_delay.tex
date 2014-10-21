@@ -13,7 +13,19 @@ signed int \hyperlink{struct_delay_a4f5b10a6a07a4aaed02134ab2691b8ec}{Inclinatio
 \subsection{Detailed Description}
 
 
-Definition at line 14 of file Pan\+Tilt.\+c.
+ File\+: A\+D\+C.\+c Author\+: Grant
+
+Description\+: Contains all the functionality for the Pan Tilt module. All variables and settings concerning the pan tilt module including the current direction, P\+D\+M delay info, min and max settings are private to this module. The interface functions allow all valid access to the module.
+
+Duties\+: -\/\+Software interface to the Pan Tilt Module -\/\+Moves Pan Tilt -\/\+Reads current Pan Tilt position (based on P\+D\+M's) -\/\+Generate P\+D\+M signals
+
+Functions\+: Local\+: void validate(unsigned int $\ast$delay); \hyperlink{struct_direction}{Direction} delay2\+Direction(\+Delay dly); \hyperlink{struct_delay}{Delay} direction2\+Delay(\+Direction dir);
+
+Public Interface\+: void \hyperlink{_pan_tilt_8h_ab7b8c8f7bf051b4f8e3b151f7b567127}{configure\+Base(void)}; void \hyperlink{_pan_tilt_8h_a032fbfc434ca24d27d89b6d768455a42}{move(\+Direction destination)}; void \hyperlink{_pan_tilt_8h_af8e57fbe1513bb48274f4f0f46717fa1}{increment(\+Direction difference)}; void \hyperlink{_pan_tilt_8h_a5350e3f473fb25899612d382c1baa642}{increment\+Fine(\+Direction difference)}; \hyperlink{struct_direction}{Direction} \hyperlink{_pan_tilt_8h_ad1d9638bad5a5021969d19769e70c775}{get\+Dir(void)}; void \hyperlink{_pan_tilt_8h_a60e08860a1b4ca9efdc2dd43983731d5}{calibrate\+Pan\+Tilt(\+Direction reference)}; \hyperlink{struct_direction}{Direction} \hyperlink{_pan_tilt_8h_a251ee95d75c68e21c4bb933ac99e5108}{raw\+Dir(void)}; char \hyperlink{_pan_tilt_8h_a3362a0aacdd7037d0329989d353c60b7}{updated(void)}; void \hyperlink{_pan_tilt_8h_a7f353056fb02f0d95fd997198f5b186f}{pan\+Tilt\+I\+S\+R(void)}; char \hyperlink{_pan_tilt_8h_ae8f9ea5919de15d1b5614be2e5e65be3}{get\+Max\+Azimuth\+Angle(void)}; char \hyperlink{_pan_tilt_8h_af45dd498eebe7f5ba7b228c15e7221c1}{get\+Min\+Azimuth\+Angle(void)}; char \hyperlink{_pan_tilt_8h_a4278dbef7fe9034a7a54d02bcbb16de9}{get\+Max\+Elevation\+Angle(void)}; char \hyperlink{_pan_tilt_8h_af7fafa63e9c645a80f28aca253bba5cc}{get\+Min\+Elevation\+Angle(void)}; void \hyperlink{_pan_tilt_8h_a1f5e600a2655aeb9dd24b8325a777931}{set\+Max\+Azimuth\+Angle(char p\+\_\+angle)}; void \hyperlink{_pan_tilt_8h_a157ea38d68fcd31082dc2eaba2944ef3}{set\+Min\+Azimuth\+Angle(char p\+\_\+angle)}; void \hyperlink{_pan_tilt_8h_aa956697480994a26cb592b2cfcf3436c}{set\+Max\+Elevation\+Angle(char p\+\_\+angle)}; void \hyperlink{_pan_tilt_8h_a001917f3c38b200d142ab6932991e001}{set\+Min\+Elevation\+Angle(char p\+\_\+angle)};
+
+Created on 16 September 2014, 6\+:47 P\+M 
+
+Definition at line 49 of file Pan\+Tilt.\+c.
 
 
 
@@ -23,14 +35,14 @@ Definition at line 14 of file Pan\+Tilt.\+c.
 \subsubsection[{Azimuth\+Delay}]{\setlength{\rightskip}{0pt plus 5cm}signed int Azimuth\+Delay}}\label{struct_delay_aacc83952fc6c5812597bc96d622f5317}
 
 
-Definition at line 16 of file Pan\+Tilt.\+c.
+Definition at line 51 of file Pan\+Tilt.\+c.
 
 \hypertarget{struct_delay_a4f5b10a6a07a4aaed02134ab2691b8ec}{\index{Delay@{Delay}!Inclination\+Delay@{Inclination\+Delay}}
 \index{Inclination\+Delay@{Inclination\+Delay}!Delay@{Delay}}
 \subsubsection[{Inclination\+Delay}]{\setlength{\rightskip}{0pt plus 5cm}signed int Inclination\+Delay}}\label{struct_delay_a4f5b10a6a07a4aaed02134ab2691b8ec}
 
 
-Definition at line 17 of file Pan\+Tilt.\+c.
+Definition at line 52 of file Pan\+Tilt.\+c.
 
 
 

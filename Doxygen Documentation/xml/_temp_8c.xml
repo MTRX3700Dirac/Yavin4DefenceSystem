@@ -4,15 +4,21 @@
     <compoundname>Temp.c</compoundname>
     <includes refid="_common_8h" local="yes">Common.h</includes>
     <incdepgraph>
-      <node id="430">
+      <node id="427">
         <label>stdlib.h</label>
       </node>
-      <node id="434">
+      <node id="431">
         <label>adc.h</label>
       </node>
-      <node id="428">
+      <node id="425">
         <label>Common.h</label>
         <link refid="_common_8h"/>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="427" relation="include">
+        </childnode>
+        <childnode refid="428" relation="include">
+        </childnode>
         <childnode refid="429" relation="include">
         </childnode>
         <childnode refid="430" relation="include">
@@ -25,39 +31,33 @@
         </childnode>
         <childnode refid="434" relation="include">
         </childnode>
-        <childnode refid="435" relation="include">
-        </childnode>
-        <childnode refid="436" relation="include">
-        </childnode>
-        <childnode refid="437" relation="include">
-        </childnode>
       </node>
-      <node id="427">
+      <node id="424">
         <label>Temp.c</label>
         <link refid="Temp.c"/>
-        <childnode refid="428" relation="include">
+        <childnode refid="425" relation="include">
         </childnode>
       </node>
-      <node id="433">
+      <node id="430">
         <label>timers.h</label>
       </node>
-      <node id="437">
+      <node id="434">
         <label>compare.h</label>
       </node>
-      <node id="435">
+      <node id="432">
         <label>capture.h</label>
       </node>
-      <node id="431">
+      <node id="428">
         <label>math.h</label>
       </node>
-      <node id="432">
+      <node id="429">
         <label>p18f4520.h</label>
         <link refid="p18f4520_8h"/>
       </node>
-      <node id="436">
+      <node id="433">
         <label>usart.h</label>
       </node>
-      <node id="429">
+      <node id="426">
         <label>stdio.h</label>
       </node>
     </incdepgraph>
@@ -122,7 +122,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="43" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="43" bodyend="62"/>
-        <references refid="_common_8h_1a135151cc09e1094dbb0163c3d696e630" compoundref="_common_8h" startline="87">ADC_TEMP_READ</references>
+        <references refid="_common_8h_1a135151cc09e1094dbb0163c3d696e630" compoundref="_common_8h" startline="90">ADC_TEMP_READ</references>
         <referencedby refid="_temp_8h_1afd08db2b1a6d6af19e39f10dc453332c" compoundref="_temp_8c" startline="75" endline="84">readTemp</referencedby>
       </memberdef>
       <memberdef kind="function" id="_temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -141,9 +141,9 @@
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="75" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="75" bodyend="84"/>
         <references refid="_temp_8c_1a4946ccbc1990e831667bffded1147c4f" compoundref="_temp_8c" startline="43" endline="62">readTempx2</references>
-        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="70">DIV_2</references>
-        <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="93" endline="127">configureRange</referencedby>
-        <referencedby refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="_range_8c" startline="242" endline="269">calibrateRange</referencedby>
+        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="73">DIV_2</references>
+        <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</referencedby>
+        <referencedby refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="_range_8c" startline="251" endline="278">calibrateRange</referencedby>
       </memberdef>
       <memberdef kind="function" id="_temp_8c_1a5b64a66aae4a5a3d92a1711956fb4eb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned char</type>
@@ -160,7 +160,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="97" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="97" bodyend="100"/>
-        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="70">DIV_2</references>
+        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="73">DIV_2</references>
       </memberdef>
       <memberdef kind="function" id="_temp_8c_1aa416413a05e38b982abc19a7c9ea4c3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -178,7 +178,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="117" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="117" bodyend="120"/>
-        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="70">DIV_2</references>
+        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="73">DIV_2</references>
       </memberdef>
       <memberdef kind="function" id="_temp_8c_1a31747860f4fe18bee4fc23c0d33b17d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned char</type>
@@ -195,7 +195,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="134" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="134" bodyend="137"/>
-        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="70">DIV_2</references>
+        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="73">DIV_2</references>
       </memberdef>
       </sectiondef>
     <briefdescription>

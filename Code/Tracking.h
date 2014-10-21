@@ -7,6 +7,9 @@
  * Created on 15 September 2014, 1:41 PM
  */
 
+//Ensure that there is only 1 inclusion of this file in the preprocessor execution
+#ifndef TRACK_H
+
 //#define TRACK_INT (CCP2_INT)
 #define TRACK_INT 0
 
@@ -17,3 +20,4 @@ extern TrackingData track(systemState *state);
 extern void trackingISR(void);
 
 #define TRACK_H
+#endif

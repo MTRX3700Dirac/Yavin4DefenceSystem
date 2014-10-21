@@ -1,5 +1,6 @@
 var _range_8h =
 [
+    [ "RANGE_H", "_range_8h.html#a4e591dd86c476b236ffdb3c26e266469", null ],
     [ "RANGE_INT", "_range_8h.html#acbdd28592e68851fc99aa81a3b917fc9", null ],
     [ "calibrateRange", "_range_8h.html#ae2fb7c6f16c048f7f3247b7b5a3d403a", null ],
     [ "configureAD", "_range_8h.html#ac7337ef2da4c9ab03257562ec33bbb8a", null ],

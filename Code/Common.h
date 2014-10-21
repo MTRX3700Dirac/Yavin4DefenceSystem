@@ -5,6 +5,9 @@
  * Created on 11 September 2014, 12:24 PM
  */
 
+//Ensure that there is only 1 inclusion of this file in the preprocessor execution
+#ifndef COMMON_H
+
 // Use the MNML Board. Comment this out for the PICDEM
 #define MNML
 
@@ -118,3 +121,6 @@ typedef struct {
 /*
  * Pins 
  */
+
+#define COMMON_H
+#endif
