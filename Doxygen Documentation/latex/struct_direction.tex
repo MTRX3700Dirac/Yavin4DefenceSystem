@@ -3,6 +3,11 @@
 }
 
 
+Stores an inclination and azimuth.  
+
+
+
+
 {\ttfamily \#include $<$Common.\+h$>$}
 
 \subsection*{Data Fields}
@@ -15,9 +20,17 @@ int \hyperlink{struct_direction_af308b9934394c8bcf7614eb1df2d863f}{inclination}
 
 
 \subsection{Detailed Description}
+Stores an inclination and azimuth. 
 
 
-Definition at line 43 of file Common.\+h.
+
+ typedef of \hyperlink{struct_direction}{Direction} struct
+
+Description\+: A fully defined direction in which to point the pan tilt actuator or any other such purpose
+
+Elements\+: -\/\+Azimuth\+: Contains the azimuth component of the direction (generally degrees) -\/\+Inclination\+: Contains the inclination component of the direction (generally degrees) 
+
+Definition at line 70 of file Common.\+h.
 
 
 
@@ -27,14 +40,14 @@ Definition at line 43 of file Common.\+h.
 \subsubsection[{azimuth}]{\setlength{\rightskip}{0pt plus 5cm}int azimuth}}\label{struct_direction_a866e78e12cb32dcaf1ded89bda8be8f5}
 
 
-Definition at line 45 of file Common.\+h.
+Definition at line 72 of file Common.\+h.
 
 \hypertarget{struct_direction_af308b9934394c8bcf7614eb1df2d863f}{\index{Direction@{Direction}!inclination@{inclination}}
 \index{inclination@{inclination}!Direction@{Direction}}
 \subsubsection[{inclination}]{\setlength{\rightskip}{0pt plus 5cm}int inclination}}\label{struct_direction_af308b9934394c8bcf7614eb1df2d863f}
 
 
-Definition at line 46 of file Common.\+h.
+Definition at line 73 of file Common.\+h.
 
 
 

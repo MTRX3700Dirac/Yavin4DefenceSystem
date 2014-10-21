@@ -319,14 +319,14 @@
         <references refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" compoundref="_range_8c" startline="38">INIT_PIN</references>
         <references refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772">INTCONbits</references>
         <references refid="p18f4520_8h_1a00ea63e57cd6582e6e73158695e2b088">RCONbits</references>
-        <references refid="_temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" compoundref="_temp_8c" startline="75" endline="84">readTemp</references>
+        <references refid="_temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" compoundref="_temp_8c" startline="84" endline="93">readTemp</references>
         <references refid="_range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="_range_8c" startline="78" endline="89">configureAD</references>
         <references refid="_range_8c_1aa42da5a67cdb563f37b56c1674dd67bb" compoundref="_range_8c" startline="40">CCP1_INPT</references>
         <references refid="_range_8c_1a6e6430371976f713ccccb6372b19b810" compoundref="_range_8c" startline="39">INIT_TRIS</references>
         <referencedby refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="_range_8c" startline="251" endline="278">calibrateRange</referencedby>
         <referencedby refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</referencedby>
         <referencedby refid="_range_8h_1a5b063989d39d2958d2ecebc0106cb1da" compoundref="_range_8c" startline="434" endline="450">rangeUltrasonic</referencedby>
-        <referencedby refid="_tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" compoundref="_tracking_8c" startline="32" endline="36">configureTracking</referencedby>
+        <referencedby refid="_tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" compoundref="_tracking_8c" startline="41" endline="45">configureTracking</referencedby>
       </memberdef>
       <memberdef kind="function" id="_range_8c_1ae7948eddefd58fbe1509d2bade4cd908" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned int</type>
@@ -383,13 +383,13 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="219" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="219" bodyend="236"/>
-        <references refid="_common_8h_1a1673a1a80febeafd51f3f02508a0ea71" compoundref="_common_8h" startline="96">CCP1_INT</references>
+        <references refid="_common_8h_1a1673a1a80febeafd51f3f02508a0ea71" compoundref="_common_8h" startline="146">CCP1_INT</references>
         <references refid="p18f4520_8h_1acf62977c2300a77c993cc9bde8f98124">CCPR1</references>
         <references refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" compoundref="_range_8c" startline="38">INIT_PIN</references>
         <references refid="p18f4520_8h_1a0da258d430dd4e57d8f750549f9ee883">PIE1bits</references>
-        <references refid="_common_8h_1af1b5f2499fdbb5b83800325b12a062cf" compoundref="_common_8h" startline="103">TMR1_INT</references>
+        <references refid="_common_8h_1af1b5f2499fdbb5b83800325b12a062cf" compoundref="_common_8h" startline="153">TMR1_INT</references>
         <references refid="p18f4520_8h_1ac4d6310cb479c743b217189b91114508">PIR1bits</references>
-        <references refid="_common_8h_1ae8aa3ab3a23a388dab62ac86ee5e2545" compoundref="_common_8h" startline="110">CCP1_CLEAR</references>
+        <references refid="_common_8h_1ae8aa3ab3a23a388dab62ac86ee5e2545" compoundref="_common_8h" startline="160">CCP1_CLEAR</references>
         <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="88" endline="107">lowISR</referencedby>
         <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="122" endline="141">highISR</referencedby>
       </memberdef>
@@ -412,11 +412,11 @@
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="251" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="251" bodyend="278"/>
         <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</references>
         <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</references>
-        <references refid="_temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" compoundref="_temp_8c" startline="75" endline="84">readTemp</references>
+        <references refid="_temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" compoundref="_temp_8c" startline="84" endline="93">readTemp</references>
         <references refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" compoundref="_range_8c" startline="406" endline="420">rangeIR</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" compoundref="_common_8h" startline="58">NO_TARGET</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" compoundref="_common_8h" startline="58">CLOSE_RANGE</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="58">GOOD_TRACK</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" compoundref="_common_8h" startline="96">NO_TARGET</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" compoundref="_common_8h" startline="96">CLOSE_RANGE</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="96">GOOD_TRACK</references>
       </memberdef>
       <memberdef kind="function" id="_range_8c_1a90ce8835c75e17b8e2d15eca3e6ae82f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned int</type>
@@ -454,17 +454,17 @@
         <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</references>
         <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</references>
         <references refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" compoundref="_range_8c" startline="406" endline="420">rangeIR</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" compoundref="_common_8h" startline="58">CLOSE_RANGE</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275" compoundref="_common_8h" startline="58">OUT_OF_IR</references>
-        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="73">DIV_2</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="58">GOOD_TRACK</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="58">BAD_DIR</references>
-        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" compoundref="_common_8h" startline="58">NO_TARGET</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" compoundref="_common_8h" startline="96">CLOSE_RANGE</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275" compoundref="_common_8h" startline="96">OUT_OF_IR</references>
+        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="122">DIV_2</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="96">GOOD_TRACK</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="96">BAD_DIR</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" compoundref="_common_8h" startline="96">NO_TARGET</references>
         <referencedby refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="_range_8c" startline="251" endline="278">calibrateRange</referencedby>
         <referencedby refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</referencedby>
         <referencedby refid="_range_8h_1a91b55894b9e6d74e4495ea610246c856" compoundref="_range_8c" startline="406" endline="420">rangeIR</referencedby>
         <referencedby refid="_range_8h_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="516" endline="522">readTargetState</referencedby>
-        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="139" endline="196">track</referencedby>
       </memberdef>
       <memberdef kind="function" id="_range_8c_1a5b063989d39d2958d2ecebc0106cb1da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned int</type>
@@ -521,8 +521,8 @@
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="516" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="516" bodyend="522"/>
         <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</references>
         <references refid="_range_8c_1a3e5554f5a076ded63b937d50b7e5c9db" compoundref="_range_8c" startline="499" endline="502">getTargetState</references>
-        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="50" endline="98">search</referencedby>
-        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
+        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="59" endline="107">search</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="139" endline="196">track</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -530,27 +530,8 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">/*!*****************************************************************************</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>Range.c</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Grant</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Description:</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Contains<sp/>all<sp/>the<sp/>functionality<sp/>for<sp/>the<sp/>range<sp/>module.<sp/>All<sp/>variables<sp/>and<sp/>settings</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>concerning<sp/>the<sp/>range<sp/>module<sp/>including<sp/>the<sp/>the<sp/>max<sp/>distance,<sp/>timeouts<sp/>etc<sp/>are</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>private<sp/>to<sp/>this<sp/>module.<sp/>The<sp/>interface<sp/>functions<sp/>allow<sp/>all<sp/>valid<sp/>access<sp/>to<sp/>the<sp/>module.</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Duties:</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>-Interface<sp/>to<sp/>the<sp/>IR<sp/>and<sp/>Ultrasonic<sp/>sensors</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>-Read<sp/>the<sp/>range<sp/>from<sp/>the<sp/>IR<sp/>and<sp/>ultrasonic<sp/>sensors</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>-Fuse<sp/>distances<sp/>from<sp/>the<sp/>IR<sp/>and<sp/>ultrasonic<sp/>sensors</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>-Calibrate<sp/>the<sp/>IR<sp/>and<sp/>ultrasonic<sp/>sensors</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>Functions:<sp/></highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>15<sp/>September<sp/>2014,<sp/>11:27<sp/>AM</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"></codeline>
+<codeline lineno="21"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_temp_8h" kindref="compound">Temp.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&quot;p18f4520.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>

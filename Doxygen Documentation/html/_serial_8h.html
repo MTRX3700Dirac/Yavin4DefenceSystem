@@ -177,6 +177,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<hr/>
+<p> File: <a class="el" href="_serial_8h.html">Serial.h</a> Author: Grant</p>
+<p>Description: Contains the public interface for the serial module. This file contains all the external declarations, macros and global variables for using and Interfacing with the serial module.</p>
+<p>Created on 17 September 2014, 3:27 PM </p>
 
 <p>Definition at line <a class="el" href="_serial_8h_source.html#l00017">17</a> of file <a class="el" href="_serial_8h_source.html">Serial.h</a>.</p>
 
@@ -198,12 +202,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <hr/>
 <p> Function: <a class="el" href="_serial_8c.html#ae2cdcda889fcfed4b6b851835bf2b538">configureSerial(void)</a></p>
-<p>Include:</p>
+<p>Include: <a class="el" href="_serial_8h.html">Serial.h</a></p>
 <p>Description: Configures the serial ready for communication</p>
 <p>Arguments: None</p>
 <p>Returns: None </p>
 
-<p>Definition at line <a class="el" href="_serial_8c_source.html#l00044">44</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
+<p>Definition at line <a class="el" href="_serial_8c_source.html#l00057">57</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
 
 <p><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -239,7 +243,7 @@ Functions</h2></td></tr>
 <p>Returns: Received data up to a carriage return</p>
 <p>Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the location pointed to by string before calling this function. </p>
 
-<p>Definition at line <a class="el" href="_serial_8c_source.html#l00191">191</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
+<p>Definition at line <a class="el" href="_serial_8c_source.html#l00206">206</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
 
 <p><div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -269,12 +273,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <hr/>
 <p> Function: <a class="el" href="_serial_8c.html#aca906fa91f67c730681400b51d426933">receiveCR(void)</a></p>
-<p>Include:</p>
+<p>Include: <a class="el" href="_serial_8h.html">Serial.h</a></p>
 <p>Description: Indicates whether a Carriage Return has been received</p>
 <p>Arguments: None</p>
 <p>Returns: non-zero if CR has been received, zero otherwise </p>
 
-<p>Definition at line <a class="el" href="_serial_8c_source.html#l00171">171</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
+<p>Definition at line <a class="el" href="_serial_8c_source.html#l00186">186</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
 
 <p><div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -304,12 +308,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <hr/>
 <p> Function: <a class="el" href="_serial_8c.html#a42f5165187634304f89709eebe7c9f8c">receiveEmpty(void)</a></p>
-<p>Include:</p>
+<p>Include: <a class="el" href="_serial_8h.html">Serial.h</a></p>
 <p>Description: Indicates if the receive buffer is empty</p>
 <p>Arguments: None</p>
 <p>Returns: returns true if the recieve buffer is empty </p>
 
-<p>Definition at line <a class="el" href="_serial_8c_source.html#l00121">121</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
+<p>Definition at line <a class="el" href="_serial_8c_source.html#l00136">136</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
 
 <p><div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -339,12 +343,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <hr/>
 <p> Function: <a class="el" href="_serial_8c.html#a6e41eb5b433439d82f67def509ade010">receivePeek(void)</a></p>
-<p>Include:</p>
+<p>Include: <a class="el" href="_serial_8h.html">Serial.h</a></p>
 <p>Description: Returns the next character in the receive buffer without removing it from the buffer</p>
 <p>Arguments: None</p>
 <p>Returns: The next received character </p>
 
-<p>Definition at line <a class="el" href="_serial_8c_source.html#l00138">138</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
+<p>Definition at line <a class="el" href="_serial_8c_source.html#l00153">153</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
 
 </div>
 </div>
@@ -363,12 +367,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <hr/>
 <p> Function: <a class="el" href="_serial_8c.html#abb74ccb0bd81e0e4779854c93851c804">receivePop(void)</a></p>
-<p>Include:</p>
+<p>Include: <a class="el" href="_serial_8h.html">Serial.h</a></p>
 <p>Description: Pops the next received character from the received buffer</p>
 <p>Arguments: None</p>
 <p>Returns: The next character from the receive buffer </p>
 
-<p>Definition at line <a class="el" href="_serial_8c_source.html#l00154">154</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
+<p>Definition at line <a class="el" href="_serial_8c_source.html#l00169">169</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
 
 <p><div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -398,12 +402,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <hr/>
 <p> Function: <a class="el" href="_serial_8c.html#a6cf71700cdaeb2afeaf619777af19bfc">serialISR(void)</a></p>
-<p>Include:</p>
+<p>Include: <a class="el" href="_serial_8h.html">Serial.h</a></p>
 <p>Description: Acts as the interrupt service routine for the serial module</p>
 <p>Arguments: None</p>
 <p>Returns: None </p>
 
-<p>Definition at line <a class="el" href="_serial_8c_source.html#l00233">233</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
+<p>Definition at line <a class="el" href="_serial_8c_source.html#l00248">248</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
 
 <p><div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -433,12 +437,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <hr/>
 <p> Function: <a class="el" href="_serial_8c.html#aabfd643e8a01ba453ff6a88164b9eff8">transChar(char c)</a></p>
-<p>Include:</p>
+<p>Include: <a class="el" href="_serial_8h.html">Serial.h</a></p>
 <p>Description: Transmits a single character</p>
 <p>Arguments: c - character to transmit</p>
 <p>Returns: None </p>
 
-<p>Definition at line <a class="el" href="_serial_8c_source.html#l00101">101</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
+<p>Definition at line <a class="el" href="_serial_8c_source.html#l00116">116</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
 
 </div>
 </div>
@@ -457,12 +461,13 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <hr/>
 <p> Function: <a class="el" href="_serial_8c.html#aab23d23c5b64a3bb7e5913afb4a3ed85">transmit(char *string)</a></p>
-<p>Include:</p>
+<p>Include: <a class="el" href="_serial_8h.html">Serial.h</a></p>
 <p>Description: Begins transmitting the string over serial (interrupt driven)</p>
 <p>Arguments: string - pointer to the beginning of the string to transmit</p>
-<p>Returns: None </p>
+<p>Returns: None</p>
+<p>NOTE: Must be Null Terminated! Cannot receive a literal. </p>
 
-<p>Definition at line <a class="el" href="_serial_8c_source.html#l00075">75</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
+<p>Definition at line <a class="el" href="_serial_8c_source.html#l00090">90</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
 
 <p><div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -497,7 +502,7 @@ Functions</h2></td></tr>
 <p>Arguments: None</p>
 <p>Returns: None </p>
 
-<p>Definition at line <a class="el" href="_serial_8c_source.html#l00217">217</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
+<p>Definition at line <a class="el" href="_serial_8c_source.html#l00232">232</a> of file <a class="el" href="_serial_8c_source.html">Serial.c</a>.</p>
 
 </div>
 </div>
@@ -507,7 +512,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_serial_8h.html">Serial.h</a></li>
-    <li class="footer">Generated on Tue Oct 21 2014 13:34:11 for Yavin IV Death Star Tracker by
+    <li class="footer">Generated on Tue Oct 21 2014 15:39:06 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

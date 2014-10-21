@@ -36,7 +36,7 @@ unsigned char \hyperlink{_temp_8h_a31747860f4fe18bee4fc23c0d33b17d7}{get\+Temp} 
 \subsubsection[{T\+E\+M\+P\+\_\+\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+M\+P\+\_\+\+H}}\label{_temp_8h_a8af7e8495d73677176799f2873de21ce}
 
 
-Definition at line 19 of file Temp.\+h.
+Definition at line 30 of file Temp.\+h.
 
 
 
@@ -50,7 +50,19 @@ Definition at line 19 of file Temp.\+h.
 )}}\label{_temp_8h_aa416413a05e38b982abc19a7c9ea4c3c}
 
 
-Definition at line 117 of file Temp.\+c.
+ Function\+: calibration\+Temp(unsigned char reference)
+
+Include\+: \hyperlink{_temp_8h}{Temp.\+h}
+
+Description\+: calibrates the temperature sensor by updating the calibration offset variable
+
+Arguments\+: reference -\/ Reference temperature in deg C
+
+Returns\+: None
+
+Note\+: This function does not perform a temperature read, but uses the last value. This is because the read\+Temp function automatically calibrate. 
+
+Definition at line 126 of file Temp.\+c.
 
 \hypertarget{_temp_8h_af6785da0c9b3c637b09522617d3f9dba}{\index{Temp.\+h@{Temp.\+h}!configure\+Temp@{configure\+Temp}}
 \index{configure\+Temp@{configure\+Temp}!Temp.\+h@{Temp.\+h}}
@@ -61,7 +73,27 @@ Definition at line 117 of file Temp.\+c.
 )}}\label{_temp_8h_af6785da0c9b3c637b09522617d3f9dba}
 
 
-Definition at line 27 of file Temp.\+c.
+ File\+: \hyperlink{_temp_8h}{Temp.\+h} Author\+: Grant
+
+Description\+: Contains all the functionality and variables for the temp module. All unnecessary functions and variables should be shielded from the external program, and interfaced with accessor and mutator functions
+
+Contains\+: -\/\+Configure function -\/\+Read temperature functions -\/\+Get (last) temperature (read) function -\/\+Calibrate Temperature function
+
+Created on 17 September 2014, 2\+:16 P\+M
+
+
+
+ Function\+: \hyperlink{_temp_8c_af6785da0c9b3c637b09522617d3f9dba}{configure\+Temp(void)}
+
+Include\+: Temp
+
+Description\+: Configures the temperature module for use
+
+Arguments\+: None
+
+Returns\+: None 
+
+Definition at line 36 of file Temp.\+c.
 
 \hypertarget{_temp_8h_a31747860f4fe18bee4fc23c0d33b17d7}{\index{Temp.\+h@{Temp.\+h}!get\+Temp@{get\+Temp}}
 \index{get\+Temp@{get\+Temp}!Temp.\+h@{Temp.\+h}}
@@ -72,7 +104,17 @@ Definition at line 27 of file Temp.\+c.
 )}}\label{_temp_8h_a31747860f4fe18bee4fc23c0d33b17d7}
 
 
-Definition at line 134 of file Temp.\+c.
+ Function\+: calibration\+Temp(unsigned char reference)
+
+Include\+: \hyperlink{_temp_8h}{Temp.\+h}
+
+Description\+: calibrates the temperature sensor by updating the calibration offset variable
+
+Arguments\+: reference -\/ Reference temperature in deg C
+
+Returns\+: None 
+
+Definition at line 143 of file Temp.\+c.
 
 \hypertarget{_temp_8h_a5b64a66aae4a5a3d92a1711956fb4eb8}{\index{Temp.\+h@{Temp.\+h}!raw\+Temp@{raw\+Temp}}
 \index{raw\+Temp@{raw\+Temp}!Temp.\+h@{Temp.\+h}}
@@ -83,7 +125,17 @@ Definition at line 134 of file Temp.\+c.
 )}}\label{_temp_8h_a5b64a66aae4a5a3d92a1711956fb4eb8}
 
 
-Definition at line 97 of file Temp.\+c.
+ Function\+: \hyperlink{_temp_8c_a5b64a66aae4a5a3d92a1711956fb4eb8}{raw\+Temp(void)}
+
+Include\+: \hyperlink{_temp_8h}{Temp.\+h}
+
+Description\+: Returns the raw (uncalibrated temperature)
+
+Arguments\+: None
+
+Returns\+: Temp (in deg celsius) as an unsigned char 
+
+Definition at line 106 of file Temp.\+c.
 
 \hypertarget{_temp_8h_afd08db2b1a6d6af19e39f10dc453332c}{\index{Temp.\+h@{Temp.\+h}!read\+Temp@{read\+Temp}}
 \index{read\+Temp@{read\+Temp}!Temp.\+h@{Temp.\+h}}
@@ -94,7 +146,17 @@ Definition at line 97 of file Temp.\+c.
 )}}\label{_temp_8h_afd08db2b1a6d6af19e39f10dc453332c}
 
 
-Definition at line 75 of file Temp.\+c.
+ Function\+: \hyperlink{_temp_8c_afd08db2b1a6d6af19e39f10dc453332c}{read\+Temp(void)}
+
+Include\+: \hyperlink{_temp_8h}{Temp.\+h}
+
+Description\+: Reads the temperature from the T\+E\+M\+P sensor
+
+Arguments\+: None
+
+Returns\+: Temp (in deg celsius) as an unsigned char 
+
+Definition at line 84 of file Temp.\+c.
 
 
 
@@ -127,7 +189,17 @@ Here is the caller graph for this function\+:\nopagebreak
 )}}\label{_temp_8h_a4946ccbc1990e831667bffded1147c4f}
 
 
-Definition at line 43 of file Temp.\+c.
+ Function\+: \hyperlink{_temp_8c_a4946ccbc1990e831667bffded1147c4f}{read\+Tempx2(void)}
+
+Include\+: \hyperlink{_temp_8h}{Temp.\+h}
+
+Description\+: Reads the temperature from the Temp sensor
+
+Arguments\+: None
+
+Returns\+: temp x 2 (in deg celsius) as an unsigned char 
+
+Definition at line 52 of file Temp.\+c.
 
 
 

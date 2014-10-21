@@ -126,11 +126,13 @@ $(document).ready(function(){initNavTree('_circular_buffers_8h.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcircular_buffer.html">circularBuffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores bytes of data in a circular buffer.  <a href="structcircular_buffer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ac70e6264441e929fe13460353eb275c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_circular_buffers_8h.html#ac70e6264441e929fe13460353eb275c8">incMod</a>(ptr)&#160;&#160;&#160;if(ptr==<a class="el" href="_circular_buffers_8h.html#a5a69f707d5405fe875b322c6bfbace46">BUFFERLENGTH</a>-1) ptr = 0; else ptr++;</td></tr>
+<tr class="memdesc:ac70e6264441e929fe13460353eb275c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer related macro functionality.  <a href="#ac70e6264441e929fe13460353eb275c8">More...</a><br /></td></tr>
 <tr class="separator:ac70e6264441e929fe13460353eb275c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeabcb3d395f687162520f9f72c926edf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_circular_buffers_8h.html#aeabcb3d395f687162520f9f72c926edf">empty</a>(buf)&#160;&#160;&#160;(buf.tail == buf.head)</td></tr>
 <tr class="separator:aeabcb3d395f687162520f9f72c926edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,7 +162,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00024">24</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
+<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00032">32</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
 
 </div>
 </div>
@@ -174,7 +176,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00034">34</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
+<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00056">56</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
 
 </div>
 </div>
@@ -192,7 +194,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00015">15</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
+<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00023">23</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
 
 </div>
 </div>
@@ -210,7 +212,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00016">16</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
+<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00024">24</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
 
 </div>
 </div>
@@ -228,7 +230,14 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00014">14</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
+<p>Buffer related macro functionality. </p>
+<hr/>
+<p> File: <a class="el" href="_circular_buffers_8h.html">CircularBuffers.h</a> Author: Grant</p>
+<p>Description: Contains Circular Buffer functionality and structure definitions. This allows Circular Buffers to be used in any file by simply including this header. Furthermore, circular buffer functionality can be altered on a program level.</p>
+<p>Contains: -Definition of CircularBuffer type -Peek, pop, push and init functionality -Empty, full, queries</p>
+<p>Created on 8 October 2014, 10:30 AM </p>
+
+<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00022">22</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
 
 </div>
 </div>
@@ -246,7 +255,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00021">21</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
+<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00029">29</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
 
 </div>
 </div>
@@ -264,7 +273,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00017">17</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
+<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00025">25</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
 
 </div>
 </div>
@@ -282,7 +291,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00020">20</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
+<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00028">28</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
 
 </div>
 </div>
@@ -310,7 +319,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00019">19</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
+<p>Definition at line <a class="el" href="_circular_buffers_8h_source.html#l00027">27</a> of file <a class="el" href="_circular_buffers_8h_source.html">CircularBuffers.h</a>.</p>
 
 </div>
 </div>
@@ -320,7 +329,7 @@ Macros</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_circular_buffers_8h.html">CircularBuffers.h</a></li>
-    <li class="footer">Generated on Tue Oct 21 2014 13:34:08 for Yavin IV Death Star Tracker by
+    <li class="footer">Generated on Tue Oct 21 2014 15:39:03 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

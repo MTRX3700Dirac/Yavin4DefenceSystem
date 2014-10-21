@@ -29,7 +29,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><hruler/>
+ File: <ref refid="_menusystem_8h" kindref="compound">Menusystem.h</ref> Author: Jacob</para><para>Created on 7 October 2014, 9:56 PM </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="11" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" bodystart="11" bodyend="-1"/>
@@ -62,9 +63,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="13" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="148" bodyend="153"/>
-        <references refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="44" endline="62">configureSerial</references>
-        <references refid="_l_c_d_8c_1aaab6233be65b7399b3422eee9782508c" compoundref="_l_c_d_8c" startline="23" endline="26">configLCD</references>
-        <references refid="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" compoundref="_user___interface_8c" startline="61" endline="65">configUSER</references>
+        <references refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="57" endline="75">configureSerial</references>
+        <references refid="_l_c_d_8c_1aaab6233be65b7399b3422eee9782508c" compoundref="_l_c_d_8c" startline="28" endline="31">configLCD</references>
+        <references refid="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" compoundref="_user___interface_8c" startline="67" endline="71">configUSER</references>
       </memberdef>
       <memberdef kind="function" id="_menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -82,12 +83,12 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="14" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="171" bodyend="175"/>
-        <references refid="_serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="_serial_8c" startline="121" endline="124">receiveEmpty</references>
-        <references refid="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="_user___interface_8c" startline="109" endline="112">userEmpty</references>
+        <references refid="_serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="_serial_8c" startline="136" endline="139">receiveEmpty</references>
+        <references refid="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="_user___interface_8c" startline="115" endline="118">userEmpty</references>
         <references refid="struct_sub_menu_1a1dae2f8dad8e2d2a30b13ee69ea542db" compoundref="_menusystem2_8c" startline="18">SubMenu::numericFunction</references>
-        <references refid="_serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="_serial_8c" startline="171" endline="174">receiveCR</references>
-        <references refid="_serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="191" endline="203">readString</references>
-        <references refid="_serial_8c_1abb74ccb0bd81e0e4779854c93851c804" compoundref="_serial_8c" startline="154" endline="158">receivePop</references>
+        <references refid="_serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="_serial_8c" startline="186" endline="189">receiveCR</references>
+        <references refid="_serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="206" endline="218">readString</references>
+        <references refid="_serial_8c_1abb74ccb0bd81e0e4779854c93851c804" compoundref="_serial_8c" startline="169" endline="173">receivePop</references>
       </memberdef>
       <memberdef kind="function" id="_menusystem_8h_1a0f329206447b1f40e6f730b346aaaf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -128,14 +129,8 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>Menusystem.h</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Jacob</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>7<sp/>October<sp/>2014,<sp/>9:56<sp/>PM</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//Ensure<sp/>that<sp/>there<sp/>is<sp/>only<sp/>1<sp/>inclusion<sp/>of<sp/>this<sp/>file<sp/>in<sp/>the<sp/>preprocessor<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="comment">//Ensure<sp/>that<sp/>there<sp/>is<sp/>only<sp/>1<sp/>inclusion<sp/>of<sp/>this<sp/>file<sp/>in<sp/>the<sp/>preprocessor<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MENU_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
 <codeline lineno="11" refid="_menusystem_8h_1abe3db97a849df459252001e1f4b3721c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MENU_ISR<sp/>0</highlight><highlight class="normal"></highlight></codeline>

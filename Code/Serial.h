@@ -1,4 +1,4 @@
-/* 
+/*! ****************************************************************************
  * File:   Serial.h
  * Author: Grant
  *
@@ -8,7 +8,7 @@
  * Interfacing with the serial module.
  *
  * Created on 17 September 2014, 3:27 PM
- */
+ ******************************************************************************/
 
 //Ensure that there is only 1 inclusion of this file in the preprocessor execution
 #ifndef SERIAL_H

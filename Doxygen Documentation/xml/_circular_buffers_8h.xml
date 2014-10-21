@@ -29,12 +29,13 @@
         <param><defname>ptr</defname></param>
         <initializer>if(ptr==<ref refid="_circular_buffers_8h_1a5a69f707d5405fe875b322c6bfbace46" kindref="member">BUFFERLENGTH</ref>-1) ptr = 0; else ptr++;</initializer>
         <briefdescription>
-        </briefdescription>
+<para>Buffer related macro functionality. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><hruler/>
+ File: <ref refid="_circular_buffers_8h" kindref="compound">CircularBuffers.h</ref> Author: Grant</para><para>Description: Contains Circular Buffer functionality and structure definitions. This allows Circular Buffers to be used in any file by simply including this header. Furthermore, circular buffer functionality can be altered on a program level.</para><para>Contains: -Definition of CircularBuffer type -Peek, pop, push and init functionality -Empty, full, queries</para><para>Created on 8 October 2014, 10:30 AM </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="14" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="14" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="22" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="_circular_buffers_8h_1aeabcb3d395f687162520f9f72c926edf" prot="public" static="no">
         <name>empty</name>
@@ -46,13 +47,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="15" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="15" bodyend="-1"/>
-        <referencedby refid="_serial_8h_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</referencedby>
-        <referencedby refid="_serial_8h_1a42f5165187634304f89709eebe7c9f8c" compoundref="_serial_8c" startline="121" endline="124">receiveEmpty</referencedby>
-        <referencedby refid="_serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="191" endline="203">readString</referencedby>
-        <referencedby refid="_serial_8h_1a96a7d5e668a1b77fd5bbd343c7f1cbfc" compoundref="_serial_8c" startline="217" endline="220">transmitted</referencedby>
-        <referencedby refid="_serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="_serial_8c" startline="233" endline="274">serialISR</referencedby>
-        <referencedby refid="_user___interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="_user___interface_8c" startline="109" endline="112">userEmpty</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="23" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="_serial_8h_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="90" endline="103">transmit</referencedby>
+        <referencedby refid="_serial_8h_1a42f5165187634304f89709eebe7c9f8c" compoundref="_serial_8c" startline="136" endline="139">receiveEmpty</referencedby>
+        <referencedby refid="_serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="206" endline="218">readString</referencedby>
+        <referencedby refid="_serial_8h_1a96a7d5e668a1b77fd5bbd343c7f1cbfc" compoundref="_serial_8c" startline="232" endline="235">transmitted</referencedby>
+        <referencedby refid="_serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="_serial_8c" startline="248" endline="289">serialISR</referencedby>
+        <referencedby refid="_user___interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="_user___interface_8c" startline="115" endline="118">userEmpty</referencedby>
       </memberdef>
       <memberdef kind="define" id="_circular_buffers_8h_1a380cd5dd5680e22e1b6d839a57781661" prot="public" static="no">
         <name>full</name>
@@ -64,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="16" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="24" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="_circular_buffers_8h_1ab6770f937bcc348970693cd84824bf9f" prot="public" static="no">
         <name>peek</name>
@@ -76,10 +77,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="17" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="17" bodyend="-1"/>
-        <referencedby refid="_serial_8h_1a6e41eb5b433439d82f67def509ade010" compoundref="_serial_8c" startline="138" endline="141">receivePeek</referencedby>
-        <referencedby refid="_serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="_serial_8c" startline="233" endline="274">serialISR</referencedby>
-        <referencedby refid="_user___interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" compoundref="_user___interface_8c" startline="144" endline="147">userPeek</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="25" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="_serial_8h_1a6e41eb5b433439d82f67def509ade010" compoundref="_serial_8c" startline="153" endline="156">receivePeek</referencedby>
+        <referencedby refid="_serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="_serial_8c" startline="248" endline="289">serialISR</referencedby>
+        <referencedby refid="_user___interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" compoundref="_user___interface_8c" startline="150" endline="153">userPeek</referencedby>
       </memberdef>
       <memberdef kind="define" id="_circular_buffers_8h_1aba30707c86c50590824a646a3ef26fbb" prot="public" static="no">
         <name>push</name>
@@ -92,10 +93,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="19" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="19" bodyend="-1"/>
-        <referencedby refid="_serial_8h_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</referencedby>
-        <referencedby refid="_serial_8h_1aabfd643e8a01ba453ff6a88164b9eff8" compoundref="_serial_8c" startline="101" endline="108">transChar</referencedby>
-        <referencedby refid="_serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="_serial_8c" startline="233" endline="274">serialISR</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="27" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="_serial_8h_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="90" endline="103">transmit</referencedby>
+        <referencedby refid="_serial_8h_1aabfd643e8a01ba453ff6a88164b9eff8" compoundref="_serial_8c" startline="116" endline="123">transChar</referencedby>
+        <referencedby refid="_serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="_serial_8c" startline="248" endline="289">serialISR</referencedby>
       </memberdef>
       <memberdef kind="define" id="_circular_buffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" prot="public" static="no">
         <name>pop</name>
@@ -107,11 +108,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="20" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="20" bodyend="-1"/>
-        <referencedby refid="_serial_8h_1abb74ccb0bd81e0e4779854c93851c804" compoundref="_serial_8c" startline="154" endline="158">receivePop</referencedby>
-        <referencedby refid="_serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="191" endline="203">readString</referencedby>
-        <referencedby refid="_serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="_serial_8c" startline="233" endline="274">serialISR</referencedby>
-        <referencedby refid="_user___interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" compoundref="_user___interface_8c" startline="125" endline="130">userPop</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="28" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="_serial_8h_1abb74ccb0bd81e0e4779854c93851c804" compoundref="_serial_8c" startline="169" endline="173">receivePop</referencedby>
+        <referencedby refid="_serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="206" endline="218">readString</referencedby>
+        <referencedby refid="_serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="_serial_8c" startline="248" endline="289">serialISR</referencedby>
+        <referencedby refid="_user___interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" compoundref="_user___interface_8c" startline="131" endline="136">userPop</referencedby>
       </memberdef>
       <memberdef kind="define" id="_circular_buffers_8h_1a526002aa17fac30d010d4d7315d5d81c" prot="public" static="no">
         <name>init</name>
@@ -123,9 +124,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="21" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="21" bodyend="-1"/>
-        <referencedby refid="_serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="44" endline="62">configureSerial</referencedby>
-        <referencedby refid="_user___interface_8h_1a58e473ed40d00e18bd61277428e4d36c" compoundref="_user___interface_8c" startline="61" endline="65">configUSER</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="29" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="_serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="57" endline="75">configureSerial</referencedby>
+        <referencedby refid="_user___interface_8h_1a58e473ed40d00e18bd61277428e4d36c" compoundref="_user___interface_8c" startline="67" endline="71">configUSER</referencedby>
       </memberdef>
       <memberdef kind="define" id="_circular_buffers_8h_1a5a69f707d5405fe875b322c6bfbace46" prot="public" static="no">
         <name>BUFFERLENGTH</name>
@@ -136,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="24" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="32" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="_circular_buffers_8h_1a6e3f4516c9290cae3eaa13d167d5b6fe" prot="public" static="no">
         <name>BUFFERS_H</name>
@@ -147,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="34" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="56" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -155,41 +156,31 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>CircularBuffers.h</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Grant</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Contains<sp/>Circular<sp/>Buffer<sp/>functionality<sp/>and<sp/>structure<sp/>definitions</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>8<sp/>October<sp/>2014,<sp/>10:30<sp/>AM</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//Ensure<sp/>there<sp/>is<sp/>only<sp/>1<sp/>inclusion<sp/>of<sp/>this<sp/>file<sp/>in<sp/>the<sp/>preprocessor<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BUFFERS_H</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//Buffer<sp/>related<sp/>macro<sp/>functionality</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14" refid="_circular_buffers_8h_1ac70e6264441e929fe13460353eb275c8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>incMod(ptr)<sp/>if(ptr==BUFFERLENGTH-1)<sp/>ptr<sp/>=<sp/>0;<sp/>else<sp/>ptr++;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15" refid="_circular_buffers_8h_1aeabcb3d395f687162520f9f72c926edf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>empty(buf)<sp/>(buf.tail<sp/>==<sp/>buf.head)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16" refid="_circular_buffers_8h_1a380cd5dd5680e22e1b6d839a57781661" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>full(buf)<sp/>(buf.head<sp/>==<sp/>(buf.tail<sp/>+<sp/>1)<sp/>%<sp/>BUFFERLENGTH)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17" refid="_circular_buffers_8h_1ab6770f937bcc348970693cd84824bf9f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>peek(buf)<sp/>buf.data[buf.head]</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19" refid="_circular_buffers_8h_1aba30707c86c50590824a646a3ef26fbb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>push(byte,<sp/>buf)<sp/>buf.data[buf.tail]<sp/>=<sp/>byte;<sp/>if(full(buf))<sp/>incMod(buf.head);<sp/>incMod(buf.tail)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20" refid="_circular_buffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>pop(buf)<sp/>buf.data[buf.head];<sp/>if<sp/>(!empty(buf))<sp/>incMod(buf.head)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21" refid="_circular_buffers_8h_1a526002aa17fac30d010d4d7315d5d81c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>init(buf)<sp/>buf.tail<sp/>=<sp/>0;<sp/>buf.head<sp/>=<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//NOTE:<sp/>The<sp/>BUFFERLENGTH<sp/>can<sp/>be<sp/>redefined<sp/>at<sp/>the<sp/>top<sp/>of<sp/>any<sp/>module<sp/>if<sp/>a<sp/>different<sp/>length<sp/>is<sp/>desired</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24" refid="_circular_buffers_8h_1a5a69f707d5405fe875b322c6bfbace46" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUFFERLENGTH<sp/>30</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//Cicular<sp/>Buffer<sp/>data<sp/>type</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27" refid="structcircular_buffer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="29" refid="structcircular_buffer_1a47f7e6109597e5c1c227993c0ce5f560" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structcircular_buffer_1a47f7e6109597e5c1c227993c0ce5f560" kindref="member">head</ref>;</highlight></codeline>
-<codeline lineno="30" refid="structcircular_buffer_1af18a1d7542e277284c4794593b049258" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structcircular_buffer_1af18a1d7542e277284c4794593b049258" kindref="member">tail</ref>;</highlight></codeline>
-<codeline lineno="31" refid="structcircular_buffer_1ad7b57ba90694482456be1fbab7de4aec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>data[<ref refid="_circular_buffers_8h_1a5a69f707d5405fe875b322c6bfbace46" kindref="member">BUFFERLENGTH</ref>];</highlight></codeline>
-<codeline lineno="32"><highlight class="normal">}<sp/><ref refid="structcircular_buffer" kindref="compound">circularBuffer</ref>;</highlight></codeline>
+<codeline lineno="1"></codeline>
+<codeline lineno="18"><highlight class="comment">//Ensure<sp/>there<sp/>is<sp/>only<sp/>1<sp/>inclusion<sp/>of<sp/>this<sp/>file<sp/>in<sp/>the<sp/>preprocessor<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BUFFERS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="_circular_buffers_8h_1ac70e6264441e929fe13460353eb275c8" refkind="member"><highlight class="preprocessor">#define<sp/>incMod(ptr)<sp/>if(ptr==BUFFERLENGTH-1)<sp/>ptr<sp/>=<sp/>0;<sp/>else<sp/>ptr++;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="_circular_buffers_8h_1aeabcb3d395f687162520f9f72c926edf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>empty(buf)<sp/>(buf.tail<sp/>==<sp/>buf.head)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="_circular_buffers_8h_1a380cd5dd5680e22e1b6d839a57781661" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>full(buf)<sp/>(buf.head<sp/>==<sp/>(buf.tail<sp/>+<sp/>1)<sp/>%<sp/>BUFFERLENGTH)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="_circular_buffers_8h_1ab6770f937bcc348970693cd84824bf9f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>peek(buf)<sp/>buf.data[buf.head]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="_circular_buffers_8h_1aba30707c86c50590824a646a3ef26fbb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>push(byte,<sp/>buf)<sp/>buf.data[buf.tail]<sp/>=<sp/>byte;<sp/>if(full(buf))<sp/>incMod(buf.head);<sp/>incMod(buf.tail)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="_circular_buffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>pop(buf)<sp/>buf.data[buf.head];<sp/>if<sp/>(!empty(buf))<sp/>incMod(buf.head)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="_circular_buffers_8h_1a526002aa17fac30d010d4d7315d5d81c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>init(buf)<sp/>buf.tail<sp/>=<sp/>0;<sp/>buf.head<sp/>=<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//NOTE:<sp/>The<sp/>BUFFERLENGTH<sp/>can<sp/>be<sp/>redefined<sp/>at<sp/>the<sp/>top<sp/>of<sp/>any<sp/>module<sp/>if<sp/>a<sp/>different<sp/>length<sp/>is<sp/>desired</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="_circular_buffers_8h_1a5a69f707d5405fe875b322c6bfbace46" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUFFERLENGTH<sp/>30</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34" refid="_circular_buffers_8h_1a6e3f4516c9290cae3eaa13d167d5b6fe" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUFFERS_H<sp/>0</highlight></codeline>
-<codeline lineno="35"><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="49" refid="structcircular_buffer" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51" refid="structcircular_buffer_1a47f7e6109597e5c1c227993c0ce5f560" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structcircular_buffer_1a47f7e6109597e5c1c227993c0ce5f560" kindref="member">head</ref>;</highlight></codeline>
+<codeline lineno="52" refid="structcircular_buffer_1af18a1d7542e277284c4794593b049258" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structcircular_buffer_1af18a1d7542e277284c4794593b049258" kindref="member">tail</ref>;</highlight></codeline>
+<codeline lineno="53" refid="structcircular_buffer_1ad7b57ba90694482456be1fbab7de4aec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>data[<ref refid="_circular_buffers_8h_1a5a69f707d5405fe875b322c6bfbace46" kindref="member">BUFFERLENGTH</ref>];</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}<sp/><ref refid="structcircular_buffer" kindref="compound">circularBuffer</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="_circular_buffers_8h_1a6e3f4516c9290cae3eaa13d167d5b6fe" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUFFERS_H<sp/>0</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h"/>
   </compounddef>

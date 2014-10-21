@@ -59,6 +59,12 @@ Definition at line 35 of file Serial\&.h\&.
 .SS "#define SERIAL_INT   (\fBTX_INT\fP || \fBRC_INT\fP)"
 
 .PP
+ File: \fBSerial\&.h\fP Author: Grant
+.PP
+Description: Contains the public interface for the serial module\&. This file contains all the external declarations, macros and global variables for using and Interfacing with the serial module\&.
+.PP
+Created on 17 September 2014, 3:27 PM 
+.PP
 Definition at line 17 of file Serial\&.h\&.
 .SH "Function Documentation"
 .PP 
@@ -67,7 +73,7 @@ Definition at line 17 of file Serial\&.h\&.
 .PP
  Function: \fBconfigureSerial(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Configures the serial ready for communication
 .PP
@@ -75,7 +81,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 44 of file Serial\&.c\&.
+Definition at line 57 of file Serial\&.c\&.
 .SS "void readString (char *string)"
 
 .PP
@@ -91,13 +97,13 @@ Returns: Received data up to a carriage return
 .PP
 Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the location pointed to by string before calling this function\&. 
 .PP
-Definition at line 191 of file Serial\&.c\&.
+Definition at line 206 of file Serial\&.c\&.
 .SS "char receiveCR (void)"
 
 .PP
  Function: \fBreceiveCR(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Indicates whether a Carriage Return has been received
 .PP
@@ -105,13 +111,13 @@ Arguments: None
 .PP
 Returns: non-zero if CR has been received, zero otherwise 
 .PP
-Definition at line 171 of file Serial\&.c\&.
+Definition at line 186 of file Serial\&.c\&.
 .SS "char receiveEmpty (void)"
 
 .PP
  Function: \fBreceiveEmpty(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Indicates if the receive buffer is empty
 .PP
@@ -119,13 +125,13 @@ Arguments: None
 .PP
 Returns: returns true if the recieve buffer is empty 
 .PP
-Definition at line 121 of file Serial\&.c\&.
+Definition at line 136 of file Serial\&.c\&.
 .SS "char receivePeek (void)"
 
 .PP
  Function: \fBreceivePeek(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Returns the next character in the receive buffer without removing it from the buffer
 .PP
@@ -133,13 +139,13 @@ Arguments: None
 .PP
 Returns: The next received character 
 .PP
-Definition at line 138 of file Serial\&.c\&.
+Definition at line 153 of file Serial\&.c\&.
 .SS "char receivePop (void)"
 
 .PP
  Function: \fBreceivePop(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Pops the next received character from the received buffer
 .PP
@@ -147,13 +153,13 @@ Arguments: None
 .PP
 Returns: The next character from the receive buffer 
 .PP
-Definition at line 154 of file Serial\&.c\&.
+Definition at line 169 of file Serial\&.c\&.
 .SS "void serialISR (void)"
 
 .PP
  Function: \fBserialISR(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Acts as the interrupt service routine for the serial module
 .PP
@@ -161,13 +167,13 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 233 of file Serial\&.c\&.
+Definition at line 248 of file Serial\&.c\&.
 .SS "void transChar (charc)"
 
 .PP
  Function: \fBtransChar(char c)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Transmits a single character
 .PP
@@ -175,21 +181,23 @@ Arguments: c - character to transmit
 .PP
 Returns: None 
 .PP
-Definition at line 101 of file Serial\&.c\&.
+Definition at line 116 of file Serial\&.c\&.
 .SS "void transmit (char *string)"
 
 .PP
  Function: \fBtransmit(char *string)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Begins transmitting the string over serial (interrupt driven)
 .PP
 Arguments: string - pointer to the beginning of the string to transmit
 .PP
-Returns: None 
+Returns: None
 .PP
-Definition at line 75 of file Serial\&.c\&.
+NOTE: Must be Null Terminated! Cannot receive a literal\&. 
+.PP
+Definition at line 90 of file Serial\&.c\&.
 .SS "char transmitted (void)"
 
 .PP
@@ -203,7 +211,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 217 of file Serial\&.c\&.
+Definition at line 232 of file Serial\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

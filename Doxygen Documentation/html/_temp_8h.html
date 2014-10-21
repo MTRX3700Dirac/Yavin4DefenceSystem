@@ -154,7 +154,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_temp_8h_source.html#l00019">19</a> of file <a class="el" href="_temp_8h_source.html">Temp.h</a>.</p>
+<p>Definition at line <a class="el" href="_temp_8h_source.html#l00030">30</a> of file <a class="el" href="_temp_8h_source.html">Temp.h</a>.</p>
 
 </div>
 </div>
@@ -172,8 +172,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<hr/>
+<p> Function: calibrationTemp(unsigned char reference)</p>
+<p>Include: <a class="el" href="_temp_8h.html">Temp.h</a></p>
+<p>Description: calibrates the temperature sensor by updating the calibration offset variable</p>
+<p>Arguments: reference - Reference temperature in deg C</p>
+<p>Returns: None</p>
+<p>Note: This function does not perform a temperature read, but uses the last value. This is because the readTemp function automatically calibrate. </p>
 
-<p>Definition at line <a class="el" href="_temp_8c_source.html#l00117">117</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
+<p>Definition at line <a class="el" href="_temp_8c_source.html#l00126">126</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
 
 </div>
 </div>
@@ -190,8 +197,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<hr/>
+<p> File: <a class="el" href="_temp_8h.html">Temp.h</a> Author: Grant</p>
+<p>Description: Contains all the functionality and variables for the temp module. All unnecessary functions and variables should be shielded from the external program, and interfaced with accessor and mutator functions</p>
+<p>Contains: -Configure function -Read temperature functions -Get (last) temperature (read) function -Calibrate Temperature function</p>
+<p>Created on 17 September 2014, 2:16 PM</p>
+<hr/>
+<p> Function: <a class="el" href="_temp_8c.html#af6785da0c9b3c637b09522617d3f9dba">configureTemp(void)</a></p>
+<p>Include: Temp</p>
+<p>Description: Configures the temperature module for use</p>
+<p>Arguments: None</p>
+<p>Returns: None </p>
 
-<p>Definition at line <a class="el" href="_temp_8c_source.html#l00027">27</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
+<p>Definition at line <a class="el" href="_temp_8c_source.html#l00036">36</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
 
 </div>
 </div>
@@ -208,8 +226,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<hr/>
+<p> Function: calibrationTemp(unsigned char reference)</p>
+<p>Include: <a class="el" href="_temp_8h.html">Temp.h</a></p>
+<p>Description: calibrates the temperature sensor by updating the calibration offset variable</p>
+<p>Arguments: reference - Reference temperature in deg C</p>
+<p>Returns: None </p>
 
-<p>Definition at line <a class="el" href="_temp_8c_source.html#l00134">134</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
+<p>Definition at line <a class="el" href="_temp_8c_source.html#l00143">143</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
 
 </div>
 </div>
@@ -226,8 +250,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<hr/>
+<p> Function: <a class="el" href="_temp_8c.html#a5b64a66aae4a5a3d92a1711956fb4eb8">rawTemp(void)</a></p>
+<p>Include: <a class="el" href="_temp_8h.html">Temp.h</a></p>
+<p>Description: Returns the raw (uncalibrated temperature)</p>
+<p>Arguments: None</p>
+<p>Returns: Temp (in deg celsius) as an unsigned char </p>
 
-<p>Definition at line <a class="el" href="_temp_8c_source.html#l00097">97</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
+<p>Definition at line <a class="el" href="_temp_8c_source.html#l00106">106</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
 
 </div>
 </div>
@@ -244,8 +274,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<hr/>
+<p> Function: <a class="el" href="_temp_8c.html#afd08db2b1a6d6af19e39f10dc453332c">readTemp(void)</a></p>
+<p>Include: <a class="el" href="_temp_8h.html">Temp.h</a></p>
+<p>Description: Reads the temperature from the TEMP sensor</p>
+<p>Arguments: None</p>
+<p>Returns: Temp (in deg celsius) as an unsigned char </p>
 
-<p>Definition at line <a class="el" href="_temp_8c_source.html#l00075">75</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
+<p>Definition at line <a class="el" href="_temp_8c_source.html#l00084">84</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
 
 <p><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
@@ -284,8 +320,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<hr/>
+<p> Function: <a class="el" href="_temp_8c.html#a4946ccbc1990e831667bffded1147c4f">readTempx2(void)</a></p>
+<p>Include: <a class="el" href="_temp_8h.html">Temp.h</a></p>
+<p>Description: Reads the temperature from the Temp sensor</p>
+<p>Arguments: None</p>
+<p>Returns: temp x 2 (in deg celsius) as an unsigned char </p>
 
-<p>Definition at line <a class="el" href="_temp_8c_source.html#l00043">43</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
+<p>Definition at line <a class="el" href="_temp_8c_source.html#l00052">52</a> of file <a class="el" href="_temp_8c_source.html">Temp.c</a>.</p>
 
 <p><div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -306,7 +348,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_temp_8h.html">Temp.h</a></li>
-    <li class="footer">Generated on Tue Oct 21 2014 13:34:11 for Yavin IV Death Star Tracker by
+    <li class="footer">Generated on Tue Oct 21 2014 15:39:06 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

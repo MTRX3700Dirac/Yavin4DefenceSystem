@@ -12,12 +12,12 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{structcircular_buffer}{circular\+Buffer}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Stores bytes of data in a circular buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \hyperlink{_circular_buffers_8h_ac70e6264441e929fe13460353eb275c8}{inc\+Mod}(ptr)~if(ptr==\hyperlink{_circular_buffers_8h_a5a69f707d5405fe875b322c6bfbace46}{B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H}-\/1) ptr = 0; else ptr++;
-\item 
+\begin{DoxyCompactList}\small\item\em Buffer related macro functionality. \end{DoxyCompactList}\item 
 \#define \hyperlink{_circular_buffers_8h_aeabcb3d395f687162520f9f72c926edf}{empty}(buf)~(buf.\+tail == buf.\+head)
 \item 
 \#define \hyperlink{_circular_buffers_8h_a380cd5dd5680e22e1b6d839a57781661}{full}(buf)~(buf.\+head == (buf.\+tail + 1) \% \hyperlink{_circular_buffers_8h_a5a69f707d5405fe875b322c6bfbace46}{B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H})
@@ -42,14 +42,14 @@ struct \hyperlink{structcircular_buffer}{circular\+Buffer}
 \subsubsection[{B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H~30}}\label{_circular_buffers_8h_a5a69f707d5405fe875b322c6bfbace46}
 
 
-Definition at line 24 of file Circular\+Buffers.\+h.
+Definition at line 32 of file Circular\+Buffers.\+h.
 
 \hypertarget{_circular_buffers_8h_a6e3f4516c9290cae3eaa13d167d5b6fe}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!B\+U\+F\+F\+E\+R\+S\+\_\+\+H@{B\+U\+F\+F\+E\+R\+S\+\_\+\+H}}
 \index{B\+U\+F\+F\+E\+R\+S\+\_\+\+H@{B\+U\+F\+F\+E\+R\+S\+\_\+\+H}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
 \subsubsection[{B\+U\+F\+F\+E\+R\+S\+\_\+\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+U\+F\+F\+E\+R\+S\+\_\+\+H~0}}\label{_circular_buffers_8h_a6e3f4516c9290cae3eaa13d167d5b6fe}
 
 
-Definition at line 34 of file Circular\+Buffers.\+h.
+Definition at line 56 of file Circular\+Buffers.\+h.
 
 \hypertarget{_circular_buffers_8h_aeabcb3d395f687162520f9f72c926edf}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!empty@{empty}}
 \index{empty@{empty}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
@@ -60,7 +60,7 @@ Definition at line 34 of file Circular\+Buffers.\+h.
 )~(buf.\+tail == buf.\+head)}}\label{_circular_buffers_8h_aeabcb3d395f687162520f9f72c926edf}
 
 
-Definition at line 15 of file Circular\+Buffers.\+h.
+Definition at line 23 of file Circular\+Buffers.\+h.
 
 \hypertarget{_circular_buffers_8h_a380cd5dd5680e22e1b6d839a57781661}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!full@{full}}
 \index{full@{full}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
@@ -71,7 +71,7 @@ Definition at line 15 of file Circular\+Buffers.\+h.
 )~(buf.\+head == (buf.\+tail + 1) \% {\bf B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H})}}\label{_circular_buffers_8h_a380cd5dd5680e22e1b6d839a57781661}
 
 
-Definition at line 16 of file Circular\+Buffers.\+h.
+Definition at line 24 of file Circular\+Buffers.\+h.
 
 \hypertarget{_circular_buffers_8h_ac70e6264441e929fe13460353eb275c8}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!inc\+Mod@{inc\+Mod}}
 \index{inc\+Mod@{inc\+Mod}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
@@ -82,7 +82,19 @@ Definition at line 16 of file Circular\+Buffers.\+h.
 )~if(ptr=={\bf B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H}-\/1) ptr = 0; else ptr++;}}\label{_circular_buffers_8h_ac70e6264441e929fe13460353eb275c8}
 
 
-Definition at line 14 of file Circular\+Buffers.\+h.
+Buffer related macro functionality. 
+
+
+
+ File\+: \hyperlink{_circular_buffers_8h}{Circular\+Buffers.\+h} Author\+: Grant
+
+Description\+: Contains Circular Buffer functionality and structure definitions. This allows Circular Buffers to be used in any file by simply including this header. Furthermore, circular buffer functionality can be altered on a program level.
+
+Contains\+: -\/\+Definition of Circular\+Buffer type -\/\+Peek, pop, push and init functionality -\/\+Empty, full, queries
+
+Created on 8 October 2014, 10\+:30 A\+M 
+
+Definition at line 22 of file Circular\+Buffers.\+h.
 
 \hypertarget{_circular_buffers_8h_a526002aa17fac30d010d4d7315d5d81c}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!init@{init}}
 \index{init@{init}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
@@ -93,7 +105,7 @@ Definition at line 14 of file Circular\+Buffers.\+h.
 )~buf.\+tail = 0; buf.\+head = 0}}\label{_circular_buffers_8h_a526002aa17fac30d010d4d7315d5d81c}
 
 
-Definition at line 21 of file Circular\+Buffers.\+h.
+Definition at line 29 of file Circular\+Buffers.\+h.
 
 \hypertarget{_circular_buffers_8h_ab6770f937bcc348970693cd84824bf9f}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!peek@{peek}}
 \index{peek@{peek}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
@@ -104,7 +116,7 @@ Definition at line 21 of file Circular\+Buffers.\+h.
 )~buf.\+data\mbox{[}buf.\+head\mbox{]}}}\label{_circular_buffers_8h_ab6770f937bcc348970693cd84824bf9f}
 
 
-Definition at line 17 of file Circular\+Buffers.\+h.
+Definition at line 25 of file Circular\+Buffers.\+h.
 
 \hypertarget{_circular_buffers_8h_aea34ae72df51f27dbb0562f5d9a23de0}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!pop@{pop}}
 \index{pop@{pop}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
@@ -115,7 +127,7 @@ Definition at line 17 of file Circular\+Buffers.\+h.
 )~buf.\+data\mbox{[}buf.\+head\mbox{]}; if (!{\bf empty}(buf)) {\bf inc\+Mod}(buf.\+head)}}\label{_circular_buffers_8h_aea34ae72df51f27dbb0562f5d9a23de0}
 
 
-Definition at line 20 of file Circular\+Buffers.\+h.
+Definition at line 28 of file Circular\+Buffers.\+h.
 
 \hypertarget{_circular_buffers_8h_aba30707c86c50590824a646a3ef26fbb}{\index{Circular\+Buffers.\+h@{Circular\+Buffers.\+h}!push@{push}}
 \index{push@{push}!Circular\+Buffers.\+h@{Circular\+Buffers.\+h}}
@@ -127,5 +139,5 @@ Definition at line 20 of file Circular\+Buffers.\+h.
 )~buf.\+data\mbox{[}buf.\+tail\mbox{]} = byte; if({\bf full}(buf)) {\bf inc\+Mod}(buf.\+head); {\bf inc\+Mod}(buf.\+tail)}}\label{_circular_buffers_8h_aba30707c86c50590824a646a3ef26fbb}
 
 
-Definition at line 19 of file Circular\+Buffers.\+h.
+Definition at line 27 of file Circular\+Buffers.\+h.
 

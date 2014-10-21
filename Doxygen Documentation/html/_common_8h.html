@@ -145,10 +145,13 @@ $(document).ready(function(){initNavTree('_common_8h.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_direction.html">Direction</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores an inclination and azimuth.  <a href="struct_direction.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tracking_data.html">TrackingData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the current target information.  <a href="struct_tracking_data.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsystem_state.html">systemState</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the current state of the system.  <a href="structsystem_state.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -156,10 +159,12 @@ Macros</h2></td></tr>
 <tr class="memitem:ad0d718ce41d188a939567abd92667796"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#ad0d718ce41d188a939567abd92667796">MNML</a></td></tr>
 <tr class="separator:ad0d718ce41d188a939567abd92667796"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9fa804805fca2632643680804f7e911"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#ad9fa804805fca2632643680804f7e911">NEXT_STATE</a>(s, state)&#160;&#160;&#160;state.previous = state.current; state.current = s</td></tr>
+<tr class="memdesc:ad9fa804805fca2632643680804f7e911"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macros to change the state of the system.  <a href="#ad9fa804805fca2632643680804f7e911">More...</a><br /></td></tr>
 <tr class="separator:ad9fa804805fca2632643680804f7e911"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26a5416cb7bb43bd2f2eaaa7feaff84d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a26a5416cb7bb43bd2f2eaaa7feaff84d">NEXT_STATE_PTR</a>(s, state)&#160;&#160;&#160;state-&gt;previous = state-&gt;current; state-&gt;current = s</td></tr>
 <tr class="separator:a26a5416cb7bb43bd2f2eaaa7feaff84d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d6bb91285c504f7a5a882961cf405a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a4d6bb91285c504f7a5a882961cf405a9">DIV_2</a>(v)&#160;&#160;&#160;((v) &gt;&gt; 1)</td></tr>
+<tr class="memdesc:a4d6bb91285c504f7a5a882961cf405a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efficient Division macros based on bit shifting, Cannot be used on negative numbers.  <a href="#a4d6bb91285c504f7a5a882961cf405a9">More...</a><br /></td></tr>
 <tr class="separator:a4d6bb91285c504f7a5a882961cf405a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe112bea83dc5d8fb3a5a7ccc80b7abb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#abe112bea83dc5d8fb3a5a7ccc80b7abb">DIV_4</a>(v)&#160;&#160;&#160;((v) &gt;&gt; 2)</td></tr>
 <tr class="separator:abe112bea83dc5d8fb3a5a7ccc80b7abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,14 +189,17 @@ Macros</h2></td></tr>
 <tr class="memitem:a9469c415aff989522dac534ab8adb35e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a9469c415aff989522dac534ab8adb35e">DIV_65536</a>(v)&#160;&#160;&#160;((v) &gt;&gt; 16)</td></tr>
 <tr class="separator:a9469c415aff989522dac534ab8adb35e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d9d454d4b9f2ff8106d5199ac0d0186"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a5d9d454d4b9f2ff8106d5199ac0d0186">SWAP</a>(x, y)&#160;&#160;&#160;(y = (y ^ (x = (x ^ (y = (x ^ y))))))</td></tr>
+<tr class="memdesc:a5d9d454d4b9f2ff8106d5199ac0d0186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the values in two variables.  <a href="#a5d9d454d4b9f2ff8106d5199ac0d0186">More...</a><br /></td></tr>
 <tr class="separator:a5d9d454d4b9f2ff8106d5199ac0d0186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b107d0db5d9abf4a7219b5d13d2c54e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a5b107d0db5d9abf4a7219b5d13d2c54e">ADC_IR_READ</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a5b107d0db5d9abf4a7219b5d13d2c54e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC Channel Select macros.  <a href="#a5b107d0db5d9abf4a7219b5d13d2c54e">More...</a><br /></td></tr>
 <tr class="separator:a5b107d0db5d9abf4a7219b5d13d2c54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a135151cc09e1094dbb0163c3d696e630"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a135151cc09e1094dbb0163c3d696e630">ADC_TEMP_READ</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a135151cc09e1094dbb0163c3d696e630"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1518840d35b90121383f93c00eba9164"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a1518840d35b90121383f93c00eba9164">ADC_DIAL_READ</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:a1518840d35b90121383f93c00eba9164"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef3509d0d4bc8291df1b76f894a1e251"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#aef3509d0d4bc8291df1b76f894a1e251">TX_INT</a>&#160;&#160;&#160;(<a class="el" href="p18f4520_8h.html#a045c6555e7e82fcf68e608d4404fb9ed">PIR1bits.TXIF</a> &amp;&amp; <a class="el" href="p18f4520_8h.html#ae7b3b4752a0a4b6c084f1599ea98e724">PIE1bits.TXIE</a>)</td></tr>
+<tr class="memdesc:aef3509d0d4bc8291df1b76f894a1e251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt macros.  <a href="#aef3509d0d4bc8291df1b76f894a1e251">More...</a><br /></td></tr>
 <tr class="separator:aef3509d0d4bc8291df1b76f894a1e251"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62ad39277340a9f95c1464e4a4b1b5a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a62ad39277340a9f95c1464e4a4b1b5a1">RC_INT</a>&#160;&#160;&#160;(<a class="el" href="p18f4520_8h.html#a8ff1127552738fc483a7e1887045e8d2">PIR1bits.RCIF</a> &amp;&amp; <a class="el" href="p18f4520_8h.html#a756f5bf99764eb500a4a22b0693efb03">PIE1bits.RCIE</a>)</td></tr>
 <tr class="separator:a62ad39277340a9f95c1464e4a4b1b5a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,6 +232,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a4e461245300e8ea7e5c6af0741a33855"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a4e461245300e8ea7e5c6af0741a33855">CCP2_CLEAR</a>&#160;&#160;&#160;(<a class="el" href="p18f4520_8h.html#a7d689151681a8a50c953ecefd618eeb4">PIR2bits.CCP2IF</a> = 0)</td></tr>
 <tr class="separator:a4e461245300e8ea7e5c6af0741a33855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3be7ef61d339af381862a81d4b363efb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a3be7ef61d339af381862a81d4b363efb">CLOCK</a>&#160;&#160;&#160;10000000</td></tr>
+<tr class="memdesc:a3be7ef61d339af381862a81d4b363efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dfine the clock rate and FOSC_4.  <a href="#a3be7ef61d339af381862a81d4b363efb">More...</a><br /></td></tr>
 <tr class="separator:a3be7ef61d339af381862a81d4b363efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a644329678dec72e39b8847963e59c35d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a644329678dec72e39b8847963e59c35d">FOSC_4</a>&#160;&#160;&#160;2500000</td></tr>
 <tr class="separator:a644329678dec72e39b8847963e59c35d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -241,12 +250,14 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="_common_8h.html#a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262">CLOSE_RANGE</a>
 <br />
  }</td></tr>
+<tr class="memdesc:a2db986326a654991cce9b1c2b1670677"><td class="mdescLeft">&#160;</td><td class="mdescRight">The different types of tracking possible depending on which sensors observe the target.  <a href="_common_8h.html#a2db986326a654991cce9b1c2b1670677">More...</a><br /></td></tr>
 <tr class="separator:a2db986326a654991cce9b1c2b1670677"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05931287b056487cf89495f39026fbe1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a05931287b056487cf89495f39026fbe1">possible_states</a> { <a class="el" href="_common_8h.html#a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647">UNDEF</a>, 
 <a class="el" href="_common_8h.html#a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36">INIT</a>, 
 <a class="el" href="_common_8h.html#a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07">SRCH</a>, 
 <a class="el" href="_common_8h.html#a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279">TRCK</a>
  }</td></tr>
+<tr class="memdesc:a05931287b056487cf89495f39026fbe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the possible states the system can be in.  <a href="_common_8h.html#a05931287b056487cf89495f39026fbe1">More...</a><br /></td></tr>
 <tr class="separator:a05931287b056487cf89495f39026fbe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -260,7 +271,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00091">91</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00141">141</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -274,7 +285,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00105">105</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00155">155</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -288,7 +299,9 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00089">89</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>ADC Channel Select macros. </p>
+
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00139">139</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -302,7 +315,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00090">90</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00140">140</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -316,7 +329,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00107">107</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00157">157</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -330,7 +343,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00110">110</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00160">160</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -344,7 +357,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00096">96</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00146">146</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -358,7 +371,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00111">111</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00161">161</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -372,7 +385,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00097">97</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00147">147</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -386,7 +399,9 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00114">114</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Dfine the clock rate and FOSC_4. </p>
+
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00165">165</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -400,7 +415,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00125">125</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00176">176</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -418,7 +433,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00082">82</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00131">131</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -436,7 +451,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00079">79</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00128">128</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -454,7 +469,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00076">76</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00125">125</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -472,7 +487,9 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00073">73</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Efficient Division macros based on bit shifting, Cannot be used on negative numbers. </p>
+
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00122">122</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -490,7 +507,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00080">80</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00129">129</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -508,7 +525,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00077">77</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00126">126</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -526,7 +543,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00074">74</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00123">123</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -544,7 +561,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00083">83</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00132">132</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -562,7 +579,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00081">81</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00130">130</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -580,7 +597,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00078">78</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00127">127</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -598,7 +615,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00084">84</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00133">133</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -616,7 +633,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00075">75</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00124">124</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -630,7 +647,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00115">115</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00166">166</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -644,7 +661,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00098">98</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00148">148</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -658,7 +675,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00108">108</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00158">158</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -671,8 +688,13 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<hr/>
+<p> File: <a class="el" href="_common_8h.html">Common.h</a> Author: Grant</p>
+<p>Description: Contains all program scope definitions, declarations and inclusions. This header should be included in all source files by default.</p>
+<p>Contains: -PIC18F family library headers -Direction struct typedef -TrackingData struct typedef -systemState struct typedef -system state macro functionality -TargetState enumeration -Interrupt flag macros -Division macros -Clock frequency definitions -SWAP macro functionality</p>
+<p>Created on 11 September 2014, 12:24 PM </p>
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00012">12</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00028">28</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -700,7 +722,9 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00062">62</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Macros to change the state of the system. </p>
+
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00100">100</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -728,7 +752,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00063">63</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00101">101</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -742,7 +766,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00099">99</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00149">149</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -756,7 +780,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00095">95</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00145">145</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -770,7 +794,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00106">106</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00156">156</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -798,7 +822,9 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00086">86</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Swaps the values in two variables. </p>
+
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00136">136</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -812,7 +838,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00102">102</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00152">152</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -826,7 +852,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00103">103</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00153">153</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -840,7 +866,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00100">100</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00150">150</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -854,7 +880,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00104">104</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00154">154</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -868,7 +894,9 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00094">94</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Interrupt macros. </p>
+
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00144">144</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -882,6 +910,8 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Define the possible states the system can be in. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647"></a>UNDEF&#160;</td><td class="fielddoc">
 </td></tr>
@@ -893,7 +923,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00066">66</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00104">104</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -906,6 +936,8 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The different types of tracking possible depending on which sensors observe the target. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2"></a>NO_TARGET&#160;</td><td class="fielddoc">
 </td></tr>
@@ -919,7 +951,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_common_8h_source.html#l00058">58</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="_common_8h_source.html#l00096">96</a> of file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -929,7 +961,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_common_8h.html">Common.h</a></li>
-    <li class="footer">Generated on Tue Oct 21 2014 13:34:08 for Yavin IV Death Star Tracker by
+    <li class="footer">Generated on Tue Oct 21 2014 15:39:03 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

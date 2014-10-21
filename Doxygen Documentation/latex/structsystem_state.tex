@@ -3,6 +3,11 @@
 }
 
 
+Stores the current state of the system.  
+
+
+
+
 {\ttfamily \#include $<$Common.\+h$>$}
 
 \subsection*{Data Fields}
@@ -15,9 +20,15 @@
 
 
 \subsection{Detailed Description}
+Stores the current state of the system. 
 
 
-Definition at line 67 of file Common.\+h.
+
+ typedef of \hyperlink{structsystem_state}{system\+State} struct
+
+Description\+: Stores which state the system is currently in, as defined by the possible\+\_\+states enumeration. Also stores the previous system state so the system knows if this is the first iteration of the state 
+
+Definition at line 116 of file Common.\+h.
 
 
 
@@ -27,14 +38,14 @@ Definition at line 67 of file Common.\+h.
 \subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}{\bf possible\+\_\+states} current}}\label{structsystem_state_a18284a4a782e71c070e1d2e80734509d}
 
 
-Definition at line 68 of file Common.\+h.
+Definition at line 117 of file Common.\+h.
 
 \hypertarget{structsystem_state_af2f2716b4afa23c8b53a9351a0924b6b}{\index{system\+State@{system\+State}!previous@{previous}}
 \index{previous@{previous}!system\+State@{system\+State}}
 \subsubsection[{previous}]{\setlength{\rightskip}{0pt plus 5cm}{\bf possible\+\_\+states} previous}}\label{structsystem_state_af2f2716b4afa23c8b53a9351a0924b6b}
 
 
-Definition at line 69 of file Common.\+h.
+Definition at line 118 of file Common.\+h.
 
 
 

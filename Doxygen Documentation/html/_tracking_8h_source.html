@@ -108,42 +108,34 @@ $(document).ready(function(){initNavTree('_tracking_8h_source.html','');});
 <div class="title">Tracking.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_tracking_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * File:   Tracking.h</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Author: Grant</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Description: Public interface function for the Tracking Module</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * Created on 15 September 2014, 1:41 PM</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//Ensure that there is only 1 inclusion of this file in the preprocessor execution</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef TRACK_H</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//#define TRACK_INT (CCP2_INT)</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="_tracking_8h.html#a6ca0b1676fe27fee5166ac22ce6eb3dc">   14</a></span>&#160;<span class="preprocessor">#define TRACK_INT 0</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//External declarations for the public access functions</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6">configureTracking</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9">search</a>(<a class="code" href="structsystem_state.html">systemState</a> *state);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <a class="code" href="struct_tracking_data.html">TrackingData</a> <a class="code" href="_tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30">track</a>(<a class="code" href="structsystem_state.html">systemState</a> *state);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_tracking_8h.html#ae3fa9fb57cd18477215f58aa448ce9d1">trackingISR</a>(<span class="keywordtype">void</span>);</div>
+<a href="_tracking_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//Ensure that there is only 1 inclusion of this file in the preprocessor execution</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef TRACK_H</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="_tracking_8h.html#ade0c81a4e99033806e084f2fa298575c">   22</a></span>&#160;<span class="preprocessor">#define TRACK_H</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="structsystem_state_html"><div class="ttname"><a href="structsystem_state.html">systemState</a></div><div class="ttdef"><b>Definition:</b> <a href="_common_8h_source.html#l00067">Common.h:67</a></div></div>
-<div class="ttc" id="struct_tracking_data_html"><div class="ttname"><a href="struct_tracking_data.html">TrackingData</a></div><div class="ttdef"><b>Definition:</b> <a href="_common_8h_source.html#l00050">Common.h:50</a></div></div>
-<div class="ttc" id="_tracking_8h_html_a4f0ebbcddf842d008fbfebb705374c30"><div class="ttname"><a href="_tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30">track</a></div><div class="ttdeci">TrackingData track(systemState *state)</div><div class="ttdef"><b>Definition:</b> <a href="_tracking_8c_source.html#l00130">Tracking.c:130</a></div></div>
-<div class="ttc" id="_tracking_8h_html_ac9b1c5bae39806310b74e2f69d9ee3b6"><div class="ttname"><a href="_tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6">configureTracking</a></div><div class="ttdeci">void configureTracking(void)</div><div class="ttdef"><b>Definition:</b> <a href="_tracking_8c_source.html#l00032">Tracking.c:32</a></div></div>
-<div class="ttc" id="_tracking_8h_html_ae3fa9fb57cd18477215f58aa448ce9d1"><div class="ttname"><a href="_tracking_8h.html#ae3fa9fb57cd18477215f58aa448ce9d1">trackingISR</a></div><div class="ttdeci">void trackingISR(void)</div><div class="ttdef"><b>Definition:</b> <a href="_tracking_8c_source.html#l00111">Tracking.c:111</a></div></div>
-<div class="ttc" id="_tracking_8h_html_ac80b505821d79e98e9108b12d12c5db9"><div class="ttname"><a href="_tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9">search</a></div><div class="ttdeci">void search(systemState *state)</div><div class="ttdef"><b>Definition:</b> <a href="_tracking_8c_source.html#l00050">Tracking.c:50</a></div></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//#define TRACK_INT (CCP2_INT)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="_tracking_8h.html#a6ca0b1676fe27fee5166ac22ce6eb3dc">   23</a></span>&#160;<span class="preprocessor">#define TRACK_INT 0</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//External declarations for the public access functions</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6">configureTracking</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9">search</a>(<a class="code" href="structsystem_state.html">systemState</a> *state);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <a class="code" href="struct_tracking_data.html">TrackingData</a> <a class="code" href="_tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30">track</a>(<a class="code" href="structsystem_state.html">systemState</a> *state);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_tracking_8h.html#ae3fa9fb57cd18477215f58aa448ce9d1">trackingISR</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="_tracking_8h.html#ade0c81a4e99033806e084f2fa298575c">   31</a></span>&#160;<span class="preprocessor">#define TRACK_H</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="structsystem_state_html"><div class="ttname"><a href="structsystem_state.html">systemState</a></div><div class="ttdoc">Stores the current state of the system. </div><div class="ttdef"><b>Definition:</b> <a href="_common_8h_source.html#l00116">Common.h:116</a></div></div>
+<div class="ttc" id="struct_tracking_data_html"><div class="ttname"><a href="struct_tracking_data.html">TrackingData</a></div><div class="ttdoc">Stores the current target information. </div><div class="ttdef"><b>Definition:</b> <a href="_common_8h_source.html#l00087">Common.h:87</a></div></div>
+<div class="ttc" id="_tracking_8h_html_a4f0ebbcddf842d008fbfebb705374c30"><div class="ttname"><a href="_tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30">track</a></div><div class="ttdeci">TrackingData track(systemState *state)</div><div class="ttdef"><b>Definition:</b> <a href="_tracking_8c_source.html#l00139">Tracking.c:139</a></div></div>
+<div class="ttc" id="_tracking_8h_html_ac9b1c5bae39806310b74e2f69d9ee3b6"><div class="ttname"><a href="_tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6">configureTracking</a></div><div class="ttdeci">void configureTracking(void)</div><div class="ttdef"><b>Definition:</b> <a href="_tracking_8c_source.html#l00041">Tracking.c:41</a></div></div>
+<div class="ttc" id="_tracking_8h_html_ae3fa9fb57cd18477215f58aa448ce9d1"><div class="ttname"><a href="_tracking_8h.html#ae3fa9fb57cd18477215f58aa448ce9d1">trackingISR</a></div><div class="ttdeci">void trackingISR(void)</div><div class="ttdef"><b>Definition:</b> <a href="_tracking_8c_source.html#l00120">Tracking.c:120</a></div></div>
+<div class="ttc" id="_tracking_8h_html_ac80b505821d79e98e9108b12d12c5db9"><div class="ttname"><a href="_tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9">search</a></div><div class="ttdeci">void search(systemState *state)</div><div class="ttdef"><b>Definition:</b> <a href="_tracking_8c_source.html#l00059">Tracking.c:59</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_tracking_8h.html">Tracking.h</a></li>
-    <li class="footer">Generated on Tue Oct 21 2014 13:34:08 for Yavin IV Death Star Tracker by
+    <li class="footer">Generated on Tue Oct 21 2014 15:39:03 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

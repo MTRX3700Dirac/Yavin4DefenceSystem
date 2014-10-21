@@ -378,9 +378,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="60" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="60" bodyend="69"/>
-        <references refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="44" endline="62">configureSerial</references>
-        <references refid="_l_c_d_8c_1aaab6233be65b7399b3422eee9782508c" compoundref="_l_c_d_8c" startline="23" endline="26">configLCD</references>
-        <references refid="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" compoundref="_user___interface_8c" startline="61" endline="65">configUSER</references>
+        <references refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="57" endline="75">configureSerial</references>
+        <references refid="_l_c_d_8c_1aaab6233be65b7399b3422eee9782508c" compoundref="_l_c_d_8c" startline="28" endline="31">configLCD</references>
+        <references refid="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" compoundref="_user___interface_8c" startline="67" endline="71">configUSER</references>
       </memberdef>
       <memberdef kind="function" id="_menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -398,12 +398,12 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="87" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="87" bodyend="111"/>
-        <references refid="_serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="_serial_8c" startline="121" endline="124">receiveEmpty</references>
-        <references refid="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="_user___interface_8c" startline="109" endline="112">userEmpty</references>
+        <references refid="_serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="_serial_8c" startline="136" endline="139">receiveEmpty</references>
+        <references refid="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="_user___interface_8c" startline="115" endline="118">userEmpty</references>
         <references refid="struct_sub_menu_1a1dae2f8dad8e2d2a30b13ee69ea542db" compoundref="_menusystem2_8c" startline="18">SubMenu::numericFunction</references>
-        <references refid="_serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="_serial_8c" startline="171" endline="174">receiveCR</references>
-        <references refid="_serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="191" endline="203">readString</references>
-        <references refid="_serial_8c_1abb74ccb0bd81e0e4779854c93851c804" compoundref="_serial_8c" startline="154" endline="158">receivePop</references>
+        <references refid="_serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="_serial_8c" startline="186" endline="189">receiveCR</references>
+        <references refid="_serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="206" endline="218">readString</references>
+        <references refid="_serial_8c_1abb74ccb0bd81e0e4779854c93851c804" compoundref="_serial_8c" startline="169" endline="173">receivePop</references>
       </memberdef>
       <memberdef kind="function" id="_menusystem2_8c_1a0f329206447b1f40e6f730b346aaaf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

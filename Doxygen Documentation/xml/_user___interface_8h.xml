@@ -78,7 +78,7 @@
  Function: <ref refid="_user___interface_8c_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display(TrackingData data)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: displays the current tracking information</para><para>Arguments: data - Struct which contains all known data concerning the The position of the target. A Range of 0 indicates that no target was observed.</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="18" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="29" bodyend="32"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="18" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="35" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="_user___interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -95,7 +95,7 @@
  Function: <ref refid="_user___interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: Acts as the ISR for the User_interface module</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="19" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="45" bodyend="48"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="19" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="51" bodyend="54"/>
         <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="88" endline="107">lowISR</referencedby>
         <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="122" endline="141">highISR</referencedby>
       </memberdef>
@@ -114,8 +114,8 @@
  Function: <ref refid="_user___interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: Configures the user interface for use</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="61" bodyend="65"/>
-        <references refid="_circular_buffers_8h_1a526002aa17fac30d010d4d7315d5d81c" compoundref="_circular_buffers_8h" startline="21">init</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="67" bodyend="71"/>
+        <references refid="_circular_buffers_8h_1a526002aa17fac30d010d4d7315d5d81c" compoundref="_circular_buffers_8h" startline="29">init</references>
         <referencedby refid="_menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="_menusystem_8c" startline="148" endline="153">initialiseMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="_user___interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -133,8 +133,8 @@
  Function: <ref refid="_user___interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: returns non-zero if the user interface buffer is empty (i.e. no user input has been detected)</para><para>Arguments: None</para><para>Returns: if the user input buffer is empty </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="22" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="109" bodyend="112"/>
-        <references refid="_circular_buffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="_circular_buffers_8h" startline="15">empty</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="22" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="115" bodyend="118"/>
+        <references refid="_circular_buffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="_circular_buffers_8h" startline="23">empty</references>
         <referencedby refid="_menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="_menusystem_8c" startline="171" endline="175">serviceMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="_user___interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -152,8 +152,8 @@
  Function: <ref refid="_user___interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: pops a character from the user interface receive buffer</para><para>Arguments: None</para><para>Returns: a character poped from the user Interface buffer </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="125" bodyend="130"/>
-        <references refid="_circular_buffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="_circular_buffers_8h" startline="20">pop</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="131" bodyend="136"/>
+        <references refid="_circular_buffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="_circular_buffers_8h" startline="28">pop</references>
       </memberdef>
       <memberdef kind="function" id="_user___interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -170,8 +170,8 @@
  Function: <ref refid="_user___interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek(void)</ref></para><para>Include: <ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: returns a character in the user_Interface buffer without removing it from the buffer</para><para>Arguments: None</para><para>Returns: a character in the user interface buffer </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="24" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="144" bodyend="147"/>
-        <references refid="_circular_buffers_8h_1ab6770f937bcc348970693cd84824bf9f" compoundref="_circular_buffers_8h" startline="17">peek</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="24" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="150" bodyend="153"/>
+        <references refid="_circular_buffers_8h_1ab6770f937bcc348970693cd84824bf9f" compoundref="_circular_buffers_8h" startline="25">peek</references>
       </memberdef>
       </sectiondef>
     <briefdescription>

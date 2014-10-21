@@ -393,7 +393,7 @@
         <inbodydescription>
 <para>Call the serial configuration to enable USART Subsysten </para>        </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="49" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="195" bodyend="228"/>
-        <references refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="44" endline="62">configureSerial</references>
+        <references refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="57" endline="75">configureSerial</references>
         <references refid="_menusystem_8c_1a59e24be624462b0016d40f9ada6bbb69" compoundref="_menusystem_8c" startline="21">top1</references>
         <references refid="_menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" compoundref="_menusystem_8c" startline="96" endline="133">topmenu</references>
         <references refid="_menusystem_8c_1ac6732d277bcb2f666784f4f3f5e17f39" compoundref="_menusystem_8c" startline="22">auto11</references>
@@ -421,9 +421,9 @@
 <para>Display the menu screen via serial wait for/get serial input make decision based on input</para><para>Wait until the receive buffer is no longer empty</para><para>Indicating that a command has been passed</para><para>Reset status flag</para><para>Get the input string and store it in </para><para>test </para>        </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="50" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="96" bodyend="133"/>
         <references refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="78" endline="94">topmenudisp</references>
-        <references refid="_serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="_serial_8c" startline="121" endline="124">receiveEmpty</references>
-        <references refid="_serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="191" endline="203">readString</references>
-        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</references>
+        <references refid="_serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="_serial_8c" startline="136" endline="139">receiveEmpty</references>
+        <references refid="_serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="_serial_8c" startline="206" endline="218">readString</references>
+        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="90" endline="103">transmit</references>
         <referencedby refid="_menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="_menusystem_8c" startline="195" endline="228">menu</referencedby>
       </memberdef>
       <memberdef kind="function" id="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -445,7 +445,7 @@
         <references refid="_menusystem_8c_1a64f9f90ece96c7bab4aee3deacf170e0" compoundref="_menusystem_8c" startline="19">height</references>
         <references refid="_menusystem_8c_1a4bb64cc936229611900f25e483381dc7" compoundref="_menusystem_8c" startline="63" endline="68">filler</references>
         <references refid="_menusystem_8c_1a667b04d7fb6ef46db4da4af554c5b6f7" compoundref="_menusystem_8c" startline="18">width</references>
-        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</references>
+        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="90" endline="103">transmit</references>
         <references refid="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" compoundref="_menusystem_8c" startline="35">newline</references>
         <references refid="_menusystem_8c_1a532e72c4b620eecff97eee6b0eed5bdd" compoundref="_menusystem_8c" startline="41">welcome</references>
         <references refid="_menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" compoundref="_menusystem_8c" startline="70" endline="76">disptoptions</references>
@@ -467,7 +467,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="52" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="70" bodyend="76"/>
-        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</references>
+        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="90" endline="103">transmit</references>
         <references refid="_menusystem_8c_1a1985e3f1b27ce97bff59359bed67bd58" compoundref="_menusystem_8c" startline="42">topoption1</references>
         <references refid="_menusystem_8c_1acefc91d5187b4570470476a6cd0b68e9" compoundref="_menusystem_8c" startline="43">topoption2</references>
         <references refid="_menusystem_8c_1ac241270fe5f174769b3034e81c0a574e" compoundref="_menusystem_8c" startline="44">topoption3</references>
@@ -491,7 +491,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="53" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="56" bodyend="61"/>
-        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</references>
+        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="90" endline="103">transmit</references>
         <references refid="_menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" compoundref="_menusystem_8c" startline="35">newline</references>
         <referencedby refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="78" endline="94">topmenudisp</referencedby>
       </memberdef>
@@ -511,7 +511,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" line="54" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="63" bodyend="68"/>
-        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="75" endline="88">transmit</references>
+        <references refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="_serial_8c" startline="90" endline="103">transmit</references>
         <references refid="_menusystem_8c_1ae6c5caedc34899ea80a6b011fec5f2a4" compoundref="_menusystem_8c" startline="34">fillerthing</references>
         <referencedby refid="_menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="_menusystem_8c" startline="78" endline="94">topmenudisp</referencedby>
       </memberdef>

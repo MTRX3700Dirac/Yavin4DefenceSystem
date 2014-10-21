@@ -3,6 +3,11 @@
 }
 
 
+Stores bytes of data in a circular buffer.  
+
+
+
+
 {\ttfamily \#include $<$Circular\+Buffers.\+h$>$}
 
 \subsection*{Data Fields}
@@ -17,9 +22,17 @@ unsigned char \hyperlink{structcircular_buffer_ad7b57ba90694482456be1fbab7de4aec
 
 
 \subsection{Detailed Description}
+Stores bytes of data in a circular buffer. 
 
 
-Definition at line 27 of file Circular\+Buffers.\+h.
+
+ typedef of \hyperlink{structcircular_buffer}{circular\+Buffer} struct
+
+Length\+: B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H
+
+Description\+: Defines a circular buffer in which bytes of data can be placed, or removed at any time in the correct order that they were pushed. The accompanying functionality facilitates all necessary circular buffer related operations. This implementation reduces the buffer length by 1 to differentiate between full and empty states. B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H can be redefined in individual files to get different buffer lengths 
+
+Definition at line 49 of file Circular\+Buffers.\+h.
 
 
 
@@ -29,21 +42,21 @@ Definition at line 27 of file Circular\+Buffers.\+h.
 \subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char data\mbox{[}{\bf B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H}\mbox{]}}}\label{structcircular_buffer_ad7b57ba90694482456be1fbab7de4aec}
 
 
-Definition at line 31 of file Circular\+Buffers.\+h.
+Definition at line 53 of file Circular\+Buffers.\+h.
 
 \hypertarget{structcircular_buffer_a47f7e6109597e5c1c227993c0ce5f560}{\index{circular\+Buffer@{circular\+Buffer}!head@{head}}
 \index{head@{head}!circular\+Buffer@{circular\+Buffer}}
 \subsubsection[{head}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char head}}\label{structcircular_buffer_a47f7e6109597e5c1c227993c0ce5f560}
 
 
-Definition at line 29 of file Circular\+Buffers.\+h.
+Definition at line 51 of file Circular\+Buffers.\+h.
 
 \hypertarget{structcircular_buffer_af18a1d7542e277284c4794593b049258}{\index{circular\+Buffer@{circular\+Buffer}!tail@{tail}}
 \index{tail@{tail}!circular\+Buffer@{circular\+Buffer}}
 \subsubsection[{tail}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char tail}}\label{structcircular_buffer_af18a1d7542e277284c4794593b049258}
 
 
-Definition at line 30 of file Circular\+Buffers.\+h.
+Definition at line 52 of file Circular\+Buffers.\+h.
 
 
 

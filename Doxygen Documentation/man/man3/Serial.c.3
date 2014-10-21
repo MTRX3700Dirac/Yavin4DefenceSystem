@@ -89,47 +89,57 @@ Serial.c \-
 .SS "#define BS   0x07"
 
 .PP
-Definition at line 27 of file Serial\&.c\&.
+Definition at line 39 of file Serial\&.c\&.
 .SS "#define CR   0x0D"
 
 .PP
-Definition at line 23 of file Serial\&.c\&.
+Definition at line 35 of file Serial\&.c\&.
 .SS "#define ESC   0x1B"
 
 .PP
-Definition at line 25 of file Serial\&.c\&.
+Definition at line 37 of file Serial\&.c\&.
 .SS "#define NL   0x0A"
 
 .PP
-Definition at line 24 of file Serial\&.c\&.
+Definition at line 36 of file Serial\&.c\&.
 .SS "#define RC_INT_CLEAR()   \fBPIR1bits\&.RCIF\fP = 0"
 
 .PP
-Definition at line 16 of file Serial\&.c\&.
+Definition at line 28 of file Serial\&.c\&.
 .SS "#define RC_INT_DISABLE()   \fBPIE1bits\&.RCIE\fP = 0"
 
 .PP
-Definition at line 20 of file Serial\&.c\&.
+Definition at line 32 of file Serial\&.c\&.
 .SS "#define RC_INT_ENABLE()   \fBRC_INT_CLEAR\fP(); \fBPIE1bits\&.RCIE\fP = 1"
 
 .PP
-Definition at line 18 of file Serial\&.c\&.
+Definition at line 30 of file Serial\&.c\&.
 .SS "#define TAB   0x09"
 
 .PP
-Definition at line 26 of file Serial\&.c\&.
+Definition at line 38 of file Serial\&.c\&.
 .SS "#define TX_INT_CLEAR()   \fBPIR1bits\&.TXIF\fP = 0"
 
 .PP
-Definition at line 15 of file Serial\&.c\&.
+ File: \fBnewmain\&.c\fP Author: Grant
+.PP
+Description: Contains the functionality for the Serial module\&. All variables and settings concerning the serial module, such as the receive and transmit circular buffers are private to this module\&. The interface functions allow all valid access to the module\&.
+.PP
+Duties: -Stores an received characters in the received buffer -Stores any characters to be transmitted -Transmits anything in transmit buffer via interrupts -Accessor functions for using and querying buffers
+.PP
+Functions:
+.PP
+Created on 7 September 2014, 4:12 PM 
+.PP
+Definition at line 27 of file Serial\&.c\&.
 .SS "#define TX_INT_DISABLE()   \fBPIE1bits\&.TXIE\fP = 0"
 
 .PP
-Definition at line 19 of file Serial\&.c\&.
+Definition at line 31 of file Serial\&.c\&.
 .SS "#define TX_INT_ENABLE()   \fBTX_INT_CLEAR\fP(); \fBPIE1bits\&.TXIE\fP = 1"
 
 .PP
-Definition at line 17 of file Serial\&.c\&.
+Definition at line 29 of file Serial\&.c\&.
 .SH "Function Documentation"
 .PP 
 .SS "void configureSerial (void)"
@@ -137,7 +147,7 @@ Definition at line 17 of file Serial\&.c\&.
 .PP
  Function: \fBconfigureSerial(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Configures the serial ready for communication
 .PP
@@ -145,7 +155,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 44 of file Serial\&.c\&.
+Definition at line 57 of file Serial\&.c\&.
 .SS "void readString (char *string)"
 
 .PP
@@ -161,13 +171,13 @@ Returns: Received data up to a carriage return
 .PP
 Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the location pointed to by string before calling this function\&. 
 .PP
-Definition at line 191 of file Serial\&.c\&.
+Definition at line 206 of file Serial\&.c\&.
 .SS "char receiveCR (void)"
 
 .PP
  Function: \fBreceiveCR(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Indicates whether a Carriage Return has been received
 .PP
@@ -175,13 +185,13 @@ Arguments: None
 .PP
 Returns: non-zero if CR has been received, zero otherwise 
 .PP
-Definition at line 171 of file Serial\&.c\&.
+Definition at line 186 of file Serial\&.c\&.
 .SS "char receiveEmpty (void)"
 
 .PP
  Function: \fBreceiveEmpty(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Indicates if the receive buffer is empty
 .PP
@@ -189,13 +199,13 @@ Arguments: None
 .PP
 Returns: returns true if the recieve buffer is empty 
 .PP
-Definition at line 121 of file Serial\&.c\&.
+Definition at line 136 of file Serial\&.c\&.
 .SS "char receivePeek (void)"
 
 .PP
  Function: \fBreceivePeek(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Returns the next character in the receive buffer without removing it from the buffer
 .PP
@@ -203,13 +213,13 @@ Arguments: None
 .PP
 Returns: The next received character 
 .PP
-Definition at line 138 of file Serial\&.c\&.
+Definition at line 153 of file Serial\&.c\&.
 .SS "char receivePop (void)"
 
 .PP
  Function: \fBreceivePop(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Pops the next received character from the received buffer
 .PP
@@ -217,13 +227,13 @@ Arguments: None
 .PP
 Returns: The next character from the receive buffer 
 .PP
-Definition at line 154 of file Serial\&.c\&.
+Definition at line 169 of file Serial\&.c\&.
 .SS "void serialISR (void)"
 
 .PP
  Function: \fBserialISR(void)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Acts as the interrupt service routine for the serial module
 .PP
@@ -231,13 +241,13 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 233 of file Serial\&.c\&.
+Definition at line 248 of file Serial\&.c\&.
 .SS "void transChar (charc)"
 
 .PP
  Function: \fBtransChar(char c)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Transmits a single character
 .PP
@@ -245,21 +255,23 @@ Arguments: c - character to transmit
 .PP
 Returns: None 
 .PP
-Definition at line 101 of file Serial\&.c\&.
+Definition at line 116 of file Serial\&.c\&.
 .SS "void transmit (char *string)"
 
 .PP
  Function: \fBtransmit(char *string)\fP
 .PP
-Include:
+Include: \fBSerial\&.h\fP
 .PP
 Description: Begins transmitting the string over serial (interrupt driven)
 .PP
 Arguments: string - pointer to the beginning of the string to transmit
 .PP
-Returns: None 
+Returns: None
 .PP
-Definition at line 75 of file Serial\&.c\&.
+NOTE: Must be Null Terminated! Cannot receive a literal\&. 
+.PP
+Definition at line 90 of file Serial\&.c\&.
 .SS "char transmitted (void)"
 
 .PP
@@ -273,7 +285,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 217 of file Serial\&.c\&.
+Definition at line 232 of file Serial\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

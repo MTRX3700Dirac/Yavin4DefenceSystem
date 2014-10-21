@@ -356,7 +356,7 @@
         <references refid="p18f4520_8h_1a00ea63e57cd6582e6e73158695e2b088">RCONbits</references>
         <references refid="_pan_tilt_8c_1afed42813fde734ec03d642316c880a8f" compoundref="_pan_tilt_8c" startline="72">SERVO_INIT</references>
         <references refid="_pan_tilt_8c_1aacaca0988244bd3a888ca5befa89f44b" compoundref="_pan_tilt_8c" startline="61">PWM_PERIOD</references>
-        <referencedby refid="_tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" compoundref="_tracking_8c" startline="32" endline="36">configureTracking</referencedby>
+        <referencedby refid="_tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" compoundref="_tracking_8c" startline="41" endline="45">configureTracking</referencedby>
       </memberdef>
       <memberdef kind="function" id="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -376,7 +376,7 @@
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="148" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="148" bodyend="157"/>
         <referencedby refid="_pan_tilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="_pan_tilt_8c" startline="170" endline="176">increment</referencedby>
-        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="139" endline="196">track</referencedby>
       </memberdef>
       <memberdef kind="function" id="_pan_tilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -395,10 +395,10 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="170" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="170" bodyend="176"/>
-        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="45">Direction::azimuth</references>
-        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="46">Direction::inclination</references>
+        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="72">Direction::azimuth</references>
+        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="73">Direction::inclination</references>
         <references refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="_pan_tilt_8c" startline="148" endline="157">move</references>
-        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="50" endline="98">search</referencedby>
+        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="59" endline="107">search</referencedby>
       </memberdef>
       <memberdef kind="function" id="_pan_tilt_8c_1a5350e3f473fb25899612d382c1baa642" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -418,10 +418,10 @@
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="189" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="189" bodyend="206"/>
         <references refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" compoundref="_pan_tilt_8c" startline="51">Delay::AzimuthDelay</references>
-        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="45">Direction::azimuth</references>
+        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="72">Direction::azimuth</references>
         <references refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" compoundref="_pan_tilt_8c" startline="62">PWM_HALF_PERIOD</references>
         <references refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" compoundref="_pan_tilt_8c" startline="52">Delay::InclinationDelay</references>
-        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="46">Direction::inclination</references>
+        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="73">Direction::inclination</references>
         <references refid="_pan_tilt_8c_1a32ba76cc676dc9b248bce3b722e811e5" compoundref="_pan_tilt_8c" startline="70">LATENCY</references>
       </memberdef>
       <memberdef kind="function" id="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -440,8 +440,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="219" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="219" bodyend="222"/>
-        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="50" endline="98">search</referencedby>
-        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="130" endline="187">track</referencedby>
+        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="59" endline="107">search</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="139" endline="196">track</referencedby>
       </memberdef>
       <memberdef kind="function" id="_pan_tilt_8c_1ae8f9ea5919de15d1b5614be2e5e65be3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -634,7 +634,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="396" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="396" bodyend="432"/>
-        <references refid="_common_8h_1aee2ef60613898be37c57266698616e33" compoundref="_common_8h" startline="97">CCP2_INT</references>
+        <references refid="_common_8h_1aee2ef60613898be37c57266698616e33" compoundref="_common_8h" startline="147">CCP2_INT</references>
         <references refid="_pan_tilt_8c_1aacaca0988244bd3a888ca5befa89f44b" compoundref="_pan_tilt_8c" startline="61">PWM_PERIOD</references>
         <references refid="_pan_tilt_8c_1aeccd74b3aafd22092066790005320b98" compoundref="_pan_tilt_8c" startline="57">IN_PWM_PIN</references>
         <references refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" compoundref="_pan_tilt_8c" startline="52">Delay::InclinationDelay</references>
@@ -668,51 +668,8 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">/*!******************************************************************************</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>ADC.c</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Grant</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Description:</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Contains<sp/>all<sp/>the<sp/>functionality<sp/>for<sp/>the<sp/>Pan<sp/>Tilt<sp/>module.<sp/>All<sp/>variables<sp/>and<sp/>settings</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>concerning<sp/>the<sp/>pan<sp/>tilt<sp/>module<sp/>including<sp/>the<sp/>current<sp/>direction,<sp/>PDM<sp/>delay<sp/>info,<sp/>min</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>and<sp/>max<sp/>settings<sp/>are<sp/>private<sp/>to<sp/>this<sp/>module.<sp/>The<sp/>interface<sp/>functions<sp/>allow<sp/>all<sp/>valid</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>access<sp/>to<sp/>the<sp/>module.</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>Duties:</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-Software<sp/>interface<sp/>to<sp/>the<sp/>Pan<sp/>Tilt<sp/>Module</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-Moves<sp/>Pan<sp/>Tilt</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-Reads<sp/>current<sp/>Pan<sp/>Tilt<sp/>position<sp/>(based<sp/>on<sp/>PDM&apos;s)</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-Generate<sp/>PDM<sp/>signals</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>Functions:</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Local:</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>validate(unsigned<sp/>int<sp/>*delay);</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Direction<sp/>delay2Direction(Delay<sp/>dly);</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Delay<sp/>direction2Delay(Direction<sp/>dir);</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Public<sp/>Interface:</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>configureBase(void);</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>move(Direction<sp/>destination);</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>increment(Direction<sp/>difference);</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>incrementFine(Direction<sp/>difference);</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Direction<sp/>getDir(void);</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>calibratePanTilt(Direction<sp/>reference);</highlight></codeline>
-<codeline lineno="30"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Direction<sp/>rawDir(void);</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char<sp/>updated(void);</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>panTiltISR(void);</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char<sp/>getMaxAzimuthAngle(void);</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char<sp/>getMinAzimuthAngle(void);</highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char<sp/>getMaxElevationAngle(void);</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char<sp/>getMinElevationAngle(void);</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>setMaxAzimuthAngle(char<sp/>p_angle);</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>setMinAzimuthAngle(char<sp/>p_angle);</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>setMaxElevationAngle(char<sp/>p_angle);</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>setMinElevationAngle(char<sp/>p_angle);</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>16<sp/>September<sp/>2014,<sp/>6:47<sp/>PM</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/>*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"></codeline>
+<codeline lineno="45"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pwm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;timers.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>

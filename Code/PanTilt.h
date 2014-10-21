@@ -1,11 +1,12 @@
-/* 
+/*! ****************************************************************************
  * File:   PanTilt.h
  * Author: Grant
  *
- * Description: This file contains the public interface for the PanTile module
+ * Description:
+ * This file contains the public interface for the PanTile module
  *
  * Created on 16 September 2014, 6:33 PM
- */
+ ******************************************************************************/
 
 //Ensure that there is only 1 inclusion of this file in the preprocessor execution
 #ifndef PANTILT_H

@@ -31,12 +31,15 @@ Common.h \-
 .ti -1c
 .RI "struct \fBDirection\fP"
 .br
+.RI "\fIStores an inclination and azimuth\&. \fP"
 .ti -1c
 .RI "struct \fBTrackingData\fP"
 .br
+.RI "\fIStores the current target information\&. \fP"
 .ti -1c
 .RI "struct \fBsystemState\fP"
 .br
+.RI "\fIStores the current state of the system\&. \fP"
 .in -1c
 .SS "Macros"
 
@@ -47,12 +50,14 @@ Common.h \-
 .ti -1c
 .RI "#define \fBNEXT_STATE\fP(s, state)   state\&.previous = state\&.current; state\&.current = s"
 .br
+.RI "\fIMacros to change the state of the system\&. \fP"
 .ti -1c
 .RI "#define \fBNEXT_STATE_PTR\fP(s, state)   state->previous = state->current; state->current = s"
 .br
 .ti -1c
 .RI "#define \fBDIV_2\fP(v)   ((v) >> 1)"
 .br
+.RI "\fIEfficient Division macros based on bit shifting, Cannot be used on negative numbers\&. \fP"
 .ti -1c
 .RI "#define \fBDIV_4\fP(v)   ((v) >> 2)"
 .br
@@ -89,9 +94,11 @@ Common.h \-
 .ti -1c
 .RI "#define \fBSWAP\fP(x, y)   (y = (y ^ (x = (x ^ (y = (x ^ y))))))"
 .br
+.RI "\fISwaps the values in two variables\&. \fP"
 .ti -1c
 .RI "#define \fBADC_IR_READ\fP   0"
 .br
+.RI "\fIADC Channel Select macros\&. \fP"
 .ti -1c
 .RI "#define \fBADC_TEMP_READ\fP   1"
 .br
@@ -101,6 +108,7 @@ Common.h \-
 .ti -1c
 .RI "#define \fBTX_INT\fP   (\fBPIR1bits\&.TXIF\fP && \fBPIE1bits\&.TXIE\fP)"
 .br
+.RI "\fIInterrupt macros\&. \fP"
 .ti -1c
 .RI "#define \fBRC_INT\fP   (\fBPIR1bits\&.RCIF\fP && \fBPIE1bits\&.RCIE\fP)"
 .br
@@ -149,6 +157,7 @@ Common.h \-
 .ti -1c
 .RI "#define \fBCLOCK\fP   10000000"
 .br
+.RI "\fIDfine the clock rate and FOSC_4\&. \fP"
 .ti -1c
 .RI "#define \fBFOSC_4\fP   2500000"
 .br
@@ -162,168 +171,192 @@ Common.h \-
 .ti -1c
 .RI "enum \fBTargetState\fP { \fBNO_TARGET\fP, \fBOUT_OF_IR\fP, \fBBAD_DIR\fP, \fBGOOD_TRACK\fP, \fBCLOSE_RANGE\fP }"
 .br
+.RI "\fIThe different types of tracking possible depending on which sensors observe the target\&. \fP"
 .ti -1c
 .RI "enum \fBpossible_states\fP { \fBUNDEF\fP, \fBINIT\fP, \fBSRCH\fP, \fBTRCK\fP }"
 .br
+.RI "\fIDefine the possible states the system can be in\&. \fP"
 .in -1c
 .SH "Macro Definition Documentation"
 .PP 
 .SS "#define ADC_DIAL_READ   2"
 
 .PP
-Definition at line 91 of file Common\&.h\&.
+Definition at line 141 of file Common\&.h\&.
 .SS "#define ADC_INT   (\fBPIR1bits\&.ADIF\fP && \fBPIE1bits\&.ADIE\fP)"
 
 .PP
-Definition at line 105 of file Common\&.h\&.
+Definition at line 155 of file Common\&.h\&.
 .SS "#define ADC_IR_READ   0"
 
 .PP
-Definition at line 89 of file Common\&.h\&.
+ADC Channel Select macros\&. 
+.PP
+Definition at line 139 of file Common\&.h\&.
 .SS "#define ADC_TEMP_READ   1"
 
 .PP
-Definition at line 90 of file Common\&.h\&.
+Definition at line 140 of file Common\&.h\&.
 .SS "#define BCL_INT   (\fBPIR2bits\&.BCLIF\fP && \fBPIE2bits\&.BCLIE\fP)"
 
 .PP
-Definition at line 107 of file Common\&.h\&.
+Definition at line 157 of file Common\&.h\&.
 .SS "#define CCP1_CLEAR   (\fBPIR1bits\&.CCP1IF\fP = 0)"
 
 .PP
-Definition at line 110 of file Common\&.h\&.
+Definition at line 160 of file Common\&.h\&.
 .SS "#define CCP1_INT   (\fBPIR1bits\&.CCP1IF\fP && \fBPIE1bits\&.CCP1IE\fP)"
 
 .PP
-Definition at line 96 of file Common\&.h\&.
+Definition at line 146 of file Common\&.h\&.
 .SS "#define CCP2_CLEAR   (\fBPIR2bits\&.CCP2IF\fP = 0)"
 
 .PP
-Definition at line 111 of file Common\&.h\&.
+Definition at line 161 of file Common\&.h\&.
 .SS "#define CCP2_INT   (\fBPIR2bits\&.CCP2IF\fP && \fBPIE2bits\&.CCP2IE\fP)"
 
 .PP
-Definition at line 97 of file Common\&.h\&.
+Definition at line 147 of file Common\&.h\&.
 .SS "#define CLOCK   10000000"
 
 .PP
-Definition at line 114 of file Common\&.h\&.
+Dfine the clock rate and FOSC_4\&. 
+.PP
+Definition at line 165 of file Common\&.h\&.
 .SS "#define COMMON_H"
 
 .PP
-Definition at line 125 of file Common\&.h\&.
+Definition at line 176 of file Common\&.h\&.
 .SS "#define DIV_1024(v)   ((v) >> 10)"
 
 .PP
-Definition at line 82 of file Common\&.h\&.
+Definition at line 131 of file Common\&.h\&.
 .SS "#define DIV_128(v)   ((v) >> 7)"
 
 .PP
-Definition at line 79 of file Common\&.h\&.
+Definition at line 128 of file Common\&.h\&.
 .SS "#define DIV_16(v)   ((v) >> 4)"
 
 .PP
-Definition at line 76 of file Common\&.h\&.
+Definition at line 125 of file Common\&.h\&.
 .SS "#define DIV_2(v)   ((v) >> 1)"
 
 .PP
-Definition at line 73 of file Common\&.h\&.
+Efficient Division macros based on bit shifting, Cannot be used on negative numbers\&. 
+.PP
+Definition at line 122 of file Common\&.h\&.
 .SS "#define DIV_256(v)   ((v) >> 8)"
 
 .PP
-Definition at line 80 of file Common\&.h\&.
+Definition at line 129 of file Common\&.h\&.
 .SS "#define DIV_32(v)   ((v) >> 5)"
 
 .PP
-Definition at line 77 of file Common\&.h\&.
+Definition at line 126 of file Common\&.h\&.
 .SS "#define DIV_4(v)   ((v) >> 2)"
 
 .PP
-Definition at line 74 of file Common\&.h\&.
+Definition at line 123 of file Common\&.h\&.
 .SS "#define DIV_4096(v)   ((v) >> 12)"
 
 .PP
-Definition at line 83 of file Common\&.h\&.
+Definition at line 132 of file Common\&.h\&.
 .SS "#define DIV_512(v)   ((v) >> 9)"
 
 .PP
-Definition at line 81 of file Common\&.h\&.
+Definition at line 130 of file Common\&.h\&.
 .SS "#define DIV_64(v)   ((v) >> 6)"
 
 .PP
-Definition at line 78 of file Common\&.h\&.
+Definition at line 127 of file Common\&.h\&.
 .SS "#define DIV_65536(v)   ((v) >> 16)"
 
 .PP
-Definition at line 84 of file Common\&.h\&.
+Definition at line 133 of file Common\&.h\&.
 .SS "#define DIV_8(v)   ((v) >> 3)"
 
 .PP
-Definition at line 75 of file Common\&.h\&.
+Definition at line 124 of file Common\&.h\&.
 .SS "#define FOSC_4   2500000"
 
 .PP
-Definition at line 115 of file Common\&.h\&.
+Definition at line 166 of file Common\&.h\&.
 .SS "#define INT0_INT   (\fBINTCONbits\&.INT0IF\fP && \fBINTCONbits\&.INT0IE\fP)"
 
 .PP
-Definition at line 98 of file Common\&.h\&.
+Definition at line 148 of file Common\&.h\&.
 .SS "#define LVD_INT   (\fBPIR2bits\&.LVDIF\fP && \fBPIE2bits\&.LVDIE\fP)"
 
 .PP
-Definition at line 108 of file Common\&.h\&.
+Definition at line 158 of file Common\&.h\&.
 .SS "#define MNML"
 
 .PP
-Definition at line 12 of file Common\&.h\&.
+ File: \fBCommon\&.h\fP Author: Grant
+.PP
+Description: Contains all program scope definitions, declarations and inclusions\&. This header should be included in all source files by default\&.
+.PP
+Contains: -PIC18F family library headers -Direction struct typedef -TrackingData struct typedef -systemState struct typedef -system state macro functionality -TargetState enumeration -Interrupt flag macros -Division macros -Clock frequency definitions -SWAP macro functionality
+.PP
+Created on 11 September 2014, 12:24 PM 
+.PP
+Definition at line 28 of file Common\&.h\&.
 .SS "#define NEXT_STATE(s, state)   state\&.previous = state\&.current; state\&.current = s"
 
 .PP
-Definition at line 62 of file Common\&.h\&.
+Macros to change the state of the system\&. 
+.PP
+Definition at line 100 of file Common\&.h\&.
 .SS "#define NEXT_STATE_PTR(s, state)   state->previous = state->current; state->current = s"
 
 .PP
-Definition at line 63 of file Common\&.h\&.
+Definition at line 101 of file Common\&.h\&.
 .SS "#define RB_INT   (\fBINTCONbits\&.RBIF\fP && \fBINTCONbits\&.RBIE\fP)"
 
 .PP
-Definition at line 99 of file Common\&.h\&.
+Definition at line 149 of file Common\&.h\&.
 .SS "#define RC_INT   (\fBPIR1bits\&.RCIF\fP && \fBPIE1bits\&.RCIE\fP)"
 
 .PP
-Definition at line 95 of file Common\&.h\&.
+Definition at line 145 of file Common\&.h\&.
 .SS "#define SSP_INT   (\fBPIR1bits\&.SSPIF\fP && \fBPIE1bits\&.SSPIE\fP)"
 
 .PP
-Definition at line 106 of file Common\&.h\&.
+Definition at line 156 of file Common\&.h\&.
 .SS "#define SWAP(x, y)   (y = (y ^ (x = (x ^ (y = (x ^ y))))))"
 
 .PP
-Definition at line 86 of file Common\&.h\&.
+Swaps the values in two variables\&. 
+.PP
+Definition at line 136 of file Common\&.h\&.
 .SS "#define TMR0_INT   (\fBINTCONbits\&.TMR0IF\fP && \fBINTCONbits\&.TMR0IE\fP)"
 
 .PP
-Definition at line 102 of file Common\&.h\&.
+Definition at line 152 of file Common\&.h\&.
 .SS "#define TMR1_INT   (\fBPIR1bits\&.TMR1IF\fP && \fBPIE1bits\&.TMR1IE\fP)"
 
 .PP
-Definition at line 103 of file Common\&.h\&.
+Definition at line 153 of file Common\&.h\&.
 .SS "#define TMR2_INT   (\fBPIR1bits\&.TMR2IF\fP && \fBPIE1bits\&.TMR2IE\fP)"
 
 .PP
-Definition at line 100 of file Common\&.h\&.
+Definition at line 150 of file Common\&.h\&.
 .SS "#define TMR3_INT   (\fBPIR2bits\&.TMR3IF\fP && \fBPIE2bits\&.TMR3IE\fP)"
 
 .PP
-Definition at line 104 of file Common\&.h\&.
+Definition at line 154 of file Common\&.h\&.
 .SS "#define TX_INT   (\fBPIR1bits\&.TXIF\fP && \fBPIE1bits\&.TXIE\fP)"
 
 .PP
-Definition at line 94 of file Common\&.h\&.
+Interrupt macros\&. 
+.PP
+Definition at line 144 of file Common\&.h\&.
 .SH "Enumeration Type Documentation"
 .PP 
 .SS "enum \fBpossible_states\fP"
 
+.PP
+Define the possible states the system can be in\&. 
 .PP
 \fBEnumerator\fP
 .in +1c
@@ -336,9 +369,11 @@ Definition at line 94 of file Common\&.h\&.
 .TP
 \fB\fITRCK \fP\fP
 .PP
-Definition at line 66 of file Common\&.h\&.
+Definition at line 104 of file Common\&.h\&.
 .SS "enum \fBTargetState\fP"
 
+.PP
+The different types of tracking possible depending on which sensors observe the target\&. 
 .PP
 \fBEnumerator\fP
 .in +1c
@@ -353,7 +388,7 @@ Definition at line 66 of file Common\&.h\&.
 .TP
 \fB\fICLOSE_RANGE \fP\fP
 .PP
-Definition at line 58 of file Common\&.h\&.
+Definition at line 96 of file Common\&.h\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

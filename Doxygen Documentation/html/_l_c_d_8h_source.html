@@ -108,33 +108,25 @@ $(document).ready(function(){initNavTree('_l_c_d_8h_source.html','');});
 <div class="title">LCD.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_l_c_d_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * File:   LCD.h</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Author: Grant</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Description: Contains the public interface for the LCD module.</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * Created on 17 September 2014, 9:01 PM</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//Ensure that there is only 1 inclusion of this file in the preprocessor execution</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef LCD_H</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//External declarations of public access functions</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#aaab6233be65b7399b3422eee9782508c">configLCD</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#a8190804aeb1375a5a6b775f8e2b5d698">displayLCD</a>(<span class="keywordtype">char</span> *<span class="keywordtype">string</span>);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="_l_c_d_8h.html#a137b94e8638bc4b6a0740668aefe5a58">   17</a></span>&#160;<span class="preprocessor">#define LCD_H</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="_l_c_d_8h_html_a8190804aeb1375a5a6b775f8e2b5d698"><div class="ttname"><a href="_l_c_d_8h.html#a8190804aeb1375a5a6b775f8e2b5d698">displayLCD</a></div><div class="ttdeci">void displayLCD(char *string)</div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00039">LCD.c:39</a></div></div>
-<div class="ttc" id="_l_c_d_8h_html_aaab6233be65b7399b3422eee9782508c"><div class="ttname"><a href="_l_c_d_8h.html#aaab6233be65b7399b3422eee9782508c">configLCD</a></div><div class="ttdeci">void configLCD(void)</div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00023">LCD.c:23</a></div></div>
+<a href="_l_c_d_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//Ensure that there is only 1 inclusion of this file in the preprocessor execution</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef LCD_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//External declarations of public access functions</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#aaab6233be65b7399b3422eee9782508c">configLCD</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#a8190804aeb1375a5a6b775f8e2b5d698">displayLCD</a>(<span class="keywordtype">char</span> *<span class="keywordtype">string</span>);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="_l_c_d_8h.html#a137b94e8638bc4b6a0740668aefe5a58">   18</a></span>&#160;<span class="preprocessor">#define LCD_H</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="_l_c_d_8h_html_a8190804aeb1375a5a6b775f8e2b5d698"><div class="ttname"><a href="_l_c_d_8h.html#a8190804aeb1375a5a6b775f8e2b5d698">displayLCD</a></div><div class="ttdeci">void displayLCD(char *string)</div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00044">LCD.c:44</a></div></div>
+<div class="ttc" id="_l_c_d_8h_html_aaab6233be65b7399b3422eee9782508c"><div class="ttname"><a href="_l_c_d_8h.html#aaab6233be65b7399b3422eee9782508c">configLCD</a></div><div class="ttdeci">void configLCD(void)</div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00028">LCD.c:28</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_l_c_d_8h.html">LCD.h</a></li>
-    <li class="footer">Generated on Tue Oct 21 2014 13:34:08 for Yavin IV Death Star Tracker by
+    <li class="footer">Generated on Tue Oct 21 2014 15:39:03 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

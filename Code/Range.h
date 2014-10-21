@@ -1,5 +1,5 @@
-/* 
- * File:   ultrasonic.h
+/*! ****************************************************************************
+ * File:   Range.h
  * Author: Grant
  *
  * Description: 
@@ -8,7 +8,7 @@
  * Interfacing with the Range module.
  *
  * Created on 15 September 2014, 11:24 AM
- */
+ ******************************************************************************/
 
 //Ensure that there is only 1 inclusion of this file in the preprocessor execution
 #ifndef RANGE_H

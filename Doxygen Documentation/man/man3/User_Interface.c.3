@@ -58,7 +58,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 61 of file User_Interface\&.c\&.
+Definition at line 67 of file User_Interface\&.c\&.
 .SS "void display (\fBTrackingData\fPdata)"
 
 .PP
@@ -72,7 +72,7 @@ Arguments: data - Struct which contains all known data concerning the The positi
 .PP
 Returns: None 
 .PP
-Definition at line 29 of file User_Interface\&.c\&.
+Definition at line 35 of file User_Interface\&.c\&.
 .SS "unsigned int readDial (unsigned intmax)"
 
 .PP
@@ -86,7 +86,7 @@ Arguments: None
 .PP
 Returns: The dial position scaled by 
 .PP
-Definition at line 78 of file User_Interface\&.c\&.
+Definition at line 84 of file User_Interface\&.c\&.
 .SS "char userEmpty (void)"
 
 .PP
@@ -100,7 +100,7 @@ Arguments: None
 .PP
 Returns: if the user input buffer is empty 
 .PP
-Definition at line 109 of file User_Interface\&.c\&.
+Definition at line 115 of file User_Interface\&.c\&.
 .SS "void userISR (void)"
 
 .PP
@@ -114,7 +114,7 @@ Arguments: None
 .PP
 Returns: None 
 .PP
-Definition at line 45 of file User_Interface\&.c\&.
+Definition at line 51 of file User_Interface\&.c\&.
 .SS "char userPeek (void)"
 
 .PP
@@ -128,7 +128,7 @@ Arguments: None
 .PP
 Returns: a character in the user interface buffer 
 .PP
-Definition at line 144 of file User_Interface\&.c\&.
+Definition at line 150 of file User_Interface\&.c\&.
 .SS "char userPop (void)"
 
 .PP
@@ -142,13 +142,21 @@ Arguments: None
 .PP
 Returns: a character poped from the user Interface buffer 
 .PP
-Definition at line 125 of file User_Interface\&.c\&.
+Definition at line 131 of file User_Interface\&.c\&.
 .SH "Variable Documentation"
 .PP 
 .SS "\fBcircularBuffer\fP receive"
 
 .PP
-Definition at line 14 of file User_Interface\&.c\&.
+ File: \fBUser_Interface\&.c\fP Author: Grant
+.PP
+Description: Contains all the functionality for the User_Interface module\&. Works the same way as the serial module, but for the user interface\&.
+.PP
+Duties: -Stores any local user input in a receive buffer -Sends display data to the LCD
+.PP
+Created on 15 September 2014, 1:21 PM 
+.PP
+Definition at line 20 of file User_Interface\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

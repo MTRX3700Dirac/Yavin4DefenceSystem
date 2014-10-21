@@ -3,6 +3,9 @@
 .nh
 .SH NAME
 Direction \- 
+.PP
+Stores an inclination and azimuth\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -20,17 +23,27 @@ Direction \-
 .in -1c
 .SH "Detailed Description"
 .PP 
-Definition at line 43 of file Common\&.h\&.
+Stores an inclination and azimuth\&. 
+
+
+.PP
+ typedef of \fBDirection\fP struct
+.PP
+Description: A fully defined direction in which to point the pan tilt actuator or any other such purpose
+.PP
+Elements: -Azimuth: Contains the azimuth component of the direction (generally degrees) -Inclination: Contains the inclination component of the direction (generally degrees) 
+.PP
+Definition at line 70 of file Common\&.h\&.
 .SH "Field Documentation"
 .PP 
 .SS "int azimuth"
 
 .PP
-Definition at line 45 of file Common\&.h\&.
+Definition at line 72 of file Common\&.h\&.
 .SS "int inclination"
 
 .PP
-Definition at line 46 of file Common\&.h\&.
+Definition at line 73 of file Common\&.h\&.
 
 .SH "Author"
 .PP 

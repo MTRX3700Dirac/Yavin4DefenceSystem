@@ -3,7 +3,10 @@
  * Author: Grant
  *
  * Description:
- * Contains all the functionality for the Tracking Module.
+ * Contains all the functionality for the Tracking Module. This module contains the
+ * functionality and algorithms used to search for, and track the target. This
+ * module makes use of PanTilt, Range and Temp modules, and configures them
+ * automatically from a call to configureTrack().
  *
  * Duties:
  *      -Control and coordinate Pan Tilt and range sensors
@@ -195,7 +198,7 @@ TrackingData track(systemState *state)
 /* **********************************************************************
  * Function: prediction(Direction current)
  *
- * Include: 
+ * Include: Local to Tracking.c
  *
  * Description: Predicts where the object is likely to be found based on previous
  *              movement and prediction algorithms

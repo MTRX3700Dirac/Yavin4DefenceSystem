@@ -7614,7 +7614,7 @@
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="1056" column="1"/>
         <referencedby refid="_pan_tilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="_pan_tilt_8c" startline="105" endline="135">configureBase</referencedby>
         <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</referencedby>
-        <referencedby refid="_serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="44" endline="62">configureSerial</referencedby>
+        <referencedby refid="_serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="57" endline="75">configureSerial</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1ab5bdf6ae49d8f044975b273bf1ed3ef0" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -9294,7 +9294,7 @@
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="1272" column="1"/>
         <referencedby refid="_pan_tilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="_pan_tilt_8c" startline="105" endline="135">configureBase</referencedby>
         <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</referencedby>
-        <referencedby refid="_serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="44" endline="62">configureSerial</referencedby>
+        <referencedby refid="_serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="57" endline="75">configureSerial</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1a3c1ab73a0be354304b62d6106775c112" prot="public" static="no" mutable="no">
         <type>near unsigned</type>

@@ -40,33 +40,104 @@ Temp.h \-
 .SS "#define TEMP_H"
 
 .PP
-Definition at line 19 of file Temp\&.h\&.
+Definition at line 30 of file Temp\&.h\&.
 .SH "Function Documentation"
 .PP 
 .SS "void calibrateTemp (unsigned charreference)"
 
 .PP
-Definition at line 117 of file Temp\&.c\&.
+ Function: calibrationTemp(unsigned char reference)
+.PP
+Include: \fBTemp\&.h\fP
+.PP
+Description: calibrates the temperature sensor by updating the calibration offset variable
+.PP
+Arguments: reference - Reference temperature in deg C
+.PP
+Returns: None
+.PP
+Note: This function does not perform a temperature read, but uses the last value\&. This is because the readTemp function automatically calibrate\&. 
+.PP
+Definition at line 126 of file Temp\&.c\&.
 .SS "void configureTemp (void)"
 
 .PP
-Definition at line 27 of file Temp\&.c\&.
+ File: \fBTemp\&.h\fP Author: Grant
+.PP
+Description: Contains all the functionality and variables for the temp module\&. All unnecessary functions and variables should be shielded from the external program, and interfaced with accessor and mutator functions
+.PP
+Contains: -Configure function -Read temperature functions -Get (last) temperature (read) function -Calibrate Temperature function
+.PP
+Created on 17 September 2014, 2:16 PM
+.PP
+.PP
+ Function: \fBconfigureTemp(void)\fP
+.PP
+Include: Temp
+.PP
+Description: Configures the temperature module for use
+.PP
+Arguments: None
+.PP
+Returns: None 
+.PP
+Definition at line 36 of file Temp\&.c\&.
 .SS "unsigned char getTemp (void)"
 
 .PP
-Definition at line 134 of file Temp\&.c\&.
+ Function: calibrationTemp(unsigned char reference)
+.PP
+Include: \fBTemp\&.h\fP
+.PP
+Description: calibrates the temperature sensor by updating the calibration offset variable
+.PP
+Arguments: reference - Reference temperature in deg C
+.PP
+Returns: None 
+.PP
+Definition at line 143 of file Temp\&.c\&.
 .SS "unsigned char rawTemp (void)"
 
 .PP
-Definition at line 97 of file Temp\&.c\&.
+ Function: \fBrawTemp(void)\fP
+.PP
+Include: \fBTemp\&.h\fP
+.PP
+Description: Returns the raw (uncalibrated temperature)
+.PP
+Arguments: None
+.PP
+Returns: Temp (in deg celsius) as an unsigned char 
+.PP
+Definition at line 106 of file Temp\&.c\&.
 .SS "unsigned char readTemp (void)"
 
 .PP
-Definition at line 75 of file Temp\&.c\&.
+ Function: \fBreadTemp(void)\fP
+.PP
+Include: \fBTemp\&.h\fP
+.PP
+Description: Reads the temperature from the TEMP sensor
+.PP
+Arguments: None
+.PP
+Returns: Temp (in deg celsius) as an unsigned char 
+.PP
+Definition at line 84 of file Temp\&.c\&.
 .SS "unsigned char readTempx2 (void)"
 
 .PP
-Definition at line 43 of file Temp\&.c\&.
+ Function: \fBreadTempx2(void)\fP
+.PP
+Include: \fBTemp\&.h\fP
+.PP
+Description: Reads the temperature from the Temp sensor
+.PP
+Arguments: None
+.PP
+Returns: temp x 2 (in deg celsius) as an unsigned char 
+.PP
+Definition at line 52 of file Temp\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.
