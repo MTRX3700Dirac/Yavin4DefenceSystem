@@ -190,7 +190,7 @@ void autodisp(void){
 void initialiseMenu(void)
 {
     configureSerial();
-    configLCD();
+    lcdInit();
     configUSER();
 }
 
