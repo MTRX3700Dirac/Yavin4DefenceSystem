@@ -88,16 +88,24 @@ void lcdWrite(unsigned char byte, unsigned char mode){
     LCD_E = LCD_CLKLOW;  //! Set clock low
 }
 
+//!Feed character string, and line (1 or 2)
 void lcdWriteString(char *string, unsigned char line){
-    while((line & LINESTART) <= LINEEND){
+    unsigned char row;
+    if(line==1){row=LINE1;}
+    else(row=LINE2);
+    while((row & LINESTART) <= LINEEND){
         lcdWrite((SETDDRAMADD | line++), LCD_INS);
         lcdWrite((*string)++, LCD_DATA);
         delay(5);
     }
 }
 
-void lcdWriteChar(unsigned char byte, unsigned char pos){
-    lcdWrite((SETDDRAMADD | pos), LCD_INS);
+//!Feed character, line (1 or 2), and column(1-16)
+void lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column){
+    unsigned char row;
+    if(line==1){row=LINE1;}
+    else(row=LINE2);
+    lcdWrite((SETDDRAMADD | row | column), LCD_INS);
     lcdWrite(byte, LCD_DATA);
     delay(5);
 }

@@ -148,7 +148,7 @@ void topmenu(void){
 void initialiseMenu(void)
 {
     configureSerial();
-    configLCD();
+    lcdInit();
     configUSER();
 }
 
