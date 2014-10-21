@@ -1,8 +1,13 @@
-/*!**********************************************************************
+/*! **********************************************************************
  * File:   User_Interface.c
  * Author: Grant
  *
- * Description: Contains all the interface to the LCD hardware
+ * Description:
+ * Contains all the interface to the LCD hardware
+ *
+ * Duties:
+ *      -Interfaces with and controls the LCD
+ *      -Displays data on the LCD
  *
  * Created on 15 September 2014, 1:21 PM
  **********************************************************************/

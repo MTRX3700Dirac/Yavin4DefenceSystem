@@ -1,11 +1,20 @@
-/*
+/*! ****************************************************************************
  * File:   Tracking.c
  * Author: Grant
  *
- * Description: Contains all the functionality for the Tracking Module
+ * Description:
+ * Contains all the functionality for the Tracking Module.
+ *
+ * Duties:
+ *      -Control and coordinate Pan Tilt and range sensors
+ *      -Implement searching and tracking algorithms
+ *      -Predict next position of target???
+ *
+ * Functions:
+ * 
  *
  * Created on 15 September 2014, 1:42 PM
- */
+ ******************************************************************************/
 
 #include "Common.h"
 #include "Range.h"
@@ -14,9 +23,6 @@
 #define diff 5
 #define TARGET_RAD 30  //The diameter of the target in mm (slightly larger)
 #include <delays.h>
-
-//Variable to store where the sensors are currently pointing
-//DirectionState current_direction;
 
 /* **********************************************************************
  * Function: configureTracking(void)
