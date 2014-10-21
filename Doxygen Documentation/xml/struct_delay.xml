@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="struct_delay" kind="struct" prot="public">
+    <compoundname>Delay</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_delay_1aacc83952fc6c5812597bc96d622f5317" prot="public" static="no" mutable="no">
+        <type>signed int</type>
+        <definition>signed int AzimuthDelay</definition>
+        <argsstring></argsstring>
+        <name>AzimuthDelay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="51" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="51" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="_pan_tilt_8c" startline="189" endline="206">incrementFine</referencedby>
+        <referencedby refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="_pan_tilt_8c" startline="396" endline="432">panTiltISR</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" prot="public" static="no" mutable="no">
+        <type>signed int</type>
+        <definition>signed int InclinationDelay</definition>
+        <argsstring></argsstring>
+        <name>InclinationDelay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="52" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="52" bodyend="-1"/>
+        <referencedby refid="_pan_tilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="_pan_tilt_8c" startline="189" endline="206">incrementFine</referencedby>
+        <referencedby refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="_pan_tilt_8c" startline="396" endline="432">panTiltISR</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ File: ADC.c Author: Grant</para><para>Description: Contains all the functionality for the Pan Tilt module. All variables and settings concerning the pan tilt module including the current direction, PDM delay info, min and max settings are private to this module. The interface functions allow all valid access to the module.</para><para>Duties: -Software interface to the Pan Tilt Module -Moves Pan Tilt -Reads current Pan Tilt position (based on PDM&apos;s) -Generate PDM signals</para><para>Functions: Local: void validate(unsigned int *delay); <ref refid="struct_direction" kindref="compound">Direction</ref> delay2Direction(Delay dly); <ref refid="struct_delay" kindref="compound">Delay</ref> direction2Delay(Direction dir);</para><para>Public Interface: void <ref refid="_pan_tilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" kindref="member">configureBase(void)</ref>; void <ref refid="_pan_tilt_8h_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move(Direction destination)</ref>; void <ref refid="_pan_tilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment(Direction difference)</ref>; void <ref refid="_pan_tilt_8h_1a5350e3f473fb25899612d382c1baa642" kindref="member">incrementFine(Direction difference)</ref>; <ref refid="struct_direction" kindref="compound">Direction</ref> <ref refid="_pan_tilt_8h_1ad1d9638bad5a5021969d19769e70c775" kindref="member">getDir(void)</ref>; void <ref refid="_pan_tilt_8h_1a60e08860a1b4ca9efdc2dd43983731d5" kindref="member">calibratePanTilt(Direction reference)</ref>; <ref refid="struct_direction" kindref="compound">Direction</ref> <ref refid="_pan_tilt_8h_1a251ee95d75c68e21c4bb933ac99e5108" kindref="member">rawDir(void)</ref>; char <ref refid="_pan_tilt_8h_1a3362a0aacdd7037d0329989d353c60b7" kindref="member">updated(void)</ref>; void <ref refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" kindref="member">panTiltISR(void)</ref>; char <ref refid="_pan_tilt_8h_1ae8f9ea5919de15d1b5614be2e5e65be3" kindref="member">getMaxAzimuthAngle(void)</ref>; char <ref refid="_pan_tilt_8h_1af45dd498eebe7f5ba7b228c15e7221c1" kindref="member">getMinAzimuthAngle(void)</ref>; char <ref refid="_pan_tilt_8h_1a4278dbef7fe9034a7a54d02bcbb16de9" kindref="member">getMaxElevationAngle(void)</ref>; char <ref refid="_pan_tilt_8h_1af7fafa63e9c645a80f28aca253bba5cc" kindref="member">getMinElevationAngle(void)</ref>; void <ref refid="_pan_tilt_8h_1a1f5e600a2655aeb9dd24b8325a777931" kindref="member">setMaxAzimuthAngle(char p_angle)</ref>; void <ref refid="_pan_tilt_8h_1a157ea38d68fcd31082dc2eaba2944ef3" kindref="member">setMinAzimuthAngle(char p_angle)</ref>; void <ref refid="_pan_tilt_8h_1aa956697480994a26cb592b2cfcf3436c" kindref="member">setMaxElevationAngle(char p_angle)</ref>; void <ref refid="_pan_tilt_8h_1a001917f3c38b200d142ab6932991e001" kindref="member">setMinElevationAngle(char p_angle)</ref>;</para><para>Created on 16 September 2014, 6:47 PM </para>    </detaileddescription>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="50" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="49" bodyend="53"/>
+    <listofallmembers>
+      <member refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" prot="public" virt="non-virtual"><scope>Delay</scope><name>AzimuthDelay</name></member>
+      <member refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" prot="public" virt="non-virtual"><scope>Delay</scope><name>InclinationDelay</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,26 +1,51 @@
-/* 
+/*! ****************************************************************************
  * File:   CircularBuffers.h
  * Author: Grant
  *
- * Description: Contains Circular Buffer functionality and structure definitions
+ * Description:
+ * Contains Circular Buffer functionality and structure definitions. This allows
+ * Circular Buffers to be used in any file by simply including this header.
+ * Furthermore, circular buffer functionality can be altered on a program level.
+ *
+ * Contains:
+ *      -Definition of CircularBuffer type
+ *      -Peek, pop, push and init functionality
+ *      -Empty, full, queries
  *
  * Created on 8 October 2014, 10:30 AM
- */
+ ******************************************************************************/
 
-//Buffer related macro functionality
-#define incMod(ptr) (ptr = ++ptr % BUFFERLENGTH)
-#define empty(buf) (buf.head == buf.tail)
-#define full(buf) (buf.tail == (buf.head + 1) % BUFFERLENGTH)
-#define peek(buf) buf.data[buf.tail]
+//Ensure there is only 1 inclusion of this file in the preprocessor execution
+#ifndef BUFFERS_H
 
-#define push(byte, buf) buf.data[buf.head] = byte; if(full(buf)) incMod(buf.tail); incMod(buf.head)
-#define pop(buf) buf.data[buf.tail]; if (!empty(buf)) incMod(buf.tail)
-#define init(buf) buf.head = 0; buf.tail = 0
+///Buffer related macro functionality
+#define incMod(ptr) if(ptr==BUFFERLENGTH-1) ptr = 0; else ptr++;
+#define empty(buf) (buf.tail == buf.head)
+#define full(buf) (buf.head == (buf.tail + 1) % BUFFERLENGTH)
+#define peek(buf) buf.data[buf.head]
+
+#define push(byte, buf) buf.data[buf.tail] = byte; if(full(buf)) incMod(buf.head); incMod(buf.tail)
+#define pop(buf) buf.data[buf.head]; if (!empty(buf)) incMod(buf.head)
+#define init(buf) buf.tail = 0; buf.head = 0
 
 //NOTE: The BUFFERLENGTH can be redefined at the top of any module if a different length is desired
 #define BUFFERLENGTH 30
 
-//Cicular Buffer data type
+/*! ****************************************************************************
+ * typedef of circularBuffer struct
+ *
+ * @brief Stores bytes of data in a circular buffer
+ *
+ * Length: BUFFERLENGTH
+ *
+ * Description:
+ * Defines a circular buffer in which bytes of data can be placed, or removed at
+ * any time in the correct order that they were pushed. The accompanying functionality
+ * facilitates all necessary circular buffer related operations.
+ * This implementation reduces the buffer length by 1 to differentiate between
+ * full and empty states.
+ * BUFFERLENGTH can be redefined in individual files to get different buffer lengths
+ ******************************************************************************/
 typedef struct
 {
     unsigned char head;
@@ -28,5 +53,5 @@ typedef struct
     unsigned char data[BUFFERLENGTH];
 } circularBuffer;
 
-//Don't ask, this just stops MPLAB X flipping out about the circularBuffer typedef
-#define thing 0
+#define BUFFERS_H 0
+#endif

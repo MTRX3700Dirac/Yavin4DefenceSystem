@@ -1,0 +1,8 @@
+<map id="calibrateRange" name="calibrateRange">
+<area shape="rect" id="node2" href="$_range_8c.html#aff3698f3a7b3b5963d8e6b305a165d71" title="range" alt="" coords="161,48,216,74"/>
+<area shape="rect" id="node3" href="$_range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2" title="configureRange" alt="" coords="264,22,375,49"/>
+<area shape="rect" id="node4" href="$_temp_8c.html#afd08db2b1a6d6af19e39f10dc453332c" title="readTemp" alt="" coords="429,110,508,137"/>
+<area shape="rect" id="node7" href="$_range_8c.html#a91b55894b9e6d74e4495ea610246c856" title="rangeIR" alt="" coords="286,73,353,100"/>
+<area shape="rect" id="node6" href="$_range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a" title="configureAD" alt="" coords="423,22,515,49"/>
+<area shape="rect" id="node5" href="$_temp_8c.html#a4946ccbc1990e831667bffded1147c4f" title="readTempx2" alt="" coords="563,110,656,137"/>
+</map>

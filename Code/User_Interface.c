@@ -1,11 +1,17 @@
-/*
+/*! ****************************************************************************
  * File:   User_Interface.c
  * Author: Grant
  *
- * Description: Contains all the functionality for the User_Interface module
+ * Description:
+ * Contains all the functionality for the User_Interface module.
+ * Works the same way as the serial module, but for the user interface.
+ *
+ * Duties:
+ *      -Stores any local user input in a receive buffer
+ *      -Sends display data to the LCD
  *
  * Created on 15 September 2014, 1:21 PM
- */
+ ******************************************************************************/
 
 #include "Common.h"
 #include "CircularBuffers.h"

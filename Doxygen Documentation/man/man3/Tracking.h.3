@@ -1,0 +1,73 @@
+.TH "Tracking.h" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tracking.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTRACK_INT\fP   0"
+.br
+.ti -1c
+.RI "#define \fBTRACK_H\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBconfigureTracking\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsearch\fP (\fBsystemState\fP *state)"
+.br
+.ti -1c
+.RI "\fBTrackingData\fP \fBtrack\fP (\fBsystemState\fP *state)"
+.br
+.ti -1c
+.RI "void \fBtrackingISR\fP (void)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define TRACK_H"
+
+.PP
+Definition at line 31 of file Tracking\&.h\&.
+.SS "#define TRACK_INT   0"
+
+.PP
+ File: \fBTracking\&.h\fP Author: Grant
+.PP
+Description: Public interface function for the Tracking Module\&. This module contains the functionality and algorithms used to search for, and track the target\&. This module makes use of PanTilt, Range and Temp modules, and configures them automatically from a call to configureTrack()\&.
+.PP
+Contains: -Configure tracking -Searching algorithm -Track algorithm
+.PP
+Created on 15 September 2014, 1:41 PM 
+.PP
+Definition at line 23 of file Tracking\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void configureTracking (void)"
+
+.PP
+Definition at line 41 of file Tracking\&.c\&.
+.SS "void search (\fBsystemState\fP *state)"
+
+.PP
+Definition at line 59 of file Tracking\&.c\&.
+.SS "\fBTrackingData\fP track (\fBsystemState\fP *state)"
+
+.PP
+Definition at line 139 of file Tracking\&.c\&.
+.SS "void trackingISR (void)"
+
+.PP
+Definition at line 120 of file Tracking\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

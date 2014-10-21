@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="structcircular_buffer" kind="struct" prot="public">
+    <compoundname>circularBuffer</compoundname>
+    <includes refid="_circular_buffers_8h" local="no">CircularBuffers.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structcircular_buffer_1a47f7e6109597e5c1c227993c0ce5f560" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="51" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcircular_buffer_1af18a1d7542e277284c4794593b049258" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char tail</definition>
+        <argsstring></argsstring>
+        <name>tail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="52" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcircular_buffer_1ad7b57ba90694482456be1fbab7de4aec" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char data[BUFFERLENGTH]</definition>
+        <argsstring>[BUFFERLENGTH]</argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="53" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Stores bytes of data in a circular buffer. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ typedef of <ref refid="structcircular_buffer" kindref="compound">circularBuffer</ref> struct</para><para>Length: BUFFERLENGTH</para><para>Description: Defines a circular buffer in which bytes of data can be placed, or removed at any time in the correct order that they were pushed. The accompanying functionality facilitates all necessary circular buffer related operations. This implementation reduces the buffer length by 1 to differentiate between full and empty states. BUFFERLENGTH can be redefined in individual files to get different buffer lengths </para>    </detaileddescription>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="50" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="49" bodyend="54"/>
+    <listofallmembers>
+      <member refid="structcircular_buffer_1ad7b57ba90694482456be1fbab7de4aec" prot="public" virt="non-virtual"><scope>circularBuffer</scope><name>data</name></member>
+      <member refid="structcircular_buffer_1a47f7e6109597e5c1c227993c0ce5f560" prot="public" virt="non-virtual"><scope>circularBuffer</scope><name>head</name></member>
+      <member refid="structcircular_buffer_1af18a1d7542e277284c4794593b049258" prot="public" virt="non-virtual"><scope>circularBuffer</scope><name>tail</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,162 @@
+.TH "User_Interface.c" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+User_Interface.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Common\&.h'\fP
+.br
+\fC#include 'CircularBuffers\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBdisplay\fP (\fBTrackingData\fP data)"
+.br
+.ti -1c
+.RI "void \fBuserISR\fP (void)"
+.br
+.ti -1c
+.RI "void \fBconfigUSER\fP (void)"
+.br
+.ti -1c
+.RI "unsigned int \fBreadDial\fP (unsigned int max)"
+.br
+.ti -1c
+.RI "char \fBuserEmpty\fP (void)"
+.br
+.ti -1c
+.RI "char \fBuserPop\fP (void)"
+.br
+.ti -1c
+.RI "char \fBuserPeek\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBcircularBuffer\fP \fBreceive\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void configUSER (void)"
+
+.PP
+ Function: \fBconfigUSER(void)\fP
+.PP
+Include: \fBUser_Interface\&.h\fP
+.PP
+Description: Configures the user interface for use
+.PP
+Arguments: None
+.PP
+Returns: None 
+.PP
+Definition at line 67 of file User_Interface\&.c\&.
+.SS "void display (\fBTrackingData\fPdata)"
+
+.PP
+ Function: \fBdisplay(TrackingData data)\fP
+.PP
+Include: \fBUser_Interface\&.h\fP
+.PP
+Description: displays the current tracking information
+.PP
+Arguments: data - Struct which contains all known data concerning the The position of the target\&. A Range of 0 indicates that no target was observed\&.
+.PP
+Returns: None 
+.PP
+Definition at line 35 of file User_Interface\&.c\&.
+.SS "unsigned int readDial (unsigned intmax)"
+
+.PP
+ Function: readDial(void)
+.PP
+Include:
+.PP
+Description: Read the position of the dial
+.PP
+Arguments: None
+.PP
+Returns: The dial position scaled by 
+.PP
+Definition at line 84 of file User_Interface\&.c\&.
+.SS "char userEmpty (void)"
+
+.PP
+ Function: \fBuserEmpty(void)\fP
+.PP
+Include: \fBUser_Interface\&.h\fP
+.PP
+Description: returns non-zero if the user interface buffer is empty (i\&.e\&. no user input has been detected)
+.PP
+Arguments: None
+.PP
+Returns: if the user input buffer is empty 
+.PP
+Definition at line 115 of file User_Interface\&.c\&.
+.SS "void userISR (void)"
+
+.PP
+ Function: \fBuserISR(void)\fP
+.PP
+Include: \fBUser_Interface\&.h\fP
+.PP
+Description: Acts as the ISR for the User_interface module
+.PP
+Arguments: None
+.PP
+Returns: None 
+.PP
+Definition at line 51 of file User_Interface\&.c\&.
+.SS "char userPeek (void)"
+
+.PP
+ Function: \fBuserPeek(void)\fP
+.PP
+Include: \fBUser_Interface\&.h\fP
+.PP
+Description: returns a character in the user_Interface buffer without removing it from the buffer
+.PP
+Arguments: None
+.PP
+Returns: a character in the user interface buffer 
+.PP
+Definition at line 150 of file User_Interface\&.c\&.
+.SS "char userPop (void)"
+
+.PP
+ Function: \fBuserPop(void)\fP
+.PP
+Include: \fBUser_Interface\&.h\fP
+.PP
+Description: pops a character from the user interface receive buffer
+.PP
+Arguments: None
+.PP
+Returns: a character poped from the user Interface buffer 
+.PP
+Definition at line 131 of file User_Interface\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBcircularBuffer\fP receive"
+
+.PP
+ File: \fBUser_Interface\&.c\fP Author: Grant
+.PP
+Description: Contains all the functionality for the User_Interface module\&. Works the same way as the serial module, but for the user interface\&.
+.PP
+Duties: -Stores any local user input in a receive buffer -Sends display data to the LCD
+.PP
+Created on 15 September 2014, 1:21 PM 
+.PP
+Definition at line 20 of file User_Interface\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

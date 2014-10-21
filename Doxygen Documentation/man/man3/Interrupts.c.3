@@ -1,0 +1,115 @@
+.TH "Interrupts.c" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Interrupts.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Common\&.h'\fP
+.br
+\fC#include 'Tracking\&.h'\fP
+.br
+\fC#include 'Range\&.h'\fP
+.br
+\fC#include 'User_Interface\&.h'\fP
+.br
+\fC#include 'Serial\&.h'\fP
+.br
+\fC#include 'PanTilt\&.h'\fP
+.br
+\fC#include 'Temp\&.h'\fP
+.br
+\fC#include 'Menusystem\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlowISR\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhighISR\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhighVector\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlowVector\fP (void)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void highISR (void)"
+
+.PP
+ Function: \fBhighISR(void)\fP
+.PP
+Include: Local to \fBInterrupts\&.c\fP
+.PP
+Description: Interrupt Service Routine to check what condition initiated a high priority interrupt call, and perform the nessicary action
+.PP
+Arguments: None
+.PP
+Returns: None 
+.PP
+Definition at line 122 of file Interrupts\&.c\&.
+.SS "void highVector (void)"
+
+.PP
+ Function: \fBhighVector(void)\fP
+.PP
+Include: Local to \fBInterrupts\&.c\fP
+.PP
+Description: Sends program control to the high priority ISR
+.PP
+Arguments: None
+.PP
+Returns: None
+.PP
+Remarks: This is an interrupt vector, placing a goto in the high priority interrupt table to call the high priority ISR 
+.PP
+Definition at line 50 of file Interrupts\&.c\&.
+.SS "void lowISR (void)"
+
+.PP
+ File: \fBInterrupts\&.c\fP Author: Grant
+.PP
+Description: Contains the interrupt service routines for the system\&.
+.PP
+Duties: -Handle all interrupts called by the system -Call relevant module service routines
+.PP
+Created on 8 October 2014, 11:27 AM
+.PP
+.PP
+ Function: \fBlowISR(void)\fP
+.PP
+Include: Local to \fBInterrupts\&.c\fP
+.PP
+Description: Interrupt Service Routine to check what condition initiated a low priority interrupt call, and perform the nessicary action
+.PP
+Arguments: None
+.PP
+Returns: None 
+.PP
+Definition at line 88 of file Interrupts\&.c\&.
+.SS "void lowVector (void)"
+
+.PP
+ Function: \fBlowVector(void)\fP
+.PP
+Include: Local to \fBInterrupts\&.c\fP
+.PP
+Description: Sends program control to the low priority ISR
+.PP
+Arguments: None
+.PP
+Returns: None
+.PP
+Remarks: This is an interrupt vector, placing a goto in the low priority interrupt table to call the low priority ISR 
+.PP
+Definition at line 70 of file Interrupts\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

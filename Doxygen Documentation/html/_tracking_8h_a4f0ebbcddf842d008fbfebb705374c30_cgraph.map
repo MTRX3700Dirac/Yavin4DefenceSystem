@@ -1,0 +1,12 @@
+<map id="track" name="track">
+<area shape="rect" id="node2" href="$_pan_tilt_8c.html#ad1d9638bad5a5021969d19769e70c775" title="getDir" alt="" coords="133,5,189,32"/>
+<area shape="rect" id="node3" href="$_pan_tilt_8c.html#a032fbfc434ca24d27d89b6d768455a42" title="move" alt="" coords="135,56,187,83"/>
+<area shape="rect" id="node4" href="$_range_8c.html#a87c8e64ddc596f3e6b72ee861f671168" title="readTargetState" alt="" coords="104,157,219,184"/>
+<area shape="rect" id="node5" href="$_range_8c.html#aff3698f3a7b3b5963d8e6b305a165d71" title="range" alt="" coords="293,107,347,133"/>
+<area shape="rect" id="node11" href="$_range_8c.html#a3e5554f5a076ded63b937d50b7e5c9db" title="getTargetState" alt="" coords="267,157,373,184"/>
+<area shape="rect" id="node6" href="$_range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2" title="configureRange" alt="" coords="421,56,532,83"/>
+<area shape="rect" id="node10" href="$_range_8c.html#a91b55894b9e6d74e4495ea610246c856" title="rangeIR" alt="" coords="443,107,510,133"/>
+<area shape="rect" id="node7" href="$_temp_8c.html#afd08db2b1a6d6af19e39f10dc453332c" title="readTemp" alt="" coords="587,31,665,57"/>
+<area shape="rect" id="node9" href="$_range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a" title="configureAD" alt="" coords="580,81,672,108"/>
+<area shape="rect" id="node8" href="$_temp_8c.html#a4946ccbc1990e831667bffded1147c4f" title="readTempx2" alt="" coords="720,31,813,57"/>
+</map>

@@ -1,11 +1,20 @@
-/*
+/*! ****************************************************************************
  * File:   Temp.c
  * Author: Grant
  *
- * Description: Contains all the functionality for the Temp module
+ * Description:
+ * Contains all the functionality for the Temp module.
+ *
+ * Duties:
+ *      -Samples the temperature sensor
+ *      -Stores the last temperature value
+ *      -Calibrates the temperature sensor
+ *
+ * Functions:
+ * 
  *
  * Created on 7 September 2014, 4:12 PM
- */
+ ******************************************************************************/
 
 #include "Common.h"
 
@@ -13,10 +22,26 @@
 static signed char calibration_offset = 0;
 static unsigned char lastTempx2;
 
-/* **********************************************************************
+/*! **********************************************************************
+ * Function: configureTemp(void)
+ *
+ * Include: Temp
+ *
+ * Description: Configures the temperature module for use
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void configureTemp(void)
+{
+    
+}
+
+/*! **********************************************************************
  * Function: readTempx2(void)
  *
- * Include: ADC.h
+ * Include: Temp.h
  *
  * Description: Reads the temperature from the Temp sensor
  *
@@ -45,10 +70,10 @@ unsigned char readTempx2(void)
     return tempx2 + calibration_offset;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: readTemp(void)
  *
- * Include: ADC.h
+ * Include: Temp.h
  *
  * Description: Reads the temperature from the TEMP sensor
  *
@@ -67,7 +92,7 @@ unsigned char readTemp(void)
     return DIV_2(temp);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: rawTemp(void)
  *
  * Include: Temp.h
@@ -83,7 +108,7 @@ unsigned char rawTemp(void)
     return DIV_2(lastTempx2);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: calibrationTemp(unsigned char reference)
  *
  * Include: Temp.h
@@ -103,7 +128,7 @@ void calibrateTemp(unsigned char reference)
     calibration_offset = 2 * (reference - DIV_2(lastTempx2));
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: calibrationTemp(unsigned char reference)
  *
  * Include: Temp.h

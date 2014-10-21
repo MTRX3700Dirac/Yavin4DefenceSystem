@@ -1,0 +1,48 @@
+.TH "systemState" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+systemState \- 
+.PP
+Stores the current state of the system\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Common\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBpossible_states\fP \fBcurrent\fP"
+.br
+.ti -1c
+.RI "\fBpossible_states\fP \fBprevious\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Stores the current state of the system\&. 
+
+
+.PP
+ typedef of \fBsystemState\fP struct
+.PP
+Description: Stores which state the system is currently in, as defined by the possible_states enumeration\&. Also stores the previous system state so the system knows if this is the first iteration of the state 
+.PP
+Definition at line 116 of file Common\&.h\&.
+.SH "Field Documentation"
+.PP 
+.SS "\fBpossible_states\fP current"
+
+.PP
+Definition at line 117 of file Common\&.h\&.
+.SS "\fBpossible_states\fP previous"
+
+.PP
+Definition at line 118 of file Common\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

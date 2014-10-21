@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="todo" kind="page">
+    <compoundname>todo</compoundname>
+    <title>Todo List</title>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><anchor id="todo_1_todo000001"/>File <ref refid="_config_regs18f4520_8h" kindref="compound">ConfigRegs18f4520.h</ref>  </term></varlistentry>
+<listitem><para>Consider if Watchdog Timer should be enabled for production code, and add WDT management code if so.</para><para>Consider if Stack Overflow Reset should be enabled for production code. It may be better not to, as there is no re-entrant or recursive code, or dynamic memory allocation here - if the code loads statically it should run.</para><para>Change startup code c016iz.c so that everything (including initialised variables) correctly re-starts if <ref refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" kindref="member">main()</ref> ever exits or a BOR or WDT reset occurs. </para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

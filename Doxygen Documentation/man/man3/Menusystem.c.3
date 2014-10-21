@@ -1,0 +1,312 @@
+.TH "Menusystem.c" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Menusystem.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Common\&.h'\fP
+.br
+\fC#include 'Serial\&.h'\fP
+.br
+\fC#include 'User_Interface\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBwidth\fP   80"
+.br
+.ti -1c
+.RI "#define \fBheight\fP   24"
+.br
+.ti -1c
+.RI "#define \fBtop1\fP   0xFF"
+.br
+.ti -1c
+.RI "#define \fBauto11\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBmanu12\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBmanugoto121\fP   0x21"
+.br
+.ti -1c
+.RI "#define \fBmanusetl122\fP   0x22"
+.br
+.ti -1c
+.RI "#define \fBmanushow123\fP   0x23"
+.br
+.ti -1c
+.RI "#define \fBstat13\fP   0x30"
+.br
+.ti -1c
+.RI "#define \fBswap14\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBslee15\fP   0x50"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmenu\fP (char menuselect)"
+.br
+.ti -1c
+.RI "void \fBtopmenu\fP (void)"
+.br
+.ti -1c
+.RI "void \fBtopmenudisp\fP (void)"
+.br
+.ti -1c
+.RI "void \fBdisptoptions\fP (void)"
+.br
+.ti -1c
+.RI "void \fBclearscreen\fP (char length)"
+.br
+.ti -1c
+.RI "void \fBfiller\fP (char length)"
+.br
+.ti -1c
+.RI "void \fBinitialiseMenu\fP (void)"
+.br
+.RI "\fIInitialises the menu system\&. \fP"
+.ti -1c
+.RI "void \fBserviceMenu\fP (void)"
+.br
+.RI "\fIservices any user interface with the menu \fP"
+.ti -1c
+.RI "void \fBmenuISR\fP (void)"
+.br
+.RI "\fIISR function for the menu subsystem\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "char \fBtMESSAGE\fP [] = 'Hello 123\\n'"
+.br
+.ti -1c
+.RI "char \fBfillerthing\fP [] = '+'"
+.br
+.ti -1c
+.RI "char \fBnewline\fP [] = '\\n'"
+.br
+.ti -1c
+.RI "char \fBchoose\fP [] = '\\tPlease select your option (eg\&. 2): \\n'"
+.br
+.ti -1c
+.RI "char \fBgoup\fP [] = '\\tUp a level\\n'"
+.br
+.ti -1c
+.RI "char \fBwelcome\fP [] = 'Welcome to Yavin IV Defence System'"
+.br
+.ti -1c
+.RI "char \fBtopoption1\fP [] = '\\t1:\\tAutomatic Tracking\\n'"
+.br
+.ti -1c
+.RI "char \fBtopoption2\fP [] = '\\t2:\\tManual Tracking\\n'"
+.br
+.ti -1c
+.RI "char \fBtopoption3\fP [] = '\\t3:\\tStatus\\n'"
+.br
+.ti -1c
+.RI "char \fBtopoption4\fP [] = '\\t4:\\tGo To Local Mode\\n'"
+.br
+.ti -1c
+.RI "char \fBtopoption5\fP [] = '\\t5:\\tSleep\\n'"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define auto11   0x10"
+
+.PP
+Definition at line 22 of file Menusystem\&.c\&.
+.SS "#define height   24"
+
+.PP
+Definition at line 19 of file Menusystem\&.c\&.
+.SS "#define manu12   0x20"
+
+.PP
+Definition at line 23 of file Menusystem\&.c\&.
+.SS "#define manugoto121   0x21"
+
+.PP
+Definition at line 24 of file Menusystem\&.c\&.
+.SS "#define manusetl122   0x22"
+
+.PP
+Definition at line 25 of file Menusystem\&.c\&.
+.SS "#define manushow123   0x23"
+
+.PP
+Definition at line 26 of file Menusystem\&.c\&.
+.SS "#define slee15   0x50"
+
+.PP
+Definition at line 30 of file Menusystem\&.c\&.
+.SS "#define stat13   0x30"
+
+.PP
+Definition at line 28 of file Menusystem\&.c\&.
+.SS "#define swap14   0x40"
+
+.PP
+Definition at line 29 of file Menusystem\&.c\&.
+.SS "#define top1   0xFF"
+
+.PP
+Definition at line 21 of file Menusystem\&.c\&.
+.SS "#define width   80"
+
+.PP
+ File: \fBMenusystem\&.c\fP Author:
+.PP
+Description:
+.PP
+Duties:
+.PP
+Functions:
+.PP
+Created on 16 September 2014, 6:47 PM 
+.PP
+Definition at line 18 of file Menusystem\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void clearscreen (charlength)"
+
+.PP
+Definition at line 56 of file Menusystem\&.c\&.
+.SS "void disptoptions (void)"
+
+.PP
+Definition at line 70 of file Menusystem\&.c\&.
+.SS "void filler (charlength)"
+
+.PP
+Definition at line 63 of file Menusystem\&.c\&.
+.SS "void initialiseMenu (void)"
+
+.PP
+Initialises the menu system\&. 
+.PP
+ Function: \fBinitialiseMenu(void)\fP
+.PP
+Include: \fBMenusystem\&.h\fP
+.PP
+Description: initialises the menu system so that it is fully operational
+.PP
+Arguments: None
+.PP
+Returns: None 
+.PP
+Definition at line 148 of file Menusystem\&.c\&.
+.SS "void menu (charmenuselect)"
+Call the serial configuration to enable USART Subsysten 
+.PP
+Definition at line 195 of file Menusystem\&.c\&.
+.SS "void menuISR (void)"
+
+.PP
+ISR function for the menu subsystem\&. 
+.PP
+ Function: \fBmenuISR(void)\fP
+.PP
+Include: \fBMenusystem\&.h\fP
+.PP
+Description: services any interrupts associated with the menu system
+.PP
+Arguments: None
+.PP
+Returns: None 
+.PP
+Definition at line 190 of file Menusystem\&.c\&.
+.SS "void serviceMenu (void)"
+
+.PP
+services any user interface with the menu 
+.PP
+ Function: \fBserviceMenu(void)\fP
+.PP
+Include:
+.PP
+Description: Checks if the user has made any inputs to the system\&. If not the function simply returns\&. If they have then it services the inputs, displays the correct outputs and performs the specified actions
+.PP
+Arguments: None
+.PP
+Returns: None 
+.PP
+Definition at line 171 of file Menusystem\&.c\&.
+.SS "void topmenu (void)"
+Display the menu screen via serial wait for/get serial input make decision based on input
+.PP
+Wait until the receive buffer is no longer empty
+.PP
+Indicating that a command has been passed
+.PP
+Reset status flag
+.PP
+Get the input string and store it in 
+.PP
+test 
+.PP
+Definition at line 96 of file Menusystem\&.c\&.
+.SS "void topmenudisp (void)"
+
+.PP
+Definition at line 78 of file Menusystem\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "char choose[] = '\\tPlease select your option (eg\&. 2): \\n'"
+
+.PP
+Definition at line 36 of file Menusystem\&.c\&.
+.SS "char fillerthing[] = '+'"
+
+.PP
+Definition at line 34 of file Menusystem\&.c\&.
+.SS "char goup[] = '\\tUp a level\\n'"
+
+.PP
+Definition at line 37 of file Menusystem\&.c\&.
+.SS "char newline[] = '\\n'"
+
+.PP
+Definition at line 35 of file Menusystem\&.c\&.
+.SS "char tMESSAGE[] = 'Hello 123\\n'"
+
+.PP
+Definition at line 33 of file Menusystem\&.c\&.
+.SS "char topoption1[] = '\\t1:\\tAutomatic Tracking\\n'"
+
+.PP
+Definition at line 42 of file Menusystem\&.c\&.
+.SS "char topoption2[] = '\\t2:\\tManual Tracking\\n'"
+
+.PP
+Definition at line 43 of file Menusystem\&.c\&.
+.SS "char topoption3[] = '\\t3:\\tStatus\\n'"
+
+.PP
+Definition at line 44 of file Menusystem\&.c\&.
+.SS "char topoption4[] = '\\t4:\\tGo To Local Mode\\n'"
+
+.PP
+Definition at line 45 of file Menusystem\&.c\&.
+.SS "char topoption5[] = '\\t5:\\tSleep\\n'"
+
+.PP
+Definition at line 46 of file Menusystem\&.c\&.
+.SS "char welcome[] = 'Welcome to Yavin IV Defence System'"
+
+.PP
+Definition at line 41 of file Menusystem\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

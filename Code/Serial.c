@@ -1,11 +1,23 @@
-/*
+/*! ****************************************************************************
  * File:   newmain.c
  * Author: Grant
  *
- * Description: Contains the functionality for the Serial module
+ * Description:
+ * Contains the functionality for the Serial module. All variables and settings
+ * concerning the serial module, such as the receive and transmit circular buffers
+ * are private to this module. The interface functions allow all valid access to the module.
+ *
+ * Duties:
+ *      -Stores an received characters in the received buffer
+ *      -Stores any characters to be transmitted
+ *      -Transmits anything in transmit buffer via interrupts
+ *      -Accessor functions for using and querying buffers
+ *
+ * Functions:
+ * 
  *
  * Created on 7 September 2014, 4:12 PM
- */
+ ******************************************************************************/
 
 #include "Common.h"
 #include <usart.h>
@@ -26,6 +38,7 @@
 #define TAB 0x09
 #define BS 0x07
 
+//Local Function Prototypes
 static volatile circularBuffer receive_buffer;
 static volatile circularBuffer transmit_buffer;
 static volatile char carriageReturn = 0;
@@ -33,7 +46,7 @@ static volatile char carriageReturn = 0;
 /*! **********************************************************************
  * Function: configureSerial(void)
  *
- * Include:
+ * Include: Serial.h
  *
  * Description: Configures the serial ready for communication
  *
@@ -53,20 +66,26 @@ void configureSerial(void)
     carriageReturn = 0;
 
     //Open the USART module
-    //OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
+#ifdef MNML
     OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 64);
+#else
+    OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
+#endif
+    
 }
 
 /*! **********************************************************************
  * Function: transmit(char *string)
  *
- * Include:
+ * Include: Serial.h
  *
  * Description: Begins transmitting the string over serial (interrupt driven)
  *
  * Arguments: string - pointer to the beginning of the string to transmit
  *
  * Returns: None
+ *
+ * NOTE: Must be Null Terminated! Cannot receive a literal.
  *************************************************************************/
 void transmit(char *string)
 {
@@ -86,7 +105,7 @@ void transmit(char *string)
 /*! **********************************************************************
  * Function: transChar(char c)
  *
- * Include:
+ * Include: Serial.h
  *
  * Description: Transmits a single character
  *
@@ -106,7 +125,7 @@ void transChar(char c)
 /*! **********************************************************************
  * Function: receiveEmpty(void)
  *
- * Include:
+ * Include: Serial.h
  *
  * Description: Indicates if the receive buffer is empty
  *
@@ -122,7 +141,7 @@ char receiveEmpty(void)
 /*! **********************************************************************
  * Function: receivePeek(void)
  *
- * Include:
+ * Include: Serial.h
  *
  * Description: Returns the next character in the receive buffer without
  *              removing it from the buffer
@@ -139,7 +158,7 @@ char receivePeek(void)
 /*! **********************************************************************
  * Function: receivePop(void)
  *
- * Include:
+ * Include: Serial.h
  *
  * Description: Pops the next received character from the received buffer
  *
@@ -156,7 +175,7 @@ char receivePop(void)
 /*! **********************************************************************
  * Function: receiveCR(void)
  *
- * Include:
+ * Include: Serial.h
  *
  * Description: Indicates whether a Carriage Return has been received
  *
@@ -218,7 +237,7 @@ char transmitted(void)
 /*! **********************************************************************
  * Function: serialISR(void)
  *
- * Include:
+ * Include: Serial.h
  *
  * Description: Acts as the interrupt service routine for the serial module
  *

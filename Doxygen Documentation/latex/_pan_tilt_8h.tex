@@ -1,0 +1,503 @@
+\hypertarget{_pan_tilt_8h}{\section{Pan\+Tilt.\+h File Reference}
+\label{_pan_tilt_8h}\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_pan_tilt_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_pan_tilt_8h_a9f6dec47561ba32094f46e58db44f964}{P\+A\+N\+\_\+\+T\+I\+L\+T\+\_\+\+I\+S\+R}~\hyperlink{_common_8h_aee2ef60613898be37c57266698616e33}{C\+C\+P2\+\_\+\+I\+N\+T}
+\item 
+\#define \hyperlink{_pan_tilt_8h_a12311b605a58b1d9a311dbb71a160045}{P\+A\+N\+T\+I\+L\+T\+\_\+\+H}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_pan_tilt_8h_ab7b8c8f7bf051b4f8e3b151f7b567127}{configure\+Base} (void)
+\item 
+void \hyperlink{_pan_tilt_8h_a032fbfc434ca24d27d89b6d768455a42}{move} (\hyperlink{struct_direction}{Direction} destination)
+\item 
+void \hyperlink{_pan_tilt_8h_af8e57fbe1513bb48274f4f0f46717fa1}{increment} (\hyperlink{struct_direction}{Direction} difference)
+\item 
+void \hyperlink{_pan_tilt_8h_a5350e3f473fb25899612d382c1baa642}{increment\+Fine} (\hyperlink{struct_direction}{Direction} difference)
+\item 
+\hyperlink{struct_direction}{Direction} \hyperlink{_pan_tilt_8h_ad1d9638bad5a5021969d19769e70c775}{get\+Dir} (void)
+\item 
+void \hyperlink{_pan_tilt_8h_a60e08860a1b4ca9efdc2dd43983731d5}{calibrate\+Pan\+Tilt} (\hyperlink{struct_direction}{Direction} reference)
+\item 
+\hyperlink{struct_direction}{Direction} \hyperlink{_pan_tilt_8h_a251ee95d75c68e21c4bb933ac99e5108}{raw\+Dir} (void)
+\item 
+char \hyperlink{_pan_tilt_8h_a3362a0aacdd7037d0329989d353c60b7}{updated} (void)
+\item 
+void \hyperlink{_pan_tilt_8h_a7f353056fb02f0d95fd997198f5b186f}{pan\+Tilt\+I\+S\+R} (void)
+\item 
+char \hyperlink{_pan_tilt_8h_ae8f9ea5919de15d1b5614be2e5e65be3}{get\+Max\+Azimuth\+Angle} (void)
+\item 
+char \hyperlink{_pan_tilt_8h_af45dd498eebe7f5ba7b228c15e7221c1}{get\+Min\+Azimuth\+Angle} (void)
+\item 
+char \hyperlink{_pan_tilt_8h_a4278dbef7fe9034a7a54d02bcbb16de9}{get\+Max\+Elevation\+Angle} (void)
+\item 
+char \hyperlink{_pan_tilt_8h_af7fafa63e9c645a80f28aca253bba5cc}{get\+Min\+Elevation\+Angle} (void)
+\item 
+void \hyperlink{_pan_tilt_8h_a1f5e600a2655aeb9dd24b8325a777931}{set\+Max\+Azimuth\+Angle} (char p\+\_\+angle)
+\item 
+void \hyperlink{_pan_tilt_8h_a157ea38d68fcd31082dc2eaba2944ef3}{set\+Min\+Azimuth\+Angle} (char p\+\_\+angle)
+\item 
+void \hyperlink{_pan_tilt_8h_aa956697480994a26cb592b2cfcf3436c}{set\+Max\+Elevation\+Angle} (char p\+\_\+angle)
+\item 
+void \hyperlink{_pan_tilt_8h_a001917f3c38b200d142ab6932991e001}{set\+Min\+Elevation\+Angle} (char p\+\_\+angle)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_pan_tilt_8h_a9f6dec47561ba32094f46e58db44f964}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!P\+A\+N\+\_\+\+T\+I\+L\+T\+\_\+\+I\+S\+R@{P\+A\+N\+\_\+\+T\+I\+L\+T\+\_\+\+I\+S\+R}}
+\index{P\+A\+N\+\_\+\+T\+I\+L\+T\+\_\+\+I\+S\+R@{P\+A\+N\+\_\+\+T\+I\+L\+T\+\_\+\+I\+S\+R}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{P\+A\+N\+\_\+\+T\+I\+L\+T\+\_\+\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+N\+\_\+\+T\+I\+L\+T\+\_\+\+I\+S\+R~{\bf C\+C\+P2\+\_\+\+I\+N\+T}}}\label{_pan_tilt_8h_a9f6dec47561ba32094f46e58db44f964}
+
+
+ File\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h} Author\+: Grant
+
+Description\+: This file contains the public interface for the Pan\+Tile module
+
+Created on 16 September 2014, 6\+:33 P\+M 
+
+Definition at line 15 of file Pan\+Tilt.\+h.
+
+\hypertarget{_pan_tilt_8h_a12311b605a58b1d9a311dbb71a160045}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!P\+A\+N\+T\+I\+L\+T\+\_\+\+H@{P\+A\+N\+T\+I\+L\+T\+\_\+\+H}}
+\index{P\+A\+N\+T\+I\+L\+T\+\_\+\+H@{P\+A\+N\+T\+I\+L\+T\+\_\+\+H}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{P\+A\+N\+T\+I\+L\+T\+\_\+\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+N\+T\+I\+L\+T\+\_\+\+H}}\label{_pan_tilt_8h_a12311b605a58b1d9a311dbb71a160045}
+
+
+Definition at line 38 of file Pan\+Tilt.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{_pan_tilt_8h_a60e08860a1b4ca9efdc2dd43983731d5}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!calibrate\+Pan\+Tilt@{calibrate\+Pan\+Tilt}}
+\index{calibrate\+Pan\+Tilt@{calibrate\+Pan\+Tilt}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{calibrate\+Pan\+Tilt}]{\setlength{\rightskip}{0pt plus 5cm}void calibrate\+Pan\+Tilt (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{reference}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_a60e08860a1b4ca9efdc2dd43983731d5}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_a60e08860a1b4ca9efdc2dd43983731d5}{calibrate\+Pan\+Tilt(\+Direction reference)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Calibrates the pan tile mechanism so that any future reference to move to the reference value specified in the function call will move the pan tilt back to the current position.
+
+Arguments\+: reference -\/ A struct containing the azimuth and inclinaion you wish to define as this position.
+
+Returns\+: None 
+
+Definition at line 364 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_ab7b8c8f7bf051b4f8e3b151f7b567127}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!configure\+Base@{configure\+Base}}
+\index{configure\+Base@{configure\+Base}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{configure\+Base}]{\setlength{\rightskip}{0pt plus 5cm}void configure\+Base (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_ab7b8c8f7bf051b4f8e3b151f7b567127}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_ab7b8c8f7bf051b4f8e3b151f7b567127}{configure\+Base(void)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Configures the Pan Tilt mechanism for operation
+
+Arguments\+: None
+
+Returns\+: None 
+
+Definition at line 105 of file Pan\+Tilt.\+c.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{_pan_tilt_8h_ab7b8c8f7bf051b4f8e3b151f7b567127_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{_pan_tilt_8h_ad1d9638bad5a5021969d19769e70c775}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!get\+Dir@{get\+Dir}}
+\index{get\+Dir@{get\+Dir}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{get\+Dir}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Direction} get\+Dir (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_ad1d9638bad5a5021969d19769e70c775}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_ad1d9638bad5a5021969d19769e70c775}{get\+Dir(void)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the current position of the pan tilt mechanism
+
+Arguments\+: None
+
+Returns\+: A struct containing the azimuth and inclination 
+
+Definition at line 219 of file Pan\+Tilt.\+c.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{_pan_tilt_8h_ad1d9638bad5a5021969d19769e70c775_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{_pan_tilt_8h_ae8f9ea5919de15d1b5614be2e5e65be3}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!get\+Max\+Azimuth\+Angle@{get\+Max\+Azimuth\+Angle}}
+\index{get\+Max\+Azimuth\+Angle@{get\+Max\+Azimuth\+Angle}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{get\+Max\+Azimuth\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}char get\+Max\+Azimuth\+Angle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_ae8f9ea5919de15d1b5614be2e5e65be3}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_ae8f9ea5919de15d1b5614be2e5e65be3}{get\+Max\+Azimuth\+Angle(void)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the maximum angle of the azimuth servo
+
+Arguments\+: None
+
+Returns\+: A char with the maximum azimuth angle. 
+
+Definition at line 235 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_a4278dbef7fe9034a7a54d02bcbb16de9}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!get\+Max\+Elevation\+Angle@{get\+Max\+Elevation\+Angle}}
+\index{get\+Max\+Elevation\+Angle@{get\+Max\+Elevation\+Angle}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{get\+Max\+Elevation\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}char get\+Max\+Elevation\+Angle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_a4278dbef7fe9034a7a54d02bcbb16de9}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_a4278dbef7fe9034a7a54d02bcbb16de9}{get\+Max\+Elevation\+Angle(void)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the maximum angle of the elevation servo
+
+Arguments\+: None
+
+Returns\+: A char with the maximum elevation angle. 
+
+Definition at line 267 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_af45dd498eebe7f5ba7b228c15e7221c1}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!get\+Min\+Azimuth\+Angle@{get\+Min\+Azimuth\+Angle}}
+\index{get\+Min\+Azimuth\+Angle@{get\+Min\+Azimuth\+Angle}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{get\+Min\+Azimuth\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}char get\+Min\+Azimuth\+Angle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_af45dd498eebe7f5ba7b228c15e7221c1}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_af45dd498eebe7f5ba7b228c15e7221c1}{get\+Min\+Azimuth\+Angle(void)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the minimum angle of the azimuth servo
+
+Arguments\+: None
+
+Returns\+: A char with the minimum azimuth angle. 
+
+Definition at line 251 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_af7fafa63e9c645a80f28aca253bba5cc}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!get\+Min\+Elevation\+Angle@{get\+Min\+Elevation\+Angle}}
+\index{get\+Min\+Elevation\+Angle@{get\+Min\+Elevation\+Angle}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{get\+Min\+Elevation\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}char get\+Min\+Elevation\+Angle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_af7fafa63e9c645a80f28aca253bba5cc}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_af7fafa63e9c645a80f28aca253bba5cc}{get\+Min\+Elevation\+Angle(void)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the minimum angle of the elevation servo
+
+Arguments\+: None
+
+Returns\+: A char with the minimum elevation angle. 
+
+Definition at line 283 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_af8e57fbe1513bb48274f4f0f46717fa1}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!increment@{increment}}
+\index{increment@{increment}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{increment}]{\setlength{\rightskip}{0pt plus 5cm}void increment (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{difference}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_af8e57fbe1513bb48274f4f0f46717fa1}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_af8e57fbe1513bb48274f4f0f46717fa1}{increment(\+Direction difference)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Moves the pan tilt actuator to the specified destination
+
+Arguments\+: destionation -\/ A struct containing the desired azimuth and inclination
+
+Returns\+: None 
+
+Definition at line 170 of file Pan\+Tilt.\+c.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{_pan_tilt_8h_af8e57fbe1513bb48274f4f0f46717fa1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{_pan_tilt_8h_af8e57fbe1513bb48274f4f0f46717fa1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{_pan_tilt_8h_a5350e3f473fb25899612d382c1baa642}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!increment\+Fine@{increment\+Fine}}
+\index{increment\+Fine@{increment\+Fine}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{increment\+Fine}]{\setlength{\rightskip}{0pt plus 5cm}void increment\+Fine (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{difference}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_a5350e3f473fb25899612d382c1baa642}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_a5350e3f473fb25899612d382c1baa642}{increment\+Fine(\+Direction difference)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Moves the pan tilt actuator to the specified (Relative) destination
+
+Arguments\+: destionation -\/ A struct containing the desired azimuth and inclination
+
+Returns\+: None 
+
+Definition at line 189 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_a032fbfc434ca24d27d89b6d768455a42}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!move@{move}}
+\index{move@{move}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void move (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{destination}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_a032fbfc434ca24d27d89b6d768455a42}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_a032fbfc434ca24d27d89b6d768455a42}{move(\+Direction destination)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Moves the pan tilt actuator to the specified destination
+
+Arguments\+: destionation -\/ A struct containing the desired azimuth and inclination
+
+Returns\+: None 
+
+Definition at line 148 of file Pan\+Tilt.\+c.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_pan_tilt_8h_a032fbfc434ca24d27d89b6d768455a42_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{_pan_tilt_8h_a7f353056fb02f0d95fd997198f5b186f}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!pan\+Tilt\+I\+S\+R@{pan\+Tilt\+I\+S\+R}}
+\index{pan\+Tilt\+I\+S\+R@{pan\+Tilt\+I\+S\+R}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{pan\+Tilt\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}void pan\+Tilt\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_a7f353056fb02f0d95fd997198f5b186f}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_a7f353056fb02f0d95fd997198f5b186f}{pan\+Tilt\+I\+S\+R(void)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Acts as the I\+S\+R for the Pan\+Tilt module
+
+Arguments\+: None
+
+Returns\+: None 
+
+Definition at line 396 of file Pan\+Tilt.\+c.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{_pan_tilt_8h_a7f353056fb02f0d95fd997198f5b186f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{_pan_tilt_8h_a251ee95d75c68e21c4bb933ac99e5108}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!raw\+Dir@{raw\+Dir}}
+\index{raw\+Dir@{raw\+Dir}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{raw\+Dir}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Direction} raw\+Dir (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_a251ee95d75c68e21c4bb933ac99e5108}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_a251ee95d75c68e21c4bb933ac99e5108}{raw\+Dir(void)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the current Pan\+Tile position without calibrating
+
+Arguments\+: None
+
+Returns\+: The position of the pan tilt without any calibration 
+
+Definition at line 380 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_a1f5e600a2655aeb9dd24b8325a777931}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!set\+Max\+Azimuth\+Angle@{set\+Max\+Azimuth\+Angle}}
+\index{set\+Max\+Azimuth\+Angle@{set\+Max\+Azimuth\+Angle}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{set\+Max\+Azimuth\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Max\+Azimuth\+Angle (
+\begin{DoxyParamCaption}
+\item[{char}]{p\+\_\+angle}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_a1f5e600a2655aeb9dd24b8325a777931}
+
+
+ Function\+: set\+Max\+Azimuth\+Angle(void)
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: sets the maximum angle of the azimuth servo
+
+Arguments\+: The maximum angle (as char) to set for the azimuth servo
+
+Returns\+: None. 
+
+Definition at line 299 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_aa956697480994a26cb592b2cfcf3436c}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!set\+Max\+Elevation\+Angle@{set\+Max\+Elevation\+Angle}}
+\index{set\+Max\+Elevation\+Angle@{set\+Max\+Elevation\+Angle}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{set\+Max\+Elevation\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Max\+Elevation\+Angle (
+\begin{DoxyParamCaption}
+\item[{char}]{p\+\_\+angle}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_aa956697480994a26cb592b2cfcf3436c}
+
+
+ Function\+: set\+Max\+Elevation\+Angle(void)
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: sets the maximum angle of the elevation servo
+
+Arguments\+: The maximum angle (as char) to set for the elevation servo
+
+Returns\+: None. 
+
+Definition at line 329 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_a157ea38d68fcd31082dc2eaba2944ef3}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!set\+Min\+Azimuth\+Angle@{set\+Min\+Azimuth\+Angle}}
+\index{set\+Min\+Azimuth\+Angle@{set\+Min\+Azimuth\+Angle}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{set\+Min\+Azimuth\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Min\+Azimuth\+Angle (
+\begin{DoxyParamCaption}
+\item[{char}]{p\+\_\+angle}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_a157ea38d68fcd31082dc2eaba2944ef3}
+
+
+ Function\+: set\+Min\+Azimuth\+Angle(void)
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: sets the minimum angle of the azimuth servo
+
+Arguments\+: The minimum angle (as char) to set for the azimuth servo
+
+Returns\+: None. 
+
+Definition at line 314 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_a001917f3c38b200d142ab6932991e001}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!set\+Min\+Elevation\+Angle@{set\+Min\+Elevation\+Angle}}
+\index{set\+Min\+Elevation\+Angle@{set\+Min\+Elevation\+Angle}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{set\+Min\+Elevation\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Min\+Elevation\+Angle (
+\begin{DoxyParamCaption}
+\item[{char}]{p\+\_\+angle}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_a001917f3c38b200d142ab6932991e001}
+
+
+ Function\+: set\+Min\+Elevation\+Angle(void)
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: sets the minimum angle of the elevation servo
+
+Arguments\+: The minimum angle (as char) to set for the elevation servo
+
+Returns\+: None. 
+
+Definition at line 345 of file Pan\+Tilt.\+c.
+
+\hypertarget{_pan_tilt_8h_a3362a0aacdd7037d0329989d353c60b7}{\index{Pan\+Tilt.\+h@{Pan\+Tilt.\+h}!updated@{updated}}
+\index{updated@{updated}!Pan\+Tilt.\+h@{Pan\+Tilt.\+h}}
+\subsubsection[{updated}]{\setlength{\rightskip}{0pt plus 5cm}char updated (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_pan_tilt_8h_a3362a0aacdd7037d0329989d353c60b7}
+
+
+ Function\+: \hyperlink{_pan_tilt_8c_a3362a0aacdd7037d0329989d353c60b7}{updated(void)}
+
+Include\+: \hyperlink{_pan_tilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns true if the last move or increment or increment\+Fine function has taken effect. The new direction is only loaded in at the end of the P\+D\+M, so it could take up to 0.\+02 seconds for the change to take effect.
+
+Arguments\+: delay -\/ a pointer to the delay variable
+
+Returns\+: None 
+
+Definition at line 532 of file Pan\+Tilt.\+c.
+

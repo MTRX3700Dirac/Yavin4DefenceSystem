@@ -1,0 +1,885 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="_range_8c" kind="file">
+    <compoundname>Range.c</compoundname>
+    <includes refid="_common_8h" local="yes">Common.h</includes>
+    <includes refid="_temp_8h" local="yes">Temp.h</includes>
+    <incdepgraph>
+      <node id="390">
+        <label>stdlib.h</label>
+      </node>
+      <node id="394">
+        <label>adc.h</label>
+      </node>
+      <node id="387">
+        <label>Range.c</label>
+        <link refid="Range.c"/>
+        <childnode refid="388" relation="include">
+        </childnode>
+        <childnode refid="398" relation="include">
+        </childnode>
+      </node>
+      <node id="388">
+        <label>Common.h</label>
+        <link refid="_common_8h"/>
+        <childnode refid="389" relation="include">
+        </childnode>
+        <childnode refid="390" relation="include">
+        </childnode>
+        <childnode refid="391" relation="include">
+        </childnode>
+        <childnode refid="392" relation="include">
+        </childnode>
+        <childnode refid="393" relation="include">
+        </childnode>
+        <childnode refid="394" relation="include">
+        </childnode>
+        <childnode refid="395" relation="include">
+        </childnode>
+        <childnode refid="396" relation="include">
+        </childnode>
+        <childnode refid="397" relation="include">
+        </childnode>
+      </node>
+      <node id="398">
+        <label>Temp.h</label>
+        <link refid="_temp_8h"/>
+      </node>
+      <node id="393">
+        <label>timers.h</label>
+      </node>
+      <node id="397">
+        <label>compare.h</label>
+      </node>
+      <node id="395">
+        <label>capture.h</label>
+      </node>
+      <node id="391">
+        <label>math.h</label>
+      </node>
+      <node id="392">
+        <label>p18f4520.h</label>
+        <link refid="p18f4520_8h"/>
+      </node>
+      <node id="396">
+        <label>usart.h</label>
+      </node>
+      <node id="389">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_range_8c_1a8dce7331368588b9016a33f044b71d91" prot="public" static="no">
+        <name>SPD_SND</name>
+        <param><defname>T</defname></param>
+        <initializer>(<ref refid="_common_8h_1a740656a5f724d0a99e528def8ce50125" kindref="member">DIV_1024</ref>(T * (unsigned int)614) + 331)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ File: <ref refid="_range_8c" kindref="compound">Range.c</ref> Author: Grant</para><para>Description: Contains all the functionality for the range module. All variables and settings concerning the range module including the the max distance, timeouts etc are private to this module. The interface functions allow all valid access to the module.</para><para>Duties: -Interface to the IR and Ultrasonic sensors -Read the range from the IR and ultrasonic sensors -Fuse distances from the IR and ultrasonic sensors -Calibrate the IR and ultrasonic sensors</para><para>Functions:</para><para>Created on 15 September 2014, 11:27 AM </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="26" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_range_8c_1a13235bb583d24031d4129a10c126ef8e" prot="public" static="no">
+        <name>IR_CONV</name>
+        <param><defname>ad</defname></param>
+        <initializer>((unsigned long)135174 / (ad) - 28)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="27" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="27" bodyend="-1"/>
+        <referencedby refid="_range_8h_1a91b55894b9e6d74e4495ea610246c856" compoundref="_range_8c" startline="406" endline="420">rangeIR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_range_8c_1a354db24d9e733cf8b3e15f727ab46624" prot="public" static="no">
+        <name>ULTRA_CONV</name>
+        <param><defname>tme</defname></param>
+        <param><defname>T</defname></param>
+        <initializer><ref refid="_common_8h_1a9469c415aff989522dac534ab8adb35e" kindref="member">DIV_65536</ref>(tme * (unsigned long)(<ref refid="_common_8h_1a9469c415aff989522dac534ab8adb35e" kindref="member">DIV_65536</ref>((unsigned long)519078 * T) + (unsigned long)4362)) - 18</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="30" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_range_8c_1acf4b9381566c4a7de8b59886038b9132" prot="public" static="no">
+        <name>NUM_IR_READS</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="35" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" prot="public" static="no">
+        <name>INIT_PIN</name>
+        <initializer><ref refid="p18f4520_8h_1ae6cab3544e1e4b7eaec41046bf007800" kindref="member">PORTCbits.RC3</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="38" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="38" bodyend="-1"/>
+        <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</referencedby>
+        <referencedby refid="_range_8h_1a64e9d21d140ac54a306dab455b49adcf" compoundref="_range_8c" startline="219" endline="236">rangeISR</referencedby>
+        <referencedby refid="_range_8h_1a5b063989d39d2958d2ecebc0106cb1da" compoundref="_range_8c" startline="434" endline="450">rangeUltrasonic</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_range_8c_1a6e6430371976f713ccccb6372b19b810" prot="public" static="no">
+        <name>INIT_TRIS</name>
+        <initializer><ref refid="p18f4520_8h_1ae6cab3544e1e4b7eaec41046bf007800" kindref="member">TRISCbits.RC3</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="39" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="39" bodyend="-1"/>
+        <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_range_8c_1aa42da5a67cdb563f37b56c1674dd67bb" prot="public" static="no">
+        <name>CCP1_INPT</name>
+        <initializer><ref refid="p18f4520_8h_1a2155381890524f46a1a03878e5f52682" kindref="member">TRISCbits.RC2</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="40" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="40" bodyend="-1"/>
+        <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_range_8c_1a57a8488a51b36299fd5b363b10cad132" prot="public" static="yes" mutable="no">
+        <type>signed int</type>
+        <definition>signed int calibration_offset</definition>
+        <argsstring></argsstring>
+        <name>calibration_offset</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="43" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_range_8c_1a4b6dc56220469aa5e4180dad6d68335f" prot="public" static="yes" mutable="no">
+        <type>char</type>
+        <definition>volatile char measuringUS</definition>
+        <argsstring></argsstring>
+        <name>measuringUS</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="46" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_range_8c_1ad3cf40ad92b220b5e39aa159caa45f65" prot="public" static="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int lastRange</definition>
+        <argsstring></argsstring>
+        <name>lastRange</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="49" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_range_8c_1a8976a8edd47f4f691d54e563d4e649b7" prot="public" static="yes" mutable="no">
+        <type>signed int</type>
+        <definition>signed int calibration_offset_IR</definition>
+        <argsstring></argsstring>
+        <name>calibration_offset_IR</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="52" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_range_8c_1af421fb22b292f4b39367c73817a26993" prot="public" static="yes" mutable="no">
+        <type>signed int</type>
+        <definition>signed int calibration_offset_US</definition>
+        <argsstring></argsstring>
+        <name>calibration_offset_US</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="53" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_range_8c_1a3e5f92f759a1957263c83a507c449b39" prot="public" static="yes" mutable="no">
+        <type><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref></type>
+        <definition>TargetState current_target_state</definition>
+        <argsstring></argsstring>
+        <name>current_target_state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="55" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_range_8c_1a4571d632d0c84c18c4aefd1c7b63cb8a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void beginUS</definition>
+        <argsstring>(void)</argsstring>
+        <name>beginUS</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: beginUS(void)</para><para>Include: ultrasonic.h</para><para>Description: starts a scan on the ultrasonic sensor</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="58" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="149" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1a91b55894b9e6d74e4495ea610246c856" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int rangeIR</definition>
+        <argsstring>(void)</argsstring>
+        <name>rangeIR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" kindref="member">rangeIR(void)</ref></para><para>Include:</para><para>Description: Reads the range from the IR Sensor</para><para>Arguments: None</para><para>Returns: Range (in mm) as an unsigned int.</para><para>Remark: Returns 0 if there is no target found </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="59" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="406" bodyend="420"/>
+        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</references>
+        <references refid="_range_8c_1a13235bb583d24031d4129a10c126ef8e" compoundref="_range_8c" startline="27">IR_CONV</references>
+        <referencedby refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="_range_8c" startline="251" endline="278">calibrateRange</referencedby>
+        <referencedby refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1af470fd0f0b96399b344f11783b4ef7f3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>static unsigned int rangeUS</definition>
+        <argsstring>(unsigned char temp)</argsstring>
+        <name>rangeUS</name>
+        <param>
+          <type>unsigned char</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: rangeUS(unsigned char temp)</para><para>Include: ultrasonic.h</para><para>Description: Returns the result of the ultrasonic read (zero if no target found). Will poll until measurement is complete.</para><para>Arguments: tempx2 - 2x the temperature in deg Celsius</para><para>Returns: Distance in mm (unsigned int) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="60" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="178" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configureRange</definition>
+        <argsstring>(void)</argsstring>
+        <name>configureRange</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" kindref="member">configureRange(void)</ref></para><para>Include: <ref refid="_range_8h" kindref="compound">Range.h</ref></para><para>Description: Configures the Range module</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="62" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="102" bodyend="136"/>
+        <references refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" compoundref="_range_8c" startline="38">INIT_PIN</references>
+        <references refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772">INTCONbits</references>
+        <references refid="p18f4520_8h_1a00ea63e57cd6582e6e73158695e2b088">RCONbits</references>
+        <references refid="_temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" compoundref="_temp_8c" startline="84" endline="93">readTemp</references>
+        <references refid="_range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="_range_8c" startline="78" endline="89">configureAD</references>
+        <references refid="_range_8c_1aa42da5a67cdb563f37b56c1674dd67bb" compoundref="_range_8c" startline="40">CCP1_INPT</references>
+        <references refid="_range_8c_1a6e6430371976f713ccccb6372b19b810" compoundref="_range_8c" startline="39">INIT_TRIS</references>
+        <referencedby refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="_range_8c" startline="251" endline="278">calibrateRange</referencedby>
+        <referencedby refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</referencedby>
+        <referencedby refid="_range_8h_1a5b063989d39d2958d2ecebc0106cb1da" compoundref="_range_8c" startline="434" endline="450">rangeUltrasonic</referencedby>
+        <referencedby refid="_tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" compoundref="_tracking_8c" startline="41" endline="45">configureTracking</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1ae7948eddefd58fbe1509d2bade4cd908" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>static unsigned int sampleIR</definition>
+        <argsstring>(char numSamples)</argsstring>
+        <name>sampleIR</name>
+        <param>
+          <type>char</type>
+          <declname>numSamples</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: sampleIR(void)</para><para>Include:</para><para>Description: takes numSamples samples of the IR sensor and returns the average</para><para>Arguments: None</para><para>Returns: the average of the samples </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="64" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="463" bodyend="484"/>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configureAD</definition>
+        <argsstring>(void)</argsstring>
+        <name>configureAD</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" kindref="member">configureAD(void)</ref></para><para>Include: <ref refid="_range_8h" kindref="compound">Range.h</ref></para><para>Description: Configures the ADC, In ADCON1, we set right-justified mode, and select AN0 as the input channel. In ADCON0, we set a sample rate of Fosc/8, select AN0, and enable the ADC. Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="78" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="78" bodyend="89"/>
+        <references refid="p18f4520_8h_1a09522caca1ee06372c915b773f6b5bdd">TRISA</references>
+        <references refid="p18f4520_8h_1a5c6e5143ca62f650ce1dd607cda0970e">ADCON1</references>
+        <references refid="p18f4520_8h_1a84d1543e4da7b93ba59cba345ae5c222">ADCON0</references>
+        <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1a64e9d21d140ac54a306dab455b49adcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rangeISR</definition>
+        <argsstring>(void)</argsstring>
+        <name>rangeISR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a64e9d21d140ac54a306dab455b49adcf" kindref="member">rangeISR(void)</ref></para><para>Include: ultrasonic.h</para><para>Description: Called when an range related interrupt is fired, acts as the service routine for the rangefinding module.</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="219" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="219" bodyend="236"/>
+        <references refid="_common_8h_1a1673a1a80febeafd51f3f02508a0ea71" compoundref="_common_8h" startline="146">CCP1_INT</references>
+        <references refid="p18f4520_8h_1acf62977c2300a77c993cc9bde8f98124">CCPR1</references>
+        <references refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" compoundref="_range_8c" startline="38">INIT_PIN</references>
+        <references refid="p18f4520_8h_1a0da258d430dd4e57d8f750549f9ee883">PIE1bits</references>
+        <references refid="_common_8h_1af1b5f2499fdbb5b83800325b12a062cf" compoundref="_common_8h" startline="153">TMR1_INT</references>
+        <references refid="p18f4520_8h_1ac4d6310cb479c743b217189b91114508">PIR1bits</references>
+        <references refid="_common_8h_1ae8aa3ab3a23a388dab62ac86ee5e2545" compoundref="_common_8h" startline="160">CCP1_CLEAR</references>
+        <referencedby refid="_interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="_interrupts_8c" startline="88" endline="107">lowISR</referencedby>
+        <referencedby refid="_interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="_interrupts_8c" startline="122" endline="141">highISR</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calibrateRange</definition>
+        <argsstring>(unsigned int reference)</argsstring>
+        <name>calibrateRange</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" kindref="member">calibrateRange(unsigned int reference)</ref></para><para>Include:</para><para>Description: Calibrates the range of both the IR and ultrasonic sensors based on a given range.</para><para>Arguments: reference - The distance in mm to calibrate the current measurements from</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="251" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="251" bodyend="278"/>
+        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</references>
+        <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</references>
+        <references refid="_temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" compoundref="_temp_8c" startline="84" endline="93">readTemp</references>
+        <references refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" compoundref="_range_8c" startline="406" endline="420">rangeIR</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" compoundref="_common_8h" startline="96">NO_TARGET</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" compoundref="_common_8h" startline="96">CLOSE_RANGE</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="96">GOOD_TRACK</references>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1a90ce8835c75e17b8e2d15eca3e6ae82f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int rawRange</definition>
+        <argsstring>(void)</argsstring>
+        <name>rawRange</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: speed_sound(unsigned char tempx2)</para><para>Include:</para><para>Description: Returns the calibration offset to calculate the raw data</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="291" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="291" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int range</definition>
+        <argsstring>(void)</argsstring>
+        <name>range</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range()</ref></para><para>Include:</para><para>Description: Uses the IR and Ultrasonic sensors to find the range</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="307" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="307" bodyend="391"/>
+        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</references>
+        <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</references>
+        <references refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" compoundref="_range_8c" startline="406" endline="420">rangeIR</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" compoundref="_common_8h" startline="96">CLOSE_RANGE</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275" compoundref="_common_8h" startline="96">OUT_OF_IR</references>
+        <references refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="_common_8h" startline="122">DIV_2</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="_common_8h" startline="96">GOOD_TRACK</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="_common_8h" startline="96">BAD_DIR</references>
+        <references refid="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" compoundref="_common_8h" startline="96">NO_TARGET</references>
+        <referencedby refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="_range_8c" startline="251" endline="278">calibrateRange</referencedby>
+        <referencedby refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</referencedby>
+        <referencedby refid="_range_8h_1a91b55894b9e6d74e4495ea610246c856" compoundref="_range_8c" startline="406" endline="420">rangeIR</referencedby>
+        <referencedby refid="_range_8h_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="516" endline="522">readTargetState</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="139" endline="196">track</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1a5b063989d39d2958d2ecebc0106cb1da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int rangeUltrasonic</definition>
+        <argsstring>(void)</argsstring>
+        <name>rangeUltrasonic</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: rangeUS(void)</para><para>Include:</para><para>Description: performs an ultrasonic range reading. Pins:</para><para>Arguments: None</para><para>Returns: the average of the samples </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="434" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="434" bodyend="450"/>
+        <references refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</references>
+        <references refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" compoundref="_range_8c" startline="38">INIT_PIN</references>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1a3e5554f5a076ded63b937d50b7e5c9db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref></type>
+        <definition>TargetState getTargetState</definition>
+        <argsstring>(void)</argsstring>
+        <name>getTargetState</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a3e5554f5a076ded63b937d50b7e5c9db" kindref="member">getTargetState(void)</ref></para><para>Include: <ref refid="_range_8h" kindref="compound">Range.h</ref></para><para>Description: Returns the target state from the last range reading. E.g. Good track, or direction not quite correct as US returned, but IR didn&apos;t and was within IR range etc.</para><para>Arguments: None</para><para>Returns: the target state </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="499" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="499" bodyend="502"/>
+        <referencedby refid="_range_8h_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="_range_8c" startline="516" endline="522">readTargetState</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref></type>
+        <definition>TargetState readTargetState</definition>
+        <argsstring>(void)</argsstring>
+        <name>readTargetState</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" kindref="member">readTargetState(void)</ref></para><para>Include: <ref refid="_range_8h" kindref="compound">Range.h</ref></para><para>Description: Does the same thing as getTargetState, but actually performs a <ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range()</ref> read</para><para>Arguments: None</para><para>Returns: the target state </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" line="516" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" bodystart="516" bodyend="522"/>
+        <references refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="_range_8c" startline="307" endline="391">range</references>
+        <references refid="_range_8c_1a3e5554f5a076ded63b937d50b7e5c9db" compoundref="_range_8c" startline="499" endline="502">getTargetState</references>
+        <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="59" endline="107">search</referencedby>
+        <referencedby refid="_tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="139" endline="196">track</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="21"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_temp_8h" kindref="compound">Temp.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&quot;p18f4520.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//(Approximate)<sp/>speed<sp/>of<sp/>sound<sp/>calculation<sp/>macro</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="_range_8c_1a8dce7331368588b9016a33f044b71d91" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SPD_SND(T)<sp/>(DIV_1024(T<sp/>*<sp/>(unsigned<sp/>int)614)<sp/>+<sp/>331)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="_range_8c_1a13235bb583d24031d4129a10c126ef8e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IR_CONV(ad)<sp/>((unsigned<sp/>long)135174<sp/>/<sp/>(ad)<sp/>-<sp/>28)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MNML</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="_range_8c_1a354db24d9e733cf8b3e15f727ab46624" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ULTRA_CONV(tme,<sp/>T)<sp/>DIV_65536(tme<sp/>*<sp/>(unsigned<sp/>long)(DIV_65536((unsigned<sp/>long)519078<sp/>*<sp/>T)<sp/>+<sp/>(unsigned<sp/>long)4362))<sp/>-<sp/>18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ULTRA_CONV(tme,<sp/>T)<sp/>DIV_65536(tme<sp/>*<sp/>(unsigned<sp/>long)(DIV_65536((unsigned<sp/>long)1297695<sp/>*<sp/>T)<sp/>+<sp/>(unsigned<sp/>long)10905))<sp/>-<sp/>18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="_range_8c_1acf4b9381566c4a7de8b59886038b9132" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NUM_IR_READS<sp/>10<sp/>//The<sp/>number<sp/>of<sp/>IR<sp/>reads<sp/>per<sp/>measurement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//Hardware<sp/>Related<sp/>macros</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INIT_PIN<sp/>PORTCbits.RC3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="_range_8c_1a6e6430371976f713ccccb6372b19b810" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INIT_TRIS<sp/>TRISCbits.RC3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="_range_8c_1aa42da5a67cdb563f37b56c1674dd67bb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CCP1_INPT<sp/>TRISCbits.RC2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//Static<sp/>calibration<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>calibration_offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//Flag<sp/>for<sp/>performing<sp/>an<sp/>ultrasonic<sp/>measurment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>measuringUS<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//Static<sp/>variable<sp/>to<sp/>store<sp/>the<sp/>range</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lastRange<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//Calibration<sp/>offsets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>calibration_offset_IR<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>calibration_offset_US<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref><sp/>current_target_state;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//Private<sp/>function<sp/>prototypes:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>beginUS(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" kindref="member">rangeIR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rangeUS(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>temp);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" kindref="member">configureRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sampleIR(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>numSamples);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="_range_8h_1ac7337ef2da4c9ab03257562ec33bbb8a" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" kindref="member">configureAD</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a09522caca1ee06372c915b773f6b5bdd" kindref="member">TRISA</ref><sp/>=<sp/>0xFF;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Write<sp/>the<sp/>configuration<sp/>values<sp/>into<sp/>the<sp/>configuration<sp/>registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a5c6e5143ca62f650ce1dd607cda0970e" kindref="member">ADCON1</ref><sp/>=<sp/>0x8E;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ADFM<sp/>set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a84d1543e4da7b93ba59cba345ae5c222" kindref="member">ADCON0</ref><sp/>=<sp/>0x41;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Arbitrary<sp/>wait<sp/>period<sp/>to<sp/>allow<sp/>the<sp/>ADC<sp/>to<sp/>initialise</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>1000;<sp/>i++);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" kindref="member">configureRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>config;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" kindref="member">INIT_PIN</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Enable<sp/>global<sp/>interrupts<sp/>and<sp/>interrupt<sp/>priority</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772" kindref="member">INTCONbits</ref>.GIEH<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772" kindref="member">INTCONbits</ref>.GIEL<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a00ea63e57cd6582e6e73158695e2b088" kindref="member">RCONbits</ref>.IPEN<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" kindref="member">readTemp</ref>();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Make<sp/>sure<sp/>the<sp/>AD<sp/>is<sp/>configured</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" kindref="member">configureAD</ref>();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_range_8c_1aa42da5a67cdb563f37b56c1674dd67bb" kindref="member">CCP1_INPT</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_range_8c_1a6e6430371976f713ccccb6372b19b810" kindref="member">INIT_TRIS</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//Make<sp/>the<sp/>INIT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Open<sp/><sp/>Timer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>config<sp/>=<sp/>T1_16BIT_RW<sp/>&amp;<sp/>T1_SOURCE_INT<sp/>&amp;<sp/>T1_OSC1EN_OFF<sp/>&amp;<sp/>T1_PS_1_1<sp/>&amp;<sp/>T1_SYNC_EXT_OFF<sp/>&amp;TIMER_INT_ON;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>OpenTimer1(config);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Configure<sp/>CCP<sp/>Source<sp/>timer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>config<sp/>=<sp/>T1_CCP1_T3_CCP2;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>SetTmrCCPSrc(config);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>config<sp/>=<sp/>CAPTURE_INT_ON<sp/>&amp;<sp/>CAP_EVERY_RISE_EDGE;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//CloseCapture1,<sp/>which<sp/>will<sp/>clear<sp/>any<sp/>interrupt<sp/>flags<sp/>etc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>CloseCapture1();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Open<sp/>the<sp/>input<sp/>capture<sp/>on<sp/>compare1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>OpenCapture1(config);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>beginUS(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1afc2ddd57bbfac39272d1c9caa21de832" kindref="member">CCPR1H</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a5e6e0afe1671c71c06a6651a290b09f9" kindref="member">CCPR1L</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>the<sp/>INIT_PIN<sp/>high<sp/>to<sp/>begin<sp/>ultrasonic<sp/>&apos;read&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" kindref="member">INIT_PIN</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Clear<sp/>the<sp/>timer,<sp/>so<sp/>the<sp/>CCP<sp/>input<sp/>value<sp/>is<sp/>the<sp/>delay</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a11c223380e2c9b172b7b78884e09e570" kindref="member">TMR1H</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a36e00525bd590ba98c8bf0029494730a" kindref="member">TMR1L</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a0da258d430dd4e57d8f750549f9ee883" kindref="member">PIE1bits</ref>.CCP1IE<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>the<sp/>measuring<sp/>flag</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>measuringUS<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rangeUS(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>temp)</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>t;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Continue<sp/>to<sp/>poll<sp/>while<sp/>measurement<sp/>is<sp/>still<sp/>in<sp/>progress</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(measuringUS);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#ifdef<sp/>MNML</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="p18f4520_8h_1acf62977c2300a77c993cc9bde8f98124" kindref="member">CCPR1</ref><sp/>&lt;<sp/>0x1770)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Perform<sp/>calculation<sp/>(ReadCapture<sp/>in<sp/>us,<sp/>speed<sp/>of<sp/>sound<sp/>in<sp/>m/s-&gt;um)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>um/1024<sp/>=<sp/>~mm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>t<sp/>=<sp/><ref refid="_common_8h_1a8d2e675fd4bbca53be91ffadf0c11673" kindref="member">DIV_4096</ref>((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/><ref refid="p18f4520_8h_1acf62977c2300a77c993cc9bde8f98124" kindref="member">CCPR1</ref><sp/>*<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>285)<sp/>-<sp/>18;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="p18f4520_8h_1acf62977c2300a77c993cc9bde8f98124" kindref="member">CCPR1</ref><sp/>&lt;<sp/>5<ref refid="p18f4520_8h_1a3d90f65cd752460060c0eba9c09f9034" kindref="member">DC</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Perform<sp/>calculation<sp/>(ReadCapture<sp/>in<sp/>us,<sp/>speed<sp/>of<sp/>sound<sp/>in<sp/>m/s-&gt;um)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>um/1024<sp/>=<sp/>~mm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>t<sp/>=<sp/><ref refid="_common_8h_1a8d2e675fd4bbca53be91ffadf0c11673" kindref="member">DIV_4096</ref>((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/><ref refid="p18f4520_8h_1acf62977c2300a77c993cc9bde8f98124" kindref="member">CCPR1</ref><sp/>*<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>712)<sp/>-<sp/>18;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>range<sp/>=<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int)<sp/>t;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219" refid="_range_8h_1a64e9d21d140ac54a306dab455b49adcf" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1a64e9d21d140ac54a306dab455b49adcf" kindref="member">rangeISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="_common_8h_1a1673a1a80febeafd51f3f02508a0ea71" kindref="member">CCP1_INT</ref><sp/>&amp;&amp;<sp/><ref refid="p18f4520_8h_1acf62977c2300a77c993cc9bde8f98124" kindref="member">CCPR1</ref><sp/>&gt;<sp/>0x5DC)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/></highlight><highlight class="comment">//Checks<sp/>if<sp/>the<sp/>CCP2<sp/>module<sp/>fired<sp/>the<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>measuringUS<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" kindref="member">INIT_PIN</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a0da258d430dd4e57d8f750549f9ee883" kindref="member">PIE1bits</ref>.CCP1IE<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="_common_8h_1af1b5f2499fdbb5b83800325b12a062cf" kindref="member">TMR1_INT</ref>)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>measuringUS<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1acf62977c2300a77c993cc9bde8f98124" kindref="member">CCPR1</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" kindref="member">INIT_PIN</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1ac4d6310cb479c743b217189b91114508" kindref="member">PIR1bits</ref>.TMR1IF<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a0da258d430dd4e57d8f750549f9ee883" kindref="member">PIE1bits</ref>.TMR1IE<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_common_8h_1ae8aa3ab3a23a388dab62ac86ee5e2545" kindref="member">CCP1_CLEAR</ref>;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" kindref="member">calibrateRange</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reference)</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>temp;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>range_US,<sp/>range_IR,<sp/><ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Begin<sp/>the<sp/>Ultrasonic<sp/>measurement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" kindref="member">configureRange</ref>();</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>beginUS();</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Read<sp/>the<sp/>temperature</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>temp<sp/>=<sp/><ref refid="_temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" kindref="member">readTemp</ref>();</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Measure<sp/>the<sp/>IR<sp/>range</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>range_IR<sp/>=<sp/><ref refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" kindref="member">rangeIR</ref>();</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Read<sp/>the<sp/>result<sp/>from<sp/>the<sp/>Ultrasonc<sp/>sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>range_US<sp/>=<sp/>rangeUS(temp);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Check<sp/>if<sp/>valid<sp/>data<sp/>was<sp/>returned<sp/>by<sp/>the<sp/>sensors<sp/>before<sp/>they<sp/>perform<sp/>a<sp/>calibration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_target_state<sp/>!=<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" kindref="member">NO_TARGET</ref><sp/>&amp;&amp;<sp/>current_target_state<sp/>!=<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" kindref="member">CLOSE_RANGE</ref>)</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>calibration_offset_US<sp/>=<sp/>reference<sp/>-<sp/>range_US;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_target_state<sp/>==<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" kindref="member">GOOD_TRACK</ref>)</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>calibration_offset_IR<sp/>=<sp/>reference<sp/>-<sp/>range_IR;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291" refid="_range_8h_1a2c0a42fe463e1d8bd954fe3679aef5c2" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1a90ce8835c75e17b8e2d15eca3e6ae82f" kindref="member">rawRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="292"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lastRange;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307" refid="_range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="308"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>i;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>temp;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>range_US,<sp/>range_IR,<sp/><ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" kindref="member">configureRange</ref>();</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Begin<sp/>the<sp/>Ultrasonic<sp/>measurement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>beginUS();</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Read<sp/>the<sp/>temperature</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//temp<sp/>=<sp/>getTemp();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>temp<sp/>=<sp/>25;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Measure<sp/>the<sp/>IR<sp/>range</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>range_IR<sp/>=<sp/><ref refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" kindref="member">rangeIR</ref>();</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Read<sp/>the<sp/>result<sp/>from<sp/>the<sp/>Ultrasonc<sp/>sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>range_US<sp/>=<sp/>rangeUS(temp);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Check<sp/>which<sp/>sensor(s)<sp/>have<sp/>observed<sp/>a<sp/>target</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(range_US<sp/>&amp;&amp;<sp/>range_IR)</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Calibrate<sp/>the<sp/>sensors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range_US<sp/>+=<sp/>calibration_offset_US;</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range_IR<sp/>+=<sp/>calibration_offset_IR;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CASE<sp/>1:<sp/>Range:<sp/>150-450mm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ignore<sp/>US<sp/>reading<sp/>as<sp/>it<sp/>is<sp/>inaccurate<sp/>at<sp/>these<sp/>ranges</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(range_IR<sp/>&gt;=<sp/>150<sp/>&amp;&amp;<sp/>range_IR<sp/>&lt;=<sp/>450)</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range<sp/>=<sp/>range_IR;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_target_state<sp/>=<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" kindref="member">CLOSE_RANGE</ref>;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CASE<sp/>2:<sp/>Range:<sp/>1m<sp/>-<sp/>1.5m</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Don&apos;t<sp/>trust<sp/>the<sp/>IR<sp/>ranges<sp/>much</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(range_US<sp/>&gt;=<sp/>1000<sp/>&amp;&amp;<sp/>range_IR<sp/>&gt;=1000)</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>@TODO<sp/>Implement<sp/>IR<sp/>in<sp/>here<sp/>a<sp/>little?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range<sp/>=<sp/>range_US;</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_target_state<sp/>=<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275" kindref="member">OUT_OF_IR</ref>;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CASE<sp/>3:<sp/>Range:<sp/>450mm<sp/>-<sp/>1m</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Average<sp/>the<sp/>ultrasonic<sp/>and<sp/>IR<sp/>ranges</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>Do<sp/>we<sp/>want<sp/>to<sp/>average<sp/>these<sp/>completely?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range<sp/>=<sp/><ref refid="_common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(range_US<sp/>+<sp/>range_IR);</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_target_state<sp/>=<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" kindref="member">GOOD_TRACK</ref>;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CASE<sp/>4:<sp/>Range:<sp/>1.5m+</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Rely<sp/>on<sp/>Ultrasound</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(range_US)</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Calibrate<sp/>the<sp/>ultrasonic<sp/>range</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range_US<sp/>+=<sp/>calibration_offset_US;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range<sp/>=<sp/>range_US;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Check<sp/>whether<sp/>No<sp/>IR<sp/>is<sp/>because<sp/>out<sp/>of<sp/>IR<sp/>range,<sp/>or<sp/>just<sp/>bad<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(range<sp/>&gt;<sp/>1500)<sp/>current_target_state<sp/>=<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275" kindref="member">OUT_OF_IR</ref>;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>current_target_state<sp/>=<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" kindref="member">BAD_DIR</ref>;</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(range_IR)</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Calibrate<sp/>the<sp/>IR<sp/>range</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range_IR<sp/>+=<sp/>calibration_offset_IR;</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range<sp/>=<sp/>range_IR;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_target_state<sp/>=<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262" kindref="member">CLOSE_RANGE</ref>;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>@TODO:<sp/>Report<sp/>Error?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_target_state<sp/>=<sp/><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2" kindref="member">NO_TARGET</ref>;</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/>lastRange<sp/>=<sp/><ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//for<sp/>(i<sp/>=<sp/>0;i<sp/>&lt;<sp/>50000;i++);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>;</highlight></codeline>
+<codeline lineno="391"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="406" refid="_range_8h_1a91b55894b9e6d74e4495ea610246c856" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" kindref="member">rangeIR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="407"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ad_result;</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>;</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/>ad_result<sp/>=<sp/>sampleIR(10);</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Return<sp/>0<sp/>if<sp/>there<sp/>is<sp/>no<sp/>target<sp/>detected</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ad_result<sp/>&lt;<sp/>100)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Convert<sp/>voltage<sp/>(0-5v)<sp/>into<sp/>range<sp/>(mm)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/>range<sp/>=<sp/><ref refid="_range_8c_1a13235bb583d24031d4129a10c126ef8e" kindref="member">IR_CONV</ref>(ad_result);</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>;</highlight></codeline>
+<codeline lineno="420"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"></highlight></codeline>
+<codeline lineno="434" refid="_range_8h_1a5b063989d39d2958d2ecebc0106cb1da" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1a5b063989d39d2958d2ecebc0106cb1da" kindref="member">rangeUltrasonic</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="435"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rng;</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"></highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" kindref="member">configureRange</ref>();</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>beginUS();</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"></highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rng<sp/>=<sp/>rangeUS(25);</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"></highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_range_8c_1a885e4c51dcc91fcae14dadc2d564f270" kindref="member">INIT_PIN</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CloseCapture1();</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CloseTimer1();</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"></highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rng;</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"></highlight></codeline>
+<codeline lineno="450"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"></highlight></codeline>
+<codeline lineno="463"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sampleIR(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>numSamples)</highlight></codeline>
+<codeline lineno="464"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sum<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>temp;</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="468"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Multiplex<sp/>onto<sp/>the<sp/>IR<sp/>sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/>SetChanADC(<ref refid="_common_8h_1a5b107d0db5d9abf4a7219b5d13d2c54e" kindref="member">ADC_IR_READ</ref>);</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"></highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Perform<sp/>numSamples<sp/>samples</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>numSamples;<sp/>i++)</highlight></codeline>
+<codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a073ffe676f8a0b295c57ff165b0951ef" kindref="member">ADCON0bits</ref>.GO<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="p18f4520_8h_1a073ffe676f8a0b295c57ff165b0951ef" kindref="member">ADCON0bits</ref>.GO_NOT_DONE);</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp<sp/>=<sp/><ref refid="p18f4520_8h_1ac357135c4e1648c9fbca4f3f7dfa0e8d" kindref="member">ADRES</ref><sp/>&gt;&gt;<sp/>6;</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sum<sp/>+=<sp/>temp;</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"></highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Average<sp/>all<sp/>samples<sp/>taken</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/>temp<sp/>=<sp/>sum<sp/>/<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int)numSamples;</highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>temp;</highlight></codeline>
+<codeline lineno="484"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="485"><highlight class="normal"></highlight></codeline>
+<codeline lineno="499" refid="_range_8h_1a3e5554f5a076ded63b937d50b7e5c9db" refkind="member"><highlight class="normal"><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref><sp/><ref refid="_range_8c_1a3e5554f5a076ded63b937d50b7e5c9db" kindref="member">getTargetState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="500"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>current_target_state;</highlight></codeline>
+<codeline lineno="502"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="503"><highlight class="normal"></highlight></codeline>
+<codeline lineno="516" refid="_range_8h_1a87c8e64ddc596f3e6b72ee861f671168" refkind="member"><highlight class="normal"><ref refid="_common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref><sp/><ref refid="_range_8c_1a87c8e64ddc596f3e6b72ee861f671168" kindref="member">readTargetState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="517"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>();</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//for<sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>10000;<sp/>i++);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="521"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_range_8c_1a3e5554f5a076ded63b937d50b7e5c9db" kindref="member">getTargetState</ref>();</highlight></codeline>
+<codeline lineno="522"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c"/>
+  </compounddef>
+</doxygen>

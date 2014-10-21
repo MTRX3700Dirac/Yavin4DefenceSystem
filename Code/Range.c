@@ -1,20 +1,36 @@
-/*
- * File:   ultrasonic.c
+/*! ****************************************************************************
+ * File:   Range.c
  * Author: Grant
  *
- * Description: Contains all the functionality for the ultrasonic module
+ * Description:
+ * Contains all the functionality for the range module. All variables and settings
+ * concerning the range module including the the max distance, timeouts etc are
+ * private to this module. The interface functions allow all valid access to the module.
+ *
+ * Duties:
+ *      -Interface to the IR and Ultrasonic sensors
+ *      -Read the range from the IR and ultrasonic sensors
+ *      -Fuse distances from the IR and ultrasonic sensors
+ *      -Calibrate the IR and ultrasonic sensors
+ *
+ * Functions: 
  *
  * Created on 15 September 2014, 11:27 AM
- */
+ *******************************************************************************/
 
 #include "Common.h"
 #include "Temp.h"
-#include "p18f4520.h"
+//#include "p18f4520.h"
 
 //(Approximate) speed of sound calculation macro
 #define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
-#define IR_CONV(ad) ((unsigned long)137800 / (ad) - 40)
-#define ULTRA_CONV(tme, T) DIV_65536(tme * (unsigned long)(DIV_65536(519078 * T) + (unsigned long)4362)) - 18
+#define IR_CONV(ad) ((unsigned long)135174 / (ad) - 28)
+
+#ifdef MNML
+#define ULTRA_CONV(tme, T) DIV_65536(tme * (unsigned long)(DIV_65536((unsigned long)519078 * T) + (unsigned long)4362)) - 18
+#else
+#define ULTRA_CONV(tme, T) DIV_65536(tme * (unsigned long)(DIV_65536((unsigned long)1297695 * T) + (unsigned long)10905)) - 18
+#endif
 
 #define NUM_IR_READS 10 //The number of IR reads per measurement
 
@@ -33,19 +49,19 @@ volatile static char measuringUS = 0;
 static unsigned int lastRange = 0;
 
 //Calibration offsets
-signed int calibration_offset_IR = 0;
-signed int calibration_offset_US = 0;
+static signed int calibration_offset_IR = 0;
+static signed int calibration_offset_US = 0;
 
-TargetState current_target_state;
+static TargetState current_target_state;
 
 //Private function prototypes:
-void beginUS(void);
+static void beginUS(void);
 unsigned int rangeIR(void);
-unsigned int rangeUS(unsigned char temp);
+static unsigned int rangeUS(unsigned char temp);
 
 void configureRange(void);
 
-unsigned int sampleIR(char numSamples);
+static unsigned int sampleIR(char numSamples);
 
 /*! **********************************************************************
  * Function: configureAD(void)
@@ -130,7 +146,7 @@ void configureRange(void)
  *
  * Returns: None
  *************************************************************************/
-void beginUS(void)
+static void beginUS(void)
 {
     CCPR1H = 0;
     CCPR1L = 0;
@@ -159,19 +175,29 @@ void beginUS(void)
  *
  * Returns: Distance in mm (unsigned int)
  *************************************************************************/
-unsigned int rangeUS(unsigned char temp)
+static unsigned int rangeUS(unsigned char temp)
 {
     unsigned int range;
     unsigned long int t;
     //Continue to poll while measurement is still in progress
     while (measuringUS);
 
+    #ifdef MNML
     if (CCPR1 < 0x1770) return 0;
 
     //Perform calculation (ReadCapture in us, speed of sound in m/s->um)
     // um/1024 = ~mm
 
     t = DIV_4096((unsigned long int) CCPR1 * (unsigned long int) 285) - 18;
+    
+    #else
+    if (CCPR1 < 5DC) return 0;
+
+    //Perform calculation (ReadCapture in us, speed of sound in m/s->um)
+    // um/1024 = ~mm
+
+    t = DIV_4096((unsigned long int) CCPR1 * (unsigned long int) 712) - 18;
+    #endif
 
     range = (unsigned int) t;
     
@@ -240,11 +266,12 @@ void calibrateRange(unsigned int reference)
     //Read the result from the Ultrasonc sensor
     range_US = rangeUS(temp);
 
-    if (range_US)
+    //Check if valid data was returned by the sensors before they perform a calibration
+    if (current_target_state != NO_TARGET && current_target_state != CLOSE_RANGE)
     {
         calibration_offset_US = reference - range_US;
     }
-    if (range_IR)
+    if (current_target_state == GOOD_TRACK)
     {
         calibration_offset_IR = reference - range_IR;
     }
@@ -279,6 +306,7 @@ unsigned int rawRange(void)
  *************************************************************************/
 unsigned int range(void)
 {
+    //unsigned int i;
     unsigned char temp;
     unsigned int range_US, range_IR, range;
 
@@ -352,12 +380,13 @@ unsigned int range(void)
     }
     else
     {
-        // TODO: Report Error?
+        // @TODO: Report Error?
         range = 0;
         current_target_state = NO_TARGET;
     }
-
     lastRange = range;
+
+    //for (i = 0;i < 50000;i++);
     return range;
 }
 
@@ -431,7 +460,7 @@ unsigned int rangeUltrasonic(void)
  *
  * Returns: the average of the samples
  *************************************************************************/
-unsigned int sampleIR(char numSamples)
+static unsigned int sampleIR(char numSamples)
 {
     unsigned long int sum = 0;
     unsigned int temp;
@@ -486,6 +515,8 @@ TargetState getTargetState(void)
  *************************************************************************/
 TargetState readTargetState(void)
 {
+    unsigned i = 0;
     range();
+    //for (i = 0; i < 10000; i++);
     return getTargetState();
 }

@@ -1,0 +1,5 @@
+<map id="initialiseMenu" name="initialiseMenu">
+<area shape="rect" id="node2" href="$_serial_8c.html#ae2cdcda889fcfed4b6b851835bf2b538" title="configureSerial" alt="" coords="155,5,261,32"/>
+<area shape="rect" id="node3" href="$_l_c_d_8c.html#aaab6233be65b7399b3422eee9782508c" title="configLCD" alt="" coords="167,56,249,83"/>
+<area shape="rect" id="node4" href="$_user___interface_8c.html#a58e473ed40d00e18bd61277428e4d36c" title="configUSER" alt="" coords="162,107,254,133"/>
+</map>

@@ -1,0 +1,99 @@
+.TH "CircularBuffers.h" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CircularBuffers.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBcircularBuffer\fP"
+.br
+.RI "\fIStores bytes of data in a circular buffer\&. \fP"
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBincMod\fP(ptr)   if(ptr==\fBBUFFERLENGTH\fP-1) ptr = 0; else ptr++;"
+.br
+.RI "\fIBuffer related macro functionality\&. \fP"
+.ti -1c
+.RI "#define \fBempty\fP(buf)   (buf\&.tail == buf\&.head)"
+.br
+.ti -1c
+.RI "#define \fBfull\fP(buf)   (buf\&.head == (buf\&.tail + 1) % \fBBUFFERLENGTH\fP)"
+.br
+.ti -1c
+.RI "#define \fBpeek\fP(buf)   buf\&.data[buf\&.head]"
+.br
+.ti -1c
+.RI "#define \fBpush\fP(byte, buf)   buf\&.data[buf\&.tail] = byte; if(\fBfull\fP(buf)) \fBincMod\fP(buf\&.head); \fBincMod\fP(buf\&.tail)"
+.br
+.ti -1c
+.RI "#define \fBpop\fP(buf)   buf\&.data[buf\&.head]; if (!\fBempty\fP(buf)) \fBincMod\fP(buf\&.head)"
+.br
+.ti -1c
+.RI "#define \fBinit\fP(buf)   buf\&.tail = 0; buf\&.head = 0"
+.br
+.ti -1c
+.RI "#define \fBBUFFERLENGTH\fP   30"
+.br
+.ti -1c
+.RI "#define \fBBUFFERS_H\fP   0"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BUFFERLENGTH   30"
+
+.PP
+Definition at line 32 of file CircularBuffers\&.h\&.
+.SS "#define BUFFERS_H   0"
+
+.PP
+Definition at line 56 of file CircularBuffers\&.h\&.
+.SS "#define empty(buf)   (buf\&.tail == buf\&.head)"
+
+.PP
+Definition at line 23 of file CircularBuffers\&.h\&.
+.SS "#define full(buf)   (buf\&.head == (buf\&.tail + 1) % \fBBUFFERLENGTH\fP)"
+
+.PP
+Definition at line 24 of file CircularBuffers\&.h\&.
+.SS "#define incMod(ptr)   if(ptr==\fBBUFFERLENGTH\fP-1) ptr = 0; else ptr++;"
+
+.PP
+Buffer related macro functionality\&. 
+.PP
+ File: \fBCircularBuffers\&.h\fP Author: Grant
+.PP
+Description: Contains Circular Buffer functionality and structure definitions\&. This allows Circular Buffers to be used in any file by simply including this header\&. Furthermore, circular buffer functionality can be altered on a program level\&.
+.PP
+Contains: -Definition of CircularBuffer type -Peek, pop, push and init functionality -Empty, full, queries
+.PP
+Created on 8 October 2014, 10:30 AM 
+.PP
+Definition at line 22 of file CircularBuffers\&.h\&.
+.SS "#define init(buf)   buf\&.tail = 0; buf\&.head = 0"
+
+.PP
+Definition at line 29 of file CircularBuffers\&.h\&.
+.SS "#define peek(buf)   buf\&.data[buf\&.head]"
+
+.PP
+Definition at line 25 of file CircularBuffers\&.h\&.
+.SS "#define pop(buf)   buf\&.data[buf\&.head]; if (!\fBempty\fP(buf)) \fBincMod\fP(buf\&.head)"
+
+.PP
+Definition at line 28 of file CircularBuffers\&.h\&.
+.SS "#define push(byte, buf)   buf\&.data[buf\&.tail] = byte; if(\fBfull\fP(buf)) \fBincMod\fP(buf\&.head); \fBincMod\fP(buf\&.tail)"
+
+.PP
+Definition at line 27 of file CircularBuffers\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

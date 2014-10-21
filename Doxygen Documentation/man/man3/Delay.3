@@ -1,0 +1,49 @@
+.TH "Delay" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Delay \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "signed int \fBAzimuthDelay\fP"
+.br
+.ti -1c
+.RI "signed int \fBInclinationDelay\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+ File: ADC\&.c Author: Grant
+.PP
+Description: Contains all the functionality for the Pan Tilt module\&. All variables and settings concerning the pan tilt module including the current direction, PDM delay info, min and max settings are private to this module\&. The interface functions allow all valid access to the module\&.
+.PP
+Duties: -Software interface to the Pan Tilt Module -Moves Pan Tilt -Reads current Pan Tilt position (based on PDM's) -Generate PDM signals
+.PP
+Functions: Local: void validate(unsigned int *delay); \fBDirection\fP delay2Direction(Delay dly); \fBDelay\fP direction2Delay(Direction dir);
+.PP
+Public Interface: void \fBconfigureBase(void)\fP; void \fBmove(Direction destination)\fP; void \fBincrement(Direction difference)\fP; void \fBincrementFine(Direction difference)\fP; \fBDirection\fP \fBgetDir(void)\fP; void \fBcalibratePanTilt(Direction reference)\fP; \fBDirection\fP \fBrawDir(void)\fP; char \fBupdated(void)\fP; void \fBpanTiltISR(void)\fP; char \fBgetMaxAzimuthAngle(void)\fP; char \fBgetMinAzimuthAngle(void)\fP; char \fBgetMaxElevationAngle(void)\fP; char \fBgetMinElevationAngle(void)\fP; void \fBsetMaxAzimuthAngle(char p_angle)\fP; void \fBsetMinAzimuthAngle(char p_angle)\fP; void \fBsetMaxElevationAngle(char p_angle)\fP; void \fBsetMinElevationAngle(char p_angle)\fP;
+.PP
+Created on 16 September 2014, 6:47 PM 
+.PP
+Definition at line 49 of file PanTilt\&.c\&.
+.SH "Field Documentation"
+.PP 
+.SS "signed int AzimuthDelay"
+
+.PP
+Definition at line 51 of file PanTilt\&.c\&.
+.SS "signed int InclinationDelay"
+
+.PP
+Definition at line 52 of file PanTilt\&.c\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.
