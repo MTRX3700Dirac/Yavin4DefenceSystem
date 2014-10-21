@@ -12,8 +12,13 @@
 #ifndef LCD_H
 
 //External declarations of public access functions
-extern void configLCD(void);
-extern void displayLCD(char *string);
+extern void lcdWriteString(char *string, unsigned char line);
+extern void lcdWriteChar(unsigned char byte, unsigned char pos);
+extern void lcdInit(void);                //initialize
+
+void delay(unsigned int t);
+char lcdBusy(void);                 //check busy flag
+void lcdWrite(unsigned char byte, unsigned char mode);
 
 #define LCD_H
 #endif
