@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /*! **********************************************************************
  * File:   User_Interface.c
  * Author:
@@ -16,7 +14,6 @@
  * Created on 15 September 2014, 1:21 PM
  **********************************************************************/
 
->>>>>>> e358b3317df55eb457e72a70e5c25165911b2fae
 #include "Common.h"
 #include "LCD_defs.h"
 #include <delays.h>
@@ -168,25 +165,6 @@ void lcdWrite(unsigned char byte, unsigned char mode){
     LCD_E = LCD_CLKLOW;  //! Set clock low
 }
 
-//!Feed character string, and line (1 or 2)
-<<<<<<< HEAD
-void lcdWriteString(char *string, char line){
-    char column, a;        //! Also include information about which row
-    if(line==1){column=LINE1;}
-    else if(line==2){column=LINE2;}
-        for(a=0; a<16; a++){
-            lcdWrite((SETDDRAMADD | column | a), LCD_INS);
-            lcdWrite(*string, LCD_DATA);
-            string++;
-            delay(5);
-        }
-    lcdWrite(RTNHOME, LCD_INS);
-}
-
-//!Feed character, line (1 or 2), and column(1-16)
-void lcdWriteChar(char byte, char line, char column){
-    char row;
-=======
 /*! **********************************************************************
  * Function: lcdWriteString(char *string, unsigned char line)
  *
@@ -201,15 +179,18 @@ void lcdWriteChar(char byte, char line, char column){
  *
  * Returns: None
  *************************************************************************/
-void lcdWriteString(char *string, unsigned char line){
-    unsigned char row;
-    if(line==1){row=LINE1;}
-    else(row=LINE2);
-    while((row & LINESTART) <= LINEEND){
-        lcdWrite((SETDDRAMADD | line++), LCD_INS);
-        lcdWrite((*string)++, LCD_DATA);
-        delay(5);
-    }
+//!Feed character string, and line (1 or 2)
+void lcdWriteString(char *string, char line){
+    char column, a;        //! Also include information about which row
+    if(line==1){column=LINE1;}
+    else if(line==2){column=LINE2;}
+        for(a=0; a<16; a++){
+            lcdWrite((SETDDRAMADD | column | a), LCD_INS);
+            lcdWrite(*string, LCD_DATA);
+            string++;
+            delay(5);
+        }
+    lcdWrite(RTNHOME, LCD_INS);
 }
 
 //!Feed character, line (1 or 2), and column(1-16)
@@ -228,9 +209,9 @@ void lcdWriteString(char *string, unsigned char line){
  *
  * Returns: None
  *************************************************************************/
-void lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column){
-    unsigned char row;
->>>>>>> e358b3317df55eb457e72a70e5c25165911b2fae
+//!Feed character, line (1 or 2), and column(1-16)
+void lcdWriteChar(char byte, char line, char column){
+    char row;
     if(line==1){row=LINE1;}
     else if(line==2){row=LINE2;}
     lcdWrite((SETDDRAMADD | row | (column-1)), LCD_INS);
