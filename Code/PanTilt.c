@@ -111,10 +111,11 @@ void configureBase(void)
     //Set the initial servo PWM's to zeros
     Direction zero = { 0, 0 };
     global_delay = direction2Delay(zero);
-    
+
+    PIR1 = 0x00;            //Clear all interrupt flags
+    PIR2 = 0x00;
     INTCONbits.GIEH = 1;
     INTCONbits.GIEL = 1;
-
     RCONbits.IPEN = 1;
     
     SERVO_INIT();

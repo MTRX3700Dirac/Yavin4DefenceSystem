@@ -63,9 +63,9 @@ void main(void) {
 //        sendROM(welcome);
 //        for (i=0;i<10000;i++);
 //    }
-    configureBase();
-    initialiseMenu();
-    menu();
+//    configureBase();
+//    initialiseMenu();
+//    menu();
 
     
 //    configureBase();
@@ -119,26 +119,9 @@ void main(void) {
  *************************************************************************/
 void initialization(systemState *state)
 {
-    //Initialise the Interrupts
-    PIR1 = 0x00;            //Clear all interrupt flags
-    PIR2 = 0x00;
-    INTCONbits.GIEH = 1;    //Unmask global high interrupts
-    INTCONbits.GIEL = 1;    //Unmask global low interrupts
-    RCONbits.IPEN = 1;      //Enable interrupt priority
-
-    //Open ADC. Set A/D conversion Clock to Fosc/2, Acuisition time is 20TAD (10 microseconds)
-    //Read from channel 0, and disable A/D interrupts
-
-    // On the MNML board, use a different ADC
-#ifdef MNML
-    OpenADC(ADC_FOSC_2 & ADC_0_TAD & ADC_INT_OFF, ADC_RIGHT_JUST & ADC_1ANA, ADC_CH0);
-#else
-    OpenADC(ADC_FOSC_2 & ADC_RIGHT_JUST & ADC_20_TAD, ADC_CH0 & ADC_INT_OFF);
-#endif
-
-    TRISAbits.TRISA0 = 1;   //Set channel 0 on port A input
-    TRISAbits.TRISA1 = 1;   //Set channel 1 on port A input
-    TRISAbits.TRISA2 = 1;   //Set channel 2 on port A input
+    configureTracking();
+    configureSerial();
+    configureTemp();
 
     NEXT_STATE_PTR(SRCH, state);
 }

@@ -82,10 +82,24 @@ void configureAD(void)
     int i = 0;
     TRISA = 0xFF;
 
-    //Write the configuration values into the configuration registers
-    ADCON2bits.ADFM = 1;    //right justified
-    ADCON1 = 0x8C;      // ADFM set, AN0 AN1 and AN2 analogue input
-    ADCON0 = 0x41;
+//    //Write the configuration values into the configuration registers
+//    ADCON2bits.ADFM = 1;    //right justified
+//    ADCON1 = 0x8C;      // ADFM set, AN0 AN1 and AN2 analogue input
+//    ADCON0 = 0x41;
+
+    //Open ADC. Set A/D conversion Clock to Fosc/2, Acuisition time is 20TAD (10 microseconds)
+    //Read from channel 0, and disable A/D interrupts
+
+        // On the MNML board, use a different ADC
+#ifdef MNML
+    OpenADC(ADC_FOSC_2 & ADC_0_TAD & ADC_INT_OFF, ADC_RIGHT_JUST & ADC_1ANA, ADC_CH0);
+#else
+    OpenADC(ADC_FOSC_2 & ADC_RIGHT_JUST & ADC_20_TAD, ADC_CH0 & ADC_INT_OFF);
+#endif
+
+    TRISAbits.TRISA0 = 1;   //Set channel 0 on port A input
+    TRISAbits.TRISA1 = 1;   //Set channel 1 on port A input
+    TRISAbits.TRISA2 = 1;   //Set channel 2 on port A input
     
     //Arbitrary wait period to allow the ADC to initialise
     for (i = 0; i < 1000; i++);

@@ -57,6 +57,8 @@ static volatile char escPressed = 0;
  *************************************************************************/
 void configureSerial(void)
 {
+    PIR1 = 0x00;            //Clear all interrupt flags
+    PIR2 = 0x00;
     INTCONbits.GIEH = 1;
     INTCONbits.GIEL = 1;
     RCONbits.IPEN = 1;   

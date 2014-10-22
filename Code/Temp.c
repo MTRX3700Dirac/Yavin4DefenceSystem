@@ -17,6 +17,7 @@
  ******************************************************************************/
 
 #include "Common.h"
+#include "Range.h" //Access to the configureAD() function
 
 //Static variables
 static signed char calibration_offset = 0;
@@ -35,16 +36,7 @@ static unsigned char lastTempx2;
  *************************************************************************/
 void configureTemp(void)
 {
-    int i = 0;
-    TRISA = 0xFF;
-
-    //Write the configuration values into the configuration registers
-    //ADCON1 = 0x8E;      // ADFM set
-    ADCON1 = 0x8C;        //Set three analogue channels on PORTA, AN0, AN1, AN2
-    ADCON0 = 0x41;
-
-    //Arbitrary wait period to allow the ADC to initialise
-    for (i = 0; i < 1000; i++);
+    configureAD();
 }
 
 /*! **********************************************************************
