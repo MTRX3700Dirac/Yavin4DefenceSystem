@@ -101,6 +101,8 @@ static volatile char changed = 0;
  * Arguments: None
  *
  * Returns: None
+ *
+ * @todo Test that configuring the base will send it to the default location (0, 0)
  *************************************************************************/
 void configureBase(void)
 {
@@ -144,6 +146,8 @@ void configureBase(void)
  * Arguments: destionation - A struct containing the desired azimuth and inclination
  *
  * Returns: None
+ *
+ * @todo Perhaps non-arbitrary wait period
  *************************************************************************/
 void move(Direction destination)
 {
@@ -360,6 +364,8 @@ void setMinElevationAngle(char p_angle)
  *                        wish to define as this position.
  *
  * Returns: None
+ *
+ * @todo Actually write a function to calibrate the PanTilt, perhaps just offset
  *************************************************************************/
 void calibratePanTilt(Direction reference)
 {
@@ -376,10 +382,12 @@ void calibratePanTilt(Direction reference)
  * Arguments: None
  *
  * Returns: The position of the pan tilt without any calibration
+ *
+ * @todo Test this
  *************************************************************************/
 Direction rawDir(void)
 {
-    
+    return current_direction;
 }
 
 /*! **********************************************************************
@@ -392,6 +400,8 @@ Direction rawDir(void)
  * Arguments: None
  *
  * Returns: None
+ *
+ * @todo Ensure that other interrupts and running functionality is not going to affect the timing here
  *************************************************************************/
 void panTiltISR(void)
 {

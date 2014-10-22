@@ -40,6 +40,8 @@ static void transRange(void);
  * Arguments: None
  *
  * Returns: None
+ *
+ * @todo test and debug the Watch Dog Timer functionality
  *************************************************************************/
 void main() {
     systemState state = {INIT, UNDEF};
@@ -100,6 +102,8 @@ static void initialization(systemState *state)
  * Arguments: None
  *
  * Returns: None; Prints range to the screen
+ *
+ * @todo Remove this function before the final version
  *************************************************************************/
 static void transRange(void)
 {

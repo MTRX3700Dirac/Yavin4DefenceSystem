@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['delay',['Delay',['../struct_delay.html',1,'']]],
-  ['direction',['Direction',['../struct_direction.html',1,'']]]
+  ['delay',['Delay',['../structDelay.html',1,'']]],
+  ['direction',['Direction',['../structDirection.html',1,'']]]
 ];

@@ -1,0 +1,10 @@
+<map id="rangeIR" name="rangeIR">
+<area shape="rect" id="node2" href="$Range_8c.html#aff3698f3a7b3b5963d8e6b305a165d71" title="range" alt="" coords="131,107,185,133"/>
+<area shape="rect" id="node9" href="$Range_8c.html#ae7948eddefd58fbe1509d2bade4cd908" title="sampleIR" alt="" coords="120,157,196,184"/>
+<area shape="rect" id="node3" href="$Range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2" title="configureRange" alt="" coords="244,31,355,57"/>
+<area shape="rect" id="node7" href="$Range_8c.html#a4571d632d0c84c18c4aefd1c7b63cb8a" title="beginUS" alt="" coords="264,81,335,108"/>
+<area shape="rect" id="node8" href="$Range_8c.html#af470fd0f0b96399b344f11783b4ef7f3" title="rangeUS" alt="" coords="263,132,335,159"/>
+<area shape="rect" id="node4" href="$Temp_8c.html#afd08db2b1a6d6af19e39f10dc453332c" title="readTemp" alt="" coords="409,5,488,32"/>
+<area shape="rect" id="node6" href="$Range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a" title="configureAD" alt="" coords="403,56,495,83"/>
+<area shape="rect" id="node5" href="$Temp_8c.html#a4946ccbc1990e831667bffded1147c4f" title="readTempx2" alt="" coords="543,5,636,32"/>
+</map>

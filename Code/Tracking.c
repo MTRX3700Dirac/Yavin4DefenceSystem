@@ -55,6 +55,9 @@ void configureTracking(void)
  * Arguments: None
  *
  * Returns: None
+ *
+ * @todo Possibly better searchin algorithm? Tune parameters etc.
+ * @todo Coordinate sampling rate with searching
  *************************************************************************/
 void search(systemState *state)
 {
@@ -135,6 +138,9 @@ void trackingISR(void)
  * Returns: TargetData - The current target information (Azimuth, inclination
  *                       and range to the target). This information is then used
  *                       for the Display in the User interface module.
+ *
+ * @todo Incorperate prediction, and calculate offset angle based on distance, and known accuracy
+ * @todo Include a sampling rate into tracking
  *************************************************************************/
 TrackingData track(systemState *state)
 {
@@ -206,6 +212,8 @@ TrackingData track(systemState *state)
  * Arguments: current - The current position of the target
  *
  * Returns: Direction - The Predicted likely location
+ *
+ * @todo Finish and test this function, incorperate it into tracking
  *************************************************************************/
 static Direction prediction(Direction current)
 {

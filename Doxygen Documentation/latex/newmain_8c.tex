@@ -8,8 +8,7 @@
 {\ttfamily \#include \char`\"{}Serial.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Pan\+Tilt.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Menusystem.\+h\char`\"{}}\\*
-Include dependency graph for newmain.\+c\+:
-\nopagebreak
+Include dependency graph for newmain.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -19,11 +18,64 @@ Include dependency graph for newmain.\+c\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+static void \hyperlink{newmain_8c_a1ff28a3e20f1261c410c00f62e9f9c33}{initialization} (\hyperlink{structsystemState}{system\+State} $\ast$state)
+\item 
+static void \hyperlink{newmain_8c_a562b6fc99e2386f66e66353386d80212}{trans\+Range} (void)
+\item 
 void \hyperlink{newmain_8c_acdef7a1fd863a6d3770c1268cb06add3}{main} ()
 \begin{DoxyCompactList}\small\item\em Program entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
+\hypertarget{newmain_8c_a1ff28a3e20f1261c410c00f62e9f9c33}{\index{newmain.\+c@{newmain.\+c}!initialization@{initialization}}
+\index{initialization@{initialization}!newmain.\+c@{newmain.\+c}}
+\subsubsection[{initialization}]{\setlength{\rightskip}{0pt plus 5cm}static void initialization (
+\begin{DoxyParamCaption}
+\item[{{\bf system\+State} $\ast$}]{state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{newmain_8c_a1ff28a3e20f1261c410c00f62e9f9c33}
+
+
+ File\+: \hyperlink{newmain_8c}{newmain.\+c}
+
+Author\+: Grant
+
+Description\+: Controls the main system state of the product based on a state transition type template.
+
+Created on 7 September 2014, 4\+:12 P\+M
+
+
+
+ Function\+: \hyperlink{newmain_8c_a1ff28a3e20f1261c410c00f62e9f9c33}{initialization(system\+State $\ast$state)}
+
+Include\+: Local to \hyperlink{newmain_8c}{newmain.\+c}
+
+Description\+: Initializes the system, turns on the sensors and checks if they are ready to begin working
+
+Arguments\+: state -\/ The current state of the system
+
+Returns\+: The next system state -\/ At the moment always just transitions to C\+H\+E\+C\+K 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{newmain_8c_a1ff28a3e20f1261c410c00f62e9f9c33_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{newmain_8c_a1ff28a3e20f1261c410c00f62e9f9c33_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{newmain_8c_acdef7a1fd863a6d3770c1268cb06add3}{\index{newmain.\+c@{newmain.\+c}!main@{main}}
 \index{main@{main}!newmain.\+c@{newmain.\+c}}
 \subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}void main (
@@ -45,10 +97,10 @@ Description\+: stores the current system state and manages all transitions
 
 Arguments\+: None
 
-Returns\+: None 
+Returns\+: None
 
-Definition at line 44 of file newmain.\+c.
-
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]test and debug the Watch Dog Timer functionality \end{DoxyRefDesc}
 
 
 Here is the call graph for this function\+:\nopagebreak
@@ -56,6 +108,38 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{newmain_8c_acdef7a1fd863a6d3770c1268cb06add3_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{newmain_8c_a562b6fc99e2386f66e66353386d80212}{\index{newmain.\+c@{newmain.\+c}!trans\+Range@{trans\+Range}}
+\index{trans\+Range@{trans\+Range}!newmain.\+c@{newmain.\+c}}
+\subsubsection[{trans\+Range}]{\setlength{\rightskip}{0pt plus 5cm}static void trans\+Range (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{newmain_8c_a562b6fc99e2386f66e66353386d80212}
+
+
+ Function\+: \hyperlink{newmain_8c_a562b6fc99e2386f66e66353386d80212}{trans\+Range(void)}
+
+Include\+: Local to \hyperlink{newmain_8c}{newmain.\+c}
+
+Description\+: Measures and Transmits the range -\/$>$ for testing purposes only
+
+Arguments\+: None
+
+Returns\+: None; Prints range to the screen
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]Remove this function before the final version \end{DoxyRefDesc}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{newmain_8c_a562b6fc99e2386f66e66353386d80212_cgraph}
 \end{center}
 \end{figure}
 

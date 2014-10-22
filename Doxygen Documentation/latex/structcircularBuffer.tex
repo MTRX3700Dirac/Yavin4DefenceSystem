@@ -1,0 +1,49 @@
+\hypertarget{structcircularBuffer}{\section{circular\+Buffer Struct Reference}
+\label{structcircularBuffer}\index{circular\+Buffer@{circular\+Buffer}}
+}
+
+
+Stores bytes of data in a circular buffer.  
+
+
+
+
+{\ttfamily \#include $<$Circular\+Buffers.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{structcircularBuffer_a47f7e6109597e5c1c227993c0ce5f560}{head}
+\item 
+unsigned char \hyperlink{structcircularBuffer_af18a1d7542e277284c4794593b049258}{tail}
+\item 
+unsigned char \hyperlink{structcircularBuffer_ad7b57ba90694482456be1fbab7de4aec}{data} \mbox{[}\hyperlink{CircularBuffers_8h_a5a69f707d5405fe875b322c6bfbace46}{B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores bytes of data in a circular buffer. 
+
+
+
+ typedef of \hyperlink{structcircularBuffer}{circular\+Buffer} struct
+
+Length\+: B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H
+
+Description\+: Defines a circular buffer in which bytes of data can be placed, or removed at any time in the correct order that they were pushed. The accompanying functionality facilitates all necessary circular buffer related operations. This implementation reduces the buffer length by 1 to differentiate between full and empty states. B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H can be redefined in individual files to get different buffer lengths 
+
+\subsection{Field Documentation}
+\hypertarget{structcircularBuffer_ad7b57ba90694482456be1fbab7de4aec}{\index{circular\+Buffer@{circular\+Buffer}!data@{data}}
+\index{data@{data}!circular\+Buffer@{circular\+Buffer}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char data\mbox{[}{\bf B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H}\mbox{]}}}\label{structcircularBuffer_ad7b57ba90694482456be1fbab7de4aec}
+\hypertarget{structcircularBuffer_a47f7e6109597e5c1c227993c0ce5f560}{\index{circular\+Buffer@{circular\+Buffer}!head@{head}}
+\index{head@{head}!circular\+Buffer@{circular\+Buffer}}
+\subsubsection[{head}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char head}}\label{structcircularBuffer_a47f7e6109597e5c1c227993c0ce5f560}
+\hypertarget{structcircularBuffer_af18a1d7542e277284c4794593b049258}{\index{circular\+Buffer@{circular\+Buffer}!tail@{tail}}
+\index{tail@{tail}!circular\+Buffer@{circular\+Buffer}}
+\subsubsection[{tail}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char tail}}\label{structcircularBuffer_af18a1d7542e277284c4794593b049258}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\hyperlink{CircularBuffers_8h}{Circular\+Buffers.\+h}\end{DoxyCompactItemize}

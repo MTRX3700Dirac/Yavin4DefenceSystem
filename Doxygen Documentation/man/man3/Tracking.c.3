@@ -43,6 +43,9 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c \-
 .ti -1c
 .RI "\fBTrackingData\fP \fBtrack\fP (\fBsystemState\fP *state)"
 .br
+.ti -1c
+.RI "static \fBDirection\fP \fBprediction\fP (\fBDirection\fP current)"
+.br
 .in -1c
 .SH "Macro Definition Documentation"
 .PP 
@@ -58,32 +61,22 @@ Duties: -Control and coordinate Pan Tilt and range sensors -Implement searching 
 Functions:
 .PP
 Created on 15 September 2014, 1:42 PM 
-.PP
-Definition at line 26 of file Tracking\&.c\&.
 .SS "#define TARGET_RAD   30"
 
-.PP
-Definition at line 27 of file Tracking\&.c\&.
 .SS "#define TIMER   \fBTMR2\fP"
 
 .SH "Function Documentation"
 .PP 
 .SS "void configureTracking (void)"
 
-.PP
-Definition at line 41 of file Tracking\&.c\&.
+.SS "static \fBDirection\fP prediction (\fBDirection\fPcurrent)\fC [static]\fP"
+
 .SS "void search (\fBsystemState\fP *state)"
 
-.PP
-Definition at line 59 of file Tracking\&.c\&.
 .SS "\fBTrackingData\fP track (\fBsystemState\fP *state)"
 
-.PP
-Definition at line 139 of file Tracking\&.c\&.
 .SS "void trackingISR (void)"
 
-.PP
-Definition at line 120 of file Tracking\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

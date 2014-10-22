@@ -56,7 +56,7 @@ static TargetState current_target_state;
 
 //Private function prototypes:
 static void beginUS(void);
-unsigned int rangeIR(void);
+static unsigned int rangeIR(void);
 static unsigned int rangeUS(unsigned char temp);
 
 void configureRange(void);
@@ -74,6 +74,8 @@ static unsigned int sampleIR(char numSamples);
  * Arguments: None
  *
  * Returns: None
+ *
+ * @todo Make absolutely sure this works on the minimal board, and with the temperature sensor, and pot and IR sensor
  *************************************************************************/
 void configureAD(void)
 {
@@ -175,6 +177,9 @@ static void beginUS(void)
  * Arguments: tempx2 - 2x the temperature in deg Celsius
  *
  * Returns: Distance in mm (unsigned int)
+ *
+ * @todo Include temperature read (or get temperature) in Ultrasonic reading
+ * @todo Double check the calibration and accuracy
  *************************************************************************/
 static unsigned int rangeUS(unsigned char temp)
 {
@@ -248,6 +253,8 @@ void rangeISR(void)
  *                        measurements from
  *
  * Returns: None
+ *
+ * @todo Make sure this works properly, and does not do bad things in different target states
  *************************************************************************/
 void calibrateRange(unsigned int reference)
 {
@@ -279,15 +286,15 @@ void calibrateRange(unsigned int reference)
 }
 
 /*! **********************************************************************
- * Function: speed_sound(unsigned char tempx2)
+ * Function: rawRange(void)
  *
- * Include:
+ * Include: Range.h
  *
- * Description: Returns the calibration offset to calculate the raw data
+ * Description: Returns uncalibrated range without the calibration offset
  *
  * Arguments: None
  *
- * Returns: None
+ * Returns: distance (in mm) as an unsigned int
  *************************************************************************/
 unsigned int rawRange(void)
 {
@@ -295,15 +302,17 @@ unsigned int rawRange(void)
 }
 
 /*! **********************************************************************
- * Function: range()
+ * Function: range(void)
  *
- * Include:
+ * Include: Range.h
  *
  * Description: Uses the IR and Ultrasonic sensors to find the range
  *
  * Arguments: None
  *
- * Returns: None
+ * Returns: fused range as an unsigned int
+ *
+ * @todo Implement the sampling rate somehow
  *************************************************************************/
 unsigned int range(void)
 {
@@ -403,6 +412,9 @@ unsigned int range(void)
  * Returns: Range (in mm) as an unsigned int.
  *
  * Remark: Returns 0 if there is no target found
+ *
+ * @todo Double check calibration and accuracy
+ * @todo Make sure the calibration is the same every time, and does not change appreciably
  *************************************************************************/
 unsigned int rangeIR(void)
 {
@@ -421,7 +433,7 @@ unsigned int rangeIR(void)
 }
 
 /*! **********************************************************************
- * Function: rangeUS(void)
+ * Function: rangeUltrasonic(void)
  *
  * Include:
  *
@@ -431,6 +443,8 @@ unsigned int rangeIR(void)
  * Arguments: None
  *
  * Returns: the average of the samples
+ *
+ * todo remove this function?
  *************************************************************************/
 unsigned int rangeUltrasonic(void)
 {
@@ -460,6 +474,8 @@ unsigned int rangeUltrasonic(void)
  * Arguments: None
  *
  * Returns: the average of the samples
+ *
+ * @todo implement the sample rate somehow
  *************************************************************************/
 static unsigned int sampleIR(char numSamples)
 {

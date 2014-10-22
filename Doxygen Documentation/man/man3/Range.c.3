@@ -40,10 +40,19 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c \-
 
 .in +1c
 .ti -1c
-.RI "unsigned int \fBrangeIR\fP (void)"
+.RI "static void \fBbeginUS\fP (void)"
+.br
+.ti -1c
+.RI "static unsigned int \fBrangeIR\fP (void)"
+.br
+.ti -1c
+.RI "static unsigned int \fBrangeUS\fP (unsigned char temp)"
 .br
 .ti -1c
 .RI "void \fBconfigureRange\fP (void)"
+.br
+.ti -1c
+.RI "static unsigned int \fBsampleIR\fP (char numSamples)"
 .br
 .ti -1c
 .RI "void \fBconfigureAD\fP (void)"
@@ -70,28 +79,40 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c \-
 .RI "\fBTargetState\fP \fBreadTargetState\fP (void)"
 .br
 .in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static signed int \fBcalibration_offset\fP = 0"
+.br
+.ti -1c
+.RI "static volatile char \fBmeasuringUS\fP = 0"
+.br
+.ti -1c
+.RI "static unsigned int \fBlastRange\fP = 0"
+.br
+.ti -1c
+.RI "static signed int \fBcalibration_offset_IR\fP = 0"
+.br
+.ti -1c
+.RI "static signed int \fBcalibration_offset_US\fP = 0"
+.br
+.ti -1c
+.RI "static \fBTargetState\fP \fBcurrent_target_state\fP"
+.br
+.in -1c
 .SH "Macro Definition Documentation"
 .PP 
 .SS "#define CCP1_INPT   \fBTRISCbits\&.RC2\fP"
 
-.PP
-Definition at line 40 of file Range\&.c\&.
 .SS "#define INIT_PIN   \fBPORTCbits\&.RC3\fP"
 
-.PP
-Definition at line 38 of file Range\&.c\&.
 .SS "#define INIT_TRIS   \fBTRISCbits\&.RC3\fP"
 
-.PP
-Definition at line 39 of file Range\&.c\&.
 .SS "#define IR_CONV(ad)   ((unsigned long)135174 / (ad) - 28)"
 
-.PP
-Definition at line 27 of file Range\&.c\&.
 .SS "#define NUM_IR_READS   10"
 
-.PP
-Definition at line 35 of file Range\&.c\&.
 .SS "#define SPD_SND(T)   (\fBDIV_1024\fP(T * (unsigned int)614) + 331)"
 
 .PP
@@ -104,14 +125,22 @@ Duties: -Interface to the IR and Ultrasonic sensors -Read the range from the IR 
 Functions:
 .PP
 Created on 15 September 2014, 11:27 AM 
-.PP
-Definition at line 26 of file Range\&.c\&.
 .SS "#define ULTRA_CONV(tme, T)   \fBDIV_65536\fP(tme * (unsigned long)(\fBDIV_65536\fP((unsigned long)519078 * T) + (unsigned long)4362)) - 18"
 
-.PP
-Definition at line 30 of file Range\&.c\&.
 .SH "Function Documentation"
 .PP 
+.SS "static void beginUS (void)\fC [static]\fP"
+
+.PP
+ Function: \fBbeginUS(void)\fP
+.PP
+Include: ultrasonic\&.h
+.PP
+Description: starts a scan on the ultrasonic sensor
+.PP
+Arguments: None
+.PP
+Returns: None 
 .SS "void calibrateRange (unsigned intreference)"
 
 .PP
@@ -123,9 +152,14 @@ Description: Calibrates the range of both the IR and ultrasonic sensors based on
 .PP
 Arguments: reference - The distance in mm to calibrate the current measurements from
 .PP
-Returns: None 
+Returns: None
 .PP
-Definition at line 251 of file Range\&.c\&.
+\fBTodo\fP
+.RS 4
+Make sure this works properly, and does not do bad things in different target states 
+.RE
+.PP
+
 .SS "void configureAD (void)"
 
 .PP
@@ -135,9 +169,14 @@ Include: \fBRange\&.h\fP
 .PP
 Description: Configures the ADC, In ADCON1, we set right-justified mode, and select AN0 as the input channel\&. In ADCON0, we set a sample rate of Fosc/8, select AN0, and enable the ADC\&. Arguments: None
 .PP
-Returns: None 
+Returns: None
 .PP
-Definition at line 78 of file Range\&.c\&.
+\fBTodo\fP
+.RS 4
+Make absolutely sure this works on the minimal board, and with the temperature sensor, and pot and IR sensor 
+.RE
+.PP
+
 .SS "void configureRange (void)"
 
 .PP
@@ -150,8 +189,6 @@ Description: Configures the Range module
 Arguments: None
 .PP
 Returns: None 
-.PP
-Definition at line 102 of file Range\&.c\&.
 .SS "\fBTargetState\fP getTargetState (void)"
 
 .PP
@@ -164,23 +201,26 @@ Description: Returns the target state from the last range reading\&. E\&.g\&. Go
 Arguments: None
 .PP
 Returns: the target state 
-.PP
-Definition at line 499 of file Range\&.c\&.
 .SS "unsigned int range (void)"
 
 .PP
- Function: \fBrange()\fP
+ Function: \fBrange(void)\fP
 .PP
-Include:
+Include: \fBRange\&.h\fP
 .PP
 Description: Uses the IR and Ultrasonic sensors to find the range
 .PP
 Arguments: None
 .PP
-Returns: None 
+Returns: fused range as an unsigned int
 .PP
-Definition at line 307 of file Range\&.c\&.
-.SS "unsigned int rangeIR (void)"
+\fBTodo\fP
+.RS 4
+Implement the sampling rate somehow 
+.RE
+.PP
+
+.SS "unsigned int rangeIR (void)\fC [static]\fP"
 
 .PP
  Function: \fBrangeIR(void)\fP
@@ -193,9 +233,16 @@ Arguments: None
 .PP
 Returns: Range (in mm) as an unsigned int\&.
 .PP
-Remark: Returns 0 if there is no target found 
+Remark: Returns 0 if there is no target found
 .PP
-Definition at line 406 of file Range\&.c\&.
+\fBTodo\fP
+.RS 4
+Double check calibration and accuracy 
+.PP
+Make sure the calibration is the same every time, and does not change appreciably 
+.RE
+.PP
+
 .SS "void rangeISR (void)"
 
 .PP
@@ -208,12 +255,10 @@ Description: Called when an range related interrupt is fired, acts as the servic
 Arguments: None
 .PP
 Returns: None 
-.PP
-Definition at line 219 of file Range\&.c\&.
 .SS "unsigned int rangeUltrasonic (void)"
 
 .PP
- Function: rangeUS(void)
+ Function: \fBrangeUltrasonic(void)\fP
 .PP
 Include:
 .PP
@@ -221,23 +266,42 @@ Description: performs an ultrasonic range reading\&. Pins:
 .PP
 Arguments: None
 .PP
-Returns: the average of the samples 
+Returns: the average of the samples
 .PP
-Definition at line 434 of file Range\&.c\&.
+todo remove this function? 
+.SS "static unsigned int rangeUS (unsigned chartemp)\fC [static]\fP"
+
+.PP
+ Function: \fBrangeUS(unsigned char temp)\fP
+.PP
+Include: ultrasonic\&.h
+.PP
+Description: Returns the result of the ultrasonic read (zero if no target found)\&. Will poll until measurement is complete\&.
+.PP
+Arguments: tempx2 - 2x the temperature in deg Celsius
+.PP
+Returns: Distance in mm (unsigned int)
+.PP
+\fBTodo\fP
+.RS 4
+Include temperature read (or get temperature) in Ultrasonic reading 
+.PP
+Double check the calibration and accuracy 
+.RE
+.PP
+
 .SS "unsigned int rawRange (void)"
 
 .PP
- Function: speed_sound(unsigned char tempx2)
+ Function: \fBrawRange(void)\fP
 .PP
-Include:
+Include: \fBRange\&.h\fP
 .PP
-Description: Returns the calibration offset to calculate the raw data
+Description: Returns uncalibrated range without the calibration offset
 .PP
 Arguments: None
 .PP
-Returns: None 
-.PP
-Definition at line 291 of file Range\&.c\&.
+Returns: distance (in mm) as an unsigned int 
 .SS "\fBTargetState\fP readTargetState (void)"
 
 .PP
@@ -250,8 +314,39 @@ Description: Does the same thing as getTargetState, but actually performs a \fBr
 Arguments: None
 .PP
 Returns: the target state 
+.SS "static unsigned int sampleIR (charnumSamples)\fC [static]\fP"
+
 .PP
-Definition at line 516 of file Range\&.c\&.
+ Function: sampleIR(void)
+.PP
+Include:
+.PP
+Description: takes numSamples samples of the IR sensor and returns the average
+.PP
+Arguments: None
+.PP
+Returns: the average of the samples
+.PP
+\fBTodo\fP
+.RS 4
+implement the sample rate somehow 
+.RE
+.PP
+
+.SH "Variable Documentation"
+.PP 
+.SS "signed int calibration_offset = 0\fC [static]\fP"
+
+.SS "signed int calibration_offset_IR = 0\fC [static]\fP"
+
+.SS "signed int calibration_offset_US = 0\fC [static]\fP"
+
+.SS "\fBTargetState\fP current_target_state\fC [static]\fP"
+
+.SS "unsigned int lastRange = 0\fC [static]\fP"
+
+.SS "volatile char measuringUS = 0\fC [static]\fP"
+
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

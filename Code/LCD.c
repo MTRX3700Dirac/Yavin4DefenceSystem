@@ -9,6 +9,8 @@
  *      -Interfaces with and controls the LCD
  *      -Displays data on the LCD
  *
+ * @todo Complete, test, debug and document this code!!!
+ *
  * Created on 15 September 2014, 1:21 PM
  **********************************************************************/
 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['trackingdata',['TrackingData',['../struct_tracking_data.html',1,'']]]
+  ['trackingdata',['TrackingData',['../structTrackingData.html',1,'']]]
 ];

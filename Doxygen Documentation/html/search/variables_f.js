@@ -65,7 +65,7 @@ var searchData=
   ['preinc0',['PREINC0',['../p18f4520_8h.html#ad1ecb88a5b2fd61b28a6aa2ae8eeb3c4',1,'p18f4520.h']]],
   ['preinc1',['PREINC1',['../p18f4520_8h.html#adb843302ed8b7e8b6586ca136d8b2c98',1,'p18f4520.h']]],
   ['preinc2',['PREINC2',['../p18f4520_8h.html#a0fb8abede444e4381f553c6c837f19ec',1,'p18f4520.h']]],
-  ['previous',['previous',['../structsystem_state.html#af2f2716b4afa23c8b53a9351a0924b6b',1,'systemState']]],
+  ['previous',['previous',['../structsystemState.html#af2f2716b4afa23c8b53a9351a0924b6b',1,'systemState']]],
   ['prod',['PROD',['../p18f4520_8h.html#a3c1ab73a0be354304b62d6106775c112',1,'p18f4520.h']]],
   ['prodh',['PRODH',['../p18f4520_8h.html#a8ab1d709867d5c7435c96adee358391c',1,'p18f4520.h']]],
   ['prodl',['PRODL',['../p18f4520_8h.html#a2eef6d54c5e1005aa501f8afe36ebe74',1,'p18f4520.h']]],

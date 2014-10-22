@@ -1,0 +1,14 @@
+<map id="transRange" name="transRange">
+<area shape="rect" id="node2" href="$Range_8c.html#a5b063989d39d2958d2ecebc0106cb1da" title="rangeUltrasonic" alt="" coords="141,112,253,139"/>
+<area shape="rect" id="node12" href="$Serial_8c.html#aab23d23c5b64a3bb7e5913afb4a3ed85" title="transmit" alt="" coords="163,163,232,189"/>
+<area shape="rect" id="node13" href="$Range_8h.html#a91b55894b9e6d74e4495ea610246c856" title="rangeIR" alt="" coords="164,213,231,240"/>
+<area shape="rect" id="node3" href="$Range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2" title="configureRange" alt="" coords="524,49,635,76"/>
+<area shape="rect" id="node7" href="$Range_8c.html#a4571d632d0c84c18c4aefd1c7b63cb8a" title="beginUS" alt="" coords="544,163,615,189"/>
+<area shape="rect" id="node8" href="$Range_8c.html#af470fd0f0b96399b344f11783b4ef7f3" title="rangeUS" alt="" coords="301,112,373,139"/>
+<area shape="rect" id="node4" href="$Temp_8c.html#afd08db2b1a6d6af19e39f10dc453332c" title="readTemp" alt="" coords="689,56,768,83"/>
+<area shape="rect" id="node6" href="$Range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a" title="configureAD" alt="" coords="683,5,775,32"/>
+<area shape="rect" id="node5" href="$Temp_8c.html#a4946ccbc1990e831667bffded1147c4f" title="readTempx2" alt="" coords="823,56,916,83"/>
+<area shape="rect" id="node9" href="$Range_8c.html#aff3698f3a7b3b5963d8e6b305a165d71" title="range" alt="" coords="421,112,476,139"/>
+<area shape="rect" id="node10" href="$Range_8c.html#a91b55894b9e6d74e4495ea610246c856" title="rangeIR" alt="" coords="546,112,613,139"/>
+<area shape="rect" id="node11" href="$Range_8c.html#ae7948eddefd58fbe1509d2bade4cd908" title="sampleIR" alt="" coords="691,112,767,139"/>
+</map>

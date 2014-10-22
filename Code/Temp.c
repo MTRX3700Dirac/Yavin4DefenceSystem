@@ -35,7 +35,16 @@ static unsigned char lastTempx2;
  *************************************************************************/
 void configureTemp(void)
 {
-    
+    int i = 0;
+    TRISA = 0xFF;
+
+    //Write the configuration values into the configuration registers
+    //ADCON1 = 0x8E;      // ADFM set
+    ADCON1 = 0x8C;        //Set three analogue channels on PORTA, AN0, AN1, AN2
+    ADCON0 = 0x41;
+
+    //Arbitrary wait period to allow the ADC to initialise
+    for (i = 0; i < 1000; i++);
 }
 
 /*! **********************************************************************
@@ -48,6 +57,8 @@ void configureTemp(void)
  * Arguments: None
  *
  * Returns: temp x 2 (in deg celsius) as an unsigned char
+ *
+ * @todo Test and debug this function
  *************************************************************************/
 unsigned char readTempx2(void)
 {

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['head',['head',['../structcircular_buffer.html#a47f7e6109597e5c1c227993c0ce5f560',1,'circularBuffer']]],
+  ['head',['head',['../structcircularBuffer.html#a47f7e6109597e5c1c227993c0ce5f560',1,'circularBuffer']]],
   ['hlvdcon',['HLVDCON',['../p18f4520_8h.html#a2f9e2a5f5ba546a27e3ae3f92888ccd5',1,'p18f4520.h']]],
   ['hlvdconbits',['HLVDCONbits',['../p18f4520_8h.html#ad1d16e8bfc0bd307559af053668e07f8',1,'p18f4520.h']]],
   ['hlvden',['HLVDEN',['../p18f4520_8h.html#ab7ec1ecf7f8543351c10c029f3a2f1cd',1,'p18f4520.h']]],

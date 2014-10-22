@@ -25,12 +25,39 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c \-
 
 .in +1c
 .ti -1c
+.RI "static void \fBinitialization\fP (\fBsystemState\fP *state)"
+.br
+.ti -1c
+.RI "static void \fBtransRange\fP (void)"
+.br
+.ti -1c
 .RI "void \fBmain\fP ()"
 .br
 .RI "\fIProgram entry point\&. \fP"
 .in -1c
 .SH "Function Documentation"
 .PP 
+.SS "static void initialization (\fBsystemState\fP *state)\fC [static]\fP"
+
+.PP
+ File: \fBnewmain\&.c\fP
+.PP
+Author: Grant
+.PP
+Description: Controls the main system state of the product based on a state transition type template\&.
+.PP
+Created on 7 September 2014, 4:12 PM
+.PP
+.PP
+ Function: \fBinitialization(systemState *state)\fP
+.PP
+Include: Local to \fBnewmain\&.c\fP
+.PP
+Description: Initializes the system, turns on the sensors and checks if they are ready to begin working
+.PP
+Arguments: state - The current state of the system
+.PP
+Returns: The next system state - At the moment always just transitions to CHECK 
 .SS "void main ()"
 
 .PP
@@ -44,9 +71,33 @@ Description: stores the current system state and manages all transitions
 .PP
 Arguments: None
 .PP
-Returns: None 
+Returns: None
 .PP
-Definition at line 44 of file newmain\&.c\&.
+\fBTodo\fP
+.RS 4
+test and debug the Watch Dog Timer functionality 
+.RE
+.PP
+
+.SS "static void transRange (void)\fC [static]\fP"
+
+.PP
+ Function: \fBtransRange(void)\fP
+.PP
+Include: Local to \fBnewmain\&.c\fP
+.PP
+Description: Measures and Transmits the range -> for testing purposes only
+.PP
+Arguments: None
+.PP
+Returns: None; Prints range to the screen
+.PP
+\fBTodo\fP
+.RS 4
+Remove this function before the final version 
+.RE
+.PP
+
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

@@ -1,0 +1,39 @@
+\hypertarget{structDelay}{\section{Delay Struct Reference}
+\label{structDelay}\index{Delay@{Delay}}
+}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+signed int \hyperlink{structDelay_aacc83952fc6c5812597bc96d622f5317}{Azimuth\+Delay}
+\item 
+signed int \hyperlink{structDelay_a4f5b10a6a07a4aaed02134ab2691b8ec}{Inclination\+Delay}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+ File\+: A\+D\+C.\+c Author\+: Grant
+
+Description\+: Contains all the functionality for the Pan Tilt module. All variables and settings concerning the pan tilt module including the current direction, P\+D\+M delay info, min and max settings are private to this module. The interface functions allow all valid access to the module.
+
+Duties\+: -\/\+Software interface to the Pan Tilt Module -\/\+Moves Pan Tilt -\/\+Reads current Pan Tilt position (based on P\+D\+M's) -\/\+Generate P\+D\+M signals
+
+Functions\+: Local\+: void \hyperlink{PanTilt_8c_a339d46c81d3203b479d9731ef06590d3}{validate(unsigned int $\ast$delay)}; \hyperlink{structDirection}{Direction} \hyperlink{PanTilt_8c_abe8bae9cf0445d5d64cacb685f2bd934}{delay2\+Direction(\+Delay dly)}; \hyperlink{structDelay}{Delay} \hyperlink{PanTilt_8c_a96270ab040ad40095a6c0b24ffb0f994}{direction2\+Delay(\+Direction dir)};
+
+Public Interface\+: void \hyperlink{PanTilt_8h_ab7b8c8f7bf051b4f8e3b151f7b567127}{configure\+Base(void)}; void \hyperlink{PanTilt_8h_a032fbfc434ca24d27d89b6d768455a42}{move(\+Direction destination)}; void \hyperlink{PanTilt_8h_af8e57fbe1513bb48274f4f0f46717fa1}{increment(\+Direction difference)}; void \hyperlink{PanTilt_8h_a5350e3f473fb25899612d382c1baa642}{increment\+Fine(\+Direction difference)}; \hyperlink{structDirection}{Direction} \hyperlink{PanTilt_8h_ad1d9638bad5a5021969d19769e70c775}{get\+Dir(void)}; void \hyperlink{PanTilt_8h_a60e08860a1b4ca9efdc2dd43983731d5}{calibrate\+Pan\+Tilt(\+Direction reference)}; \hyperlink{structDirection}{Direction} \hyperlink{PanTilt_8h_a251ee95d75c68e21c4bb933ac99e5108}{raw\+Dir(void)}; char \hyperlink{PanTilt_8h_a3362a0aacdd7037d0329989d353c60b7}{updated(void)}; void \hyperlink{PanTilt_8h_a7f353056fb02f0d95fd997198f5b186f}{pan\+Tilt\+I\+S\+R(void)}; char \hyperlink{PanTilt_8h_ae8f9ea5919de15d1b5614be2e5e65be3}{get\+Max\+Azimuth\+Angle(void)}; char \hyperlink{PanTilt_8h_af45dd498eebe7f5ba7b228c15e7221c1}{get\+Min\+Azimuth\+Angle(void)}; char \hyperlink{PanTilt_8h_a4278dbef7fe9034a7a54d02bcbb16de9}{get\+Max\+Elevation\+Angle(void)}; char \hyperlink{PanTilt_8h_af7fafa63e9c645a80f28aca253bba5cc}{get\+Min\+Elevation\+Angle(void)}; void \hyperlink{PanTilt_8h_a1f5e600a2655aeb9dd24b8325a777931}{set\+Max\+Azimuth\+Angle(char p\+\_\+angle)}; void \hyperlink{PanTilt_8h_a157ea38d68fcd31082dc2eaba2944ef3}{set\+Min\+Azimuth\+Angle(char p\+\_\+angle)}; void \hyperlink{PanTilt_8h_aa956697480994a26cb592b2cfcf3436c}{set\+Max\+Elevation\+Angle(char p\+\_\+angle)}; void \hyperlink{PanTilt_8h_a001917f3c38b200d142ab6932991e001}{set\+Min\+Elevation\+Angle(char p\+\_\+angle)};
+
+Created on 16 September 2014, 6\+:47 P\+M 
+
+\subsection{Field Documentation}
+\hypertarget{structDelay_aacc83952fc6c5812597bc96d622f5317}{\index{Delay@{Delay}!Azimuth\+Delay@{Azimuth\+Delay}}
+\index{Azimuth\+Delay@{Azimuth\+Delay}!Delay@{Delay}}
+\subsubsection[{Azimuth\+Delay}]{\setlength{\rightskip}{0pt plus 5cm}signed int Azimuth\+Delay}}\label{structDelay_aacc83952fc6c5812597bc96d622f5317}
+\hypertarget{structDelay_a4f5b10a6a07a4aaed02134ab2691b8ec}{\index{Delay@{Delay}!Inclination\+Delay@{Inclination\+Delay}}
+\index{Inclination\+Delay@{Inclination\+Delay}!Delay@{Delay}}
+\subsubsection[{Inclination\+Delay}]{\setlength{\rightskip}{0pt plus 5cm}signed int Inclination\+Delay}}\label{structDelay_a4f5b10a6a07a4aaed02134ab2691b8ec}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\hyperlink{PanTilt_8c}{Pan\+Tilt.\+c}\end{DoxyCompactItemize}

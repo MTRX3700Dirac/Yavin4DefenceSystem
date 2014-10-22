@@ -2,30 +2,29 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="dir_23fdee2f6995db16c755697cdf620cf4" kind="dir">
     <compoundname>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code</compoundname>
-    <innerfile refid="_circular_buffers_8h">CircularBuffers.h</innerfile>
-    <innerfile refid="_common_8h">Common.h</innerfile>
-    <innerfile refid="_config_regs18f4520_8h">ConfigRegs18f4520.h</innerfile>
-    <innerfile refid="_interrupts_8c">Interrupts.c</innerfile>
-    <innerfile refid="_l_c_d_8c">LCD.c</innerfile>
-    <innerfile refid="_l_c_d_8h">LCD.h</innerfile>
-    <innerfile refid="_l_c_d__defs_8h">LCD_defs.h</innerfile>
-    <innerfile refid="_menusystem_8c">Menusystem.c</innerfile>
-    <innerfile refid="_menusystem_8h">Menusystem.h</innerfile>
-    <innerfile refid="_menusystem2_8c">Menusystem2.c</innerfile>
+    <innerfile refid="CircularBuffers_8h">CircularBuffers.h</innerfile>
+    <innerfile refid="Common_8h">Common.h</innerfile>
+    <innerfile refid="Interrupts_8c">Interrupts.c</innerfile>
+    <innerfile refid="LCD_8c">LCD.c</innerfile>
+    <innerfile refid="LCD_8h">LCD.h</innerfile>
+    <innerfile refid="LCD__defs_8h">LCD_defs.h</innerfile>
+    <innerfile refid="Menusystem_8c">Menusystem.c</innerfile>
+    <innerfile refid="Menusystem_8h">Menusystem.h</innerfile>
+    <innerfile refid="Menusystem2_8c">Menusystem2.c</innerfile>
     <innerfile refid="newmain_8c">newmain.c</innerfile>
     <innerfile refid="p18f4520_8h">p18f4520.h</innerfile>
-    <innerfile refid="_pan_tilt_8c">PanTilt.c</innerfile>
-    <innerfile refid="_pan_tilt_8h">PanTilt.h</innerfile>
-    <innerfile refid="_range_8c">Range.c</innerfile>
-    <innerfile refid="_range_8h">Range.h</innerfile>
-    <innerfile refid="_serial_8c">Serial.c</innerfile>
-    <innerfile refid="_serial_8h">Serial.h</innerfile>
-    <innerfile refid="_temp_8c">Temp.c</innerfile>
-    <innerfile refid="_temp_8h">Temp.h</innerfile>
-    <innerfile refid="_tracking_8c">Tracking.c</innerfile>
-    <innerfile refid="_tracking_8h">Tracking.h</innerfile>
-    <innerfile refid="_user___interface_8c">User_Interface.c</innerfile>
-    <innerfile refid="_user___interface_8h">User_Interface.h</innerfile>
+    <innerfile refid="PanTilt_8c">PanTilt.c</innerfile>
+    <innerfile refid="PanTilt_8h">PanTilt.h</innerfile>
+    <innerfile refid="Range_8c">Range.c</innerfile>
+    <innerfile refid="Range_8h">Range.h</innerfile>
+    <innerfile refid="Serial_8c">Serial.c</innerfile>
+    <innerfile refid="Serial_8h">Serial.h</innerfile>
+    <innerfile refid="Temp_8c">Temp.c</innerfile>
+    <innerfile refid="Temp_8h">Temp.h</innerfile>
+    <innerfile refid="Tracking_8c">Tracking.c</innerfile>
+    <innerfile refid="Tracking_8h">Tracking.h</innerfile>
+    <innerfile refid="User__Interface_8c">User_Interface.c</innerfile>
+    <innerfile refid="User__Interface_8h">User_Interface.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

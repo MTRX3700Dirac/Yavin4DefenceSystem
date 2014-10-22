@@ -45,8 +45,6 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h \-
 .PP 
 .SS "#define LCD_H"
 
-.PP
-Definition at line 23 of file LCD\&.h\&.
 .SH "Function Documentation"
 .PP 
 .SS "void delay (unsigned intt)"
@@ -61,8 +59,6 @@ Description:
 Arguments: t -
 .PP
 Returns: None 
-.PP
-Definition at line 122 of file LCD\&.c\&.
 .SS "char lcdBusy (void)"
 
 .PP
@@ -95,8 +91,6 @@ Set control lines to output
 Set data lines to output
 .PP
 Set enable low to allow data to flow through 
-.PP
-Definition at line 70 of file LCD\&.c\&.
 .SS "void lcdInit (void)"
 
 .PP
@@ -108,6 +102,12 @@ Feed character, line (1 or 2), and column(1-16) Feed character, line (1 or 2), a
 Description: Contains all the interface to the LCD hardware
 .PP
 Duties: -Interfaces with and controls the LCD -Displays data on the LCD
+.PP
+\fBTodo\fP
+.RS 4
+Complete, test, debug and document this code!!!
+.RE
+.PP
 .PP
 Created on 15 September 2014, 1:21 PM
 .PP
@@ -131,8 +131,6 @@ Display on, cursor off, blinking on (Z, 0x0F)
 Cursor moves right?, display not shift (Z, 0x04)
 .PP
 Clear display 
-.PP
-Definition at line 33 of file LCD\&.c\&.
 .SS "void lcdWrite (unsigned charbyte, unsigned charmode)"
 
 .PP
@@ -151,8 +149,6 @@ Write data to data lines
 Set clock high
 .PP
 Set clock low 
-.PP
-Definition at line 143 of file LCD\&.c\&.
 .SS "void lcdWriteChar (unsigned charbyte, unsigned charline, unsigned charcolumn)"
 
 .PP
@@ -168,8 +164,6 @@ Description:
 Arguments: byte - line - column -
 .PP
 Returns: None 
-.PP
-Definition at line 199 of file LCD\&.c\&.
 .SS "void lcdWriteString (char *string, unsigned charline)"
 
 .PP
@@ -191,8 +185,6 @@ Description:
 Arguments: string - line -
 .PP
 Returns: None 
-.PP
-Definition at line 172 of file LCD\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

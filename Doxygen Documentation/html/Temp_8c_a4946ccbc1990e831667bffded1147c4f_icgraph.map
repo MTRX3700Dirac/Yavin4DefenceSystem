@@ -1,0 +1,16 @@
+<map id="readTempx2" name="readTempx2">
+<area shape="rect" id="node2" href="$Temp_8h.html#afd08db2b1a6d6af19e39f10dc453332c" title="readTemp" alt="" coords="147,24,225,51"/>
+<area shape="rect" id="node3" href="$Range_8h.html#a07a4c592815b5e6ae178f93a7764ceb2" title="configureRange" alt="" coords="273,126,384,152"/>
+<area shape="rect" id="node4" href="$Range_8c.html#a8606bd1052dde0e7c32eddad8699f4f4" title="calibrateRange" alt="" coords="767,24,875,51"/>
+<area shape="rect" id="node5" href="$Range_8h.html#aff3698f3a7b3b5963d8e6b305a165d71" title="range" alt="" coords="466,126,521,152"/>
+<area shape="rect" id="node7" href="$Range_8h.html#a5b063989d39d2958d2ecebc0106cb1da" title="rangeUltrasonic" alt="" coords="765,176,877,203"/>
+<area shape="rect" id="node14" href="$Tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6" title="configureTracking" alt="" coords="432,278,555,304"/>
+<area shape="rect" id="node6" href="$Range_8c.html#af470fd0f0b96399b344f11783b4ef7f3" title="rangeUS" alt="" coords="624,126,696,152"/>
+<area shape="rect" id="node9" href="$Range_8c.html#a91b55894b9e6d74e4495ea610246c856" title="rangeIR" alt="" coords="627,75,693,102"/>
+<area shape="rect" id="node10" href="$Range_8h.html#a87c8e64ddc596f3e6b72ee861f671168" title="readTargetState" alt="" coords="603,227,717,254"/>
+<area shape="rect" id="node13" href="$Tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30" title="track" alt="" coords="796,278,847,304"/>
+<area shape="rect" id="node8" href="$newmain_8c.html#a562b6fc99e2386f66e66353386d80212" title="transRange" alt="" coords="925,176,1013,203"/>
+<area shape="rect" id="node11" href="$Tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9" title="search" alt="" coords="791,227,852,254"/>
+<area shape="rect" id="node12" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="944,278,995,304"/>
+<area shape="rect" id="node15" href="$newmain_8c.html#a1ff28a3e20f1261c410c00f62e9f9c33" title="initialization" alt="" coords="615,328,705,355"/>
+</map>

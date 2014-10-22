@@ -10,7 +10,7 @@ var indexSectionsWithContent =
   0: "_abcdefghiklmnoprstuvwz",
   1: "cdst",
   2: "cilmnprstu",
-  3: "cdfghilmprstu",
+  3: "bcdfghilmprstuv",
   4: "_abcdefghiklmnoprstuvwz",
   5: "s",
   6: "mpt",
