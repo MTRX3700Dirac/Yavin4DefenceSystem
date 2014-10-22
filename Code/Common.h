@@ -160,7 +160,7 @@ typedef struct {
 
 
 ///Dfine the clock rate and FOSC_4
-#ifdef MNML 1
+#ifdef MNML
 #define CLOCK   10000000    //10MHz clock source
 #define FOSC_4  2500000     //2.5MHz Fosc_4
 #else

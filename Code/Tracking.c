@@ -149,7 +149,6 @@ TrackingData track(systemState *state)
     Direction centre;
     TrackingData result;
     Direction edge1, edge2;
-    Direction inc = {1, 0}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
 
     Direction dir;
     Direction inc[] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}}; //Incremental change in direction NOT IN DEGREES! (much finer increments)

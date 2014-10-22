@@ -28,12 +28,6 @@
 // THIS NEEDS TO BE HERE
 #include "ConfigRegs18f4520.h"
 
-//Define Macros to change the state of the system
-#define NEXT_STATE(s) state.previous = state.current; state.current = s
-#define NEXT_STATE_PTR(s) state->previous = state->current; state->current = s
-
-#define IR_CONV(ad) (237411 / ad - 65)
-
 //Function Prototypes:
 void initialization(systemState *state);
 
@@ -89,7 +83,6 @@ void main(void) {
     
     for (;;)
     {
-        if (TMR1H > 10000) waitForSerialInput();
         switch (state.current)
         {
             case INIT:
@@ -102,7 +95,7 @@ void main(void) {
                 track(&state);
                 break;
             default:     //Any other undefined state
-                NEXT_STATE(INIT);       //Set the next state to be Initialize
+                NEXT_STATE(INIT, state);       //Set the next state to be Initialize
                 break;
         }
 #ifdef WDTMR
@@ -147,5 +140,5 @@ void initialization(systemState *state)
     TRISAbits.TRISA1 = 1;   //Set channel 1 on port A input
     TRISAbits.TRISA2 = 1;   //Set channel 2 on port A input
 
-    NEXT_STATE_PTR(MEAS);
+    NEXT_STATE_PTR(SRCH, state);
 }
