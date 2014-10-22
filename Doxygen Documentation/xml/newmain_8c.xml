@@ -2,36 +2,58 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="newmain_8c" kind="file">
     <compoundname>newmain.c</compoundname>
-    <includes refid="_common_8h" local="yes">Common.h</includes>
-    <includes refid="_tracking_8h" local="yes">Tracking.h</includes>
-    <includes refid="_range_8h" local="yes">Range.h</includes>
-    <includes refid="_user___interface_8h" local="yes">User_Interface.h</includes>
-    <includes refid="_serial_8h" local="yes">Serial.h</includes>
-    <includes refid="_pan_tilt_8h" local="yes">PanTilt.h</includes>
-    <includes refid="_menusystem_8h" local="yes">Menusystem.h</includes>
+    <includes refid="Common_8h" local="yes">Common.h</includes>
+    <includes refid="Tracking_8h" local="yes">Tracking.h</includes>
+    <includes refid="Range_8h" local="yes">Range.h</includes>
+    <includes refid="User__Interface_8h" local="yes">User_Interface.h</includes>
+    <includes refid="Serial_8h" local="yes">Serial.h</includes>
+    <includes refid="PanTilt_8h" local="yes">PanTilt.h</includes>
+    <includes refid="Menusystem_8h" local="yes">Menusystem.h</includes>
     <incdepgraph>
-      <node id="352">
+      <node id="358">
         <label>Menusystem.h</label>
-        <link refid="_menusystem_8h"/>
+        <link refid="Menusystem_8h"/>
       </node>
-      <node id="347">
+      <node id="353">
         <label>Tracking.h</label>
-        <link refid="_tracking_8h"/>
+        <link refid="Tracking_8h"/>
       </node>
-      <node id="339">
+      <node id="345">
         <label>stdlib.h</label>
       </node>
-      <node id="343">
+      <node id="349">
         <label>adc.h</label>
       </node>
-      <node id="348">
+      <node id="354">
         <label>Range.h</label>
-        <link refid="_range_8h"/>
+        <link refid="Range_8h"/>
       </node>
-      <node id="336">
-        <label>newmain.c</label>
+      <node id="342">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c</label>
         <link refid="newmain.c"/>
-        <childnode refid="337" relation="include">
+        <childnode refid="343" relation="include">
+        </childnode>
+        <childnode refid="353" relation="include">
+        </childnode>
+        <childnode refid="354" relation="include">
+        </childnode>
+        <childnode refid="355" relation="include">
+        </childnode>
+        <childnode refid="356" relation="include">
+        </childnode>
+        <childnode refid="357" relation="include">
+        </childnode>
+        <childnode refid="358" relation="include">
+        </childnode>
+      </node>
+      <node id="343">
+        <label>Common.h</label>
+        <link refid="Common_8h"/>
+        <childnode refid="344" relation="include">
+        </childnode>
+        <childnode refid="345" relation="include">
+        </childnode>
+        <childnode refid="346" relation="include">
         </childnode>
         <childnode refid="347" relation="include">
         </childnode>
@@ -46,61 +68,39 @@
         <childnode refid="352" relation="include">
         </childnode>
       </node>
-      <node id="337">
-        <label>Common.h</label>
-        <link refid="_common_8h"/>
-        <childnode refid="338" relation="include">
-        </childnode>
-        <childnode refid="339" relation="include">
-        </childnode>
-        <childnode refid="340" relation="include">
-        </childnode>
-        <childnode refid="341" relation="include">
-        </childnode>
-        <childnode refid="342" relation="include">
-        </childnode>
-        <childnode refid="343" relation="include">
-        </childnode>
-        <childnode refid="344" relation="include">
-        </childnode>
-        <childnode refid="345" relation="include">
-        </childnode>
-        <childnode refid="346" relation="include">
-        </childnode>
-      </node>
-      <node id="350">
+      <node id="356">
         <label>Serial.h</label>
-        <link refid="_serial_8h"/>
+        <link refid="Serial_8h"/>
       </node>
-      <node id="342">
+      <node id="348">
         <label>timers.h</label>
       </node>
-      <node id="346">
+      <node id="352">
         <label>compare.h</label>
       </node>
-      <node id="344">
+      <node id="350">
         <label>capture.h</label>
       </node>
-      <node id="340">
+      <node id="346">
         <label>math.h</label>
       </node>
-      <node id="341">
+      <node id="347">
         <label>p18f4520.h</label>
         <link refid="p18f4520_8h"/>
       </node>
-      <node id="345">
+      <node id="351">
         <label>usart.h</label>
       </node>
-      <node id="338">
+      <node id="344">
         <label>stdio.h</label>
       </node>
-      <node id="351">
+      <node id="357">
         <label>PanTilt.h</label>
-        <link refid="_pan_tilt_8h"/>
+        <link refid="PanTilt_8h"/>
       </node>
-      <node id="349">
+      <node id="355">
         <label>User_Interface.h</label>
-        <link refid="_user___interface_8h"/>
+        <link refid="User__Interface_8h"/>
       </node>
     </incdepgraph>
       <sectiondef kind="func">
@@ -110,7 +110,7 @@
         <argsstring>(systemState *state)</argsstring>
         <name>initialization</name>
         <param>
-          <type><ref refid="structsystem_state" kindref="compound">systemState</ref> *</type>
+          <type><ref refid="structsystemState" kindref="compound">systemState</ref> *</type>
           <declname>state</declname>
         </param>
         <briefdescription>
@@ -118,10 +118,15 @@
         <detaileddescription>
 <para><hruler/>
  File: <ref refid="newmain_8c" kindref="compound">newmain.c</ref></para><para>Author: Grant</para><para>Description: Controls the main system state of the product based on a state transition type template.</para><para>Created on 7 September 2014, 4:12 PM</para><para><hruler/>
- Function: initialization(systemState *state)</para><para>Include: Local to <ref refid="newmain_8c" kindref="compound">newmain.c</ref></para><para>Description: Initializes the system, turns on the sensors and checks if they are ready to begin working</para><para>Arguments: state - The current state of the system</para><para>Returns: The next system state - At the moment always just transitions to CHECK </para>        </detaileddescription>
+ Function: <ref refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" kindref="member">initialization(systemState *state)</ref></para><para>Include: Local to <ref refid="newmain_8c" kindref="compound">newmain.c</ref></para><para>Description: Initializes the system, turns on the sensors and checks if they are ready to begin working</para><para>Arguments: state - The current state of the system</para><para>Returns: The next system state - At the moment always just transitions to CHECK </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" line="28" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" bodystart="82" bodyend="88"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" line="28" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" bodystart="87" bodyend="93"/>
+        <references refid="Serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="Serial_8c" startline="57" endline="75">configureSerial</references>
+        <references refid="Tracking_8c_1ac9b1c5bae39806310b74e2f69d9ee3b6" compoundref="Tracking_8c" startline="41" endline="45">configureTracking</references>
+        <references refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="Common_8h" startline="106">NEXT_STATE_PTR</references>
+        <references refid="Common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" compoundref="Common_8h" startline="109">SRCH</references>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="46" endline="73">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="newmain_8c_1a562b6fc99e2386f66e66353386d80212" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -135,10 +140,13 @@
         </briefdescription>
         <detaileddescription>
 <para><hruler/>
- Function: transRange(void)</para><para>Include: Local to <ref refid="newmain_8c" kindref="compound">newmain.c</ref></para><para>Description: Measures and Transmits the range -&gt; for testing purposes only</para><para>Arguments: None</para><para>Returns: None; Prints range to the screen </para>        </detaileddescription>
+ Function: <ref refid="newmain_8c_1a562b6fc99e2386f66e66353386d80212" kindref="member">transRange(void)</ref></para><para>Include: Local to <ref refid="newmain_8c" kindref="compound">newmain.c</ref></para><para>Description: Measures and Transmits the range -&gt; for testing purposes only</para><para>Arguments: None</para><para>Returns: None; Prints range to the screen</para><para><xrefsect id="todo_1_todo000004"><xreftitle>Todo</xreftitle><xrefdescription><para>Remove this function before the final version </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" line="29" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" bodystart="101" bodyend="120"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" line="29" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" bodystart="108" bodyend="127"/>
+        <references refid="Range_8c_1a5b063989d39d2958d2ecebc0106cb1da" compoundref="Range_8c" startline="449" endline="465">rangeUltrasonic</references>
+        <references refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="Serial_8c" startline="90" endline="103">transmit</references>
+        <references refid="Range_8h_1a91b55894b9e6d74e4495ea610246c856">rangeIR</references>
       </memberdef>
       <memberdef kind="function" id="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -149,18 +157,20 @@
 <para>Program entry point. </para>        </briefdescription>
         <detaileddescription>
 <para><hruler/>
- Function: <ref refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" kindref="member">main(void)</ref></para><para>Include: Local to <ref refid="newmain_8c" kindref="compound">newmain.c</ref></para><para>Description: stores the current system state and manages all transitions</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+ Function: <ref refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" kindref="member">main(void)</ref></para><para>Include: Local to <ref refid="newmain_8c" kindref="compound">newmain.c</ref></para><para>Description: stores the current system state and manages all transitions</para><para>Arguments: None</para><para>Returns: None</para><para><xrefsect id="todo_1_todo000003"><xreftitle>Todo</xreftitle><xrefdescription><para>test and debug the Watch Dog Timer functionality </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" line="44" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" bodystart="44" bodyend="68"/>
-        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36" compoundref="_common_8h" startline="104">INIT</references>
-        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647" compoundref="_common_8h" startline="104">UNDEF</references>
-        <references refid="structsystem_state_1a18284a4a782e71c070e1d2e80734509d" compoundref="_common_8h" startline="117">systemState::current</references>
-        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" compoundref="_common_8h" startline="104">SRCH</references>
-        <references refid="_tracking_8c_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="59" endline="107">search</references>
-        <references refid="_common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" compoundref="_common_8h" startline="104">TRCK</references>
-        <references refid="_tracking_8c_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="_tracking_8c" startline="139" endline="196">track</references>
-        <references refid="_common_8h_1ad9fa804805fca2632643680804f7e911" compoundref="_common_8h" startline="100">NEXT_STATE</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" line="46" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" bodystart="46" bodyend="73"/>
+        <references refid="Common_8h_1a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36" compoundref="Common_8h" startline="109">INIT</references>
+        <references refid="Common_8h_1a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647" compoundref="Common_8h" startline="109">UNDEF</references>
+        <references refid="structsystemState_1a18284a4a782e71c070e1d2e80734509d" compoundref="Common_8h" startline="122">systemState::current</references>
+        <references refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" compoundref="newmain_8c" startline="87" endline="93">initialization</references>
+        <references refid="Common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" compoundref="Common_8h" startline="109">SRCH</references>
+        <references refid="Tracking_8c_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="62" endline="110">search</references>
+        <references refid="Common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" compoundref="Common_8h" startline="109">TRCK</references>
+        <references refid="Tracking_8c_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="145" endline="202">track</references>
+        <references refid="Common_8h_1ad9fa804805fca2632643680804f7e911" compoundref="Common_8h" startline="105">NEXT_STATE</references>
+        <references refid="Common_8h_1add818f0aac38c42e0b7010b486e9d94a" compoundref="Common_8h" startline="169">WDT_CLR</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -174,75 +184,78 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>config<sp/>LVP<sp/>=<sp/>OFF<sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>config<sp/>DEBUG<sp/>=<sp/>ON</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_tracking_8h" kindref="compound">Tracking.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_range_8h" kindref="compound">Range.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_user___interface_8h" kindref="compound">User_Interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_serial_8h" kindref="compound">Serial.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_pan_tilt_8h" kindref="compound">PanTilt.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_menusystem_8h" kindref="compound">Menusystem.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Tracking_8h" kindref="compound">Tracking.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Range_8h" kindref="compound">Range.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Serial_8h" kindref="compound">Serial.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Menusystem_8h" kindref="compound">Menusystem.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//Local<sp/>Function<sp/>Prototypes:</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>initialization(<ref refid="structsystem_state" kindref="compound">systemState</ref><sp/>*state);</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>transRange(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" kindref="member">initialization</ref>(<ref refid="structsystemState" kindref="compound">systemState</ref><sp/>*state);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="newmain_8c_1a562b6fc99e2386f66e66353386d80212" kindref="member">transRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44" refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" kindref="member">main</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsystem_state" kindref="compound">systemState</ref><sp/>state<sp/>=<sp/>{<ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36" kindref="member">INIT</ref>,<sp/><ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647" kindref="member">UNDEF</ref>};</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_tracking_data" kindref="compound">TrackingData</ref><sp/>target;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(;;)</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//if<sp/>(TMR1H<sp/>&gt;<sp/>10000)<sp/>serviceMenu();</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(state.<ref refid="structsystem_state_1a18284a4a782e71c070e1d2e80734509d" kindref="member">current</ref>)</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36" kindref="member">INIT</ref>:</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>initialization(&amp;state);</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" kindref="member">SRCH</ref>:</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_tracking_8c_1ac80b505821d79e98e9108b12d12c5db9" kindref="member">search</ref>(&amp;state);</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" kindref="member">TRCK</ref>:</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target<sp/>=<sp/><ref refid="_tracking_8c_1a4f0ebbcddf842d008fbfebb705374c30" kindref="member">track</ref>(&amp;state);</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Any<sp/>other<sp/>undefined<sp/>state</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_common_8h_1ad9fa804805fca2632643680804f7e911" kindref="member">NEXT_STATE</ref>(<ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36" kindref="member">INIT</ref>,<sp/>state);<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>the<sp/>next<sp/>state<sp/>to<sp/>be<sp/>Initialize</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>initialization(<ref refid="structsystem_state" kindref="compound">systemState</ref><sp/>*state)</highlight></codeline>
-<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" kindref="member">configureSerial</ref>();</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_tracking_8c_1ac9b1c5bae39806310b74e2f69d9ee3b6" kindref="member">configureTracking</ref>();</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" kindref="member">NEXT_STATE_PTR</ref>(<ref refid="_common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" kindref="member">SRCH</ref>,<sp/>state);<sp/><sp/><sp/></highlight><highlight class="comment">//Go<sp/>to<sp/>the<sp/>searching<sp/>state</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>transRange(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="102"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j;</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>stringUS[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;US<sp/>Range:&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>stringIR[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;IR<sp/>Range:&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>newLine[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\n\r&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>num[5];</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>sprintf(num,<sp/></highlight><highlight class="stringliteral">&quot;%u&quot;</highlight><highlight class="normal">,<sp/><ref refid="_range_8c_1a5b063989d39d2958d2ecebc0106cb1da" kindref="member">rangeUltrasonic</ref>());</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(num);</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(newLine);</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0;<sp/>j&lt;60000;j++);</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0;<sp/>j&lt;60000;j++);</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(stringIR);</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sprintf(num,<sp/></highlight><highlight class="stringliteral">&quot;%u&quot;</highlight><highlight class="normal">,<sp/><ref refid="_range_8c_1a91b55894b9e6d74e4495ea610246c856" kindref="member">rangeIR</ref>());</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(num);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(newLine);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(newLine);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46" refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" kindref="member">main</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsystemState" kindref="compound">systemState</ref><sp/>state<sp/>=<sp/>{<ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36" kindref="member">INIT</ref>,<sp/><ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647" kindref="member">UNDEF</ref>};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTrackingData" kindref="compound">TrackingData</ref><sp/>target;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(;;)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//if<sp/>(TMR1H<sp/>&gt;<sp/>10000)<sp/>serviceMenu();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(state.<ref refid="structsystemState_1a18284a4a782e71c070e1d2e80734509d" kindref="member">current</ref>)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36" kindref="member">INIT</ref>:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" kindref="member">initialization</ref>(&amp;state);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" kindref="member">SRCH</ref>:</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Tracking_8c_1ac80b505821d79e98e9108b12d12c5db9" kindref="member">search</ref>(&amp;state);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" kindref="member">TRCK</ref>:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target<sp/>=<sp/><ref refid="Tracking_8c_1a4f0ebbcddf842d008fbfebb705374c30" kindref="member">track</ref>(&amp;state);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Any<sp/>other<sp/>undefined<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Common_8h_1ad9fa804805fca2632643680804f7e911" kindref="member">NEXT_STATE</ref>(<ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36" kindref="member">INIT</ref>,<sp/>state);<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>the<sp/>next<sp/>state<sp/>to<sp/>be<sp/>Initialize</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>WDTMR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Common_8h_1add818f0aac38c42e0b7010b486e9d94a" kindref="member">WDT_CLR</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Clear<sp/>the<sp/>Watch<sp/>Dog<sp/>Timer<sp/>each<sp/>iteration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" kindref="member">initialization</ref>(<ref refid="structsystemState" kindref="compound">systemState</ref><sp/>*state)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" kindref="member">configureSerial</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Tracking_8c_1ac9b1c5bae39806310b74e2f69d9ee3b6" kindref="member">configureTracking</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" kindref="member">NEXT_STATE_PTR</ref>(<ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" kindref="member">SRCH</ref>,<sp/>state);<sp/><sp/><sp/></highlight><highlight class="comment">//Go<sp/>to<sp/>the<sp/>searching<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="newmain_8c_1a562b6fc99e2386f66e66353386d80212" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="newmain_8c_1a562b6fc99e2386f66e66353386d80212" kindref="member">transRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>stringUS[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;US<sp/>Range:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>stringIR[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;IR<sp/>Range:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>newLine[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\n\r&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>num[5];</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>sprintf(num,<sp/></highlight><highlight class="stringliteral">&quot;%u&quot;</highlight><highlight class="normal">,<sp/><ref refid="Range_8c_1a5b063989d39d2958d2ecebc0106cb1da" kindref="member">rangeUltrasonic</ref>());</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(num);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(newLine);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0;<sp/>j&lt;60000;j++);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0;<sp/>j&lt;60000;j++);</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(stringIR);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sprintf(num,<sp/></highlight><highlight class="stringliteral">&quot;%u&quot;</highlight><highlight class="normal">,<sp/><ref refid="Range_8h_1a91b55894b9e6d74e4495ea610246c856" kindref="member">rangeIR</ref>());</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(num);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(newLine);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(newLine);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c"/>
   </compounddef>

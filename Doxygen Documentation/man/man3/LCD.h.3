@@ -1,8 +1,8 @@
-.TH "LCD.h" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-LCD.h \- 
+C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -17,22 +17,157 @@ LCD.h \-
 
 .in +1c
 .ti -1c
-.RI "void \fBconfigLCD\fP (void)"
+.RI "void \fBlcdWriteString\fP (char *string, unsigned char line)"
 .br
+.RI "\fIFeed character string, and line (1 or 2) \fP"
 .ti -1c
-.RI "void \fBdisplayLCD\fP (char *string)"
+.RI "void \fBlcdWriteChar\fP (unsigned char byte, unsigned char line, unsigned char column)"
 .br
+.RI "\fIFeed character string, and line (1 or 2) \fP"
+.ti -1c
+.RI "void \fBlcdInit\fP (void)"
+.br
+.RI "\fIFeed character, line (1 or 2), and column(1-16) \fP"
+.ti -1c
+.RI "void \fBdelay\fP (unsigned int t)"
+.br
+.RI "\fIInclude: \fP"
+.ti -1c
+.RI "char \fBlcdBusy\fP (void)"
+.br
+.RI "\fIInclude: \fP"
+.ti -1c
+.RI "void \fBlcdWrite\fP (unsigned char byte, unsigned char mode)"
+.br
+.RI "\fIInclude: \fBLCD\&.h\fP\&. \fP"
 .in -1c
 .SH "Macro Definition Documentation"
 .PP 
 .SS "#define LCD_H"
 
-.PP
-Definition at line 18 of file LCD\&.h\&.
 .SH "Function Documentation"
 .PP 
-.SS "void configLCD (void)"
+.SS "void delay (unsigned intt)"
 
+.PP
+Include: 
+.PP
+ Function: delay(void)
+.PP
+Description:
+.PP
+Arguments: t -
+.PP
+Returns: None 
+.SS "char lcdBusy (void)"
+
+.PP
+Include: 
+.PP
+ Function: \fBlcdBusy(void)\fP
+.PP
+Description:
+.PP
+Arguments: None
+.PP
+Returns: None Set data lines to input
+.PP
+Set the enable low, ensure clock signal is low
+.PP
+Set RW to read read from LCD
+.PP
+Set the register select to low for instruction
+.PP
+Set the enable high, ensure clock signal is high to allow data transmission
+.PP
+Set control lines to output
+.PP
+Set data lines to output
+.PP
+Set enable low to allow data to flow through
+.PP
+Set control lines to output
+.PP
+Set data lines to output
+.PP
+Set enable low to allow data to flow through 
+.SS "void lcdInit (void)"
+
+.PP
+Feed character, line (1 or 2), and column(1-16) Feed character, line (1 or 2), and column(1-16)
+.PP
+.PP
+ File: \fBUser_Interface\&.c\fP Author:
+.PP
+Description: Contains all the interface to the LCD hardware
+.PP
+Duties: -Interfaces with and controls the LCD -Displays data on the LCD
+.PP
+\fBTodo\fP
+.RS 4
+Complete, test, debug and document this code!!!
+.RE
+.PP
+.PP
+Created on 15 September 2014, 1:21 PM
+.PP
+.PP
+ Function: \fBlcdInit(void)\fP
+.PP
+Include: \fBLCD\&.h\fP
+.PP
+Description: Initialises the LCD hardware so that data can be displayed on the LCD in local interface mode
+.PP
+Arguments: None
+.PP
+Returns: None Set data lines to output
+.PP
+Set control lines low
+.PP
+8 bits, 2 lines, 5x7 dots, 0x38
+.PP
+Display on, cursor off, blinking on (Z, 0x0F)
+.PP
+Cursor moves right?, display not shift (Z, 0x04)
+.PP
+Clear display 
+.SS "void lcdWrite (unsigned charbyte, unsigned charmode)"
+
+.PP
+Include: \fBLCD\&.h\fP\&. 
+.PP
+ Function: \fBlcdWrite(unsigned char byte, unsigned char mode)\fP
+.PP
+Description:
+.PP
+Arguments: byte - mode -
+.PP
+Returns: None Set data lines to output
+.PP
+Write data to data lines
+.PP
+Set clock high
+.PP
+Set clock low 
+.SS "void lcdWriteChar (unsigned charbyte, unsigned charline, unsigned charcolumn)"
+
+.PP
+Feed character string, and line (1 or 2) Feed character string, and line (1 or 2)
+.PP
+.PP
+ Function: \fBlcdWriteChar(unsigned char byte, unsigned char line, unsigned char column)\fP
+.PP
+Include: \fBLCD\&.h\fP
+.PP
+Description:
+.PP
+Arguments: byte - line - column -
+.PP
+Returns: None 
+.SS "void lcdWriteString (char *string, unsigned charline)"
+
+.PP
+Feed character string, and line (1 or 2) 
 .PP
  File: \fBLCD\&.h\fP Author: Grant
 .PP
@@ -41,29 +176,15 @@ Description: Contains the public interface for the LCD module\&.
 Created on 17 September 2014, 9:01 PM
 .PP
 .PP
- File: \fBUser_Interface\&.c\fP Author: Grant
-.PP
-Description: Contains all the interface to the LCD hardware
-.PP
-Duties: -Interfaces with and controls the LCD -Displays data on the LCD
-.PP
-Created on 15 September 2014, 1:21 PM 
-.PP
-Definition at line 28 of file LCD\&.c\&.
-.SS "void displayLCD (char *string)"
-
-.PP
- Function: \fBdisplayLCD(char *string)\fP
+ Function: \fBlcdWriteString(char *string, unsigned char line)\fP
 .PP
 Include: \fBLCD\&.h\fP
 .PP
-Description: Displays the given string on the LCD
+Description:
 .PP
-Arguments: string - pointer to the data to display
+Arguments: string - line -
 .PP
 Returns: None 
-.PP
-Definition at line 44 of file LCD\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

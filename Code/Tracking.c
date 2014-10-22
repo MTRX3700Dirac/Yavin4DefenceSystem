@@ -14,7 +14,7 @@
  *      -Predict next position of target???
  *
  * Functions:
- * 
+ *
  *
  * Created on 15 September 2014, 1:42 PM
  ******************************************************************************/
@@ -23,12 +23,12 @@
 #include "Range.h"
 #include "PanTilt.h"
 
-#define diff 5
 #define TARGET_RAD 30  //The diameter of the target in mm (slightly larger)
+#define diff 5
 #include <delays.h>
 
 /* **********************************************************************
- * Function: configureTracking(void)
+ * Function: configBase(void)
  *
  * Include: Tracking.h
  *
@@ -55,10 +55,12 @@ void configureTracking(void)
  * Arguments: None
  *
  * Returns: None
+ *
+ * @todo Possibly better searchin algorithm? Tune parameters etc.
+ * @todo Coordinate sampling rate with searching
  *************************************************************************/
 void search(systemState *state)
 {
-    unsigned int j;
     //Vertical and laterial incremental movements
     static Direction lateral = {diff, 0};
     static Direction vertical = {0, diff};
@@ -66,9 +68,9 @@ void search(systemState *state)
     TargetState currentState;
     Direction dir;
 
+    
     dir = getDir();
 
-    for (j = 0; j < 10000; j++);
     //If max azimuth range, increment vertical and change azimuth direction
     if (dir.azimuth > 40 || dir.azimuth < -40)
     {
@@ -89,7 +91,7 @@ void search(systemState *state)
     {
         increment(lateral);
     }
-
+    
     previousState = currentState;
     currentState = readTargetState();
     switch (currentState)
@@ -123,7 +125,7 @@ void trackingISR(void)
 }
 
 /* **********************************************************************
- * Function: track(void)
+ * Function: edge(void)
  *
  * Include: Tracking.h
  *
@@ -135,6 +137,9 @@ void trackingISR(void)
  * Returns: TargetData - The current target information (Azimuth, inclination
  *                       and range to the target). This information is then used
  *                       for the Display in the User interface module.
+ *
+ * @todo Incorperate prediction, and calculate offset angle based on distance, and known accuracy
+ * @todo Include a sampling rate into tracking
  *************************************************************************/
 TrackingData track(systemState *state)
 {
@@ -142,18 +147,22 @@ TrackingData track(systemState *state)
     char weight;
     unsigned int j;
     Direction centre;
-    signed long int inclination = 0;
-    signed long int azimuth = 0;
     TrackingData result;
+    Direction edge1, edge2;
+
     Direction dir;
     Direction inc[] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
     char angle;
+
+    signed long int inclination = 0;
+    signed long int azimuth = 0;
 
     //angle = TARGET_RAD * (unsigned int)57 / range();
     angle = 8;
 
     centre = getDir();
 
+    //Check if the target is in range of the IR
     for (i = 0; i < 4; i++)
     {
         //Calc new direction
@@ -168,7 +177,7 @@ TrackingData track(systemState *state)
 
         //Calculate weighting of that sample
         weight = (weight == GOOD_TRACK) * 4 + (weight == BAD_DIR);
-        
+
         count += weight;
         azimuth += (int)weight * dir.azimuth;
         inclination += (int)weight * dir.inclination;
@@ -192,6 +201,10 @@ TrackingData track(systemState *state)
         result.inclination = centre.inclination;
     }
 
+    result.distance = range();
+    result.azimuth = centre.azimuth;
+    result.inclination = centre.inclination;
+
     return result;
 }
 
@@ -206,6 +219,8 @@ TrackingData track(systemState *state)
  * Arguments: current - The current position of the target
  *
  * Returns: Direction - The Predicted likely location
+ *
+ * @todo Finish and test this function, incorperate it into tracking
  *************************************************************************/
 static Direction prediction(Direction current)
 {

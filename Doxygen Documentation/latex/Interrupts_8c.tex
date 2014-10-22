@@ -1,0 +1,180 @@
+\hypertarget{Interrupts_8c}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Interrupts.c File Reference}
+\label{Interrupts_8c}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Interrupts.\+c@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Interrupts.\+c}}
+}
+{\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Tracking.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Range.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}User\+\_\+\+Interface.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Serial.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Pan\+Tilt.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Temp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Menusystem.\+h\char`\"{}}\\*
+Include dependency graph for Interrupts.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Interrupts_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{Interrupts_8c_ac835f50b358d0d663df1b8b835f9bb87}{low\+I\+S\+R} (void)
+\item 
+void \hyperlink{Interrupts_8c_ae1ef1358e10604d046f54fc0b93c514c}{high\+I\+S\+R} (void)
+\item 
+void \hyperlink{Interrupts_8c_a6b8605436b00e1a9db52f2cb2094fdfd}{high\+Vector} (void)
+\item 
+void \hyperlink{Interrupts_8c_a0bf42af14e1d16197d7eb27ac5addca0}{low\+Vector} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{Interrupts_8c_ae1ef1358e10604d046f54fc0b93c514c}{\index{Interrupts.\+c@{Interrupts.\+c}!high\+I\+S\+R@{high\+I\+S\+R}}
+\index{high\+I\+S\+R@{high\+I\+S\+R}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{high\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}void high\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Interrupts_8c_ae1ef1358e10604d046f54fc0b93c514c}
+
+
+ Function\+: \hyperlink{Interrupts_8c_ae1ef1358e10604d046f54fc0b93c514c}{high\+I\+S\+R(void)}
+
+Include\+: Local to \hyperlink{Interrupts_8c}{Interrupts.\+c}
+
+Description\+: Interrupt Service Routine to check what condition initiated a high priority interrupt call, and perform the nessicary action
+
+Arguments\+: None
+
+Returns\+: None 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{Interrupts_8c_ae1ef1358e10604d046f54fc0b93c514c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{Interrupts_8c_ae1ef1358e10604d046f54fc0b93c514c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Interrupts_8c_a6b8605436b00e1a9db52f2cb2094fdfd}{\index{Interrupts.\+c@{Interrupts.\+c}!high\+Vector@{high\+Vector}}
+\index{high\+Vector@{high\+Vector}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{high\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void high\+Vector (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Interrupts_8c_a6b8605436b00e1a9db52f2cb2094fdfd}
+
+
+ Function\+: \hyperlink{Interrupts_8c_a6b8605436b00e1a9db52f2cb2094fdfd}{high\+Vector(void)}
+
+Include\+: Local to \hyperlink{Interrupts_8c}{Interrupts.\+c}
+
+Description\+: Sends program control to the high priority I\+S\+R
+
+Arguments\+: None
+
+Returns\+: None
+
+Remarks\+: This is an interrupt vector, placing a goto in the high priority interrupt table to call the high priority I\+S\+R 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{Interrupts_8c_a6b8605436b00e1a9db52f2cb2094fdfd_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Interrupts_8c_ac835f50b358d0d663df1b8b835f9bb87}{\index{Interrupts.\+c@{Interrupts.\+c}!low\+I\+S\+R@{low\+I\+S\+R}}
+\index{low\+I\+S\+R@{low\+I\+S\+R}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{low\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}void low\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Interrupts_8c_ac835f50b358d0d663df1b8b835f9bb87}
+
+
+ File\+: \hyperlink{Interrupts_8c}{Interrupts.\+c} Author\+: Grant
+
+Description\+: Contains the interrupt service routines for the system.
+
+Duties\+: -\/\+Handle all interrupts called by the system -\/\+Call relevant module service routines
+
+Created on 8 October 2014, 11\+:27 A\+M
+
+
+
+ Function\+: \hyperlink{Interrupts_8c_ac835f50b358d0d663df1b8b835f9bb87}{low\+I\+S\+R(void)}
+
+Include\+: Local to \hyperlink{Interrupts_8c}{Interrupts.\+c}
+
+Description\+: Interrupt Service Routine to check what condition initiated a low priority interrupt call, and perform the nessicary action
+
+Arguments\+: None
+
+Returns\+: None 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{Interrupts_8c_ac835f50b358d0d663df1b8b835f9bb87_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{Interrupts_8c_ac835f50b358d0d663df1b8b835f9bb87_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Interrupts_8c_a0bf42af14e1d16197d7eb27ac5addca0}{\index{Interrupts.\+c@{Interrupts.\+c}!low\+Vector@{low\+Vector}}
+\index{low\+Vector@{low\+Vector}!Interrupts.\+c@{Interrupts.\+c}}
+\subsubsection[{low\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void low\+Vector (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Interrupts_8c_a0bf42af14e1d16197d7eb27ac5addca0}
+
+
+ Function\+: \hyperlink{Interrupts_8c_a0bf42af14e1d16197d7eb27ac5addca0}{low\+Vector(void)}
+
+Include\+: Local to \hyperlink{Interrupts_8c}{Interrupts.\+c}
+
+Description\+: Sends program control to the low priority I\+S\+R
+
+Arguments\+: None
+
+Returns\+: None
+
+Remarks\+: This is an interrupt vector, placing a goto in the low priority interrupt table to call the low priority I\+S\+R 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{Interrupts_8c_a0bf42af14e1d16197d7eb27ac5addca0_cgraph}
+\end{center}
+\end{figure}
+
+

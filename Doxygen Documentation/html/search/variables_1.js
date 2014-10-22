@@ -48,6 +48,11 @@ var searchData=
   ['an7',['AN7',['../p18f4520_8h.html#a64648fddbfdf871c5d48221ee969230b',1,'p18f4520.h']]],
   ['an8',['AN8',['../p18f4520_8h.html#abbfae8cbd12f0a3d16923d2aaa521b7c',1,'p18f4520.h']]],
   ['an9',['AN9',['../p18f4520_8h.html#a0b73b0a8566abfb960e29b58ab23da23',1,'p18f4520.h']]],
-  ['azimuth',['azimuth',['../struct_direction.html#a866e78e12cb32dcaf1ded89bda8be8f5',1,'Direction::azimuth()'],['../struct_tracking_data.html#a866e78e12cb32dcaf1ded89bda8be8f5',1,'TrackingData::azimuth()']]],
-  ['azimuthdelay',['AzimuthDelay',['../struct_delay.html#aacc83952fc6c5812597bc96d622f5317',1,'Delay']]]
+  ['arcrange',['arcRange',['../PanTilt_8c.html#aef9a9f54b74039d7b9f8789155a3dce6',1,'PanTilt.c']]],
+  ['autotrack',['AutoTrack',['../Menusystem2_8c.html#ab7c54bfc8293491beeef98a08b8b56d5',1,'Menusystem2.c']]],
+  ['az',['Az',['../Menusystem2_8c.html#a5ff18a829db4a7a11ecea563f8c57861',1,'Menusystem2.c']]],
+  ['azimuth',['azimuth',['../structDirection.html#a866e78e12cb32dcaf1ded89bda8be8f5',1,'Direction::azimuth()'],['../structTrackingData.html#a866e78e12cb32dcaf1ded89bda8be8f5',1,'TrackingData::azimuth()']]],
+  ['azimuth_5fangle_5fmax',['azimuth_angle_max',['../PanTilt_8c.html#a66860c53bfe53cb83293dced526226aa',1,'PanTilt.c']]],
+  ['azimuth_5fangle_5fmin',['azimuth_angle_min',['../PanTilt_8c.html#a58dfba1b3d8bb3d01daa95c48f4718a8',1,'PanTilt.c']]],
+  ['azimuthdelay',['AzimuthDelay',['../structDelay.html#aacc83952fc6c5812597bc96d622f5317',1,'Delay']]]
 ];

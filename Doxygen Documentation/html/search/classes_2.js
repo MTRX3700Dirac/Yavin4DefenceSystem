@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['submenu',['SubMenu',['../struct_sub_menu.html',1,'']]],
-  ['systemstate',['systemState',['../structsystem_state.html',1,'']]]
+  ['submenu',['SubMenu',['../structSubMenu.html',1,'']]],
+  ['systemstate',['systemState',['../structsystemState.html',1,'']]]
 ];

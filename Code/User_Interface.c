@@ -15,6 +15,15 @@
 
 #include "Common.h"
 #include "CircularBuffers.h"
+#include "Range.h"
+#include "User_Interface.h"
+#include "Serial.h"
+
+#define CONFIRM_PRESS INTCONbits.INT0IF
+#define BACK_PRESS INTCON3bits.INT1F
+//#define BACK_PRESS RB_INT
+
+#define ADC_MAX 1023  // Max number allocated by a 10 bit number
 
 //Store anything entered by the user
 circularBuffer receive;
@@ -50,7 +59,17 @@ void display(TrackingData data)
  *************************************************************************/
 void userISR(void)
 {
-    
+    if (CONFIRM_PRESS)
+    {
+        push(CONFIRM_CHAR, receive);
+        CONFIRM_PRESS = 0;
+    }
+    if (BACK_PRESS)
+    {
+            push(BACK_CHAR, receive);
+            BACK_PRESS = 0;
+    }
+    return;
 }
 
 /*! **********************************************************************
@@ -68,6 +87,29 @@ void configUSER(void)
 {
     //Initialises the receive buffer
     init(receive);
+
+    configureAD();
+
+//    // Set RB 0 and 1 to input
+    TRISB = 0;
+    PORTB = 0;
+    TRISB = 0xFF;
+
+    INTCONbits.GIE_GIEH = 1;    /*enable high priority interrupts*/
+    INTCONbits.PEIE_GIEL = 1;   /*enable low priority interrupts*/
+
+    // Enable INT0 interrupt
+    INTCON2bits.INTEDG0 = 1;    // Interrupt on rising edge
+    INTCONbits.INT0IE = 1;
+
+//    INTCON2bits.RBPU = 1;
+//    INTCON2bits.RBIP = 1;
+//    INTCONbits.RBIE = 1;
+
+    // Enable INT1 interrupt
+    INTCON3bits.INT1IP = 1;
+    INTCON2bits.INTEDG1 = 1;    // Interrupt on rising edge
+    INTCON3bits.INT1E = 1;
 }
 
 /*! **********************************************************************
@@ -84,20 +126,29 @@ void configUSER(void)
 unsigned int readDial(unsigned int max)
 {
     unsigned int value;
+    int divisor;
 
     //Sets the AD channel for the DIAL
-    SetChanADC(ADC_DIAL_READ);
 
+    //SetChanADC(ADC_DIAL_READ);
+    SetChanADC(0);
+    
     //Begin convertion
     ConvertADC();
     while(BusyADC());
     value = ReadADC();
+    if (value >= (ADC_MAX - 9)) return max;
+    divisor = ADC_MAX/(max + 1);
+    // Return a number from 0 - max
+    return (value/divisor);
+}
 
-    //Scale the value to the maximum (by multiplying and then dividing by 1024)
-    //The 1024 division creates a value from 0-1 from the ADC
-    value = DIV_1024(value * max);
-
-    return value;
+/*!
+ * Returns a value from 1 to max
+ */
+unsigned int readDialForMenu(unsigned int max)
+{
+    return readDial(max -1 ) + 1;
 }
 
 /*! **********************************************************************

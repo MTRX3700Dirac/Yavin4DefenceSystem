@@ -6,67 +6,67 @@
     <includes local="no">pwm.h</includes>
     <includes local="no">timers.h</includes>
     <incdepgraph>
-      <node id="379">
+      <node id="391">
         <label>pwm.h</label>
       </node>
-      <node id="371">
+      <node id="383">
         <label>stdlib.h</label>
       </node>
-      <node id="375">
+      <node id="387">
         <label>adc.h</label>
       </node>
-      <node id="369">
+      <node id="381">
         <label>Common.h</label>
         <link refid="_common_8h"/>
-        <childnode refid="370" relation="include">
+        <childnode refid="382" relation="include">
         </childnode>
-        <childnode refid="371" relation="include">
+        <childnode refid="383" relation="include">
         </childnode>
-        <childnode refid="372" relation="include">
+        <childnode refid="384" relation="include">
         </childnode>
-        <childnode refid="373" relation="include">
+        <childnode refid="385" relation="include">
         </childnode>
-        <childnode refid="374" relation="include">
+        <childnode refid="386" relation="include">
         </childnode>
-        <childnode refid="375" relation="include">
+        <childnode refid="387" relation="include">
         </childnode>
-        <childnode refid="376" relation="include">
+        <childnode refid="388" relation="include">
         </childnode>
-        <childnode refid="377" relation="include">
+        <childnode refid="389" relation="include">
         </childnode>
-        <childnode refid="378" relation="include">
+        <childnode refid="390" relation="include">
         </childnode>
       </node>
-      <node id="374">
+      <node id="386">
         <label>timers.h</label>
       </node>
-      <node id="378">
+      <node id="390">
         <label>compare.h</label>
       </node>
-      <node id="376">
+      <node id="388">
         <label>capture.h</label>
       </node>
-      <node id="372">
+      <node id="384">
         <label>math.h</label>
       </node>
-      <node id="373">
+      <node id="385">
         <label>p18f4520.h</label>
         <link refid="p18f4520_8h"/>
       </node>
-      <node id="377">
+      <node id="389">
         <label>usart.h</label>
       </node>
-      <node id="370">
+      <node id="382">
         <label>stdio.h</label>
       </node>
-      <node id="368">
-        <label>PanTilt.c</label>
+      <node id="380">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c</label>
         <link refid="PanTilt.c"/>
-        <childnode refid="369" relation="include">
+        <childnode refid="381" relation="include">
         </childnode>
-        <childnode refid="379" relation="include">
+        <childnode refid="391" relation="include">
         </childnode>
-        <childnode refid="374" relation="include">
+        <childnode refid="386" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -395,8 +395,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="170" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="170" bodyend="176"/>
-        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="72">Direction::azimuth</references>
-        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="73">Direction::inclination</references>
+        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="75">Direction::azimuth</references>
+        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="76">Direction::inclination</references>
         <references refid="_pan_tilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="_pan_tilt_8c" startline="148" endline="157">move</references>
         <referencedby refid="_tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="_tracking_8c" startline="59" endline="107">search</referencedby>
       </memberdef>
@@ -418,10 +418,10 @@
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="189" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="189" bodyend="206"/>
         <references refid="struct_delay_1aacc83952fc6c5812597bc96d622f5317" compoundref="_pan_tilt_8c" startline="51">Delay::AzimuthDelay</references>
-        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="72">Direction::azimuth</references>
+        <references refid="struct_direction_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="_common_8h" startline="75">Direction::azimuth</references>
         <references refid="_pan_tilt_8c_1ac829b6acf6662103690f1bca3c422f34" compoundref="_pan_tilt_8c" startline="62">PWM_HALF_PERIOD</references>
         <references refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" compoundref="_pan_tilt_8c" startline="52">Delay::InclinationDelay</references>
-        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="73">Direction::inclination</references>
+        <references refid="struct_direction_1af308b9934394c8bcf7614eb1df2d863f" compoundref="_common_8h" startline="76">Direction::inclination</references>
         <references refid="_pan_tilt_8c_1a32ba76cc676dc9b248bce3b722e811e5" compoundref="_pan_tilt_8c" startline="70">LATENCY</references>
       </memberdef>
       <memberdef kind="function" id="_pan_tilt_8c_1ad1d9638bad5a5021969d19769e70c775" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -634,7 +634,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="396" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="396" bodyend="432"/>
-        <references refid="_common_8h_1aee2ef60613898be37c57266698616e33" compoundref="_common_8h" startline="147">CCP2_INT</references>
+        <references refid="_common_8h_1aee2ef60613898be37c57266698616e33" compoundref="_common_8h" startline="150">CCP2_INT</references>
         <references refid="_pan_tilt_8c_1aacaca0988244bd3a888ca5befa89f44b" compoundref="_pan_tilt_8c" startline="61">PWM_PERIOD</references>
         <references refid="_pan_tilt_8c_1aeccd74b3aafd22092066790005320b98" compoundref="_pan_tilt_8c" startline="57">IN_PWM_PIN</references>
         <references refid="struct_delay_1a4f5b10a6a07a4aaed02134ab2691b8ec" compoundref="_pan_tilt_8c" startline="52">Delay::InclinationDelay</references>
@@ -699,7 +699,7 @@
 <codeline lineno="72" refid="_pan_tilt_8c_1afed42813fde734ec03d642316c880a8f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERVO_INIT()<sp/>TRISCbits.RC0<sp/>=<sp/>0;<sp/>TRISCbits.RC1<sp/>=<sp/>0;<sp/>PORTCbits.RC0<sp/>=<sp/>0;<sp/>PORTCbits.RC1<sp/>=<sp/>0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//Local<sp/>Function<sp/>Prototypes</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>validate(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*delay);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>validate(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<ref refid="_l_c_d_8c_1a6d7066138d22070be0234d8b113cf776" kindref="member">delay</ref>);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_direction" kindref="compound">Direction</ref><sp/>delay2Direction(<ref refid="struct_delay" kindref="compound">Delay</ref><sp/>dly);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="struct_delay" kindref="compound">Delay</ref><sp/>direction2Delay(<ref refid="struct_direction" kindref="compound">Direction</ref><sp/>dir);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
@@ -910,7 +910,7 @@
 <codeline lineno="492"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="493"><highlight class="normal"></highlight></codeline>
 <codeline lineno="494"><highlight class="normal"></highlight></codeline>
-<codeline lineno="506"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>validate(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*delay)</highlight></codeline>
+<codeline lineno="506"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>validate(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<ref refid="_l_c_d_8c_1a6d7066138d22070be0234d8b113cf776" kindref="member">delay</ref>)</highlight></codeline>
 <codeline lineno="507"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*delay<sp/>&lt;<sp/><ref refid="_pan_tilt_8c_1a8fae060499b6b4a82b757f7b7f082f36" kindref="member">DUTY_CYCLE_TIME</ref>)</highlight></codeline>
 <codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>

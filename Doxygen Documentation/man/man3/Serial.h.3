@@ -1,8 +1,8 @@
-.TH "Serial.h" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Serial.h \- 
+C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -54,8 +54,6 @@ Serial.h \-
 .PP 
 .SS "#define SERIAL_H"
 
-.PP
-Definition at line 35 of file Serial\&.h\&.
 .SS "#define SERIAL_INT   (\fBTX_INT\fP || \fBRC_INT\fP)"
 
 .PP
@@ -64,8 +62,6 @@ Definition at line 35 of file Serial\&.h\&.
 Description: Contains the public interface for the serial module\&. This file contains all the external declarations, macros and global variables for using and Interfacing with the serial module\&.
 .PP
 Created on 17 September 2014, 3:27 PM 
-.PP
-Definition at line 17 of file Serial\&.h\&.
 .SH "Function Documentation"
 .PP 
 .SS "void configureSerial (void)"
@@ -80,8 +76,6 @@ Description: Configures the serial ready for communication
 Arguments: None
 .PP
 Returns: None 
-.PP
-Definition at line 57 of file Serial\&.c\&.
 .SS "void readString (char *string)"
 
 .PP
@@ -96,8 +90,6 @@ Arguments: string - Pointer to location to store received data
 Returns: Received data up to a carriage return
 .PP
 Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the location pointed to by string before calling this function\&. 
-.PP
-Definition at line 206 of file Serial\&.c\&.
 .SS "char receiveCR (void)"
 
 .PP
@@ -110,8 +102,6 @@ Description: Indicates whether a Carriage Return has been received
 Arguments: None
 .PP
 Returns: non-zero if CR has been received, zero otherwise 
-.PP
-Definition at line 186 of file Serial\&.c\&.
 .SS "char receiveEmpty (void)"
 
 .PP
@@ -124,8 +114,6 @@ Description: Indicates if the receive buffer is empty
 Arguments: None
 .PP
 Returns: returns true if the recieve buffer is empty 
-.PP
-Definition at line 136 of file Serial\&.c\&.
 .SS "char receivePeek (void)"
 
 .PP
@@ -138,8 +126,6 @@ Description: Returns the next character in the receive buffer without removing i
 Arguments: None
 .PP
 Returns: The next received character 
-.PP
-Definition at line 153 of file Serial\&.c\&.
 .SS "char receivePop (void)"
 
 .PP
@@ -152,8 +138,6 @@ Description: Pops the next received character from the received buffer
 Arguments: None
 .PP
 Returns: The next character from the receive buffer 
-.PP
-Definition at line 169 of file Serial\&.c\&.
 .SS "void serialISR (void)"
 
 .PP
@@ -166,8 +150,6 @@ Description: Acts as the interrupt service routine for the serial module
 Arguments: None
 .PP
 Returns: None 
-.PP
-Definition at line 248 of file Serial\&.c\&.
 .SS "void transChar (charc)"
 
 .PP
@@ -180,8 +162,6 @@ Description: Transmits a single character
 Arguments: c - character to transmit
 .PP
 Returns: None 
-.PP
-Definition at line 116 of file Serial\&.c\&.
 .SS "void transmit (char *string)"
 
 .PP
@@ -196,8 +176,6 @@ Arguments: string - pointer to the beginning of the string to transmit
 Returns: None
 .PP
 NOTE: Must be Null Terminated! Cannot receive a literal\&. 
-.PP
-Definition at line 90 of file Serial\&.c\&.
 .SS "char transmitted (void)"
 
 .PP
@@ -210,8 +188,6 @@ Description: returns non-zero if the message has been completely transmited e\&.
 Arguments: None
 .PP
 Returns: None 
-.PP
-Definition at line 232 of file Serial\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

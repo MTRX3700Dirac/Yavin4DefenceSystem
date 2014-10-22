@@ -3,7 +3,7 @@ var searchData=
   ['d',['D',['../p18f4520_8h.html#a35ab39081e6835946f3edf534a685718',1,'p18f4520.h']]],
   ['d_5fa',['D_A',['../p18f4520_8h.html#ac64d8520a04a591aebca9ddaf19c4c33',1,'p18f4520.h']]],
   ['d_5fnot_5fa',['D_NOT_A',['../p18f4520_8h.html#a86b47645240a743b7908b36e69be1059',1,'p18f4520.h']]],
-  ['data',['data',['../structcircular_buffer.html#ad7b57ba90694482456be1fbab7de4aec',1,'circularBuffer']]],
+  ['data',['data',['../structcircularBuffer.html#ad7b57ba90694482456be1fbab7de4aec',1,'circularBuffer']]],
   ['dc',['DC',['../p18f4520_8h.html#a3d90f65cd752460060c0eba9c09f9034',1,'p18f4520.h']]],
   ['dc1b',['DC1B',['../p18f4520_8h.html#aad5df38063275dfd546f3ce6fb0b1791',1,'p18f4520.h']]],
   ['dc1b0',['DC1B0',['../p18f4520_8h.html#a5e7d506c0476e62b749166469d14d57e',1,'p18f4520.h']]],
@@ -21,8 +21,8 @@ var searchData=
   ['ddrdbits',['DDRDbits',['../p18f4520_8h.html#a9ae91d7ff76e0c693d3e2d627698f7a7',1,'p18f4520.h']]],
   ['ddre',['DDRE',['../p18f4520_8h.html#af7a2e22f0be42260519acb8c7b4a4310',1,'p18f4520.h']]],
   ['ddrebits',['DDREbits',['../p18f4520_8h.html#ab2be6ac4367d760e36d5ea1f8fe8b5f8',1,'p18f4520.h']]],
-  ['defaultfunction',['defaultFunction',['../struct_sub_menu.html#ad86a4714605654261200ef4194e1657c',1,'SubMenu']]],
-  ['distance',['distance',['../struct_tracking_data.html#a4bb47863775a37236bda65273c01b275',1,'TrackingData']]],
+  ['defaultfunction',['defaultFunction',['../structSubMenu.html#ad86a4714605654261200ef4194e1657c',1,'SubMenu']]],
+  ['distance',['distance',['../structTrackingData.html#a4bb47863775a37236bda65273c01b275',1,'TrackingData']]],
   ['done',['DONE',['../p18f4520_8h.html#a15532dd1cb7c63353dbcb36d3962baf1',1,'p18f4520.h']]],
   ['dt',['DT',['../p18f4520_8h.html#acc36376b7b880be90829176b77f20764',1,'p18f4520.h']]]
 ];

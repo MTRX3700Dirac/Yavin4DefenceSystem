@@ -1,0 +1,5 @@
+<map id="move" name="move">
+<area shape="rect" id="node2" href="$PanTilt_8c.html#a96270ab040ad40095a6c0b24ffb0f994" title="direction2Delay" alt="" coords="105,5,216,32"/>
+<area shape="rect" id="node4" href="$PanTilt_8c.html#abe8bae9cf0445d5d64cacb685f2bd934" title="delay2Direction" alt="" coords="105,56,216,83"/>
+<area shape="rect" id="node3" href="$PanTilt_8c.html#a339d46c81d3203b479d9731ef06590d3" title="validate" alt="" coords="264,5,329,32"/>
+</map>

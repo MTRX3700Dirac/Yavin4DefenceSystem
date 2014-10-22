@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['lowisr',['lowISR',['../_interrupts_8c.html#ac835f50b358d0d663df1b8b835f9bb87',1,'Interrupts.c']]],
-  ['lowvector',['lowVector',['../_interrupts_8c.html#a0bf42af14e1d16197d7eb27ac5addca0',1,'Interrupts.c']]]
+  ['increment',['increment',['../PanTilt_8c.html#af8e57fbe1513bb48274f4f0f46717fa1',1,'increment(Direction difference):&#160;PanTilt.c'],['../PanTilt_8h.html#af8e57fbe1513bb48274f4f0f46717fa1',1,'increment(Direction difference):&#160;PanTilt.c']]],
+  ['incrementfine',['incrementFine',['../PanTilt_8c.html#a5350e3f473fb25899612d382c1baa642',1,'incrementFine(Direction difference):&#160;PanTilt.c'],['../PanTilt_8h.html#a5350e3f473fb25899612d382c1baa642',1,'incrementFine(Direction difference):&#160;PanTilt.c']]],
+  ['initialisemenu',['initialiseMenu',['../Menusystem_8c.html#a94b96ccbb8f3c627c5d59189498a3c1b',1,'initialiseMenu(void):&#160;Menusystem.c'],['../Menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b',1,'initialiseMenu(void):&#160;Menusystem.c'],['../Menusystem2_8c.html#a94b96ccbb8f3c627c5d59189498a3c1b',1,'initialiseMenu(void):&#160;Menusystem2.c']]],
+  ['initialization',['initialization',['../newmain_8c.html#a1ff28a3e20f1261c410c00f62e9f9c33',1,'newmain.c']]]
 ];

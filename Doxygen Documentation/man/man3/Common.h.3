@@ -1,8 +1,8 @@
-.TH "Common.h" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Common.h \- 
+C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -155,6 +155,12 @@ Common.h \-
 .RI "#define \fBCCP2_CLEAR\fP   (\fBPIR2bits\&.CCP2IF\fP = 0)"
 .br
 .ti -1c
+.RI "#define \fBWDT_EN\fP   \fBWDTCONbits\&.SWDTE\fP = 1; \fBWDTCONbits\&.SWDTEN\fP = 1;"
+.br
+.ti -1c
+.RI "#define \fBWDT_CLR\fP   _asm CLRWDT _endasm"
+.br
+.ti -1c
 .RI "#define \fBCLOCK\fP   10000000"
 .br
 .RI "\fIDfine the clock rate and FOSC_4\&. \fP"
@@ -181,114 +187,62 @@ Common.h \-
 .PP 
 .SS "#define ADC_DIAL_READ   2"
 
-.PP
-Definition at line 141 of file Common\&.h\&.
 .SS "#define ADC_INT   (\fBPIR1bits\&.ADIF\fP && \fBPIE1bits\&.ADIE\fP)"
 
-.PP
-Definition at line 155 of file Common\&.h\&.
 .SS "#define ADC_IR_READ   0"
 
 .PP
 ADC Channel Select macros\&. 
-.PP
-Definition at line 139 of file Common\&.h\&.
 .SS "#define ADC_TEMP_READ   1"
 
-.PP
-Definition at line 140 of file Common\&.h\&.
 .SS "#define BCL_INT   (\fBPIR2bits\&.BCLIF\fP && \fBPIE2bits\&.BCLIE\fP)"
 
-.PP
-Definition at line 157 of file Common\&.h\&.
 .SS "#define CCP1_CLEAR   (\fBPIR1bits\&.CCP1IF\fP = 0)"
 
-.PP
-Definition at line 160 of file Common\&.h\&.
 .SS "#define CCP1_INT   (\fBPIR1bits\&.CCP1IF\fP && \fBPIE1bits\&.CCP1IE\fP)"
 
-.PP
-Definition at line 146 of file Common\&.h\&.
 .SS "#define CCP2_CLEAR   (\fBPIR2bits\&.CCP2IF\fP = 0)"
 
-.PP
-Definition at line 161 of file Common\&.h\&.
 .SS "#define CCP2_INT   (\fBPIR2bits\&.CCP2IF\fP && \fBPIE2bits\&.CCP2IE\fP)"
 
-.PP
-Definition at line 147 of file Common\&.h\&.
 .SS "#define CLOCK   10000000"
 
 .PP
 Dfine the clock rate and FOSC_4\&. 
-.PP
-Definition at line 165 of file Common\&.h\&.
 .SS "#define COMMON_H"
 
-.PP
-Definition at line 176 of file Common\&.h\&.
 .SS "#define DIV_1024(v)   ((v) >> 10)"
 
-.PP
-Definition at line 131 of file Common\&.h\&.
 .SS "#define DIV_128(v)   ((v) >> 7)"
 
-.PP
-Definition at line 128 of file Common\&.h\&.
 .SS "#define DIV_16(v)   ((v) >> 4)"
 
-.PP
-Definition at line 125 of file Common\&.h\&.
 .SS "#define DIV_2(v)   ((v) >> 1)"
 
 .PP
 Efficient Division macros based on bit shifting, Cannot be used on negative numbers\&. 
-.PP
-Definition at line 122 of file Common\&.h\&.
 .SS "#define DIV_256(v)   ((v) >> 8)"
 
-.PP
-Definition at line 129 of file Common\&.h\&.
 .SS "#define DIV_32(v)   ((v) >> 5)"
 
-.PP
-Definition at line 126 of file Common\&.h\&.
 .SS "#define DIV_4(v)   ((v) >> 2)"
 
-.PP
-Definition at line 123 of file Common\&.h\&.
 .SS "#define DIV_4096(v)   ((v) >> 12)"
 
-.PP
-Definition at line 132 of file Common\&.h\&.
 .SS "#define DIV_512(v)   ((v) >> 9)"
 
-.PP
-Definition at line 130 of file Common\&.h\&.
 .SS "#define DIV_64(v)   ((v) >> 6)"
 
-.PP
-Definition at line 127 of file Common\&.h\&.
 .SS "#define DIV_65536(v)   ((v) >> 16)"
 
-.PP
-Definition at line 133 of file Common\&.h\&.
 .SS "#define DIV_8(v)   ((v) >> 3)"
 
-.PP
-Definition at line 124 of file Common\&.h\&.
 .SS "#define FOSC_4   2500000"
 
-.PP
-Definition at line 166 of file Common\&.h\&.
 .SS "#define INT0_INT   (\fBINTCONbits\&.INT0IF\fP && \fBINTCONbits\&.INT0IE\fP)"
 
-.PP
-Definition at line 148 of file Common\&.h\&.
 .SS "#define LVD_INT   (\fBPIR2bits\&.LVDIF\fP && \fBPIE2bits\&.LVDIE\fP)"
 
-.PP
-Definition at line 158 of file Common\&.h\&.
 .SS "#define MNML"
 
 .PP
@@ -299,58 +253,38 @@ Description: Contains all program scope definitions, declarations and inclusions
 Contains: -PIC18F family library headers -Direction struct typedef -TrackingData struct typedef -systemState struct typedef -system state macro functionality -TargetState enumeration -Interrupt flag macros -Division macros -Clock frequency definitions -SWAP macro functionality
 .PP
 Created on 11 September 2014, 12:24 PM 
-.PP
-Definition at line 28 of file Common\&.h\&.
 .SS "#define NEXT_STATE(s, state)   state\&.previous = state\&.current; state\&.current = s"
 
 .PP
 Macros to change the state of the system\&. 
-.PP
-Definition at line 100 of file Common\&.h\&.
 .SS "#define NEXT_STATE_PTR(s, state)   state->previous = state->current; state->current = s"
 
-.PP
-Definition at line 101 of file Common\&.h\&.
 .SS "#define RB_INT   (\fBINTCONbits\&.RBIF\fP && \fBINTCONbits\&.RBIE\fP)"
 
-.PP
-Definition at line 149 of file Common\&.h\&.
 .SS "#define RC_INT   (\fBPIR1bits\&.RCIF\fP && \fBPIE1bits\&.RCIE\fP)"
 
-.PP
-Definition at line 145 of file Common\&.h\&.
 .SS "#define SSP_INT   (\fBPIR1bits\&.SSPIF\fP && \fBPIE1bits\&.SSPIE\fP)"
 
-.PP
-Definition at line 156 of file Common\&.h\&.
 .SS "#define SWAP(x, y)   (y = (y ^ (x = (x ^ (y = (x ^ y))))))"
 
 .PP
 Swaps the values in two variables\&. 
-.PP
-Definition at line 136 of file Common\&.h\&.
 .SS "#define TMR0_INT   (\fBINTCONbits\&.TMR0IF\fP && \fBINTCONbits\&.TMR0IE\fP)"
 
-.PP
-Definition at line 152 of file Common\&.h\&.
 .SS "#define TMR1_INT   (\fBPIR1bits\&.TMR1IF\fP && \fBPIE1bits\&.TMR1IE\fP)"
 
-.PP
-Definition at line 153 of file Common\&.h\&.
 .SS "#define TMR2_INT   (\fBPIR1bits\&.TMR2IF\fP && \fBPIE1bits\&.TMR2IE\fP)"
 
-.PP
-Definition at line 150 of file Common\&.h\&.
 .SS "#define TMR3_INT   (\fBPIR2bits\&.TMR3IF\fP && \fBPIE2bits\&.TMR3IE\fP)"
 
-.PP
-Definition at line 154 of file Common\&.h\&.
 .SS "#define TX_INT   (\fBPIR1bits\&.TXIF\fP && \fBPIE1bits\&.TXIE\fP)"
 
 .PP
 Interrupt macros\&. 
-.PP
-Definition at line 144 of file Common\&.h\&.
+.SS "#define WDT_CLR   _asm CLRWDT _endasm"
+
+.SS "#define WDT_EN   \fBWDTCONbits\&.SWDTE\fP = 1; \fBWDTCONbits\&.SWDTEN\fP = 1;"
+
 .SH "Enumeration Type Documentation"
 .PP 
 .SS "enum \fBpossible_states\fP"
@@ -368,8 +302,6 @@ Define the possible states the system can be in\&.
 \fB\fISRCH \fP\fP
 .TP
 \fB\fITRCK \fP\fP
-.PP
-Definition at line 104 of file Common\&.h\&.
 .SS "enum \fBTargetState\fP"
 
 .PP
@@ -387,8 +319,6 @@ The different types of tracking possible depending on which sensors observe the 
 \fB\fIGOOD_TRACK \fP\fP
 .TP
 \fB\fICLOSE_RANGE \fP\fP
-.PP
-Definition at line 96 of file Common\&.h\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

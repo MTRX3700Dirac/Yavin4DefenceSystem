@@ -1,8 +1,8 @@
-.TH "Range.h" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Range.h \- 
+C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -54,8 +54,6 @@ Range.h \-
 .PP 
 .SS "#define RANGE_H"
 
-.PP
-Definition at line 33 of file Range\&.h\&.
 .SS "#define RANGE_INT   \fBCCP1_INT\fP | \fBTMR1_INT\fP"
 
 .PP
@@ -64,8 +62,6 @@ Definition at line 33 of file Range\&.h\&.
 Description: Contains the public interface for the ultrasonic module\&. This file contains all the external declarations, macros and global variables for using and Interfacing with the Range module\&.
 .PP
 Created on 15 September 2014, 11:24 AM 
-.PP
-Definition at line 17 of file Range\&.h\&.
 .SH "Function Documentation"
 .PP 
 .SS "void calibrateRange (signed intdistance)"
@@ -79,9 +75,14 @@ Include: \fBRange\&.h\fP
 .PP
 Description: Configures the ADC, In ADCON1, we set right-justified mode, and select AN0 as the input channel\&. In ADCON0, we set a sample rate of Fosc/8, select AN0, and enable the ADC\&. Arguments: None
 .PP
-Returns: None 
+Returns: None
 .PP
-Definition at line 78 of file Range\&.c\&.
+\fBTodo\fP
+.RS 4
+Make absolutely sure this works on the minimal board, and with the temperature sensor, and pot and IR sensor 
+.RE
+.PP
+
 .SS "void configureRange (void)"
 
 .PP
@@ -94,8 +95,6 @@ Description: Configures the Range module
 Arguments: None
 .PP
 Returns: None 
-.PP
-Definition at line 102 of file Range\&.c\&.
 .SS "\fBTargetState\fP getTargetState (void)"
 
 .PP
@@ -108,38 +107,27 @@ Description: Returns the target state from the last range reading\&. E\&.g\&. Go
 Arguments: None
 .PP
 Returns: the target state 
-.PP
-Definition at line 499 of file Range\&.c\&.
 .SS "unsigned int range (void)"
 
 .PP
- Function: \fBrange()\fP
+ Function: \fBrange(void)\fP
 .PP
-Include:
+Include: \fBRange\&.h\fP
 .PP
 Description: Uses the IR and Ultrasonic sensors to find the range
 .PP
 Arguments: None
 .PP
-Returns: None 
+Returns: fused range as an unsigned int
 .PP
-Definition at line 307 of file Range\&.c\&.
+\fBTodo\fP
+.RS 4
+Implement the sampling rate somehow 
+.RE
+.PP
+
 .SS "unsigned int rangeIR (void)"
 
-.PP
- Function: \fBrangeIR(void)\fP
-.PP
-Include:
-.PP
-Description: Reads the range from the IR Sensor
-.PP
-Arguments: None
-.PP
-Returns: Range (in mm) as an unsigned int\&.
-.PP
-Remark: Returns 0 if there is no target found 
-.PP
-Definition at line 406 of file Range\&.c\&.
 .SS "void rangeISR (void)"
 
 .PP
@@ -152,12 +140,10 @@ Description: Called when an range related interrupt is fired, acts as the servic
 Arguments: None
 .PP
 Returns: None 
-.PP
-Definition at line 219 of file Range\&.c\&.
 .SS "unsigned int rangeUltrasonic (void)"
 
 .PP
- Function: rangeUS(void)
+ Function: \fBrangeUltrasonic(void)\fP
 .PP
 Include:
 .PP
@@ -165,23 +151,21 @@ Description: performs an ultrasonic range reading\&. Pins:
 .PP
 Arguments: None
 .PP
-Returns: the average of the samples 
+Returns: the average of the samples
 .PP
-Definition at line 434 of file Range\&.c\&.
+todo remove this function? 
 .SS "signed int rawRange (void)"
 
 .PP
- Function: speed_sound(unsigned char tempx2)
+ Function: \fBrawRange(void)\fP
 .PP
-Include:
+Include: \fBRange\&.h\fP
 .PP
-Description: Returns the calibration offset to calculate the raw data
+Description: Returns uncalibrated range without the calibration offset
 .PP
 Arguments: None
 .PP
-Returns: None 
-.PP
-Definition at line 291 of file Range\&.c\&.
+Returns: distance (in mm) as an unsigned int 
 .SS "\fBTargetState\fP readTargetState (void)"
 
 .PP
@@ -194,8 +178,6 @@ Description: Does the same thing as getTargetState, but actually performs a \fBr
 Arguments: None
 .PP
 Returns: the target state 
-.PP
-Definition at line 516 of file Range\&.c\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

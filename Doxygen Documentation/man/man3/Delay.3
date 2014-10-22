@@ -1,4 +1,4 @@
-.TH "Delay" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Delay" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -26,23 +26,17 @@ Description: Contains all the functionality for the Pan Tilt module\&. All varia
 .PP
 Duties: -Software interface to the Pan Tilt Module -Moves Pan Tilt -Reads current Pan Tilt position (based on PDM's) -Generate PDM signals
 .PP
-Functions: Local: void validate(unsigned int *delay); \fBDirection\fP delay2Direction(Delay dly); \fBDelay\fP direction2Delay(Direction dir);
+Functions: Local: void \fBvalidate(unsigned int *delay)\fP; \fBDirection\fP \fBdelay2Direction(Delay dly)\fP; \fBDelay\fP \fBdirection2Delay(Direction dir)\fP;
 .PP
 Public Interface: void \fBconfigureBase(void)\fP; void \fBmove(Direction destination)\fP; void \fBincrement(Direction difference)\fP; void \fBincrementFine(Direction difference)\fP; \fBDirection\fP \fBgetDir(void)\fP; void \fBcalibratePanTilt(Direction reference)\fP; \fBDirection\fP \fBrawDir(void)\fP; char \fBupdated(void)\fP; void \fBpanTiltISR(void)\fP; char \fBgetMaxAzimuthAngle(void)\fP; char \fBgetMinAzimuthAngle(void)\fP; char \fBgetMaxElevationAngle(void)\fP; char \fBgetMinElevationAngle(void)\fP; void \fBsetMaxAzimuthAngle(char p_angle)\fP; void \fBsetMinAzimuthAngle(char p_angle)\fP; void \fBsetMaxElevationAngle(char p_angle)\fP; void \fBsetMinElevationAngle(char p_angle)\fP;
 .PP
 Created on 16 September 2014, 6:47 PM 
-.PP
-Definition at line 49 of file PanTilt\&.c\&.
 .SH "Field Documentation"
 .PP 
 .SS "signed int AzimuthDelay"
 
-.PP
-Definition at line 51 of file PanTilt\&.c\&.
 .SS "signed int InclinationDelay"
 
-.PP
-Definition at line 52 of file PanTilt\&.c\&.
 
 .SH "Author"
 .PP 

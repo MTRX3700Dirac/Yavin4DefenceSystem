@@ -1,0 +1,8 @@
+<map id="delay2Direction" name="delay2Direction">
+<area shape="rect" id="node2" href="$PanTilt_8h.html#a032fbfc434ca24d27d89b6d768455a42" title="move" alt="" coords="190,31,242,57"/>
+<area shape="rect" id="node7" href="$PanTilt_8h.html#a5350e3f473fb25899612d382c1baa642" title="incrementFine" alt="" coords="164,81,268,108"/>
+<area shape="rect" id="node3" href="$PanTilt_8h.html#af8e57fbe1513bb48274f4f0f46717fa1" title="increment" alt="" coords="316,5,395,32"/>
+<area shape="rect" id="node6" href="$Tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30" title="track" alt="" coords="448,56,499,83"/>
+<area shape="rect" id="node4" href="$Tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9" title="search" alt="" coords="443,5,504,32"/>
+<area shape="rect" id="node5" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="552,31,603,57"/>
+</map>

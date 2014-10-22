@@ -2,43 +2,31 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="p18f4520_8h" kind="file">
     <compoundname>p18f4520.h</compoundname>
-    <includedby refid="_common_8h" local="no">Common.h</includedby>
+    <includedby refid="Common_8h" local="no">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h</includedby>
     <invincdepgraph>
-      <node id="359">
-        <label>Menusystem.c</label>
-        <link refid="_menusystem_8c"/>
+      <node id="365">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c</label>
+        <link refid="Menusystem_8c"/>
       </node>
-      <node id="366">
-        <label>Tracking.c</label>
-        <link refid="_tracking_8c"/>
-      </node>
-      <node id="357">
-        <label>Interrupts.c</label>
-        <link refid="_interrupts_8c"/>
+      <node id="372">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c</label>
+        <link refid="Tracking_8c"/>
       </node>
       <node id="363">
-        <label>Range.c</label>
-        <link refid="_range_8c"/>
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Interrupts.c</label>
+        <link refid="Interrupts_8c"/>
       </node>
-      <node id="361">
-        <label>newmain.c</label>
+      <node id="369">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c</label>
+        <link refid="Range_8c"/>
+      </node>
+      <node id="367">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c</label>
         <link refid="newmain_8c"/>
       </node>
-      <node id="356">
-        <label>Common.h</label>
-        <link refid="_common_8h"/>
-        <childnode refid="357" relation="include">
-        </childnode>
-        <childnode refid="358" relation="include">
-        </childnode>
-        <childnode refid="359" relation="include">
-        </childnode>
-        <childnode refid="360" relation="include">
-        </childnode>
-        <childnode refid="361" relation="include">
-        </childnode>
-        <childnode refid="362" relation="include">
-        </childnode>
+      <node id="362">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h</label>
+        <link refid="Common_8h"/>
         <childnode refid="363" relation="include">
         </childnode>
         <childnode refid="364" relation="include">
@@ -49,36 +37,48 @@
         </childnode>
         <childnode refid="367" relation="include">
         </childnode>
-      </node>
-      <node id="364">
-        <label>Serial.c</label>
-        <link refid="_serial_8c"/>
-      </node>
-      <node id="365">
-        <label>Temp.c</label>
-        <link refid="_temp_8c"/>
-      </node>
-      <node id="355">
-        <label>p18f4520.h</label>
-        <link refid="p18f4520.h"/>
-        <childnode refid="356" relation="include">
+        <childnode refid="368" relation="include">
+        </childnode>
+        <childnode refid="369" relation="include">
+        </childnode>
+        <childnode refid="370" relation="include">
+        </childnode>
+        <childnode refid="371" relation="include">
+        </childnode>
+        <childnode refid="372" relation="include">
+        </childnode>
+        <childnode refid="373" relation="include">
         </childnode>
       </node>
-      <node id="358">
-        <label>LCD.c</label>
-        <link refid="_l_c_d_8c"/>
+      <node id="370">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c</label>
+        <link refid="Serial_8c"/>
       </node>
-      <node id="367">
-        <label>User_Interface.c</label>
-        <link refid="_user___interface_8c"/>
+      <node id="371">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c</label>
+        <link refid="Temp_8c"/>
       </node>
-      <node id="362">
-        <label>PanTilt.c</label>
-        <link refid="_pan_tilt_8c"/>
+      <node id="361">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h</label>
+        <link refid="p18f4520.h"/>
+        <childnode refid="362" relation="include">
+        </childnode>
       </node>
-      <node id="360">
-        <label>Menusystem2.c</label>
-        <link refid="_menusystem2_8c"/>
+      <node id="364">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c</label>
+        <link refid="LCD_8c"/>
+      </node>
+      <node id="373">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c</label>
+        <link refid="User__Interface_8c"/>
+      </node>
+      <node id="368">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c</label>
+        <link refid="PanTilt_8c"/>
+      </node>
+      <node id="366">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c</label>
+        <link refid="Menusystem2_8c"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -2548,7 +2548,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="292" column="1"/>
-        <referencedby refid="_range_8h_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="_range_8c" startline="78" endline="89">configureAD</referencedby>
+        <referencedby refid="Range_8h_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="Range_8c" startline="80" endline="92">configureAD</referencedby>
+        <referencedby refid="Temp_8h_1af6785da0c9b3c637b09522617d3f9dba" compoundref="Temp_8c" startline="36" endline="48">configureTemp</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1ad9926229ce63683478163a7aad5ba4e4" prot="public" static="no" mutable="no">
         <type>near union @11</type>
@@ -3433,7 +3434,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="517" column="1"/>
-        <referencedby refid="_range_8h_1a64e9d21d140ac54a306dab455b49adcf" compoundref="_range_8c" startline="219" endline="236">rangeISR</referencedby>
+        <referencedby refid="Range_8c_1a4571d632d0c84c18c4aefd1c7b63cb8a" compoundref="Range_8c" startline="152" endline="167">beginUS</referencedby>
+        <referencedby refid="Range_8h_1a64e9d21d140ac54a306dab455b49adcf" compoundref="Range_8c" startline="225" endline="242">rangeISR</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1a9ebeed68820ca7eeead73b33b32ea46f" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -3564,7 +3566,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="528" column="1"/>
-        <referencedby refid="_range_8h_1a64e9d21d140ac54a306dab455b49adcf" compoundref="_range_8c" startline="219" endline="236">rangeISR</referencedby>
+        <referencedby refid="Range_8h_1a64e9d21d140ac54a306dab455b49adcf" compoundref="Range_8c" startline="225" endline="242">rangeISR</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1a809e3fefa5260e2e32b99582138ec56d" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -3955,7 +3957,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="573" column="1"/>
-        <referencedby refid="_pan_tilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="_pan_tilt_8c" startline="396" endline="432">panTiltISR</referencedby>
+        <referencedby refid="PanTilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="PanTilt_8c" startline="406" endline="442">panTiltISR</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1ace430232489dfdca0f65cdcb926f6c5f" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -5906,7 +5908,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="842" column="1"/>
-        <referencedby refid="_range_8h_1a64e9d21d140ac54a306dab455b49adcf" compoundref="_range_8c" startline="219" endline="236">rangeISR</referencedby>
+        <referencedby refid="Range_8c_1af470fd0f0b96399b344f11783b4ef7f3" compoundref="Range_8c" startline="184" endline="211">rangeUS</referencedby>
+        <referencedby refid="Range_8h_1a64e9d21d140ac54a306dab455b49adcf" compoundref="Range_8c" startline="225" endline="242">rangeISR</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1a5e6e0afe1671c71c06a6651a290b09f9" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -5920,6 +5923,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="843" column="1"/>
+        <referencedby refid="Range_8c_1a4571d632d0c84c18c4aefd1c7b63cb8a" compoundref="Range_8c" startline="152" endline="167">beginUS</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1afc2ddd57bbfac39272d1c9caa21de832" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -5933,6 +5937,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="844" column="1"/>
+        <referencedby refid="Range_8c_1a4571d632d0c84c18c4aefd1c7b63cb8a" compoundref="Range_8c" startline="152" endline="167">beginUS</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1a9236e28843bda8fbf257de21ad0dda9d" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -6089,7 +6094,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="862" column="1"/>
-        <referencedby refid="_range_8h_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="_range_8c" startline="78" endline="89">configureAD</referencedby>
+        <referencedby refid="Range_8h_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="Range_8c" startline="80" endline="92">configureAD</referencedby>
+        <referencedby refid="Temp_8h_1af6785da0c9b3c637b09522617d3f9dba" compoundref="Temp_8c" startline="36" endline="48">configureTemp</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1aca967663f2d5470ae76b13094350faf8" prot="public" static="no" mutable="no">
         <type>unsigned</type>
@@ -6220,7 +6226,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="877" column="1"/>
-        <referencedby refid="_range_8h_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="_range_8c" startline="78" endline="89">configureAD</referencedby>
+        <referencedby refid="Range_8h_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="Range_8c" startline="80" endline="92">configureAD</referencedby>
+        <referencedby refid="Temp_8h_1af6785da0c9b3c637b09522617d3f9dba" compoundref="Temp_8c" startline="36" endline="48">configureTemp</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1aa35d5855858b9350b403822a0ebe771f" prot="public" static="no" mutable="no">
         <type>unsigned</type>
@@ -6377,6 +6384,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="904" column="1"/>
+        <referencedby refid="Range_8c_1ae7948eddefd58fbe1509d2bade4cd908" compoundref="Range_8c" startline="480" endline="501">sampleIR</referencedby>
+        <referencedby refid="Temp_8h_1a4946ccbc1990e831667bffded1147c4f" compoundref="Temp_8c" startline="63" endline="91">readTempx2</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1ac357135c4e1648c9fbca4f3f7dfa0e8d" prot="public" static="no" mutable="no">
         <type>near unsigned</type>
@@ -6390,6 +6399,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="905" column="1"/>
+        <referencedby refid="Range_8c_1ae7948eddefd58fbe1509d2bade4cd908" compoundref="Range_8c" startline="480" endline="501">sampleIR</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1afc0f7ea2748e1505da0641e891691b93" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -6403,6 +6413,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="906" column="1"/>
+        <referencedby refid="Temp_8h_1a4946ccbc1990e831667bffded1147c4f" compoundref="Temp_8c" startline="63" endline="91">readTempx2</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1a8919ac22cb49783b559b4cc044d51463" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -6416,6 +6427,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="907" column="1"/>
+        <referencedby refid="Temp_8h_1a4946ccbc1990e831667bffded1147c4f" compoundref="Temp_8c" startline="63" endline="91">readTempx2</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1a2f83ac16d21f20e58870074892ee4ff3" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -7417,6 +7429,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="1035" column="1"/>
+        <referencedby refid="Range_8c_1a4571d632d0c84c18c4aefd1c7b63cb8a" compoundref="Range_8c" startline="152" endline="167">beginUS</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1a11c223380e2c9b172b7b78884e09e570" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -7430,6 +7443,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="1036" column="1"/>
+        <referencedby refid="Range_8c_1a4571d632d0c84c18c4aefd1c7b63cb8a" compoundref="Range_8c" startline="152" endline="167">beginUS</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1a2e6ee4cf5f60c509078fbbc501028206" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -7612,9 +7626,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="1056" column="1"/>
-        <referencedby refid="_pan_tilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="_pan_tilt_8c" startline="105" endline="135">configureBase</referencedby>
-        <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</referencedby>
-        <referencedby refid="_serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="57" endline="75">configureSerial</referencedby>
+        <referencedby refid="PanTilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="PanTilt_8c" startline="107" endline="137">configureBase</referencedby>
+        <referencedby refid="Range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="Range_8c" startline="105" endline="139">configureRange</referencedby>
+        <referencedby refid="Serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="Serial_8c" startline="57" endline="75">configureSerial</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1ab5bdf6ae49d8f044975b273bf1ed3ef0" prot="public" static="no" mutable="no">
         <type>near unsigned char</type>
@@ -8369,6 +8383,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="1173" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" bodystart="1173" bodyend="-1"/>
+        <referencedby refid="Range_8c_1af470fd0f0b96399b344f11783b4ef7f3" compoundref="Range_8c" startline="184" endline="211">rangeUS</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1ac908725f95d2f115071b18f9dc888e79" prot="public" static="no" mutable="no">
         <type>unsigned</type>
@@ -9292,9 +9307,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/p18f4520.h" line="1272" column="1"/>
-        <referencedby refid="_pan_tilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="_pan_tilt_8c" startline="105" endline="135">configureBase</referencedby>
-        <referencedby refid="_range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="_range_8c" startline="102" endline="136">configureRange</referencedby>
-        <referencedby refid="_serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="_serial_8c" startline="57" endline="75">configureSerial</referencedby>
+        <referencedby refid="PanTilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="PanTilt_8c" startline="107" endline="137">configureBase</referencedby>
+        <referencedby refid="Range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="Range_8c" startline="105" endline="139">configureRange</referencedby>
+        <referencedby refid="Serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="Serial_8c" startline="57" endline="75">configureSerial</referencedby>
       </memberdef>
       <memberdef kind="variable" id="p18f4520_8h_1a3c1ab73a0be354304b62d6106775c112" prot="public" static="no" mutable="no">
         <type>near unsigned</type>

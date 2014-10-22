@@ -1,26 +1,4 @@
 var files =
 [
-    [ "CircularBuffers.h", "_circular_buffers_8h.html", "_circular_buffers_8h" ],
-    [ "Common.h", "_common_8h.html", "_common_8h" ],
-    [ "ConfigRegs18f4520.h", "_config_regs18f4520_8h.html", null ],
-    [ "Interrupts.c", "_interrupts_8c.html", "_interrupts_8c" ],
-    [ "LCD.c", "_l_c_d_8c.html", "_l_c_d_8c" ],
-    [ "LCD.h", "_l_c_d_8h.html", "_l_c_d_8h" ],
-    [ "Menusystem.c", "_menusystem_8c.html", "_menusystem_8c" ],
-    [ "Menusystem.h", "_menusystem_8h.html", "_menusystem_8h" ],
-    [ "Menusystem2.c", "_menusystem2_8c.html", "_menusystem2_8c" ],
-    [ "newmain.c", "newmain_8c.html", "newmain_8c" ],
-    [ "p18f4520.h", "p18f4520_8h.html", "p18f4520_8h" ],
-    [ "PanTilt.c", "_pan_tilt_8c.html", "_pan_tilt_8c" ],
-    [ "PanTilt.h", "_pan_tilt_8h.html", "_pan_tilt_8h" ],
-    [ "Range.c", "_range_8c.html", "_range_8c" ],
-    [ "Range.h", "_range_8h.html", "_range_8h" ],
-    [ "Serial.c", "_serial_8c.html", "_serial_8c" ],
-    [ "Serial.h", "_serial_8h.html", "_serial_8h" ],
-    [ "Temp.c", "_temp_8c.html", "_temp_8c" ],
-    [ "Temp.h", "_temp_8h.html", "_temp_8h" ],
-    [ "Tracking.c", "_tracking_8c.html", "_tracking_8c" ],
-    [ "Tracking.h", "_tracking_8h.html", "_tracking_8h" ],
-    [ "User_Interface.c", "_user___interface_8c.html", "_user___interface_8c" ],
-    [ "User_Interface.h", "_user___interface_8h.html", "_user___interface_8h" ]
+    [ "Code", "dir_23fdee2f6995db16c755697cdf620cf4.html", "dir_23fdee2f6995db16c755697cdf620cf4" ]
 ];

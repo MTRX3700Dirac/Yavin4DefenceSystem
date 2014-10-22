@@ -1,0 +1,585 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="Menusystem2_8c" kind="file">
+    <compoundname>Menusystem2.c</compoundname>
+    <includes refid="Common_8h" local="yes">Common.h</includes>
+    <includes refid="Serial_8h" local="yes">Serial.h</includes>
+    <includes refid="User__Interface_8h" local="yes">User_Interface.h</includes>
+    <includes refid="LCD_8h" local="yes">LCD.h</includes>
+    <includes refid="PanTilt_8h" local="yes">PanTilt.h</includes>
+    <incdepgraph>
+      <node id="329">
+        <label>stdlib.h</label>
+      </node>
+      <node id="333">
+        <label>adc.h</label>
+      </node>
+      <node id="327">
+        <label>Common.h</label>
+        <link refid="Common_8h"/>
+        <childnode refid="328" relation="include">
+        </childnode>
+        <childnode refid="329" relation="include">
+        </childnode>
+        <childnode refid="330" relation="include">
+        </childnode>
+        <childnode refid="331" relation="include">
+        </childnode>
+        <childnode refid="332" relation="include">
+        </childnode>
+        <childnode refid="333" relation="include">
+        </childnode>
+        <childnode refid="334" relation="include">
+        </childnode>
+        <childnode refid="335" relation="include">
+        </childnode>
+        <childnode refid="336" relation="include">
+        </childnode>
+      </node>
+      <node id="337">
+        <label>Serial.h</label>
+        <link refid="Serial_8h"/>
+      </node>
+      <node id="332">
+        <label>timers.h</label>
+      </node>
+      <node id="336">
+        <label>compare.h</label>
+      </node>
+      <node id="334">
+        <label>capture.h</label>
+      </node>
+      <node id="330">
+        <label>math.h</label>
+      </node>
+      <node id="331">
+        <label>p18f4520.h</label>
+        <link refid="p18f4520_8h"/>
+      </node>
+      <node id="335">
+        <label>usart.h</label>
+      </node>
+      <node id="339">
+        <label>LCD.h</label>
+        <link refid="LCD_8h"/>
+      </node>
+      <node id="328">
+        <label>stdio.h</label>
+      </node>
+      <node id="340">
+        <label>PanTilt.h</label>
+        <link refid="PanTilt_8h"/>
+      </node>
+      <node id="338">
+        <label>User_Interface.h</label>
+        <link refid="User__Interface_8h"/>
+      </node>
+      <node id="326">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c</label>
+        <link refid="Menusystem2.c"/>
+        <childnode refid="327" relation="include">
+        </childnode>
+        <childnode refid="337" relation="include">
+        </childnode>
+        <childnode refid="338" relation="include">
+        </childnode>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="340" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structSubMenu" prot="public">SubMenu</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="Menusystem2_8c_1af3a7cb33a5ae7392934b3197ac67e080" prot="public" static="no">
+        <name>MAX_SER_MSG_LEN</name>
+        <initializer>30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="7" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Menusystem2_8c_1a803e4f9d2e28d9ab24055cb970ea12c3" prot="public" static="no">
+        <name>MAX_LCD_MSG_LEN</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="8" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Menusystem2_8c_1ab86e62ee54aa604cfbdc4d3048c2845d" prot="public" static="no">
+        <name>MAX_NUM_OPTIONS</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="9" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="9" bodyend="-1"/>
+        <referencedby refid="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" compoundref="Menusystem2_8c" startline="144" endline="161">parseInput</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870" prot="public" static="no">
+        <name>MenuLevel</name>
+        <enumvalue id="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870ad41208b99e347d1726824779b11ea11b" prot="public">
+          <name>ROOT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870a12b733d4941495e86811fe6ceeeff9da" prot="public">
+          <name>SUB</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870a389e03ce61ac2d93fd54069187ab58af" prot="public">
+          <name>FUNC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="23" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="Menusystem2_8c_1a590a7b46cd32899024f14446ecf74f0d" prot="public" static="no">
+        <type>struct <ref refid="structSubMenu" kindref="compound">SubMenu</ref></type>
+        <definition>typedef struct SubMenu  SubMenu</definition>
+        <argsstring></argsstring>
+        <name>SubMenu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="21" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Menusystem2_8c_1ae3f81077129a28d7185c8a241434c00d" prot="public" static="yes" mutable="no">
+        <type><ref refid="structSubMenu" kindref="compound">SubMenu</ref></type>
+        <definition>SubMenu Min</definition>
+        <argsstring></argsstring>
+        <name>Min</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="27" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="27" bodyend="-1"/>
+        <referencedby refid="Menusystem2_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="Menusystem2_8c" startline="60" endline="69">initialiseMenu</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem2_8c_1a6f607e5b0a90c0748c665c008d632093" prot="public" static="yes" mutable="no">
+        <type><ref refid="structSubMenu" kindref="compound">SubMenu</ref></type>
+        <definition>SubMenu Max</definition>
+        <argsstring></argsstring>
+        <name>Max</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="28" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem2_8c_1ab7c54bfc8293491beeef98a08b8b56d5" prot="public" static="yes" mutable="no">
+        <type><ref refid="structSubMenu" kindref="compound">SubMenu</ref></type>
+        <definition>SubMenu AutoTrack</definition>
+        <argsstring></argsstring>
+        <name>AutoTrack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="30" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="30" bodyend="-1"/>
+        <referencedby refid="Menusystem2_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="Menusystem2_8c" startline="60" endline="69">initialiseMenu</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem2_8c_1a6799f740ee4fcb5f69c548ccb3d01dd8" prot="public" static="yes" mutable="no">
+        <type><ref refid="structSubMenu" kindref="compound">SubMenu</ref></type>
+        <definition>SubMenu ManTrack</definition>
+        <argsstring></argsstring>
+        <name>ManTrack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="31" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem2_8c_1a5ff18a829db4a7a11ecea563f8c57861" prot="public" static="yes" mutable="no">
+        <type><ref refid="structSubMenu" kindref="compound">SubMenu</ref></type>
+        <definition>SubMenu Az</definition>
+        <argsstring></argsstring>
+        <name>Az</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="32" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem2_8c_1a1599c2551edd7fe2b5e47a71b378e69e" prot="public" static="yes" mutable="no">
+        <type><ref refid="structSubMenu" kindref="compound">SubMenu</ref></type>
+        <definition>SubMenu Elev</definition>
+        <argsstring></argsstring>
+        <name>Elev</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="33" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem2_8c_1a157eac1dc94359e4d223f8328f6d59e0" prot="public" static="yes" mutable="no">
+        <type><ref refid="structSubMenu" kindref="compound">SubMenu</ref></type>
+        <definition>SubMenu Root</definition>
+        <argsstring></argsstring>
+        <name>Root</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="35" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="35" bodyend="-1"/>
+        <referencedby refid="Menusystem2_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="Menusystem2_8c" startline="60" endline="69">initialiseMenu</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" prot="public" static="yes" mutable="no">
+        <type><ref refid="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870" kindref="member">MenuLevel</ref></type>
+        <definition>MenuLevel level</definition>
+        <argsstring></argsstring>
+        <name>level</name>
+        <initializer>= <ref refid="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870ad41208b99e347d1726824779b11ea11b" kindref="member">ROOT</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="38" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="38" bodyend="-1"/>
+        <referencedby refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem2_8c" startline="87" endline="111">serviceMenu</referencedby>
+        <referencedby refid="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" compoundref="Menusystem2_8c" startline="144" endline="161">parseInput</referencedby>
+        <referencedby refid="Menusystem2_8c_1a4bee0e4646c0720d174aaf635246988c" compoundref="Menusystem2_8c" startline="197" endline="208">stateEntry</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem2_8c_1aea4329c72fa4b28fcb75e173c9301ad4" prot="public" static="yes" mutable="no">
+        <type><ref refid="structSubMenu" kindref="compound">SubMenu</ref> *</type>
+        <definition>SubMenu* test</definition>
+        <argsstring></argsstring>
+        <name>test</name>
+        <initializer>= &amp;<ref refid="Menusystem2_8c_1a157eac1dc94359e4d223f8328f6d59e0" kindref="member">Root</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="39" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem2_8c_1a9c05de6d6d109afaf5f9e83de4938f2e" prot="public" static="yes" mutable="no">
+        <type><ref refid="structSubMenu" kindref="compound">SubMenu</ref></type>
+        <definition>SubMenu menus[3]</definition>
+        <argsstring>[3]</argsstring>
+        <name>menus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="40" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void parseInput</definition>
+        <argsstring>(char input)</argsstring>
+        <name>parseInput</name>
+        <param>
+          <type>char</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>parse the user input </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" kindref="member">parseInput(char input)</ref></para><para>Include: <ref refid="Menusystem_8h" kindref="compound">Menusystem.h</ref></para><para>Description: services any interrupts associated with the menu system</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="43" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="144" bodyend="161"/>
+        <references refid="Menusystem2_8c_1ab86e62ee54aa604cfbdc4d3048c2845d" compoundref="Menusystem2_8c" startline="9">MAX_NUM_OPTIONS</references>
+        <references refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" compoundref="Menusystem2_8c" startline="38">level</references>
+        <references refid="structSubMenu_1aef0980fb751ef312c4ff945539aa3cd4" compoundref="Menusystem2_8c" startline="16">SubMenu::inptOptions</references>
+        <references refid="structSubMenu_1a915aa121e09e4c3f914dc59727f390e3" compoundref="Menusystem2_8c" startline="20">SubMenu::subMenues</references>
+        <referencedby refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem2_8c" startline="87" endline="111">serviceMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="Menusystem2_8c_1ad3ebde8bf1da78fb419653e5a495837b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int parseNumeric</definition>
+        <argsstring>(char *number)</argsstring>
+        <name>parseNumeric</name>
+        <param>
+          <type>char *</type>
+          <declname>input</declname>
+          <defname>number</defname>
+        </param>
+        <briefdescription>
+<para>parses user input string into a number </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Menusystem2_8c_1ad3ebde8bf1da78fb419653e5a495837b" kindref="member">parseNumeric(char *number)</ref></para><para>Include:</para><para>Description: Calls the function which matches the user input</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="44" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="176" bodyend="182"/>
+        <referencedby refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem2_8c" startline="87" endline="111">serviceMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="Menusystem2_8c_1a4bee0e4646c0720d174aaf635246988c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void stateEntry</definition>
+        <argsstring>(void)</argsstring>
+        <name>stateEntry</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Performs default actions on first entering the state. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Menusystem2_8c_1a4bee0e4646c0720d174aaf635246988c" kindref="member">stateEntry(void)</ref></para><para>Include:</para><para>Description:</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="45" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="197" bodyend="208"/>
+        <references refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" compoundref="Menusystem2_8c" startline="38">level</references>
+        <references refid="structSubMenu_1ad86a4714605654261200ef4194e1657c" compoundref="Menusystem2_8c" startline="19">SubMenu::defaultFunction</references>
+        <references refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="Serial_8c" startline="90" endline="103">transmit</references>
+        <references refid="structSubMenu_1a24706f7b55951b0e21967a256e107936" compoundref="Menusystem2_8c" startline="13">SubMenu::serialMessage</references>
+        <references refid="structSubMenu_1a10ce8be3d2bbadbc9c262b6be4bb3aec" compoundref="Menusystem2_8c" startline="14">SubMenu::lcdMessage</references>
+      </memberdef>
+      <memberdef kind="function" id="Menusystem2_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void initialiseMenu</definition>
+        <argsstring>(void)</argsstring>
+        <name>initialiseMenu</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialises the menu system. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Menusystem2_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" kindref="member">initialiseMenu(void)</ref></para><para>Include: <ref refid="Menusystem_8h" kindref="compound">Menusystem.h</ref></para><para>Description: initialises the menu system so that it is fully operational</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="60" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="60" bodyend="69"/>
+        <references refid="Serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="Serial_8c" startline="57" endline="75">configureSerial</references>
+        <references refid="LCD_8c_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="LCD_8c" startline="35" endline="57">lcdInit</references>
+        <references refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" compoundref="User__Interface_8c" startline="67" endline="71">configUSER</references>
+        <references refid="Menusystem2_8c_1a157eac1dc94359e4d223f8328f6d59e0" compoundref="Menusystem2_8c" startline="35">Root</references>
+        <references refid="Menusystem2_8c_1ab7c54bfc8293491beeef98a08b8b56d5" compoundref="Menusystem2_8c" startline="30">AutoTrack</references>
+        <references refid="Menusystem2_8c_1ae3f81077129a28d7185c8a241434c00d" compoundref="Menusystem2_8c" startline="27">Min</references>
+      </memberdef>
+      <memberdef kind="function" id="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void serviceMenu</definition>
+        <argsstring>(void)</argsstring>
+        <name>serviceMenu</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>services any user interface with the menu </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" kindref="member">serviceMenu(void)</ref></para><para>Include:</para><para>Description: Checks if the user has made any inputs to the system. If not the function simply returns. If they have then it services the inputs, displays the correct outputs and performs the specified actions</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="87" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="87" bodyend="111"/>
+        <references refid="Serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="Serial_8c" startline="136" endline="139">receiveEmpty</references>
+        <references refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="User__Interface_8c" startline="115" endline="118">userEmpty</references>
+        <references refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" compoundref="Menusystem2_8c" startline="38">level</references>
+        <references refid="structSubMenu_1a1dae2f8dad8e2d2a30b13ee69ea542db" compoundref="Menusystem2_8c" startline="18">SubMenu::numericFunction</references>
+        <references refid="Serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="Serial_8c" startline="186" endline="189">receiveCR</references>
+        <references refid="Serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="Serial_8c" startline="206" endline="218">readString</references>
+        <references refid="Menusystem2_8c_1ad3ebde8bf1da78fb419653e5a495837b" compoundref="Menusystem2_8c" startline="176" endline="182">parseNumeric</references>
+        <references refid="Serial_8c_1abb74ccb0bd81e0e4779854c93851c804" compoundref="Serial_8c" startline="169" endline="173">receivePop</references>
+        <references refid="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" compoundref="Menusystem2_8c" startline="144" endline="161">parseInput</references>
+      </memberdef>
+      <memberdef kind="function" id="Menusystem2_8c_1a0f329206447b1f40e6f730b346aaaf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void menuISR</definition>
+        <argsstring>(void)</argsstring>
+        <name>menuISR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>ISR function for the menu subsystem. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Menusystem2_8c_1a0f329206447b1f40e6f730b346aaaf44" kindref="member">menuISR(void)</ref></para><para>Include: <ref refid="Menusystem_8h" kindref="compound">Menusystem.h</ref></para><para>Description: services any interrupts associated with the menu system</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="126" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="126" bodyend="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Serial_8h" kindref="compound">Serial.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="LCD_8h" kindref="compound">LCD.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="Menusystem2_8c_1af3a7cb33a5ae7392934b3197ac67e080" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_SER_MSG_LEN<sp/>30</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="Menusystem2_8c_1a803e4f9d2e28d9ab24055cb970ea12c3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_LCD_MSG_LEN<sp/>20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="Menusystem2_8c_1ab86e62ee54aa604cfbdc4d3048c2845d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_NUM_OPTIONS<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="structSubMenu" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structSubMenu" kindref="compound">SubMenu</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13" refid="structSubMenu_1a24706f7b55951b0e21967a256e107936" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structSubMenu_1a24706f7b55951b0e21967a256e107936" kindref="member">serialMessage</ref>[<ref refid="Menusystem2_8c_1af3a7cb33a5ae7392934b3197ac67e080" kindref="member">MAX_SER_MSG_LEN</ref>];<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Serial<sp/>Message<sp/>to<sp/>be<sp/>displayed<sp/>on<sp/>entering<sp/>the<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="structSubMenu_1a10ce8be3d2bbadbc9c262b6be4bb3aec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structSubMenu_1a10ce8be3d2bbadbc9c262b6be4bb3aec" kindref="member">lcdMessage</ref>[<ref refid="Menusystem2_8c_1a803e4f9d2e28d9ab24055cb970ea12c3" kindref="member">MAX_LCD_MSG_LEN</ref>];<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//LCD<sp/>Message<sp/>to<sp/>be<sp/>displayed<sp/>on<sp/>entering<sp/>the<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="structSubMenu_1adcfcbb5b5340baf34c70fb8f4cc66f72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structSubMenu_1adcfcbb5b5340baf34c70fb8f4cc66f72" kindref="member">serialOptions</ref>[<ref refid="Menusystem2_8c_1ab86e62ee54aa604cfbdc4d3048c2845d" kindref="member">MAX_NUM_OPTIONS</ref>];<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//The<sp/>serial<sp/>options<sp/>available<sp/>in<sp/>this<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="structSubMenu_1aef0980fb751ef312c4ff945539aa3cd4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structSubMenu_1aef0980fb751ef312c4ff945539aa3cd4" kindref="member">inptOptions</ref>[<ref refid="Menusystem2_8c_1ab86e62ee54aa604cfbdc4d3048c2845d" kindref="member">MAX_NUM_OPTIONS</ref>];<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//The<sp/>user<sp/>input<sp/>options<sp/>available<sp/>in<sp/>this<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="structSubMenu_1a1dae2f8dad8e2d2a30b13ee69ea542db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*<ref refid="structSubMenu_1a1dae2f8dad8e2d2a30b13ee69ea542db" kindref="member">numericFunction</ref>)(int);</highlight></codeline>
+<codeline lineno="19" refid="structSubMenu_1ad86a4714605654261200ef4194e1657c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*<ref refid="structSubMenu_1ad86a4714605654261200ef4194e1657c" kindref="member">defaultFunction</ref>)(void);</highlight></codeline>
+<codeline lineno="20" refid="structSubMenu_1a915aa121e09e4c3f914dc59727f390e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structSubMenu" kindref="compound">SubMenu</ref><sp/>*<ref refid="structSubMenu_1a915aa121e09e4c3f914dc59727f390e3" kindref="member">subMenues</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Pointers<sp/>to<sp/>Available<sp/>sub<sp/>menues</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}<sp/><ref refid="Menusystem2_8c_1a590a7b46cd32899024f14446ecf74f0d" kindref="member">SubMenu</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870a12b733d4941495e86811fe6ceeeff9da" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal">{<ref refid="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870ad41208b99e347d1726824779b11ea11b" kindref="member">ROOT</ref>,<sp/><ref refid="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870a12b733d4941495e86811fe6ceeeff9da" kindref="member">SUB</ref>,<sp/><ref refid="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870a389e03ce61ac2d93fd54069187ab58af" kindref="member">FUNC</ref>}<sp/><ref refid="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870" kindref="member">MenuLevel</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//Sub<sp/>menu<sp/>objects:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="Menusystem2_8c_1ae3f81077129a28d7185c8a241434c00d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structSubMenu" kindref="compound">SubMenu</ref><sp/><ref refid="Menusystem2_8c_1ae3f81077129a28d7185c8a241434c00d" kindref="member">Min</ref>;</highlight><highlight class="comment">//<sp/>=<sp/>{<sp/>&quot;Set<sp/>Minimum&quot;,<sp/>&quot;Set<sp/>Min&quot;,<sp/>{},<sp/>{},<sp/>{},<sp/>setMinAzimuthAngle,<sp/>0};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="Menusystem2_8c_1a6f607e5b0a90c0748c665c008d632093" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structSubMenu" kindref="compound">SubMenu</ref><sp/><ref refid="Menusystem2_8c_1a6f607e5b0a90c0748c665c008d632093" kindref="member">Max</ref>;</highlight><highlight class="comment">//<sp/>=<sp/>{<sp/>&quot;Set<sp/>Maximum&quot;,<sp/>&quot;Set<sp/>Max&quot;,<sp/>{},<sp/>{},<sp/>{},<sp/>setMaxAzimuthAngle,<sp/>0};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="Menusystem2_8c_1ab7c54bfc8293491beeef98a08b8b56d5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structSubMenu" kindref="compound">SubMenu</ref><sp/><ref refid="Menusystem2_8c_1ab7c54bfc8293491beeef98a08b8b56d5" kindref="member">AutoTrack</ref>;</highlight><highlight class="comment">//<sp/>=<sp/>{&quot;Auto<sp/>Tracking&quot;,<sp/>&quot;Auto<sp/>Tracking&quot;,<sp/>{},<sp/>{},<sp/>{},<sp/>0,<sp/>0};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="Menusystem2_8c_1a6799f740ee4fcb5f69c548ccb3d01dd8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structSubMenu" kindref="compound">SubMenu</ref><sp/><ref refid="Menusystem2_8c_1a6799f740ee4fcb5f69c548ccb3d01dd8" kindref="member">ManTrack</ref>;</highlight></codeline>
+<codeline lineno="32" refid="Menusystem2_8c_1a5ff18a829db4a7a11ecea563f8c57861" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structSubMenu" kindref="compound">SubMenu</ref><sp/><ref refid="Menusystem2_8c_1a5ff18a829db4a7a11ecea563f8c57861" kindref="member">Az</ref>;</highlight></codeline>
+<codeline lineno="33" refid="Menusystem2_8c_1a1599c2551edd7fe2b5e47a71b378e69e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structSubMenu" kindref="compound">SubMenu</ref><sp/><ref refid="Menusystem2_8c_1a1599c2551edd7fe2b5e47a71b378e69e" kindref="member">Elev</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="Menusystem2_8c_1a157eac1dc94359e4d223f8328f6d59e0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structSubMenu" kindref="compound">SubMenu</ref><sp/><ref refid="Menusystem2_8c_1a157eac1dc94359e4d223f8328f6d59e0" kindref="member">Root</ref>;</highlight><highlight class="comment">//<sp/>=<sp/>{<sp/>&quot;Welcome<sp/>to<sp/>Yavin<sp/>IV<sp/>Defence<sp/>System&quot;,<sp/>&quot;Welcome&quot;,<sp/>{<sp/>&apos;1&apos;,<sp/>&apos;2&apos;,<sp/>&apos;3&apos;,<sp/>&apos;4&apos;<sp/>},<sp/>{<sp/>&amp;AutoTrack,<sp/>&amp;ManTrack,<sp/>&amp;Az,<sp/>&amp;Elev<sp/>},<sp/>0,<sp/>0<sp/>};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870" kindref="member">MenuLevel</ref><sp/><ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref><sp/>=<sp/><ref refid="Menusystem2_8c_1a5c285b48be2dc719a45ce720dcb26870ad41208b99e347d1726824779b11ea11b" kindref="member">ROOT</ref>;</highlight></codeline>
+<codeline lineno="39" refid="Menusystem2_8c_1aea4329c72fa4b28fcb75e173c9301ad4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structSubMenu" kindref="compound">SubMenu</ref><sp/>*<ref refid="Menusystem2_8c_1aea4329c72fa4b28fcb75e173c9301ad4" kindref="member">test</ref><sp/>=<sp/>&amp;<ref refid="Menusystem2_8c_1a157eac1dc94359e4d223f8328f6d59e0" kindref="member">Root</ref>;</highlight></codeline>
+<codeline lineno="40" refid="Menusystem2_8c_1a9c05de6d6d109afaf5f9e83de4938f2e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structSubMenu" kindref="compound">SubMenu</ref><sp/><ref refid="Menusystem2_8c_1a9c05de6d6d109afaf5f9e83de4938f2e" kindref="member">menus</ref>[3];</highlight><highlight class="comment">//<sp/>=<sp/>{<sp/>Root,<sp/>AutoTrack,<sp/>Min<sp/>};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" kindref="member">parseInput</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>input);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="Menusystem2_8c_1ad3ebde8bf1da78fb419653e5a495837b" kindref="member">parseNumeric</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*input);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem2_8c_1a4bee0e4646c0720d174aaf635246988c" kindref="member">stateEntry</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="Menusystem2_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem2_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" kindref="member">initialiseMenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" kindref="member">configureSerial</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//configLCD();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>menus[0]<sp/>=<sp/><ref refid="Menusystem2_8c_1a157eac1dc94359e4d223f8328f6d59e0" kindref="member">Root</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>menus[1]<sp/>=<sp/><ref refid="Menusystem2_8c_1ab7c54bfc8293491beeef98a08b8b56d5" kindref="member">AutoTrack</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>menus[2]<sp/>=<sp/><ref refid="Menusystem2_8c_1ae3f81077129a28d7185c8a241434c00d" kindref="member">Min</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" kindref="member">serviceMenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>input;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">[50];</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numericInpt;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Return<sp/>if<sp/>there<sp/>is<sp/>no<sp/>user<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="Serial_8c_1a42f5165187634304f89709eebe7c9f8c" kindref="member">receiveEmpty</ref>()<sp/>&amp;&amp;<sp/><ref refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty</ref>())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//If<sp/>state<sp/>takes<sp/>numeric<sp/>value,<sp/>and<sp/>carriage<sp/>return<sp/>has<sp/>been<sp/>entered,<sp/>parse<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(menus[<ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref>].<ref refid="structSubMenu_1a1dae2f8dad8e2d2a30b13ee69ea542db" kindref="member">numericFunction</ref><sp/>&amp;&amp;<sp/><ref refid="Serial_8c_1aca906fa91f67c730681400b51d426933" kindref="member">receiveCR</ref>())</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" kindref="member">readString</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>numericInpt<sp/>=<sp/><ref refid="Menusystem2_8c_1ad3ebde8bf1da78fb419653e5a495837b" kindref="member">parseNumeric</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Call<sp/>the<sp/>numeric<sp/>function<sp/>defined<sp/>in<sp/>the<sp/>state<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>menus[<ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref>].<ref refid="structSubMenu_1a1dae2f8dad8e2d2a30b13ee69ea542db" kindref="member">numericFunction</ref>(numericInpt);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Get<sp/>a<sp/>character<sp/>from<sp/>the<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>input<sp/>=<sp/><ref refid="Serial_8c_1abb74ccb0bd81e0e4779854c93851c804" kindref="member">receivePop</ref>();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" kindref="member">parseInput</ref>(input);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="Menusystem2_8c_1a0f329206447b1f40e6f730b346aaaf44" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem2_8c_1a0f329206447b1f40e6f730b346aaaf44" kindref="member">menuISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" kindref="member">parseInput</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>input)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//A<sp/>null<sp/>input<sp/>may<sp/>match<sp/>uninitialised<sp/>input<sp/>options,<sp/>calling<sp/>a<sp/>null<sp/>function<sp/>pointer<sp/>and<sp/>breaking<sp/>the<sp/>program</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!input)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="Menusystem2_8c_1ab86e62ee54aa604cfbdc4d3048c2845d" kindref="member">MAX_NUM_OPTIONS</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Check<sp/>if<sp/>input<sp/>character<sp/>matches<sp/>one<sp/>of<sp/>the<sp/>input<sp/>options</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(input<sp/>==<sp/>menus[<ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref>].<ref refid="structSubMenu_1aef0980fb751ef312c4ff945539aa3cd4" kindref="member">inptOptions</ref>[i])</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Go<sp/>down<sp/>a<sp/>menu<sp/>state<sp/>and<sp/>set<sp/>the<sp/>sub<sp/>menu<sp/>to<sp/>the<sp/>option<sp/>chosen</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref>++;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>menus[<ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref>]<sp/>=<sp/>menus[<ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref><sp/>-<sp/>1].<ref refid="structSubMenu_1a915aa121e09e4c3f914dc59727f390e3" kindref="member">subMenues</ref>[i];</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="Menusystem2_8c_1ad3ebde8bf1da78fb419653e5a495837b" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="Menusystem2_8c_1ad3ebde8bf1da78fb419653e5a495837b" kindref="member">parseNumeric</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*number)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>digits<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(digits<sp/>=<sp/>0;<sp/>number[digits];<sp/>digits++);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Coun<sp/>number<sp/>of<sp/>digits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="Menusystem2_8c_1a4bee0e4646c0720d174aaf635246988c" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem2_8c_1a4bee0e4646c0720d174aaf635246988c" kindref="member">stateEntry</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//If<sp/>this<sp/>state<sp/>has<sp/>a<sp/>default<sp/>function,<sp/>call<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(menus[<ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref>].<ref refid="structSubMenu_1ad86a4714605654261200ef4194e1657c" kindref="member">defaultFunction</ref>)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>menus[<ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref>].<ref refid="structSubMenu_1ad86a4714605654261200ef4194e1657c" kindref="member">defaultFunction</ref>();</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Display<sp/>the<sp/>state<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit</ref>(menus[<ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref>].<ref refid="structSubMenu_1a24706f7b55951b0e21967a256e107936" kindref="member">serialMessage</ref>);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>displayLCD(menus[<ref refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" kindref="member">level</ref>].<ref refid="structSubMenu_1a10ce8be3d2bbadbc9c262b6be4bb3aec" kindref="member">lcdMessage</ref>);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c"/>
+  </compounddef>
+</doxygen>

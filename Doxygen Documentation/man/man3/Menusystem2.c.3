@@ -1,8 +1,8 @@
-.TH "Menusystem2.c" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Menusystem2.c \- 
+C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -55,6 +55,18 @@ Menusystem2.c \-
 
 .in +1c
 .ti -1c
+.RI "static void \fBparseInput\fP (char input)"
+.br
+.RI "\fIparse the user input \fP"
+.ti -1c
+.RI "static int \fBparseNumeric\fP (char *number)"
+.br
+.RI "\fIparses user input string into a number \fP"
+.ti -1c
+.RI "static void \fBstateEntry\fP (void)"
+.br
+.RI "\fIPerforms default actions on first entering the state\&. \fP"
+.ti -1c
 .RI "void \fBinitialiseMenu\fP (void)"
 .br
 .RI "\fIInitialises the menu system\&. \fP"
@@ -67,20 +79,48 @@ Menusystem2.c \-
 .br
 .RI "\fIISR function for the menu subsystem\&. \fP"
 .in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static \fBSubMenu\fP \fBMin\fP"
+.br
+.ti -1c
+.RI "static \fBSubMenu\fP \fBMax\fP"
+.br
+.ti -1c
+.RI "static \fBSubMenu\fP \fBAutoTrack\fP"
+.br
+.ti -1c
+.RI "static \fBSubMenu\fP \fBManTrack\fP"
+.br
+.ti -1c
+.RI "static \fBSubMenu\fP \fBAz\fP"
+.br
+.ti -1c
+.RI "static \fBSubMenu\fP \fBElev\fP"
+.br
+.ti -1c
+.RI "static \fBSubMenu\fP \fBRoot\fP"
+.br
+.ti -1c
+.RI "static \fBMenuLevel\fP \fBlevel\fP = \fBROOT\fP"
+.br
+.ti -1c
+.RI "static \fBSubMenu\fP * \fBtest\fP = &\fBRoot\fP"
+.br
+.ti -1c
+.RI "static \fBSubMenu\fP \fBmenus\fP [3]"
+.br
+.in -1c
 .SH "Macro Definition Documentation"
 .PP 
 .SS "#define MAX_LCD_MSG_LEN   20"
 
-.PP
-Definition at line 8 of file Menusystem2\&.c\&.
 .SS "#define MAX_NUM_OPTIONS   5"
 
-.PP
-Definition at line 9 of file Menusystem2\&.c\&.
 .SS "#define MAX_SER_MSG_LEN   30"
 
-.PP
-Definition at line 7 of file Menusystem2\&.c\&.
 .SH "Typedef Documentation"
 .PP 
 .SS "typedef struct \fBSubMenu\fP  \fBSubMenu\fP"
@@ -98,8 +138,6 @@ Definition at line 7 of file Menusystem2\&.c\&.
 \fB\fISUB \fP\fP
 .TP
 \fB\fIFUNC \fP\fP
-.PP
-Definition at line 23 of file Menusystem2\&.c\&.
 .SH "Function Documentation"
 .PP 
 .SS "void initialiseMenu (void)"
@@ -116,8 +154,6 @@ Description: initialises the menu system so that it is fully operational
 Arguments: None
 .PP
 Returns: None 
-.PP
-Definition at line 60 of file Menusystem2\&.c\&.
 .SS "void menuISR (void)"
 
 .PP
@@ -132,8 +168,34 @@ Description: services any interrupts associated with the menu system
 Arguments: None
 .PP
 Returns: None 
+.SS "static void parseInput (charinput)\fC [static]\fP"
+
 .PP
-Definition at line 126 of file Menusystem2\&.c\&.
+parse the user input 
+.PP
+ Function: \fBparseInput(char input)\fP
+.PP
+Include: \fBMenusystem\&.h\fP
+.PP
+Description: services any interrupts associated with the menu system
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SS "static int parseNumeric (char *number)\fC [static]\fP"
+
+.PP
+parses user input string into a number 
+.PP
+ Function: \fBparseNumeric(char *number)\fP
+.PP
+Include:
+.PP
+Description: Calls the function which matches the user input
+.PP
+Arguments: None
+.PP
+Returns: None 
 .SS "void serviceMenu (void)"
 
 .PP
@@ -148,8 +210,42 @@ Description: Checks if the user has made any inputs to the system\&. If not the 
 Arguments: None
 .PP
 Returns: None 
+.SS "static void stateEntry (void)\fC [static]\fP"
+
 .PP
-Definition at line 87 of file Menusystem2\&.c\&.
+Performs default actions on first entering the state\&. 
+.PP
+ Function: \fBstateEntry(void)\fP
+.PP
+Include:
+.PP
+Description:
+.PP
+Arguments: None
+.PP
+Returns: None 
+.SH "Variable Documentation"
+.PP 
+.SS "\fBSubMenu\fP AutoTrack\fC [static]\fP"
+
+.SS "\fBSubMenu\fP Az\fC [static]\fP"
+
+.SS "\fBSubMenu\fP Elev\fC [static]\fP"
+
+.SS "\fBMenuLevel\fP level = \fBROOT\fP\fC [static]\fP"
+
+.SS "\fBSubMenu\fP ManTrack\fC [static]\fP"
+
+.SS "\fBSubMenu\fP Max\fC [static]\fP"
+
+.SS "\fBSubMenu\fP menus[3]\fC [static]\fP"
+
+.SS "\fBSubMenu\fP Min\fC [static]\fP"
+
+.SS "\fBSubMenu\fP Root\fC [static]\fP"
+
+.SS "\fBSubMenu\fP* test = &\fBRoot\fP\fC [static]\fP"
+
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

@@ -1,0 +1,196 @@
+\hypertarget{Temp_8c}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Temp.c File Reference}
+\label{Temp_8c}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Temp.\+c@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Temp.\+c}}
+}
+{\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
+Include dependency graph for Temp.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Temp_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{Temp_8c_af6785da0c9b3c637b09522617d3f9dba}{configure\+Temp} (void)
+\item 
+unsigned char \hyperlink{Temp_8c_a4946ccbc1990e831667bffded1147c4f}{read\+Tempx2} (void)
+\item 
+unsigned char \hyperlink{Temp_8c_afd08db2b1a6d6af19e39f10dc453332c}{read\+Temp} (void)
+\item 
+unsigned char \hyperlink{Temp_8c_a5b64a66aae4a5a3d92a1711956fb4eb8}{raw\+Temp} (void)
+\item 
+void \hyperlink{Temp_8c_aa416413a05e38b982abc19a7c9ea4c3c}{calibrate\+Temp} (unsigned char reference)
+\item 
+unsigned char \hyperlink{Temp_8c_a31747860f4fe18bee4fc23c0d33b17d7}{get\+Temp} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static signed char \hyperlink{Temp_8c_afc2cbd0c08b512ee436d03063c3c94d5}{calibration\+\_\+offset} = 0
+\item 
+static unsigned char \hyperlink{Temp_8c_a1dee09c1d88a7b834c7b3932caebcd09}{last\+Tempx2}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{Temp_8c_aa416413a05e38b982abc19a7c9ea4c3c}{\index{Temp.\+c@{Temp.\+c}!calibrate\+Temp@{calibrate\+Temp}}
+\index{calibrate\+Temp@{calibrate\+Temp}!Temp.\+c@{Temp.\+c}}
+\subsubsection[{calibrate\+Temp}]{\setlength{\rightskip}{0pt plus 5cm}void calibrate\+Temp (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{reference}
+\end{DoxyParamCaption}
+)}}\label{Temp_8c_aa416413a05e38b982abc19a7c9ea4c3c}
+
+
+ Function\+: calibration\+Temp(unsigned char reference)
+
+Include\+: \hyperlink{Temp_8h}{Temp.\+h}
+
+Description\+: calibrates the temperature sensor by updating the calibration offset variable
+
+Arguments\+: reference -\/ Reference temperature in deg C
+
+Returns\+: None
+
+Note\+: This function does not perform a temperature read, but uses the last value. This is because the read\+Temp function automatically calibrate. \hypertarget{Temp_8c_af6785da0c9b3c637b09522617d3f9dba}{\index{Temp.\+c@{Temp.\+c}!configure\+Temp@{configure\+Temp}}
+\index{configure\+Temp@{configure\+Temp}!Temp.\+c@{Temp.\+c}}
+\subsubsection[{configure\+Temp}]{\setlength{\rightskip}{0pt plus 5cm}void configure\+Temp (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Temp_8c_af6785da0c9b3c637b09522617d3f9dba}
+
+
+ Function\+: \hyperlink{Temp_8c_af6785da0c9b3c637b09522617d3f9dba}{configure\+Temp(void)}
+
+Include\+: Temp
+
+Description\+: Configures the temperature module for use
+
+Arguments\+: None
+
+Returns\+: None \hypertarget{Temp_8c_a31747860f4fe18bee4fc23c0d33b17d7}{\index{Temp.\+c@{Temp.\+c}!get\+Temp@{get\+Temp}}
+\index{get\+Temp@{get\+Temp}!Temp.\+c@{Temp.\+c}}
+\subsubsection[{get\+Temp}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char get\+Temp (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Temp_8c_a31747860f4fe18bee4fc23c0d33b17d7}
+
+
+ Function\+: calibration\+Temp(unsigned char reference)
+
+Include\+: \hyperlink{Temp_8h}{Temp.\+h}
+
+Description\+: calibrates the temperature sensor by updating the calibration offset variable
+
+Arguments\+: reference -\/ Reference temperature in deg C
+
+Returns\+: None \hypertarget{Temp_8c_a5b64a66aae4a5a3d92a1711956fb4eb8}{\index{Temp.\+c@{Temp.\+c}!raw\+Temp@{raw\+Temp}}
+\index{raw\+Temp@{raw\+Temp}!Temp.\+c@{Temp.\+c}}
+\subsubsection[{raw\+Temp}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char raw\+Temp (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Temp_8c_a5b64a66aae4a5a3d92a1711956fb4eb8}
+
+
+ Function\+: \hyperlink{Temp_8c_a5b64a66aae4a5a3d92a1711956fb4eb8}{raw\+Temp(void)}
+
+Include\+: \hyperlink{Temp_8h}{Temp.\+h}
+
+Description\+: Returns the raw (uncalibrated temperature)
+
+Arguments\+: None
+
+Returns\+: Temp (in deg celsius) as an unsigned char \hypertarget{Temp_8c_afd08db2b1a6d6af19e39f10dc453332c}{\index{Temp.\+c@{Temp.\+c}!read\+Temp@{read\+Temp}}
+\index{read\+Temp@{read\+Temp}!Temp.\+c@{Temp.\+c}}
+\subsubsection[{read\+Temp}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char read\+Temp (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Temp_8c_afd08db2b1a6d6af19e39f10dc453332c}
+
+
+ Function\+: \hyperlink{Temp_8c_afd08db2b1a6d6af19e39f10dc453332c}{read\+Temp(void)}
+
+Include\+: \hyperlink{Temp_8h}{Temp.\+h}
+
+Description\+: Reads the temperature from the T\+E\+M\+P sensor
+
+Arguments\+: None
+
+Returns\+: Temp (in deg celsius) as an unsigned char 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{Temp_8c_afd08db2b1a6d6af19e39f10dc453332c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Temp_8c_afd08db2b1a6d6af19e39f10dc453332c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Temp_8c_a4946ccbc1990e831667bffded1147c4f}{\index{Temp.\+c@{Temp.\+c}!read\+Tempx2@{read\+Tempx2}}
+\index{read\+Tempx2@{read\+Tempx2}!Temp.\+c@{Temp.\+c}}
+\subsubsection[{read\+Tempx2}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char read\+Tempx2 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Temp_8c_a4946ccbc1990e831667bffded1147c4f}
+
+
+ Function\+: \hyperlink{Temp_8c_a4946ccbc1990e831667bffded1147c4f}{read\+Tempx2(void)}
+
+Include\+: \hyperlink{Temp_8h}{Temp.\+h}
+
+Description\+: Reads the temperature from the Temp sensor
+
+Arguments\+: None
+
+Returns\+: temp x 2 (in deg celsius) as an unsigned char
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000016}{Todo}]Test and debug this function \end{DoxyRefDesc}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Temp_8c_a4946ccbc1990e831667bffded1147c4f_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{Temp_8c_afc2cbd0c08b512ee436d03063c3c94d5}{\index{Temp.\+c@{Temp.\+c}!calibration\+\_\+offset@{calibration\+\_\+offset}}
+\index{calibration\+\_\+offset@{calibration\+\_\+offset}!Temp.\+c@{Temp.\+c}}
+\subsubsection[{calibration\+\_\+offset}]{\setlength{\rightskip}{0pt plus 5cm}signed char calibration\+\_\+offset = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{Temp_8c_afc2cbd0c08b512ee436d03063c3c94d5}
+
+
+ File\+: \hyperlink{Temp_8c}{Temp.\+c} Author\+: Grant
+
+Description\+: Contains all the functionality for the Temp module.
+
+Duties\+: -\/\+Samples the temperature sensor -\/\+Stores the last temperature value -\/\+Calibrates the temperature sensor
+
+Functions\+:
+
+Created on 7 September 2014, 4\+:12 P\+M \hypertarget{Temp_8c_a1dee09c1d88a7b834c7b3932caebcd09}{\index{Temp.\+c@{Temp.\+c}!last\+Tempx2@{last\+Tempx2}}
+\index{last\+Tempx2@{last\+Tempx2}!Temp.\+c@{Temp.\+c}}
+\subsubsection[{last\+Tempx2}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char last\+Tempx2\hspace{0.3cm}{\ttfamily [static]}}}\label{Temp_8c_a1dee09c1d88a7b834c7b3932caebcd09}

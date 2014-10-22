@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>Yavin IV Death Star Tracker: Menusystem.c Source File</title>
+<title>Yavin IV Death Star Tracker: C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="Eaw_Yavin4 - thumb.jpg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Yavin IV Death Star Tracker
-   &#160;<span id="projectnumber">V1.0</span>
+   &#160;<span id="projectnumber">V1.1</span>
    </div>
    <div id="projectbrief">Yavin&#39;s premiere line of defence against the encroaching Imperial Star Fleet and Death Star</div>
   </td>
@@ -243,7 +243,7 @@ $(document).ready(function(){initNavTree('_menusystem_8c_source.html','');});
 <div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="_menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b">  148</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="_menusystem_8c.html#a94b96ccbb8f3c627c5d59189498a3c1b">initialiseMenu</a>(<span class="keywordtype">void</span>)</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="_serial_8c.html#ae2cdcda889fcfed4b6b851835bf2b538">configureSerial</a>();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="_l_c_d_8c.html#aaab6233be65b7399b3422eee9782508c">configLCD</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="_l_c_d_8c.html#aecaa9ab68490a0b8dedd20d200d5d0ef">lcdInit</a>();</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <a class="code" href="_user___interface_8c.html#a58e473ed40d00e18bd61277428e4d36c">configUSER</a>();</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
@@ -305,11 +305,11 @@ $(document).ready(function(){initNavTree('_menusystem_8c_source.html','');});
 <div class="ttc" id="_menusystem_8c_html_abed1ba920ec7390cfb509ce3d3b514eb"><div class="ttname"><a href="_menusystem_8c.html#abed1ba920ec7390cfb509ce3d3b514eb">manu12</a></div><div class="ttdeci">#define manu12</div><div class="ttdef"><b>Definition:</b> <a href="_menusystem_8c_source.html#l00023">Menusystem.c:23</a></div></div>
 <div class="ttc" id="_menusystem_8c_html_a38bd38059a23acf74ca3559d13c2a6d5"><div class="ttname"><a href="_menusystem_8c.html#a38bd38059a23acf74ca3559d13c2a6d5">slee15</a></div><div class="ttdeci">#define slee15</div><div class="ttdef"><b>Definition:</b> <a href="_menusystem_8c_source.html#l00030">Menusystem.c:30</a></div></div>
 <div class="ttc" id="_menusystem_8c_html_abae4a42361e301d3ac9dbb5aad94f03d"><div class="ttname"><a href="_menusystem_8c.html#abae4a42361e301d3ac9dbb5aad94f03d">manusetl122</a></div><div class="ttdeci">#define manusetl122</div><div class="ttdef"><b>Definition:</b> <a href="_menusystem_8c_source.html#l00025">Menusystem.c:25</a></div></div>
+<div class="ttc" id="_l_c_d_8c_html_aecaa9ab68490a0b8dedd20d200d5d0ef"><div class="ttname"><a href="_l_c_d_8c.html#aecaa9ab68490a0b8dedd20d200d5d0ef">lcdInit</a></div><div class="ttdeci">void lcdInit(void)</div><div class="ttdoc">Initialises the LCD so that it can be used. </div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00033">LCD.c:33</a></div></div>
 <div class="ttc" id="_menusystem_8c_html_ac241270fe5f174769b3034e81c0a574e"><div class="ttname"><a href="_menusystem_8c.html#ac241270fe5f174769b3034e81c0a574e">topoption3</a></div><div class="ttdeci">char topoption3[]</div><div class="ttdef"><b>Definition:</b> <a href="_menusystem_8c_source.html#l00044">Menusystem.c:44</a></div></div>
 <div class="ttc" id="_menusystem_8c_html_ae6c5caedc34899ea80a6b011fec5f2a4"><div class="ttname"><a href="_menusystem_8c.html#ae6c5caedc34899ea80a6b011fec5f2a4">fillerthing</a></div><div class="ttdeci">char fillerthing[]</div><div class="ttdef"><b>Definition:</b> <a href="_menusystem_8c_source.html#l00034">Menusystem.c:34</a></div></div>
 <div class="ttc" id="_menusystem_8c_html_aec49123d1c8f1231607dc9159ae138a4"><div class="ttname"><a href="_menusystem_8c.html#aec49123d1c8f1231607dc9159ae138a4">clearscreen</a></div><div class="ttdeci">void clearscreen(char length)</div><div class="ttdef"><b>Definition:</b> <a href="_menusystem_8c_source.html#l00056">Menusystem.c:56</a></div></div>
 <div class="ttc" id="_menusystem_8c_html_afa234d458057237e03e355d30fafac84"><div class="ttname"><a href="_menusystem_8c.html#afa234d458057237e03e355d30fafac84">menu</a></div><div class="ttdeci">void menu(char menuselect)</div><div class="ttdef"><b>Definition:</b> <a href="_menusystem_8c_source.html#l00195">Menusystem.c:195</a></div></div>
-<div class="ttc" id="_l_c_d_8c_html_aaab6233be65b7399b3422eee9782508c"><div class="ttname"><a href="_l_c_d_8c.html#aaab6233be65b7399b3422eee9782508c">configLCD</a></div><div class="ttdeci">void configLCD(void)</div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00028">LCD.c:28</a></div></div>
 <div class="ttc" id="_menusystem_8c_html_a9cb97c7ce3babec16a2e500625985994"><div class="ttname"><a href="_menusystem_8c.html#a9cb97c7ce3babec16a2e500625985994">choose</a></div><div class="ttdeci">char choose[]</div><div class="ttdef"><b>Definition:</b> <a href="_menusystem_8c_source.html#l00036">Menusystem.c:36</a></div></div>
 <div class="ttc" id="_menusystem_8c_html_a4bb64cc936229611900f25e483381dc7"><div class="ttname"><a href="_menusystem_8c.html#a4bb64cc936229611900f25e483381dc7">filler</a></div><div class="ttdeci">void filler(char length)</div><div class="ttdef"><b>Definition:</b> <a href="_menusystem_8c_source.html#l00063">Menusystem.c:63</a></div></div>
 <div class="ttc" id="_menusystem_8c_html_a5ba864b4bbe4a84e0ca85b979ec2c10b"><div class="ttname"><a href="_menusystem_8c.html#a5ba864b4bbe4a84e0ca85b979ec2c10b">tMESSAGE</a></div><div class="ttdeci">char tMESSAGE[]</div><div class="ttdef"><b>Definition:</b> <a href="_menusystem_8c_source.html#l00033">Menusystem.c:33</a></div></div>
@@ -338,8 +338,8 @@ $(document).ready(function(){initNavTree('_menusystem_8c_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="_menusystem_8c.html">Menusystem.c</a></li>
-    <li class="footer">Generated on Tue Oct 21 2014 15:39:03 for Yavin IV Death Star Tracker by
+    <li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li><li class="navelem"><a class="el" href="_menusystem_8c.html">Menusystem.c</a></li>
+    <li class="footer">Generated on Wed Oct 22 2014 14:17:25 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

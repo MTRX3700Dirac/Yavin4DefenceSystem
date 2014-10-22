@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="Temp_8c" kind="file">
+    <compoundname>Temp.c</compoundname>
+    <includes refid="Common_8h" local="yes">Common.h</includes>
+    <incdepgraph>
+      <node id="433">
+        <label>stdlib.h</label>
+      </node>
+      <node id="437">
+        <label>adc.h</label>
+      </node>
+      <node id="431">
+        <label>Common.h</label>
+        <link refid="Common_8h"/>
+        <childnode refid="432" relation="include">
+        </childnode>
+        <childnode refid="433" relation="include">
+        </childnode>
+        <childnode refid="434" relation="include">
+        </childnode>
+        <childnode refid="435" relation="include">
+        </childnode>
+        <childnode refid="436" relation="include">
+        </childnode>
+        <childnode refid="437" relation="include">
+        </childnode>
+        <childnode refid="438" relation="include">
+        </childnode>
+        <childnode refid="439" relation="include">
+        </childnode>
+        <childnode refid="440" relation="include">
+        </childnode>
+      </node>
+      <node id="430">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c</label>
+        <link refid="Temp.c"/>
+        <childnode refid="431" relation="include">
+        </childnode>
+      </node>
+      <node id="436">
+        <label>timers.h</label>
+      </node>
+      <node id="440">
+        <label>compare.h</label>
+      </node>
+      <node id="438">
+        <label>capture.h</label>
+      </node>
+      <node id="434">
+        <label>math.h</label>
+      </node>
+      <node id="435">
+        <label>p18f4520.h</label>
+        <link refid="p18f4520_8h"/>
+      </node>
+      <node id="439">
+        <label>usart.h</label>
+      </node>
+      <node id="432">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Temp_8c_1afc2cbd0c08b512ee436d03063c3c94d5" prot="public" static="yes" mutable="no">
+        <type>signed char</type>
+        <definition>signed char calibration_offset</definition>
+        <argsstring></argsstring>
+        <name>calibration_offset</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ File: <ref refid="Temp_8c" kindref="compound">Temp.c</ref> Author: Grant</para><para>Description: Contains all the functionality for the Temp module.</para><para>Duties: -Samples the temperature sensor -Stores the last temperature value -Calibrates the temperature sensor</para><para>Functions:</para><para>Created on 7 September 2014, 4:12 PM </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="22" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="22" bodyend="-1"/>
+        <referencedby refid="Temp_8h_1a4946ccbc1990e831667bffded1147c4f" compoundref="Temp_8c" startline="63" endline="91">readTempx2</referencedby>
+        <referencedby refid="Temp_8h_1aa416413a05e38b982abc19a7c9ea4c3c" compoundref="Temp_8c" startline="146" endline="149">calibrateTemp</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" prot="public" static="yes" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char lastTempx2</definition>
+        <argsstring></argsstring>
+        <name>lastTempx2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="23" bodyend="-1"/>
+        <referencedby refid="Temp_8h_1a4946ccbc1990e831667bffded1147c4f" compoundref="Temp_8c" startline="63" endline="91">readTempx2</referencedby>
+        <referencedby refid="Temp_8h_1a5b64a66aae4a5a3d92a1711956fb4eb8" compoundref="Temp_8c" startline="126" endline="129">rawTemp</referencedby>
+        <referencedby refid="Temp_8h_1aa416413a05e38b982abc19a7c9ea4c3c" compoundref="Temp_8c" startline="146" endline="149">calibrateTemp</referencedby>
+        <referencedby refid="Temp_8h_1a31747860f4fe18bee4fc23c0d33b17d7" compoundref="Temp_8c" startline="163" endline="166">getTemp</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Temp_8c_1af6785da0c9b3c637b09522617d3f9dba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configureTemp</definition>
+        <argsstring>(void)</argsstring>
+        <name>configureTemp</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Temp_8c_1af6785da0c9b3c637b09522617d3f9dba" kindref="member">configureTemp(void)</ref></para><para>Include: Temp</para><para>Description: Configures the temperature module for use</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="36" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="36" bodyend="48"/>
+        <references refid="p18f4520_8h_1a09522caca1ee06372c915b773f6b5bdd">TRISA</references>
+        <references refid="p18f4520_8h_1a5c6e5143ca62f650ce1dd607cda0970e">ADCON1</references>
+        <references refid="p18f4520_8h_1a84d1543e4da7b93ba59cba345ae5c222">ADCON0</references>
+      </memberdef>
+      <memberdef kind="function" id="Temp_8c_1a4946ccbc1990e831667bffded1147c4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned char</type>
+        <definition>unsigned char readTempx2</definition>
+        <argsstring>(void)</argsstring>
+        <name>readTempx2</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Temp_8c_1a4946ccbc1990e831667bffded1147c4f" kindref="member">readTempx2(void)</ref></para><para>Include: <ref refid="Temp_8h" kindref="compound">Temp.h</ref></para><para>Description: Reads the temperature from the Temp sensor</para><para>Arguments: None</para><para>Returns: temp x 2 (in deg celsius) as an unsigned char</para><para><xrefsect id="todo_1_todo000016"><xreftitle>Todo</xreftitle><xrefdescription><para>Test and debug this function </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="63" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="63" bodyend="91"/>
+        <references refid="Common_8h_1a135151cc09e1094dbb0163c3d696e630" compoundref="Common_8h" startline="145">ADC_TEMP_READ</references>
+        <references refid="p18f4520_8h_1a073ffe676f8a0b295c57ff165b0951ef">ADCON0bits</references>
+        <references refid="p18f4520_8h_1a8919ac22cb49783b559b4cc044d51463">ADRESH</references>
+        <references refid="p18f4520_8h_1afc0f7ea2748e1505da0641e891691b93">ADRESL</references>
+        <references refid="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" compoundref="Temp_8c" startline="23">lastTempx2</references>
+        <references refid="Temp_8c_1afc2cbd0c08b512ee436d03063c3c94d5" compoundref="Temp_8c" startline="22">calibration_offset</references>
+        <referencedby refid="Temp_8h_1afd08db2b1a6d6af19e39f10dc453332c" compoundref="Temp_8c" startline="104" endline="113">readTemp</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="Temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned char</type>
+        <definition>unsigned char readTemp</definition>
+        <argsstring>(void)</argsstring>
+        <name>readTemp</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" kindref="member">readTemp(void)</ref></para><para>Include: <ref refid="Temp_8h" kindref="compound">Temp.h</ref></para><para>Description: Reads the temperature from the TEMP sensor</para><para>Arguments: None</para><para>Returns: Temp (in deg celsius) as an unsigned char </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="104" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="104" bodyend="113"/>
+        <references refid="Temp_8c_1a4946ccbc1990e831667bffded1147c4f" compoundref="Temp_8c" startline="63" endline="91">readTempx2</references>
+        <references refid="Common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="Common_8h" startline="127">DIV_2</references>
+        <referencedby refid="Range_8h_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="Range_8c" startline="105" endline="139">configureRange</referencedby>
+        <referencedby refid="Range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" compoundref="Range_8c" startline="259" endline="286">calibrateRange</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="Temp_8c_1a5b64a66aae4a5a3d92a1711956fb4eb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned char</type>
+        <definition>unsigned char rawTemp</definition>
+        <argsstring>(void)</argsstring>
+        <name>rawTemp</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Temp_8c_1a5b64a66aae4a5a3d92a1711956fb4eb8" kindref="member">rawTemp(void)</ref></para><para>Include: <ref refid="Temp_8h" kindref="compound">Temp.h</ref></para><para>Description: Returns the raw (uncalibrated temperature)</para><para>Arguments: None</para><para>Returns: Temp (in deg celsius) as an unsigned char </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="126" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="126" bodyend="129"/>
+        <references refid="Common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="Common_8h" startline="127">DIV_2</references>
+        <references refid="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" compoundref="Temp_8c" startline="23">lastTempx2</references>
+      </memberdef>
+      <memberdef kind="function" id="Temp_8c_1aa416413a05e38b982abc19a7c9ea4c3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calibrateTemp</definition>
+        <argsstring>(unsigned char reference)</argsstring>
+        <name>calibrateTemp</name>
+        <param>
+          <type>unsigned char</type>
+          <declname>reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: calibrationTemp(unsigned char reference)</para><para>Include: <ref refid="Temp_8h" kindref="compound">Temp.h</ref></para><para>Description: calibrates the temperature sensor by updating the calibration offset variable</para><para>Arguments: reference - Reference temperature in deg C</para><para>Returns: None</para><para>Note: This function does not perform a temperature read, but uses the last value. This is because the readTemp function automatically calibrate. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="146" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="146" bodyend="149"/>
+        <references refid="Temp_8c_1afc2cbd0c08b512ee436d03063c3c94d5" compoundref="Temp_8c" startline="22">calibration_offset</references>
+        <references refid="Common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="Common_8h" startline="127">DIV_2</references>
+        <references refid="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" compoundref="Temp_8c" startline="23">lastTempx2</references>
+      </memberdef>
+      <memberdef kind="function" id="Temp_8c_1a31747860f4fe18bee4fc23c0d33b17d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned char</type>
+        <definition>unsigned char getTemp</definition>
+        <argsstring>(void)</argsstring>
+        <name>getTemp</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: calibrationTemp(unsigned char reference)</para><para>Include: <ref refid="Temp_8h" kindref="compound">Temp.h</ref></para><para>Description: calibrates the temperature sensor by updating the calibration offset variable</para><para>Arguments: reference - Reference temperature in deg C</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" line="163" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c" bodystart="163" bodyend="166"/>
+        <references refid="Common_8h_1a4d6bb91285c504f7a5a882961cf405a9" compoundref="Common_8h" startline="127">DIV_2</references>
+        <references refid="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" compoundref="Temp_8c" startline="23">lastTempx2</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="19"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//Static<sp/>variables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="Temp_8c_1afc2cbd0c08b512ee436d03063c3c94d5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Temp_8c_1afc2cbd0c08b512ee436d03063c3c94d5" kindref="member">calibration_offset</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="23" refid="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" kindref="member">lastTempx2</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="Temp_8h_1af6785da0c9b3c637b09522617d3f9dba" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Temp_8c_1af6785da0c9b3c637b09522617d3f9dba" kindref="member">configureTemp</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a09522caca1ee06372c915b773f6b5bdd" kindref="member">TRISA</ref><sp/>=<sp/>0xFF;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Write<sp/>the<sp/>configuration<sp/>values<sp/>into<sp/>the<sp/>configuration<sp/>registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//ADCON1<sp/>=<sp/>0x8E;<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>ADFM<sp/>set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a5c6e5143ca62f650ce1dd607cda0970e" kindref="member">ADCON1</ref><sp/>=<sp/>0x8C;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>three<sp/>analogue<sp/>channels<sp/>on<sp/>PORTA,<sp/>AN0,<sp/>AN1,<sp/>AN2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a84d1543e4da7b93ba59cba345ae5c222" kindref="member">ADCON0</ref><sp/>=<sp/>0x41;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Arbitrary<sp/>wait<sp/>period<sp/>to<sp/>allow<sp/>the<sp/>ADC<sp/>to<sp/>initialise</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>1000;<sp/>i++);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="Temp_8h_1a4946ccbc1990e831667bffded1147c4f" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Temp_8c_1a4946ccbc1990e831667bffded1147c4f" kindref="member">readTempx2</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ad_result;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>tempx2;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tempRaw;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tempmV;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>offset;<sp/></highlight><highlight class="comment">//0mV<sp/>at<sp/>2<sp/>degrees??</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Sets<sp/>the<sp/>ADC<sp/>channel<sp/>to<sp/>read<sp/>the<sp/>temperature</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>SetChanADC(<ref refid="Common_8h_1a135151cc09e1094dbb0163c3d696e630" kindref="member">ADC_TEMP_READ</ref>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>//Performs<sp/>the<sp/>conversion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>ConvertADC();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>while(BusyADC());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>ad_result<sp/>=<sp/>ReadADC();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>//10mV<sp/>per<sp/>deg<sp/>C,<sp/>which<sp/>0V<sp/>at<sp/>0deg,<sp/>with<sp/>the<sp/>ADC<sp/>res<sp/>~5mV</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>tempx2<sp/>=<sp/>ad_result;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a073ffe676f8a0b295c57ff165b0951ef" kindref="member">ADCON0bits</ref>.GO<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(<ref refid="p18f4520_8h_1a073ffe676f8a0b295c57ff165b0951ef" kindref="member">ADCON0bits</ref>.GO_NOT_DONE<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tempRaw<sp/>=<sp/><ref refid="p18f4520_8h_1a8919ac22cb49783b559b4cc044d51463" kindref="member">ADRESH</ref><sp/>+<sp/><ref refid="p18f4520_8h_1afc0f7ea2748e1505da0641e891691b93" kindref="member">ADRESL</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tempmV<sp/><sp/>=<sp/>tempRaw*4.8828<sp/>+<sp/>offset;<sp/></highlight><highlight class="comment">//each<sp/>incrememnt<sp/>of<sp/>ADRES<sp/>is<sp/>4.88mV</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" kindref="member">lastTempx2</ref><sp/>=<sp/>tempx2<sp/>=<sp/>2<sp/>*<sp/>tempmV;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tempx2<sp/>+<sp/><ref refid="Temp_8c_1afc2cbd0c08b512ee436d03063c3c94d5" kindref="member">calibration_offset</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="Temp_8h_1afd08db2b1a6d6af19e39f10dc453332c" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Temp_8c_1afd08db2b1a6d6af19e39f10dc453332c" kindref="member">readTemp</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>temp;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Read<sp/>the<sp/>temperature<sp/>from<sp/>the<sp/>x2<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>temp<sp/>=<sp/><ref refid="Temp_8c_1a4946ccbc1990e831667bffded1147c4f" kindref="member">readTempx2</ref>();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Divide<sp/>the<sp/>temp<sp/>by<sp/>two<sp/>and<sp/>return<sp/>the<sp/>result</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(temp);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="Temp_8h_1a5b64a66aae4a5a3d92a1711956fb4eb8" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Temp_8c_1a5b64a66aae4a5a3d92a1711956fb4eb8" kindref="member">rawTemp</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(<ref refid="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" kindref="member">lastTempx2</ref>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="Temp_8h_1aa416413a05e38b982abc19a7c9ea4c3c" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Temp_8c_1aa416413a05e38b982abc19a7c9ea4c3c" kindref="member">calibrateTemp</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>reference)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Temp_8c_1afc2cbd0c08b512ee436d03063c3c94d5" kindref="member">calibration_offset</ref><sp/>=<sp/>2<sp/>*<sp/>(reference<sp/>-<sp/><ref refid="Common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(<ref refid="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" kindref="member">lastTempx2</ref>));</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="Temp_8h_1a31747860f4fe18bee4fc23c0d33b17d7" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Temp_8c_1a31747860f4fe18bee4fc23c0d33b17d7" kindref="member">getTemp</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a4d6bb91285c504f7a5a882961cf405a9" kindref="member">DIV_2</ref>(<ref refid="Temp_8c_1a1dee09c1d88a7b834c7b3932caebcd09" kindref="member">lastTempx2</ref>);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Temp.c"/>
+  </compounddef>
+</doxygen>

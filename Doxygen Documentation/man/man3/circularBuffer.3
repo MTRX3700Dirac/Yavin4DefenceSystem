@@ -1,4 +1,4 @@
-.TH "circularBuffer" 3 "Tue Oct 21 2014" "Version V1.0" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "circularBuffer" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -35,22 +35,14 @@ Stores bytes of data in a circular buffer\&.
 Length: BUFFERLENGTH
 .PP
 Description: Defines a circular buffer in which bytes of data can be placed, or removed at any time in the correct order that they were pushed\&. The accompanying functionality facilitates all necessary circular buffer related operations\&. This implementation reduces the buffer length by 1 to differentiate between full and empty states\&. BUFFERLENGTH can be redefined in individual files to get different buffer lengths 
-.PP
-Definition at line 49 of file CircularBuffers\&.h\&.
 .SH "Field Documentation"
 .PP 
 .SS "unsigned char data[\fBBUFFERLENGTH\fP]"
 
-.PP
-Definition at line 53 of file CircularBuffers\&.h\&.
 .SS "unsigned char head"
 
-.PP
-Definition at line 51 of file CircularBuffers\&.h\&.
 .SS "unsigned char tail"
 
-.PP
-Definition at line 52 of file CircularBuffers\&.h\&.
 
 .SH "Author"
 .PP 

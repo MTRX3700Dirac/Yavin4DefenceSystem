@@ -1,12 +1,14 @@
 var searchData=
 [
   ['n',['N',['../p18f4520_8h.html#a78d6eaf1636482a27da7047fd73c78c3',1,'p18f4520.h']]],
-  ['newline',['newline',['../_menusystem_8c.html#a3e47bea989735dbc22688e1ee25ebe9c',1,'Menusystem.c']]],
+  ['n_5f1line',['N_1LINE',['../LCD__defs_8h.html#a8a2f75c195c03aa87eca2d3ce24ceb90',1,'LCD_defs.h']]],
+  ['n_5f2line',['N_2LINE',['../LCD__defs_8h.html#a7b56c3a38d26d83e31b71677535eeb81',1,'LCD_defs.h']]],
+  ['newline',['newline',['../Menusystem_8c.html#a3e47bea989735dbc22688e1ee25ebe9c',1,'Menusystem.c']]],
   ['newmain_2ec',['newmain.c',['../newmain_8c.html',1,'']]],
-  ['next_5fstate',['NEXT_STATE',['../_common_8h.html#ad9fa804805fca2632643680804f7e911',1,'Common.h']]],
-  ['next_5fstate_5fptr',['NEXT_STATE_PTR',['../_common_8h.html#a26a5416cb7bb43bd2f2eaaa7feaff84d',1,'Common.h']]],
-  ['nl',['NL',['../_serial_8c.html#a4fc34b120ed3bd1120c1eb36abbcd6af',1,'Serial.c']]],
-  ['no_5ftarget',['NO_TARGET',['../_common_8h.html#a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2',1,'Common.h']]],
+  ['next_5fstate',['NEXT_STATE',['../Common_8h.html#ad9fa804805fca2632643680804f7e911',1,'Common.h']]],
+  ['next_5fstate_5fptr',['NEXT_STATE_PTR',['../Common_8h.html#a26a5416cb7bb43bd2f2eaaa7feaff84d',1,'Common.h']]],
+  ['nl',['NL',['../Serial_8c.html#a4fc34b120ed3bd1120c1eb36abbcd6af',1,'Serial.c']]],
+  ['no_5ftarget',['NO_TARGET',['../Common_8h.html#a2db986326a654991cce9b1c2b1670677aba1240809f7ca0c3eb4ee13d2abe47e2',1,'Common.h']]],
   ['nop',['Nop',['../p18f4520_8h.html#a153a328af535691126bf4955e5d896e6',1,'p18f4520.h']]],
   ['not_5fa',['NOT_A',['../p18f4520_8h.html#a37ad59653a3a2900056078d2bc83d9f2',1,'p18f4520.h']]],
   ['not_5faddress',['NOT_ADDRESS',['../p18f4520_8h.html#a43848617e4524618bb175ae9f00837d0',1,'p18f4520.h']]],
@@ -26,6 +28,6 @@ var searchData=
   ['not_5fw',['NOT_W',['../p18f4520_8h.html#a4822636eb70a53b6033eafd6c5e35d8b',1,'p18f4520.h']]],
   ['not_5fwr',['NOT_WR',['../p18f4520_8h.html#a573e75e8be3fa55cbb28f89e2805dbfc',1,'p18f4520.h']]],
   ['not_5fwrite',['NOT_WRITE',['../p18f4520_8h.html#a04991c9dbd7c108d92334b6cf0066044',1,'p18f4520.h']]],
-  ['num_5fir_5freads',['NUM_IR_READS',['../_range_8c.html#acf4b9381566c4a7de8b59886038b9132',1,'Range.c']]],
-  ['numericfunction',['numericFunction',['../struct_sub_menu.html#a1dae2f8dad8e2d2a30b13ee69ea542db',1,'SubMenu']]]
+  ['num_5fir_5freads',['NUM_IR_READS',['../Range_8c.html#acf4b9381566c4a7de8b59886038b9132',1,'Range.c']]],
+  ['numericfunction',['numericFunction',['../structSubMenu.html#a1dae2f8dad8e2d2a30b13ee69ea542db',1,'SubMenu']]]
 ];

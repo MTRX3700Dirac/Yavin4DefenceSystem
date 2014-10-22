@@ -1,0 +1,667 @@
+\hypertarget{PanTilt_8c}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Pan\+Tilt.c File Reference}
+\label{PanTilt_8c}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Pan\+Tilt.\+c@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Pan\+Tilt.\+c}}
+}
+{\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$pwm.\+h$>$}\\*
+{\ttfamily \#include $<$timers.\+h$>$}\\*
+Include dependency graph for Pan\+Tilt.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PanTilt_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structDelay}{Delay}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{PanTilt_8c_a5875ffe458eee073cec6bd62e08679c9}{A\+Z\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N}~\hyperlink{p18f4520_8h_a7ea5e081e0d3ea33ca014db57540107d}{P\+O\+R\+T\+Cbits.\+R\+C0}
+\item 
+\#define \hyperlink{PanTilt_8c_aeccd74b3aafd22092066790005320b98}{I\+N\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N}~\hyperlink{p18f4520_8h_acbac2bc4f50222ec7e8549d800993842}{P\+O\+R\+T\+Cbits.\+R\+C1}
+\item 
+\#define \hyperlink{PanTilt_8c_a8fae060499b6b4a82b757f7b7f082f36}{D\+U\+T\+Y\+\_\+\+C\+Y\+C\+L\+E\+\_\+\+T\+I\+M\+E}~2500
+\item 
+\#define \hyperlink{PanTilt_8c_aacaca0988244bd3a888ca5befa89f44b}{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D}~50000
+\item 
+\#define \hyperlink{PanTilt_8c_ac829b6acf6662103690f1bca3c422f34}{P\+W\+M\+\_\+\+H\+A\+L\+F\+\_\+\+P\+E\+R\+I\+O\+D}~25000
+\item 
+\#define \hyperlink{PanTilt_8c_a32ba76cc676dc9b248bce3b722e811e5}{L\+A\+T\+E\+N\+C\+Y}~340
+\item 
+\#define \hyperlink{PanTilt_8c_afed42813fde734ec03d642316c880a8f}{S\+E\+R\+V\+O\+\_\+\+I\+N\+I\+T}()~\hyperlink{p18f4520_8h_a7ea5e081e0d3ea33ca014db57540107d}{T\+R\+I\+S\+Cbits.\+R\+C0} = 0; \hyperlink{p18f4520_8h_acbac2bc4f50222ec7e8549d800993842}{T\+R\+I\+S\+Cbits.\+R\+C1} = 0; \hyperlink{p18f4520_8h_a7ea5e081e0d3ea33ca014db57540107d}{P\+O\+R\+T\+Cbits.\+R\+C0} = 0; \hyperlink{p18f4520_8h_acbac2bc4f50222ec7e8549d800993842}{P\+O\+R\+T\+Cbits.\+R\+C1} = 0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{PanTilt_8c_a339d46c81d3203b479d9731ef06590d3}{validate} (unsigned int $\ast$\hyperlink{LCD_8h_a6d7066138d22070be0234d8b113cf776}{delay})
+\item 
+static \hyperlink{structDirection}{Direction} \hyperlink{PanTilt_8c_abe8bae9cf0445d5d64cacb685f2bd934}{delay2\+Direction} (\hyperlink{structDelay}{Delay} dly)
+\item 
+static \hyperlink{structDelay}{Delay} \hyperlink{PanTilt_8c_a96270ab040ad40095a6c0b24ffb0f994}{direction2\+Delay} (\hyperlink{structDirection}{Direction} dir)
+\item 
+void \hyperlink{PanTilt_8c_ab7b8c8f7bf051b4f8e3b151f7b567127}{configure\+Base} (void)
+\item 
+void \hyperlink{PanTilt_8c_a032fbfc434ca24d27d89b6d768455a42}{move} (\hyperlink{structDirection}{Direction} destination)
+\item 
+void \hyperlink{PanTilt_8c_af8e57fbe1513bb48274f4f0f46717fa1}{increment} (\hyperlink{structDirection}{Direction} difference)
+\item 
+void \hyperlink{PanTilt_8c_a5350e3f473fb25899612d382c1baa642}{increment\+Fine} (\hyperlink{structDirection}{Direction} difference)
+\item 
+\hyperlink{structDirection}{Direction} \hyperlink{PanTilt_8c_ad1d9638bad5a5021969d19769e70c775}{get\+Dir} (void)
+\item 
+char \hyperlink{PanTilt_8c_ae8f9ea5919de15d1b5614be2e5e65be3}{get\+Max\+Azimuth\+Angle} (void)
+\item 
+char \hyperlink{PanTilt_8c_af45dd498eebe7f5ba7b228c15e7221c1}{get\+Min\+Azimuth\+Angle} (void)
+\item 
+char \hyperlink{PanTilt_8c_a4278dbef7fe9034a7a54d02bcbb16de9}{get\+Max\+Elevation\+Angle} (void)
+\item 
+char \hyperlink{PanTilt_8c_af7fafa63e9c645a80f28aca253bba5cc}{get\+Min\+Elevation\+Angle} (void)
+\item 
+void \hyperlink{PanTilt_8c_a1f5e600a2655aeb9dd24b8325a777931}{set\+Max\+Azimuth\+Angle} (char p\+\_\+angle)
+\item 
+void \hyperlink{PanTilt_8c_a157ea38d68fcd31082dc2eaba2944ef3}{set\+Min\+Azimuth\+Angle} (char p\+\_\+angle)
+\item 
+void \hyperlink{PanTilt_8c_aa956697480994a26cb592b2cfcf3436c}{set\+Max\+Elevation\+Angle} (char p\+\_\+angle)
+\item 
+void \hyperlink{PanTilt_8c_a001917f3c38b200d142ab6932991e001}{set\+Min\+Elevation\+Angle} (char p\+\_\+angle)
+\item 
+void \hyperlink{PanTilt_8c_a60e08860a1b4ca9efdc2dd43983731d5}{calibrate\+Pan\+Tilt} (\hyperlink{structDirection}{Direction} reference)
+\item 
+\hyperlink{structDirection}{Direction} \hyperlink{PanTilt_8c_a251ee95d75c68e21c4bb933ac99e5108}{raw\+Dir} (void)
+\item 
+void \hyperlink{PanTilt_8c_a7f353056fb02f0d95fd997198f5b186f}{pan\+Tilt\+I\+S\+R} (void)
+\item 
+char \hyperlink{PanTilt_8c_a3362a0aacdd7037d0329989d353c60b7}{updated} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{structDirection}{Direction} \hyperlink{PanTilt_8c_a2bfbe11a1bd1926f4e803006a7039120}{calibration\+\_\+offset} = \{ 0, 3 \}
+\item 
+static \hyperlink{structDirection}{Direction} \hyperlink{PanTilt_8c_aef9a9f54b74039d7b9f8789155a3dce6}{arc\+Range} = \{ 94, 103 \}
+\item 
+static \hyperlink{structDelay}{Delay} \hyperlink{PanTilt_8c_a5c15d1f4273099e9b416d2e1f9a2f570}{global\+\_\+delay}
+\item 
+static signed char \hyperlink{PanTilt_8c_a66860c53bfe53cb83293dced526226aa}{azimuth\+\_\+angle\+\_\+max}
+\item 
+static signed char \hyperlink{PanTilt_8c_a58dfba1b3d8bb3d01daa95c48f4718a8}{azimuth\+\_\+angle\+\_\+min}
+\item 
+static signed char \hyperlink{PanTilt_8c_a955ba3af78fb52f91cbcc6d0946b4377}{elevation\+\_\+angle\+\_\+max}
+\item 
+static signed char \hyperlink{PanTilt_8c_a31600a9d5d5ee579b21294939a29f29b}{elevation\+\_\+angle\+\_\+min}
+\item 
+static \hyperlink{structDirection}{Direction} \hyperlink{PanTilt_8c_a13975daacd911b86f59406a226829309}{current\+\_\+direction}
+\item 
+static volatile char \hyperlink{PanTilt_8c_a9f097b2a247dc76d2d6e796f0d8599e1}{changed} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{PanTilt_8c_a5875ffe458eee073cec6bd62e08679c9}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!A\+Z\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N@{A\+Z\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N}}
+\index{A\+Z\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N@{A\+Z\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{A\+Z\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+Z\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N~{\bf P\+O\+R\+T\+Cbits.\+R\+C0}}}\label{PanTilt_8c_a5875ffe458eee073cec6bd62e08679c9}
+\hypertarget{PanTilt_8c_a8fae060499b6b4a82b757f7b7f082f36}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!D\+U\+T\+Y\+\_\+\+C\+Y\+C\+L\+E\+\_\+\+T\+I\+M\+E@{D\+U\+T\+Y\+\_\+\+C\+Y\+C\+L\+E\+\_\+\+T\+I\+M\+E}}
+\index{D\+U\+T\+Y\+\_\+\+C\+Y\+C\+L\+E\+\_\+\+T\+I\+M\+E@{D\+U\+T\+Y\+\_\+\+C\+Y\+C\+L\+E\+\_\+\+T\+I\+M\+E}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{D\+U\+T\+Y\+\_\+\+C\+Y\+C\+L\+E\+\_\+\+T\+I\+M\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+U\+T\+Y\+\_\+\+C\+Y\+C\+L\+E\+\_\+\+T\+I\+M\+E~2500}}\label{PanTilt_8c_a8fae060499b6b4a82b757f7b7f082f36}
+\hypertarget{PanTilt_8c_aeccd74b3aafd22092066790005320b98}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!I\+N\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N@{I\+N\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N}}
+\index{I\+N\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N@{I\+N\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{I\+N\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+\_\+\+P\+W\+M\+\_\+\+P\+I\+N~{\bf P\+O\+R\+T\+Cbits.\+R\+C1}}}\label{PanTilt_8c_aeccd74b3aafd22092066790005320b98}
+\hypertarget{PanTilt_8c_a32ba76cc676dc9b248bce3b722e811e5}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!L\+A\+T\+E\+N\+C\+Y@{L\+A\+T\+E\+N\+C\+Y}}
+\index{L\+A\+T\+E\+N\+C\+Y@{L\+A\+T\+E\+N\+C\+Y}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{L\+A\+T\+E\+N\+C\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+A\+T\+E\+N\+C\+Y~340}}\label{PanTilt_8c_a32ba76cc676dc9b248bce3b722e811e5}
+\hypertarget{PanTilt_8c_ac829b6acf6662103690f1bca3c422f34}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!P\+W\+M\+\_\+\+H\+A\+L\+F\+\_\+\+P\+E\+R\+I\+O\+D@{P\+W\+M\+\_\+\+H\+A\+L\+F\+\_\+\+P\+E\+R\+I\+O\+D}}
+\index{P\+W\+M\+\_\+\+H\+A\+L\+F\+\_\+\+P\+E\+R\+I\+O\+D@{P\+W\+M\+\_\+\+H\+A\+L\+F\+\_\+\+P\+E\+R\+I\+O\+D}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{P\+W\+M\+\_\+\+H\+A\+L\+F\+\_\+\+P\+E\+R\+I\+O\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+W\+M\+\_\+\+H\+A\+L\+F\+\_\+\+P\+E\+R\+I\+O\+D~25000}}\label{PanTilt_8c_ac829b6acf6662103690f1bca3c422f34}
+\hypertarget{PanTilt_8c_aacaca0988244bd3a888ca5befa89f44b}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D@{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D}}
+\index{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D@{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+W\+M\+\_\+\+P\+E\+R\+I\+O\+D~50000}}\label{PanTilt_8c_aacaca0988244bd3a888ca5befa89f44b}
+\hypertarget{PanTilt_8c_afed42813fde734ec03d642316c880a8f}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!S\+E\+R\+V\+O\+\_\+\+I\+N\+I\+T@{S\+E\+R\+V\+O\+\_\+\+I\+N\+I\+T}}
+\index{S\+E\+R\+V\+O\+\_\+\+I\+N\+I\+T@{S\+E\+R\+V\+O\+\_\+\+I\+N\+I\+T}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{S\+E\+R\+V\+O\+\_\+\+I\+N\+I\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+R\+V\+O\+\_\+\+I\+N\+I\+T(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~{\bf T\+R\+I\+S\+Cbits.\+R\+C0} = 0; {\bf T\+R\+I\+S\+Cbits.\+R\+C1} = 0; {\bf P\+O\+R\+T\+Cbits.\+R\+C0} = 0; {\bf P\+O\+R\+T\+Cbits.\+R\+C1} = 0}}\label{PanTilt_8c_afed42813fde734ec03d642316c880a8f}
+
+
+\subsection{Function Documentation}
+\hypertarget{PanTilt_8c_a60e08860a1b4ca9efdc2dd43983731d5}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!calibrate\+Pan\+Tilt@{calibrate\+Pan\+Tilt}}
+\index{calibrate\+Pan\+Tilt@{calibrate\+Pan\+Tilt}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{calibrate\+Pan\+Tilt}]{\setlength{\rightskip}{0pt plus 5cm}void calibrate\+Pan\+Tilt (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{reference}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_a60e08860a1b4ca9efdc2dd43983731d5}
+
+
+ Function\+: \hyperlink{PanTilt_8c_a60e08860a1b4ca9efdc2dd43983731d5}{calibrate\+Pan\+Tilt(\+Direction reference)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Calibrates the pan tile mechanism so that any future reference to move to the reference value specified in the function call will move the pan tilt back to the current position.
+
+Arguments\+: reference -\/ A struct containing the azimuth and inclinaion you wish to define as this position.
+
+Returns\+: None
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000007}{Todo}]Actually write a function to calibrate the Pan\+Tilt, perhaps just offset \end{DoxyRefDesc}
+\hypertarget{PanTilt_8c_ab7b8c8f7bf051b4f8e3b151f7b567127}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!configure\+Base@{configure\+Base}}
+\index{configure\+Base@{configure\+Base}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{configure\+Base}]{\setlength{\rightskip}{0pt plus 5cm}void configure\+Base (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_ab7b8c8f7bf051b4f8e3b151f7b567127}
+
+
+ Function\+: \hyperlink{PanTilt_8c_ab7b8c8f7bf051b4f8e3b151f7b567127}{configure\+Base(void)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Configures the Pan Tilt mechanism for operation
+
+Arguments\+: None
+
+Returns\+: None
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]Test that configuring the base will send it to the default location (0, 0) \end{DoxyRefDesc}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PanTilt_8c_ab7b8c8f7bf051b4f8e3b151f7b567127_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PanTilt_8c_ab7b8c8f7bf051b4f8e3b151f7b567127_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{PanTilt_8c_abe8bae9cf0445d5d64cacb685f2bd934}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!delay2\+Direction@{delay2\+Direction}}
+\index{delay2\+Direction@{delay2\+Direction}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{delay2\+Direction}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Direction} delay2\+Direction (
+\begin{DoxyParamCaption}
+\item[{{\bf Delay}}]{dly}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_abe8bae9cf0445d5d64cacb685f2bd934}
+
+
+ Function\+: direction2\+Delay(\+Direction\+State dir)
+
+Include\+: Local to \hyperlink{PanTilt_8c}{Pan\+Tilt.\+c}
+
+Description\+: Converts an azimuth and inclination direction into a pwm period
+
+Arguments\+: dir -\/ Locally defined struct containing the desired Azimuth and Inclination
+
+Returns\+: \hyperlink{structDelay}{Delay} -\/ The required P\+D\+M delay to move the servos to the given direction
+
+Remark\+: This function relies on the A\+R\+C\+\_\+\+R\+A\+N\+G\+E macro being set correctly. This should hold the value of the maximum angle that the servos can be commanded 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PanTilt_8c_abe8bae9cf0445d5d64cacb685f2bd934_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{PanTilt_8c_a96270ab040ad40095a6c0b24ffb0f994}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!direction2\+Delay@{direction2\+Delay}}
+\index{direction2\+Delay@{direction2\+Delay}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{direction2\+Delay}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Delay} direction2\+Delay (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{dir}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_a96270ab040ad40095a6c0b24ffb0f994}
+
+
+ Function\+: direction2\+Delay(\+Direction\+State dir)
+
+Include\+: Local to \hyperlink{PanTilt_8c}{Pan\+Tilt.\+c}
+
+Description\+: Converts an azimuth and inclination direction into a pwm period
+
+Arguments\+: dir -\/ Locally defined struct containing the desired Azimuth and Inclination
+
+Returns\+: \hyperlink{structDelay}{Delay} -\/ The required P\+D\+M delay to move the servos to the given direction
+
+Remark\+: This function relies on the A\+R\+C\+\_\+\+R\+A\+N\+G\+E macro being set correctly. This should hold the value of the maximum angle that the servos can be commanded 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{PanTilt_8c_a96270ab040ad40095a6c0b24ffb0f994_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PanTilt_8c_a96270ab040ad40095a6c0b24ffb0f994_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{PanTilt_8c_ad1d9638bad5a5021969d19769e70c775}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!get\+Dir@{get\+Dir}}
+\index{get\+Dir@{get\+Dir}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{get\+Dir}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Direction} get\+Dir (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_ad1d9638bad5a5021969d19769e70c775}
+
+
+ Function\+: \hyperlink{PanTilt_8c_ad1d9638bad5a5021969d19769e70c775}{get\+Dir(void)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the current position of the pan tilt mechanism
+
+Arguments\+: None
+
+Returns\+: A struct containing the azimuth and inclination 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{PanTilt_8c_ad1d9638bad5a5021969d19769e70c775_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{PanTilt_8c_ae8f9ea5919de15d1b5614be2e5e65be3}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!get\+Max\+Azimuth\+Angle@{get\+Max\+Azimuth\+Angle}}
+\index{get\+Max\+Azimuth\+Angle@{get\+Max\+Azimuth\+Angle}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{get\+Max\+Azimuth\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}char get\+Max\+Azimuth\+Angle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_ae8f9ea5919de15d1b5614be2e5e65be3}
+
+
+ Function\+: \hyperlink{PanTilt_8c_ae8f9ea5919de15d1b5614be2e5e65be3}{get\+Max\+Azimuth\+Angle(void)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the maximum angle of the azimuth servo
+
+Arguments\+: None
+
+Returns\+: A char with the maximum azimuth angle. \hypertarget{PanTilt_8c_a4278dbef7fe9034a7a54d02bcbb16de9}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!get\+Max\+Elevation\+Angle@{get\+Max\+Elevation\+Angle}}
+\index{get\+Max\+Elevation\+Angle@{get\+Max\+Elevation\+Angle}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{get\+Max\+Elevation\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}char get\+Max\+Elevation\+Angle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_a4278dbef7fe9034a7a54d02bcbb16de9}
+
+
+ Function\+: \hyperlink{PanTilt_8c_a4278dbef7fe9034a7a54d02bcbb16de9}{get\+Max\+Elevation\+Angle(void)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the maximum angle of the elevation servo
+
+Arguments\+: None
+
+Returns\+: A char with the maximum elevation angle. \hypertarget{PanTilt_8c_af45dd498eebe7f5ba7b228c15e7221c1}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!get\+Min\+Azimuth\+Angle@{get\+Min\+Azimuth\+Angle}}
+\index{get\+Min\+Azimuth\+Angle@{get\+Min\+Azimuth\+Angle}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{get\+Min\+Azimuth\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}char get\+Min\+Azimuth\+Angle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_af45dd498eebe7f5ba7b228c15e7221c1}
+
+
+ Function\+: \hyperlink{PanTilt_8c_af45dd498eebe7f5ba7b228c15e7221c1}{get\+Min\+Azimuth\+Angle(void)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the minimum angle of the azimuth servo
+
+Arguments\+: None
+
+Returns\+: A char with the minimum azimuth angle. \hypertarget{PanTilt_8c_af7fafa63e9c645a80f28aca253bba5cc}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!get\+Min\+Elevation\+Angle@{get\+Min\+Elevation\+Angle}}
+\index{get\+Min\+Elevation\+Angle@{get\+Min\+Elevation\+Angle}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{get\+Min\+Elevation\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}char get\+Min\+Elevation\+Angle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_af7fafa63e9c645a80f28aca253bba5cc}
+
+
+ Function\+: \hyperlink{PanTilt_8c_af7fafa63e9c645a80f28aca253bba5cc}{get\+Min\+Elevation\+Angle(void)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the minimum angle of the elevation servo
+
+Arguments\+: None
+
+Returns\+: A char with the minimum elevation angle. \hypertarget{PanTilt_8c_af8e57fbe1513bb48274f4f0f46717fa1}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!increment@{increment}}
+\index{increment@{increment}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{increment}]{\setlength{\rightskip}{0pt plus 5cm}void increment (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{difference}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_af8e57fbe1513bb48274f4f0f46717fa1}
+
+
+ Function\+: \hyperlink{PanTilt_8c_af8e57fbe1513bb48274f4f0f46717fa1}{increment(\+Direction difference)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Moves the pan tilt actuator to the specified destination
+
+Arguments\+: destionation -\/ A struct containing the desired azimuth and inclination
+
+Returns\+: None 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PanTilt_8c_af8e57fbe1513bb48274f4f0f46717fa1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{PanTilt_8c_af8e57fbe1513bb48274f4f0f46717fa1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{PanTilt_8c_a5350e3f473fb25899612d382c1baa642}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!increment\+Fine@{increment\+Fine}}
+\index{increment\+Fine@{increment\+Fine}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{increment\+Fine}]{\setlength{\rightskip}{0pt plus 5cm}void increment\+Fine (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{difference}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_a5350e3f473fb25899612d382c1baa642}
+
+
+ Function\+: \hyperlink{PanTilt_8c_a5350e3f473fb25899612d382c1baa642}{increment\+Fine(\+Direction difference)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Moves the pan tilt actuator to the specified (Relative) destination
+
+Arguments\+: destionation -\/ A struct containing the desired azimuth and inclination
+
+Returns\+: None 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=277pt]{PanTilt_8c_a5350e3f473fb25899612d382c1baa642_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{PanTilt_8c_a032fbfc434ca24d27d89b6d768455a42}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!move@{move}}
+\index{move@{move}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void move (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{destination}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_a032fbfc434ca24d27d89b6d768455a42}
+
+
+ Function\+: \hyperlink{PanTilt_8c_a032fbfc434ca24d27d89b6d768455a42}{move(\+Direction destination)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Moves the pan tilt actuator to the specified destination
+
+Arguments\+: destionation -\/ A struct containing the desired azimuth and inclination
+
+Returns\+: None
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000006}{Todo}]Perhaps non-\/arbitrary wait period \end{DoxyRefDesc}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{PanTilt_8c_a032fbfc434ca24d27d89b6d768455a42_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PanTilt_8c_a032fbfc434ca24d27d89b6d768455a42_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{PanTilt_8c_a7f353056fb02f0d95fd997198f5b186f}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!pan\+Tilt\+I\+S\+R@{pan\+Tilt\+I\+S\+R}}
+\index{pan\+Tilt\+I\+S\+R@{pan\+Tilt\+I\+S\+R}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{pan\+Tilt\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}void pan\+Tilt\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_a7f353056fb02f0d95fd997198f5b186f}
+
+
+ Function\+: \hyperlink{PanTilt_8c_a7f353056fb02f0d95fd997198f5b186f}{pan\+Tilt\+I\+S\+R(void)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: Acts as the I\+S\+R for the Pan\+Tilt module
+
+Arguments\+: None
+
+Returns\+: None
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000009}{Todo}]Ensure that other interrupts and running functionality is not going to affect the timing here \end{DoxyRefDesc}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{PanTilt_8c_a7f353056fb02f0d95fd997198f5b186f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{PanTilt_8c_a251ee95d75c68e21c4bb933ac99e5108}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!raw\+Dir@{raw\+Dir}}
+\index{raw\+Dir@{raw\+Dir}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{raw\+Dir}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Direction} raw\+Dir (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_a251ee95d75c68e21c4bb933ac99e5108}
+
+
+ Function\+: \hyperlink{PanTilt_8c_a251ee95d75c68e21c4bb933ac99e5108}{raw\+Dir(void)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns the current Pan\+Tile position without calibrating
+
+Arguments\+: None
+
+Returns\+: The position of the pan tilt without any calibration
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000008}{Todo}]Test this \end{DoxyRefDesc}
+\hypertarget{PanTilt_8c_a1f5e600a2655aeb9dd24b8325a777931}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!set\+Max\+Azimuth\+Angle@{set\+Max\+Azimuth\+Angle}}
+\index{set\+Max\+Azimuth\+Angle@{set\+Max\+Azimuth\+Angle}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{set\+Max\+Azimuth\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Max\+Azimuth\+Angle (
+\begin{DoxyParamCaption}
+\item[{char}]{p\+\_\+angle}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_a1f5e600a2655aeb9dd24b8325a777931}
+
+
+ Function\+: set\+Max\+Azimuth\+Angle(void)
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: sets the maximum angle of the azimuth servo
+
+Arguments\+: The maximum angle (as char) to set for the azimuth servo
+
+Returns\+: None. \hypertarget{PanTilt_8c_aa956697480994a26cb592b2cfcf3436c}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!set\+Max\+Elevation\+Angle@{set\+Max\+Elevation\+Angle}}
+\index{set\+Max\+Elevation\+Angle@{set\+Max\+Elevation\+Angle}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{set\+Max\+Elevation\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Max\+Elevation\+Angle (
+\begin{DoxyParamCaption}
+\item[{char}]{p\+\_\+angle}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_aa956697480994a26cb592b2cfcf3436c}
+
+
+ Function\+: set\+Max\+Elevation\+Angle(void)
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: sets the maximum angle of the elevation servo
+
+Arguments\+: The maximum angle (as char) to set for the elevation servo
+
+Returns\+: None. \hypertarget{PanTilt_8c_a157ea38d68fcd31082dc2eaba2944ef3}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!set\+Min\+Azimuth\+Angle@{set\+Min\+Azimuth\+Angle}}
+\index{set\+Min\+Azimuth\+Angle@{set\+Min\+Azimuth\+Angle}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{set\+Min\+Azimuth\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Min\+Azimuth\+Angle (
+\begin{DoxyParamCaption}
+\item[{char}]{p\+\_\+angle}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_a157ea38d68fcd31082dc2eaba2944ef3}
+
+
+ Function\+: set\+Min\+Azimuth\+Angle(void)
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: sets the minimum angle of the azimuth servo
+
+Arguments\+: The minimum angle (as char) to set for the azimuth servo
+
+Returns\+: None. \hypertarget{PanTilt_8c_a001917f3c38b200d142ab6932991e001}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!set\+Min\+Elevation\+Angle@{set\+Min\+Elevation\+Angle}}
+\index{set\+Min\+Elevation\+Angle@{set\+Min\+Elevation\+Angle}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{set\+Min\+Elevation\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Min\+Elevation\+Angle (
+\begin{DoxyParamCaption}
+\item[{char}]{p\+\_\+angle}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_a001917f3c38b200d142ab6932991e001}
+
+
+ Function\+: set\+Min\+Elevation\+Angle(void)
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: sets the minimum angle of the elevation servo
+
+Arguments\+: The minimum angle (as char) to set for the elevation servo
+
+Returns\+: None. \hypertarget{PanTilt_8c_a3362a0aacdd7037d0329989d353c60b7}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!updated@{updated}}
+\index{updated@{updated}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{updated}]{\setlength{\rightskip}{0pt plus 5cm}char updated (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{PanTilt_8c_a3362a0aacdd7037d0329989d353c60b7}
+
+
+ Function\+: \hyperlink{PanTilt_8c_a3362a0aacdd7037d0329989d353c60b7}{updated(void)}
+
+Include\+: \hyperlink{PanTilt_8h}{Pan\+Tilt.\+h}
+
+Description\+: returns true if the last move or increment or increment\+Fine function has taken effect. The new direction is only loaded in at the end of the P\+D\+M, so it could take up to 0.\+02 seconds for the change to take effect.
+
+Arguments\+: delay -\/ a pointer to the delay variable
+
+Returns\+: None \hypertarget{PanTilt_8c_a339d46c81d3203b479d9731ef06590d3}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!validate@{validate}}
+\index{validate@{validate}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{validate}]{\setlength{\rightskip}{0pt plus 5cm}static void validate (
+\begin{DoxyParamCaption}
+\item[{unsigned int $\ast$}]{delay}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_a339d46c81d3203b479d9731ef06590d3}
+
+
+ Function\+: \hyperlink{PanTilt_8c_a339d46c81d3203b479d9731ef06590d3}{validate(unsigned int $\ast$delay)}
+
+Include\+: Local to \hyperlink{PanTilt_8c}{Pan\+Tilt.\+c}
+
+Description\+: Limits the duration of the P\+D\+M to between 1000us and 2000us
+
+Arguments\+: delay -\/ a pointer to the delay variable
+
+Returns\+: None 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PanTilt_8c_a339d46c81d3203b479d9731ef06590d3_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{PanTilt_8c_aef9a9f54b74039d7b9f8789155a3dce6}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!arc\+Range@{arc\+Range}}
+\index{arc\+Range@{arc\+Range}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{arc\+Range}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Direction} arc\+Range = \{ 94, 103 \}\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_aef9a9f54b74039d7b9f8789155a3dce6}
+\hypertarget{PanTilt_8c_a66860c53bfe53cb83293dced526226aa}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!azimuth\+\_\+angle\+\_\+max@{azimuth\+\_\+angle\+\_\+max}}
+\index{azimuth\+\_\+angle\+\_\+max@{azimuth\+\_\+angle\+\_\+max}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{azimuth\+\_\+angle\+\_\+max}]{\setlength{\rightskip}{0pt plus 5cm}signed char azimuth\+\_\+angle\+\_\+max\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_a66860c53bfe53cb83293dced526226aa}
+\hypertarget{PanTilt_8c_a58dfba1b3d8bb3d01daa95c48f4718a8}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!azimuth\+\_\+angle\+\_\+min@{azimuth\+\_\+angle\+\_\+min}}
+\index{azimuth\+\_\+angle\+\_\+min@{azimuth\+\_\+angle\+\_\+min}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{azimuth\+\_\+angle\+\_\+min}]{\setlength{\rightskip}{0pt plus 5cm}signed char azimuth\+\_\+angle\+\_\+min\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_a58dfba1b3d8bb3d01daa95c48f4718a8}
+\hypertarget{PanTilt_8c_a2bfbe11a1bd1926f4e803006a7039120}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!calibration\+\_\+offset@{calibration\+\_\+offset}}
+\index{calibration\+\_\+offset@{calibration\+\_\+offset}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{calibration\+\_\+offset}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Direction} calibration\+\_\+offset = \{ 0, 3 \}\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_a2bfbe11a1bd1926f4e803006a7039120}
+\hypertarget{PanTilt_8c_a9f097b2a247dc76d2d6e796f0d8599e1}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!changed@{changed}}
+\index{changed@{changed}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{changed}]{\setlength{\rightskip}{0pt plus 5cm}volatile char changed = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_a9f097b2a247dc76d2d6e796f0d8599e1}
+\hypertarget{PanTilt_8c_a13975daacd911b86f59406a226829309}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!current\+\_\+direction@{current\+\_\+direction}}
+\index{current\+\_\+direction@{current\+\_\+direction}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{current\+\_\+direction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Direction} current\+\_\+direction\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_a13975daacd911b86f59406a226829309}
+\hypertarget{PanTilt_8c_a955ba3af78fb52f91cbcc6d0946b4377}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!elevation\+\_\+angle\+\_\+max@{elevation\+\_\+angle\+\_\+max}}
+\index{elevation\+\_\+angle\+\_\+max@{elevation\+\_\+angle\+\_\+max}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{elevation\+\_\+angle\+\_\+max}]{\setlength{\rightskip}{0pt plus 5cm}signed char elevation\+\_\+angle\+\_\+max\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_a955ba3af78fb52f91cbcc6d0946b4377}
+\hypertarget{PanTilt_8c_a31600a9d5d5ee579b21294939a29f29b}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!elevation\+\_\+angle\+\_\+min@{elevation\+\_\+angle\+\_\+min}}
+\index{elevation\+\_\+angle\+\_\+min@{elevation\+\_\+angle\+\_\+min}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{elevation\+\_\+angle\+\_\+min}]{\setlength{\rightskip}{0pt plus 5cm}signed char elevation\+\_\+angle\+\_\+min\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_a31600a9d5d5ee579b21294939a29f29b}
+\hypertarget{PanTilt_8c_a5c15d1f4273099e9b416d2e1f9a2f570}{\index{Pan\+Tilt.\+c@{Pan\+Tilt.\+c}!global\+\_\+delay@{global\+\_\+delay}}
+\index{global\+\_\+delay@{global\+\_\+delay}!Pan\+Tilt.\+c@{Pan\+Tilt.\+c}}
+\subsubsection[{global\+\_\+delay}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Delay} global\+\_\+delay\hspace{0.3cm}{\ttfamily [static]}}}\label{PanTilt_8c_a5c15d1f4273099e9b416d2e1f9a2f570}

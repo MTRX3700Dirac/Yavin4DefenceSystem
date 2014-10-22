@@ -31,12 +31,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
+#include <p18cxxx.h>
+// Commented out for the general case. Put back in if it breaks
+//#include <p18f4520.h>
 
-#ifdef MNML
-#include <p18f4520.h>
-#else
-#include <p18f452.h>
-#endif
+
 
 //Peripherial headers
 #include <timers.h>
@@ -45,14 +45,6 @@
 #include <usart.h>
 #include <capture.h>
 #include <compare.h>
-
-#ifndef MNML
-//System configurations
-#pragma config WDR = OFF
-#pragma config OSC = HS
-#pragma config LVP = OFF
-#pragma config DEBUG = ON
-#endif
 
 /*! ****************************************************************************
  * typedef of Direction struct
@@ -67,6 +59,7 @@
  *      -Azimuth: Contains the azimuth component of the direction (generally degrees)
  *      -Inclination: Contains the inclination component of the direction (generally degrees)
  ******************************************************************************/
+
 typedef struct
 {
     int azimuth;
@@ -146,6 +139,8 @@ typedef struct {
 #define CCP1_INT (PIR1bits.CCP1IF && PIE1bits.CCP1IE) //Whether CCP1 fired the interrupt
 #define CCP2_INT (PIR2bits.CCP2IF && PIE2bits.CCP2IE) //Whether CCP2 fired the interrupt
 #define INT0_INT (INTCONbits.INT0IF && INTCONbits.INT0IE) //Whether the external interrupt fired
+#define INT1_INT (INTCON3bits.INT1IF && INTCON3bits.INT1IE) //Whether the external interrupt fired
+#define INT2_INT (INTCON3bits.INT2IF && INTCON3bits.INT2IE) //Whether the external interrupt fired
 #define RB_INT   (INTCONbits.RBIF && INTCONbits.RBIE)  //Whether the RB port change interrupt fired
 #define TMR2_INT (PIR1bits.TMR2IF && PIE1bits.TMR2IE)   //TMR2 matching PR2 fired the interrupt
 
@@ -159,6 +154,10 @@ typedef struct {
 
 #define CCP1_CLEAR (PIR1bits.CCP1IF = 0)
 #define CCP2_CLEAR (PIR2bits.CCP2IF = 0)
+
+#define WDT_EN WDTCONbits.SWDTE = 1; WDTCONbits.SWDTEN = 1;
+#define WDT_CLR _asm CLRWDT _endasm            //Clear watchdog timer
+
 
 ///Dfine the clock rate and FOSC_4
 #ifdef MNML

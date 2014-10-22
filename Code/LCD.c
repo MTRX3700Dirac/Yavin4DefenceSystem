@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+=======
+/*! **********************************************************************
+ * File:   User_Interface.c
+ * Author:
+ *
+ * Description:
+ * Contains all the interface to the LCD hardware
+ *
+ * Duties:
+ *      -Interfaces with and controls the LCD
+ *      -Displays data on the LCD
+ *
+ * @todo Complete, test, debug and document this code!!!
+ *
+ * Created on 15 September 2014, 1:21 PM
+ **********************************************************************/
+
+>>>>>>> e358b3317df55eb457e72a70e5c25165911b2fae
 #include "Common.h"
 #include "LCD_defs.h"
 #include <delays.h>
@@ -6,6 +25,20 @@ void delay(unsigned int t);
 char lcdBusy(void);                 //check busy flag
 void lcdWrite(unsigned char byte, unsigned char mode);
 
+/*! **********************************************************************
+ * Function: lcdInit(void)
+ *
+ * \brief Initialises the LCD so that it can be used
+ *
+ * Include: LCD.h
+ *
+ * Description: Initialises the LCD hardware so that data can be displayed
+ *              on the LCD in local interface mode
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
 void lcdInit(void){
 
     Delay10KTCYx(6);
@@ -30,6 +63,19 @@ void lcdInit(void){
     delay(5);
 }
 
+/*! **********************************************************************
+ * Function: lcdBusy(void)
+ *
+ * \brief 
+ *
+ * Include: 
+ *
+ * Description: 
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
 char lcdBusy(void){
 
     //LCD_PWR_DIR = LCD_PIN_OUTPUT;       //! Set control lines to output
@@ -69,7 +115,19 @@ char lcdBusy(void){
     }
 }
 
-
+/*! **********************************************************************
+ * Function: delay(void)
+ *
+ * \brief
+ *
+ * Include:  
+ *
+ * Description: 
+ *
+ * Arguments: t - 
+ *
+ * Returns: None
+ *************************************************************************/
 void delay(unsigned int t)  //delay 1 ms
 {
     unsigned char x, y, z;
@@ -81,6 +139,20 @@ void delay(unsigned int t)  //delay 1 ms
 
 }
 
+/*! **********************************************************************
+ * Function: lcdWrite(unsigned char byte, unsigned char mode)
+ *
+ * \brief 
+ *
+ * Include: LCD.h
+ *
+ * Description: 
+ *
+ * Arguments: byte -
+ *            mode - 
+ *
+ * Returns: None
+ *************************************************************************/
 void lcdWrite(unsigned char byte, unsigned char mode){
     while(lcdBusy()){}
     LCD_DATA_LINE_DIR = LCD_OUTPUT; //! Set data lines to output
@@ -97,6 +169,7 @@ void lcdWrite(unsigned char byte, unsigned char mode){
 }
 
 //!Feed character string, and line (1 or 2)
+<<<<<<< HEAD
 void lcdWriteString(char *string, char line){
     char column, a;        //! Also include information about which row
     if(line==1){column=LINE1;}
@@ -113,6 +186,51 @@ void lcdWriteString(char *string, char line){
 //!Feed character, line (1 or 2), and column(1-16)
 void lcdWriteChar(char byte, char line, char column){
     char row;
+=======
+/*! **********************************************************************
+ * Function: lcdWriteString(char *string, unsigned char line)
+ *
+ * \brief 
+ *
+ * Include: LCD.h
+ *
+ * Description: 
+ *
+ * Arguments: string -
+ *            line - 
+ *
+ * Returns: None
+ *************************************************************************/
+void lcdWriteString(char *string, unsigned char line){
+    unsigned char row;
+    if(line==1){row=LINE1;}
+    else(row=LINE2);
+    while((row & LINESTART) <= LINEEND){
+        lcdWrite((SETDDRAMADD | line++), LCD_INS);
+        lcdWrite((*string)++, LCD_DATA);
+        delay(5);
+    }
+}
+
+//!Feed character, line (1 or 2), and column(1-16)
+/*! **********************************************************************
+ * Function: lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column)
+ *
+ * \brief 
+ *
+ * Include: LCD.h
+ *
+ * Description: 
+ *
+ * Arguments: byte -
+ *            line -
+ *            column - 
+ *
+ * Returns: None
+ *************************************************************************/
+void lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column){
+    unsigned char row;
+>>>>>>> e358b3317df55eb457e72a70e5c25165911b2fae
     if(line==1){row=LINE1;}
     else if(line==2){row=LINE2;}
     lcdWrite((SETDDRAMADD | row | (column-1)), LCD_INS);

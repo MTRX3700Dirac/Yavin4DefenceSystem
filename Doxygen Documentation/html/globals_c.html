@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="Eaw_Yavin4 - thumb.jpg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Yavin IV Death Star Tracker
-   &#160;<span id="projectnumber">V1.0</span>
+   &#160;<span id="projectnumber">V1.1</span>
    </div>
    <div id="projectbrief">Yavin&#39;s premiere line of defence against the encroaching Imperial Star Fleet and Death Star</div>
   </td>
@@ -160,29 +160,49 @@ $(document).ready(function(){initNavTree('globals_c.html','');});
 <li>C2OUT
 : <a class="el" href="p18f4520_8h.html#a97b4baf2ebfd7bb4d0a6f4be6665c7ab">p18f4520.h</a>
 </li>
+<li>C_CURSOFF
+: <a class="el" href="LCD__defs_8h.html#a360299bea880deca900b567ba9fffb3a">LCD_defs.h</a>
+</li>
+<li>C_CURSON
+: <a class="el" href="LCD__defs_8h.html#a3200720e75b31e2ec6ed294d09419933">LCD_defs.h</a>
+</li>
 <li>calibratePanTilt()
-: <a class="el" href="_pan_tilt_8c.html#a60e08860a1b4ca9efdc2dd43983731d5">PanTilt.c</a>
-, <a class="el" href="_pan_tilt_8h.html#a60e08860a1b4ca9efdc2dd43983731d5">PanTilt.h</a>
+: <a class="el" href="PanTilt_8c.html#a60e08860a1b4ca9efdc2dd43983731d5">PanTilt.c</a>
+, <a class="el" href="PanTilt_8h.html#a60e08860a1b4ca9efdc2dd43983731d5">PanTilt.h</a>
 </li>
 <li>calibrateRange()
-: <a class="el" href="_range_8c.html#a8606bd1052dde0e7c32eddad8699f4f4">Range.c</a>
-, <a class="el" href="_range_8h.html#ae2fb7c6f16c048f7f3247b7b5a3d403a">Range.h</a>
+: <a class="el" href="Range_8c.html#a8606bd1052dde0e7c32eddad8699f4f4">Range.c</a>
+, <a class="el" href="Range_8h.html#ae2fb7c6f16c048f7f3247b7b5a3d403a">Range.h</a>
 </li>
 <li>calibrateTemp()
-: <a class="el" href="_temp_8c.html#aa416413a05e38b982abc19a7c9ea4c3c">Temp.c</a>
-, <a class="el" href="_temp_8h.html#aa416413a05e38b982abc19a7c9ea4c3c">Temp.h</a>
+: <a class="el" href="Temp_8c.html#aa416413a05e38b982abc19a7c9ea4c3c">Temp.c</a>
+, <a class="el" href="Temp_8h.html#aa416413a05e38b982abc19a7c9ea4c3c">Temp.h</a>
+</li>
+<li>calibration_offset
+: <a class="el" href="Temp_8c.html#afc2cbd0c08b512ee436d03063c3c94d5">Temp.c</a>
+, <a class="el" href="PanTilt_8c.html#a2bfbe11a1bd1926f4e803006a7039120">PanTilt.c</a>
+, <a class="el" href="Range_8c.html#a57a8488a51b36299fd5b363b10cad132">Range.c</a>
+</li>
+<li>calibration_offset_IR
+: <a class="el" href="Range_8c.html#a8976a8edd47f4f691d54e563d4e649b7">Range.c</a>
+</li>
+<li>calibration_offset_US
+: <a class="el" href="Range_8c.html#af421fb22b292f4b39367c73817a26993">Range.c</a>
+</li>
+<li>carriageReturn
+: <a class="el" href="Serial_8c.html#a8cff2d32a612db164397b2a3b4ce2b5e">Serial.c</a>
 </li>
 <li>CCP1
 : <a class="el" href="p18f4520_8h.html#a5f6bb62b5208a9e5e26f93aa6e23be22">p18f4520.h</a>
 </li>
 <li>CCP1_CLEAR
-: <a class="el" href="_common_8h.html#ae8aa3ab3a23a388dab62ac86ee5e2545">Common.h</a>
+: <a class="el" href="Common_8h.html#ae8aa3ab3a23a388dab62ac86ee5e2545">Common.h</a>
 </li>
 <li>CCP1_INPT
-: <a class="el" href="_range_8c.html#aa42da5a67cdb563f37b56c1674dd67bb">Range.c</a>
+: <a class="el" href="Range_8c.html#aa42da5a67cdb563f37b56c1674dd67bb">Range.c</a>
 </li>
 <li>CCP1_INT
-: <a class="el" href="_common_8h.html#a1673a1a80febeafd51f3f02508a0ea71">Common.h</a>
+: <a class="el" href="Common_8h.html#a1673a1a80febeafd51f3f02508a0ea71">Common.h</a>
 </li>
 <li>CCP1CON
 : <a class="el" href="p18f4520_8h.html#a402b1ac836d71c4d1ceea2654759ba9c">p18f4520.h</a>
@@ -224,10 +244,10 @@ $(document).ready(function(){initNavTree('globals_c.html','');});
 : <a class="el" href="p18f4520_8h.html#aadcf52da61805515302b2ccea19b97c1">p18f4520.h</a>
 </li>
 <li>CCP2_CLEAR
-: <a class="el" href="_common_8h.html#a4e461245300e8ea7e5c6af0741a33855">Common.h</a>
+: <a class="el" href="Common_8h.html#a4e461245300e8ea7e5c6af0741a33855">Common.h</a>
 </li>
 <li>CCP2_INT
-: <a class="el" href="_common_8h.html#aee2ef60613898be37c57266698616e33">Common.h</a>
+: <a class="el" href="Common_8h.html#aee2ef60613898be37c57266698616e33">Common.h</a>
 </li>
 <li>CCP2CON
 : <a class="el" href="p18f4520_8h.html#ab5c5627278cc01338f0555d102a1070a">p18f4520.h</a>
@@ -286,8 +306,11 @@ $(document).ready(function(){initNavTree('globals_c.html','');});
 <li>CFGS
 : <a class="el" href="p18f4520_8h.html#afd04a41aad540f92aea41ffcc06b3c66">p18f4520.h</a>
 </li>
+<li>changed
+: <a class="el" href="PanTilt_8c.html#a9f097b2a247dc76d2d6e796f0d8599e1">PanTilt.c</a>
+</li>
 <li>choose
-: <a class="el" href="_menusystem_8c.html#a9cb97c7ce3babec16a2e500625985994">Menusystem.c</a>
+: <a class="el" href="Menusystem_8c.html#a9cb97c7ce3babec16a2e500625985994">Menusystem.c</a>
 </li>
 <li>CHS
 : <a class="el" href="p18f4520_8h.html#ac5dbb18c2bf4923d61aa69fa667e96c1">p18f4520.h</a>
@@ -317,7 +340,7 @@ $(document).ready(function(){initNavTree('globals_c.html','');});
 : <a class="el" href="p18f4520_8h.html#afb5f6f71e7650f128b6e5c04036cd48f">p18f4520.h</a>
 </li>
 <li>clearscreen()
-: <a class="el" href="_menusystem_8c.html#aec49123d1c8f1231607dc9159ae138a4">Menusystem.c</a>
+: <a class="el" href="Menusystem_8c.html#aec49123d1c8f1231607dc9159ae138a4">Menusystem.c</a>
 </li>
 <li>CLKI
 : <a class="el" href="p18f4520_8h.html#ada39cffa189ad48263065d469e9023fe">p18f4520.h</a>
@@ -326,10 +349,10 @@ $(document).ready(function(){initNavTree('globals_c.html','');});
 : <a class="el" href="p18f4520_8h.html#a0a66dcac450a40b082c7bcc32a7fac00">p18f4520.h</a>
 </li>
 <li>CLOCK
-: <a class="el" href="_common_8h.html#a3be7ef61d339af381862a81d4b363efb">Common.h</a>
+: <a class="el" href="Common_8h.html#a3be7ef61d339af381862a81d4b363efb">Common.h</a>
 </li>
 <li>CLOSE_RANGE
-: <a class="el" href="_common_8h.html#a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262">Common.h</a>
+: <a class="el" href="Common_8h.html#a2db986326a654991cce9b1c2b1670677a1095d17ed354ef770b301c64f7b09262">Common.h</a>
 </li>
 <li>ClrWdt
 : <a class="el" href="p18f4520_8h.html#afd3d2a511a2e746319056241f430ba70">p18f4520.h</a>
@@ -362,42 +385,38 @@ $(document).ready(function(){initNavTree('globals_c.html','');});
 : <a class="el" href="p18f4520_8h.html#aa8ee3d17a5a19c4d69285da5a18d1044">p18f4520.h</a>
 </li>
 <li>COMMON_H
-: <a class="el" href="_common_8h.html#a0a1448a83b84de478fdbd7612e81acb1">Common.h</a>
-</li>
-<li>configLCD()
-: <a class="el" href="_l_c_d_8c.html#aaab6233be65b7399b3422eee9782508c">LCD.c</a>
-, <a class="el" href="_l_c_d_8h.html#aaab6233be65b7399b3422eee9782508c">LCD.h</a>
+: <a class="el" href="Common_8h.html#a0a1448a83b84de478fdbd7612e81acb1">Common.h</a>
 </li>
 <li>configureAD()
-: <a class="el" href="_range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a">Range.c</a>
-, <a class="el" href="_range_8h.html#ac7337ef2da4c9ab03257562ec33bbb8a">Range.h</a>
+: <a class="el" href="Range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a">Range.c</a>
+, <a class="el" href="Range_8h.html#ac7337ef2da4c9ab03257562ec33bbb8a">Range.h</a>
 </li>
 <li>configureBase()
-: <a class="el" href="_pan_tilt_8h.html#ab7b8c8f7bf051b4f8e3b151f7b567127">PanTilt.h</a>
-, <a class="el" href="_pan_tilt_8c.html#ab7b8c8f7bf051b4f8e3b151f7b567127">PanTilt.c</a>
+: <a class="el" href="PanTilt_8h.html#ab7b8c8f7bf051b4f8e3b151f7b567127">PanTilt.h</a>
+, <a class="el" href="PanTilt_8c.html#ab7b8c8f7bf051b4f8e3b151f7b567127">PanTilt.c</a>
 </li>
 <li>configureRange()
-: <a class="el" href="_range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2">Range.c</a>
-, <a class="el" href="_range_8h.html#a07a4c592815b5e6ae178f93a7764ceb2">Range.h</a>
+: <a class="el" href="Range_8h.html#a07a4c592815b5e6ae178f93a7764ceb2">Range.h</a>
+, <a class="el" href="Range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2">Range.c</a>
 </li>
 <li>configureSerial()
-: <a class="el" href="_serial_8c.html#ae2cdcda889fcfed4b6b851835bf2b538">Serial.c</a>
-, <a class="el" href="_serial_8h.html#ae2cdcda889fcfed4b6b851835bf2b538">Serial.h</a>
+: <a class="el" href="Serial_8h.html#ae2cdcda889fcfed4b6b851835bf2b538">Serial.h</a>
+, <a class="el" href="Serial_8c.html#ae2cdcda889fcfed4b6b851835bf2b538">Serial.c</a>
 </li>
 <li>configureTemp()
-: <a class="el" href="_temp_8c.html#af6785da0c9b3c637b09522617d3f9dba">Temp.c</a>
-, <a class="el" href="_temp_8h.html#af6785da0c9b3c637b09522617d3f9dba">Temp.h</a>
+: <a class="el" href="Temp_8c.html#af6785da0c9b3c637b09522617d3f9dba">Temp.c</a>
+, <a class="el" href="Temp_8h.html#af6785da0c9b3c637b09522617d3f9dba">Temp.h</a>
 </li>
 <li>configureTracking()
-: <a class="el" href="_tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6">Tracking.h</a>
-, <a class="el" href="_tracking_8c.html#ac9b1c5bae39806310b74e2f69d9ee3b6">Tracking.c</a>
+: <a class="el" href="Tracking_8c.html#ac9b1c5bae39806310b74e2f69d9ee3b6">Tracking.c</a>
+, <a class="el" href="Tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6">Tracking.h</a>
 </li>
 <li>configUSER()
-: <a class="el" href="_user___interface_8h.html#a58e473ed40d00e18bd61277428e4d36c">User_Interface.h</a>
-, <a class="el" href="_user___interface_8c.html#a58e473ed40d00e18bd61277428e4d36c">User_Interface.c</a>
+: <a class="el" href="User__Interface_8h.html#a58e473ed40d00e18bd61277428e4d36c">User_Interface.h</a>
+, <a class="el" href="User__Interface_8c.html#a58e473ed40d00e18bd61277428e4d36c">User_Interface.c</a>
 </li>
 <li>CR
-: <a class="el" href="_serial_8c.html#a876ce77f3c672c7162658151e648389e">Serial.c</a>
+: <a class="el" href="Serial_8c.html#a876ce77f3c672c7162658151e648389e">Serial.c</a>
 </li>
 <li>CREN
 : <a class="el" href="p18f4520_8h.html#a078127b7efe1ed08283c57df8011d236">p18f4520.h</a>
@@ -407,6 +426,12 @@ $(document).ready(function(){initNavTree('globals_c.html','');});
 </li>
 <li>CSRC
 : <a class="el" href="p18f4520_8h.html#a9e9a2b9b6ae2f9fb222e82aff55d42e8">p18f4520.h</a>
+</li>
+<li>current_direction
+: <a class="el" href="PanTilt_8c.html#a13975daacd911b86f59406a226829309">PanTilt.c</a>
+</li>
+<li>current_target_state
+: <a class="el" href="Range_8c.html#a3e5f92f759a1957263c83a507c449b39">Range.c</a>
 </li>
 <li>CVR
 : <a class="el" href="p18f4520_8h.html#a9ff9f1f6dc4c2942cb873f95a63f6cdd">p18f4520.h</a>
@@ -450,7 +475,7 @@ $(document).ready(function(){initNavTree('globals_c.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Oct 21 2014 15:39:07 for Yavin IV Death Star Tracker by
+    <li class="footer">Generated on Wed Oct 22 2014 16:45:27 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

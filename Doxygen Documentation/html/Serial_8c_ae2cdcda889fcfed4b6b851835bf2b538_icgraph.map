@@ -1,0 +1,6 @@
+<map id="configureSerial" name="configureSerial">
+<area shape="rect" id="node2" href="$Menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="160,5,261,32"/>
+<area shape="rect" id="node3" href="$Menusystem_8c.html#afa234d458057237e03e355d30fafac84" title="menu" alt="" coords="183,56,238,83"/>
+<area shape="rect" id="node4" href="$newmain_8c.html#a1ff28a3e20f1261c410c00f62e9f9c33" title="initialization" alt="" coords="165,107,256,133"/>
+<area shape="rect" id="node5" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="309,107,360,133"/>
+</map>

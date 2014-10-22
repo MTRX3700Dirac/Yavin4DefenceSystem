@@ -82,10 +82,10 @@ static Direction arcRange = { 94, 103 };
 static Delay global_delay;
 
 //Static Max/Min
-static signed char azimuth_angle_max;
-static signed char azimuth_angle_min;
-static signed char elevation_angle_max;
-static signed char elevation_angle_min;
+static signed char azimuth_angle_max = 45;
+static signed char azimuth_angle_min = -45;
+static signed char elevation_angle_max = 45;
+static signed char elevation_angle_min = -45;
 
 //Static Current direction
 static Direction current_direction;
@@ -101,6 +101,8 @@ static volatile char changed = 0;
  * Arguments: None
  *
  * Returns: None
+ *
+ * @todo Test that configuring the base will send it to the default location (0, 0)
  *************************************************************************/
 void configureBase(void)
 {
@@ -109,10 +111,11 @@ void configureBase(void)
     //Set the initial servo PWM's to zeros
     Direction zero = { 0, 0 };
     global_delay = direction2Delay(zero);
-    
+
+    PIR1 = 0x00;            //Clear all interrupt flags
+    PIR2 = 0x00;
     INTCONbits.GIEH = 1;
     INTCONbits.GIEL = 1;
-
     RCONbits.IPEN = 1;
     
     SERVO_INIT();
@@ -144,6 +147,8 @@ void configureBase(void)
  * Arguments: destionation - A struct containing the desired azimuth and inclination
  *
  * Returns: None
+ *
+ * @todo Perhaps non-arbitrary wait period
  *************************************************************************/
 void move(Direction destination)
 {
@@ -360,6 +365,8 @@ void setMinElevationAngle(char p_angle)
  *                        wish to define as this position.
  *
  * Returns: None
+ *
+ * @todo Actually write a function to calibrate the PanTilt, perhaps just offset
  *************************************************************************/
 void calibratePanTilt(Direction reference)
 {
@@ -376,10 +383,12 @@ void calibratePanTilt(Direction reference)
  * Arguments: None
  *
  * Returns: The position of the pan tilt without any calibration
+ *
+ * @todo Test this
  *************************************************************************/
 Direction rawDir(void)
 {
-    
+    return current_direction;
 }
 
 /*! **********************************************************************
@@ -392,6 +401,8 @@ Direction rawDir(void)
  * Arguments: None
  *
  * Returns: None
+ *
+ * @todo Ensure that other interrupts and running functionality is not going to affect the timing here
  *************************************************************************/
 void panTiltISR(void)
 {

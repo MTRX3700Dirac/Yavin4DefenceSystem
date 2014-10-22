@@ -1,0 +1,406 @@
+\hypertarget{Serial_8c}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Serial.c File Reference}
+\label{Serial_8c}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Serial.\+c@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Serial.\+c}}
+}
+{\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$usart.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}Circular\+Buffers.\+h\char`\"{}}\\*
+Include dependency graph for Serial.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Serial_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{Serial_8c_ae75715981e20452ec65e09240954c901}{T\+X\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}()~\hyperlink{p18f4520_8h_a045c6555e7e82fcf68e608d4404fb9ed}{P\+I\+R1bits.\+T\+X\+I\+F} = 0
+\item 
+\#define \hyperlink{Serial_8c_a9607804df44b42159397aeee01326b93}{R\+C\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}()~\hyperlink{p18f4520_8h_a8ff1127552738fc483a7e1887045e8d2}{P\+I\+R1bits.\+R\+C\+I\+F} = 0
+\item 
+\#define \hyperlink{Serial_8c_aed05378c71b5932db9fe75240763fcec}{T\+X\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E}()~\hyperlink{Serial_8c_ae75715981e20452ec65e09240954c901}{T\+X\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}(); \hyperlink{p18f4520_8h_ae7b3b4752a0a4b6c084f1599ea98e724}{P\+I\+E1bits.\+T\+X\+I\+E} = 1
+\item 
+\#define \hyperlink{Serial_8c_a0d56b2320d22882f5a8d230f140c7ea3}{R\+C\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E}()~\hyperlink{Serial_8c_a9607804df44b42159397aeee01326b93}{R\+C\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}(); \hyperlink{p18f4520_8h_a756f5bf99764eb500a4a22b0693efb03}{P\+I\+E1bits.\+R\+C\+I\+E} = 1
+\item 
+\#define \hyperlink{Serial_8c_af4550af5f0b07a9dae44eaca1e30d809}{T\+X\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E}()~\hyperlink{p18f4520_8h_ae7b3b4752a0a4b6c084f1599ea98e724}{P\+I\+E1bits.\+T\+X\+I\+E} = 0
+\item 
+\#define \hyperlink{Serial_8c_ab51d510f3bbabed67acc83033a617418}{R\+C\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E}()~\hyperlink{p18f4520_8h_a756f5bf99764eb500a4a22b0693efb03}{P\+I\+E1bits.\+R\+C\+I\+E} = 0
+\item 
+\#define \hyperlink{Serial_8c_a876ce77f3c672c7162658151e648389e}{C\+R}~0x0\+D
+\item 
+\#define \hyperlink{Serial_8c_a4fc34b120ed3bd1120c1eb36abbcd6af}{N\+L}~0x0\+A
+\item 
+\#define \hyperlink{Serial_8c_a4af1b6159e447ba72652bb7fcdfa726e}{E\+S\+C}~0x1\+B
+\item 
+\#define \hyperlink{Serial_8c_ad58a1fbfc85c7e4790fc55e654f50221}{T\+A\+B}~0x09
+\item 
+\#define \hyperlink{Serial_8c_a580a88f98668df1ac5e1683cae31c0b3}{B\+S}~0x07
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{Serial_8c_ae2cdcda889fcfed4b6b851835bf2b538}{configure\+Serial} (void)
+\item 
+void \hyperlink{Serial_8c_aab23d23c5b64a3bb7e5913afb4a3ed85}{transmit} (char $\ast$string)
+\item 
+void \hyperlink{Serial_8c_aabfd643e8a01ba453ff6a88164b9eff8}{trans\+Char} (char c)
+\item 
+char \hyperlink{Serial_8c_a42f5165187634304f89709eebe7c9f8c}{receive\+Empty} (void)
+\item 
+char \hyperlink{Serial_8c_a6e41eb5b433439d82f67def509ade010}{receive\+Peek} (void)
+\item 
+char \hyperlink{Serial_8c_abb74ccb0bd81e0e4779854c93851c804}{receive\+Pop} (void)
+\item 
+char \hyperlink{Serial_8c_aca906fa91f67c730681400b51d426933}{receive\+C\+R} (void)
+\item 
+void \hyperlink{Serial_8c_ad5d0bd1e5c7b8380e3567f8dc474b6db}{read\+String} (char $\ast$string)
+\item 
+char \hyperlink{Serial_8c_a96a7d5e668a1b77fd5bbd343c7f1cbfc}{transmitted} (void)
+\item 
+void \hyperlink{Serial_8c_a6cf71700cdaeb2afeaf619777af19bfc}{serial\+I\+S\+R} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static volatile \hyperlink{structcircularBuffer}{circular\+Buffer} \hyperlink{Serial_8c_a5e9b32b4516262ed0d38be2a5c900eb2}{receive\+\_\+buffer}
+\item 
+static volatile \hyperlink{structcircularBuffer}{circular\+Buffer} \hyperlink{Serial_8c_a8afe57d3e36e53a89cc8488b2812d012}{transmit\+\_\+buffer}
+\item 
+static volatile char \hyperlink{Serial_8c_a8cff2d32a612db164397b2a3b4ce2b5e}{carriage\+Return} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{Serial_8c_a580a88f98668df1ac5e1683cae31c0b3}{\index{Serial.\+c@{Serial.\+c}!B\+S@{B\+S}}
+\index{B\+S@{B\+S}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{B\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+S~0x07}}\label{Serial_8c_a580a88f98668df1ac5e1683cae31c0b3}
+\hypertarget{Serial_8c_a876ce77f3c672c7162658151e648389e}{\index{Serial.\+c@{Serial.\+c}!C\+R@{C\+R}}
+\index{C\+R@{C\+R}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{C\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+R~0x0\+D}}\label{Serial_8c_a876ce77f3c672c7162658151e648389e}
+\hypertarget{Serial_8c_a4af1b6159e447ba72652bb7fcdfa726e}{\index{Serial.\+c@{Serial.\+c}!E\+S\+C@{E\+S\+C}}
+\index{E\+S\+C@{E\+S\+C}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{E\+S\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+S\+C~0x1\+B}}\label{Serial_8c_a4af1b6159e447ba72652bb7fcdfa726e}
+\hypertarget{Serial_8c_a4fc34b120ed3bd1120c1eb36abbcd6af}{\index{Serial.\+c@{Serial.\+c}!N\+L@{N\+L}}
+\index{N\+L@{N\+L}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{N\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+L~0x0\+A}}\label{Serial_8c_a4fc34b120ed3bd1120c1eb36abbcd6af}
+\hypertarget{Serial_8c_a9607804df44b42159397aeee01326b93}{\index{Serial.\+c@{Serial.\+c}!R\+C\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R@{R\+C\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}}
+\index{R\+C\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R@{R\+C\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{R\+C\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+C\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~{\bf P\+I\+R1bits.\+R\+C\+I\+F} = 0}}\label{Serial_8c_a9607804df44b42159397aeee01326b93}
+\hypertarget{Serial_8c_ab51d510f3bbabed67acc83033a617418}{\index{Serial.\+c@{Serial.\+c}!R\+C\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E@{R\+C\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E}}
+\index{R\+C\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E@{R\+C\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{R\+C\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+C\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~{\bf P\+I\+E1bits.\+R\+C\+I\+E} = 0}}\label{Serial_8c_ab51d510f3bbabed67acc83033a617418}
+\hypertarget{Serial_8c_a0d56b2320d22882f5a8d230f140c7ea3}{\index{Serial.\+c@{Serial.\+c}!R\+C\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E@{R\+C\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E}}
+\index{R\+C\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E@{R\+C\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{R\+C\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+C\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~{\bf R\+C\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}(); {\bf P\+I\+E1bits.\+R\+C\+I\+E} = 1}}\label{Serial_8c_a0d56b2320d22882f5a8d230f140c7ea3}
+\hypertarget{Serial_8c_ad58a1fbfc85c7e4790fc55e654f50221}{\index{Serial.\+c@{Serial.\+c}!T\+A\+B@{T\+A\+B}}
+\index{T\+A\+B@{T\+A\+B}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{T\+A\+B}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+A\+B~0x09}}\label{Serial_8c_ad58a1fbfc85c7e4790fc55e654f50221}
+\hypertarget{Serial_8c_ae75715981e20452ec65e09240954c901}{\index{Serial.\+c@{Serial.\+c}!T\+X\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R@{T\+X\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}}
+\index{T\+X\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R@{T\+X\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{T\+X\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+X\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~{\bf P\+I\+R1bits.\+T\+X\+I\+F} = 0}}\label{Serial_8c_ae75715981e20452ec65e09240954c901}
+
+
+ File\+: \hyperlink{newmain_8c}{newmain.\+c} Author\+: Grant
+
+Description\+: Contains the functionality for the Serial module. All variables and settings concerning the serial module, such as the receive and transmit circular buffers are private to this module. The interface functions allow all valid access to the module.
+
+Duties\+: -\/\+Stores an received characters in the received buffer -\/\+Stores any characters to be transmitted -\/\+Transmits anything in transmit buffer via interrupts -\/\+Accessor functions for using and querying buffers
+
+Functions\+:
+
+Created on 7 September 2014, 4\+:12 P\+M \hypertarget{Serial_8c_af4550af5f0b07a9dae44eaca1e30d809}{\index{Serial.\+c@{Serial.\+c}!T\+X\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E@{T\+X\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E}}
+\index{T\+X\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E@{T\+X\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{T\+X\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+X\+\_\+\+I\+N\+T\+\_\+\+D\+I\+S\+A\+B\+L\+E(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~{\bf P\+I\+E1bits.\+T\+X\+I\+E} = 0}}\label{Serial_8c_af4550af5f0b07a9dae44eaca1e30d809}
+\hypertarget{Serial_8c_aed05378c71b5932db9fe75240763fcec}{\index{Serial.\+c@{Serial.\+c}!T\+X\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E@{T\+X\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E}}
+\index{T\+X\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E@{T\+X\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{T\+X\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+X\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+L\+E(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~{\bf T\+X\+\_\+\+I\+N\+T\+\_\+\+C\+L\+E\+A\+R}(); {\bf P\+I\+E1bits.\+T\+X\+I\+E} = 1}}\label{Serial_8c_aed05378c71b5932db9fe75240763fcec}
+
+
+\subsection{Function Documentation}
+\hypertarget{Serial_8c_ae2cdcda889fcfed4b6b851835bf2b538}{\index{Serial.\+c@{Serial.\+c}!configure\+Serial@{configure\+Serial}}
+\index{configure\+Serial@{configure\+Serial}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{configure\+Serial}]{\setlength{\rightskip}{0pt plus 5cm}void configure\+Serial (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_ae2cdcda889fcfed4b6b851835bf2b538}
+
+
+ Function\+: \hyperlink{Serial_8c_ae2cdcda889fcfed4b6b851835bf2b538}{configure\+Serial(void)}
+
+Include\+: \hyperlink{Serial_8h}{Serial.\+h}
+
+Description\+: Configures the serial ready for communication
+
+Arguments\+: None
+
+Returns\+: None 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{Serial_8c_ae2cdcda889fcfed4b6b851835bf2b538_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Serial_8c_ad5d0bd1e5c7b8380e3567f8dc474b6db}{\index{Serial.\+c@{Serial.\+c}!read\+String@{read\+String}}
+\index{read\+String@{read\+String}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{read\+String}]{\setlength{\rightskip}{0pt plus 5cm}void read\+String (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_ad5d0bd1e5c7b8380e3567f8dc474b6db}
+
+
+ Function\+: \hyperlink{Serial_8c_ad5d0bd1e5c7b8380e3567f8dc474b6db}{read\+String(char $\ast$string)}
+
+Include\+: \hyperlink{Serial_8h}{Serial.\+h}
+
+Description\+: Writes all received data up to a carriage return into given location.
+
+Arguments\+: string -\/ Pointer to location to store received data
+
+Returns\+: Received data up to a carriage return
+
+Remarks\+: Make sure that you reserve at least B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H elements at the location pointed to by string before calling this function. 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{Serial_8c_ad5d0bd1e5c7b8380e3567f8dc474b6db_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Serial_8c_aca906fa91f67c730681400b51d426933}{\index{Serial.\+c@{Serial.\+c}!receive\+C\+R@{receive\+C\+R}}
+\index{receive\+C\+R@{receive\+C\+R}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{receive\+C\+R}]{\setlength{\rightskip}{0pt plus 5cm}char receive\+C\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_aca906fa91f67c730681400b51d426933}
+
+
+ Function\+: \hyperlink{Serial_8c_aca906fa91f67c730681400b51d426933}{receive\+C\+R(void)}
+
+Include\+: \hyperlink{Serial_8h}{Serial.\+h}
+
+Description\+: Indicates whether a Carriage Return has been received
+
+Arguments\+: None
+
+Returns\+: non-\/zero if C\+R has been received, zero otherwise 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{Serial_8c_aca906fa91f67c730681400b51d426933_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Serial_8c_a42f5165187634304f89709eebe7c9f8c}{\index{Serial.\+c@{Serial.\+c}!receive\+Empty@{receive\+Empty}}
+\index{receive\+Empty@{receive\+Empty}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{receive\+Empty}]{\setlength{\rightskip}{0pt plus 5cm}char receive\+Empty (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_a42f5165187634304f89709eebe7c9f8c}
+
+
+ Function\+: \hyperlink{Serial_8c_a42f5165187634304f89709eebe7c9f8c}{receive\+Empty(void)}
+
+Include\+: \hyperlink{Serial_8h}{Serial.\+h}
+
+Description\+: Indicates if the receive buffer is empty
+
+Arguments\+: None
+
+Returns\+: returns true if the recieve buffer is empty 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{Serial_8c_a42f5165187634304f89709eebe7c9f8c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Serial_8c_a6e41eb5b433439d82f67def509ade010}{\index{Serial.\+c@{Serial.\+c}!receive\+Peek@{receive\+Peek}}
+\index{receive\+Peek@{receive\+Peek}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{receive\+Peek}]{\setlength{\rightskip}{0pt plus 5cm}char receive\+Peek (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_a6e41eb5b433439d82f67def509ade010}
+
+
+ Function\+: \hyperlink{Serial_8c_a6e41eb5b433439d82f67def509ade010}{receive\+Peek(void)}
+
+Include\+: \hyperlink{Serial_8h}{Serial.\+h}
+
+Description\+: Returns the next character in the receive buffer without removing it from the buffer
+
+Arguments\+: None
+
+Returns\+: The next received character \hypertarget{Serial_8c_abb74ccb0bd81e0e4779854c93851c804}{\index{Serial.\+c@{Serial.\+c}!receive\+Pop@{receive\+Pop}}
+\index{receive\+Pop@{receive\+Pop}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{receive\+Pop}]{\setlength{\rightskip}{0pt plus 5cm}char receive\+Pop (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_abb74ccb0bd81e0e4779854c93851c804}
+
+
+ Function\+: \hyperlink{Serial_8c_abb74ccb0bd81e0e4779854c93851c804}{receive\+Pop(void)}
+
+Include\+: \hyperlink{Serial_8h}{Serial.\+h}
+
+Description\+: Pops the next received character from the received buffer
+
+Arguments\+: None
+
+Returns\+: The next character from the receive buffer 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{Serial_8c_abb74ccb0bd81e0e4779854c93851c804_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Serial_8c_a6cf71700cdaeb2afeaf619777af19bfc}{\index{Serial.\+c@{Serial.\+c}!serial\+I\+S\+R@{serial\+I\+S\+R}}
+\index{serial\+I\+S\+R@{serial\+I\+S\+R}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{serial\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_a6cf71700cdaeb2afeaf619777af19bfc}
+
+
+ Function\+: \hyperlink{Serial_8c_a6cf71700cdaeb2afeaf619777af19bfc}{serial\+I\+S\+R(void)}
+
+Include\+: \hyperlink{Serial_8h}{Serial.\+h}
+
+Description\+: Acts as the interrupt service routine for the serial module
+
+Arguments\+: None
+
+Returns\+: None 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{Serial_8c_a6cf71700cdaeb2afeaf619777af19bfc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Serial_8c_aabfd643e8a01ba453ff6a88164b9eff8}{\index{Serial.\+c@{Serial.\+c}!trans\+Char@{trans\+Char}}
+\index{trans\+Char@{trans\+Char}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{trans\+Char}]{\setlength{\rightskip}{0pt plus 5cm}void trans\+Char (
+\begin{DoxyParamCaption}
+\item[{char}]{c}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_aabfd643e8a01ba453ff6a88164b9eff8}
+
+
+ Function\+: \hyperlink{Serial_8c_aabfd643e8a01ba453ff6a88164b9eff8}{trans\+Char(char c)}
+
+Include\+: \hyperlink{Serial_8h}{Serial.\+h}
+
+Description\+: Transmits a single character
+
+Arguments\+: c -\/ character to transmit
+
+Returns\+: None \hypertarget{Serial_8c_aab23d23c5b64a3bb7e5913afb4a3ed85}{\index{Serial.\+c@{Serial.\+c}!transmit@{transmit}}
+\index{transmit@{transmit}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{transmit}]{\setlength{\rightskip}{0pt plus 5cm}void transmit (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_aab23d23c5b64a3bb7e5913afb4a3ed85}
+
+
+ Function\+: \hyperlink{Serial_8c_aab23d23c5b64a3bb7e5913afb4a3ed85}{transmit(char $\ast$string)}
+
+Include\+: \hyperlink{Serial_8h}{Serial.\+h}
+
+Description\+: Begins transmitting the string over serial (interrupt driven)
+
+Arguments\+: string -\/ pointer to the beginning of the string to transmit
+
+Returns\+: None
+
+N\+O\+T\+E\+: Must be Null Terminated! Cannot receive a literal. 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Serial_8c_aab23d23c5b64a3bb7e5913afb4a3ed85_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Serial_8c_a96a7d5e668a1b77fd5bbd343c7f1cbfc}{\index{Serial.\+c@{Serial.\+c}!transmitted@{transmitted}}
+\index{transmitted@{transmitted}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{transmitted}]{\setlength{\rightskip}{0pt plus 5cm}char transmitted (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_a96a7d5e668a1b77fd5bbd343c7f1cbfc}
+
+
+ Function\+: \hyperlink{Serial_8c_a96a7d5e668a1b77fd5bbd343c7f1cbfc}{transmitted(void)}
+
+Include\+: \hyperlink{Serial_8h}{Serial.\+h}
+
+Description\+: returns non-\/zero if the message has been completely transmited e.\+g. if the transmit buffer is empty
+
+Arguments\+: None
+
+Returns\+: None 
+
+\subsection{Variable Documentation}
+\hypertarget{Serial_8c_a8cff2d32a612db164397b2a3b4ce2b5e}{\index{Serial.\+c@{Serial.\+c}!carriage\+Return@{carriage\+Return}}
+\index{carriage\+Return@{carriage\+Return}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{carriage\+Return}]{\setlength{\rightskip}{0pt plus 5cm}volatile char carriage\+Return = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{Serial_8c_a8cff2d32a612db164397b2a3b4ce2b5e}
+\hypertarget{Serial_8c_a5e9b32b4516262ed0d38be2a5c900eb2}{\index{Serial.\+c@{Serial.\+c}!receive\+\_\+buffer@{receive\+\_\+buffer}}
+\index{receive\+\_\+buffer@{receive\+\_\+buffer}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{receive\+\_\+buffer}]{\setlength{\rightskip}{0pt plus 5cm}volatile {\bf circular\+Buffer} receive\+\_\+buffer\hspace{0.3cm}{\ttfamily [static]}}}\label{Serial_8c_a5e9b32b4516262ed0d38be2a5c900eb2}
+\hypertarget{Serial_8c_a8afe57d3e36e53a89cc8488b2812d012}{\index{Serial.\+c@{Serial.\+c}!transmit\+\_\+buffer@{transmit\+\_\+buffer}}
+\index{transmit\+\_\+buffer@{transmit\+\_\+buffer}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{transmit\+\_\+buffer}]{\setlength{\rightskip}{0pt plus 5cm}volatile {\bf circular\+Buffer} transmit\+\_\+buffer\hspace{0.3cm}{\ttfamily [static]}}}\label{Serial_8c_a8afe57d3e36e53a89cc8488b2812d012}

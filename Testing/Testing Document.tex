@@ -173,8 +173,7 @@ Each temperature from 0 to 100 deg C was tested and compared to the actual formu
 \subsection{IR\_CONV Macro:}
 \subsubsection{Status:}
 Working as of 1:40pm 30/9/2014 - Grant \newline
-As of 13/10/2014 The calibration on the minimal board seems to differ. As of yet we have no idea why, we think it may be a minimal board thing. \newline
-The Sensor has been re-calibrated on the minimal board, and both calibration functions and macros are given
+As of 13/10/2014 The calibration on the minimal board seems to differ. As of yet we have no idea why, and mean to re-calibrate it
 
 \subsubsection{Description:}
 This macro converts the AD result into a range in mm, based on experimental readings from the IR Sensor.
@@ -188,19 +187,6 @@ This macro has been tested with a range of different input values. Each input re
 \caption{IR Experimental Data - Sensor output profile}
 \label{fig:IRExperimentalData}
 \end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{"IR Minimal Calibration"}
-\caption{Calibration of the IR sensor on the Minimal board}
-\label{fig:IRMinimalCalibration}
-\end{figure}
-
-
-\subsubsection{Working Code (Minimal board):}
-\begin{lstlisting}
-#define IR_CONV(ad) ((unsigned long)135174 / (ad) - 28)
-\end{lstlisting}
 
 
 \subsubsection{Working Code:}
@@ -429,92 +415,25 @@ This function acts as the service routine for the range module. The exact functi
 
 \subsection{ConfigureTracking:}
 \subsubsection{Status:}
-Working as of 4:30pm 20/10/2014 - Grant
+Currently incomplete and untested as of 12:15pm 26/9/2014 - Grant
 
 \subsubsection{Description:}
 This function configures the pan tilt mechanism (which is acting as the base) so that it is ready for initial use.
 
 \subsubsection{Criteria:}
-This function was tested indirectly by using it to configure the tracking module, and subsequently using the tracking module.
-
-\subsubsection{working Code:}
-\begin{lstlisting}
-void configureTracking(void)
-{
-configureBase();
-configureRange();
-}
-\end{lstlisting}
 
 \subsection{Search:}
 \subsubsection{Status:}
-Working as of 6:30pm 15/10/2014 - Grant \newline
-Altered as of 5:00pm 20/10/2014 (also tested) - Grant
+Currently untested as of 12:15pm 26/9/2014 - Grant
 
 \subsubsection{Description:}
-This function increments the pan tilt mechanism in a search pattern. Each function call only moves the pan tilt a small amount in the correct direction. It does not check for the presence of the target.
+This function increments the pan tilt mechanism in a search pattern.
 
 \subsubsection{Criteria:}
-This function was tested by running the algorithm with the full hardware pan tilt mechanism, and observing the resulting movement. \newline
-The exit criteria for when to begin tracking was also tested by placing an object in front of the sensor.
-
-\subsubsection{Working Code:}
-\begin{lstlisting}
-void search(systemState *state)
-{
-unsigned int j;
-//Vertical and laterial incremental movements
-static Direction lateral = {diff, 0};
-static Direction vertical = {0, diff};
-static TargetState previousState;
-TargetState currentState;
-Direction dir;
-
-dir = getDir();
-
-for (j = 0; j < 10000; j++);
-//If max azimuth range, increment vertical and change azimuth direction
-if (dir.azimuth > 40 || dir.azimuth < -40)
-{
-increment(vertical);                //Move up (or down) vertically 1 degree
-if (dir.azimuth < 0 && dir.azimuth < 0) lateral.azimuth = diff; //Move in the opposite azimuth
-if (dir.azimuth > 0 && dir.azimuth > 0) lateral.azimuth = -diff;
-increment(lateral);
-}
-//If max inclination range, change vertical direction and increment vertical
-else if (dir.inclination > 10 || dir.inclination < -40)
-{
-if (dir.inclination < 0 && dir.inclination < 0) vertical.inclination = diff; //Move in the opposite azimuth
-if (dir.inclination > 0 && dir.inclination > 0) vertical.inclination = -diff;
-increment(vertical);
-}
-//Alse just move in azimuth
-else
-{
-increment(lateral);
-}
-
-previousState = currentState;
-currentState = readTargetState();
-switch (currentState)
-{
-case GOOD_TRACK:
-NEXT_STATE_PTR(TRCK, state);
-break;
-case BAD_DIR:
-//In the correct vicinity, but not exact
-NEXT_STATE_PTR(TRCK, state);
-break;
-default:
-break;
-}
-}
-\end{lstlisting}
 
 \subsection{trackingISR:}
 \subsubsection{Status:}
-Not Used as of 1:20pm 26/9/2014 - Grant \newline
-As of yet the tracking module does not use any interrupts, and as such this function is not currently used.
+Untested as of 1:20pm 26/9/2014 - Grant
 
 \subsubsection{Description:}
 This function acts as the ISR for the tracking module. The exact functionality will depend on what interrupts are associated with the tracking module, and how they are implemented.
@@ -522,85 +441,12 @@ This function acts as the ISR for the tracking module. The exact functionality w
 \subsubsection{Criteria:}
 
 
-\subsection{Track:}
+\subsection{Edge:}
 \subsubsection{Status:}
-Working as of 5:05pm - Grant
+Currently untested as of 1:20pm 26/9/2014
 
 \subsubsection{Description:}
-This function tracks the target through a weighted of lobes. The sensor direction is offset above, below, left and right of the current position, giving 5 sensor readings. Each of these directions is then averaged with IR returns getting a weighting of 4, ultrasonic returns (only) getting a weighting of 1, and no return getting a weighting of 0. \newline
-Future iterations of this function will hopefully incorporate variations in this angle, and possible predictions of where the target will be based on previous movement. This is a preliminary version which does not yet contain any of these features.
-
-\subsubsection{Criteria:}
-This function was tested by running the entire system and placing an object (of similar size to the actual target) in front of the sensor, and observing whether the system reacted to the presence (exit search mode) and actually begin to track the object.
-
-\subsubsection{Working Code:}
-\begin{lstlisting}
-TrackingData track(systemState *state)
-{
-char i, count = 0;
-char weight;
-unsigned int j;
-Direction centre;
-signed long int inclination = 0;
-signed long int azimuth = 0;
-TrackingData result;
-Direction dir;
-Direction inc[] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
-char angle;
-
-//angle = TARGET_RAD * (unsigned int)57 / range();
-angle = 8;
-
-centre = getDir();
-
-for (i = 0; i < 4; i++)
-{
-//Calc new direction
-dir.azimuth = centre.azimuth + inc[i].azimuth * angle;
-dir.inclination = centre.inclination + inc[i].inclination * angle;
-
-//Move to new direction
-move(dir);
-
-//Get target state (stored in weight temporarily)
-weight = readTargetState();
-
-//Calculate weighting of that sample
-weight = (weight == GOOD_TRACK) * 4 + (weight == BAD_DIR);
-
-count += weight;
-azimuth += (int)weight * dir.azimuth;
-inclination += (int)weight * dir.inclination;
-}
-
-//Go back to searching if there is not a good track, else stay in track
-if (count == 0)
-{
-NEXT_STATE_PTR(SRCH, state);
-}
-else
-{
-//Calculate weighted average of the results
-centre.azimuth = azimuth / count;
-centre.inclination = inclination / count;
-
-move(centre);
-
-result.distance = range();
-result.azimuth = centre.azimuth;
-result.inclination = centre.inclination;
-}
-
-return result;
-}
-\end{lstlisting}
-
-\subsection{Prediction}
-\subsubsection{Status:}
-Currently incomplete and untested 20/10/2014 - Grant
-
-\subsubsection{Description:}
-This function returns a prediction of where the object is likely to be found based on previous movement and prediction algorithms.
+This function finds the edge of the target in both the azimuth and declination degrees of freedom, and uses that to find (and track) the centre of the target. It could also be used as a rudimentary target verification based on the approximate size of the target.
 
 \subsubsection{Criteria:}
 
@@ -618,7 +464,7 @@ This macro has been tested by pushing a byte onto an empty buffer, a partially f
 
 \subsubsection{Working code:}
 \begin{lstlisting}
-#define push(byte, buf) buf.data[buf.tail] = byte; if(full(buf)) incMod(buf.head); incMod(buf.tail)
+#define push(byte, buf) buf.data[buf.head] = byte; if(full(buf)) incMod(buf.tail); incMod(buf.head)
 \end{lstlisting}
 
 \subsection{Pop Macro:}
@@ -633,7 +479,7 @@ This macro has been tested with both empty and non-empty buffers and in each cas
 
 \subsubsection{Working Code:}
 \begin{lstlisting}
-#define pop(buf) buf.data[buf.head]; if (!empty(buf)) incMod(buf.head)
+#define pop(buf) buf.data[buf.tail]; if (!empty(buf)) incMod(buf.tail)
 \end{lstlisting}
 
 \subsection{Init Macro:}
@@ -663,7 +509,7 @@ This macro was tested by simply operating on a macro several times (between whic
 
 \subsubsection{Working Code:}
 \begin{lstlisting}
-#define peek(buf) buf.data[buf.head]
+#define peek(buf) buf.data[buf.tail]
 \end{lstlisting}
 
 \subsection{Full Macro:}
@@ -671,14 +517,14 @@ This macro was tested by simply operating on a macro several times (between whic
 Working as of 2:05pm 26/9/2014 - Grant
 
 \subsubsection{Description:}
-This macro returns non-zero is the buffer is full, and zero otherwise. 
+This macro returns non-zero is the buffer is full, and zero otherwise.
 
 \subsubsection{Criteria:}
 This macro was tested by operating on a number of circular buffers, both full and not full (including empty), and in each case it returned the correct thing.
 
 \subsubsection{Working Code:}
 \begin{lstlisting}
-#define full(buf) (buf.head == (buf.tail + 1) % BUFFERLENGTH)
+#define full(buf) (buf.tail == (buf.head + 1) % BUFFERLENGTH)
 \end{lstlisting}
 
 \subsection{Empty:}
@@ -693,33 +539,27 @@ This macro was tested on both empty and non-empty buffers, including full buffer
 
 \subsubsection{Working Code:}
 \begin{lstlisting}
-#define empty(buf) (buf.tail == buf.head)
+#define empty(buf) (buf.head == buf.tail)
 \end{lstlisting}
 
 \subsection{IncMod Macro:}
 \subsubsection{Status:}
-Working as of 2:30pm 26/9/2014 - Grant\newline
-This function was changed (for efficiency reasons) as of 4:20pm 20/10/2014 - Grant
+Working as of 2:30pm 26/9/2014 - Grant
 
 \subsubsection{Description:}
-This macro increments a buffer pointer and takes the modulus with the buffer length (defined by BUFFERLENGTH), which will loop back to zero, making the buffer circular. \newline
-The new implementation no longer uses a modulus function, and thus does not waste time performing divisions.
+This macro increments a buffer pointer and takes the modulus with the buffer length (defined by BUFFERLENGTH), which will loop back to zero, making the buffer circular.
 
 \subsubsection{Criteria:}
 This macro has been tested with a range of values from 0 to BUFFERLENGTH. In each case the macro returned the response as documented.
 
 \subsubsection{Working Code:}
 \begin{lstlisting}
-#define incMod(ptr) if(ptr==BUFFERLENGTH-1) ptr = 0; else ptr++;
-\end{lstlisting}
-
-\subsubsection{Working Code (inefficient):}
-\begin{lstlisting}
-#define incMod(ptr) (ptr = (ptr + 1) % BUFFERLENGTH)
+#define incMod(ptr) (ptr = ++ptr % BUFFERLENGTH)
 \end{lstlisting}
 
 \newpage
 \section{Serial}
+
 
 \subsection{ConfigureSerial:}
 \subsubsection{Remark:}
@@ -791,7 +631,7 @@ This function transmits a single character over serial
 \subsection{Criteria:}
 This function has been tested by testing on several different characters,  including just after a transmit function call.
 
-\subsubsection{Working Code:}
+\subsection{Working Code:}
 \begin{lstlisting}
 void transChar(char c)
 {

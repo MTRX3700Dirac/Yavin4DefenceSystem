@@ -2,133 +2,19 @@
 
 \usepackage{listings}
 \usepackage{bookmark}
-\usepackage{graphicx}
-\usepackage{pdfpages}
 
 
 % Title Page
 \title{Technical Manual}
-\author{Grant Louat}
+\author{}
 
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-	This document describes how each of the modules (including both software and hardware) work, and how to use them. \newline
-	IMPORTANT NOTE: This system can run on either a minimal board, or a PICDEM board by defining or not defining MNML in Common.h. If MNML is not defined when run on the minimal board, it will damage the servos (PDM will be 125Hz). If MNML is defined the system will not run on a PICDEM board.
+	This document describes how each of the modules (including both software and hardware) work, and how to use them.
 \end{abstract}
-
-\part{Overview}
-\chapter{Software Overview}
-\section{Description}
-This system is a state machine; there is a primary loop in main() which repeatedly calls functions based on the current state. Each of these functions can alter the state to transition based on their function.
-
-\section{State Functions}
-\begin{itemize}
-	\item Initialisation
-	\item Search - Tracking Module
-	\item Track - Tracking Module
-\end{itemize}
-
-\chapter{Hardware Overview}
-\section{Description}
-The Yavin IV Death Star Tracker includes the following hardware:
-
-\begin{itemize}
-	\item Ultrasonic Sensor
-	\item IR Sensor
-	\item Pan Tilt Base mechanism
-	\item LCD display
-\end{itemize}
-
-A further description of the system hardware is included in the hardware section.
-
-\section{Configuration/Layout}
-there are two main parts to the Yavin IV Death Star Tracker; the Pan Tilt module which contains all the sensors and actuators and the control panel which contains all the user interface hardware (buttons LCD etc.). \newline
-Below is an exploded view of the component layout within the control panel.
-
-
-\part{Functionality}
-\chapter{Factory Mode}
-\section{Description}
-The Yavin IV Death Star Tracker includes a Factory Mode not available to general users. This mode is used for in-factory calibration and testing.
-
-\section{Entering/Exiting the Factory Mode}
-The factory mode can be entered by ... Similarly ... will exit the factory mode, and the system will return to the standard operational mode.
-
-\section{Functionality}
-The Factory Mode adds the following functionality and commands to the standard Mode
-\begin{itemize}
-	\item
-\end{itemize}
-
-
-\part{Software}
-
-\chapter{Interrupts}
-\section{Description}
-Many of the functions within different modules use interrupts, however there is only one service routine for high and low priority. Thus the ISR's and vectors have been moved into their own separate module, which call Module scope ISR functions.
-
-\section{How It Works:}
-For convenience interrupt macros have been defined in Common.h for each possible interrupt call. Querying one of these macros will return true if that interrupt fired an interrupt. These macros look like: TX\_INT, CCP1\_INT.\newline
-Each module defines a macro (in its header file) which indicates which interrupts that module is using, by or-ing together the previously mentioned macros. When an interrupt fires it checks these macros for each module, and if true calls a 'module scope ISR'. These macros look like: SERIAL\_INT, RANGE\_INT etc. \newline
-These module scope ISR's are just functions defined within each interrupt driven module, which are called whenever an interrupt associated with that macro is called. Thus these functions act as ISR's for the module without conflicting with anything else in the program.
-
-\section{How To Use It:}
-Follow the following steps to use an interrupt within a module.
-\begin{enumerate}
-	\item Make sure Interrupts.c is included in the build
-	\item Define/Update the module macro in the module header file
-	\item Check header file is included in Interrupts.c
-	\item Check module macro is tested in ISR's (High and low ISR's)
-	\item Use module ISR as general ISR
-\end{enumerate}
-
-\section{List of Public Functions}
-This module has no public functions, or any real public interface as nothing within this module is called by anything within the program. Rather the list of included header files, and the macro checks must be updated when a new module is added.
-
-\section{Example Code}
-\subsection{Defining Module macro}
-\begin{lstlisting}
-//Serial Interrupt macro Defn. within Serial.h
-#define SERIAL_INT (TX_INT || RC_INT)
-\end{lstlisting}
-
-\subsection{Updating Interrupt Includes}
-\begin{lstlisting}
-//Includes at the top of Interrupt.c
-//Any module that uses interrupts will need to be included here:
-#include "Tracking.h"
-#include "Range.h"
-#include "User_Interface.h"
-#include "Serial.h"
-#include "PanTilt.h"
-#include "Temp.h"
-#include "Menusystem.h"
-//Add your module header file here...
-\end{lstlisting}
-
-\subsection{Updating ISR Check}
-\begin{lstlisting}
-if (SERIAL_INT)
-{
-serialISR();
-}
-if (PAN_TILT_ISR)
-{
-panTiltISR();
-}
-if (RANGE_INT)
-{
-rangeISR();
-}
-if (USER_INT)
-{
-userISR();
-}
-//Add additional checks here
-\end{lstlisting}
 
 \chapter{Serial}
 \section{Description:}
@@ -142,7 +28,7 @@ This serial module also allows users the opportunity to remove or change data th
 
 \section{How To Use It:}
 \begin{itemize}
-	\item Make sure Interrupts.c is included in the build
+	\item Make sure Interrupts.c is included in the project
 	\item Call the configureSerial() function to set up serial
 	\item Call transmit() to begin transmitting something
 	\item Use receiveEmpty() to check if anything has been received
@@ -307,25 +193,21 @@ NOTE: This module is interrupt driven, so the Interrupt.c file must be included 
 
 \section{How To Use It:}
 \begin{itemize}
-	\item Ensure Interrupt.c is included in the build
-	\item Include PanTilt.h within the file you wish to use the module
-	\item Call configureBase() to set up the module
-	\item Call Move() to send the base to an absolute direction
-	\item Call increment() or incrementFine() to move the base to a relative direction (relative to its current)
+	\item Ensure Interrupt.c is included in the project
+	\item Include PanTilt.h in the file you want to use the module
+	\item Call configureBase() function to set up the module
+	\item Call Move() to send the base to a specific direction
+	\item Call increment() or incrementFine() to move the base from that direction
 	\item CalibratePanTilt() to calibrate the base direction
 	\item RawDir() returns the calibrated direction
-	\item getDir() returns the current direction
 \end{itemize}
 
 \section{List of Public Functions}
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
 \subsection{configureBase}
-\subsubsection{Description:}
-Configures the Pan Tilt module. After this function is called the module moves to its default position. Then the module is fully possibly moving to any desired direction with the move or the increment functions. This function need only be called once at the beginning of the program (or whenever you want to start using the PanTilt).
-
 \subsubsection{Usage:}
-This function is used to setup the Pan Tilt module so that one can direct the sensors to any direction desired. 
+This function is used to setup the Pan Tilt module so that one can direct the sensors to any direction desired. After this function is called the module moves to its default position. Then the module is fully possibly moving to any desired direction with the move or the increment functions. This function need only be called once at the beginning of the program (or whenever you want to start using the PanTilt).
 
 \subsubsection{Arguments:}
 This function takes no arguments.
@@ -337,9 +219,6 @@ This function takes no arguments.
 \subsubsection{Description}
 This function commands the pan tilt mechanism to the given position. For this function (0, 0) is defined as the midpoint in both the elevation and azimuth. In azimuth this means pointing along the length of the pan tilt mechanism, and in elevation this means pointing 45 degrees above the ground.
 
-\subsubsection{Usage}
-This function is used when you want to point at an absolute direction.
-
 \subsubsection{Arguments}
 This function takes a single object of type direction which contains the desired azimuth and elevation in degrees
 
@@ -350,27 +229,11 @@ This function returns nothing.
 \subsubsection{Description}
 This function adds an offset onto the current pan tilt direction
 
-\subsubsection{Usage}
-This function is used when you want to move the direction pointed to by some amount, without particularly caring about the absolute direction.
-
 \subsubsection{Arguments}
 This function takes a single object of type Direction, which contains the incremental value in both the azimuth and elevation directions in degrees.
 
 \subsubsection{Return Value}
 This function returns nothing
-
-\subsection{IncrementFine}
-\subsubsection{Description:}
-This function does the same thing as the Increment function, but it increments in the smallest possible resolution of the pan Tilt module, not degrees.
-
-\subsubsection{Usage}
-This function is used in lieu of increment when greater angular resolution is required, such as the tracking algorithm.
-
-\subsubsection{Arguments}
-This function takes a single object of type Direction (defined in common.h) which represents the desired relative direction. Unlike the increment function this argument is \emph{not in degrees}, but the smallest possible resolution, individual clock ticks on the high time. For the 10MHz clock on the minimal board this is expected to be ~0.04deg.
-
-\subsubsection{Return Value}
-None
 
 \section{Example Code:}
 \begin{lstlisting}
@@ -399,153 +262,46 @@ void main()
 The Temperature module controls the sampling and calibration of the temperature sensor.
 
 \section{How It Works:}
-The temperature module is very simply and mostly revolves around the AD sampling of the temperature sensor. The temperature is not expected to fluctuate much over a short period of time. For this reason the temperature is only sampled over reasonably long intervals (e.g. a minute). The temperature module simply stores the last measured temperature and returns this in the getTemp() function.
 
 \section{How To Use It:}
 \begin{itemize}
-	\item Include Temp.h in your source code file
-	\item Call configureTemp() to setup the module
-	\item Call readTemp() or readTempx2() to re-sample the temperature
-	\item Call getTemp() to return the last sample temperature
+	\item 
 \end{itemize}
 
 \section{List of Public Functions}
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
-\subsection{configureTemp}
-\subsubsection{Description}
-Configures the temperature module so that it can be used
-
+\subsection{}
 \subsubsection{Usage:}
-This function is used once at the beginning of the program to configure the temperature module for use.
 
 \subsubsection{Arguments:}
-None
 
 \subsubsection{Return Value:}
-None
-
-\subsection{rawTemp}
-\subsubsection{Description:}
-This function returns the raw temperature, the sensor data without any calibration offset.
-
-\subsubsection{Usage}
-This function is primarily for when the user wants to display the raw temperature reading
-
-\subsubsection{Arguments}
-None
-
-\subsubsection{Return Value}
-The raw temperature reading in degrees
-
-\subsection{readTemp}
-\subsubsection{Description}
-This function takes a sensor read of the temperature, returns the result and stores it in the temperature module
-
-\subsubsection{Usage}
-This function is called periodically to re-sample the temperature, to account for environmental differences during use.
-
-\subsubsection{Arguments}
-None
-
-\subsubsection{Return Value}
-The temperature read by the sensor (and calibrated).
-
-\subsection{readTempx2}
-\subsubsection{Description}
-This function does the same thing as readTemp, but it returns twice the temperature in degrees, allowing for better resolution.
-
-\subsubsection{Usage}
-Used in lieu of readTemp when better resolution is required
-
-\subsubsection{Arguments}
-None
-
-\subsubsection{Return Value}
-Twice the temperature x2
-
-\subsection{calibrateTemp}
-\subsubsection{Description}
-Calibrates the current sensor reading to a given value
-
-\subsubsection{Usage}
-Used to calibrate an offset in the temperature sensor module
-
-\subsubsection{Arguments}
-Takes the temperature to calibrate the temperature sensor to
-
-\subsubsection{Return Value}
-None
-
-\subsection{getTemp}
-\subsubsection{Description}
-Returns the temperature from the last sample taken
-
-\subsubsection{Usage}
-Used to get the temperature without having to re-sample the temperature sensor.
-
-\subsubsection{Arguments}
-None
-
-\subsubsection{Return Value}
-The temperature from the last sample
 
 \section{Example Code:}
-\begin{lstlisting}
-#include "Temp.h"
-
-void main(void)
-{
-	unsigned char temperature;
-	
-	configureTemp();
-	calibrateTemp(25); //Calibrate temperature sensor to 25deg
-	
-	temperature = readTemp();
-	
-	//Just keeps returning the same temperature
-	for (;;) temperature = getTemp();
-}
-\end{lstlisting}
 
 \chapter{Tracking}
 \section{Description}
 The tracking module contains the high level tracking and search algorithms used by the system. It then uses the Pan Tilt and Range modules to enact these modules.
 
 \section{How It Works:}
-The Tracking module contains two primary functions: search and track. Each of these functions is 'incremental' in nature. This means a single call will perform a single 'step', and these functions are called continuously to perform a constant action. \newline
-The search algorithm is based on a simple raster like scan. The tracking algorithm tracks the centre of the target by finding the edges in both azimuth and elevation, and moving back to the centre. \newline
-This module makes use of the panTilt, range and temp modules which in turn use interrupts. This means that Interrupts.c must be included it the build for the tracking module to work. A user need not worry about configuring the modules used by tracking, as everything is set up in the configureTracking function
 
 \section{How To Use It:}
 \begin{itemize}
-	\item Include "Tracking.h"
-	\item Call configureTracking()
-	\item Repeatedly Call Search()
+	\item 
 \end{itemize}
 
 \section{List of Public Functions}
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
-\subsection{ConfigureTracking}
-\subsubsection{Description:}
-Configures the tracking module, and all subsequent modules used by the tracking module.
-
+\subsection{}
 \subsubsection{Usage:}
-This function must be called before making use of any functions within the tracking module.
 
 \subsubsection{Arguments:}
-None
 
 \subsubsection{Return Value:}
-None
-
-\subsection{Search}
-\subsubsection{Description:}
-Performs a single increment of the Pan Tilt mechanism in a defined search pattern.
 
 \section{Example Code:}
-
 
 \chapter{User\_Interface}
 \section{Description}
@@ -638,200 +394,5 @@ Below is a definitive list of all the public functions contained in this module,
 \subsubsection{Return Value:}
 
 \section{Example Code:}
-
-\part{Hardware}
-\chapter{Assembly Instructions}
-Follow the following instructions to assemble the system. (see the following sections for detailed information about each step)
-
-\begin{enumerate}
-	\item Connect the Power
-	\item Connect the Servos
-	\item Connect the ultrasonic
-	\item Connect the IR sensor
-	\item Connect the Temperature sensor
-	\item Plug in Serial cable (if used)
-\end{enumerate}
-
-\section{Power Connections}
-The system runs of a 5v regulated line powered by a 9v battery. The ultrasonic sensor has its own regulator to account for its power surges, so it is treated differently. All other components can be powered off the remaining 5v bus.
-
-\begin{enumerate}
-	\item Make sure battery is inserted, and has charge
-	\item 
-\end{enumerate}
-
-\chapter{Pin Connections}
-\subsection{Ultrasonic}
-The ultrasonic sensor uses the following pins: 
-\begin{itemize}
-	\item INIT - RC3 (Ultrasound pin 4)
-	\item ECHO - RC2 (Ultrasound pin 7)
-	\item V+ - Ultrasonic 5v bus  (Ultrasound pin 9)
-	\item GND - Ultrasonic 0v (Ultrasound pin 1)
-\end{itemize}
-Refer to the diagrams \ref{PanTiltPins} below for the Ultrasonic and other pan tilt module pins.
-
-\includepdf[pages={2}]{"../Datasheets/Servos and PanTilt/Notes_on_Pan-Tilt_Assembly"};
-\label{PanTiltPins}
-
-\subsection{IR}
-The IR uses the following pins:
-\begin{itemize}
-	\item Output - AN0 (IR pin 1)
-	\item Vcc - 5v bus (IR pin 3)
-	\item GND - 0v bus (IR pin 2)
-\end{itemize}
-
-\subsection{Servos}
-The servos make use of the following pins:
-\begin{itemize}
-	\item PDM (Az.) - RC0 (YEL)
-	\item PDM (El.) - RC1 (YEL)
-	\item V+ - 5v bus (RED)
-	\item GND - 0v bus (BWN)
-\end{itemize}
-
-\subsection{Temperature Sensor}
-The temperature sensor makes use of the following pins:
-\begin{itemize}
-	\item Output - AN1 
-	\item V+ - 5v bus
-	\item GND - 0v bus
-\end{itemize}
-Refer to the diagram below for the pin placements of the temperature sensor.
-
-\includepdf[pages={2}]{"../Datasheets/Temp Sensor/TI_LM35"};
-\label{TempSensorPins}
-
-
-\subsection{LCD}
-
-\subsection{Buttons (Interface)}
-
-\chapter{Power Bus}
-\subsection{Description}
-The power bus is responsible for supplying power to the entire system. It must be capable of running off a single 9v battery, and supplying the regulated 5v required for all of the components used.
-
-\subsection{Circuit Diagram}
-Fig. \ref{fig:PowerBus} is a schematic of the power bus used in this system. The bypass capacitors are used to reduce current draw during sudden voltage switching. The ultrasonic sensor has a separate voltage regulator as even the 1mF bypass capacitor cannot completely regulate the 2A power spike when the ultrasonic sensor emits. By decoupling the regulators all other components aren't affected by current draw on the ultrasonic unless the internal battery voltage drop lowers the input of the regulator below 6v.
-\begin{figure}
-\centering
-\includegraphics[width=1.2\linewidth]{"../Diagrams/Power Bus Rotated"}
-\caption{Power Bus Circuit Diagram}
-\label{fig:PowerBus}
-\end{figure}
-
-\chapter{Minimal Board}
-\section{Description}
-The minimal board is a PCB on which is mounted the micro controller running the system, power regulators, IO pins, and the serial port.
-
-\section{Power Requirements}
-Requires a 5v regulated power supply, or a 9v unregulated supply. The current draw is dependant on the computations being performed and other factors.
-
-\chapter{Ultrasonic Sensor}
-\section{Description}
-The ultrasonic sensor is a polarised sonar sensor which sends out an audible click and detects the return of the reflected tick (actually a series of pulses). The range to an object is calculated based on the flight time of the return signal.
-
-\section{Power Requirements}
-The ultrasonic sensor requires a regulated 5v power supply.  The sensor primarily draws current when it begins pulsing, and can draw up to 2A during this short time. For this reason the ultrasonic sensor has a 1mF bypass capacitor and its own regulated bus. This means these sharp current spikes do not affect the voltage to the other components.
-
-\chapter{IR Sensor}
-\section{Description}
-
-\section{Power Requirements}
-
-
-\part{Trouble Shooting}
-\chapter{Hardware}
-\section{Unexpected Target Address Programming PIC}
-\subsection{Description}
-While trying to program the PIC with a PICkit, or ICD a message just keeps coming up saying the target address is 0x00 or something, and cannot program the device.
-
-\subsection{Cause}
-This is a generic issue for just about any communications problem between the PIC and the programming device. David has mentioned several times that it can be caused by interference on the bus. Personally I have found it is usually the capacitor on MCLR to be the issue. MCLR is the external reset for the PIC, and is connected to the programmer so that the device can be reset to run the program etc. If the capacitor is too large the device cannot change the value fast enough, and you will just get zeros. If the cap is too small it may float somewhat and get random values.
-
-\subsection{Solution}
-The nominal cap value on MCLR (at least for the PICkit) is 0.1$\mu$F. If this is not what you have, perhaps try 0.1$\mu$F. We have also found success by removing the cap altogether. Otherwise see if you can shorten the cable, and/or check the programmer output on an oscilloscope to see if it is broken.
-
-\section{'Sneezing' motion}
-\subsection{Description}
-The servos seem to jump a little whenever the Ultrasonic sensor fires, giving the impression of 'sneezing'.
-
-\subsection{Source}
-This problem is a result of connecting the servos and ultrasonic sensor to the same power bus. When the ultrasonic sensor fires it draws 2A, which is enough to case a sizeable voltage drop on the power bus. This is enough to effect the position of the servos, and probably the IR sensor, although this is not as noticeable.
-
-\subsection{Solution}
-Solve this problem by connecting the ultrasonic sensor to the separate power bus provided.
-
-\section{Jittery Servos}
-\subsection{Description}
-The servos are jittering around all over the place and everything in the software seems to be correct.
-
-\subsection{Cause}
-This may be caused by not supplying a common ground to the servos. The servos use a control PDM signal sent from the PIC. But the servos may be powered from a different power source and thus the voltage between the grounds can float.
-
-\subsection{Solution}
-Solve this by creating a common ground between the servos and the PIC - by connecting the grounds together.
-
-\section{Servos Going Crazy}
-\subsection{Description}
-The pan Tilt module has been configured and used as documented, but the servos (or one of the servos) are going haywire.
-
-\subsection{Source}
-Plugging the PDM outputs to the servos may be distorting the PDM signals. It is not entirely known why this is the case; check this on an oscilloscope with the PDM outputs both connected and disconnected to the servo inputs.
-
-\subsection{Solution}
-Try placing a voltage follower between the PDM output and the servo inputs. This acts as a buffer and attempts to prevent the servos input characteristics impacting the output signal from the PIC. 
-
-\chapter{Software}
-\section{Module Just Not Working}
-\subsection{Description}
-A module, or functions within the module are just not working, and you have no idea why.
-
-\subsection{Cause}
-You may have forgotten to call the associated configure function, or left out the Interrupts.c file.
-
-\subsection{Solution}
-Make absolutely sure that the relevant configure function has been called. Also make sure that the Interrupts.c file has been added to the build (won't matter for non interrupt driven modules).
-
-\section{Public Interface functions undeclared}
-\subsection{Description}
-Whenever you try to use the documented public interface functions the compiler tells you that they are undeclared.
-
-\subsection{Cause}
-You may have forgotten to include the relevant header file, which contains external declaration of all the functions so that you can see/use them elsewhere in the program.
-
-\subsection{Solution}
-Include the relevant header file.
-
-\section{Serial Not Transmitting}
-\subsection{Description}
-Serial has been set up as documented, but the transmit function is not working, or works some of the time. May also be transmitting random stuff.
-
-\subsection{Source}
-A likely source of issue is trying to pass a literal to the transmit function. As detailed in the sections above, a literal is stored in program memory. The pointer passed to the function can only access RAM.
-
-\subsection{Solution}
-To solve this problem initialise a string variable and pass a pointer to the variable. The variable is stored in RAM and initialised from the program memory literal.
-
-\section{Serial Transmitting Garbage}
-\subsection{Description}
-All of the serial module steps have been followed, the serial is being transmitted and received, but all data is garbage.
-
-\subsection{Source}
-A likely source for this problem is an incorrect baud rate being set. 
-
-\subsection{Solution}
-Make sure that MNML is declared in Common.h if using the minimal board, or not set if using a picdem. Also check that the terminal is receiving at 9600 baud. If an external clock or oscillator is used that is neither 10MHz, nor 4MHz then small changes must be made in the serial module.
-
-\subsection{Source}
-Another possible cause is that the string you are passing is not correctly null terminated. In this case you should expect to see some number (up to BUFFERLENGTH) characters transmitted which may or may not include the desired string.
-
-\section{Incorrect Calculations}
-\subsection{Description}
-The processor is returning incorrect results to simple arithmetic calculations such as multiplication.
-
-\subsection{Cause}
-A very common issue in MPLabX is that the complier does not support integer promotion. This means if you have a literal times something else, e.g. 32*17 you may need to cast them into a larger integer type to perform the calculation, or the result may overflow. e.g. (unsigned long)32*(unsigned long)17.
 
 \end{document}          

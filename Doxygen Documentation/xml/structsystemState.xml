@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="structsystemState" kind="struct" prot="public">
+    <compoundname>systemState</compoundname>
+    <includes refid="Common_8h" local="no">Common.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsystemState_1a18284a4a782e71c070e1d2e80734509d" prot="public" static="no" mutable="no">
+        <type><ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1" kindref="member">possible_states</ref></type>
+        <definition>possible_states current</definition>
+        <argsstring></argsstring>
+        <name>current</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="122" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="122" bodyend="-1"/>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="46" endline="73">main</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structsystemState_1af2f2716b4afa23c8b53a9351a0924b6b" prot="public" static="no" mutable="no">
+        <type><ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1" kindref="member">possible_states</ref></type>
+        <definition>possible_states previous</definition>
+        <argsstring></argsstring>
+        <name>previous</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="123" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Stores the current state of the system. </para>    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+ typedef of <ref refid="structsystemState" kindref="compound">systemState</ref> struct</para><para>Description: Stores which state the system is currently in, as defined by the possible_states enumeration. Also stores the previous system state so the system knows if this is the first iteration of the state </para>    </detaileddescription>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="121" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="121" bodyend="124"/>
+    <listofallmembers>
+      <member refid="structsystemState_1a18284a4a782e71c070e1d2e80734509d" prot="public" virt="non-virtual"><scope>systemState</scope><name>current</name></member>
+      <member refid="structsystemState_1af2f2716b4afa23c8b53a9351a0924b6b" prot="public" virt="non-virtual"><scope>systemState</scope><name>previous</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
