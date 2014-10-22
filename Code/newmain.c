@@ -24,6 +24,9 @@
 #include "PanTilt.h"
 #include "Menusystem.h"
 
+#include "LCD.h"
+#include "LCD_defs.h"
+
 //Local Function Prototypes:
 static void initialization(systemState *state);
 static void transRange(void);
@@ -41,9 +44,26 @@ static void transRange(void);
  *
  * Returns: None
  *************************************************************************/
-void main() {
+void main(void) {
+
+    char table1[]="QRSTUVWXYZ123456 ";
+    char table2[]="ABCDEFGHIJKLMNOP ";
+
+    lcdInit();//initialize
+    delay(10);//delay for the clear display finishes
+    lcdWrite(DISPCLR, LCD_INS);
+
+    while(1){
+        lcdWriteString(table1, 2);
+        delay(500);
+        lcdWriteString(table2, 1);
+        delay(500);
+    }
+
     systemState state = {INIT, UNDEF};
     TrackingData target;
+
+
 
     for (;;)
     {

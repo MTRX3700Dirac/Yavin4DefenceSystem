@@ -1,11 +1,14 @@
-
 #include "Common.h"
-#include "LCD.h"
 #include "LCD_defs.h"
+#include <delays.h>
+
+void delay(unsigned int t);
+char lcdBusy(void);                 //check busy flag
+void lcdWrite(unsigned char byte, unsigned char mode);
 
 void lcdInit(void){
 
-    delay(15);
+    Delay10KTCYx(6);
 
     LCD_DATA_LINE_DIR = LCD_OUTPUT; //! Set data lines to output
 
@@ -21,10 +24,10 @@ void lcdInit(void){
 
     lcdWrite((SETDISPFXN | DL_8BIT | N_2LINE | F_5X7DOT), LCD_INS);   //! 8 bits, 2 lines, 5x7 dots, 0x38
     delay(2);
-    lcdWrite((DISPOPT | D_DISPON | C_CURSOFF | B_BLINKON), LCD_INS);  //! Display on, cursor off, blinking on (Z, 0x0F)
+    lcdWrite((DISPOPT | D_DISPON | C_CURSOFF | B_BLINKOFF), LCD_INS);  //! Display on, cursor off, blinking off (Z, 0x0F)
     lcdWrite((SETENTRYMODE | ID_CURSL | SH_DISPNSHIFT), LCD_INS);     //! Cursor moves right?, display not shift (Z, 0x04)
     lcdWrite((DISPCLR), LCD_INS);                                     //! Clear display
-    delay(15);
+    delay(5);
 }
 
 char lcdBusy(void){
@@ -69,9 +72,13 @@ char lcdBusy(void){
 
 void delay(unsigned int t)  //delay 1 ms
 {
-    while(t!=0){t--;}
-    t=100;
-    while(t!=0){t--;}
+    unsigned char x, y, z;
+    for(z=4; z>0; z--){
+        for (x=t; t>0; t--){
+            for(y=100; y>0; y--){}
+        }
+    }
+
 }
 
 void lcdWrite(unsigned char byte, unsigned char mode){
@@ -85,27 +92,30 @@ void lcdWrite(unsigned char byte, unsigned char mode){
     delay(2);
 
     LCD_E = LCD_CLKHGH;  //! Set clock high
+    delay(2);
     LCD_E = LCD_CLKLOW;  //! Set clock low
 }
 
 //!Feed character string, and line (1 or 2)
-void lcdWriteString(char *string, unsigned char line){
-    unsigned char row;
-    if(line==1){row=LINE1;}
-    else(row=LINE2);
-    while((row & LINESTART) <= LINEEND){
-        lcdWrite((SETDDRAMADD | line++), LCD_INS);
-        lcdWrite((*string)++, LCD_DATA);
-        delay(5);
-    }
+void lcdWriteString(char *string, char line){
+    char column, a;        //! Also include information about which row
+    if(line==1){column=LINE1;}
+    else if(line==2){column=LINE2;}
+        for(a=0; a<16; a++){
+            lcdWrite((SETDDRAMADD | column | a), LCD_INS);
+            lcdWrite(*string, LCD_DATA);
+            string++;
+            delay(5);
+        }
+    lcdWrite(RTNHOME, LCD_INS);
 }
 
 //!Feed character, line (1 or 2), and column(1-16)
-void lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column){
-    unsigned char row;
+void lcdWriteChar(char byte, char line, char column){
+    char row;
     if(line==1){row=LINE1;}
-    else(row=LINE2);
-    lcdWrite((SETDDRAMADD | row | column), LCD_INS);
+    else if(line==2){row=LINE2;}
+    lcdWrite((SETDDRAMADD | row | (column-1)), LCD_INS);
     lcdWrite(byte, LCD_DATA);
     delay(5);
 }
