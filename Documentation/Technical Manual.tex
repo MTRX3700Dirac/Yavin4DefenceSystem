@@ -702,4 +702,100 @@ Fig. \ref{fig:PowerBus} is a schematic of the power bus used in this system. The
 \label{fig:PowerBus}
 \end{figure}
 
+\part{Trouble Shooting}
+\chapter{Hardware}
+\section{Unexpected Target Address Programming PIC}
+\subsection{Description}
+While trying to program the PIC with a PICkit, or ICD a message just keeps coming up saying the target address is 0x00 or something, and cannot program the device.
+
+\subsection{Cause}
+This is a generic issue for just about any communications problem between the PIC and the programming device. David has mentioned several times that it can be caused by interference on the bus. Personally I have found it is usually the capacitor on MCLR to be the issue. MCLR is the external reset for the PIC, and is connected to the programmer so that the device can be reset to run the program etc. If the capacitor is too large the device cannot change the value fast enough, and you will just get zeros. If the cap is too small it may float somewhat and get random values.
+
+\subsection{Solution}
+The nominal cap value on MCLR (at least for the PICkit) is 0.1$\mu$F. If this is not what you have, perhaps try 0.1$\mu$F. We have also found success by removing the cap altogether. Otherwise see if you can shorten the cable, and/or check the programmer output on an oscilloscope to see if it is broken.
+
+\section{'Sneezing' Motion}
+\subsection{Description}
+The servos seem to jump a little whenever the Ultrasonic sensor fires, giving the impression of 'sneezing'.
+
+\subsection{Cause}
+This problem is a result of connecting the servos and ultrasonic sensor to the same power bus. When the ultrasonic sensor res it draws 2A, which is enough to case a sizeable voltage drop on the power bus. This is enough to effect the position of the servos, and probably the IR sensor, although this is not as noticeable.
+
+\subsection{Solution}
+Solve this problem by connecting the ultrasonic sensor to the separate power bus provided.
+
+\section{Jittery Servos}
+\subsection{Description}
+The servos are jittering around all over the place and everything in the software seems to be correct.
+
+\subsection{Cause}
+This may be caused by not supplying a common ground to the servos. The servos use a control PDM signal sent from the PIC. But the servos may be powered from a different power source and thus the voltage between the grounds can float.
+
+\subsection{Solution}
+Solve this by creating a common ground between the servos and the PIC - by connecting the grounds together.
+
+\section{Servos Going Crazy}
+\section{Description}
+The pan Tilt module has been configured and used as documented, but the servos (or one of the servos) are going haywire.
+
+\subsection{Cause}
+Plugging the PDM outputs to the servos may be distorting the PDM signals. It is not entirely known why this is the case; check this on an oscilloscope with the PDM outputs both connected and disconnected to the servo inputs.
+
+\subsection{Solution}
+Try placing a voltage follower between the PDM output and the servo inputs. This acts as a buffer and attempts to prevent the servos input characteristics impacting the output signal from the PIC.
+
+\chapter{Software}
+\section{Module Just Not Working}
+\subsection{Description}
+A module, or functions within the module are just not working, and you have no idea why.
+
+\subsection{Cause}
+You may have forgotten to call the associated configure function, or left out the Interrupts.c file.
+
+\subsection{Solution}
+Make absolutely sure that the relevant configure function has been called. Also make sure that the Interrupts.c file has been added to the build (won't matter for non interrupt driven modules).
+
+\section{Public Interface Functions Not Declared}
+\subsection{Description}
+Whenever you try to use the documented public interface functions the compiler tells you that they are not declared.
+
+\subsection{Cause}
+You may have forgotten to include the relevant header file, which contains external declaration of all the functions so that you can see/use them elsewhere in the program.
+
+\subsection{Solution}
+Include the relevant header file.
+
+\section{Serial Not Transmitting}
+\subsection{Description}
+Serial has been set up as documented, but the transmit function is not working,
+or works some of the time. May also be transmitting random stuff.
+
+\subsection{Cause}
+A likely source of issue is trying to pass a literal to the transmit function. As
+detailed in the sections above, a literal is stored in program memory. The
+pointer passed to the function can only access RAM.
+
+\subsection{Solution}
+To solve this problem initialise a string variable and pass a pointer to the variable. The variable is stored in RAM and initialised from the program memory literal.
+
+\section{Serial Transmitting Garbage}
+\subsection{Description}
+All of the serial module steps have been followed, the serial is being transmitted
+and received, but all data is garbage.
+
+\subsection{Cause}
+A likely source for this problem is an incorrect baud rate being set.
+
+\subsection{Solution}
+Make sure that MNML is declared in Common.h if using the minimal board,
+or not set if using a picdem. Also check that the terminal is receiving at 9600
+baud. If an external clock or oscillator is used that is neither 10MHz, nor 4MHz
+then small changes must be made in the serial module.
+
+\subsection{Cause}
+Another possible cause is that the string you are passing is not correctly null
+terminated. In this case you should expect to see some number (up to BUFFER-
+LENGTH) characters transmitted which may or may not include the desired
+string.
+
 \end{document}          
