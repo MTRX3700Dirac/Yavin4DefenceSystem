@@ -25,6 +25,13 @@
 #include "Menusystem.h"
 #include "HardUItest.h"
 
+#include "LCD.h"
+#include "LCD_defs.h"
+
+//Local Function Prototypes:
+static void initialization(systemState *state);
+static void transRange(void);
+
 // THIS NEEDS TO BE HERE
 #include "ConfigRegs18f4520.h"
 
@@ -49,12 +56,25 @@ extern unsigned int rangeIR(void);
  * @todo test and debug the Watch Dog Timer functionality
  *************************************************************************/
 void main(void) {
+    char table1[]="QRSTUVWXYZ123456 ";
+    char table2[]="ABCDEFGHIJKLMNOP ";
     unsigned int i;
+
+    lcdInit();//initialize
+    delay(10);//delay for the clear display finishes
+    lcdWrite(DISPCLR, LCD_INS);
+
+    while(1){
+        lcdWriteString(table1, 2);
+        delay(500);
+        lcdWriteString(table2, 1);
+        delay(500);
+    }
+
     systemState state = {INIT, UNDEF};
     TrackingData target;
     Direction dir;
     char str[80] = {0};
-
 
 //    initialiseMenu();
     // strlenpgm(welcome)
@@ -80,7 +100,7 @@ void main(void) {
 //        //transmit(string);
 //        for(i=0;i<30000;i++);
 //    }
-    
+
     for (;;)
     {
         switch (state.current)

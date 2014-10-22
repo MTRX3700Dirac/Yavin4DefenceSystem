@@ -12,13 +12,9 @@
 #ifndef LCD_H
 
 //External declarations of public access functions
-extern void lcdWriteString(char *string, unsigned char line);   //!Feed character string, and line (1 or 2)
-extern void lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column);    //!Feed character, line (1 or 2), and column(1-16)
+extern void lcdWriteString(char *string, char line);   //!Feed character string, and line (1 or 2)
+extern void lcdWriteChar(char byte, char line, char column);    //!Feed character, line (1 or 2), and column(1-16)
 extern void lcdInit(void);                //initialize
-
-void delay(unsigned int t);
-char lcdBusy(void);                 //check busy flag
-void lcdWrite(unsigned char byte, unsigned char mode);
 
 #define LCD_H
 #endif
