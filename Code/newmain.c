@@ -7,12 +7,11 @@
  *
  * Created on 7 September 2014, 4:12 PM
  */
-
-#pragma config WDT = OFF	//Turns watchdog Timer off
-#pragma config OSC = HS		//The crystal oscillator set to "High Speed"
-#pragma config LVP = OFF	//
-#pragma config DEBUG = ON
-
+//
+//#pragma config WDT = OFF	//Turns watchdog Timer off
+//#pragma config OSC = HS		//The crystal oscillator set to "High Speed"
+//#pragma config LVP = OFF	//
+//#pragma config DEBUG = ON
 #include "Common.h"
 
 #include "Tracking.h"
@@ -25,6 +24,9 @@
 
 #include "Menusystem.h"
 #include "HardUItest.h"
+
+// THIS NEEDS TO BE HERE
+#include "ConfigRegs18f4520.h"
 
 //Define Macros to change the state of the system
 #define NEXT_STATE(s) state.previous = state.current; state.current = s
@@ -49,7 +51,6 @@ void post_edge(TrackingData *target);
 
 extern unsigned int rangeIR(void);
 
-
 /*! **********************************************************************
  * Function: main(void)
  *
@@ -64,26 +65,41 @@ extern unsigned int rangeIR(void);
  * Returns: None
  *************************************************************************/
 void main(void) {
+    unsigned int i;
     systemState state = {INIT, UNDEF};
     TrackingData target;
     Direction dir;
+    char str[80] = {0};
 
-    configureSerial();      //!Call the serial configuration to enable USART Subsysten
-    menu(top1);
 
-    rangeUltrasonic();
-    
+//    initialiseMenu();
+    // strlenpgm(welcome)
+//    for(;;)
+//    {
+//        sendROM(welcome);
+//        for (i=0;i<10000;i++);
+//    }
     configureBase();
+    initialiseMenu();
+    menu();
+
     
-    dir.azimuth = 30;
-    dir.inclination = -20;
-    move(dir);
-    
-    for(;;);
+//    configureBase();
+//
+//    dir.azimuth = 0;
+//    dir.inclination = 0;
+//    move(dir);
+//
+//    for(;;)
+//    {
+//        rangeUltrasonic();
+//        //transmit(string);
+//        for(i=0;i<30000;i++);
+//    }
     
     for (;;)
     {
-        if (TMR1H > 10000) serviceMenu();
+        if (TMR1H > 10000) waitForSerialInput();
         switch (state.current)
         {
             case INIT:
@@ -129,8 +145,14 @@ void initialization(systemState *state)
 
     //Open ADC. Set A/D conversion Clock to Fosc/2, Acuisition time is 20TAD (10 microseconds)
     //Read from channel 0, and disable A/D interrupts
-    //OpenADC(ADC_FOSC_2 & ADC_RIGHT_JUST & ADC_20_TAD, ADC_CH0 & ADC_INT_OFF);
+
+    // On the MNML board, use a different ADC
+#ifdef MNML
     OpenADC(ADC_FOSC_2 & ADC_0_TAD & ADC_INT_OFF, ADC_RIGHT_JUST & ADC_1ANA, ADC_CH0);
+#else
+    OpenADC(ADC_FOSC_2 & ADC_RIGHT_JUST & ADC_20_TAD, ADC_CH0 & ADC_INT_OFF);
+#endif
+
     TRISAbits.TRISA0 = 1;   //Set channel 0 on port A input
     TRISAbits.TRISA1 = 1;   //Set channel 1 on port A input
     TRISAbits.TRISA2 = 1;   //Set channel 2 on port A input

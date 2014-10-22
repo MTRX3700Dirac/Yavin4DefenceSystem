@@ -17,8 +17,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <p18f4520.h>
 #include <string.h>
+#include <p18cxxx.h>
+// Commented out for the general case. Put back in if it breaks
+//#include <p18f4520.h>
+
+
 
 //Peripherial headers
 #include <timers.h>
@@ -48,7 +52,7 @@ typedef struct
 typedef enum{NO_TARGET, OUT_OF_IR, BAD_DIR, GOOD_TRACK, CLOSE_RANGE} TargetState;
 
 // Use the MNML Board
-#define MNML
+#define MNML 1
 
 //Efficient Division macros
 #define DIV_2(v) ((v) >> 1)       //Divide by 2, Cannot be used on negative numbers
@@ -77,6 +81,8 @@ typedef enum{NO_TARGET, OUT_OF_IR, BAD_DIR, GOOD_TRACK, CLOSE_RANGE} TargetState
 #define CCP1_INT (PIR1bits.CCP1IF && PIE1bits.CCP1IE) //Whether CCP1 fired the interrupt
 #define CCP2_INT (PIR2bits.CCP2IF && PIE2bits.CCP2IE) //Whether CCP2 fired the interrupt
 #define INT0_INT (INTCONbits.INT0IF && INTCONbits.INT0IE) //Whether the external interrupt fired
+#define INT1_INT (INTCON3bits.INT1IF && INTCON3bits.INT1IE) //Whether the external interrupt fired
+#define INT2_INT (INTCON3bits.INT2IF && INTCON3bits.INT2IE) //Whether the external interrupt fired
 #define RB_INT   (INTCONbits.RBIF && INTCONbits.RBIE)  //Whether the RB port change interrupt fired
 #define TMR2_INT (PIR1bits.TMR2IF && PIE1bits.TMR2IE)   //TMR2 matching PR2 fired the interrupt
 

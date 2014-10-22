@@ -20,7 +20,7 @@
 
 #include "Common.h"
 #include "Temp.h"
-//#include "p18f4520.h"
+
 
 //(Approximate) speed of sound calculation macro
 #define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
@@ -81,7 +81,8 @@ void configureAD(void)
     TRISA = 0xFF;
 
     //Write the configuration values into the configuration registers
-    ADCON1 = 0x8E;      // ADFM set
+    ADCON2bits.ADFM = 1;    //right justified
+    ADCON1 = 0x8C;      // ADFM set, AN0 AN1 and AN2 analogue input
     ADCON0 = 0x41;
     
     //Arbitrary wait period to allow the ADC to initialise
