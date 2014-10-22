@@ -1,0 +1,949 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="_l_c_d__defs_8h" kind="file">
+    <compoundname>LCD_defs.h</compoundname>
+    <includedby refid="_l_c_d_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c</includedby>
+    <invincdepgraph>
+      <node id="312">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h</label>
+        <link refid="LCD_defs.h"/>
+        <childnode refid="313" relation="include">
+        </childnode>
+      </node>
+      <node id="313">
+        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c</label>
+        <link refid="_l_c_d_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ab1956831e022c90f2b658a8a840ef09e" prot="public" static="no">
+        <name>LCD_D0</name>
+        <initializer><ref refid="p18f4520_8h_1a5e244c0d8c44f92adf1e3fa35b83ad7b" kindref="member">PORTDbits.RD0</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="8" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ac6b74016e58d58b47230a2d0aaf959d8" prot="public" static="no">
+        <name>LCD_D1</name>
+        <initializer><ref refid="p18f4520_8h_1aaf160461556cf17b85f2e6210a87eec2" kindref="member">PORTDbits.RD1</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="9" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1aa97ea257a9007a9055e5f77e1b3336e5" prot="public" static="no">
+        <name>LCD_D2</name>
+        <initializer><ref refid="p18f4520_8h_1a8226de427632c18d70f0ba436e26848d" kindref="member">PORTDbits.RD2</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="10" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a3d23f1f20ad1f0fb190f4a10334f4bf1" prot="public" static="no">
+        <name>LCD_D3</name>
+        <initializer><ref refid="p18f4520_8h_1af17e8e4002cf3df68e9d78a35fd6c5fa" kindref="member">PORTDbits.RD3</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="11" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ade7e247311032a474711416da480ed8b" prot="public" static="no">
+        <name>LCD_D4</name>
+        <initializer><ref refid="p18f4520_8h_1a1e1509ac90622f2daad1f47635a9632b" kindref="member">PORTDbits.RD4</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="12" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a5b91fe480c768d4f246f3890207bfbfc" prot="public" static="no">
+        <name>LCD_D5</name>
+        <initializer><ref refid="p18f4520_8h_1a69bfa549410c7235f9aaaeed9f406696" kindref="member">PORTDbits.RD5</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="13" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a72e105fcda5fd1c07b5f391379a439d4" prot="public" static="no">
+        <name>LCD_D6</name>
+        <initializer><ref refid="p18f4520_8h_1abafc54b5f1adc5ed88948f006088096e" kindref="member">PORTDbits.RD6</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="14" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1abd65075e01c7413419581aedee5bcc24" prot="public" static="no">
+        <name>LCD_D7</name>
+        <initializer><ref refid="p18f4520_8h_1a4b3e758ddc25f7b699b3410bf6a1c441" kindref="member">PORTDbits.RD7</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="15" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ad2d1be08ecd7f00fd22cb54e0dd817ea" prot="public" static="no">
+        <name>LCD_D0_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1a5e244c0d8c44f92adf1e3fa35b83ad7b" kindref="member">TRISDbits.RD0</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="17" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ae05eb1a8d2d72fbebf39329a2f97f206" prot="public" static="no">
+        <name>LCD_D1_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1aaf160461556cf17b85f2e6210a87eec2" kindref="member">TRISDbits.RD1</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="18" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a01202c3f5b67c77883d49988dc16f904" prot="public" static="no">
+        <name>LCD_D2_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1a8226de427632c18d70f0ba436e26848d" kindref="member">TRISDbits.RD2</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="19" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ae252fe796145d8f1ed56f89cb4fdc016" prot="public" static="no">
+        <name>LCD_D3_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1af17e8e4002cf3df68e9d78a35fd6c5fa" kindref="member">TRISDbits.RD3</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="20" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1af234abb162ecaac5dc6abcfb8042c493" prot="public" static="no">
+        <name>LCD_D4_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1a1e1509ac90622f2daad1f47635a9632b" kindref="member">TRISDbits.RD4</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="21" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1aca9d9b8acc087d9f3f2dbb84dd4d1ec1" prot="public" static="no">
+        <name>LCD_D5_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1a69bfa549410c7235f9aaaeed9f406696" kindref="member">TRISDbits.RD5</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="22" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a8c800810582edafb15f64a4614f61b76" prot="public" static="no">
+        <name>LCD_D6_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1abafc54b5f1adc5ed88948f006088096e" kindref="member">TRISDbits.RD6</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="23" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ae24aaa402fb7ccde7b9f1091f7abcd92" prot="public" static="no">
+        <name>LCD_D7_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1a4b3e758ddc25f7b699b3410bf6a1c441" kindref="member">TRISDbits.RD7</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="24" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a5a1e7e315586945fe0fbf4989ee40afc" prot="public" static="no">
+        <name>LCD_DATA_LINE</name>
+        <initializer><ref refid="p18f4520_8h_1ab81efa297900adba97f7eb5093c827d4" kindref="member">PORTD</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="26" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a500de059df24a647c81d895c38625d6c" compoundref="_l_c_d_8c" startline="143" endline="155">lcdWrite</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1afa3b04d2041fda644c1dc08754a269d2" prot="public" static="no">
+        <name>LCD_DATA_LINE_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1a27fe1a8b121fc5461973401a85af2748" kindref="member">TRISD</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="27" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+        <referencedby refid="_l_c_d_8h_1a500de059df24a647c81d895c38625d6c" compoundref="_l_c_d_8c" startline="143" endline="155">lcdWrite</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a4781e073871c6f27f89b9463ad3a4ed1" prot="public" static="no">
+        <name>LCD_RS</name>
+        <initializer><ref refid="p18f4520_8h_1acbac2bc4f50222ec7e8549d800993842" kindref="member">PORTCbits.RC1</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="30" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+        <referencedby refid="_l_c_d_8h_1a500de059df24a647c81d895c38625d6c" compoundref="_l_c_d_8c" startline="143" endline="155">lcdWrite</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a26089a10ddd59a0dc7283c19ccc02533" prot="public" static="no">
+        <name>LCD_RW</name>
+        <initializer><ref refid="p18f4520_8h_1a2155381890524f46a1a03878e5f52682" kindref="member">PORTCbits.RC2</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="31" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+        <referencedby refid="_l_c_d_8h_1a500de059df24a647c81d895c38625d6c" compoundref="_l_c_d_8c" startline="143" endline="155">lcdWrite</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a6ec15b1e813d1f56d2eb644a127e5d49" prot="public" static="no">
+        <name>LCD_E</name>
+        <initializer><ref refid="p18f4520_8h_1ae6cab3544e1e4b7eaec41046bf007800" kindref="member">PORTCbits.RC3</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="32" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+        <referencedby refid="_l_c_d_8h_1a500de059df24a647c81d895c38625d6c" compoundref="_l_c_d_8c" startline="143" endline="155">lcdWrite</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ae112ce30f55dc77f42c171b99e3e88ed" prot="public" static="no">
+        <name>LCD_RS_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1acbac2bc4f50222ec7e8549d800993842" kindref="member">TRISCbits.RC1</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="35" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ab7232fa939651a37b3ecd6c680825ab1" prot="public" static="no">
+        <name>LCD_RW_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1a2155381890524f46a1a03878e5f52682" kindref="member">TRISCbits.RC2</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="36" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ac0cff66c1771fb318dcbfd286a1a0cb2" prot="public" static="no">
+        <name>LCD_E_DIR</name>
+        <initializer><ref refid="p18f4520_8h_1ae6cab3544e1e4b7eaec41046bf007800" kindref="member">TRISCbits.RC3</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="37" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a486f39e96159ebb7b722f66b8c7f3c57" prot="public" static="no">
+        <name>LCD_INS</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="39" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+        <referencedby refid="_l_c_d_8h_1a70a8f1041fdd13688a8f8e9fd897ccda" compoundref="_l_c_d_8c" startline="172" endline="181">lcdWriteString</referencedby>
+        <referencedby refid="_l_c_d_8h_1a69bb3d698d74da5ea85d8a455dbb3b28" compoundref="_l_c_d_8c" startline="199" endline="206">lcdWriteChar</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a25e9d818788f36ed74d7c4579f87f2a6" prot="public" static="no">
+        <name>LCD_DATA</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="40" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a70a8f1041fdd13688a8f8e9fd897ccda" compoundref="_l_c_d_8c" startline="172" endline="181">lcdWriteString</referencedby>
+        <referencedby refid="_l_c_d_8h_1a69bb3d698d74da5ea85d8a455dbb3b28" compoundref="_l_c_d_8c" startline="199" endline="206">lcdWriteChar</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ac83c798c669ca46b417ecc89c6ad37fe" prot="public" static="no">
+        <name>LCD_WRITE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="41" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a500de059df24a647c81d895c38625d6c" compoundref="_l_c_d_8c" startline="143" endline="155">lcdWrite</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ad543004401896d9736084fcd833b7fd6" prot="public" static="no">
+        <name>LCD_READ</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="42" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ab1110764abf2ec7cb233abc6176b0680" prot="public" static="no">
+        <name>LCD_CLKLOW</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="43" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+        <referencedby refid="_l_c_d_8h_1a500de059df24a647c81d895c38625d6c" compoundref="_l_c_d_8c" startline="143" endline="155">lcdWrite</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a5d6929a4edefd6f446dedd2d18b89209" prot="public" static="no">
+        <name>LCD_CLKHGH</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="44" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="44" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+        <referencedby refid="_l_c_d_8h_1a500de059df24a647c81d895c38625d6c" compoundref="_l_c_d_8c" startline="143" endline="155">lcdWrite</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a0024da29b32bafdae7aa8d344791d674" prot="public" static="no">
+        <name>LCD_OFF</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="45" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a47a809dfec086fdeca93dedc4fb83b44" prot="public" static="no">
+        <name>LCD_ON</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="46" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ae20812d3d385d3b8ce9aec04c15931c0" prot="public" static="no">
+        <name>LCD_INPUT</name>
+        <initializer>0xFF</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="48" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="48" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a58d5d0ca08e231d06cb669b9c7b796bf" prot="public" static="no">
+        <name>LCD_OUTPUT</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="49" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="49" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+        <referencedby refid="_l_c_d_8h_1a500de059df24a647c81d895c38625d6c" compoundref="_l_c_d_8c" startline="143" endline="155">lcdWrite</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1aa42a52fb0bc33a4613f9d0805aaf9bcf" prot="public" static="no">
+        <name>LCD_PIN_INPUT</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="50" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a2d4167285379b41058accba2fb2db3a4" prot="public" static="no">
+        <name>LCD_PIN_OUTPUT</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="51" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a1284e7ac55dad081842451e7435c7978" prot="public" static="no">
+        <name>DISPCLR</name>
+        <initializer>0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="53" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="53" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a150b9ecc52517d65034d50df5c71d6cc" prot="public" static="no">
+        <name>RTNHOME</name>
+        <initializer>0x02</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="54" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a2203e462025f076098257f34776b114e" prot="public" static="no">
+        <name>SETENTRYMODE</name>
+        <initializer>0x04</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="55" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="55" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a410d807596fe23832bdba561312fc538" prot="public" static="no">
+        <name>ID_CURSL</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="56" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="56" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ab3555808ed189f13f51c43e5b2d8ee4d" prot="public" static="no">
+        <name>ID_CURSR</name>
+        <initializer>0x02</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="57" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a9141826d7f78e7c4bfe646ea4ab23e90" prot="public" static="no">
+        <name>SH_DISPNSHIFT</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="58" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="58" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a1e724cfff7e0066597209528f2cd05a8" prot="public" static="no">
+        <name>SH_DISPSHIFT</name>
+        <initializer>0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="59" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a23f9a6bd742860ecdcb41c932ab8ebf1" prot="public" static="no">
+        <name>DISPOPT</name>
+        <initializer>0x08</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="60" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="60" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1afdb29da95d5b9449afb091fca527c4fc" prot="public" static="no">
+        <name>D_DISPOFF</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="61" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a22db0d26a986b2793fa8eb57e9e8777e" prot="public" static="no">
+        <name>D_DISPON</name>
+        <initializer>0x04</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="62" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="62" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a3200720e75b31e2ec6ed294d09419933" prot="public" static="no">
+        <name>C_CURSON</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="63" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a360299bea880deca900b567ba9fffb3a" prot="public" static="no">
+        <name>C_CURSOFF</name>
+        <initializer>0x02</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="64" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="64" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1abf51d618f5bf1585e82c35bb5f569fe8" prot="public" static="no">
+        <name>B_BLINKOFF</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="65" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a4b81e13dfe5251ca0ccf7a559067d954" prot="public" static="no">
+        <name>B_BLINKON</name>
+        <initializer>0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="66" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a56131de6df7700649b75d71337531112" prot="public" static="no">
+        <name>DISPSHIFTCURS</name>
+        <initializer>0x10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="67" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a3f971018f4c935fea933afc047b6c160" prot="public" static="no">
+        <name>SC_CURSMOVE</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="68" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a3b09af9be3bc00173f915c1bbcd0db94" prot="public" static="no">
+        <name>SC_DISPMOVE</name>
+        <initializer>0x08</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="69" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a8161523be58cfd912e51fd746f3c7e94" prot="public" static="no">
+        <name>RL_LFTSHFT</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="70" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a41f5093b3433b9776c512390c5410932" prot="public" static="no">
+        <name>RL_RGTSHFT</name>
+        <initializer>0x04</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="71" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a5416babd692b29e8695541bb23bdf90e" prot="public" static="no">
+        <name>SETDISPFXN</name>
+        <initializer>0x20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="72" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="72" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1aad263cc8b34dd633a6b3a92e0d5e88d7" prot="public" static="no">
+        <name>DL_4BIT</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="73" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a8555e3a291d3c788f49fe33f4799777a" prot="public" static="no">
+        <name>DL_8BIT</name>
+        <initializer>0x10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="74" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a8a2f75c195c03aa87eca2d3ce24ceb90" prot="public" static="no">
+        <name>N_1LINE</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="75" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a7b56c3a38d26d83e31b71677535eeb81" prot="public" static="no">
+        <name>N_2LINE</name>
+        <initializer>0x08</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="76" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="76" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a6ef0073fc4f776246778e3a91fdd9aff" prot="public" static="no">
+        <name>F_5X7DOT</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="77" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="77" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="_l_c_d_8c" startline="33" endline="55">lcdInit</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1af1766652028ffb3c8663cd332e26c954" prot="public" static="no">
+        <name>F_5X10DOT</name>
+        <initializer>0x04</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="78" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a1e7596ed3fee6e5a4f9baadcfa1a053f" prot="public" static="no">
+        <name>SETCGRAMADD</name>
+        <initializer>0x40</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="79" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ae82100451f137cfe99e0038df8553141" prot="public" static="no">
+        <name>SETDDRAMADD</name>
+        <initializer>0x80</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="80" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="80" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a70a8f1041fdd13688a8f8e9fd897ccda" compoundref="_l_c_d_8c" startline="172" endline="181">lcdWriteString</referencedby>
+        <referencedby refid="_l_c_d_8h_1a69bb3d698d74da5ea85d8a455dbb3b28" compoundref="_l_c_d_8c" startline="199" endline="206">lcdWriteChar</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a49c57c85cd5dac82e1b7e202db090724" prot="public" static="no">
+        <name>BF_READY</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="82" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a8a0934554a2d1a99cc7a0bcb2507bde9" prot="public" static="no">
+        <name>BF_BUSY</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="84" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="84" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" compoundref="_l_c_d_8c" startline="70" endline="107">lcdBusy</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a4c0102b3d63c7bd2d59a424ca3815ad1" prot="public" static="no">
+        <name>LINE1</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="86" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="86" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a70a8f1041fdd13688a8f8e9fd897ccda" compoundref="_l_c_d_8c" startline="172" endline="181">lcdWriteString</referencedby>
+        <referencedby refid="_l_c_d_8h_1a69bb3d698d74da5ea85d8a455dbb3b28" compoundref="_l_c_d_8c" startline="199" endline="206">lcdWriteChar</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1a259e96afd23afb9e2fd9e97d5e07193c" prot="public" static="no">
+        <name>LINE2</name>
+        <initializer>0x40</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="87" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="87" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a70a8f1041fdd13688a8f8e9fd897ccda" compoundref="_l_c_d_8c" startline="172" endline="181">lcdWriteString</referencedby>
+        <referencedby refid="_l_c_d_8h_1a69bb3d698d74da5ea85d8a455dbb3b28" compoundref="_l_c_d_8c" startline="199" endline="206">lcdWriteChar</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1ac508ef39f3ee20e7416e9258c1e5fb42" prot="public" static="no">
+        <name>LINESTART</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="89" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="89" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a70a8f1041fdd13688a8f8e9fd897ccda" compoundref="_l_c_d_8c" startline="172" endline="181">lcdWriteString</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="_l_c_d__defs_8h_1aaa7c97861ef6e1dea96e036b27db80c2" prot="public" static="no">
+        <name>LINEEND</name>
+        <initializer>0x0F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" line="90" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" bodystart="90" bodyend="-1"/>
+        <referencedby refid="_l_c_d_8h_1a70a8f1041fdd13688a8f8e9fd897ccda" compoundref="_l_c_d_8c" startline="172" endline="181">lcdWriteString</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>LCD_defs.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Jacob</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>22<sp/>October<sp/>2014,<sp/>12:01<sp/>AM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="_l_c_d__defs_8h_1ab1956831e022c90f2b658a8a840ef09e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D0<sp/>PORTDbits.RD0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="9" refid="_l_c_d__defs_8h_1ac6b74016e58d58b47230a2d0aaf959d8" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_D1<sp/>PORTDbits.RD1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="_l_c_d__defs_8h_1aa97ea257a9007a9055e5f77e1b3336e5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D2<sp/>PORTDbits.RD2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="_l_c_d__defs_8h_1a3d23f1f20ad1f0fb190f4a10334f4bf1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D3<sp/>PORTDbits.RD3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="_l_c_d__defs_8h_1ade7e247311032a474711416da480ed8b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D4<sp/>PORTDbits.RD4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="_l_c_d__defs_8h_1a5b91fe480c768d4f246f3890207bfbfc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D5<sp/>PORTDbits.RD5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="_l_c_d__defs_8h_1a72e105fcda5fd1c07b5f391379a439d4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D6<sp/>PORTDbits.RD6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="_l_c_d__defs_8h_1abd65075e01c7413419581aedee5bcc24" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D7<sp/>PORTDbits.RD7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="_l_c_d__defs_8h_1ad2d1be08ecd7f00fd22cb54e0dd817ea" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D0_DIR<sp/>TRISDbits.RD0<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="18" refid="_l_c_d__defs_8h_1ae05eb1a8d2d72fbebf39329a2f97f206" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_D1_DIR<sp/>TRISDbits.RD1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="_l_c_d__defs_8h_1a01202c3f5b67c77883d49988dc16f904" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D2_DIR<sp/>TRISDbits.RD2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="_l_c_d__defs_8h_1ae252fe796145d8f1ed56f89cb4fdc016" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D3_DIR<sp/>TRISDbits.RD3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="_l_c_d__defs_8h_1af234abb162ecaac5dc6abcfb8042c493" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D4_DIR<sp/>TRISDbits.RD4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="_l_c_d__defs_8h_1aca9d9b8acc087d9f3f2dbb84dd4d1ec1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D5_DIR<sp/>TRISDbits.RD5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="_l_c_d__defs_8h_1a8c800810582edafb15f64a4614f61b76" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D6_DIR<sp/>TRISDbits.RD6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="_l_c_d__defs_8h_1ae24aaa402fb7ccde7b9f1091f7abcd92" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_D7_DIR<sp/>TRISDbits.RD7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="_l_c_d__defs_8h_1a5a1e7e315586945fe0fbf4989ee40afc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_DATA_LINE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>PORTD<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="27" refid="_l_c_d__defs_8h_1afa3b04d2041fda644c1dc08754a269d2" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_DATA_LINE_DIR<sp/><sp/><sp/>TRISD<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>LCD_PWR<sp/>PORTCbits.RC0<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//!LCD<sp/>Power</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="_l_c_d__defs_8h_1a4781e073871c6f27f89b9463ad3a4ed1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_RS<sp/><sp/>PORTCbits.RC1<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="31" refid="_l_c_d__defs_8h_1a26089a10ddd59a0dc7283c19ccc02533" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_RW<sp/><sp/>PORTCbits.RC2<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="32" refid="_l_c_d__defs_8h_1a6ec15b1e813d1f56d2eb644a127e5d49" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_E<sp/><sp/><sp/>PORTCbits.RC3<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>LCD_PWR_DIR<sp/>TRISCbits.RC0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="_l_c_d__defs_8h_1ae112ce30f55dc77f42c171b99e3e88ed" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_RS_DIR<sp/><sp/>TRISCbits.RC1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="_l_c_d__defs_8h_1ab7232fa939651a37b3ecd6c680825ab1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_RW_DIR<sp/><sp/>TRISCbits.RC2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="_l_c_d__defs_8h_1ac0cff66c1771fb318dcbfd286a1a0cb2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_E_DIR<sp/><sp/><sp/>TRISCbits.RC3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="_l_c_d__defs_8h_1a486f39e96159ebb7b722f66b8c7f3c57" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_INS<sp/><sp/><sp/><sp/><sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40" refid="_l_c_d__defs_8h_1a25e9d818788f36ed74d7c4579f87f2a6" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_DATA<sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41" refid="_l_c_d__defs_8h_1ac83c798c669ca46b417ecc89c6ad37fe" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_WRITE<sp/><sp/><sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42" refid="_l_c_d__defs_8h_1ad543004401896d9736084fcd833b7fd6" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_READ<sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43" refid="_l_c_d__defs_8h_1ab1110764abf2ec7cb233abc6176b0680" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_CLKLOW<sp/><sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44" refid="_l_c_d__defs_8h_1a5d6929a4edefd6f446dedd2d18b89209" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_CLKHGH<sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45" refid="_l_c_d__defs_8h_1a0024da29b32bafdae7aa8d344791d674" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_OFF<sp/><sp/><sp/><sp/><sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="46" refid="_l_c_d__defs_8h_1a47a809dfec086fdeca93dedc4fb83b44" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_ON<sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="_l_c_d__defs_8h_1ae20812d3d385d3b8ce9aec04c15931c0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LCD_INPUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xFF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="49" refid="_l_c_d__defs_8h_1a58d5d0ca08e231d06cb669b9c7b796bf" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_OUTPUT<sp/><sp/><sp/><sp/><sp/><sp/>0x00<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50" refid="_l_c_d__defs_8h_1aa42a52fb0bc33a4613f9d0805aaf9bcf" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_PIN_INPUT<sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51" refid="_l_c_d__defs_8h_1a2d4167285379b41058accba2fb2db3a4" refkind="member"><highlight class="preprocessor">#define<sp/>LCD_PIN_OUTPUT<sp/><sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="_l_c_d__defs_8h_1a1284e7ac55dad081842451e7435c7978" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DISPCLR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x01</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="_l_c_d__defs_8h_1a150b9ecc52517d65034d50df5c71d6cc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RTNHOME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x02</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="_l_c_d__defs_8h_1a2203e462025f076098257f34776b114e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SETENTRYMODE<sp/><sp/><sp/><sp/>0x04</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="_l_c_d__defs_8h_1a410d807596fe23832bdba561312fc538" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ID_CURSL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="_l_c_d__defs_8h_1ab3555808ed189f13f51c43e5b2d8ee4d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ID_CURSR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x02</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="_l_c_d__defs_8h_1a9141826d7f78e7c4bfe646ea4ab23e90" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SH_DISPNSHIFT<sp/><sp/><sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="_l_c_d__defs_8h_1a1e724cfff7e0066597209528f2cd05a8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SH_DISPSHIFT<sp/><sp/><sp/><sp/>0x01</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="_l_c_d__defs_8h_1a23f9a6bd742860ecdcb41c932ab8ebf1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DISPOPT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x08</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="_l_c_d__defs_8h_1afdb29da95d5b9449afb091fca527c4fc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>D_DISPOFF<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="_l_c_d__defs_8h_1a22db0d26a986b2793fa8eb57e9e8777e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>D_DISPON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x04</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="_l_c_d__defs_8h_1a3200720e75b31e2ec6ed294d09419933" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>C_CURSON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="_l_c_d__defs_8h_1a360299bea880deca900b567ba9fffb3a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>C_CURSOFF<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x02</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="_l_c_d__defs_8h_1abf51d618f5bf1585e82c35bb5f569fe8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>B_BLINKOFF<sp/><sp/><sp/><sp/><sp/><sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="_l_c_d__defs_8h_1a4b81e13dfe5251ca0ccf7a559067d954" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>B_BLINKON<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x01</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="_l_c_d__defs_8h_1a56131de6df7700649b75d71337531112" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DISPSHIFTCURS<sp/><sp/><sp/>0x10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="_l_c_d__defs_8h_1a3f971018f4c935fea933afc047b6c160" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SC_CURSMOVE<sp/><sp/><sp/><sp/><sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="_l_c_d__defs_8h_1a3b09af9be3bc00173f915c1bbcd0db94" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SC_DISPMOVE<sp/><sp/><sp/><sp/><sp/>0x08</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="_l_c_d__defs_8h_1a8161523be58cfd912e51fd746f3c7e94" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RL_LFTSHFT<sp/><sp/><sp/><sp/><sp/><sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="_l_c_d__defs_8h_1a41f5093b3433b9776c512390c5410932" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RL_RGTSHFT<sp/><sp/><sp/><sp/><sp/><sp/>0x04</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="_l_c_d__defs_8h_1a5416babd692b29e8695541bb23bdf90e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SETDISPFXN<sp/><sp/><sp/><sp/><sp/><sp/>0x20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="_l_c_d__defs_8h_1aad263cc8b34dd633a6b3a92e0d5e88d7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DL_4BIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="_l_c_d__defs_8h_1a8555e3a291d3c788f49fe33f4799777a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DL_8BIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="_l_c_d__defs_8h_1a8a2f75c195c03aa87eca2d3ce24ceb90" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>N_1LINE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="_l_c_d__defs_8h_1a7b56c3a38d26d83e31b71677535eeb81" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>N_2LINE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x08</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="_l_c_d__defs_8h_1a6ef0073fc4f776246778e3a91fdd9aff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>F_5X7DOT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="_l_c_d__defs_8h_1af1766652028ffb3c8663cd332e26c954" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>F_5X10DOT<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x04</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="_l_c_d__defs_8h_1a1e7596ed3fee6e5a4f9baadcfa1a053f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SETCGRAMADD<sp/><sp/><sp/><sp/><sp/>0x40</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="_l_c_d__defs_8h_1ae82100451f137cfe99e0038df8553141" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SETDDRAMADD<sp/><sp/><sp/><sp/><sp/>0x80</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="_l_c_d__defs_8h_1a49c57c85cd5dac82e1b7e202db090724" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BF_READY<sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>BF_BUSY<sp/>0x80</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="_l_c_d__defs_8h_1a8a0934554a2d1a99cc7a0bcb2507bde9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BF_BUSY<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="_l_c_d__defs_8h_1a4c0102b3d63c7bd2d59a424ca3815ad1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LINE1<sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="_l_c_d__defs_8h_1a259e96afd23afb9e2fd9e97d5e07193c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LINE2<sp/>0x40</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="_l_c_d__defs_8h_1ac508ef39f3ee20e7416e9258c1e5fb42" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LINESTART<sp/>0x00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="_l_c_d__defs_8h_1aaa7c97861ef6e1dea96e036b27db80c2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LINEEND<sp/>0x0F</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h"/>
+  </compounddef>
+</doxygen>

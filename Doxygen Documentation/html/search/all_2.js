@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['b_5fblinkoff',['B_BLINKOFF',['../_l_c_d__defs_8h.html#abf51d618f5bf1585e82c35bb5f569fe8',1,'LCD_defs.h']]],
+  ['b_5fblinkon',['B_BLINKON',['../_l_c_d__defs_8h.html#a4b81e13dfe5251ca0ccf7a559067d954',1,'LCD_defs.h']]],
   ['bad_5fdir',['BAD_DIR',['../_common_8h.html#a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851',1,'Common.h']]],
   ['banked',['BANKED',['../p18f4520_8h.html#aa8480aed89a168ec484727f5ac985cd0',1,'p18f4520.h']]],
   ['baudcon',['BAUDCON',['../p18f4520_8h.html#aaf7b4d475015a22391d58215251f2a95',1,'p18f4520.h']]],
@@ -11,6 +13,8 @@ var searchData=
   ['bclif',['BCLIF',['../p18f4520_8h.html#a903514afa08123232b8209785a448348',1,'p18f4520.h']]],
   ['bclip',['BCLIP',['../p18f4520_8h.html#a08d03dc85ed3d3b47385b7fdd779bed5',1,'p18f4520.h']]],
   ['bf',['BF',['../p18f4520_8h.html#ac7d17145265f8977b3683d4c2dc87858',1,'p18f4520.h']]],
+  ['bf_5fbusy',['BF_BUSY',['../_l_c_d__defs_8h.html#a8a0934554a2d1a99cc7a0bcb2507bde9',1,'LCD_defs.h']]],
+  ['bf_5fready',['BF_READY',['../_l_c_d__defs_8h.html#a49c57c85cd5dac82e1b7e202db090724',1,'LCD_defs.h']]],
   ['bgst',['BGST',['../p18f4520_8h.html#aa376945e7cddc94931a11e0674835ea0',1,'p18f4520.h']]],
   ['bor',['BOR',['../p18f4520_8h.html#afeb203c1042671be8f9582e0d3152b15',1,'p18f4520.h']]],
   ['brg16',['BRG16',['../p18f4520_8h.html#a9de7607bf2ccce660c75d62bfd230f31',1,'p18f4520.h']]],

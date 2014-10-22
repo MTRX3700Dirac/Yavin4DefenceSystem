@@ -2,6 +2,8 @@ var searchData=
 [
   ['w',['W',['../p18f4520_8h.html#a40c78952a6942b500f9fc1cd53efedc9',1,'p18f4520.h']]],
   ['wcol',['WCOL',['../p18f4520_8h.html#aa094877cbac31fd207e2309cd7e2046c',1,'p18f4520.h']]],
+  ['wdt_5fclr',['WDT_CLR',['../_common_8h.html#add818f0aac38c42e0b7010b486e9d94a',1,'Common.h']]],
+  ['wdt_5fen',['WDT_EN',['../_common_8h.html#adec3f206eb531c41e22d3c5c274d4f6a',1,'Common.h']]],
   ['wdtcon',['WDTCON',['../p18f4520_8h.html#ab5bdf6ae49d8f044975b273bf1ed3ef0',1,'p18f4520.h']]],
   ['wdtconbits',['WDTCONbits',['../p18f4520_8h.html#a10077ce0d75d0a3c9a3164b0740e2fae',1,'p18f4520.h']]],
   ['welcome',['welcome',['../_menusystem_8c.html#a532e72c4b620eecff97eee6b0eed5bdd',1,'Menusystem.c']]],

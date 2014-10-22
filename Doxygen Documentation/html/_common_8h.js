@@ -41,6 +41,8 @@ var _common_8h =
     [ "TMR2_INT", "_common_8h.html#af6baae9385e65b47397c25f253cd8893", null ],
     [ "TMR3_INT", "_common_8h.html#a37a3fed60a18eefca9f30c8929272a35", null ],
     [ "TX_INT", "_common_8h.html#aef3509d0d4bc8291df1b76f894a1e251", null ],
+    [ "WDT_CLR", "_common_8h.html#add818f0aac38c42e0b7010b486e9d94a", null ],
+    [ "WDT_EN", "_common_8h.html#adec3f206eb531c41e22d3c5c274d4f6a", null ],
     [ "possible_states", "_common_8h.html#a05931287b056487cf89495f39026fbe1", [
       [ "UNDEF", "_common_8h.html#a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647", null ],
       [ "INIT", "_common_8h.html#a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36", null ],

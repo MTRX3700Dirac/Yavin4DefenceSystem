@@ -2,6 +2,8 @@ var searchData=
 [
   ['ibf',['IBF',['../p18f4520_8h.html#abe5c97dbd24e0db1b78172b68f9efaf0',1,'p18f4520.h']]],
   ['ibov',['IBOV',['../p18f4520_8h.html#afa32b0a20f26513a6ab1b4e5351e32c5',1,'p18f4520.h']]],
+  ['id_5fcursl',['ID_CURSL',['../_l_c_d__defs_8h.html#a410d807596fe23832bdba561312fc538',1,'LCD_defs.h']]],
+  ['id_5fcursr',['ID_CURSR',['../_l_c_d__defs_8h.html#ab3555808ed189f13f51c43e5b2d8ee4d',1,'LCD_defs.h']]],
   ['idlen',['IDLEN',['../p18f4520_8h.html#ab25669bcdca1651eb58504b340fd5b75',1,'p18f4520.h']]],
   ['in_5fpwm_5fpin',['IN_PWM_PIN',['../_pan_tilt_8c.html#aeccd74b3aafd22092066790005320b98',1,'PanTilt.c']]],
   ['inclination',['inclination',['../struct_direction.html#af308b9934394c8bcf7614eb1df2d863f',1,'Direction::inclination()'],['../struct_tracking_data.html#af308b9934394c8bcf7614eb1df2d863f',1,'TrackingData::inclination()']]],
@@ -12,7 +14,7 @@ var searchData=
   ['indf0',['INDF0',['../p18f4520_8h.html#a16fdd7daf878ab3e147d53cd9bd1c5e1',1,'p18f4520.h']]],
   ['indf1',['INDF1',['../p18f4520_8h.html#ad496553585c13661ceb2f9f991bdde85',1,'p18f4520.h']]],
   ['indf2',['INDF2',['../p18f4520_8h.html#a2664c0a665d2921f7f2b1be6522884cd',1,'p18f4520.h']]],
-  ['init',['init',['../_circular_buffers_8h.html#a526002aa17fac30d010d4d7315d5d81c',1,'init():&#160;CircularBuffers.h'],['../_common_8h.html#a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36',1,'INIT():&#160;Common.h']]],
+  ['init',['INIT',['../_common_8h.html#a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36',1,'INIT():&#160;Common.h'],['../_circular_buffers_8h.html#a526002aa17fac30d010d4d7315d5d81c',1,'init():&#160;CircularBuffers.h']]],
   ['init_5fpin',['INIT_PIN',['../_range_8c.html#a885e4c51dcc91fcae14dadc2d564f270',1,'Range.c']]],
   ['init_5ftris',['INIT_TRIS',['../_range_8c.html#a6e6430371976f713ccccb6372b19b810',1,'Range.c']]],
   ['initialisemenu',['initialiseMenu',['../_menusystem_8c.html#a94b96ccbb8f3c627c5d59189498a3c1b',1,'initialiseMenu(void):&#160;Menusystem.c'],['../_menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b',1,'initialiseMenu(void):&#160;Menusystem.c'],['../_menusystem2_8c.html#a94b96ccbb8f3c627c5d59189498a3c1b',1,'initialiseMenu(void):&#160;Menusystem2.c']]],

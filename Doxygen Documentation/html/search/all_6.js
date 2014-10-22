@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['f_5f5x10dot',['F_5X10DOT',['../_l_c_d__defs_8h.html#af1766652028ffb3c8663cd332e26c954',1,'LCD_defs.h']]],
+  ['f_5f5x7dot',['F_5X7DOT',['../_l_c_d__defs_8h.html#a6ef0073fc4f776246778e3a91fdd9aff',1,'LCD_defs.h']]],
   ['ferr',['FERR',['../p18f4520_8h.html#a6e9c49ea6356906ea25431c922eb7c71',1,'p18f4520.h']]],
   ['filler',['filler',['../_menusystem_8c.html#a4bb64cc936229611900f25e483381dc7',1,'Menusystem.c']]],
   ['fillerthing',['fillerthing',['../_menusystem_8c.html#ae6c5caedc34899ea80a6b011fec5f2a4',1,'Menusystem.c']]],

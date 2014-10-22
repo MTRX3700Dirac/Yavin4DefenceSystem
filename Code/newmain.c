@@ -63,6 +63,9 @@ void main() {
                 NEXT_STATE(INIT, state);       //Set the next state to be Initialize
                 break;
         }
+#ifdef WDTMR
+        WDT_CLR;            //Clear the Watch Dog Timer each iteration
+#endif
     }
 
 }

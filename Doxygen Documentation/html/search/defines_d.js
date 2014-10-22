@@ -1,8 +1,16 @@
 var searchData=
 [
+  ['sc_5fcursmove',['SC_CURSMOVE',['../_l_c_d__defs_8h.html#a3f971018f4c935fea933afc047b6c160',1,'LCD_defs.h']]],
+  ['sc_5fdispmove',['SC_DISPMOVE',['../_l_c_d__defs_8h.html#a3b09af9be3bc00173f915c1bbcd0db94',1,'LCD_defs.h']]],
   ['serial_5fh',['SERIAL_H',['../_serial_8h.html#abd89d9fc65aaf89bc50e9b1252ca1bdd',1,'Serial.h']]],
   ['serial_5fint',['SERIAL_INT',['../_serial_8h.html#ae04db6660499dd827d53abe148780fe5',1,'Serial.h']]],
   ['servo_5finit',['SERVO_INIT',['../_pan_tilt_8c.html#afed42813fde734ec03d642316c880a8f',1,'PanTilt.c']]],
+  ['setcgramadd',['SETCGRAMADD',['../_l_c_d__defs_8h.html#a1e7596ed3fee6e5a4f9baadcfa1a053f',1,'LCD_defs.h']]],
+  ['setddramadd',['SETDDRAMADD',['../_l_c_d__defs_8h.html#ae82100451f137cfe99e0038df8553141',1,'LCD_defs.h']]],
+  ['setdispfxn',['SETDISPFXN',['../_l_c_d__defs_8h.html#a5416babd692b29e8695541bb23bdf90e',1,'LCD_defs.h']]],
+  ['setentrymode',['SETENTRYMODE',['../_l_c_d__defs_8h.html#a2203e462025f076098257f34776b114e',1,'LCD_defs.h']]],
+  ['sh_5fdispnshift',['SH_DISPNSHIFT',['../_l_c_d__defs_8h.html#a9141826d7f78e7c4bfe646ea4ab23e90',1,'LCD_defs.h']]],
+  ['sh_5fdispshift',['SH_DISPSHIFT',['../_l_c_d__defs_8h.html#a1e724cfff7e0066597209528f2cd05a8',1,'LCD_defs.h']]],
   ['slee15',['slee15',['../_menusystem_8c.html#a38bd38059a23acf74ca3559d13c2a6d5',1,'Menusystem.c']]],
   ['sleep',['Sleep',['../p18f4520_8h.html#a97ff5dd2b06944ae9f9c916f2e03a1c6',1,'p18f4520.h']]],
   ['spd_5fsnd',['SPD_SND',['../_range_8c.html#a8dce7331368588b9016a33f044b71d91',1,'Range.c']]],

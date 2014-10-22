@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>Yavin IV Death Star Tracker: LCD.h Source File</title>
+<title>Yavin IV Death Star Tracker: C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="Eaw_Yavin4 - thumb.jpg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Yavin IV Death Star Tracker
-   &#160;<span id="projectnumber">V1.0</span>
+   &#160;<span id="projectnumber">V1.1</span>
    </div>
    <div id="projectbrief">Yavin&#39;s premiere line of defence against the encroaching Imperial Star Fleet and Death Star</div>
   </td>
@@ -113,20 +113,29 @@ $(document).ready(function(){initNavTree('_l_c_d_8h_source.html','');});
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef LCD_H</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//External declarations of public access functions</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#aaab6233be65b7399b3422eee9782508c">configLCD</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#a8190804aeb1375a5a6b775f8e2b5d698">displayLCD</a>(<span class="keywordtype">char</span> *<span class="keywordtype">string</span>);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="_l_c_d_8h.html#a137b94e8638bc4b6a0740668aefe5a58">   18</a></span>&#160;<span class="preprocessor">#define LCD_H</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="_l_c_d_8h_html_a8190804aeb1375a5a6b775f8e2b5d698"><div class="ttname"><a href="_l_c_d_8h.html#a8190804aeb1375a5a6b775f8e2b5d698">displayLCD</a></div><div class="ttdeci">void displayLCD(char *string)</div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00044">LCD.c:44</a></div></div>
-<div class="ttc" id="_l_c_d_8h_html_aaab6233be65b7399b3422eee9782508c"><div class="ttname"><a href="_l_c_d_8h.html#aaab6233be65b7399b3422eee9782508c">configLCD</a></div><div class="ttdeci">void configLCD(void)</div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00028">LCD.c:28</a></div></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#a70a8f1041fdd13688a8f8e9fd897ccda">lcdWriteString</a>(<span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> line);   </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#a69bb3d698d74da5ea85d8a455dbb3b28">lcdWriteChar</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> byte, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> line, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> column);    </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef">lcdInit</a>(<span class="keywordtype">void</span>);                <span class="comment">//initialize</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#a6d7066138d22070be0234d8b113cf776">delay</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">char</span> <a class="code" href="_l_c_d_8h.html#a9f693f2e175a1192aebfeb586ed0fd6f">lcdBusy</a>(<span class="keywordtype">void</span>);                 <span class="comment">//check busy flag</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_l_c_d_8h.html#a500de059df24a647c81d895c38625d6c">lcdWrite</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> byte, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> mode);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="_l_c_d_8h.html#a137b94e8638bc4b6a0740668aefe5a58">   23</a></span>&#160;<span class="preprocessor">#define LCD_H</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="_l_c_d_8h_html_a6d7066138d22070be0234d8b113cf776"><div class="ttname"><a href="_l_c_d_8h.html#a6d7066138d22070be0234d8b113cf776">delay</a></div><div class="ttdeci">void delay(unsigned int t)</div><div class="ttdoc">Include: </div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00122">LCD.c:122</a></div></div>
+<div class="ttc" id="_l_c_d_8h_html_a69bb3d698d74da5ea85d8a455dbb3b28"><div class="ttname"><a href="_l_c_d_8h.html#a69bb3d698d74da5ea85d8a455dbb3b28">lcdWriteChar</a></div><div class="ttdeci">void lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column)</div><div class="ttdoc">Feed character string, and line (1 or 2) </div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00199">LCD.c:199</a></div></div>
+<div class="ttc" id="_l_c_d_8h_html_aecaa9ab68490a0b8dedd20d200d5d0ef"><div class="ttname"><a href="_l_c_d_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef">lcdInit</a></div><div class="ttdeci">void lcdInit(void)</div><div class="ttdoc">Feed character, line (1 or 2), and column(1-16) </div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00033">LCD.c:33</a></div></div>
+<div class="ttc" id="_l_c_d_8h_html_a9f693f2e175a1192aebfeb586ed0fd6f"><div class="ttname"><a href="_l_c_d_8h.html#a9f693f2e175a1192aebfeb586ed0fd6f">lcdBusy</a></div><div class="ttdeci">char lcdBusy(void)</div><div class="ttdoc">Include: </div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00070">LCD.c:70</a></div></div>
+<div class="ttc" id="_l_c_d_8h_html_a70a8f1041fdd13688a8f8e9fd897ccda"><div class="ttname"><a href="_l_c_d_8h.html#a70a8f1041fdd13688a8f8e9fd897ccda">lcdWriteString</a></div><div class="ttdeci">void lcdWriteString(char *string, unsigned char line)</div><div class="ttdoc">Feed character string, and line (1 or 2) </div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00172">LCD.c:172</a></div></div>
+<div class="ttc" id="_l_c_d_8h_html_a500de059df24a647c81d895c38625d6c"><div class="ttname"><a href="_l_c_d_8h.html#a500de059df24a647c81d895c38625d6c">lcdWrite</a></div><div class="ttdeci">void lcdWrite(unsigned char byte, unsigned char mode)</div><div class="ttdoc">Include: LCD.h. </div><div class="ttdef"><b>Definition:</b> <a href="_l_c_d_8c_source.html#l00143">LCD.c:143</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="_l_c_d_8h.html">LCD.h</a></li>
-    <li class="footer">Generated on Tue Oct 21 2014 15:39:03 for Yavin IV Death Star Tracker by
+    <li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li><li class="navelem"><a class="el" href="_l_c_d_8h.html">LCD.h</a></li>
+    <li class="footer">Generated on Wed Oct 22 2014 14:17:25 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

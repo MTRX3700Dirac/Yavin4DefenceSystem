@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['c_5fcursoff',['C_CURSOFF',['../_l_c_d__defs_8h.html#a360299bea880deca900b567ba9fffb3a',1,'LCD_defs.h']]],
+  ['c_5fcurson',['C_CURSON',['../_l_c_d__defs_8h.html#a3200720e75b31e2ec6ed294d09419933',1,'LCD_defs.h']]],
   ['ccp1_5fclear',['CCP1_CLEAR',['../_common_8h.html#ae8aa3ab3a23a388dab62ac86ee5e2545',1,'Common.h']]],
   ['ccp1_5finpt',['CCP1_INPT',['../_range_8c.html#aa42da5a67cdb563f37b56c1674dd67bb',1,'Range.c']]],
   ['ccp1_5fint',['CCP1_INT',['../_common_8h.html#a1673a1a80febeafd51f3f02508a0ea71',1,'Common.h']]],

@@ -46,9 +46,14 @@
 #include <capture.h>
 #include <compare.h>
 
+#ifdef WDTMR
+#pragma config WDT = ON
+#pragma config WDTPS = 1024    //WDT Prescalar set to 1024 (~4s)
+#endif
+
 #ifndef MNML
 //System configurations
-#pragma config WDR = OFF
+#pragma config WDT = OFF
 #pragma config OSC = HS
 #pragma config LVP = OFF
 #pragma config DEBUG = ON
@@ -159,6 +164,10 @@ typedef struct {
 
 #define CCP1_CLEAR (PIR1bits.CCP1IF = 0)
 #define CCP2_CLEAR (PIR2bits.CCP2IF = 0)
+
+#define WDT_EN WDTCONbits.SWDTE = 1; WDTCONbits.SWDTEN = 1;
+#define WDT_CLR _asm CLRWDT _endasm            //Clear watchdog timer
+
 
 ///Dfine the clock rate and FOSC_4
 #ifdef MNML
