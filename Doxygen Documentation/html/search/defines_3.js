@@ -1,6 +1,11 @@
 var searchData=
 [
+  ['d_5fdispoff',['D_DISPOFF',['../_l_c_d__defs_8h.html#afdb29da95d5b9449afb091fca527c4fc',1,'LCD_defs.h']]],
+  ['d_5fdispon',['D_DISPON',['../_l_c_d__defs_8h.html#a22db0d26a986b2793fa8eb57e9e8777e',1,'LCD_defs.h']]],
   ['diff',['diff',['../_tracking_8c.html#ad21f01d2ff9eac3ae01bef0f67db54d0',1,'Tracking.c']]],
+  ['dispclr',['DISPCLR',['../_l_c_d__defs_8h.html#a1284e7ac55dad081842451e7435c7978',1,'LCD_defs.h']]],
+  ['dispopt',['DISPOPT',['../_l_c_d__defs_8h.html#a23f9a6bd742860ecdcb41c932ab8ebf1',1,'LCD_defs.h']]],
+  ['dispshiftcurs',['DISPSHIFTCURS',['../_l_c_d__defs_8h.html#a56131de6df7700649b75d71337531112',1,'LCD_defs.h']]],
   ['div_5f1024',['DIV_1024',['../_common_8h.html#a740656a5f724d0a99e528def8ce50125',1,'Common.h']]],
   ['div_5f128',['DIV_128',['../_common_8h.html#abdf4b624268c124f05cbb2954854f80c',1,'Common.h']]],
   ['div_5f16',['DIV_16',['../_common_8h.html#aaf396e0300e6c0cd62ba67c6b6ab4bff',1,'Common.h']]],
@@ -13,5 +18,7 @@ var searchData=
   ['div_5f64',['DIV_64',['../_common_8h.html#abcbec04588cd79b47e54f7259474e854',1,'Common.h']]],
   ['div_5f65536',['DIV_65536',['../_common_8h.html#a9469c415aff989522dac534ab8adb35e',1,'Common.h']]],
   ['div_5f8',['DIV_8',['../_common_8h.html#a4f978d22e3309b4121d0a95a74a1faba',1,'Common.h']]],
+  ['dl_5f4bit',['DL_4BIT',['../_l_c_d__defs_8h.html#aad263cc8b34dd633a6b3a92e0d5e88d7',1,'LCD_defs.h']]],
+  ['dl_5f8bit',['DL_8BIT',['../_l_c_d__defs_8h.html#a8555e3a291d3c788f49fe33f4799777a',1,'LCD_defs.h']]],
   ['duty_5fcycle_5ftime',['DUTY_CYCLE_TIME',['../_pan_tilt_8c.html#a8fae060499b6b4a82b757f7b7f082f36',1,'PanTilt.c']]]
 ];

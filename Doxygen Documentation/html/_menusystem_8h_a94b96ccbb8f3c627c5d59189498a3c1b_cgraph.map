@@ -1,5 +1,8 @@
 <map id="initialiseMenu" name="initialiseMenu">
 <area shape="rect" id="node2" href="$_serial_8c.html#ae2cdcda889fcfed4b6b851835bf2b538" title="configureSerial" alt="" coords="155,5,261,32"/>
-<area shape="rect" id="node3" href="$_l_c_d_8c.html#aaab6233be65b7399b3422eee9782508c" title="configLCD" alt="" coords="167,56,249,83"/>
-<area shape="rect" id="node4" href="$_user___interface_8c.html#a58e473ed40d00e18bd61277428e4d36c" title="configUSER" alt="" coords="162,107,254,133"/>
+<area shape="rect" id="node3" href="$_l_c_d_8c.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Initialises the LCD so that it can be used. " alt="" coords="180,56,236,83"/>
+<area shape="rect" id="node7" href="$_user___interface_8c.html#a58e473ed40d00e18bd61277428e4d36c" title="configUSER" alt="" coords="162,107,254,133"/>
+<area shape="rect" id="node4" href="$_l_c_d_8c.html#a6d7066138d22070be0234d8b113cf776" title="Include: " alt="" coords="545,81,599,108"/>
+<area shape="rect" id="node5" href="$_l_c_d_8c.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="309,81,380,108"/>
+<area shape="rect" id="node6" href="$_l_c_d_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: " alt="" coords="428,132,497,159"/>
 </map>

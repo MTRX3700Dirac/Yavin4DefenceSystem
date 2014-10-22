@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>Yavin IV Death Star Tracker: LCD.c File Reference</title>
+<title>Yavin IV Death Star Tracker: C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="Eaw_Yavin4 - thumb.jpg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Yavin IV Death Star Tracker
-   &#160;<span id="projectnumber">V1.0</span>
+   &#160;<span id="projectnumber">V1.1</span>
    </div>
    <div id="projectbrief">Yavin&#39;s premiere line of defence against the encroaching Imperial Star Fleet and Death Star</div>
   </td>
@@ -111,32 +111,84 @@ $(document).ready(function(){initNavTree('_l_c_d_8c.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_common_8h_source.html">Common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_l_c_d_8h_source.html">LCD.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_l_c_d__defs_8h_source.html">LCD_defs.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for LCD.c:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="_l_c_d_8c__incl.png" border="0" usemap="#_l_c_d_8c" alt=""/></div>
-<map name="_l_c_d_8c" id="_l_c_d_8c">
-<area shape="rect" id="node2" href="_common_8h.html" title="Common.h" alt="" coords="368,80,453,107"/><area shape="rect" id="node6" href="p18f4520_8h.html" title="p18f4520.h" alt="" coords="267,155,352,181"/></map>
+<div class="center"><img src="_l_c_d_8c__incl.png" border="0" usemap="#_c_1_2_users_2_grant_2_documents_2_git_hub_2_yavin4_defence_system_2_code_2_l_c_d_8c" alt=""/></div>
+<map name="_c_1_2_users_2_grant_2_documents_2_git_hub_2_yavin4_defence_system_2_code_2_l_c_d_8c" id="_c_1_2_users_2_grant_2_documents_2_git_hub_2_yavin4_defence_system_2_code_2_l_c_d_8c">
+<area shape="rect" id="node2" href="_common_8h.html" title="Common.h" alt="" coords="368,109,453,136"/><area shape="rect" id="node12" href="_l_c_d_8h.html" title="LCD.h" alt="" coords="477,109,536,136"/><area shape="rect" id="node13" href="_l_c_d__defs_8h.html" title="LCD_defs.h" alt="" coords="561,109,650,136"/><area shape="rect" id="node6" href="p18f4520_8h.html" title="p18f4520.h" alt="" coords="267,184,352,211"/></map>
 </div>
 </div>
 <p><a href="_l_c_d_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aaab6233be65b7399b3422eee9782508c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_c_d_8c.html#aaab6233be65b7399b3422eee9782508c">configLCD</a> (void)</td></tr>
-<tr class="separator:aaab6233be65b7399b3422eee9782508c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8190804aeb1375a5a6b775f8e2b5d698"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_c_d_8c.html#a8190804aeb1375a5a6b775f8e2b5d698">displayLCD</a> (char *string)</td></tr>
-<tr class="separator:a8190804aeb1375a5a6b775f8e2b5d698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecaa9ab68490a0b8dedd20d200d5d0ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_c_d_8c.html#aecaa9ab68490a0b8dedd20d200d5d0ef">lcdInit</a> (void)</td></tr>
+<tr class="memdesc:aecaa9ab68490a0b8dedd20d200d5d0ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises the LCD so that it can be used.  <a href="#aecaa9ab68490a0b8dedd20d200d5d0ef">More...</a><br /></td></tr>
+<tr class="separator:aecaa9ab68490a0b8dedd20d200d5d0ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f693f2e175a1192aebfeb586ed0fd6f"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_c_d_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f">lcdBusy</a> (void)</td></tr>
+<tr class="memdesc:a9f693f2e175a1192aebfeb586ed0fd6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Include:  <a href="#a9f693f2e175a1192aebfeb586ed0fd6f">More...</a><br /></td></tr>
+<tr class="separator:a9f693f2e175a1192aebfeb586ed0fd6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d7066138d22070be0234d8b113cf776"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_c_d_8c.html#a6d7066138d22070be0234d8b113cf776">delay</a> (unsigned int t)</td></tr>
+<tr class="memdesc:a6d7066138d22070be0234d8b113cf776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Include:  <a href="#a6d7066138d22070be0234d8b113cf776">More...</a><br /></td></tr>
+<tr class="separator:a6d7066138d22070be0234d8b113cf776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a500de059df24a647c81d895c38625d6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_c_d_8c.html#a500de059df24a647c81d895c38625d6c">lcdWrite</a> (unsigned char byte, unsigned char mode)</td></tr>
+<tr class="memdesc:a500de059df24a647c81d895c38625d6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Include: <a class="el" href="_l_c_d_8h.html">LCD.h</a>.  <a href="#a500de059df24a647c81d895c38625d6c">More...</a><br /></td></tr>
+<tr class="separator:a500de059df24a647c81d895c38625d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70a8f1041fdd13688a8f8e9fd897ccda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_c_d_8c.html#a70a8f1041fdd13688a8f8e9fd897ccda">lcdWriteString</a> (char *string, unsigned char line)</td></tr>
+<tr class="memdesc:a70a8f1041fdd13688a8f8e9fd897ccda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed character string, and line (1 or 2)  <a href="#a70a8f1041fdd13688a8f8e9fd897ccda">More...</a><br /></td></tr>
+<tr class="separator:a70a8f1041fdd13688a8f8e9fd897ccda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69bb3d698d74da5ea85d8a455dbb3b28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_c_d_8c.html#a69bb3d698d74da5ea85d8a455dbb3b28">lcdWriteChar</a> (unsigned char byte, unsigned char line, unsigned char column)</td></tr>
+<tr class="memdesc:a69bb3d698d74da5ea85d8a455dbb3b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed character, line (1 or 2), and column(1-16)  <a href="#a69bb3d698d74da5ea85d8a455dbb3b28">More...</a><br /></td></tr>
+<tr class="separator:a69bb3d698d74da5ea85d8a455dbb3b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aaab6233be65b7399b3422eee9782508c"></a>
+<a class="anchor" id="a6d7066138d22070be0234d8b113cf776"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void configLCD </td>
+          <td class="memname">void delay </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Include: </p>
+<hr/>
+<p> Function: delay(void)</p>
+<p>Description:</p>
+<p>Arguments: t -</p>
+<p>Returns: None </p>
+
+<p>Definition at line <a class="el" href="_l_c_d_8c_source.html#l00122">122</a> of file <a class="el" href="_l_c_d_8c_source.html">LCD.c</a>.</p>
+
+<p><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="_l_c_d_8c_a6d7066138d22070be0234d8b113cf776_icgraph.png" border="0" usemap="#_l_c_d_8c_a6d7066138d22070be0234d8b113cf776_icgraph" alt=""/></div>
+<map name="_l_c_d_8c_a6d7066138d22070be0234d8b113cf776_icgraph" id="_l_c_d_8c_a6d7066138d22070be0234d8b113cf776_icgraph">
+<area shape="rect" id="node2" href="_l_c_d_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Feed character, line (1 or 2), and column(1&#45;16) " alt="" coords="367,35,423,61"/><area shape="rect" id="node4" href="_l_c_d_8h.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: " alt="" coords="107,35,176,61"/><area shape="rect" id="node5" href="_l_c_d_8h.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="224,85,295,112"/><area shape="rect" id="node6" href="_l_c_d_8h.html#a70a8f1041fdd13688a8f8e9fd897ccda" title="Feed character string, and line (1 or 2) " alt="" coords="343,111,447,137"/><area shape="rect" id="node7" href="_l_c_d_8h.html#a69bb3d698d74da5ea85d8a455dbb3b28" title="Feed character string, and line (1 or 2) " alt="" coords="346,161,443,188"/><area shape="rect" id="node3" href="_menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="495,35,596,61"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9f693f2e175a1192aebfeb586ed0fd6f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char lcdBusy </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -144,48 +196,270 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Include: </p>
 <hr/>
-<p> File: <a class="el" href="_user___interface_8c.html">User_Interface.c</a> Author: Grant</p>
-<p>Description: Contains all the interface to the LCD hardware</p>
-<p>Duties: -Interfaces with and controls the LCD -Displays data on the LCD</p>
-<p>Created on 15 September 2014, 1:21 PM </p>
+<p> Function: <a class="el" href="_l_c_d_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: ">lcdBusy(void)</a></p>
+<p>Description:</p>
+<p>Arguments: None</p>
+<p>Returns: None </p>
+<p>Set data lines to input</p>
+<p>Set the enable low, ensure clock signal is low</p>
+<p>Set RW to read read from LCD</p>
+<p>Set the register select to low for instruction</p>
+<p>Set the enable high, ensure clock signal is high to allow data transmission</p>
+<p>Set control lines to output</p>
+<p>Set data lines to output</p>
+<p>Set enable low to allow data to flow through</p>
+<p>Set control lines to output</p>
+<p>Set data lines to output</p>
+<p>Set enable low to allow data to flow through </p>
 
-<p>Definition at line <a class="el" href="_l_c_d_8c_source.html#l00028">28</a> of file <a class="el" href="_l_c_d_8c_source.html">LCD.c</a>.</p>
+<p>Definition at line <a class="el" href="_l_c_d_8c_source.html#l00070">70</a> of file <a class="el" href="_l_c_d_8c_source.html">LCD.c</a>.</p>
 
-<p><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<p><div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="_l_c_d_8c_aaab6233be65b7399b3422eee9782508c_icgraph.png" border="0" usemap="#_l_c_d_8c_aaab6233be65b7399b3422eee9782508c_icgraph" alt=""/></div>
-<map name="_l_c_d_8c_aaab6233be65b7399b3422eee9782508c_icgraph" id="_l_c_d_8c_aaab6233be65b7399b3422eee9782508c_icgraph">
-<area shape="rect" id="node2" href="_menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="135,5,236,32"/></map>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="_l_c_d_8c_a9f693f2e175a1192aebfeb586ed0fd6f_cgraph.png" border="0" usemap="#_l_c_d_8c_a9f693f2e175a1192aebfeb586ed0fd6f_cgraph" alt=""/></div>
+<map name="_l_c_d_8c_a9f693f2e175a1192aebfeb586ed0fd6f_cgraph" id="_l_c_d_8c_a9f693f2e175a1192aebfeb586ed0fd6f_cgraph">
+<area shape="rect" id="node2" href="_l_c_d_8c.html#a6d7066138d22070be0234d8b113cf776" title="Include: " alt="" coords="123,5,176,32"/></map>
+</div>
+</p>
+
+<p><div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="_l_c_d_8c_a9f693f2e175a1192aebfeb586ed0fd6f_icgraph.png" border="0" usemap="#_l_c_d_8c_a9f693f2e175a1192aebfeb586ed0fd6f_icgraph" alt=""/></div>
+<map name="_l_c_d_8c_a9f693f2e175a1192aebfeb586ed0fd6f_icgraph" id="_l_c_d_8c_a9f693f2e175a1192aebfeb586ed0fd6f_icgraph">
+<area shape="rect" id="node2" href="_l_c_d_8h.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="123,56,193,83"/><area shape="rect" id="node3" href="_l_c_d_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Feed character, line (1 or 2), and column(1&#45;16) " alt="" coords="265,5,321,32"/><area shape="rect" id="node5" href="_l_c_d_8h.html#a70a8f1041fdd13688a8f8e9fd897ccda" title="Feed character string, and line (1 or 2) " alt="" coords="241,56,345,83"/><area shape="rect" id="node6" href="_l_c_d_8h.html#a69bb3d698d74da5ea85d8a455dbb3b28" title="Feed character string, and line (1 or 2) " alt="" coords="245,107,342,133"/><area shape="rect" id="node4" href="_menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="393,5,495,32"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a8190804aeb1375a5a6b775f8e2b5d698"></a>
+<a class="anchor" id="aecaa9ab68490a0b8dedd20d200d5d0ef"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void displayLCD </td>
+          <td class="memname">void lcdInit </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>string</em></td><td>)</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initialises the LCD so that it can be used. </p>
+<p>Feed character, line (1 or 2), and column(1-16)</p>
 <hr/>
-<p> Function: <a class="el" href="_l_c_d_8c.html#a8190804aeb1375a5a6b775f8e2b5d698">displayLCD(char *string)</a></p>
+<p> File: <a class="el" href="_user___interface_8c.html">User_Interface.c</a> Author:</p>
+<p>Description: Contains all the interface to the LCD hardware</p>
+<p>Duties: -Interfaces with and controls the LCD -Displays data on the LCD</p>
+<p>Created on 15 September 2014, 1:21 PM</p>
+<hr/>
+<p> Function: <a class="el" href="_l_c_d_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Feed character, line (1 or 2), and column(1-16) ">lcdInit(void)</a></p>
 <p>Include: <a class="el" href="_l_c_d_8h.html">LCD.h</a></p>
-<p>Description: Displays the given string on the LCD</p>
-<p>Arguments: string - pointer to the data to display</p>
+<p>Description: Initialises the LCD hardware so that data can be displayed on the LCD in local interface mode</p>
+<p>Arguments: None</p>
+<p>Returns: None </p>
+<p>Set data lines to output</p>
+<p>Set control lines low</p>
+<p>8 bits, 2 lines, 5x7 dots, 0x38</p>
+<p>Display on, cursor off, blinking on (Z, 0x0F)</p>
+<p>Cursor moves right?, display not shift (Z, 0x04)</p>
+<p>Clear display </p>
+
+<p>Definition at line <a class="el" href="_l_c_d_8c_source.html#l00033">33</a> of file <a class="el" href="_l_c_d_8c_source.html">LCD.c</a>.</p>
+
+<p><div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="_l_c_d_8c_aecaa9ab68490a0b8dedd20d200d5d0ef_cgraph.png" border="0" usemap="#_l_c_d_8c_aecaa9ab68490a0b8dedd20d200d5d0ef_cgraph" alt=""/></div>
+<map name="_l_c_d_8c_aecaa9ab68490a0b8dedd20d200d5d0ef_cgraph" id="_l_c_d_8c_aecaa9ab68490a0b8dedd20d200d5d0ef_cgraph">
+<area shape="rect" id="node2" href="_l_c_d_8c.html#a6d7066138d22070be0234d8b113cf776" title="Include: " alt="" coords="345,31,399,57"/><area shape="rect" id="node3" href="_l_c_d_8c.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="109,31,180,57"/><area shape="rect" id="node4" href="_l_c_d_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: " alt="" coords="228,81,297,108"/></map>
+</div>
+</p>
+
+<p><div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="_l_c_d_8c_aecaa9ab68490a0b8dedd20d200d5d0ef_icgraph.png" border="0" usemap="#_l_c_d_8c_aecaa9ab68490a0b8dedd20d200d5d0ef_icgraph" alt=""/></div>
+<map name="_l_c_d_8c_aecaa9ab68490a0b8dedd20d200d5d0ef_icgraph" id="_l_c_d_8c_aecaa9ab68490a0b8dedd20d200d5d0ef_icgraph">
+<area shape="rect" id="node2" href="_menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="109,5,211,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a500de059df24a647c81d895c38625d6c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcdWrite </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>byte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Include: <a class="el" href="_l_c_d_8h.html">LCD.h</a>. </p>
+<hr/>
+<p> Function: <a class="el" href="_l_c_d_8c.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. ">lcdWrite(unsigned char byte, unsigned char mode)</a></p>
+<p>Description:</p>
+<p>Arguments: byte - mode -</p>
+<p>Returns: None </p>
+<p>Set data lines to output</p>
+<p>Write data to data lines</p>
+<p>Set clock high</p>
+<p>Set clock low </p>
+
+<p>Definition at line <a class="el" href="_l_c_d_8c_source.html#l00143">143</a> of file <a class="el" href="_l_c_d_8c_source.html">LCD.c</a>.</p>
+
+<p><div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="_l_c_d_8c_a500de059df24a647c81d895c38625d6c_cgraph.png" border="0" usemap="#_l_c_d_8c_a500de059df24a647c81d895c38625d6c_cgraph" alt=""/></div>
+<map name="_l_c_d_8c_a500de059df24a647c81d895c38625d6c_cgraph" id="_l_c_d_8c_a500de059df24a647c81d895c38625d6c_cgraph">
+<area shape="rect" id="node2" href="_l_c_d_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: " alt="" coords="124,5,193,32"/><area shape="rect" id="node3" href="_l_c_d_8c.html#a6d7066138d22070be0234d8b113cf776" title="Include: " alt="" coords="241,31,295,57"/></map>
+</div>
+</p>
+
+<p><div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="_l_c_d_8c_a500de059df24a647c81d895c38625d6c_icgraph.png" border="0" usemap="#_l_c_d_8c_a500de059df24a647c81d895c38625d6c_icgraph" alt=""/></div>
+<map name="_l_c_d_8c_a500de059df24a647c81d895c38625d6c_icgraph" id="_l_c_d_8c_a500de059df24a647c81d895c38625d6c_icgraph">
+<area shape="rect" id="node2" href="_l_c_d_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Feed character, line (1 or 2), and column(1&#45;16) " alt="" coords="148,5,204,32"/><area shape="rect" id="node4" href="_l_c_d_8h.html#a70a8f1041fdd13688a8f8e9fd897ccda" title="Feed character string, and line (1 or 2) " alt="" coords="124,56,228,83"/><area shape="rect" id="node5" href="_l_c_d_8h.html#a69bb3d698d74da5ea85d8a455dbb3b28" title="Feed character string, and line (1 or 2) " alt="" coords="127,107,225,133"/><area shape="rect" id="node3" href="_menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="276,5,377,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a69bb3d698d74da5ea85d8a455dbb3b28"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcdWriteChar </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>byte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>column</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Feed character, line (1 or 2), and column(1-16) </p>
+<p>Feed character string, and line (1 or 2)</p>
+<hr/>
+<p> Function: <a class="el" href="_l_c_d_8h.html#a69bb3d698d74da5ea85d8a455dbb3b28" title="Feed character string, and line (1 or 2) ">lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column)</a></p>
+<p>Include: <a class="el" href="_l_c_d_8h.html">LCD.h</a></p>
+<p>Description:</p>
+<p>Arguments: byte - line - column -</p>
 <p>Returns: None </p>
 
-<p>Definition at line <a class="el" href="_l_c_d_8c_source.html#l00044">44</a> of file <a class="el" href="_l_c_d_8c_source.html">LCD.c</a>.</p>
+<p>Definition at line <a class="el" href="_l_c_d_8c_source.html#l00199">199</a> of file <a class="el" href="_l_c_d_8c_source.html">LCD.c</a>.</p>
+
+<p><div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="_l_c_d_8c_a69bb3d698d74da5ea85d8a455dbb3b28_cgraph.png" border="0" usemap="#_l_c_d_8c_a69bb3d698d74da5ea85d8a455dbb3b28_cgraph" alt=""/></div>
+<map name="_l_c_d_8c_a69bb3d698d74da5ea85d8a455dbb3b28_cgraph" id="_l_c_d_8c_a69bb3d698d74da5ea85d8a455dbb3b28_cgraph">
+<area shape="rect" id="node2" href="_l_c_d_8c.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="151,56,221,83"/><area shape="rect" id="node4" href="_l_c_d_8c.html#a6d7066138d22070be0234d8b113cf776" title="Include: " alt="" coords="387,56,440,83"/><area shape="rect" id="node3" href="_l_c_d_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: " alt="" coords="269,5,339,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a70a8f1041fdd13688a8f8e9fd897ccda"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcdWriteString </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Feed character string, and line (1 or 2) </p>
+<hr/>
+<p> Function: <a class="el" href="_l_c_d_8c.html#a70a8f1041fdd13688a8f8e9fd897ccda" title="Feed character string, and line (1 or 2) ">lcdWriteString(char *string, unsigned char line)</a></p>
+<p>Include: <a class="el" href="_l_c_d_8h.html">LCD.h</a></p>
+<p>Description:</p>
+<p>Arguments: string - line -</p>
+<p>Returns: None </p>
+
+<p>Definition at line <a class="el" href="_l_c_d_8c_source.html#l00172">172</a> of file <a class="el" href="_l_c_d_8c_source.html">LCD.c</a>.</p>
+
+<p><div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="_l_c_d_8c_a70a8f1041fdd13688a8f8e9fd897ccda_cgraph.png" border="0" usemap="#_l_c_d_8c_a70a8f1041fdd13688a8f8e9fd897ccda_cgraph" alt=""/></div>
+<map name="_l_c_d_8c_a70a8f1041fdd13688a8f8e9fd897ccda_cgraph" id="_l_c_d_8c_a70a8f1041fdd13688a8f8e9fd897ccda_cgraph">
+<area shape="rect" id="node2" href="_l_c_d_8c.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="157,56,228,83"/><area shape="rect" id="node4" href="_l_c_d_8c.html#a6d7066138d22070be0234d8b113cf776" title="Include: " alt="" coords="393,56,447,83"/><area shape="rect" id="node3" href="_l_c_d_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: " alt="" coords="276,5,345,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -194,8 +468,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="_l_c_d_8c.html">LCD.c</a></li>
-    <li class="footer">Generated on Tue Oct 21 2014 15:39:04 for Yavin IV Death Star Tracker by
+    <li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li><li class="navelem"><a class="el" href="_l_c_d_8c.html">LCD.c</a></li>
+    <li class="footer">Generated on Wed Oct 22 2014 14:17:28 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

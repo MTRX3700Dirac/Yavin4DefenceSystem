@@ -1,6 +1,8 @@
 var searchData=
 [
   ['n',['N',['../p18f4520_8h.html#a78d6eaf1636482a27da7047fd73c78c3',1,'p18f4520.h']]],
+  ['n_5f1line',['N_1LINE',['../_l_c_d__defs_8h.html#a8a2f75c195c03aa87eca2d3ce24ceb90',1,'LCD_defs.h']]],
+  ['n_5f2line',['N_2LINE',['../_l_c_d__defs_8h.html#a7b56c3a38d26d83e31b71677535eeb81',1,'LCD_defs.h']]],
   ['newline',['newline',['../_menusystem_8c.html#a3e47bea989735dbc22688e1ee25ebe9c',1,'Menusystem.c']]],
   ['newmain_2ec',['newmain.c',['../newmain_8c.html',1,'']]],
   ['next_5fstate',['NEXT_STATE',['../_common_8h.html#ad9fa804805fca2632643680804f7e911',1,'Common.h']]],

@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="Eaw_Yavin4 - thumb.jpg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Yavin IV Death Star Tracker
-   &#160;<span id="projectnumber">V1.0</span>
+   &#160;<span id="projectnumber">V1.1</span>
    </div>
    <div id="projectbrief">Yavin&#39;s premiere line of defence against the encroaching Imperial Star Fleet and Death Star</div>
   </td>
@@ -150,10 +150,6 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 <li>clearscreen()
 : <a class="el" href="_menusystem_8c.html#aec49123d1c8f1231607dc9159ae138a4">Menusystem.c</a>
 </li>
-<li>configLCD()
-: <a class="el" href="_l_c_d_8c.html#aaab6233be65b7399b3422eee9782508c">LCD.c</a>
-, <a class="el" href="_l_c_d_8h.html#aaab6233be65b7399b3422eee9782508c">LCD.h</a>
-</li>
 <li>configureAD()
 : <a class="el" href="_range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a">Range.c</a>
 , <a class="el" href="_range_8h.html#ac7337ef2da4c9ab03257562ec33bbb8a">Range.h</a>
@@ -163,8 +159,8 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 , <a class="el" href="_pan_tilt_8h.html#ab7b8c8f7bf051b4f8e3b151f7b567127">PanTilt.h</a>
 </li>
 <li>configureRange()
-: <a class="el" href="_range_8h.html#a07a4c592815b5e6ae178f93a7764ceb2">Range.h</a>
-, <a class="el" href="_range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2">Range.c</a>
+: <a class="el" href="_range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2">Range.c</a>
+, <a class="el" href="_range_8h.html#a07a4c592815b5e6ae178f93a7764ceb2">Range.h</a>
 </li>
 <li>configureSerial()
 : <a class="el" href="_serial_8h.html#ae2cdcda889fcfed4b6b851835bf2b538">Serial.h</a>
@@ -175,8 +171,8 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 , <a class="el" href="_temp_8h.html#af6785da0c9b3c637b09522617d3f9dba">Temp.h</a>
 </li>
 <li>configureTracking()
-: <a class="el" href="_tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6">Tracking.h</a>
-, <a class="el" href="_tracking_8c.html#ac9b1c5bae39806310b74e2f69d9ee3b6">Tracking.c</a>
+: <a class="el" href="_tracking_8c.html#ac9b1c5bae39806310b74e2f69d9ee3b6">Tracking.c</a>
+, <a class="el" href="_tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6">Tracking.h</a>
 </li>
 <li>configUSER()
 : <a class="el" href="_user___interface_8h.html#a58e473ed40d00e18bd61277428e4d36c">User_Interface.h</a>
@@ -186,13 +182,13 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 
 
 <h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
-<li>display()
-: <a class="el" href="_user___interface_8c.html#a5711e8cdb2a3943783f50f60a15bde31">User_Interface.c</a>
-, <a class="el" href="_user___interface_8h.html#a5711e8cdb2a3943783f50f60a15bde31">User_Interface.h</a>
+<li>delay()
+: <a class="el" href="_l_c_d_8c.html#a6d7066138d22070be0234d8b113cf776">LCD.c</a>
+, <a class="el" href="_l_c_d_8h.html#a6d7066138d22070be0234d8b113cf776">LCD.h</a>
 </li>
-<li>displayLCD()
-: <a class="el" href="_l_c_d_8h.html#a8190804aeb1375a5a6b775f8e2b5d698">LCD.h</a>
-, <a class="el" href="_l_c_d_8c.html#a8190804aeb1375a5a6b775f8e2b5d698">LCD.c</a>
+<li>display()
+: <a class="el" href="_user___interface_8h.html#a5711e8cdb2a3943783f50f60a15bde31">User_Interface.h</a>
+, <a class="el" href="_user___interface_8c.html#a5711e8cdb2a3943783f50f60a15bde31">User_Interface.c</a>
 </li>
 <li>disptoptions()
 : <a class="el" href="_menusystem_8c.html#ae3777c5b2ceab74d5d90b444da874d14">Menusystem.c</a>
@@ -267,6 +263,26 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 
 
 <h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>lcdBusy()
+: <a class="el" href="_l_c_d_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f">LCD.c</a>
+, <a class="el" href="_l_c_d_8h.html#a9f693f2e175a1192aebfeb586ed0fd6f">LCD.h</a>
+</li>
+<li>lcdInit()
+: <a class="el" href="_l_c_d_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef">LCD.h</a>
+, <a class="el" href="_l_c_d_8c.html#aecaa9ab68490a0b8dedd20d200d5d0ef">LCD.c</a>
+</li>
+<li>lcdWrite()
+: <a class="el" href="_l_c_d_8c.html#a500de059df24a647c81d895c38625d6c">LCD.c</a>
+, <a class="el" href="_l_c_d_8h.html#a500de059df24a647c81d895c38625d6c">LCD.h</a>
+</li>
+<li>lcdWriteChar()
+: <a class="el" href="_l_c_d_8h.html#a69bb3d698d74da5ea85d8a455dbb3b28">LCD.h</a>
+, <a class="el" href="_l_c_d_8c.html#a69bb3d698d74da5ea85d8a455dbb3b28">LCD.c</a>
+</li>
+<li>lcdWriteString()
+: <a class="el" href="_l_c_d_8h.html#a70a8f1041fdd13688a8f8e9fd897ccda">LCD.h</a>
+, <a class="el" href="_l_c_d_8c.html#a70a8f1041fdd13688a8f8e9fd897ccda">LCD.c</a>
+</li>
 <li>lowISR()
 : <a class="el" href="_interrupts_8c.html#ac835f50b358d0d663df1b8b835f9bb87">Interrupts.c</a>
 </li>
@@ -461,7 +477,7 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Oct 21 2014 15:39:07 for Yavin IV Death Star Tracker by
+    <li class="footer">Generated on Wed Oct 22 2014 14:17:40 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

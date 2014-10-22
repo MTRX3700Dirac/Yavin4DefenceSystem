@@ -1,0 +1,507 @@
+.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD_defs.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBLCD_D0\fP   \fBPORTDbits\&.RD0\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D1\fP   \fBPORTDbits\&.RD1\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D2\fP   \fBPORTDbits\&.RD2\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D3\fP   \fBPORTDbits\&.RD3\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D4\fP   \fBPORTDbits\&.RD4\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D5\fP   \fBPORTDbits\&.RD5\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D6\fP   \fBPORTDbits\&.RD6\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D7\fP   \fBPORTDbits\&.RD7\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D0_DIR\fP   \fBTRISDbits\&.RD0\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D1_DIR\fP   \fBTRISDbits\&.RD1\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D2_DIR\fP   \fBTRISDbits\&.RD2\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D3_DIR\fP   \fBTRISDbits\&.RD3\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D4_DIR\fP   \fBTRISDbits\&.RD4\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D5_DIR\fP   \fBTRISDbits\&.RD5\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D6_DIR\fP   \fBTRISDbits\&.RD6\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_D7_DIR\fP   \fBTRISDbits\&.RD7\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_DATA_LINE\fP   \fBPORTD\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_DATA_LINE_DIR\fP   \fBTRISD\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_RS\fP   \fBPORTCbits\&.RC1\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_RW\fP   \fBPORTCbits\&.RC2\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_E\fP   \fBPORTCbits\&.RC3\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_RS_DIR\fP   \fBTRISCbits\&.RC1\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_RW_DIR\fP   \fBTRISCbits\&.RC2\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_E_DIR\fP   \fBTRISCbits\&.RC3\fP"
+.br
+.ti -1c
+.RI "#define \fBLCD_INS\fP   0"
+.br
+.ti -1c
+.RI "#define \fBLCD_DATA\fP   1"
+.br
+.ti -1c
+.RI "#define \fBLCD_WRITE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBLCD_READ\fP   1"
+.br
+.ti -1c
+.RI "#define \fBLCD_CLKLOW\fP   0"
+.br
+.ti -1c
+.RI "#define \fBLCD_CLKHGH\fP   1"
+.br
+.ti -1c
+.RI "#define \fBLCD_OFF\fP   0"
+.br
+.ti -1c
+.RI "#define \fBLCD_ON\fP   1"
+.br
+.ti -1c
+.RI "#define \fBLCD_INPUT\fP   0xFF"
+.br
+.ti -1c
+.RI "#define \fBLCD_OUTPUT\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBLCD_PIN_INPUT\fP   1"
+.br
+.ti -1c
+.RI "#define \fBLCD_PIN_OUTPUT\fP   0"
+.br
+.ti -1c
+.RI "#define \fBDISPCLR\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBRTNHOME\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBSETENTRYMODE\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBID_CURSL\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBID_CURSR\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBSH_DISPNSHIFT\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBSH_DISPSHIFT\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBDISPOPT\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBD_DISPOFF\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBD_DISPON\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBC_CURSON\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBC_CURSOFF\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBB_BLINKOFF\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBB_BLINKON\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBDISPSHIFTCURS\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBSC_CURSMOVE\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBSC_DISPMOVE\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBRL_LFTSHFT\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBRL_RGTSHFT\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBSETDISPFXN\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBDL_4BIT\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBDL_8BIT\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBN_1LINE\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBN_2LINE\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBF_5X7DOT\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBF_5X10DOT\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBSETCGRAMADD\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBSETDDRAMADD\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBBF_READY\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBBF_BUSY\fP   1"
+.br
+.ti -1c
+.RI "#define \fBLINE1\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBLINE2\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBLINESTART\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBLINEEND\fP   0x0F"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define B_BLINKOFF   0x00"
+
+.PP
+Definition at line 65 of file LCD_defs\&.h\&.
+.SS "#define B_BLINKON   0x01"
+
+.PP
+Definition at line 66 of file LCD_defs\&.h\&.
+.SS "#define BF_BUSY   1"
+
+.PP
+Definition at line 84 of file LCD_defs\&.h\&.
+.SS "#define BF_READY   0x00"
+
+.PP
+Definition at line 82 of file LCD_defs\&.h\&.
+.SS "#define C_CURSOFF   0x02"
+
+.PP
+Definition at line 64 of file LCD_defs\&.h\&.
+.SS "#define C_CURSON   0x00"
+
+.PP
+Definition at line 63 of file LCD_defs\&.h\&.
+.SS "#define D_DISPOFF   0x00"
+
+.PP
+Definition at line 61 of file LCD_defs\&.h\&.
+.SS "#define D_DISPON   0x04"
+
+.PP
+Definition at line 62 of file LCD_defs\&.h\&.
+.SS "#define DISPCLR   0x01"
+
+.PP
+Definition at line 53 of file LCD_defs\&.h\&.
+.SS "#define DISPOPT   0x08"
+
+.PP
+Definition at line 60 of file LCD_defs\&.h\&.
+.SS "#define DISPSHIFTCURS   0x10"
+
+.PP
+Definition at line 67 of file LCD_defs\&.h\&.
+.SS "#define DL_4BIT   0x00"
+
+.PP
+Definition at line 73 of file LCD_defs\&.h\&.
+.SS "#define DL_8BIT   0x10"
+
+.PP
+Definition at line 74 of file LCD_defs\&.h\&.
+.SS "#define F_5X10DOT   0x04"
+
+.PP
+Definition at line 78 of file LCD_defs\&.h\&.
+.SS "#define F_5X7DOT   0x00"
+
+.PP
+Definition at line 77 of file LCD_defs\&.h\&.
+.SS "#define ID_CURSL   0x00"
+
+.PP
+Definition at line 56 of file LCD_defs\&.h\&.
+.SS "#define ID_CURSR   0x02"
+
+.PP
+Definition at line 57 of file LCD_defs\&.h\&.
+.SS "#define LCD_CLKHGH   1"
+
+.PP
+Definition at line 44 of file LCD_defs\&.h\&.
+.SS "#define LCD_CLKLOW   0"
+
+.PP
+Definition at line 43 of file LCD_defs\&.h\&.
+.SS "#define LCD_D0   \fBPORTDbits\&.RD0\fP"
+
+.PP
+Definition at line 8 of file LCD_defs\&.h\&.
+.SS "#define LCD_D0_DIR   \fBTRISDbits\&.RD0\fP"
+
+.PP
+Definition at line 17 of file LCD_defs\&.h\&.
+.SS "#define LCD_D1   \fBPORTDbits\&.RD1\fP"
+
+.PP
+Definition at line 9 of file LCD_defs\&.h\&.
+.SS "#define LCD_D1_DIR   \fBTRISDbits\&.RD1\fP"
+
+.PP
+Definition at line 18 of file LCD_defs\&.h\&.
+.SS "#define LCD_D2   \fBPORTDbits\&.RD2\fP"
+
+.PP
+Definition at line 10 of file LCD_defs\&.h\&.
+.SS "#define LCD_D2_DIR   \fBTRISDbits\&.RD2\fP"
+
+.PP
+Definition at line 19 of file LCD_defs\&.h\&.
+.SS "#define LCD_D3   \fBPORTDbits\&.RD3\fP"
+
+.PP
+Definition at line 11 of file LCD_defs\&.h\&.
+.SS "#define LCD_D3_DIR   \fBTRISDbits\&.RD3\fP"
+
+.PP
+Definition at line 20 of file LCD_defs\&.h\&.
+.SS "#define LCD_D4   \fBPORTDbits\&.RD4\fP"
+
+.PP
+Definition at line 12 of file LCD_defs\&.h\&.
+.SS "#define LCD_D4_DIR   \fBTRISDbits\&.RD4\fP"
+
+.PP
+Definition at line 21 of file LCD_defs\&.h\&.
+.SS "#define LCD_D5   \fBPORTDbits\&.RD5\fP"
+
+.PP
+Definition at line 13 of file LCD_defs\&.h\&.
+.SS "#define LCD_D5_DIR   \fBTRISDbits\&.RD5\fP"
+
+.PP
+Definition at line 22 of file LCD_defs\&.h\&.
+.SS "#define LCD_D6   \fBPORTDbits\&.RD6\fP"
+
+.PP
+Definition at line 14 of file LCD_defs\&.h\&.
+.SS "#define LCD_D6_DIR   \fBTRISDbits\&.RD6\fP"
+
+.PP
+Definition at line 23 of file LCD_defs\&.h\&.
+.SS "#define LCD_D7   \fBPORTDbits\&.RD7\fP"
+
+.PP
+Definition at line 15 of file LCD_defs\&.h\&.
+.SS "#define LCD_D7_DIR   \fBTRISDbits\&.RD7\fP"
+
+.PP
+Definition at line 24 of file LCD_defs\&.h\&.
+.SS "#define LCD_DATA   1"
+
+.PP
+Definition at line 40 of file LCD_defs\&.h\&.
+.SS "#define LCD_DATA_LINE   \fBPORTD\fP"
+
+.PP
+Definition at line 26 of file LCD_defs\&.h\&.
+.SS "#define LCD_DATA_LINE_DIR   \fBTRISD\fP"
+
+.PP
+Definition at line 27 of file LCD_defs\&.h\&.
+.SS "#define LCD_E   \fBPORTCbits\&.RC3\fP"
+
+.PP
+Definition at line 32 of file LCD_defs\&.h\&.
+.SS "#define LCD_E_DIR   \fBTRISCbits\&.RC3\fP"
+
+.PP
+Definition at line 37 of file LCD_defs\&.h\&.
+.SS "#define LCD_INPUT   0xFF"
+
+.PP
+Definition at line 48 of file LCD_defs\&.h\&.
+.SS "#define LCD_INS   0"
+
+.PP
+Definition at line 39 of file LCD_defs\&.h\&.
+.SS "#define LCD_OFF   0"
+
+.PP
+Definition at line 45 of file LCD_defs\&.h\&.
+.SS "#define LCD_ON   1"
+
+.PP
+Definition at line 46 of file LCD_defs\&.h\&.
+.SS "#define LCD_OUTPUT   0x00"
+
+.PP
+Definition at line 49 of file LCD_defs\&.h\&.
+.SS "#define LCD_PIN_INPUT   1"
+
+.PP
+Definition at line 50 of file LCD_defs\&.h\&.
+.SS "#define LCD_PIN_OUTPUT   0"
+
+.PP
+Definition at line 51 of file LCD_defs\&.h\&.
+.SS "#define LCD_READ   1"
+
+.PP
+Definition at line 42 of file LCD_defs\&.h\&.
+.SS "#define LCD_RS   \fBPORTCbits\&.RC1\fP"
+
+.PP
+Definition at line 30 of file LCD_defs\&.h\&.
+.SS "#define LCD_RS_DIR   \fBTRISCbits\&.RC1\fP"
+
+.PP
+Definition at line 35 of file LCD_defs\&.h\&.
+.SS "#define LCD_RW   \fBPORTCbits\&.RC2\fP"
+
+.PP
+Definition at line 31 of file LCD_defs\&.h\&.
+.SS "#define LCD_RW_DIR   \fBTRISCbits\&.RC2\fP"
+
+.PP
+Definition at line 36 of file LCD_defs\&.h\&.
+.SS "#define LCD_WRITE   0"
+
+.PP
+Definition at line 41 of file LCD_defs\&.h\&.
+.SS "#define LINE1   0x00"
+
+.PP
+Definition at line 86 of file LCD_defs\&.h\&.
+.SS "#define LINE2   0x40"
+
+.PP
+Definition at line 87 of file LCD_defs\&.h\&.
+.SS "#define LINEEND   0x0F"
+
+.PP
+Definition at line 90 of file LCD_defs\&.h\&.
+.SS "#define LINESTART   0x00"
+
+.PP
+Definition at line 89 of file LCD_defs\&.h\&.
+.SS "#define N_1LINE   0x00"
+
+.PP
+Definition at line 75 of file LCD_defs\&.h\&.
+.SS "#define N_2LINE   0x08"
+
+.PP
+Definition at line 76 of file LCD_defs\&.h\&.
+.SS "#define RL_LFTSHFT   0x00"
+
+.PP
+Definition at line 70 of file LCD_defs\&.h\&.
+.SS "#define RL_RGTSHFT   0x04"
+
+.PP
+Definition at line 71 of file LCD_defs\&.h\&.
+.SS "#define RTNHOME   0x02"
+
+.PP
+Definition at line 54 of file LCD_defs\&.h\&.
+.SS "#define SC_CURSMOVE   0x00"
+
+.PP
+Definition at line 68 of file LCD_defs\&.h\&.
+.SS "#define SC_DISPMOVE   0x08"
+
+.PP
+Definition at line 69 of file LCD_defs\&.h\&.
+.SS "#define SETCGRAMADD   0x40"
+
+.PP
+Definition at line 79 of file LCD_defs\&.h\&.
+.SS "#define SETDDRAMADD   0x80"
+
+.PP
+Definition at line 80 of file LCD_defs\&.h\&.
+.SS "#define SETDISPFXN   0x20"
+
+.PP
+Definition at line 72 of file LCD_defs\&.h\&.
+.SS "#define SETENTRYMODE   0x04"
+
+.PP
+Definition at line 55 of file LCD_defs\&.h\&.
+.SS "#define SH_DISPNSHIFT   0x00"
+
+.PP
+Definition at line 58 of file LCD_defs\&.h\&.
+.SS "#define SH_DISPSHIFT   0x01"
+
+.PP
+Definition at line 59 of file LCD_defs\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

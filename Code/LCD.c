@@ -1,8 +1,35 @@
+/*! **********************************************************************
+ * File:   User_Interface.c
+ * Author:
+ *
+ * Description:
+ * Contains all the interface to the LCD hardware
+ *
+ * Duties:
+ *      -Interfaces with and controls the LCD
+ *      -Displays data on the LCD
+ *
+ * Created on 15 September 2014, 1:21 PM
+ **********************************************************************/
 
 #include "Common.h"
 #include "LCD.h"
 #include "LCD_defs.h"
 
+/*! **********************************************************************
+ * Function: lcdInit(void)
+ *
+ * \brief Initialises the LCD so that it can be used
+ *
+ * Include: LCD.h
+ *
+ * Description: Initialises the LCD hardware so that data can be displayed
+ *              on the LCD in local interface mode
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
 void lcdInit(void){
 
     delay(15);
@@ -27,6 +54,19 @@ void lcdInit(void){
     delay(15);
 }
 
+/*! **********************************************************************
+ * Function: lcdBusy(void)
+ *
+ * \brief 
+ *
+ * Include: 
+ *
+ * Description: 
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
 char lcdBusy(void){
 
     //LCD_PWR_DIR = LCD_PIN_OUTPUT;       //! Set control lines to output
@@ -66,7 +106,19 @@ char lcdBusy(void){
     }
 }
 
-
+/*! **********************************************************************
+ * Function: delay(void)
+ *
+ * \brief
+ *
+ * Include:  
+ *
+ * Description: 
+ *
+ * Arguments: t - 
+ *
+ * Returns: None
+ *************************************************************************/
 void delay(unsigned int t)  //delay 1 ms
 {
     while(t!=0){t--;}
@@ -74,6 +126,20 @@ void delay(unsigned int t)  //delay 1 ms
     while(t!=0){t--;}
 }
 
+/*! **********************************************************************
+ * Function: lcdWrite(unsigned char byte, unsigned char mode)
+ *
+ * \brief 
+ *
+ * Include: LCD.h
+ *
+ * Description: 
+ *
+ * Arguments: byte -
+ *            mode - 
+ *
+ * Returns: None
+ *************************************************************************/
 void lcdWrite(unsigned char byte, unsigned char mode){
     while(lcdBusy()){}
     LCD_DATA_LINE_DIR = LCD_OUTPUT; //! Set data lines to output
@@ -89,6 +155,20 @@ void lcdWrite(unsigned char byte, unsigned char mode){
 }
 
 //!Feed character string, and line (1 or 2)
+/*! **********************************************************************
+ * Function: lcdWriteString(char *string, unsigned char line)
+ *
+ * \brief 
+ *
+ * Include: LCD.h
+ *
+ * Description: 
+ *
+ * Arguments: string -
+ *            line - 
+ *
+ * Returns: None
+ *************************************************************************/
 void lcdWriteString(char *string, unsigned char line){
     unsigned char row;
     if(line==1){row=LINE1;}
@@ -101,6 +181,21 @@ void lcdWriteString(char *string, unsigned char line){
 }
 
 //!Feed character, line (1 or 2), and column(1-16)
+/*! **********************************************************************
+ * Function: lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column)
+ *
+ * \brief 
+ *
+ * Include: LCD.h
+ *
+ * Description: 
+ *
+ * Arguments: byte -
+ *            line -
+ *            column - 
+ *
+ * Returns: None
+ *************************************************************************/
 void lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column){
     unsigned char row;
     if(line==1){row=LINE1;}

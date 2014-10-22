@@ -500,23 +500,39 @@ This module contains all the functionality required to communicate and use the L
 \subsection{Public Interface:}
 The LCD module will contain the following public functions:
 
-\subsubsection{Configuration:}
+\subsubsection{lcdInit:}
 The configuration function will setup the LCD for use, and display the initial 'welcome' message, or simply put the LCD into it default state
 
 \subsubsection{Configuration Prototype:}
 The configuration function will take no arguments and will return nothing. It will use the following prototype: \newline \newline
-void configLCD(void);
+void lcdInit(void);
+
+\subsubsection{lcdWriteChar}
+Writes a character onto the LCD at the given line and column.
+
+\subsubsection{lcdWriteChar Prototype:}
+The lcdWriteChar function will take three arguments: The character to transmit (unsigned char), the line number (1 or 2 as an unsigned char) and the column number (unsigned char). This function returns nothing and makes use of the following prototype: \newline \newline
+void lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column);
+
+\subsubsection{lcdWriteString}
+The LCD Write String function will write an entire string to the given line number.
+
+\subsubsection{lcdWriteString Prototype}
+The lcdWriteString function will take two arguments: The string to transmit (char *), and the line number (unsigned char). The function will return nothing, and take the following prototype: \newline \newline
+lcdWriteString(char *string, unsigned char line);
 
 \subsection{Functions:}
 In addition to the public functions described above the LCD module will also implement the following (hidden) functions.
 \begin{itemize}
-	\item 
+	\item lcdBusy to check whether the last command to the LCD has been completed
+	\item lcdWrite to write the next byte to the LCD
 \end{itemize}
 
 \subsection{Hardware:}
 The LCD module will make use of the following hardware:
 \begin{itemize}
 	\item LCD screen
+	\item PORTB
 \end{itemize}
 
 \subsection{Processor Resources:}
