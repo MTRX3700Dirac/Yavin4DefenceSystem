@@ -83,8 +83,8 @@ void configureAD(void)
     TRISA = 0xFF;
 
     //Write the configuration values into the configuration registers
-    //ADCON1 = 0x8E;      // ADFM set
-    ADCON1 = 0x8C;        //Set three analogue channels on PORTA, AN0, AN1, AN2
+    ADCON2bits.ADFM = 1;    //right justified
+    ADCON1 = 0x8C;      // ADFM set, AN0 AN1 and AN2 analogue input
     ADCON0 = 0x41;
     
     //Arbitrary wait period to allow the ADC to initialise

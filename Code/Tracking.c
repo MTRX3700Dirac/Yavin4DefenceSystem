@@ -14,7 +14,7 @@
  *      -Predict next position of target???
  *
  * Functions:
- * 
+ *
  *
  * Created on 15 September 2014, 1:42 PM
  ******************************************************************************/
@@ -23,12 +23,12 @@
 #include "Range.h"
 #include "PanTilt.h"
 
-#define diff 5
 #define TARGET_RAD 30  //The diameter of the target in mm (slightly larger)
+#define diff 5
 #include <delays.h>
 
 /* **********************************************************************
- * Function: configureTracking(void)
+ * Function: configBase(void)
  *
  * Include: Tracking.h
  *
@@ -61,7 +61,6 @@ void configureTracking(void)
  *************************************************************************/
 void search(systemState *state)
 {
-    unsigned int j;
     //Vertical and laterial incremental movements
     static Direction lateral = {diff, 0};
     static Direction vertical = {0, diff};
@@ -69,9 +68,9 @@ void search(systemState *state)
     TargetState currentState;
     Direction dir;
 
+    
     dir = getDir();
 
-    for (j = 0; j < 10000; j++);
     //If max azimuth range, increment vertical and change azimuth direction
     if (dir.azimuth > 40 || dir.azimuth < -40)
     {
@@ -92,7 +91,7 @@ void search(systemState *state)
     {
         increment(lateral);
     }
-
+    
     previousState = currentState;
     currentState = readTargetState();
     switch (currentState)
@@ -126,7 +125,7 @@ void trackingISR(void)
 }
 
 /* **********************************************************************
- * Function: track(void)
+ * Function: edge(void)
  *
  * Include: Tracking.h
  *
@@ -148,18 +147,23 @@ TrackingData track(systemState *state)
     char weight;
     unsigned int j;
     Direction centre;
-    signed long int inclination = 0;
-    signed long int azimuth = 0;
     TrackingData result;
+    Direction edge1, edge2;
+    Direction inc = {1, 0}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
+
     Direction dir;
     Direction inc[] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
     char angle;
+
+    signed long int inclination = 0;
+    signed long int azimuth = 0;
 
     //angle = TARGET_RAD * (unsigned int)57 / range();
     angle = 8;
 
     centre = getDir();
 
+    //Check if the target is in range of the IR
     for (i = 0; i < 4; i++)
     {
         //Calc new direction
@@ -174,7 +178,7 @@ TrackingData track(systemState *state)
 
         //Calculate weighting of that sample
         weight = (weight == GOOD_TRACK) * 4 + (weight == BAD_DIR);
-        
+
         count += weight;
         azimuth += (int)weight * dir.azimuth;
         inclination += (int)weight * dir.inclination;
@@ -197,6 +201,10 @@ TrackingData track(systemState *state)
         result.azimuth = centre.azimuth;
         result.inclination = centre.inclination;
     }
+
+    result.distance = range();
+    result.azimuth = centre.azimuth;
+    result.inclination = centre.inclination;
 
     return result;
 }

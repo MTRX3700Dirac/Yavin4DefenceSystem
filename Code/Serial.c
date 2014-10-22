@@ -42,6 +42,7 @@
 static volatile circularBuffer receive_buffer;
 static volatile circularBuffer transmit_buffer;
 static volatile char carriageReturn = 0;
+static volatile char escPressed = 0;
 
 /*! **********************************************************************
  * Function: configureSerial(void)
@@ -58,12 +59,13 @@ void configureSerial(void)
 {
     INTCONbits.GIEH = 1;
     INTCONbits.GIEL = 1;
-    RCONbits.IPEN = 1;
+    RCONbits.IPEN = 1;   
 
     //Initialise the serial buffers
     init(transmit_buffer);
     init(receive_buffer);
     carriageReturn = 0;
+    escPressed = 0;
 
     //Open the USART module
 #ifdef MNML
@@ -189,6 +191,47 @@ char receiveCR(void)
 }
 
 /*! **********************************************************************
+ * Function: receiveEsc(void)
+ *
+ * Include:
+ *
+ * Description: Indicates whether an Escape character has been received
+ *
+ * Arguments: None
+ *
+ * Returns: non-zero if the Esc has been received, zero otherwise
+ *************************************************************************/
+char receiveEsc(void)
+{
+    return escPressed;
+}
+
+/*! **********************************************************************
+ * Function: popEsc(void)
+ *
+ * Include:
+ *
+ * Description: Processes the Esc command and removes any input before the
+ *              Esc command.
+ *
+ * Arguments: None
+ *
+ * Returns:
+ *************************************************************************/
+void popEsc(void)
+{
+    char e;
+    e = empty(receive_buffer);
+    while (!e)
+    {
+        pop(receive_buffer);
+        e = empty(receive_buffer);
+    }
+    escPressed--;
+    return;
+}
+
+/*! **********************************************************************
  * Function: readString(char *string)
  *
  * Include: Serial.h
@@ -198,7 +241,7 @@ char receiveCR(void)
  *
  * Arguments: string - Pointer to location to store received data
  *
- * Returns: Received data up to a carriage return
+ * Returns: Received data including the carriage return
  *
  * Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the
  *          location pointed to by string before calling this function.
@@ -214,6 +257,7 @@ void readString(char *string)
         e = empty(receive_buffer);
         c = pop(receive_buffer);
     }
+    *string = c;
     carriageReturn--;
 }
 
@@ -271,19 +315,23 @@ void serialISR(void)
         data = ReadUSART();
         last = peek(receive_buffer);
 
-        //Allows the user to remove/change transmitted data
-        if (data == BS && last != CR && last != ESC && last != NL )
-        {
-            pop(receive_buffer);
-        }
+        if (data == ESC) escPressed++;
         else
         {
-            //push the received data onto the received buffer
-            push(data, receive_buffer);
-            if (data == CR) carriageReturn++;
+            //Allows the user to remove/change transmitted data
+            if (data == BS && last != CR && last != ESC && last != NL )
+            {
+                pop(receive_buffer);
+            }
+            else
+            {
+                //push the received data onto the received buffer
+                push(data, receive_buffer);
+                if (data == CR) carriageReturn++;
 
-            //Clear interrupt flag
-            RC_INT_CLEAR();
+                //Clear interrupt flag
+                RC_INT_CLEAR();
+            }
         }
     }
 }

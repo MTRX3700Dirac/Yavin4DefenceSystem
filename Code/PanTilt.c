@@ -82,10 +82,10 @@ static Direction arcRange = { 94, 103 };
 static Delay global_delay;
 
 //Static Max/Min
-static signed char azimuth_angle_max;
-static signed char azimuth_angle_min;
-static signed char elevation_angle_max;
-static signed char elevation_angle_min;
+static signed char azimuth_angle_max = 45;
+static signed char azimuth_angle_min = -45;
+static signed char elevation_angle_max = 45;
+static signed char elevation_angle_min = -45;
 
 //Static Current direction
 static Direction current_direction;

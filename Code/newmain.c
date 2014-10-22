@@ -1,39 +1,50 @@
-/*! ****************************************************************************
+/* 
  * File:   newmain.c
- * 
  * Author: Grant
  *
- * Description: 
- * Controls the main system state of the product based on a state transition
- * type template.
+ * Description: Controls the main system state of the product based on a state
+ *              transition type template
  *
  * Created on 7 September 2014, 4:12 PM
- ****************************************************************************/
-
-#pragma config WDT = OFF	//Turns watchdog Timer off
-#pragma config OSC = HS		//The crystal oscillator set to "High Speed"
-#pragma config LVP = OFF	//
-#pragma config DEBUG = ON
-
+ */
+//
+//#pragma config WDT = OFF	//Turns watchdog Timer off
+//#pragma config OSC = HS		//The crystal oscillator set to "High Speed"
+//#pragma config LVP = OFF	//
+//#pragma config DEBUG = ON
 #include "Common.h"
 
 #include "Tracking.h"
 #include "Range.h"
 #include "User_Interface.h"
 #include "Serial.h"
-#include "PanTilt.h"
-#include "Menusystem.h"
 
-//Local Function Prototypes:
-static void initialization(systemState *state);
-static void transRange(void);
+#include "PanTilt.h"
+#include "Temp.h"
+
+#include "Menusystem.h"
+#include "HardUItest.h"
+
+// THIS NEEDS TO BE HERE
+#include "ConfigRegs18f4520.h"
+
+//Define Macros to change the state of the system
+#define NEXT_STATE(s) state.previous = state.current; state.current = s
+#define NEXT_STATE_PTR(s) state->previous = state->current; state->current = s
+
+#define IR_CONV(ad) (237411 / ad - 65)
+
+//Function Prototypes:
+void initialization(systemState *state);
+
+extern unsigned int rangeIR(void);
 
 /*! **********************************************************************
  * Function: main(void)
  *
  * \brief Program entry point
  *
- * Include: Local to newmain.c
+ * Include: 
  *
  * Description: stores the current system state and manages all transitions
  *
@@ -43,13 +54,42 @@ static void transRange(void);
  *
  * @todo test and debug the Watch Dog Timer functionality
  *************************************************************************/
-void main() {
+void main(void) {
+    unsigned int i;
     systemState state = {INIT, UNDEF};
     TrackingData target;
+    Direction dir;
+    char str[80] = {0};
 
+
+//    initialiseMenu();
+    // strlenpgm(welcome)
+//    for(;;)
+//    {
+//        sendROM(welcome);
+//        for (i=0;i<10000;i++);
+//    }
+    configureBase();
+    initialiseMenu();
+    menu();
+
+    
+//    configureBase();
+//
+//    dir.azimuth = 0;
+//    dir.inclination = 0;
+//    move(dir);
+//
+//    for(;;)
+//    {
+//        rangeUltrasonic();
+//        //transmit(string);
+//        for(i=0;i<30000;i++);
+//    }
+    
     for (;;)
     {
-        //if (TMR1H > 10000) serviceMenu();
+        if (TMR1H > 10000) waitForSerialInput();
         switch (state.current)
         {
             case INIT:
@@ -59,10 +99,10 @@ void main() {
                 search(&state);
                 break;
             case TRCK:
-                target = track(&state);
+                track(&state);
                 break;
             default:     //Any other undefined state
-                NEXT_STATE(INIT, state);       //Set the next state to be Initialize
+                NEXT_STATE(INIT);       //Set the next state to be Initialize
                 break;
         }
 #ifdef WDTMR
@@ -75,7 +115,7 @@ void main() {
 /*! **********************************************************************
  * Function: initialization(systemState *state)
  *
- * Include: Local to newmain.c
+ * Include: 
  *
  * Description: Initializes the system, turns on the sensors and checks if
  * they are ready to begin working
@@ -84,46 +124,28 @@ void main() {
  *
  * Returns: The next system state - At the moment always just transitions to CHECK
  *************************************************************************/
-static void initialization(systemState *state)
+void initialization(systemState *state)
 {
-    configureSerial();
-    configureTracking();
+    //Initialise the Interrupts
+    PIR1 = 0x00;            //Clear all interrupt flags
+    PIR2 = 0x00;
+    INTCONbits.GIEH = 1;    //Unmask global high interrupts
+    INTCONbits.GIEL = 1;    //Unmask global low interrupts
+    RCONbits.IPEN = 1;      //Enable interrupt priority
 
-    NEXT_STATE_PTR(SRCH, state);   //Go to the searching state
+    //Open ADC. Set A/D conversion Clock to Fosc/2, Acuisition time is 20TAD (10 microseconds)
+    //Read from channel 0, and disable A/D interrupts
+
+    // On the MNML board, use a different ADC
+#ifdef MNML
+    OpenADC(ADC_FOSC_2 & ADC_0_TAD & ADC_INT_OFF, ADC_RIGHT_JUST & ADC_1ANA, ADC_CH0);
+#else
+    OpenADC(ADC_FOSC_2 & ADC_RIGHT_JUST & ADC_20_TAD, ADC_CH0 & ADC_INT_OFF);
+#endif
+
+    TRISAbits.TRISA0 = 1;   //Set channel 0 on port A input
+    TRISAbits.TRISA1 = 1;   //Set channel 1 on port A input
+    TRISAbits.TRISA2 = 1;   //Set channel 2 on port A input
+
+    NEXT_STATE_PTR(MEAS);
 }
-
-/*! **********************************************************************
- * Function: transRange(void)
- *
- * Include: Local to newmain.c
- *
- * Description: Measures and Transmits the range -> for testing purposes only
- *
- * Arguments: None
- *
- * Returns: None; Prints range to the screen
- *
- * @todo Remove this function before the final version
- *************************************************************************/
-static void transRange(void)
-{
-    int j;
-    char stringUS[] = "US Range:";
-    char stringIR[] = "IR Range:";
-    char newLine[] = "\n\r";
-    char num[5];
-
-    sprintf(num, "%u", rangeUltrasonic());
-        transmit(num);
-        transmit(newLine);
-        for (j=0; j<60000;j++);
-        for (j=0; j<60000;j++);
-
-    transmit(stringIR);
-        sprintf(num, "%u", rangeIR());
-        transmit(num);
-        transmit(newLine);
-        transmit(newLine);
-}
-
-
