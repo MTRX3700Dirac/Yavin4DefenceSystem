@@ -43,7 +43,7 @@ circularBuffer receive;
  *************************************************************************/
 void display(TrackingData data)
 {
-    
+
 }
 
 /*! **********************************************************************
@@ -132,7 +132,7 @@ unsigned int readDial(unsigned int max)
 
     //SetChanADC(ADC_DIAL_READ);
     SetChanADC(0);
-    
+
     //Begin convertion
     ConvertADC();
     while(BusyADC());

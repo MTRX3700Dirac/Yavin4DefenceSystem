@@ -56,7 +56,7 @@ static TargetState current_target_state;
 
 //Private function prototypes:
 static void beginUS(void);
-static unsigned int rangeIR(void);
+unsigned int rangeIR(void);
 static unsigned int rangeUS(unsigned char temp);
 
 void configureRange(void);
@@ -74,32 +74,15 @@ static unsigned int sampleIR(char numSamples);
  * Arguments: None
  *
  * Returns: None
- *
- * @todo Make absolutely sure this works on the minimal board, and with the temperature sensor, and pot and IR sensor
  *************************************************************************/
 void configureAD(void)
 {
     int i = 0;
     TRISA = 0xFF;
 
-//    //Write the configuration values into the configuration registers
-//    ADCON2bits.ADFM = 1;    //right justified
-//    ADCON1 = 0x8C;      // ADFM set, AN0 AN1 and AN2 analogue input
-//    ADCON0 = 0x41;
-
-    //Open ADC. Set A/D conversion Clock to Fosc/2, Acuisition time is 20TAD (10 microseconds)
-    //Read from channel 0, and disable A/D interrupts
-
-        // On the MNML board, use a different ADC
-#ifdef MNML
-    OpenADC(ADC_FOSC_2 & ADC_0_TAD & ADC_INT_OFF, ADC_RIGHT_JUST & ADC_1ANA, ADC_CH0);
-#else
-    OpenADC(ADC_FOSC_2 & ADC_RIGHT_JUST & ADC_20_TAD, ADC_CH0 & ADC_INT_OFF);
-#endif
-
-    TRISAbits.TRISA0 = 1;   //Set channel 0 on port A input
-    TRISAbits.TRISA1 = 1;   //Set channel 1 on port A input
-    TRISAbits.TRISA2 = 1;   //Set channel 2 on port A input
+    //Write the configuration values into the configuration registers
+    ADCON1 = 0x8E;      // ADFM set
+    ADCON0 = 0x41;
     
     //Arbitrary wait period to allow the ADC to initialise
     for (i = 0; i < 1000; i++);
@@ -191,9 +174,6 @@ static void beginUS(void)
  * Arguments: tempx2 - 2x the temperature in deg Celsius
  *
  * Returns: Distance in mm (unsigned int)
- *
- * @todo Include temperature read (or get temperature) in Ultrasonic reading
- * @todo Double check the calibration and accuracy
  *************************************************************************/
 static unsigned int rangeUS(unsigned char temp)
 {
@@ -267,8 +247,6 @@ void rangeISR(void)
  *                        measurements from
  *
  * Returns: None
- *
- * @todo Make sure this works properly, and does not do bad things in different target states
  *************************************************************************/
 void calibrateRange(unsigned int reference)
 {
@@ -300,15 +278,15 @@ void calibrateRange(unsigned int reference)
 }
 
 /*! **********************************************************************
- * Function: rawRange(void)
+ * Function: speed_sound(unsigned char tempx2)
  *
- * Include: Range.h
+ * Include:
  *
- * Description: Returns uncalibrated range without the calibration offset
+ * Description: Returns the calibration offset to calculate the raw data
  *
  * Arguments: None
  *
- * Returns: distance (in mm) as an unsigned int
+ * Returns: None
  *************************************************************************/
 unsigned int rawRange(void)
 {
@@ -316,17 +294,15 @@ unsigned int rawRange(void)
 }
 
 /*! **********************************************************************
- * Function: range(void)
+ * Function: range()
  *
- * Include: Range.h
+ * Include:
  *
  * Description: Uses the IR and Ultrasonic sensors to find the range
  *
  * Arguments: None
  *
- * Returns: fused range as an unsigned int
- *
- * @todo Implement the sampling rate somehow
+ * Returns: None
  *************************************************************************/
 unsigned int range(void)
 {
@@ -426,9 +402,6 @@ unsigned int range(void)
  * Returns: Range (in mm) as an unsigned int.
  *
  * Remark: Returns 0 if there is no target found
- *
- * @todo Double check calibration and accuracy
- * @todo Make sure the calibration is the same every time, and does not change appreciably
  *************************************************************************/
 unsigned int rangeIR(void)
 {
@@ -447,7 +420,7 @@ unsigned int rangeIR(void)
 }
 
 /*! **********************************************************************
- * Function: rangeUltrasonic(void)
+ * Function: rangeUS(void)
  *
  * Include:
  *
@@ -457,8 +430,6 @@ unsigned int rangeIR(void)
  * Arguments: None
  *
  * Returns: the average of the samples
- *
- * todo remove this function?
  *************************************************************************/
 unsigned int rangeUltrasonic(void)
 {
@@ -488,8 +459,6 @@ unsigned int rangeUltrasonic(void)
  * Arguments: None
  *
  * Returns: the average of the samples
- *
- * @todo implement the sample rate somehow
  *************************************************************************/
 static unsigned int sampleIR(char numSamples)
 {

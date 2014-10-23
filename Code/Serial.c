@@ -14,7 +14,7 @@
  *      -Accessor functions for using and querying buffers
  *
  * Functions:
- * 
+ *
  *
  * Created on 7 September 2014, 4:12 PM
  ******************************************************************************/
@@ -57,11 +57,9 @@ static volatile char escPressed = 0;
  *************************************************************************/
 void configureSerial(void)
 {
-    PIR1 = 0x00;            //Clear all interrupt flags
-    PIR2 = 0x00;
     INTCONbits.GIEH = 1;
     INTCONbits.GIEL = 1;
-    RCONbits.IPEN = 1;   
+    RCONbits.IPEN = 1;
 
     //Initialise the serial buffers
     init(transmit_buffer);
@@ -75,7 +73,7 @@ void configureSerial(void)
 #else
     OpenUSART(USART_TX_INT_ON & USART_RX_INT_ON & USART_BRGH_HIGH & USART_EIGHT_BIT & USART_ASYNCH_MODE, 25);
 #endif
-    
+
 }
 
 /*! **********************************************************************
@@ -295,7 +293,7 @@ void serialISR(void)
 {
     unsigned char data;
     char last;
-    
+
     //Check which serial interrupt instance was thrown
     if (TX_INT)
     {
@@ -305,7 +303,7 @@ void serialISR(void)
             TX_INT_DISABLE();
             return;
         }
-        
+
         data = pop(transmit_buffer);
         WriteUSART(data);
 

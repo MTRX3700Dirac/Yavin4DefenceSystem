@@ -1,14 +1,12 @@
 /*!******************************************************************************
  * File:   Menusystem.c
- * Author: 
+ * Author:
  *
  * Description:
  *
  * Duties:
  *
  * Functions:
- *
- * @todo Complete, test and document this code!!!
  *
  * Created on 16 September 2014, 6:47 PM
  *******************************************************************************/
@@ -121,9 +119,9 @@ void menu() {
             case EL_MENU:
                 elevationMenu();
                 break;
-            case RANGE_MENU:
-                rangeMenu();
-                break;
+//            case RANGE_MENU:
+//                rangeMenu();
+//                break;
             case SHOW_TEMP:
                 showTemp();
                 break;
@@ -156,28 +154,28 @@ void menu() {
             case EL_CALIBRATE:
                 calibrateElevation();
                 break;
-                // RANGE MENUS
-            case RANGE_MAX:
-                setMaxRange();
-                break;
-            case RANGE_MIN:
-                setMinRange();
-                break;
-            case US_SAMPLE_RATE:
-                usSampleRate();
-                break;
-            case US_SAMPLE_AVG:
-                usSamplesPerAvg();
-                break;
-            case IR_SAMPLE_RATE:
-                irSampleRate();
-                break;
-            case IR_SAMPLE_AVG:
-                irSamplesPerAvg();
-                break;
-            case RANGE_RAW:
-                rawRange();
-                break;
+//                // RANGE MENUS
+//            case RANGE_MAX:
+//                setMaxRange();
+//                break;
+//            case RANGE_MIN:
+//                setMinRange();
+//                break;
+//            case US_SAMPLE_RATE:
+//                usSampleRate();
+//                break;
+//            case US_SAMPLE_AVG:
+//                usSamplesPerAvg();
+//                break;
+//            case IR_SAMPLE_RATE:
+//                irSampleRate();
+//                break;
+//            case IR_SAMPLE_AVG:
+//                irSamplesPerAvg();
+//                break;
+//            case RANGE_RAW:
+//                rawRange();
+//                break;
         }
     }
 }
@@ -260,7 +258,7 @@ void initialiseMenu(void) {
     m_currentMenu = TOP_LEVEL;
     m_userMode = REMOTE;
     configureSerial();
-   lcdInit();
+    configLCD();
     configUSER();
     configureTimer0();
 }
@@ -320,7 +318,7 @@ void menuISR(void) {
  * Description: Converts ASCOO input to a number, and records an error for
  *              non-numeric input, or if the number is larger than 4 digits.
  *              No number used by the user in this program will be larger
- *              than 4 digits. 
+ *              than 4 digits.
  *
  * Arguments: The ASCII string to decode
  *
@@ -334,7 +332,7 @@ int parseNumeric(char *number)
     char index;
     char tempDigits[4] = {0};
     signed char multiplier = 1;
-    
+
     // Array to hold powers of 10 for multiplication
     int decimalPowers[] = {1, 10, 100, 1000};
     int result = 0;
@@ -414,7 +412,7 @@ int waitForLocalInputMenu(int maxStates, int (*function)(int))
 {
     int inputResult, adcResult;
     char counter;
-    
+
     WriteTimer0(0);
     while(userEmpty())       //!Wait until the receive buffer is no longer empty
     {
@@ -497,7 +495,7 @@ char* intToAscii(int num)
 // *****************************************************************************
 
 void topMenu(void) {
-    
+
     int inputResult = 0;
 
     topmenudisp(); //!Display the menu screen via serial
@@ -760,7 +758,7 @@ void azimuthMenu(void) {
 
     sendROM(azMenu);
     dispAzOptions();        // Display the menu options
-    
+
     while (m_currentMenu == AZ_MENU) {
         if (m_userMode == REMOTE || m_userMode == FACTORY)
         {
@@ -1011,7 +1009,7 @@ void elevationMenu(void) {
         {
             inputResult = waitForLocalInputMenu(3, dispLCDElMenu);
         }
-        
+
         switch (inputResult) {
             case ESC_PRESSED:
                 m_currentMenu = TOP_LEVEL;
@@ -1216,342 +1214,342 @@ char* dispLCDElMenu(int option)
     return string;
 }
 
-// *****************************************************************************
-// ****************************** RANGE MENUS **********************************
-// *****************************************************************************
-
-void rangeMenu(void) {
-    int inputResult;
-    sendROM(rngMenu);
-    dispRngOptions();
-
-    while (m_currentMenu == RANGE_MENU) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            inputResult = waitForNumericInput();
-        }
-        else
-        {
-            inputResult = waitForLocalInputMenu(2, dispLCDRngMenu);
-        }
-        switch (inputResult) {
-            case ESC_PRESSED:
-                m_currentMenu = TOP_LEVEL;
-                break;
-            case 1:
-                // Set the minimum range
-                m_currentMenu = RANGE_MIN;
-                break;
-            case 2:
-                // Set the maximum range
-                m_currentMenu = RANGE_MAX;
-                break;
-            case 3:
-                if (m_userMode == FACTORY) {
-                    // View the raw range data
-                    m_currentMenu = RANGE_RAW;
-                } else {
-                    // Go back one level
-                    m_currentMenu = TOP_LEVEL;
-                }
-                break;
-            case 4:
-                if (m_userMode == FACTORY) {
-                    // Set the ultrasound sample rate
-                    m_currentMenu = US_SAMPLE_RATE;
-                } else {
-                    errOutOfRange(1, 3);    // Display an error
-                }
-                break;
-            case 5:
-                if (m_userMode == FACTORY) {
-                    // Set the number of estimations per sample
-                    m_currentMenu = US_SAMPLE_AVG;
-                }
-                else {
-                    errOutOfRange(1, 3);    // Display an error
-                }
-                break;
-            case 6:
-                if (m_userMode == FACTORY) {
-                    // Set the IR sample rate
-                    m_currentMenu = IR_SAMPLE_RATE;
-                }
-                else {
-                    errOutOfRange(1, 3);    // Display an error
-                }
-                break;
-            case 7:
-                if (m_userMode == FACTORY) {
-                    // Set the number of estimations per sample
-                    m_currentMenu = IR_SAMPLE_AVG;
-                }
-                else {
-                    errOutOfRange(1, 3);    // Display an error
-                }
-                break;
-            default:
-                if (m_userMode == FACTORY) {
-                    // Set the number of estimations per sample
-                    errOutOfRange(1,7);
-                }
-                else {
-                    errOutOfRange(1, 3);    // Display an error
-                }
-                break;
-        }
-    }
-}
-
-/*!
- * User menu for setting the minimum range of the system
- */
-void setMinRange() {
-    int userInput;
-    char string[30] = "\n\rSET MIN RANGE\r\n";
-    transmit(string);
-
-    while (m_currentMenu == RANGE_MIN) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            userInput = waitForLocalInputValue(MIN_RANGE_INFIMUM, MIN_RANGE_SUPREMUM, 50);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = RANGE_MENU;
-        }
-        else
-        {
-                // @TODO Display Message
-        }
-    }
-}
-
-/*!
- * User menu for setting the maximum range for the system
- */
-void setMaxRange() {
-    int userInput;
-
-    char string[30] = "\n\rSET MAX RANGE\r\n";
-    transmit(string);
-
-    while (m_currentMenu == RANGE_MAX) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            userInput = waitForLocalInputValue(MAX_RANGE_INFIMUM, MAX_RANGE_SUPREMUM, 100);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = RANGE_MENU;
-        }
-        else
-        {
-                // @TODO Display Message
-        }
-    }
-}
-
-/*!
- * User menu viewing raw IR and US data
- */
-void rawRangeMenu() {
-    char counter;
-    char string[30] = "\n\rVIEW RAW RANGE DATA\r\n";
-    transmit(string);
-
-    WriteTimer0(0);
-
-    while (m_currentMenu == RANGE_RAW) {
-        // Only refresh the screen every 100ms
-        if(ReadTimer0() >= UPDATE_TIME)
-        {
-            if(receiveEsc())
-            {
-                popEsc();
-                m_currentMenu = RANGE_MENU;
-            }
-
-            if(counter == 10)
-            {
-                transmit(string);
-                counter = 0;
-            }
-            else counter++;
-            WriteTimer0(0);
-        }
-    }
-}
-
-/*!
- * User menu for setting Ultrasound sample rate
- */
-void usSampleRate() {
-    int userInput;
-    char string[30] = "\n\rSET US SAMPLE RATE\r\n";
-    transmit(string);
-
-    while (m_currentMenu == US_SAMPLE_RATE) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            //@TODO userInput = waitForLocalInputValue(SOMETHING, SOMETHING_ELSE, 5);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = RANGE_MENU;
-        }
-        else
-        {
-                // @TODO Display Message
-        }
-    }
-}
-
-/*!
- * User menu for setting Ultrasound samples per average
- */
-void usSamplesPerAvg() {
-    int userInput;
-    char string[30] = "\n\rSET US SAMPLES PER AVG\r\n";
-    transmit(string);
-
-    while (m_currentMenu == US_SAMPLE_AVG) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            userInput = waitForLocalInputValue(SAMPLE_PER_AVG_MIN, SAMPLE_PER_AVG_MAX, 1);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = RANGE_MENU;
-        }
-        else
-        {
-                // @TODO Display Message
-        }
-    }
-}
-
-/*!
- * User menu for setting Infrared sample rate
- */
-void irSampleRate() {
-    int userInput;
-    char string[30] = "\n\rSET IR SAMPLE RATE\r\n";
-    transmit(string);
-
-    while (m_currentMenu == IR_SAMPLE_RATE) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            //@TODO userInput = waitForLocalInputValue(SOMETHING, SOMETHING_ELSE, 5);
-        };
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = RANGE_MENU;
-        }
-        else
-        {
-                // @TODO Display Message
-        }
-    }
-}
-
-/*!
- * User menu for setting IR samples per average
- */
-void irSamplesPerAvg() {
-    int userInput;
-    char string[30] = "\n\rSET IR SAMPLES PER AVG\r\n";
-    transmit(string);
-
-    while (m_currentMenu == IR_SAMPLE_AVG) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            userInput = waitForLocalInputValue(SAMPLE_PER_AVG_MIN, SAMPLE_PER_AVG_MAX, 1);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = RANGE_MENU;
-        }
-        else
-        {
-                // @TODO Display Message
-        }
-    }
-}
-
-/*!
- * Display the user options for the Azimuth menu
- */
-void dispRngOptions()
-{
-    sendROM(rngOption1);
-    sendROM(rngOption2);
-    if (m_userMode == FACTORY)
-    {
-        sendROM(rngOption3);
-        sendROM(rngOption4);
-        sendROM(rngOption5);
-        sendROM(rngOption6);
-        sendROM(rngOption7);
-        sendROM(menuPrefix8);
-        sendROM(goUp);
-    }
-    else
-    {
-        sendROM(menuPrefix3);
-        sendROM(goUp);
-    }
-}
-/*!
- * Displays the current potentiometer reading on the LCD
- *
- */
-char* dispLCDRngMenu(int option)
-{
-    char *string;
-    switch(option)
-    {
-        case 1:
-            string = rngOption1;
-            break;
-        case 2:
-            string = rngOption2;
-            break;
-        default:
-            string = "How did you even?";
-    }
-    return string;
-}
+//// *****************************************************************************
+//// ****************************** RANGE MENUS **********************************
+//// *****************************************************************************
+//
+//void rangeMenu(void) {
+//    int inputResult;
+//    sendROM(rngMenu);
+//    dispRngOptions();
+//
+//    while (m_currentMenu == RANGE_MENU) {
+//        if (m_userMode == REMOTE || m_userMode == FACTORY)
+//        {
+//            inputResult = waitForNumericInput();
+//        }
+//        else
+//        {
+//            inputResult = waitForLocalInputMenu(2, dispLCDRngMenu);
+//        }
+//        switch (inputResult) {
+//            case ESC_PRESSED:
+//                m_currentMenu = TOP_LEVEL;
+//                break;
+//            case 1:
+//                // Set the minimum range
+//                m_currentMenu = RANGE_MIN;
+//                break;
+//            case 2:
+//                // Set the maximum range
+//                m_currentMenu = RANGE_MAX;
+//                break;
+//            case 3:
+//                if (m_userMode == FACTORY) {
+//                    // View the raw range data
+//                    m_currentMenu = RANGE_RAW;
+//                } else {
+//                    // Go back one level
+//                    m_currentMenu = TOP_LEVEL;
+//                }
+//                break;
+//            case 4:
+//                if (m_userMode == FACTORY) {
+//                    // Set the ultrasound sample rate
+//                    m_currentMenu = US_SAMPLE_RATE;
+//                } else {
+//                    errOutOfRange(1, 3);    // Display an error
+//                }
+//                break;
+//            case 5:
+//                if (m_userMode == FACTORY) {
+//                    // Set the number of estimations per sample
+//                    m_currentMenu = US_SAMPLE_AVG;
+//                }
+//                else {
+//                    errOutOfRange(1, 3);    // Display an error
+//                }
+//                break;
+//            case 6:
+//                if (m_userMode == FACTORY) {
+//                    // Set the IR sample rate
+//                    m_currentMenu = IR_SAMPLE_RATE;
+//                }
+//                else {
+//                    errOutOfRange(1, 3);    // Display an error
+//                }
+//                break;
+//            case 7:
+//                if (m_userMode == FACTORY) {
+//                    // Set the number of estimations per sample
+//                    m_currentMenu = IR_SAMPLE_AVG;
+//                }
+//                else {
+//                    errOutOfRange(1, 3);    // Display an error
+//                }
+//                break;
+//            default:
+//                if (m_userMode == FACTORY) {
+//                    // Set the number of estimations per sample
+//                    errOutOfRange(1,7);
+//                }
+//                else {
+//                    errOutOfRange(1, 3);    // Display an error
+//                }
+//                break;
+//        }
+//    }
+//}
+//
+///*!
+// * User menu for setting the minimum range of the system
+// */
+//void setMinRange() {
+//    int userInput;
+//    char string[30] = "\n\rSET MIN RANGE\r\n";
+//    transmit(string);
+//
+//    while (m_currentMenu == RANGE_MIN) {
+//        if (m_userMode == REMOTE || m_userMode == FACTORY)
+//        {
+//            userInput = waitForNumericInput();
+//        }
+//        else
+//        {
+//            userInput = waitForLocalInputValue(MIN_RANGE_INFIMUM, MIN_RANGE_SUPREMUM, 50);
+//        }
+//
+//        if (userInput == ESC_PRESSED)
+//        {
+//            m_currentMenu = RANGE_MENU;
+//        }
+//        else
+//        {
+//                // @TODO Display Message
+//        }
+//    }
+//}
+//
+///*!
+// * User menu for setting the maximum range for the system
+// */
+//void setMaxRange() {
+//    int userInput;
+//
+//    char string[30] = "\n\rSET MAX RANGE\r\n";
+//    transmit(string);
+//
+//    while (m_currentMenu == RANGE_MAX) {
+//        if (m_userMode == REMOTE || m_userMode == FACTORY)
+//        {
+//            userInput = waitForNumericInput();
+//        }
+//        else
+//        {
+//            userInput = waitForLocalInputValue(MAX_RANGE_INFIMUM, MAX_RANGE_SUPREMUM, 100);
+//        }
+//
+//        if (userInput == ESC_PRESSED)
+//        {
+//            m_currentMenu = RANGE_MENU;
+//        }
+//        else
+//        {
+//                // @TODO Display Message
+//        }
+//    }
+//}
+//
+///*!
+// * User menu viewing raw IR and US data
+// */
+//void rawRangeMenu() {
+//    char counter;
+//    char string[30] = "\n\rVIEW RAW RANGE DATA\r\n";
+//    transmit(string);
+//
+//    WriteTimer0(0);
+//
+//    while (m_currentMenu == RANGE_RAW) {
+//        // Only refresh the screen every 100ms
+//        if(ReadTimer0() >= UPDATE_TIME)
+//        {
+//            if(receiveEsc())
+//            {
+//                popEsc();
+//                m_currentMenu = RANGE_MENU;
+//            }
+//
+//            if(counter == 10)
+//            {
+//                transmit(string);
+//                counter = 0;
+//            }
+//            else counter++;
+//            WriteTimer0(0);
+//        }
+//    }
+//}
+//
+///*!
+// * User menu for setting Ultrasound sample rate
+// */
+//void usSampleRate() {
+//    int userInput;
+//    char string[30] = "\n\rSET US SAMPLE RATE\r\n";
+//    transmit(string);
+//
+//    while (m_currentMenu == US_SAMPLE_RATE) {
+//        if (m_userMode == REMOTE || m_userMode == FACTORY)
+//        {
+//            userInput = waitForNumericInput();
+//        }
+//        else
+//        {
+//            //@TODO userInput = waitForLocalInputValue(SOMETHING, SOMETHING_ELSE, 5);
+//        }
+//
+//        if (userInput == ESC_PRESSED)
+//        {
+//            m_currentMenu = RANGE_MENU;
+//        }
+//        else
+//        {
+//                // @TODO Display Message
+//        }
+//    }
+//}
+//
+///*!
+// * User menu for setting Ultrasound samples per average
+// */
+//void usSamplesPerAvg() {
+//    int userInput;
+//    char string[30] = "\n\rSET US SAMPLES PER AVG\r\n";
+//    transmit(string);
+//
+//    while (m_currentMenu == US_SAMPLE_AVG) {
+//        if (m_userMode == REMOTE || m_userMode == FACTORY)
+//        {
+//            userInput = waitForNumericInput();
+//        }
+//        else
+//        {
+//            userInput = waitForLocalInputValue(SAMPLE_PER_AVG_MIN, SAMPLE_PER_AVG_MAX, 1);
+//        }
+//
+//        if (userInput == ESC_PRESSED)
+//        {
+//            m_currentMenu = RANGE_MENU;
+//        }
+//        else
+//        {
+//                // @TODO Display Message
+//        }
+//    }
+//}
+//
+///*!
+// * User menu for setting Infrared sample rate
+// */
+//void irSampleRate() {
+//    int userInput;
+//    char string[30] = "\n\rSET IR SAMPLE RATE\r\n";
+//    transmit(string);
+//
+//    while (m_currentMenu == IR_SAMPLE_RATE) {
+//        if (m_userMode == REMOTE || m_userMode == FACTORY)
+//        {
+//            userInput = waitForNumericInput();
+//        }
+//        else
+//        {
+//            //@TODO userInput = waitForLocalInputValue(SOMETHING, SOMETHING_ELSE, 5);
+//        };
+//
+//        if (userInput == ESC_PRESSED)
+//        {
+//            m_currentMenu = RANGE_MENU;
+//        }
+//        else
+//        {
+//                // @TODO Display Message
+//        }
+//    }
+//}
+//
+///*!
+// * User menu for setting IR samples per average
+// */
+//void irSamplesPerAvg() {
+//    int userInput;
+//    char string[30] = "\n\rSET IR SAMPLES PER AVG\r\n";
+//    transmit(string);
+//
+//    while (m_currentMenu == IR_SAMPLE_AVG) {
+//        if (m_userMode == REMOTE || m_userMode == FACTORY)
+//        {
+//            userInput = waitForNumericInput();
+//        }
+//        else
+//        {
+//            userInput = waitForLocalInputValue(SAMPLE_PER_AVG_MIN, SAMPLE_PER_AVG_MAX, 1);
+//        }
+//
+//        if (userInput == ESC_PRESSED)
+//        {
+//            m_currentMenu = RANGE_MENU;
+//        }
+//        else
+//        {
+//                // @TODO Display Message
+//        }
+//    }
+//}
+//
+///*!
+// * Display the user options for the Azimuth menu
+// */
+//void dispRngOptions()
+//{
+//    sendROM(rngOption1);
+//    sendROM(rngOption2);
+//    if (m_userMode == FACTORY)
+//    {
+//        sendROM(rngOption3);
+//        sendROM(rngOption4);
+//        sendROM(rngOption5);
+//        sendROM(rngOption6);
+//        sendROM(rngOption7);
+//        sendROM(menuPrefix8);
+//        sendROM(goUp);
+//    }
+//    else
+//    {
+//        sendROM(menuPrefix3);
+//        sendROM(goUp);
+//    }
+//}
+///*!
+// * Displays the current potentiometer reading on the LCD
+// *
+// */
+//char* dispLCDRngMenu(int option)
+//{
+//    char *string;
+//    switch(option)
+//    {
+//        case 1:
+//            string = rngOption1;
+//            break;
+//        case 2:
+//            string = rngOption2;
+//            break;
+//        default:
+//            string = "How did you even?";
+//    }
+//    return string;
+//}
 
 
 

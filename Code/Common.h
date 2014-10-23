@@ -32,11 +32,12 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <p18cxxx.h>
-// Commented out for the general case. Put back in if it breaks
-//#include <p18f4520.h>
 
-
+#ifdef MNML
+#include <p18f4520.h>
+#else
+#include <p18f452.h>
+#endif
 
 //Peripherial headers
 #include <timers.h>
@@ -45,6 +46,14 @@
 #include <usart.h>
 #include <capture.h>
 #include <compare.h>
+
+#ifndef MNML
+//System configurations
+#pragma config WDR = OFF
+#pragma config OSC = HS
+#pragma config LVP = OFF
+#pragma config DEBUG = ON
+#endif
 
 /*! ****************************************************************************
  * typedef of Direction struct
@@ -59,7 +68,6 @@
  *      -Azimuth: Contains the azimuth component of the direction (generally degrees)
  *      -Inclination: Contains the inclination component of the direction (generally degrees)
  ******************************************************************************/
-
 typedef struct
 {
     int azimuth;
@@ -154,10 +162,6 @@ typedef struct {
 
 #define CCP1_CLEAR (PIR1bits.CCP1IF = 0)
 #define CCP2_CLEAR (PIR2bits.CCP2IF = 0)
-
-#define WDT_EN WDTCONbits.SWDTE = 1; WDTCONbits.SWDTEN = 1;
-#define WDT_CLR _asm CLRWDT _endasm            //Clear watchdog timer
-
 
 ///Dfine the clock rate and FOSC_4
 #ifdef MNML
