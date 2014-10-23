@@ -8,6 +8,10 @@ Please try and submit raw files as much as possible and not zips, it makes it a 
 ---------------------------------------------------------------------------------------------
 Note: depending on user account permissions, sudo may be required on linux
 
+DO NOT CREATE A LOCAL BRANCH TO WORK ON FOR A WEEK AND THEN TRY TO SIMPLY MERGE IT WITH THE MASTER
+yesterday we lost almost a weeks worth of work, and have spent many hours trying to get everything 
+working again because people merged an old version and deleted a whole lot of stuff
+
 -**1)**
 Clone into the repository so you keep a [you guessed it] clone of the repo on
 local filesystem:
