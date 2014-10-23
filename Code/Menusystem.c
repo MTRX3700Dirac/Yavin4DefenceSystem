@@ -258,7 +258,7 @@ void initialiseMenu(void) {
     m_currentMenu = TOP_LEVEL;
     m_userMode = REMOTE;
     configureSerial();
-    configLCD();
+    lcdInit();
     configUSER();
     configureTimer0();
 }

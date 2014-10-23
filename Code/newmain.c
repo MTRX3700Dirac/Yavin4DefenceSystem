@@ -102,41 +102,6 @@ static void initialization(systemState *state)
     NEXT_STATE_PTR(SRCH, state);   //Go to the searching state
 }
 
-/*! **********************************************************************
- * Function: transRange(void)
- *
- * Include: Local to newmain.c
- *
- * Description: Measures and Transmits the range -> for testing purposes only
- *
- * Arguments: None
- *
- * Returns: None; Prints range to the screen
- *************************************************************************/
-static void transRange(void)
-{
-    unsigned int j;
-    char stringUS[] = "US Range:";
-    char stringIR[] = "IR Range:";
-    char newLine[] = "\n\r";
-    char num[5];
-
-    transmit(stringUS);
-    transmit(newLine);
-
-    sprintf(num, "%u", rangeUltrasonic());
-        transmit(num);
-        transmit(newLine);
-        for (j=0; j<60000;j++);
-        for (j=0; j<60000;j++);
-
-    transmit(stringIR);
-        sprintf(num, "%u", rangeIR());
-        transmit(num);
-        transmit(newLine);
-        transmit(newLine);
-}
-
 static void dispTrack(TrackingData target)
 {
     unsigned int j;

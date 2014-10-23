@@ -169,7 +169,7 @@ TrackingData track(systemState *state)
         weight = readTargetState();
 
         //Calculate weighting of that sample
-        weight = (weight == GOOD_TRACK) * 4 + (weight == BAD_DIR);
+        weight = (weight == GOOD_TRACK) * 5 + (weight == BAD_DIR) + 3 * (weight == OUT_OF_IR);
         
         count += weight;
         azimuth += (int)weight * dir.azimuth;

@@ -20,48 +20,49 @@
 
 #include "Common.h"
 #include "Temp.h"
-//#include "p18f4520.h"
+#include <delays.h>
 
-//(Approximate) speed of sound calculation macro
-#define SPD_SND(T) (DIV_1024(T * (unsigned int)614) + 331)
+///Converts AD reading into IR range
 #define IR_CONV(ad) ((unsigned long)135174 / (ad) - 28)
 
+///Converts a time delay (in clock cycles) and a temperature into an ultrasonic distance
+///Uses a linear appoximation of the speed of sound to temperature relation, which changes the gradient of the Ultrasonic calibration
 #ifdef MNML
 #define ULTRA_CONV(tme, T) DIV_65536(tme * (unsigned long)(DIV_65536((unsigned long)519078 * T) + (unsigned long)4362)) - 18
 #else
 #define ULTRA_CONV(tme, T) DIV_65536(tme * (unsigned long)(DIV_65536((unsigned long)1297695 * T) + (unsigned long)10905)) - 18
 #endif
 
-#define NUM_IR_READS 10 //The number of IR reads per measurement
-
 //Hardware Related macros
 #define INIT_PIN PORTCbits.RC3
 #define INIT_TRIS TRISCbits.RC3
 #define CCP1_INPT TRISCbits.RC2
-
-//Static calibration offset
-static signed int calibration_offset = 0;
 
 //Flag for performing an ultrasonic measurment
 volatile static char measuringUS = 0;
 
 //Static variable to store the range
 static unsigned int lastRange = 0;
+static unsigned int lastUSRange = 0;    //These are used by the calibration function
+static unsigned int lastIRRange = 0;
 
 //Calibration offsets
 static signed int calibration_offset_IR = 0;
 static signed int calibration_offset_US = 0;
 
+//Configuration variables
+static char numSamples = 3;         //Number of ultrasonic samples
+static unsigned char rateUS = 10;   //Ultrasonic sampling rate in Hz
+static unsigned int rateIR = 200;   //IR sampling rate in Hz
+
 static TargetState current_target_state;
 
 //Private function prototypes:
 static void beginUS(void);
-unsigned int rangeIR(void);
 static unsigned int rangeUS(unsigned char temp);
+static unsigned int fuseRange(unsigned int us, unsigned int ir);
 
 void configureRange(void);
-
-static unsigned int sampleIR(char numSamples);
 
 /*! **********************************************************************
  * Function: configureAD(void)
@@ -250,30 +251,16 @@ void rangeISR(void)
  *************************************************************************/
 void calibrateRange(unsigned int reference)
 {
-    unsigned char temp;
-    unsigned int range_US, range_IR, range;
-
-    //Begin the Ultrasonic measurement
-    configureRange();
-    beginUS();
-
-    //Read the temperature
-    temp = readTemp();
-
-    //Measure the IR range
-    range_IR = rangeIR();
-
-    //Read the result from the Ultrasonc sensor
-    range_US = rangeUS(temp);
+    range();    //Sample the range
 
     //Check if valid data was returned by the sensors before they perform a calibration
     if (current_target_state != NO_TARGET && current_target_state != CLOSE_RANGE)
     {
-        calibration_offset_US = reference - range_US;
+        calibration_offset_US = reference - lastUSRange;
     }
-    if (current_target_state == GOOD_TRACK)
+    if (current_target_state == GOOD_TRACK || current_target_state == CLOSE_RANGE)
     {
-        calibration_offset_IR = reference - range_IR;
+        calibration_offset_IR = reference - lastIRRange;
     }
 }
 
@@ -294,193 +281,70 @@ unsigned int rawRange(void)
 }
 
 /*! **********************************************************************
- * Function: range()
+ * Function: range(void)
  *
- * Include:
+ * Include: Range.h
  *
- * Description: Uses the IR and Ultrasonic sensors to find the range
+ * @brief Samples the range
+ *
+ * Description: Takes a number of samples of the ultrasonic sensor at a specified
+ *              rate. Continues to sample the IR sensor at a different rate while
+ *              sampling the ultrasonic. Then combines the ranges and sets the
+ *              target state
  *
  * Arguments: None
  *
- * Returns: None
+ * Returns: the range
  *************************************************************************/
+//static unsigned int sampleRange(char numSamples, unsigned char rateUS, unsigned int rateIR)
 unsigned int range(void)
 {
-    //unsigned int i;
-    unsigned char temp;
-    unsigned int range_US, range_IR, range;
+#define range_IR sumIR      //Come conenient name changes
+#define range_US sumUS
+    char i;
+    unsigned long int sumUS = 0;
+    unsigned long int sumIR = 0;
+    unsigned int IR_samples = 0;
+    unsigned char delayUS = 100 / rateUS;       //100Hz will give 1 delay increment of 10ms
+    unsigned char delayIR = 10000 / rateIR;     //10KHz will give 1 delay increment of 0.1ms
 
-    configureRange();
-    
-    //Begin the Ultrasonic measurement
-    beginUS();
-
-    //Read the temperature
-    //temp = getTemp();
-    temp = 25;
-
-    //Measure the IR range
-    range_IR = rangeIR();
-
-    //Read the result from the Ultrasonc sensor
-    range_US = rangeUS(temp);
-
-    //Check which sensor(s) have observed a target
-    if (range_US && range_IR)
-    {
-        //Calibrate the sensors
-        range_US += calibration_offset_US;
-        range_IR += calibration_offset_IR;
-
-        // CASE 1: Range: 150-450mm
-        // Ignore US reading as it is inaccurate at these ranges
-        if (range_IR >= 150 && range_IR <= 450)
-        {
-            range = range_IR;
-             current_target_state = CLOSE_RANGE;
-        }
-        // CASE 2: Range: 1m - 1.5m
-        // Don't trust the IR ranges much
-        else if (range_US >= 1000 && range_IR >=1000)
-        {
-            // @TODO Implement IR in here a little?
-            range = range_US;
-            current_target_state = OUT_OF_IR;
-        }
-        else
-        {
-            // CASE 3: Range: 450mm - 1m
-            // Average the ultrasonic and IR ranges
-            // TODO: Do we want to average these completely?
-            range = DIV_2(range_US + range_IR);
-            current_target_state = GOOD_TRACK;
-        }
-        
-    }
-    // CASE 4: Range: 1.5m+
-    // Rely on Ultrasound
-    else if (range_US)
-    {
-        //Calibrate the ultrasonic range
-        range_US += calibration_offset_US;
-       
-        range = range_US;
-
-        //Check whether No IR is because out of IR range, or just bad direction
-        if (range > 1500) current_target_state = OUT_OF_IR;
-        else current_target_state = BAD_DIR;
-    }
-    else if (range_IR)
-    {
-        //Calibrate the IR range
-        range_IR += calibration_offset_IR;
-        
-        range = range_IR;
-        current_target_state = CLOSE_RANGE;
-    }
-    else
-    {
-        // @TODO: Report Error?
-        range = 0;
-        current_target_state = NO_TARGET;
-    }
-    lastRange = range;
-
-    //for (i = 0;i < 50000;i++);
-    return range;
-}
-
-/*! **********************************************************************
- * Function: rangeIR(void)
- *
- * Include: 
- *
- * Description: Reads the range from the IR Sensor
- *
- * Arguments: None
- *
- * Returns: Range (in mm) as an unsigned int.
- *
- * Remark: Returns 0 if there is no target found
- *************************************************************************/
-unsigned int rangeIR(void)
-{
-    unsigned int ad_result;
-    unsigned int range;
-
-    ad_result = sampleIR(10);
-
-    //Return 0 if there is no target detected
-    if (ad_result < 100) return 0;
-
-    //Convert voltage (0-5v) into range (mm)
-    range = IR_CONV(ad_result);
-
-    return range;
-}
-
-/*! **********************************************************************
- * Function: rangeUS(void)
- *
- * Include:
- *
- * Description: performs an ultrasonic range reading.
- * Pins:
- *
- * Arguments: None
- *
- * Returns: the average of the samples
- *************************************************************************/
-unsigned int rangeUltrasonic(void)
-{
-    unsigned int rng;
-
-        configureRange();
-
-        beginUS();
-
-        rng = rangeUS(25);
-
-        INIT_PIN = 0;
-        CloseCapture1();
-        CloseTimer1();
-
-        return rng;
-
-}
-
-/*! **********************************************************************
- * Function: sampleIR(void)
- *
- * Include:
- *
- * Description: takes numSamples samples of the IR sensor and returns the average
- *
- * Arguments: None
- *
- * Returns: the average of the samples
- *************************************************************************/
-static unsigned int sampleIR(char numSamples)
-{
-    unsigned long int sum = 0;
-    unsigned int temp;
-    char i = 0;
-    
     //Multiplex onto the IR sensor
     SetChanADC(ADC_IR_READ);
 
-    //Perform numSamples samples
     for (i = 0; i < numSamples; i++)
     {
-        ADCON0bits.GO = 1;
-        while (ADCON0bits.GO_NOT_DONE);
-        temp = ADRES >> 6;
-        sum += temp;
+        configureRange();   //Still have to reconfigure each time???
+        beginUS();
+
+        //Continue sampling the IR while waiting for the ultrasonic
+        while (measuringUS)
+        {
+            ADCON0bits.GO = 1;
+            while (ADCON0bits.GO_NOT_DONE);
+            sumIR += ADRES >> 6;
+            IR_samples++;
+
+            Delay100TCYx(delayIR);  //Delays in inrements of 100Tcy, which is 100 x 1us for 4MHz clock -> 0.1ms or 10KHz
+        }
+        
+        //get range of ultrasonic reading
+        sumUS += rangeUS(25);   ///Standard room temperature for now @todo Read in temperature for US calculation
+        Delay10KTCYx(delayUS);  //Delays in increments of 10KTcy, which is 10,000 * 1us for a 4MHz clock
     }
 
-    //Average all samples taken
-    temp = sum / (unsigned int)numSamples;
-    return temp;
+    sumUS = sumUS / numSamples;     //Calculate the average Ultrasonic range
+
+    //Average all IR samples taken, and convert to distance
+    range_IR = sumIR / (unsigned int)numSamples;
+    if (range_IR < 100) range_IR = 0;
+    else range_IR = IR_CONV(range_IR);
+
+    lastIRRange = range_IR;
+    lastUSRange = range_US;
+
+    return lastRange = fuseRange(range_US, range_IR);
+#undef range_IR
+#undef range_US
 }
 
 /*! **********************************************************************
@@ -515,8 +379,86 @@ TargetState getTargetState(void)
  *************************************************************************/
 TargetState readTargetState(void)
 {
-    unsigned i = 0;
     range();
-    //for (i = 0; i < 10000; i++);
-    return getTargetState();
+    return current_target_state;
+}
+
+/*! **********************************************************************
+ * Function: fuseRange(unsigned int us, unsigned int ir)
+ *
+ * Include: Range.h
+ *
+ * Description: Fuses the IR and Ultrasonic ranges, and sets the target state
+ *
+ * Arguments: us - the Ultrasonic range (mm)
+ *            ir - the IR range (mm)
+ *
+ * Returns: the fused range
+ *
+ * Note: Also sets the current target state based on the reading from both
+ *      the IR and ultrsonic sensors
+ *************************************************************************/
+static unsigned int fuseRange(unsigned int us, unsigned int ir)
+{
+    unsigned int range; //Store the range
+
+    //Check which sensors have observed a target
+    if (us && ir)
+    {
+        //Calibrate the sensors
+        us += calibration_offset_US;
+        ir += calibration_offset_IR;
+
+        // CASE 1: Range: 150-450mm
+        // Ignore US reading as it is inaccurate at these ranges
+        if (us >= 150 && us <= 450)
+        {
+            range = ir;
+            current_target_state = CLOSE_RANGE;
+        }
+        // CASE 2: Range: 1m - 1.5m
+        // Don't trust the IR ranges much
+        else if (us >= 1000 && ir >=1000)
+        {
+            /// @TODO Implement IR in here a little?
+            range = us;
+            current_target_state = OUT_OF_IR;
+        }
+        else
+        {
+            // CASE 3: Range: 450mm - 1m
+            // Average the ultrasonic and IR ranges
+            // TODO: Do we want to average these completely?
+            range = DIV_2(us + ir);
+            current_target_state = GOOD_TRACK;
+        }
+
+    }
+    // CASE 4: Range: 1.5m+
+    // Rely on Ultrasound
+    else if (us)
+    {
+        //Calibrate the ultrasonic range
+        us += calibration_offset_US;
+
+        range = us;
+
+        //Check whether No IR is because out of IR range, or just bad direction
+        if (range > 1500) current_target_state = OUT_OF_IR;
+        else current_target_state = BAD_DIR;
+    }
+    else if (ir)
+    {
+        //Calibrate the IR range
+        ir += calibration_offset_IR;
+
+        range = ir;
+        current_target_state = CLOSE_RANGE;
+    }
+    else
+    {
+        /// @TODO: Report Error?
+        range = 0;
+        current_target_state = NO_TARGET;
+    }
 }
