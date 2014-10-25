@@ -30,7 +30,9 @@ extern char receiveEmpty(void);
 extern char receivePeek(void);
 extern char receivePop(void);
 extern char receiveCR(void);
+extern char receiveEsc(void);
 extern void readString(char *string);
+extern void popEsc(void);
 
 #define SERIAL_H
 #endif

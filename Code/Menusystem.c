@@ -18,6 +18,10 @@
 #include "LCD.h"
 #include "Range.h"
 #include "PanTilt.h"
+#include "Temp.h"
+
+#define MAX_SER_MSG_LEN 30
+#define MAX_LCD_MSG_LEN 16
 
 #define ERR_NUM_OUT_OF_RANGE -1000
 #define ERR_NOT_NUMERIC -2000
@@ -25,57 +29,25 @@
 #define ESC_PRESSED -4000
 #define MINUS_CHAR 0x2D
 
-// The time to check timer 0 against
-// 1953 = approx 0.1s on MNML
-#define UPDATE_TIME 1953
+//typedef enum setMenu {AZ_GOTO, AZ_MAX, AZ_MIN, EL_GOTO, EL_MIN, EL_MAX, RNG_MAX, RNG_MIN, IR_SAMPLE, IR_PER_AVG, US_SAMPLE, US_PER_AVG};
+typedef void (*numericInputFunction)(int);
+typedef void (*voidFunction) (void);
+struct menuStruct
+{
+    menuState menuNum;
+    rom char* serialMessage;    //Serial Message to be displayed on entering the state
+    rom char* lcdTitleMessage;       //LCD Message to be displayed on entering the state
 
-/*! Global variable with the current menu position */
-static menuState m_currentMenu;
-
-/*! Global variable with the current user mode: Local, remote or factory */
-static userState m_userMode;
-
-
-void menu();
-
-//Menus
-// UI Menus
-void topMenu(void);
-void elevationMenu(void);
-void azimuthMenu(void);
-void rangeMenu(void);
-
-// Functional Menus
-void trackingMenu(void);
-void gotoElevation(void);
-void gotoAzimuth(void);
-void setElevationMax(void);
-void setElevationMin(void);
-void setAzimuthMax(void);
-void setAzimuthMin(void);
-void setMaxRange(void);
-void setMinRange(void);
-void showTemp(void);
-
-// Factory Menus
-void calibrateTempMenu(void);
-void calibrateAzimuth(void);
-void calibrateElevation(void);
-void usSampleRate(void);
-void usSamplesPerAvg(void);
-void irSampleRate(void);
-void irSamplesPerAvg(void);
-void rawRangeMenu(void);
-
-// Mode changes
-void changeUserState(userState);
+    int minVal;
+    int maxVal;
+    char increment;
+    voidFunction serialDisplayFunction;
+    numericInputFunction confirmFunction;
+    numericInputFunction lcdDisplayFunction;
+    voidFunction returnToPrevious;
+ } menuStruct;
 
 // Serial Display
-void topmenudisp(void);
-void dispTopOptions(void);
-void dispAzOptions(void);
-void dispElOptions(void);
-void dispRngOptions(void);
 void sendROM(const static rom char *romchar);
 void clearScreen(void);
 void sendNewLine(char length);
@@ -85,101 +57,72 @@ char* intToAscii(int num);
 void autodisp(void);
 
 int parseNumeric(char *input);
-int waitForNumericInput(void);
+int getSerialNumericInput(void);
 void configureTimer0(void);
-int waitForLocalInputMenu(int maxStates, int (*function)(int));
-int waitForLocalInputValue(int min, int max, int interval);
+int getLocalInputMenu(int maxStates, int (*function)(int));
+int getLocalPotResult(int min, int max, int interval);
 
-char* dispLCDTopMenu(int option);
-char* dispLCDAzMenu(int option);
-char* dispLCDElMenu(int option);
-char* dispLCDRngMenu(int option);
+// Confirm Methods
+void setValue(int input);
+void setMenu(struct menuStruct menu);
+void navigateTopMenu(int inputResult);
+void noFunctionNumeric(int input);
+
+// Return Methods
+void noFunction(void);
+void returnToTopMenu(void);
+void returnToAzMenu(void);
+void returnToElMenu(void);
+void returnToRngMenu(void);
+
+// Navigation Methods
+void navigateTopMenu(int inputResult);
+void navigateAzimuthMenu(int inputResult);
+void navigateElevationMenu(int inputResult);
+void navigateRangeMenu(int inputResult);
+
+// Display methods
+void dispTopOptions(void);
+void displayMenuSerial();
+void dispTopOptions(void);
+void dispAzOptions(void);
+void dispElOptions(void);
+void dispRngOptions(void);
+void dispTempSerialMessage(void);
+void dispSerialMessage(void);
+
+/// LCD Display Functions
+void dispLCDTopMenu(int option);
+void dispLCDAzMenu(int option);
+void dispLCDElMenu(int option);
+void dispLCDRngMenu(int option);
+void dispLCDNum(int option);
+
+//// Menus
+struct menuStruct topMenu = {TOP_LEVEL, welcome, welcomeLcd,1, 6, 1, dispTopOptions, navigateTopMenu, dispLCDTopMenu, noFunction};
+struct menuStruct AzMenu = {AZ_MENU, azMenu, azMenuLcd,1, 6, 1, dispAzOptions, navigateAzimuthMenu, dispLCDAzMenu, returnToTopMenu};
+struct menuStruct ElMenu = {EL_MENU, elMenu, elMenuLcd,1, 6, 1, dispElOptions, navigateElevationMenu, dispLCDElMenu, returnToTopMenu};
+struct menuStruct RangeMenu = {RANGE_MENU, rngMenu, rngMenuLcd,1, 6, 1, dispRngOptions, navigateRangeMenu, dispLCDRngMenu, returnToTopMenu};
+
+/// Remote/Local Functions
+struct menuStruct AzGoto = {AZ_GOTO, gotoAzAngle, gotoAzAngleLCD,MIN_ANGLE_INFIMUM, MAX_ANGLE_SUPREMUM, 5,dispSerialMessage, setValue, dispLCDNum, returnToAzMenu};
+struct menuStruct ElGoto = {EL_GOTO, gotoElAngle, gotoELAngleLCD,MIN_ANGLE_INFIMUM, MAX_ANGLE_SUPREMUM, 5,dispSerialMessage, setValue, dispLCDNum, returnToElMenu};
+struct menuStruct AzMin = {AZ_MIN, minAz1, minAzSetStr,MIN_ANGLE_INFIMUM, MIN_ANGLE_SUPREMUM, 5, dispSerialMessage, setValue, dispLCDNum, returnToAzMenu};
+struct menuStruct AzMax = {AZ_MAX, maxAz1, maxAzSetStr,MAX_ANGLE_INFIMUM, MAX_ANGLE_SUPREMUM, 5, dispSerialMessage, setValue, dispLCDNum, returnToAzMenu};
+struct menuStruct ElMin = {EL_MIN, minEl1, minElSetStr,MIN_ANGLE_INFIMUM, MIN_ANGLE_SUPREMUM, 5, dispSerialMessage, setValue, dispLCDNum, returnToElMenu};
+struct menuStruct ElMax = {EL_MAX, maxEl1, maxElSetStr,MAX_ANGLE_INFIMUM, MAX_ANGLE_SUPREMUM, 5, dispSerialMessage, setValue, dispLCDNum, returnToElMenu};
+struct menuStruct RngMin = {RANGE_MIN, minRngSerialStr, minRngSetStr, MIN_RANGE_INFIMUM, MIN_RANGE_SUPREMUM, 50, dispSerialMessage, setValue, dispLCDNum, returnToRngMenu};
+struct menuStruct RngMax = {RANGE_MAX, maxRngSerialStr, maxRngSetStr, MAX_RANGE_INFIMUM, MAX_RANGE_SUPREMUM, 50, dispSerialMessage, setValue, dispLCDNum, returnToRngMenu};
+struct menuStruct ShowTemp = {SHOW_TEMP, showTempLCDTitle, showTempLCDTitle, 0, 0, 0, dispTempSerialMessage, noFunctionNumeric, noFunctionNumeric, returnToTopMenu};
+/*! Global variable with the current menu position */
+struct menuStruct m_currentMenu;
+
+/*! Global variable with the current user mode: Local, remote or factory */
+static userState m_userMode;
 
 // *****************************************************************************
 // *********************** MENU STRUCTURE FUNCTIONS ****************************
 // *****************************************************************************
-
-/*!
- * Description: General service function used to switch between menus
- */
-void menu() {
-    m_currentMenu = TOP_LEVEL;
-
-    while (1) {
-        switch (m_currentMenu) {
-            case TOP_LEVEL:
-                topMenu();
-                break;
-            case TRACKING:
-                trackingMenu();
-                break;
-            case AZ_MENU:
-                azimuthMenu();
-                break;
-            case EL_MENU:
-                elevationMenu();
-                break;
-//            case RANGE_MENU:
-//                rangeMenu();
-//                break;
-            case SHOW_TEMP:
-                showTemp();
-                break;
-            case CALIBRATE_TEMP:
-                calibrateTempMenu();
-                break;
-                // AZIMUTH MENUS
-            case AZ_GOTO:
-                gotoAzimuth();
-                break;
-            case AZ_MAX:
-                setAzimuthMax();
-                break;
-            case AZ_MIN:
-                setAzimuthMin();
-                break;
-            case AZ_CALIBRATE:
-                calibrateAzimuth();
-                break;
-                // ELVEVATION MENUS
-            case EL_GOTO:
-                gotoElevation();
-                break;
-            case EL_MAX:
-                setElevationMax();
-                break;
-            case EL_MIN:
-                setElevationMin();
-                break;
-            case EL_CALIBRATE:
-                calibrateElevation();
-                break;
-//                // RANGE MENUS
-//            case RANGE_MAX:
-//                setMaxRange();
-//                break;
-//            case RANGE_MIN:
-//                setMinRange();
-//                break;
-//            case US_SAMPLE_RATE:
-//                usSampleRate();
-//                break;
-//            case US_SAMPLE_AVG:
-//                usSamplesPerAvg();
-//                break;
-//            case IR_SAMPLE_RATE:
-//                irSampleRate();
-//                break;
-//            case IR_SAMPLE_AVG:
-//                irSamplesPerAvg();
-//                break;
-//            case RANGE_RAW:
-//                rawRange();
-//                break;
-        }
-    }
-}
-
 /*!
  * @description: Transmits the given string from ROM over serial
  *
@@ -188,11 +131,9 @@ void menu() {
 void sendROM(const static rom char *romchar) {
     char temp[80] = {0};
     int j;
+
+    // Convert the string from ROM to RAM
     strcpypgm2ram(temp, romchar);
-//    for (index = 0; *romchar && index < 80; index++) {
-//        temp[index] = *romchar;
-//        romchar++;
-//    }
     transmit(temp);
     for (j = 0; j < 8000; j++);
 }
@@ -201,12 +142,20 @@ void sendROM(const static rom char *romchar) {
  * @description: Prints a number of new line (\r\n) characters.
  *
  */
-void sendNewLine(char length) {
+void sendNewLine(char length)
+{
+    char index;
+    char temp[height + 2] = {0};        // This is two greater for the \r and end message characters
+    int j;
 
-    while (length) {
-        sendROM(newLine);
-        length--;
+    // Fills the buffer with \n characters
+    for (index = 0; index<length; index++) {
+        temp[index] = '\n';
     }
+    // End with a line return
+    temp[index] = '\r';
+    transmit(temp);
+    for (j = 0; j < 2000; j++);
 }
 
 /*!
@@ -220,7 +169,7 @@ void clearScreen()
 
     // Fills the buffer with \n characters
     for (index = 0; index<height; index++) {
-        temp[index] = newLine[1];
+        temp[index] = '\n';
     }
     // End with a line return
     temp[height] = '\r';
@@ -233,12 +182,11 @@ void filler(char length) {
     char temp[81] = {0};
     int j;
     for (; length > 0; length--) {
-        temp[index] = fillerChar[0];
+        temp[index] = '+';
         index++;
     }
-    //strcpypgm2ram(temp, romchar);
     transmit(temp);
-    for (j = 0; j < 1000; j++);
+    for (j = 0; j < 3000; j++);
 }
 
 /*! **********************************************************************
@@ -255,18 +203,11 @@ void filler(char length) {
  * Returns: None
  *************************************************************************/
 void initialiseMenu(void) {
-    m_currentMenu = TOP_LEVEL;
     m_userMode = REMOTE;
     configureSerial();
-    lcdInit();
+    configLCD();
     configUSER();
-    configureTimer0();
-}
-
-void configureTimer0(void)
-{
-    T0CON = 0b00000110;     // Select internal clock, 128x prescalar
-    T0CONbits.TMR0ON = 1;   // Enable Timer 1;
+    setMenu(topMenu);
 }
 
 /*! **********************************************************************
@@ -280,32 +221,12 @@ void configureTimer0(void)
  *
  * Arguments: None
  *
- * Returns: None
+ * Returns: 1 if input has been received, 0 otherwise
  *************************************************************************/
-void waitForSerialInput(void) {
-    char inputReceived = 0;
-    while (inputReceived == 0)
-    {
-        inputReceived = receiveCR() | receiveEsc(); //!Wait until the receive buffer is no longer empty
-        //!Indicating that a command has been passed
-    }
-}
-
-/*! **********************************************************************
- * Function: menuISR(void)
- *
- * \brief ISR function for the menu subsystem
- *
- * Include: Menusystem.h
- *
- * Description: services any interrupts associated with the menu system
- *
- * Arguments: None
- *
- * Returns: None
- *************************************************************************/
-void menuISR(void) {
-
+char checkForSerialInput(void)
+{
+    return receiveCR() | receiveEsc(); //!Wait until the receive buffer is no longer empty
+                                       //!Indicating that a command has been passed
 }
 
 /*! **********************************************************************
@@ -315,7 +236,7 @@ void menuISR(void) {
  *
  * Include:
  *
- * Description: Converts ASCOO input to a number, and records an error for
+ * Description: Converts ASCII input to a number, and records an error for
  *              non-numeric input, or if the number is larger than 4 digits.
  *              No number used by the user in this program will be larger
  *              than 4 digits.
@@ -365,9 +286,13 @@ int parseNumeric(char *number)
         index++;
     }
 
+    // Return the positive or negative number
     return multiplier * result;
 }
 
+/*!
+ * Description: Displays a number out of range error
+ */
 void errOutOfRange(int lowerBound, int upperBound)
 {
     sendROM(errNumOutOfRange);
@@ -395,93 +320,34 @@ void errOutOfRange(int lowerBound, int upperBound)
  *          ERR_NUM_OUT_OF_RANGE for 0 digits or 5+ digits
  *          ESC_PRESSED if escape was pressed
  *************************************************************************/
-int waitForNumericInput()
+int getSerialNumericInput()
 {
     char userget[80] = {0};
-    waitForSerialInput();
     if (receiveEsc())
     {
         popEsc();
         return ESC_PRESSED;
     }
-    readString(userget); //!Get the input string and store it in @userget
+    readString(userget);    //!Get the input string and store it in @userget
     return parseNumeric(userget);
 }
 
-int waitForLocalInputMenu(int maxStates, int (*function)(int))
+/*!
+ * Description: Returns the value of the potentiometer on the user
+ *              interface, given a maximum and minimum value, and
+ *              the interval between values (eg 10-100 in multiples
+ *              of 10).
+ */
+int getLocalPotResult(int min, int max, int interval)
 {
-    int inputResult, adcResult;
-    char counter;
-
-    WriteTimer0(0);
-    while(userEmpty())       //!Wait until the receive buffer is no longer empty
-    {
-        // Only refresh the screen every 100ms
-        if(ReadTimer0() >= UPDATE_TIME)
-        {
-            // If a 300 milliseconds has passed
-            if(counter >= 3)
-            {
-                adcResult = readDialForMenu(maxStates);
-                sendROM(function(adcResult));
-                counter = 0;
-            }
-            else counter++;
-            WriteTimer0(0);
-        }
-    }
-
-    // Confirm the user's input
-    inputResult = userPop();
-    if (inputResult == CONFIRM_CHAR)
-    {
-        return adcResult;
-    }
-    else
-    {
-        return ESC_PRESSED;
-    }
+    int adcResult = readDial((max - min)/interval);
+    adcResult = min + interval*adcResult;
+    return adcResult;
 }
 
-int waitForLocalInputValue(int min, int max, int interval)
-{
-    int inputResult, adcResult;
-    char counter;
-
-    WriteTimer0(0);
-    while(userEmpty())       //!Wait until the receive buffer is no longer empty
-    {
-        // Only refresh the screen every 100ms
-        if(ReadTimer0() >= UPDATE_TIME)
-        {
-            // If a second has passed
-            if(counter >= 1)
-            {
-                adcResult = readDial((max - min)/interval);
-                adcResult = min + interval*adcResult;
-                transmit(intToAscii(adcResult));
-                sendNewLine(1);
-                counter = 0;
-            }
-            else counter++;
-            WriteTimer0(0);
-        }
-    }
-
-    // Confirm the user's input
-    inputResult = userPop();
-    if (inputResult == CONFIRM_CHAR)
-    {
-        return adcResult;
-    }
-    else
-    {
-        return ESC_PRESSED;
-    }
-}
-
-/*
- * Can only print numbers under 4 digits
+/*!
+ * Description: Converts a number to a string
+ * Can only print numbers under 8 digits
  */
 char* intToAscii(int num)
 {
@@ -490,79 +356,384 @@ char* intToAscii(int num)
     return string;
 }
 
-// *****************************************************************************
-// **************************** TOP LEVEL MENU *********************************
-// *****************************************************************************
+/*! **********************************************************************
+ * Function: serviceMenu(void)
+ *
+ * \brief services any user interface with the menu
+ *
+ * Include:
+ *
+ * Description: Checks if the user has made any inputs to the system. If not
+ *              the function simply returns. If they have then it services
+ *              the inputs, displays the correct outputs and performs the
+ *              specified actions
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
+void serviceMenu(void)
+{
+    char buttonInput;
+    char string[50];
+    int numericInpt;
 
-void topMenu(void) {
-
-    int inputResult = 0;
-
-    topmenudisp(); //!Display the menu screen via serial
-    //!wait for/get serial input
-    //!make decision based on input
-    while (m_currentMenu == TOP_LEVEL)
+    if (m_userMode == REMOTE || m_userMode == FACTORY)
     {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
+        if (checkForSerialInput())
         {
-            inputResult = waitForNumericInput();
+            // Handle serial input
+            numericInpt = getSerialNumericInput();
         }
         else
         {
-            inputResult = waitForLocalInputMenu(6, dispLCDTopMenu);
+            return;
         }
+    }
+    else
+    {
+        if (userEmpty())
+        {
+            // Display the current value on the LCD
+            // Get the Potentiometer result for the current menu
+            numericInpt = getLocalPotResult(m_currentMenu.minVal, m_currentMenu.maxVal, m_currentMenu.increment);
+            // Display string on LCD
+            m_currentMenu.lcdDisplayFunction(numericInpt);
+            return;
+        }
+        else
+        {
+            // Confirm the user's input
+            buttonInput = userPop();
+            if (buttonInput == CONFIRM_CHAR)
+            {
+                numericInpt = getLocalPotResult(m_currentMenu.minVal, m_currentMenu.maxVal, m_currentMenu.increment);
+            }
+            else
+            {
+                // Back was pressed
+                numericInpt =  ESC_PRESSED;
+            }
+        }
+    }
 
-        switch (inputResult) {
-            case ESC_PRESSED:
-                break;
-            case ERR_NO_NUMBER:
-                break;
-            case 1:
-                //auto();
-                m_currentMenu = TRACKING;
-                break;
-            case 2:
-                // Go to the Azimuth menu
-                m_currentMenu = AZ_MENU;
-                break;
-            case 3:
-                // Go to the Elevation Menu
-                m_currentMenu = EL_MENU;
-                break;
-            case 4:
-                // Go to Range Menu
-                m_currentMenu = RANGE_MENU;
-                break;
-            case 5:
-                // Show Temperature
-                m_currentMenu = SHOW_TEMP;
-                break;
-            case 6:
-                // If Factory mode is on, calibrate Temperature
-                if (m_userMode == FACTORY) {
-                    m_currentMenu = CALIBRATE_TEMP;
-                    break;
-                }
-                else
-                {
-                    // Switch user mode!
-                    if (m_userMode == REMOTE)
-                    {
-                        m_userMode = LOCAL;
-                    }
-                    else if (m_userMode == LOCAL)
-                    {
-                        m_userMode = REMOTE;
-                    }
-                    break;
-                }
-            default:
-                errOutOfRange(1, 5);
-                break;
-        }
+    /// If Esc or Back button pressed, return
+    if (numericInpt == ESC_PRESSED)
+    {
+        m_currentMenu.returnToPrevious();
+        return;
+    }
+    else
+    {
+        /// Otherwise Confirm the selection
+        m_currentMenu.confirmFunction(numericInpt);
+        return;
     }
 }
 
+/*!
+ * Description: General funtion for menus which set values
+ *              (Such as Set Max Range). This calls the
+ *              appropriate function, and transmits user messages.
+ */
+void setValue(int input)
+{
+    char string[20] = " set to \0";
+    Direction dir;
+
+    // Sends a new line
+    sendNewLine(1);
+
+    // Handle inpropper input values
+    if (input < m_currentMenu.minVal || input > m_currentMenu.maxVal)
+    {
+        errOutOfRange(m_currentMenu.minVal, m_currentMenu.maxVal);
+        sendNewLine(1);
+        return;
+    }
+
+    // Handle Different cases
+    // @TODO handle current values
+    // @TODO Integrate
+    switch (m_currentMenu.menuNum)
+    {
+        case AZ_GOTO:
+            dir.azimuth = input;
+            dir.inclination = getDir().inclination;
+            move(dir);
+            sendROM(angleStr);
+            break;
+        case EL_GOTO:
+            dir.azimuth = getDir().azimuth;
+            dir.inclination = input;
+            move(dir);
+            sendROM(angleStr);
+            break;
+        case AZ_MIN:
+            setMinAzimuthAngle((char) input);
+            AzGoto.minVal = input;
+            sendROM(angleStr);
+            break;
+        case AZ_MAX:
+            setMaxAzimuthAngle((char) input);
+            AzGoto.maxVal = input;
+            sendROM(angleStr);
+            break;
+        case EL_MIN:
+            setMinElevationAngle((char) input);
+            ElGoto.minVal = input;
+            sendROM(angleStr);
+            break;
+        case EL_MAX:
+            setMaxElevationAngle((char) input);
+            ElGoto.maxVal = input;
+            sendROM(angleStr);
+            break;
+    }
+
+    // Transmit the final part of the sentence
+    transmit(string);
+    transmit(intToAscii(input));
+    sendNewLine(1);
+
+    // @TODO sendLcdLine2("OK!");
+}
+
+void setMenu(struct menuStruct menu)
+{
+    m_currentMenu = menu;
+    if (m_userMode == REMOTE || m_userMode == FACTORY) displayMenuSerial();
+    // @TODO lcdLine1(*m_currentMenu.lcdMessage);
+}
+
+void noFunctionNumeric(int input)
+{
+    return;
+}
+
+void noFunction(void)
+{
+    return;
+}
+
+void returnToTopMenu(void)
+{
+    setMenu(topMenu);
+}
+void returnToAzMenu(void)
+{
+    setMenu(AzMenu);
+}
+void returnToElMenu(void)
+{
+    setMenu(ElMenu);
+}
+void returnToRngMenu(void)
+{
+    setMenu(RangeMenu);
+}
+
+// *****************************************************************************
+// *************************** NAVIGATE MENUS *********************************
+// *****************************************************************************
+
+void navigateTopMenu(int inputResult) {
+    switch (inputResult) {
+        case 1:
+            //auto();;
+            break;
+        case 2:
+            // Go to the Azimuth menu
+            setMenu(AzMenu);
+            break;
+        case 3:
+            // Go to the Elevation Menu
+            setMenu(ElMenu);
+            break;
+        case 4:
+            // Go to Range Menu
+            setMenu(RangeMenu);;
+            break;
+//        case 5:
+//            // Show Temperature
+//            m_currentMenu = SHOW_TEMP;
+//            break;
+//        case 6:
+//            // If Factory mode is on, calibrate Temperature
+//            if (m_userMode == FACTORY) {
+//                m_currentMenu = CALIBRATE_TEMP;
+//                break;
+//            } else {
+//                // Switch user mode!
+//                if (m_userMode == REMOTE) {
+//                    m_userMode = LOCAL;
+//                } else if (m_userMode == LOCAL) {
+//                    m_userMode = REMOTE;
+//                }
+//                break;
+//            }
+        default:
+            errOutOfRange(1, 5);
+            break;
+    }
+}
+
+void navigateAzimuthMenu(int inputResult) {
+    switch (inputResult) {
+        case 1:
+            // Go to elevation angle
+            setMenu(AzGoto);
+            break;
+        case 2:
+            // Set elevation minimum
+            setMenu(AzMin);
+            break;
+        case 3:
+            // Set elevation maximum
+            setMenu(AzMax);
+            break;
+        case 4:
+            if (m_userMode == FACTORY) {
+                // Calibrate the elevation servo
+            } else {
+                // Go back one level
+                m_currentMenu.returnToPrevious();
+            }
+            break;
+        case 5:
+            if (m_userMode == FACTORY) {
+                // Go back!
+                m_currentMenu.returnToPrevious();
+                break;
+            }
+            // If not in factory mode, this is an error;
+        default:
+            errOutOfRange(1, 4);
+            break;
+    }
+}
+
+void navigateRangeMenu(int inputResult)
+{
+    switch (inputResult) {
+        case 1:
+            // Set the minimum range
+            setMenu(RngMin);
+            break;
+        case 2:
+            // Set the maximum range
+            setMenu(RngMax);
+            break;
+        case 3:
+            if (m_userMode == FACTORY) {
+                // View the raw range data
+            } else {
+                // Go back one level
+                m_currentMenu.returnToPrevious();
+            }
+            break;
+        case 4:
+            if (m_userMode == FACTORY) {
+                // Set the ultrasound sample rate
+            } else {
+                errOutOfRange(1, 3); // Display an error
+            }
+            break;
+        case 5:
+            if (m_userMode == FACTORY) {
+                // Set the number of estimations per sample
+            } else {
+                errOutOfRange(1, 3); // Display an error
+            }
+            break;
+        case 6:
+            if (m_userMode == FACTORY) {
+                // Set the IR sample rate
+            } else {
+                errOutOfRange(1, 3); // Display an error
+            }
+            break;
+        case 7:
+            if (m_userMode == FACTORY) {
+                // Set the number of estimations per sample
+            } else {
+                errOutOfRange(1, 3); // Display an error
+            }
+            break;
+        default:
+            if (m_userMode == FACTORY) {
+                errOutOfRange(1, 7);
+            } else {
+                errOutOfRange(1, 3); // Display an error
+            }
+            break;
+    }
+}
+
+void navigateElevationMenu(int inputResult)
+{
+        switch (inputResult) {
+        case 1:
+            // Go to elevation angle
+            setMenu(ElGoto);
+            break;
+        case 2:
+            // Set elevation minimum
+            setMenu(ElMin);
+            break;
+        case 3:
+            // Set elevation maximum
+            setMenu(ElMax);
+            break;
+        case 4:
+            if (m_userMode == FACTORY) {
+                // Calibrate the elevation servo
+            } else {
+                m_currentMenu.returnToPrevious();
+                // Go back one level
+            }
+            break;
+        case 5:
+            if (m_userMode == FACTORY) {
+                // Calibrate the elevation servo
+                break;
+            }
+            // If not in factory mode, this is an error;
+        default:
+            if (m_userMode == FACTORY) errOutOfRange(1, 5);
+            else errOutOfRange(1, 4);
+            break;
+    }
+}
+
+// *****************************************************************************
+// *************************** SERIAL DISPLAY **********************************
+// *****************************************************************************
+
+/*!
+ * Display the current menu Title and other information over serial
+ */
+void displayMenuSerial()
+{
+    int j;
+    sendNewLine(7);
+    filler(width);
+    sendNewLine(1);
+    transChar('\t');
+    sendROM(m_currentMenu.lcdTitleMessage);
+    sendNewLine(1);
+    filler(width);
+    sendNewLine(2);
+    m_currentMenu.serialDisplayFunction();
+    sendNewLine(2);
+    filler(width);
+    for (j=0;j<1000;j++);
+    sendNewLine(1);
+}
+
+/*!
+ * Display the user options for the top level home menu
+ */
 void dispTopOptions(void) {
 
     sendROM(topOption1);
@@ -581,367 +752,8 @@ void dispTopOptions(void) {
         sendROM(topOptionLocal);
 //        if(factoryEnabled()) send(topOptionFactory);
     }
-}
 
-/*!
- * Displays the current potentiometer reading on the LCD
- *
- */
-char* dispLCDTopMenu(int option)
-{
-    char *string;
-    switch(option)
-    {
-        case 1:
-            string = topOption1;
-            break;
-        case 2:
-            string = topOption2;
-            break;
-        case 3:
-            string = topOption3;
-            break;
-        case 4:
-            string = topOption4;
-            break;
-        case 5:
-            string = topOption5;
-            break;
-        case 6:
-            string = topOptionRemote;
-            break;
-        default:
-            string = "How did you even?";
-    }
-    return string;
-}
-
-void topmenudisp(void) {
-    clearScreen();
-    //sendNewLine(height);
-    filler(width);
-    sendROM(newLine);
-    filler(22);
-    sendROM(welcome);
-    filler(21);
-    sendROM(newLine);
-    filler(width);
-    sendROM(newLine);
-    sendNewLine(2);
-    dispTopOptions();
-    sendNewLine(2);
     sendROM(CHOOSE);
-    sendNewLine((height - 16));
-    filler(width);
-    sendNewLine(1);
-}
-
-/*!
- * Displays the current temperature
- */
-void showTemp() {
-    int userInput;
-    unsigned char temp = 25;
-
-    char string[20] = "\n\rSHOW TEMP\r\n";
-    transmit(string);
-
-    //@TODO temp = getTemp
-
-    // Display the temperature
-    sendROM(showTemp1);
-    transmit(intToAscii(temp));
-    sendROM(showTemp2);
-
-    while (m_currentMenu == SHOW_TEMP)
-    {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            while(userEmpty());       //!Wait until the receive buffer is no longer empty
-            // Confirm the user's input
-            if (userPop() == BACK_CHAR)
-            {
-                userInput =  ESC_PRESSED;
-            }
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = TOP_LEVEL;
-        }
-    }
-}
-
-/*!
- * Displays the current temperature
- */
-void calibrateTempMenu() {
-    int userInput;
-
-    char string[20] = "\n\rCALIBRATE TEMP\r\n";
-    transmit(string);
-
-    while (m_currentMenu == CALIBRATE_TEMP) {
-        waitForSerialInput();
-        readString(&userInput); //!Get the input string and store it in @userget
-        m_currentMenu = TOP_LEVEL;
-    }
-}
-
-// *****************************************************************************
-// ***************************** TRACKING MENU *********************************
-// *****************************************************************************
-
-/*!
- * Searches and tracks a found object
- */
-void trackingMenu() {
-    int userInput;
-    char counter = 0;
-
-    char string[20] = "\n\rTRACKING\r\n";
-    transmit(string);
-    // Begin Timer
-    WriteTimer0(0);
-
-    while (m_currentMenu == TRACKING) {
-
-        // Only refresh the screen every 100ms
-        if(ReadTimer0() >= UPDATE_TIME)
-        {
-            if(receiveEsc())
-            {
-                popEsc();
-                m_currentMenu = TOP_LEVEL;
-            }
-
-            if(counter == 10)
-            {
-                transmit(string);
-                counter = 0;
-            }
-            else counter++;
-            WriteTimer0(0);
-        }
-    }
-}
-
-void autodisp(void) {
-    sendNewLine(height);
-    filler(width);
-    sendROM(newLine);
-    filler(23);
-    sendROM(automessage);
-    filler(23);
-    sendROM(newLine);
-    filler(width);
-    sendROM(newLine);
-    sendNewLine(2);
-    sendROM(autoinit);
-    sendNewLine(2);
-    sendROM(autohelp1);
-    sendROM(newLine);
-    //send(autohelp2);
-    //send(autohelp3);
-}
-
-// *****************************************************************************
-// **************************** AZIMUTH MENUS **********************************
-// *****************************************************************************
-
-void azimuthMenu(void) {
-    int inputResult;
-
-    sendROM(azMenu);
-    dispAzOptions();        // Display the menu options
-
-    while (m_currentMenu == AZ_MENU) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            inputResult = waitForNumericInput();
-        }
-        else
-        {
-            inputResult = waitForLocalInputMenu(3, dispLCDAzMenu);
-        }
-
-        switch (inputResult) {
-            case ESC_PRESSED:
-                m_currentMenu = TOP_LEVEL;
-                break;
-            case 1:
-                // Go to elevation angle
-                m_currentMenu = AZ_GOTO;
-                break;
-            case 2:
-                // Set elevation minimum
-                m_currentMenu = AZ_MIN;
-                break;
-            case 3:
-                // Set elevation maximum
-                m_currentMenu = AZ_MAX;
-                break;
-            case 4:
-                if (m_userMode == FACTORY) {
-                    // Calibrate the elevation servo
-                    m_currentMenu = AZ_CALIBRATE;
-                } else {
-                    // Go back one level
-                    m_currentMenu = TOP_LEVEL;
-                }
-                break;
-            case 5:
-                if (m_userMode == FACTORY) {
-                    // Calibrate the elevation servo
-                    m_currentMenu = TOP_LEVEL;
-                    break;
-                }
-                // If not in factory mode, this is an error;
-            default:
-                //@TODO error();
-                break;
-        }
-    }
-}
-/*!
- * User menu for going to a specific azimuth angle
- */
-void gotoAzimuth() {
-    int userInput;
-    Direction dir;
-
-    //@TODO Display message
-//    char string[20] = "\n\rGO TO AZIMUTH\r\n";
-//    transmit(string);
-
-    sendROM(gotoAzAngle);
-    sendROM(gotoAngle2);
-    transmit(intToAscii(getMinAzimuthAngle()));
-    sendROM(and);
-    transmit(intToAscii(getMaxAzimuthAngle()));
-    sendNewLine(1);
-
-    while (m_currentMenu == AZ_GOTO) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            userInput = waitForLocalInputValue(getMinAzimuthAngle(), getMaxAzimuthAngle(), 2);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = AZ_MENU;
-        }
-        else
-        {
-            if (userInput >= getMinAzimuthAngle() &&
-                    userInput <= getMaxAzimuthAngle())
-            {
-                dir.azimuth = userInput;
-                dir.inclination = getDir().inclination;
-                move(dir);
-
-                // Display message
-                sendROM(gotoAngle3);
-                transmit(intToAscii(userInput));
-                sendNewLine(1);
-            }
-            else
-            {
-                 //Display Error Message
-                errOutOfRange(getMinAzimuthAngle(), getMaxAzimuthAngle());
-            }
-        }
-    }
-}
-
-/*!
- * User menu for setting the maximum azimuth angle
- */
-void setAzimuthMax() {
-    int userInput;
-    char string[20] = "\n\rSET AZIMUTH MAX\r\n";
-    transmit(string);
-
-    while (m_currentMenu == AZ_MAX) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            userInput = waitForLocalInputValue(MAX_ANGLE_INFIMUM, MAX_ANGLE_SUPREMUM, 5);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = AZ_MENU;
-        }
-        else
-        {
-            //@TODO Check bounds, Display message
-            //setMaxAzimuthAngle(userInput);
-        }
-    }
-}
-
-/*!
- * User menu for setting the minimum azimuth angle
- */
-void setAzimuthMin() {
-    int userInput;
-    char string[20] = "\n\rSET AZIMUTH MIN\r\n";
-    transmit(string);
-
-    while (m_currentMenu == AZ_MIN) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            userInput = waitForLocalInputValue(MIN_ANGLE_INFIMUM, MIN_ANGLE_SUPREMUM, 5);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = AZ_MENU;
-        }
-        else
-        {
-            //@TODO Check bounds, Display Message
-            //setMinAzimuthAngle(userInput);
-        }
-    }
-}
-
-/*!
- * User menu for calibrating azimuth angle
- */
-void calibrateAzimuth() {
-    int userInput;
-    char string[30] = "\n\rCALIBRATE AZIMUTH\r\n";
-    transmit(string);
-
-    while (m_currentMenu == AZ_CALIBRATE) {
-        userInput = waitForNumericInput();
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = AZ_MENU;
-        }
-        else
-        {
-            //@TODO
-        }
-    }
 }
 
 /*!
@@ -963,210 +775,7 @@ void dispAzOptions()
         sendROM(menuPrefix4);
         sendROM(goUp);
     }
-}
-
-/*!
- * Displays the current potentiometer reading on the LCD
- *
- */
-char* dispLCDAzMenu(int option)
-{
-    char *string;
-    switch(option)
-    {
-        case 1:
-            string = azOption1;
-            break;
-        case 2:
-            string = azOption2;
-            break;
-        case 3:
-            string = azOption3;
-            break;
-        default:
-            string = "How did you even?";
-    }
-    return string;
-}
-
-
-// *****************************************************************************
-// *************************** ELEVATION MENUS *********************************
-// *****************************************************************************
-
-void elevationMenu(void) {
-    int inputResult;
-
-    sendROM(elMenu);
-    dispElOptions();      //!Display the menu screen via serial
-
-    while (m_currentMenu == EL_MENU) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            inputResult = waitForNumericInput();
-        }
-        else
-        {
-            inputResult = waitForLocalInputMenu(3, dispLCDElMenu);
-        }
-
-        switch (inputResult) {
-            case ESC_PRESSED:
-                m_currentMenu = TOP_LEVEL;
-                break;
-            case 1:
-                // Go to elevation angle
-                m_currentMenu = EL_GOTO;
-                break;
-            case 2:
-                // Set elevation minimum
-                m_currentMenu = EL_MIN;
-                break;
-            case 3:
-                // Set elevation maximum
-                m_currentMenu = EL_MAX;
-                break;
-            case 4:
-                if (m_userMode == FACTORY) {
-                    // Calibrate the elevation servo
-                    m_currentMenu = EL_CALIBRATE;
-                } else {
-                    // Go back one level
-                    m_currentMenu = TOP_LEVEL;
-                }
-                break;
-            case 5:
-                if (m_userMode == FACTORY) {
-                    // Calibrate the elevation servo
-                    m_currentMenu = TOP_LEVEL;
-                    break;
-                }
-                // If not in factory mode, this is an error;
-            default:
-                if (m_userMode == FACTORY) errOutOfRange(1, 5);
-                else errOutOfRange(1, 4);
-                break;
-        }
-    }
-}
-
-/*!
- * User menu for going to a specific elevation angle
- */
-void gotoElevation() {
-    int userInput;
-    Direction dir;
-
-    char string[30] = "\n\rGO TO ELEVATION\r\n";
-    transmit(string);
-
-    while (m_currentMenu == EL_GOTO) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            userInput = waitForLocalInputValue(getMinElevationAngle(), getMaxElevationAngle(), 2);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = EL_MENU;
-        }
-        else
-        {
-            if (userInput >= getMinElevationAngle() &&
-                    userInput <= getMaxElevationAngle())
-            {
-                dir.azimuth = getDir().azimuth;
-                dir.inclination = userInput;
-                move(dir);
-                // @TODO Display Message
-            }
-            else; //@TODO Display Message
-        }
-    }
-}
-
-/*!
- * User menu for setting the maximum elevation angle
- */
-void setElevationMax() {
-    int userInput;
-    char string[30] = "\n\rSET ELEVATION MAX\r\n";
-    transmit(string);
-
-    while (m_currentMenu == EL_MAX) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            userInput = waitForLocalInputValue(MAX_ANGLE_INFIMUM, MAX_ANGLE_SUPREMUM, 5);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = EL_MENU;
-        }
-        else
-        {
-                // @TODO Display Message
-        }
-    }
-}
-
-/*!
- * User menu for setting the minimum elevation angle
- */
-void setElevationMin() {
-    int userInput;
-    char string[30] = "\n\rSET ELEVATION MIN\r\n";
-    transmit(string);
-
-    while (m_currentMenu == EL_MIN) {
-        if (m_userMode == REMOTE || m_userMode == FACTORY)
-        {
-            userInput = waitForNumericInput();
-        }
-        else
-        {
-            userInput = waitForLocalInputValue(MIN_ANGLE_INFIMUM, MIN_ANGLE_SUPREMUM, 5);
-        }
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = EL_MENU;
-        }
-        else
-        {
-                // @TODO Display Message
-        }
-    }
-}
-
-/*!
- * User menu for calibrating elevation angle
- */
-void calibrateElevation() {
-    int userInput;
-    char string[30] = "\n\rCALIBRATE ELEVATION\r\n";
-    transmit(string);
-
-    while (m_currentMenu == EL_CALIBRATE) {
-        userInput = waitForNumericInput();
-
-        if (userInput == ESC_PRESSED)
-        {
-            m_currentMenu = EL_MENU;
-        }
-        else
-        {
-                // @TODO Display Message
-        }
-    }
+    sendROM(CHOOSE);
 }
 
 /*!
@@ -1188,370 +797,181 @@ void dispElOptions()
         sendROM(menuPrefix4);
         sendROM(goUp);
     }
+    sendROM(CHOOSE);
 }
 
 /*!
- * Displays the current potentiometer reading on the LCD
- *
+ * Display the user options for the Azimuth menu
  */
-char* dispLCDElMenu(int option)
+void dispRngOptions()
+{
+    sendROM(rngOption1);
+    sendROM(rngOption2);
+    if (m_userMode == FACTORY)
+    {
+        sendROM(rngOption3);
+        sendROM(rngOption4);
+        sendROM(rngOption5);
+        sendROM(rngOption6);
+        sendROM(rngOption7);
+        sendROM(menuPrefix8);
+        sendROM(goUp);
+    }
+    else
+    {
+        sendROM(menuPrefix3);
+        sendROM(goUp);
+    }
+    sendROM(CHOOSE);
+}
+
+/*!
+ * Display the Show Temperature serial message
+ */
+void dispTempSerialMessage(void)
+{
+    char temp = readTemp();
+    sendROM(showTemp1);
+    transmit(intToAscii((int) temp));
+    sendROM(showTemp2);
+}
+
+/*!
+ * Display the menu serial message
+ */
+void dispSerialMessage(void)
+{
+    sendROM(m_currentMenu.serialMessage);
+}
+
+// *****************************************************************************
+// ****************************** LCD FUNCTIONS **********************************
+// *****************************************************************************
+
+/*!
+ * Displays the current potentiometer reading on the LCD based on the
+ * menu options contextualised by the Home menu.
+ */
+void dispLCDTopMenu(int option)
 {
     char *string;
     switch(option)
     {
         case 1:
-            string = elOption1;
+            //Automatic Tracking;
             break;
         case 2:
-            string = elOption2;
+            // Azimuth Menu
+            string = AzMenu.lcdTitleMessage;
             break;
         case 3:
-            string = elOption3;
+            // Elevation Menu
+            string = ElMenu.lcdTitleMessage;
+            break;
+        case 4:
+            // Range Menu
+            string = RangeMenu.lcdTitleMessage;
+            break;
+        case 5:
+            // Show Temp
+            //string = ShowTemp.lcdTitleMessage;
+            break;
+        case 6:
+            // Switch to Remote
+            string = topOptionRemoteLCD;
             break;
         default:
-            string = "How did you even?";
+            string = "ERROR";
     }
-    return string;
+    //@TODO lcdLine2Display(string);
+}
+/*!
+ * Displays the current potentiometer reading on the LCD based on the
+ * menu options contextualised by the Azimuth menu.
+ */
+void dispLCDAzMenu(int option)
+{
+    char *string;
+    switch(option)
+    {
+        case 1:
+            // Go to Azimuth
+            string = AzGoto.lcdTitleMessage;
+            break;
+        case 2:
+            // Set Min Azimuth
+            string = AzMin.lcdTitleMessage;
+            break;
+        case 3:
+            // Set Max Azimuth
+            string = AzMax.lcdTitleMessage;
+            break;
+        default:
+            string = "ERROR";
+    }
+    //@TODO lcdLine2Display(string);
+}
+/*!
+ * Displays the current potentiometer reading on the LCD based on the
+ * menu options contextualised by the Elevation menu.
+ */
+void dispLCDElMenu(int option)
+{
+    char *string;
+    switch(option)
+    {
+        case 1:
+            // Go to Elevation
+            string = ElGoto.lcdTitleMessage;
+            break;
+        case 2:
+            // Set Min Elevation
+            string = ElMin.lcdTitleMessage;
+            break;
+        case 3:
+            // Set Max Elevation
+            string = ElMax.lcdTitleMessage;
+            break;
+        default:
+            string = "ERROR";
+    }
+    //@TODO lcdLine2Display(string);
 }
 
-//// *****************************************************************************
-//// ****************************** RANGE MENUS **********************************
-//// *****************************************************************************
-//
-//void rangeMenu(void) {
-//    int inputResult;
-//    sendROM(rngMenu);
-//    dispRngOptions();
-//
-//    while (m_currentMenu == RANGE_MENU) {
-//        if (m_userMode == REMOTE || m_userMode == FACTORY)
-//        {
-//            inputResult = waitForNumericInput();
-//        }
-//        else
-//        {
-//            inputResult = waitForLocalInputMenu(2, dispLCDRngMenu);
-//        }
-//        switch (inputResult) {
-//            case ESC_PRESSED:
-//                m_currentMenu = TOP_LEVEL;
-//                break;
-//            case 1:
-//                // Set the minimum range
-//                m_currentMenu = RANGE_MIN;
-//                break;
-//            case 2:
-//                // Set the maximum range
-//                m_currentMenu = RANGE_MAX;
-//                break;
-//            case 3:
-//                if (m_userMode == FACTORY) {
-//                    // View the raw range data
-//                    m_currentMenu = RANGE_RAW;
-//                } else {
-//                    // Go back one level
-//                    m_currentMenu = TOP_LEVEL;
-//                }
-//                break;
-//            case 4:
-//                if (m_userMode == FACTORY) {
-//                    // Set the ultrasound sample rate
-//                    m_currentMenu = US_SAMPLE_RATE;
-//                } else {
-//                    errOutOfRange(1, 3);    // Display an error
-//                }
-//                break;
-//            case 5:
-//                if (m_userMode == FACTORY) {
-//                    // Set the number of estimations per sample
-//                    m_currentMenu = US_SAMPLE_AVG;
-//                }
-//                else {
-//                    errOutOfRange(1, 3);    // Display an error
-//                }
-//                break;
-//            case 6:
-//                if (m_userMode == FACTORY) {
-//                    // Set the IR sample rate
-//                    m_currentMenu = IR_SAMPLE_RATE;
-//                }
-//                else {
-//                    errOutOfRange(1, 3);    // Display an error
-//                }
-//                break;
-//            case 7:
-//                if (m_userMode == FACTORY) {
-//                    // Set the number of estimations per sample
-//                    m_currentMenu = IR_SAMPLE_AVG;
-//                }
-//                else {
-//                    errOutOfRange(1, 3);    // Display an error
-//                }
-//                break;
-//            default:
-//                if (m_userMode == FACTORY) {
-//                    // Set the number of estimations per sample
-//                    errOutOfRange(1,7);
-//                }
-//                else {
-//                    errOutOfRange(1, 3);    // Display an error
-//                }
-//                break;
-//        }
-//    }
-//}
-//
-///*!
-// * User menu for setting the minimum range of the system
-// */
-//void setMinRange() {
-//    int userInput;
-//    char string[30] = "\n\rSET MIN RANGE\r\n";
-//    transmit(string);
-//
-//    while (m_currentMenu == RANGE_MIN) {
-//        if (m_userMode == REMOTE || m_userMode == FACTORY)
-//        {
-//            userInput = waitForNumericInput();
-//        }
-//        else
-//        {
-//            userInput = waitForLocalInputValue(MIN_RANGE_INFIMUM, MIN_RANGE_SUPREMUM, 50);
-//        }
-//
-//        if (userInput == ESC_PRESSED)
-//        {
-//            m_currentMenu = RANGE_MENU;
-//        }
-//        else
-//        {
-//                // @TODO Display Message
-//        }
-//    }
-//}
-//
-///*!
-// * User menu for setting the maximum range for the system
-// */
-//void setMaxRange() {
-//    int userInput;
-//
-//    char string[30] = "\n\rSET MAX RANGE\r\n";
-//    transmit(string);
-//
-//    while (m_currentMenu == RANGE_MAX) {
-//        if (m_userMode == REMOTE || m_userMode == FACTORY)
-//        {
-//            userInput = waitForNumericInput();
-//        }
-//        else
-//        {
-//            userInput = waitForLocalInputValue(MAX_RANGE_INFIMUM, MAX_RANGE_SUPREMUM, 100);
-//        }
-//
-//        if (userInput == ESC_PRESSED)
-//        {
-//            m_currentMenu = RANGE_MENU;
-//        }
-//        else
-//        {
-//                // @TODO Display Message
-//        }
-//    }
-//}
-//
-///*!
-// * User menu viewing raw IR and US data
-// */
-//void rawRangeMenu() {
-//    char counter;
-//    char string[30] = "\n\rVIEW RAW RANGE DATA\r\n";
-//    transmit(string);
-//
-//    WriteTimer0(0);
-//
-//    while (m_currentMenu == RANGE_RAW) {
-//        // Only refresh the screen every 100ms
-//        if(ReadTimer0() >= UPDATE_TIME)
-//        {
-//            if(receiveEsc())
-//            {
-//                popEsc();
-//                m_currentMenu = RANGE_MENU;
-//            }
-//
-//            if(counter == 10)
-//            {
-//                transmit(string);
-//                counter = 0;
-//            }
-//            else counter++;
-//            WriteTimer0(0);
-//        }
-//    }
-//}
-//
-///*!
-// * User menu for setting Ultrasound sample rate
-// */
-//void usSampleRate() {
-//    int userInput;
-//    char string[30] = "\n\rSET US SAMPLE RATE\r\n";
-//    transmit(string);
-//
-//    while (m_currentMenu == US_SAMPLE_RATE) {
-//        if (m_userMode == REMOTE || m_userMode == FACTORY)
-//        {
-//            userInput = waitForNumericInput();
-//        }
-//        else
-//        {
-//            //@TODO userInput = waitForLocalInputValue(SOMETHING, SOMETHING_ELSE, 5);
-//        }
-//
-//        if (userInput == ESC_PRESSED)
-//        {
-//            m_currentMenu = RANGE_MENU;
-//        }
-//        else
-//        {
-//                // @TODO Display Message
-//        }
-//    }
-//}
-//
-///*!
-// * User menu for setting Ultrasound samples per average
-// */
-//void usSamplesPerAvg() {
-//    int userInput;
-//    char string[30] = "\n\rSET US SAMPLES PER AVG\r\n";
-//    transmit(string);
-//
-//    while (m_currentMenu == US_SAMPLE_AVG) {
-//        if (m_userMode == REMOTE || m_userMode == FACTORY)
-//        {
-//            userInput = waitForNumericInput();
-//        }
-//        else
-//        {
-//            userInput = waitForLocalInputValue(SAMPLE_PER_AVG_MIN, SAMPLE_PER_AVG_MAX, 1);
-//        }
-//
-//        if (userInput == ESC_PRESSED)
-//        {
-//            m_currentMenu = RANGE_MENU;
-//        }
-//        else
-//        {
-//                // @TODO Display Message
-//        }
-//    }
-//}
-//
-///*!
-// * User menu for setting Infrared sample rate
-// */
-//void irSampleRate() {
-//    int userInput;
-//    char string[30] = "\n\rSET IR SAMPLE RATE\r\n";
-//    transmit(string);
-//
-//    while (m_currentMenu == IR_SAMPLE_RATE) {
-//        if (m_userMode == REMOTE || m_userMode == FACTORY)
-//        {
-//            userInput = waitForNumericInput();
-//        }
-//        else
-//        {
-//            //@TODO userInput = waitForLocalInputValue(SOMETHING, SOMETHING_ELSE, 5);
-//        };
-//
-//        if (userInput == ESC_PRESSED)
-//        {
-//            m_currentMenu = RANGE_MENU;
-//        }
-//        else
-//        {
-//                // @TODO Display Message
-//        }
-//    }
-//}
-//
-///*!
-// * User menu for setting IR samples per average
-// */
-//void irSamplesPerAvg() {
-//    int userInput;
-//    char string[30] = "\n\rSET IR SAMPLES PER AVG\r\n";
-//    transmit(string);
-//
-//    while (m_currentMenu == IR_SAMPLE_AVG) {
-//        if (m_userMode == REMOTE || m_userMode == FACTORY)
-//        {
-//            userInput = waitForNumericInput();
-//        }
-//        else
-//        {
-//            userInput = waitForLocalInputValue(SAMPLE_PER_AVG_MIN, SAMPLE_PER_AVG_MAX, 1);
-//        }
-//
-//        if (userInput == ESC_PRESSED)
-//        {
-//            m_currentMenu = RANGE_MENU;
-//        }
-//        else
-//        {
-//                // @TODO Display Message
-//        }
-//    }
-//}
-//
-///*!
-// * Display the user options for the Azimuth menu
-// */
-//void dispRngOptions()
-//{
-//    sendROM(rngOption1);
-//    sendROM(rngOption2);
-//    if (m_userMode == FACTORY)
-//    {
-//        sendROM(rngOption3);
-//        sendROM(rngOption4);
-//        sendROM(rngOption5);
-//        sendROM(rngOption6);
-//        sendROM(rngOption7);
-//        sendROM(menuPrefix8);
-//        sendROM(goUp);
-//    }
-//    else
-//    {
-//        sendROM(menuPrefix3);
-//        sendROM(goUp);
-//    }
-//}
-///*!
-// * Displays the current potentiometer reading on the LCD
-// *
-// */
-//char* dispLCDRngMenu(int option)
-//{
-//    char *string;
-//    switch(option)
-//    {
-//        case 1:
-//            string = rngOption1;
-//            break;
-//        case 2:
-//            string = rngOption2;
-//            break;
-//        default:
-//            string = "How did you even?";
-//    }
-//    return string;
-//}
+/*!
+ * Displays the current potentiometer reading on the LCD based on the
+ * menu options contextualised by the Range menu.
+ */
+void dispLCDRngMenu(int option)
+{
+    char *string;
+    switch(option)
+    {
+        case 1:
+            // Set Min Range
+            string = RngMin.lcdTitleMessage;
+            break;
+        case 3:
+            // Set Max Range
+            string = RngMax.lcdTitleMessage;
+            break;
+        default:
+            string = "ERROR";
+    }
+    //@TODO lcdLine2Display(string);
+}
 
-
+/*!
+ * Description: Displays the current converted value from the potentiometer
+ *              onto the LCD display
+ *
+ * Arguments: The integer converted from the ADC
+ */
+void dispLCDNum(int option)
+{
+    char *string = intToAscii(option);
+    //@TODO lcdLine2Display(string);
+}
 
 
 

@@ -25,10 +25,19 @@
 #include "Menusystem.h"
 //#include "ConfigRegs18f4520.h"
 
+// The time to check timer 0 against
+// 1953 = approx 0.1s on MNML
+#define UPDATE_TIME 1000
+
 //Local Function Prototypes:
 static void initialization(systemState *state);
 static void transRange(void);
-static void dispTrack(TrackingData target);
+
+void configureTimer0(void)
+{
+    T0CON = 0b00000110;     // Select internal clock, 128x prescalar
+    T0CONbits.TMR0ON = 1;   // Enable Timer 1;
+}
 
 /*! **********************************************************************
  * Function: main(void)
@@ -44,18 +53,35 @@ static void dispTrack(TrackingData target);
  * Returns: None
  *************************************************************************/
 void main() {
+    int counter = 0;
     systemState state = {INIT, UNDEF};
     TrackingData target;
     //Direction dir = {20, 20};
 
-    //configureBase();
+//
+//    configureSerial();
+//    configureRange();
+//    configUSER();
+    configureTimer0();
+    initialiseMenu();
 
-    //move(dir);
-    //for (;;);
-    
+//    for(;;)
+//    {
+//        transRange();
+//    }
+    WriteTimer0(0);
     for (;;)
-    {
-        //if (TMR1H > 10000) serviceMenu();
+{
+        // Only refresh the screen every 100ms
+        if (ReadTimer0() >= UPDATE_TIME) {
+            // If a 300 milliseconds has passed
+            if (counter >= 1) {
+                serviceMenu();
+                counter = 0;
+            } else counter++;
+            WriteTimer0(0);
+        }
+
         switch (state.current)
         {
             case INIT:
