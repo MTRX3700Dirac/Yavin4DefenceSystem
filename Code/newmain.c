@@ -31,7 +31,8 @@
 
 //Local Function Prototypes:
 static void initialization(systemState *state);
-static void transRange(void);
+//static void transRange(void);
+static void dispTrack(TrackingData target);
 
 void configureTimer0(void)
 {
