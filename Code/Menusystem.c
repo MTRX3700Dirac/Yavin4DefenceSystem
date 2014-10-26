@@ -449,6 +449,7 @@ void serviceMenu(void)
 static void setValue(int input)
 {
     char string[20] = " set to \0";
+    char stringLcd[20] = {0};
     Direction dir;
 
     // Sends a new line
@@ -506,14 +507,15 @@ static void setValue(int input)
     transmit(intToAscii(input));
     sendNewLine(1);
 
-    // @TODO sendLcdLine2("OK!");
+    lcdWriteString(strcpypgm2ram(stringLcd, "OK!"), 2);
 }
 
 static void setMenu(struct menuStruct menu)
 {
+    char stringLcd[20] = {0};
     m_currentMenu = menu;
     if (m_userMode == REMOTE || m_userMode == FACTORY) displayMenuSerial();
-    // @TODO lcdLine1(*m_currentMenu.lcdMessage);
+    lcdWriteString(strcpypgm2ram(stringLcd, m_currentMenu.lcdTitleMessage), 1);
 }
 
 static void noFunctionNumeric(int input)
@@ -864,7 +866,7 @@ static void dispSerialMessage(void)
  */
 static void dispLCDTopMenu(int option)
 {
-    char *string;
+    char string[20] = {0};
     switch(option)
     {
         case 1:
@@ -872,28 +874,28 @@ static void dispLCDTopMenu(int option)
             break;
         case 2:
             // Azimuth Menu
-            string = AzMenu.lcdTitleMessage;
+            strcpypgm2ram(string, AzMenu.lcdTitleMessage);
             break;
         case 3:
             // Elevation Menu
-            string = ElMenu.lcdTitleMessage;
+            strcpypgm2ram(string, ElMenu.lcdTitleMessage);
             break;
         case 4:
             // Range Menu
-            string = RangeMenu.lcdTitleMessage;
+            strcpypgm2ram(string, RangeMenu.lcdTitleMessage);
             break;
         case 5:
             // Show Temp
-            //string = ShowTemp.lcdTitleMessage;
+            strcpypgm2ram(string, ShowTemp.lcdTitleMessage);
             break;
         case 6:
             // Switch to Remote
-            string = topOptionRemoteLCD;
+            strcpypgm2ram(string, topOptionRemoteLCD);
             break;
         default:
-            string = "ERROR";
+            strcpypgm2ram(string, "ERROR");
     }
-    //@TODO lcdLine2Display(string);
+    lcdWriteString(string, 2);
 }
 /*!
  * Displays the current potentiometer reading on the LCD based on the
@@ -901,25 +903,25 @@ static void dispLCDTopMenu(int option)
  */
 static void dispLCDAzMenu(int option)
 {
-    char *string;
+    char string[20] = {0};
     switch(option)
     {
         case 1:
             // Go to Azimuth
-            string = AzGoto.lcdTitleMessage;
+            strcpypgm2ram(string, AzGoto.lcdTitleMessage);
             break;
         case 2:
             // Set Min Azimuth
-            string = AzMin.lcdTitleMessage;
+            strcpypgm2ram(string, AzMin.lcdTitleMessage);
             break;
         case 3:
             // Set Max Azimuth
-            string = AzMax.lcdTitleMessage;
+            strcpypgm2ram(string, AzMax.lcdTitleMessage);
             break;
         default:
-            string = "ERROR";
+            strcpypgm2ram(string, "ERROR");
     }
-    //@TODO lcdLine2Display(string);
+    lcdWriteString(string, 2);
 }
 /*!
  * Displays the current potentiometer reading on the LCD based on the
@@ -927,25 +929,25 @@ static void dispLCDAzMenu(int option)
  */
 static void dispLCDElMenu(int option)
 {
-    char *string;
+    char string[20] = {0};
     switch(option)
     {
         case 1:
             // Go to Elevation
-            string = ElGoto.lcdTitleMessage;
+            strcpypgm2ram(string,  ElGoto.lcdTitleMessage);
             break;
         case 2:
             // Set Min Elevation
-            string = ElMin.lcdTitleMessage;
+            strcpypgm2ram(string, ElMin.lcdTitleMessage);
             break;
         case 3:
             // Set Max Elevation
-            string = ElMax.lcdTitleMessage;
+            strcpypgm2ram(string, ElMax.lcdTitleMessage);
             break;
         default:
-            string = "ERROR";
+            strcpypgm2ram(string, "ERROR");
     }
-    //@TODO lcdLine2Display(string);
+    lcdWriteString(string, 2);
 }
 
 /*!
@@ -954,21 +956,21 @@ static void dispLCDElMenu(int option)
  */
 static void dispLCDRngMenu(int option)
 {
-    char *string;
+    char string[20] = {0};
     switch(option)
     {
         case 1:
             // Set Min Range
-            string = RngMin.lcdTitleMessage;
+            strcpypgm2ram(string, RngMin.lcdTitleMessage);
             break;
         case 3:
             // Set Max Range
-            string = RngMax.lcdTitleMessage;
+            strcpypgm2ram(string, RngMax.lcdTitleMessage);
             break;
         default:
-            string = "ERROR";
+            strcpypgm2ram(string, "ERROR");
     }
-    //@TODO lcdLine2Display(string);
+    lcdWriteString(string, 2);
 }
 
 /*!
@@ -980,7 +982,7 @@ static void dispLCDRngMenu(int option)
 static void dispLCDNum(int option)
 {
     char *string = intToAscii(option);
-    //@TODO lcdLine2Display(string);
+    lcdWriteString(string, 2);
 }
 
 

@@ -27,14 +27,14 @@
 #define LCD_DATA_LINE_DIR   TRISD   //!Direction for data bits
 
 //#define LCD_PWR PORTCbits.RC0       //!LCD Power
-#define LCD_RS  PORTCbits.RC1       //!LCD register select line
-#define LCD_RW  PORTCbits.RC2       //!LCD read/write line
-#define LCD_E   PORTCbits.RC3       //!LCD E clock
+#define LCD_RS  PORTCbits.RC4      //!LCD register select line
+#define LCD_RW  PORTCbits.RC5       //!LCD read/write line
+#define LCD_E   PORTAbits.RA4       //!LCD E clock
 
 //#define LCD_PWR_DIR TRISCbits.RC0
-#define LCD_RS_DIR  TRISCbits.RC1
-#define LCD_RW_DIR  TRISCbits.RC2
-#define LCD_E_DIR   TRISCbits.RC3
+#define LCD_RS_DIR  TRISCbits.RC4
+#define LCD_RW_DIR  TRISCbits.RC5
+#define LCD_E_DIR   TRISAbits.RA4
 
 #define LCD_INS     0               //! instruction
 #define LCD_DATA    1               //! data
@@ -60,8 +60,8 @@
 #define DISPOPT         0x08
 #define D_DISPOFF       0x00
 #define D_DISPON        0x04
-#define C_CURSON        0x00
-#define C_CURSOFF       0x02
+#define C_CURSOFF        0x00
+#define C_CURSON       0x02
 #define B_BLINKOFF      0x00
 #define B_BLINKON       0x01
 #define DISPSHIFTCURS   0x10

@@ -185,6 +185,7 @@ void lcdWriteString(char *string, char line){
     if(line==1){column=LINE1;}
     else if(line==2){column=LINE2;}
         for(a=0; a<16; a++){
+            if (*string == 0) *string = ' ';
             lcdWrite((SETDDRAMADD | column | a), LCD_INS);
             lcdWrite(*string, LCD_DATA);
             string++;
