@@ -353,6 +353,58 @@ This function takes a single object of type Direction (defined in common.h) whic
 \subsubsection{Return Value}
 None
 
+\subsection{CalibratePanTilt}
+\subsubsection{Description:}
+This function calibrates the pan tilt offset to the given value. Calling this function ensures that future calls to the move function with the same direction passed as reference will return to this point. 
+
+\subsubsection{Usage}
+This function is used to change the reference position of the pan tilt mechanism.
+
+\subsubsection{Arguments}
+Takes a single argument in the form of a direction struct (defined in common.h). This direction corresponds to the reference direction to which the pan tilt mechanism is calibrated.
+
+\subsubsection{Return Value}
+This function does not return anything.
+
+\subsection{CalibratePanTiltRange}
+\subsubsection{Description:}
+This function calibrates the pan tilt mechanism by changing the range of the mechanism. This function acts very similarly to the CalibratePanTilt function except that the reference position stays the same and the mechanism increments are changed so that any future move call to the same reference will return to this position.
+
+\subsubsection{Usage}
+This function is used to calibrate the pan tilt mechanism once the desired reference position has been set
+
+\subsubsection{Arguments}
+Takes a single argument in the form of a direction struct (defined in common.h). This direction corresponds to the reference direction to which the pan tilt mechanism is calibrated.
+
+\subsubsection{Return Value}
+This function does not return anything.
+
+\subsection{SetMaxMin}
+\subsubsection{Description}
+This function sets the value of any accessible setting in the PanTilt module, such as the Maximum and Minimum Azimuth or inclination
+
+\subsubsection{Usage}
+This function is used to alter any accessible setting in the pan tilt module, primarily from user input
+
+\subsubsection{Arguments}
+The function takes the new value and an enumeration of the setting in which to write the value
+
+\subsubsection{Return Value}
+This function does not return anything
+
+\subsection{GetMaxMin}
+\subsubsection{Description}
+This function returns the value in any accessible setting within the PanTilt module, such as the maximum and minimum azimuth and elevation
+
+\subsubsection{Usage}
+This function is used whenever a setting value needs to be accessed. Primarily for outputting to the user
+
+\subsubsection{Arguments}
+The setting (as an enumeration) to return
+
+\subsubsection{Return Value}
+The value currently in the queried setting (as a character).
+
 \section{Example Code:}
 \begin{lstlisting}
 #include "Common.h"

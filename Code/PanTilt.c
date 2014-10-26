@@ -348,11 +348,68 @@ void setMinElevationAngle(char p_angle)
 }
 
 /*! **********************************************************************
+ * Function: getMaxMin(PanTiltSettings setting))
+ *
+ * Include: PanTilt.h
+ *
+ * Description: Allows access to the PanTilt settings (e.g. min, max azimuth)
+ *
+ * Arguments: setting - The desired setting to return
+ *
+ * Returns: The desired setting
+ *************************************************************************/
+char getMaxMin(PanTiltSettings setting)
+{
+    switch (setting)
+    {
+        case MAX_AZ:
+            return azimuth_angle_max;
+        case MIN_AZ:
+            return azimuth_angle_min;
+        case MAX_EL:
+            return elevation_angle_max;
+        case MIN_AZ:
+            return elevation_angle_min;
+    }
+}
+
+/*! **********************************************************************
+ * Function: setMaxMin(char value, PanTiltSettings setting)
+ *
+ * Include: PanTilt.h
+ *
+ * Description: Sets the value of a given setting in the Pan Tilt mechanism
+ *
+ * Arguments: value - The vallue to be set
+ *            setting - The setting to be modified
+ *
+ * Returns: None
+ *************************************************************************/
+void setMaxMin(char value, PanTiltSettings setting)
+{
+    switch (setting)
+    {
+        case MAX_AZ:
+            azimuth_angle_max = value;
+            break;
+        case MIN_AZ:
+            azimuth_angle_min = value;
+            break;
+        case MAX_EL:
+            elevation_angle_max = value;
+            break;
+        case MIN_AZ:
+            elevation_angle_min = value;
+            break;
+    }
+}
+
+/*! **********************************************************************
  * Function: calibratePanTilt(Direction reference)
  *
  * Include: PanTilt.h
  *
- * Description: Calibrates the pan tile mechanism so that any future reference
+ * Description: Calibrates the pan tile mechanism offset so that any future reference
  *              to move to the reference value specified in the function call
  *              will move the pan tilt back to the current position.
  *
@@ -363,7 +420,30 @@ void setMinElevationAngle(char p_angle)
  *************************************************************************/
 void calibratePanTilt(Direction reference)
 {
-    
+    calibration_offset.azimuth += current_direction.azimuth - reference.azimuth;
+    calibration_offset.inclination += current_direction.inclination - reference.inclination;
+    current_direction = reference;
+}
+
+/*! **********************************************************************
+ * Function: calibratePanTiltRange(Direction reference)
+ *
+ * Include: PanTilt.h
+ *
+ * Description: Calibrates the pan tile mechanism's range so that any future reference
+ *              to move to the reference value specified in the function call
+ *              will move the pan tilt back to the current position.
+ *
+ * Arguments: reference - A struct containing the azimuth and inclinaion you
+ *                        wish to define as this position.
+ *
+ * Returns: None
+ *************************************************************************/
+void calibratePanTiltRange(Direction reference)
+{
+    arcRange.azimuth = arcRange.azimuth * reference.azimuth / current_direction.azimuth;
+    arcRange.inclination = arcRange.inclination * reference.inclination / current_direction.inclination;
+    current_direction = reference;
 }
 
 /*! **********************************************************************

@@ -28,9 +28,9 @@
 #define MNML
 
 //Include files
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <string.h>
 
 #ifdef MNML
@@ -96,6 +96,11 @@ typedef struct
 //           !(IR||US)  (US&&!IR) (US&&!IR), (US&&IR)    (IR&&!US)
 typedef enum{NO_TARGET, OUT_OF_IR, BAD_DIR, GOOD_TRACK, CLOSE_RANGE} TargetState;
 
+///The different PanTilt settings that can be changed
+typedef enum{MAX_AZ, MIN_AZ, MAX_EL, MIN_EL} PanTiltSettings;
+
+///Available ANSI escape Sequences
+typedef enum{CLR_SCN, ERS_LN} escSqnce;
 
 /// Macros to change the state of the system
 #define NEXT_STATE(s, state) state.previous = state.current; state.current = s

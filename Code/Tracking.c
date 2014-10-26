@@ -26,6 +26,30 @@
 #define diff 8
 #define TARGET_RAD 30  //The diameter of the target in mm (slightly larger)
 #include <delays.h>
+#include <timers.h>
+
+/*! ****************************************************************************
+ * typedef of targetStateData struct
+ *
+ * @brief Stores data about the last target track
+ *
+ * Description:
+ * Stores the number of samples of each type sampled in the previous target track
+ *
+ * Elements:
+ *      -bad_dirs - stores the number of BAD_DIR's sampled - only 3 bits
+ *      -out_of_irs - Stores the number of OUT_OF_IR's sampled - only 3 bits
+ *      -good_tracks - Stores the number of GOOD_TRACK's sampled - only 3 bits
+ ******************************************************************************/
+typedef struct
+{
+    unsigned bad_dirs : 2;
+    unsigned out_of_irs : 2;
+    unsigned good_tracks : 2;
+    unsigned centre : 2;
+} TargetStateData;
+
+static char newAngle(TargetStateData target_data);
 
 /* **********************************************************************
  * Function: configureTracking(void)
@@ -42,6 +66,10 @@ void configureTracking(void)
 {
     configureBase();
     configureRange();
+
+    //Set up TMR2 for prediction purposes
+    CloseTimer0();
+    OpenTimer0(T0_16BIT & T0_SOURCE_INT & T0_PS_1_256);
 }
 
 /* **********************************************************************
@@ -138,6 +166,7 @@ void trackingISR(void)
  *************************************************************************/
 TrackingData track(systemState *state)
 {
+#define sampleTargetState weight
     char i, count = 0;
     char weight;
     unsigned int j;
@@ -148,9 +177,10 @@ TrackingData track(systemState *state)
     Direction dir;
     Direction inc[] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}}; //Incremental change in direction NOT IN DEGREES! (much finer increments)
     char angle;
+    TargetStateData target_data;
 
-    angle = 2 * TARGET_RAD * (unsigned int)57 / range();
-    //angle = 8;
+    //angle = 2 * TARGET_RAD * (unsigned int)57 / range();
+    angle = 8;
 
     centre = getDir();
 
@@ -166,10 +196,10 @@ TrackingData track(systemState *state)
         for (j = 0; j < 10000; j++);
 
         //Get target state (stored in weight temporarily)
-        weight = readTargetState();
+        sampleTargetState = readTargetState();
 
         //Calculate weighting of that sample
-        weight = (weight == GOOD_TRACK) * 5 + (weight == BAD_DIR) + 3 * (weight == OUT_OF_IR);
+        weight = (sampleTargetState == GOOD_TRACK) * 5 + (sampleTargetState == BAD_DIR) + (sampleTargetState == OUT_OF_IR);
         
         count += weight;
         azimuth += (int)weight * dir.azimuth;
@@ -195,6 +225,7 @@ TrackingData track(systemState *state)
     }
 
     return result;
+#undef sampleTargetState
 }
 
 /* **********************************************************************
@@ -216,4 +247,30 @@ static Direction prediction(Direction current)
     static unsigned int prev_time;
     static Direction next_predict;
     return next_predict;
+}
+
+/* **********************************************************************
+ * Function: newAngle(void)
+ *
+ * Include: Local to Tracking.c
+ *
+ * Description: Calculates the new angle offset
+ *
+ * Arguments: angle - The previous angle
+ *
+ *            target_data - The data from the last target sample
+ *
+ * Returns: Angle - The new angle to offset the direction
+ *************************************************************************/
+static char newAngle(char angle, TargetStateData target_data)
+{
+    //Target field too narrow, and a little out, so increase range to get some direction data
+
+    if (target_data.centre == 0)
+    {
+        angle += (target_data.good_tracks > 2) - (target_data.good_tracks == 1 && (target_data.bad_dirs + target_data.out_of_irs == 4));
+    }
+
+    if (angle < 1) return 1;
+    else return angle;
 }

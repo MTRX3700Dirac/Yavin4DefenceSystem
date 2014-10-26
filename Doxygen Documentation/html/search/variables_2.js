@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['bad_5fdirs',['bad_dirs',['../structTargetStateData.html#a537d4acb0d2cf4b4ddf13b4b634e6dde',1,'TargetStateData']]],
   ['baudcon',['BAUDCON',['../p18f4520_8h.html#aaf7b4d475015a22391d58215251f2a95',1,'p18f4520.h']]],
   ['baudconbits',['BAUDCONbits',['../p18f4520_8h.html#a2b91f516fe9f607e9e31bb4289fe9c6f',1,'p18f4520.h']]],
   ['baudctl',['BAUDCTL',['../p18f4520_8h.html#ae20848449df1d0dc8ad43ff9ef7abdc4',1,'p18f4520.h']]],

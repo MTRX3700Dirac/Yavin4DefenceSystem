@@ -220,12 +220,9 @@ char receiveEsc(void)
  *************************************************************************/
 void popEsc(void)
 {
-    char e;
-    e = empty(receive_buffer);
-    while (!e)
+    while (!empty(receive_buffer))
     {
         pop(receive_buffer);
-        e = empty(receive_buffer);
     }
     escPressed--;
     return;
@@ -335,3 +332,5 @@ void serialISR(void)
         }
     }
 }
+
+void escANSI()

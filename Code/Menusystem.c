@@ -14,38 +14,14 @@
 #include "Common.h"
 #include "Serial.h"
 #include "User_Interface.h"
-#include "Menusystem.h"
 #include "LCD.h"
 #include "Range.h"
 #include "PanTilt.h"
 #include "Temp.h"
 
-#define MAX_SER_MSG_LEN 30
-#define MAX_LCD_MSG_LEN 16
+#include "MenuDefs.h"
 
-#define ERR_NUM_OUT_OF_RANGE -1000
-#define ERR_NOT_NUMERIC -2000
-#define ERR_NO_NUMBER -3000
-#define ESC_PRESSED -4000
-#define MINUS_CHAR 0x2D
 
-//typedef enum setMenu {AZ_GOTO, AZ_MAX, AZ_MIN, EL_GOTO, EL_MIN, EL_MAX, RNG_MAX, RNG_MIN, IR_SAMPLE, IR_PER_AVG, US_SAMPLE, US_PER_AVG};
-typedef void (*numericInputFunction)(int);
-typedef void (*voidFunction) (void);
-struct menuStruct
-{
-    menuState menuNum;
-    rom char* serialMessage;    //Serial Message to be displayed on entering the state
-    rom char* lcdTitleMessage;       //LCD Message to be displayed on entering the state
-
-    int minVal;
-    int maxVal;
-    char increment;
-    voidFunction serialDisplayFunction;
-    numericInputFunction confirmFunction;
-    numericInputFunction lcdDisplayFunction;
-    voidFunction returnToPrevious;
- } menuStruct;
 
 // Serial Display
 void sendROM(const static rom char *romchar);
@@ -123,25 +99,43 @@ static userState m_userMode;
 // *****************************************************************************
 // *********************** MENU STRUCTURE FUNCTIONS ****************************
 // *****************************************************************************
-/*!
+
+/*! **********************************************************************
+ * Function: sendROM(void)
+ *
+ * @brief
+ *
+ * Include: Local to Menusystem.c
+ *
  * @description: Transmits the given string from ROM over serial
  *
  * @input The string to transmit
- */
-void sendROM(const static rom char *romchar) {
+ *
+ * Returns: None
+ *************************************************************************/
+void sendROM(const rom char *romchar) {
     char temp[80] = {0};
     int j;
 
     // Convert the string from ROM to RAM
     strcpypgm2ram(temp, romchar);
     transmit(temp);
-    for (j = 0; j < 8000; j++);
+    for (j = 0; j < 8000; j++); //Some Arbitrary Delay
 }
 
-/*!
- * @description: Prints a number of new line (\r\n) characters.
+/*! **********************************************************************
+ * Function: sendNewLine(char length)
  *
- */
+ * @brief
+ *
+ * Include: Local to Menusystem.c
+ *
+ * @description: Prints a number of new line (\r\n) charaters.
+ *
+ * @input The number of new lines to print
+ *
+ * Returns: None
+ *************************************************************************/
 void sendNewLine(char length)
 {
     char index;
@@ -161,6 +155,19 @@ void sendNewLine(char length)
 /*!
  * Clears the Serial display
  */
+/*! **********************************************************************
+ * Function: clearScreen(void)
+ *
+ * @brief Clears the Serial Display
+ *
+ * Include: Local to Menusystem.c
+ *
+ * @description: Transmits the given string from ROM over serial
+ *
+ * @input The string to transmit
+ *
+ * Returns: None
+ *************************************************************************/
 void clearScreen()
 {
     char index;
@@ -205,7 +212,7 @@ void filler(char length) {
 void initialiseMenu(void) {
     m_userMode = REMOTE;
     configureSerial();
-    configLCD();
+    lcdInit();
     configUSER();
     setMenu(topMenu);
 }

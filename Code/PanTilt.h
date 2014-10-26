@@ -21,6 +21,7 @@ extern void increment(Direction difference);
 extern void incrementFine(Direction difference);
 extern Direction getDir(void);
 extern void calibratePanTilt(Direction reference);
+extern void calibratePanTiltRange(Direction reference);
 extern Direction rawDir(void);
 extern char updated(void);
 extern void panTiltISR(void);
@@ -34,6 +35,7 @@ extern void setMaxAzimuthAngle(char p_angle);
 extern void setMinAzimuthAngle(char p_angle);
 extern void setMaxElevationAngle(char p_angle);
 extern void setMinElevationAngle(char p_angle);
+extern void setMaxMin(char value, PanTiltSettings setting);
 
 #define PANTILT_H
 #endif
