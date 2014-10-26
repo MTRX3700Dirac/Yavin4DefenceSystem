@@ -1,8 +1,11 @@
-\hypertarget{User__Interface_8c}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+User\+\_\+\+Interface.c File Reference}
-\label{User__Interface_8c}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+User\+\_\+\+Interface.\+c@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+User\+\_\+\+Interface.\+c}}
+\hypertarget{User__Interface_8c}{\section{Yavin4\+Defence\+System/\+Code/\+User\+\_\+\+Interface.c File Reference}
+\label{User__Interface_8c}\index{Yavin4\+Defence\+System/\+Code/\+User\+\_\+\+Interface.\+c@{Yavin4\+Defence\+System/\+Code/\+User\+\_\+\+Interface.\+c}}
 }
 {\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Circular\+Buffers.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Range.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}User\+\_\+\+Interface.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Serial.\+h\char`\"{}}\\*
 Include dependency graph for User\+\_\+\+Interface.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -10,6 +13,15 @@ Include dependency graph for User\+\_\+\+Interface.\+c\+:\nopagebreak
 \includegraphics[width=350pt]{User__Interface_8c__incl}
 \end{center}
 \end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{User__Interface_8c_ab793b8cea43e768f35f4c40e0069b47c}{C\+O\+N\+F\+I\+R\+M\+\_\+\+P\+R\+E\+S\+S}~\hyperlink{p18f4520_8h_a9879ca934031776b77a0c19f1dce1b54}{I\+N\+T\+C\+O\+Nbits.\+I\+N\+T0\+I\+F}
+\item 
+\#define \hyperlink{User__Interface_8c_ad934dc8f263c62a8159af0f0e6d70c64}{B\+A\+C\+K\+\_\+\+P\+R\+E\+S\+S}~\hyperlink{p18f4520_8h_a75ff524e517fe834fc906f48fb7b2113}{I\+N\+T\+C\+O\+N3bits.\+I\+N\+T1\+F}
+\item 
+\#define \hyperlink{User__Interface_8c_a555a695bf58df062dc03f0e892d95cd7}{A\+D\+C\+\_\+\+M\+A\+X}~1023
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -20,6 +32,8 @@ void \hyperlink{User__Interface_8c_a3c2574813b4d75b20d43aa67ec0af650}{user\+I\+S
 void \hyperlink{User__Interface_8c_a58e473ed40d00e18bd61277428e4d36c}{config\+U\+S\+E\+R} (void)
 \item 
 unsigned int \hyperlink{User__Interface_8c_aa1e69bd94580864cea0b4563e5d56bc3}{read\+Dial} (unsigned int max)
+\item 
+unsigned int \hyperlink{User__Interface_8c_a7db12a07fa1fd8b30784f989d9d3def9}{read\+Dial\+For\+Menu} (unsigned int max)
 \item 
 char \hyperlink{User__Interface_8c_a62fd5de2781acb67fe5133d79ae580cc}{user\+Empty} (void)
 \item 
@@ -33,6 +47,26 @@ char \hyperlink{User__Interface_8c_a3d17c3d0eb62b407b6badfd343da5181}{user\+Peek
 \hyperlink{structcircularBuffer}{circular\+Buffer} \hyperlink{User__Interface_8c_ad7a739640da23ada15ee5822350aaf60}{receive}
 \end{DoxyCompactItemize}
 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{User__Interface_8c_a555a695bf58df062dc03f0e892d95cd7}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!A\+D\+C\+\_\+\+M\+A\+X@{A\+D\+C\+\_\+\+M\+A\+X}}
+\index{A\+D\+C\+\_\+\+M\+A\+X@{A\+D\+C\+\_\+\+M\+A\+X}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{A\+D\+C\+\_\+\+M\+A\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+D\+C\+\_\+\+M\+A\+X~1023}}\label{User__Interface_8c_a555a695bf58df062dc03f0e892d95cd7}
+\hypertarget{User__Interface_8c_ad934dc8f263c62a8159af0f0e6d70c64}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!B\+A\+C\+K\+\_\+\+P\+R\+E\+S\+S@{B\+A\+C\+K\+\_\+\+P\+R\+E\+S\+S}}
+\index{B\+A\+C\+K\+\_\+\+P\+R\+E\+S\+S@{B\+A\+C\+K\+\_\+\+P\+R\+E\+S\+S}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{B\+A\+C\+K\+\_\+\+P\+R\+E\+S\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+C\+K\+\_\+\+P\+R\+E\+S\+S~{\bf I\+N\+T\+C\+O\+N3bits.\+I\+N\+T1\+F}}}\label{User__Interface_8c_ad934dc8f263c62a8159af0f0e6d70c64}
+\hypertarget{User__Interface_8c_ab793b8cea43e768f35f4c40e0069b47c}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!C\+O\+N\+F\+I\+R\+M\+\_\+\+P\+R\+E\+S\+S@{C\+O\+N\+F\+I\+R\+M\+\_\+\+P\+R\+E\+S\+S}}
+\index{C\+O\+N\+F\+I\+R\+M\+\_\+\+P\+R\+E\+S\+S@{C\+O\+N\+F\+I\+R\+M\+\_\+\+P\+R\+E\+S\+S}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{C\+O\+N\+F\+I\+R\+M\+\_\+\+P\+R\+E\+S\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+F\+I\+R\+M\+\_\+\+P\+R\+E\+S\+S~{\bf I\+N\+T\+C\+O\+Nbits.\+I\+N\+T0\+I\+F}}}\label{User__Interface_8c_ab793b8cea43e768f35f4c40e0069b47c}
+
+
+ File\+: \hyperlink{User__Interface_8c}{User\+\_\+\+Interface.\+c} Author\+: Grant
+
+Description\+: Contains all the functionality for the User\+\_\+\+Interface module. Works the same way as the serial module, but for the user interface.
+
+Duties\+: -\/\+Stores any local user input in a receive buffer -\/\+Sends display data to the L\+C\+D
+
+Created on 15 September 2014, 1\+:21 P\+M 
 
 \subsection{Function Documentation}
 \hypertarget{User__Interface_8c_a58e473ed40d00e18bd61277428e4d36c}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!config\+U\+S\+E\+R@{config\+U\+S\+E\+R}}
@@ -54,11 +88,22 @@ Arguments\+: None
 
 Returns\+: None 
 
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{User__Interface_8c_a58e473ed40d00e18bd61277428e4d36c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=261pt]{User__Interface_8c_a58e473ed40d00e18bd61277428e4d36c_icgraph}
+\includegraphics[width=335pt]{User__Interface_8c_a58e473ed40d00e18bd61277428e4d36c_icgraph}
 \end{center}
 \end{figure}
 
@@ -97,7 +142,36 @@ Description\+: Read the position of the dial
 
 Arguments\+: None
 
-Returns\+: The dial position scaled by \hypertarget{User__Interface_8c_a62fd5de2781acb67fe5133d79ae580cc}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!user\+Empty@{user\+Empty}}
+Returns\+: The dial position scaled by 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{User__Interface_8c_aa1e69bd94580864cea0b4563e5d56bc3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{User__Interface_8c_a7db12a07fa1fd8b30784f989d9d3def9}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!read\+Dial\+For\+Menu@{read\+Dial\+For\+Menu}}
+\index{read\+Dial\+For\+Menu@{read\+Dial\+For\+Menu}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
+\subsubsection[{read\+Dial\+For\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int read\+Dial\+For\+Menu (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{max}
+\end{DoxyParamCaption}
+)}}\label{User__Interface_8c_a7db12a07fa1fd8b30784f989d9d3def9}
+Returns a value from 1 to max 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{User__Interface_8c_a7db12a07fa1fd8b30784f989d9d3def9_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{User__Interface_8c_a62fd5de2781acb67fe5133d79ae580cc}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!user\+Empty@{user\+Empty}}
 \index{user\+Empty@{user\+Empty}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
 \subsubsection[{user\+Empty}]{\setlength{\rightskip}{0pt plus 5cm}char user\+Empty (
 \begin{DoxyParamCaption}
@@ -120,7 +194,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=251pt]{User__Interface_8c_a62fd5de2781acb67fe5133d79ae580cc_icgraph}
+\includegraphics[width=325pt]{User__Interface_8c_a62fd5de2781acb67fe5133d79ae580cc_icgraph}
 \end{center}
 \end{figure}
 
@@ -189,16 +263,18 @@ Arguments\+: None
 
 Returns\+: a character poped from the user Interface buffer 
 
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{User__Interface_8c_a3f61f7acd05df7af4bb136a5f98c3e54_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
 \subsection{Variable Documentation}
 \hypertarget{User__Interface_8c_ad7a739640da23ada15ee5822350aaf60}{\index{User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}!receive@{receive}}
 \index{receive@{receive}!User\+\_\+\+Interface.\+c@{User\+\_\+\+Interface.\+c}}
 \subsubsection[{receive}]{\setlength{\rightskip}{0pt plus 5cm}{\bf circular\+Buffer} receive}}\label{User__Interface_8c_ad7a739640da23ada15ee5822350aaf60}
-
-
- File\+: \hyperlink{User__Interface_8c}{User\+\_\+\+Interface.\+c} Author\+: Grant
-
-Description\+: Contains all the functionality for the User\+\_\+\+Interface module. Works the same way as the serial module, but for the user interface.
-
-Duties\+: -\/\+Stores any local user input in a receive buffer -\/\+Sends display data to the L\+C\+D
-
-Created on 15 September 2014, 1\+:21 P\+M 

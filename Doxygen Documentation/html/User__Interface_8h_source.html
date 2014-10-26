@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>Yavin IV Death Star Tracker: C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h Source File</title>
+<title>Yavin IV Death Star Tracker: Yavin4DefenceSystem/Code/User_Interface.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('User__Interface_8h_source.html','');})
 <div class="title">User_Interface.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="User__Interface_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
+<a href="User__Interface_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * File:   User_Interface.h</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Author: Grant</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
@@ -117,38 +117,44 @@ $(document).ready(function(){initNavTree('User__Interface_8h_source.html','');})
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * Created on 15 September 2014, 1:20 PM</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//Ensure that there is only 1 inclusion of this file in the preprocessor execution</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef USER_H</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//User interface related interrupts</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//#define USER_INT (RB_INT || INT0_INT)</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="User__Interface_8h.html#a4358ad34c2ebafd83f49cb8e73fed3d5">   15</a></span>&#160;<span class="preprocessor">#define USER_INT 0</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//Public function external declarations</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="User__Interface_8h.html#a5711e8cdb2a3943783f50f60a15bde31">display</a>(<a class="code" href="structTrackingData.html">TrackingData</a> data);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="User__Interface_8h.html#a3c2574813b4d75b20d43aa67ec0af650">userISR</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="User__Interface_8h.html#a58e473ed40d00e18bd61277428e4d36c">configUSER</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="User__Interface_8h.html#a62fd5de2781acb67fe5133d79ae580cc">userEmpty</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="User__Interface_8h.html#a3f61f7acd05df7af4bb136a5f98c3e54">userPop</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="User__Interface_8h.html#a3d17c3d0eb62b407b6badfd343da5181">userPeek</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="User__Interface_8h.html#ad904f48bd4d9b62b4e5076a09951eee7">   26</a></span>&#160;<span class="preprocessor">#define USER_H</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="User__Interface_8h_html_a3d17c3d0eb62b407b6badfd343da5181"><div class="ttname"><a href="User__Interface_8h.html#a3d17c3d0eb62b407b6badfd343da5181">userPeek</a></div><div class="ttdeci">char userPeek(void)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:150</div></div>
-<div class="ttc" id="User__Interface_8h_html_a3f61f7acd05df7af4bb136a5f98c3e54"><div class="ttname"><a href="User__Interface_8h.html#a3f61f7acd05df7af4bb136a5f98c3e54">userPop</a></div><div class="ttdeci">char userPop(void)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:131</div></div>
-<div class="ttc" id="User__Interface_8h_html_a62fd5de2781acb67fe5133d79ae580cc"><div class="ttname"><a href="User__Interface_8h.html#a62fd5de2781acb67fe5133d79ae580cc">userEmpty</a></div><div class="ttdeci">char userEmpty(void)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:115</div></div>
-<div class="ttc" id="User__Interface_8h_html_a3c2574813b4d75b20d43aa67ec0af650"><div class="ttname"><a href="User__Interface_8h.html#a3c2574813b4d75b20d43aa67ec0af650">userISR</a></div><div class="ttdeci">void userISR(void)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:51</div></div>
-<div class="ttc" id="User__Interface_8h_html_a58e473ed40d00e18bd61277428e4d36c"><div class="ttname"><a href="User__Interface_8h.html#a58e473ed40d00e18bd61277428e4d36c">configUSER</a></div><div class="ttdeci">void configUSER(void)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:67</div></div>
-<div class="ttc" id="structTrackingData_html"><div class="ttname"><a href="structTrackingData.html">TrackingData</a></div><div class="ttdoc">Stores the current target information. </div><div class="ttdef"><b>Definition:</b> Common.h:92</div></div>
-<div class="ttc" id="User__Interface_8h_html_a5711e8cdb2a3943783f50f60a15bde31"><div class="ttname"><a href="User__Interface_8h.html#a5711e8cdb2a3943783f50f60a15bde31">display</a></div><div class="ttdeci">void display(TrackingData data)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:35</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Common_8h.html">Common.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//Ensure that there is only 1 inclusion of this file in the preprocessor execution</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef USER_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//User interface related interrupts</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="User__Interface_8h.html#a4358ad34c2ebafd83f49cb8e73fed3d5">   16</a></span>&#160;<span class="preprocessor">#define USER_INT (RB_INT || INT0_INT || INT1_INT )</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="User__Interface_8h.html#adead3849e015340318de05db13537485">   17</a></span>&#160;<span class="preprocessor">#define CONFIRM_CHAR 0x0D</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="User__Interface_8h.html#a988901f3420148844c4e20d8f726ba2e">   18</a></span>&#160;<span class="preprocessor">#define BACK_CHAR 0x1B</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//Public function external declarations</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="User__Interface_8h.html#a5711e8cdb2a3943783f50f60a15bde31">display</a>(<a class="code" href="structTrackingData.html">TrackingData</a> data);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="User__Interface_8h.html#a3c2574813b4d75b20d43aa67ec0af650">userISR</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="User__Interface_8h.html#a58e473ed40d00e18bd61277428e4d36c">configUSER</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="User__Interface_8h.html#a62fd5de2781acb67fe5133d79ae580cc">userEmpty</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="User__Interface_8h.html#a3f61f7acd05df7af4bb136a5f98c3e54">userPop</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="User__Interface_8h.html#a3d17c3d0eb62b407b6badfd343da5181">userPeek</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="User__Interface_8h.html#aa1e69bd94580864cea0b4563e5d56bc3">readDial</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> max);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="User__Interface_8h.html#ad904f48bd4d9b62b4e5076a09951eee7">   30</a></span>&#160;<span class="preprocessor">#define USER_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="User__Interface_8h_html_a3d17c3d0eb62b407b6badfd343da5181"><div class="ttname"><a href="User__Interface_8h.html#a3d17c3d0eb62b407b6badfd343da5181">userPeek</a></div><div class="ttdeci">char userPeek(void)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:201</div></div>
+<div class="ttc" id="User__Interface_8h_html_a3f61f7acd05df7af4bb136a5f98c3e54"><div class="ttname"><a href="User__Interface_8h.html#a3f61f7acd05df7af4bb136a5f98c3e54">userPop</a></div><div class="ttdeci">char userPop(void)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:182</div></div>
+<div class="ttc" id="User__Interface_8h_html_a62fd5de2781acb67fe5133d79ae580cc"><div class="ttname"><a href="User__Interface_8h.html#a62fd5de2781acb67fe5133d79ae580cc">userEmpty</a></div><div class="ttdeci">char userEmpty(void)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:166</div></div>
+<div class="ttc" id="Common_8h_html"><div class="ttname"><a href="Common_8h.html">Common.h</a></div></div>
+<div class="ttc" id="User__Interface_8h_html_a3c2574813b4d75b20d43aa67ec0af650"><div class="ttname"><a href="User__Interface_8h.html#a3c2574813b4d75b20d43aa67ec0af650">userISR</a></div><div class="ttdeci">void userISR(void)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:60</div></div>
+<div class="ttc" id="User__Interface_8h_html_a58e473ed40d00e18bd61277428e4d36c"><div class="ttname"><a href="User__Interface_8h.html#a58e473ed40d00e18bd61277428e4d36c">configUSER</a></div><div class="ttdeci">void configUSER(void)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:86</div></div>
+<div class="ttc" id="structTrackingData_html"><div class="ttname"><a href="structTrackingData.html">TrackingData</a></div><div class="ttdoc">Stores the current target information. </div><div class="ttdef"><b>Definition:</b> Common.h:88</div></div>
+<div class="ttc" id="User__Interface_8h_html_aa1e69bd94580864cea0b4563e5d56bc3"><div class="ttname"><a href="User__Interface_8h.html#aa1e69bd94580864cea0b4563e5d56bc3">readDial</a></div><div class="ttdeci">unsigned int readDial(unsigned int max)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:126</div></div>
+<div class="ttc" id="User__Interface_8h_html_a5711e8cdb2a3943783f50f60a15bde31"><div class="ttname"><a href="User__Interface_8h.html#a5711e8cdb2a3943783f50f60a15bde31">display</a></div><div class="ttdeci">void display(TrackingData data)</div><div class="ttdef"><b>Definition:</b> User_Interface.c:44</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li><li class="navelem"><a class="el" href="User__Interface_8h.html">User_Interface.h</a></li>
-    <li class="footer">Generated on Wed Oct 22 2014 16:45:23 for Yavin IV Death Star Tracker by
+    <li class="navelem"><a class="el" href="dir_5b9ca4eeeea8b3ce940d3fd19626ea02.html">Yavin4DefenceSystem</a></li><li class="navelem"><a class="el" href="dir_f71e1a7f144f8c2f668bd726f80a92e7.html">Code</a></li><li class="navelem"><a class="el" href="User__Interface_8h.html">User_Interface.h</a></li>
+    <li class="footer">Generated on Sun Oct 26 2014 11:37:02 for Yavin IV Death Star Tracker by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

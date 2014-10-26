@@ -1,5 +1,6 @@
 <map id="readString" name="readString">
-<area shape="rect" id="node2" href="$Menusystem_8c.html#a4ec0accaddbc5d42e2c1cf77d22693c3" title="topmenu" alt="" coords="146,5,218,32"/>
-<area shape="rect" id="node4" href="$Menusystem2_8c.html#afc5a5c12a076ae6c7424df4f4124a521" title="services any user interface with the menu " alt="" coords="135,56,229,83"/>
-<area shape="rect" id="node3" href="$Menusystem_8c.html#afa234d458057237e03e355d30fafac84" title="menu" alt="" coords="277,5,332,32"/>
+<area shape="rect" id="node2" href="$Menusystem_8c.html#a8b63a4216144880e0f72493bb99327b9" title="Waits for input and parses number. " alt="" coords="135,5,284,32"/>
+<area shape="rect" id="node5" href="$Menusystem2_8c.html#afc5a5c12a076ae6c7424df4f4124a521" title="services any user interface with the menu " alt="" coords="162,56,257,83"/>
+<area shape="rect" id="node3" href="$Menusystem_8h.html#afc5a5c12a076ae6c7424df4f4124a521" title="services any user interface with the menu " alt="" coords="332,5,427,32"/>
+<area shape="rect" id="node4" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="475,5,525,32"/>
 </map>

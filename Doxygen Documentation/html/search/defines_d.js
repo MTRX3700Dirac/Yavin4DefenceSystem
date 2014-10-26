@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['sample_5fper_5favg_5fmax',['SAMPLE_PER_AVG_MAX',['../MenuDefs_8h.html#a9f017858a073562599a04abc1f7917b6',1,'MenuDefs.h']]],
+  ['sample_5fper_5favg_5fmin',['SAMPLE_PER_AVG_MIN',['../MenuDefs_8h.html#aec13622d12a31811ebdc1b64a5c38093',1,'MenuDefs.h']]],
+  ['sampletargetstate',['sampleTargetState',['../Tracking_8c.html#a50fac94864a77d583f680df8a0eaebb4',1,'Tracking.c']]],
   ['sc_5fcursmove',['SC_CURSMOVE',['../LCD__defs_8h.html#a3f971018f4c935fea933afc047b6c160',1,'LCD_defs.h']]],
   ['sc_5fdispmove',['SC_DISPMOVE',['../LCD__defs_8h.html#a3b09af9be3bc00173f915c1bbcd0db94',1,'LCD_defs.h']]],
   ['serial_5fh',['SERIAL_H',['../Serial_8h.html#abd89d9fc65aaf89bc50e9b1252ca1bdd',1,'Serial.h']]],
@@ -11,12 +14,8 @@ var searchData=
   ['setentrymode',['SETENTRYMODE',['../LCD__defs_8h.html#a2203e462025f076098257f34776b114e',1,'LCD_defs.h']]],
   ['sh_5fdispnshift',['SH_DISPNSHIFT',['../LCD__defs_8h.html#a9141826d7f78e7c4bfe646ea4ab23e90',1,'LCD_defs.h']]],
   ['sh_5fdispshift',['SH_DISPSHIFT',['../LCD__defs_8h.html#a1e724cfff7e0066597209528f2cd05a8',1,'LCD_defs.h']]],
-  ['slee15',['slee15',['../Menusystem_8c.html#a38bd38059a23acf74ca3559d13c2a6d5',1,'Menusystem.c']]],
   ['sleep',['Sleep',['../p18f4520_8h.html#a97ff5dd2b06944ae9f9c916f2e03a1c6',1,'p18f4520.h']]],
-  ['spd_5fsnd',['SPD_SND',['../Range_8c.html#a8dce7331368588b9016a33f044b71d91',1,'Range.c']]],
   ['ssp_5fint',['SSP_INT',['../Common_8h.html#a2fa3b4c4837187612ff9b0236d0d705f',1,'Common.h']]],
-  ['stat13',['stat13',['../Menusystem_8c.html#ae60b73d9ad027f8210c2a7789349428b',1,'Menusystem.c']]],
   ['swap',['SWAP',['../Common_8h.html#a5d9d454d4b9f2ff8106d5199ac0d0186',1,'Common.h']]],
-  ['swap14',['swap14',['../Menusystem_8c.html#a99fdb7c018e6ad7decf89ca228db518f',1,'Menusystem.c']]],
   ['swapf',['Swapf',['../p18f4520_8h.html#a4e1f2584eeffe2692be70387a220d3ca',1,'p18f4520.h']]]
 ];

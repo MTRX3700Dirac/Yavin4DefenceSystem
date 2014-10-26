@@ -1,31 +1,27 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/LCD.c" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c \- 
+Yavin4DefenceSystem/Code/LCD.c \- 
 .SH SYNOPSIS
 .br
 .PP
 \fC#include 'Common\&.h'\fP
 .br
-\fC#include 'LCD\&.h'\fP
-.br
 \fC#include 'LCD_defs\&.h'\fP
+.br
+\fC#include <delays\&.h>\fP
 .br
 
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "void \fBlcdInit\fP (void)"
-.br
-.RI "\fIInitialises the LCD so that it can be used\&. \fP"
-.ti -1c
-.RI "char \fBlcdBusy\fP (void)"
+.RI "void \fBdelay\fP (unsigned int t)"
 .br
 .RI "\fIInclude: \fP"
 .ti -1c
-.RI "void \fBdelay\fP (unsigned int t)"
+.RI "char \fBlcdBusy\fP (void)"
 .br
 .RI "\fIInclude: \fP"
 .ti -1c
@@ -33,11 +29,15 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c \-
 .br
 .RI "\fIInclude: \fBLCD\&.h\fP\&. \fP"
 .ti -1c
-.RI "void \fBlcdWriteString\fP (char *string, unsigned char line)"
+.RI "void \fBlcdInit\fP (void)"
 .br
-.RI "\fIFeed character string, and line (1 or 2) \fP"
+.RI "\fIInitialises the LCD so that it can be used\&. \fP"
 .ti -1c
-.RI "void \fBlcdWriteChar\fP (unsigned char byte, unsigned char line, unsigned char column)"
+.RI "void \fBlcdWriteString\fP (char *string, char line)"
+.br
+.RI "\fIInclude: \fBLCD\&.h\fP\&. \fP"
+.ti -1c
+.RI "void \fBlcdWriteChar\fP (char byte, char line, char column)"
 .br
 .RI "\fIFeed character, line (1 or 2), and column(1-16) \fP"
 .in -1c
@@ -47,6 +47,21 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/LCD.c \-
 
 .PP
 Include: 
+.PP
+ File: \fBUser_Interface\&.c\fP Author:
+.PP
+Description: Contains all the interface to the LCD hardware
+.PP
+Duties: -Interfaces with and controls the LCD -Displays data on the LCD
+.PP
+\fBTodo\fP
+.RS 4
+Complete, test, debug and document this code!!!
+.RE
+.PP
+.PP
+Created on 15 September 2014, 1:21 PM
+.PP
 .PP
  Function: delay(void)
 .PP
@@ -93,21 +108,6 @@ Set enable low to allow data to flow through
 Initialises the LCD so that it can be used\&. Feed character, line (1 or 2), and column(1-16)
 .PP
 .PP
- File: \fBUser_Interface\&.c\fP Author:
-.PP
-Description: Contains all the interface to the LCD hardware
-.PP
-Duties: -Interfaces with and controls the LCD -Displays data on the LCD
-.PP
-\fBTodo\fP
-.RS 4
-Complete, test, debug and document this code!!!
-.RE
-.PP
-.PP
-Created on 15 September 2014, 1:21 PM
-.PP
-.PP
  Function: \fBlcdInit(void)\fP
 .PP
 Include: \fBLCD\&.h\fP
@@ -122,7 +122,7 @@ Set control lines low
 .PP
 8 bits, 2 lines, 5x7 dots, 0x38
 .PP
-Display on, cursor off, blinking on (Z, 0x0F)
+Display on, cursor off, blinking off (Z, 0x0F)
 .PP
 Cursor moves right?, display not shift (Z, 0x04)
 .PP
@@ -145,13 +145,13 @@ Write data to data lines
 Set clock high
 .PP
 Set clock low 
-.SS "void lcdWriteChar (unsigned charbyte, unsigned charline, unsigned charcolumn)"
+.SS "void lcdWriteChar (charbyte, charline, charcolumn)"
 
 .PP
 Feed character, line (1 or 2), and column(1-16) Feed character string, and line (1 or 2)
 .PP
 .PP
- Function: \fBlcdWriteChar(unsigned char byte, unsigned char line, unsigned char column)\fP
+ Function: lcdWriteChar(unsigned char byte, unsigned char line, unsigned char column)
 .PP
 Include: \fBLCD\&.h\fP
 .PP
@@ -159,21 +159,19 @@ Description:
 .PP
 Arguments: byte - line - column -
 .PP
-Returns: None 
-.SS "void lcdWriteString (char *string, unsigned charline)"
+Returns: NoneFeed character, line (1 or 2), and column(1-16) 
+.SS "void lcdWriteString (char *string, charline)"
 
 .PP
-Feed character string, and line (1 or 2) 
+Include: \fBLCD\&.h\fP\&. 
 .PP
- Function: \fBlcdWriteString(char *string, unsigned char line)\fP
-.PP
-Include: \fBLCD\&.h\fP
+ Function: lcdWriteString(char *string, unsigned char line)
 .PP
 Description:
 .PP
 Arguments: string - line -
 .PP
-Returns: None 
+Returns: NoneFeed character string, and line (1 or 2) Also include information about which row 
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

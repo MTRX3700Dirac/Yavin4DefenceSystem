@@ -1,9 +1,14 @@
-\hypertarget{Menusystem_8c}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Menusystem.c File Reference}
-\label{Menusystem_8c}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Menusystem.\+c@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Menusystem.\+c}}
+\hypertarget{Menusystem_8c}{\section{Yavin4\+Defence\+System/\+Code/\+Menusystem.c File Reference}
+\label{Menusystem_8c}\index{Yavin4\+Defence\+System/\+Code/\+Menusystem.\+c@{Yavin4\+Defence\+System/\+Code/\+Menusystem.\+c}}
 }
 {\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Serial.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}User\+\_\+\+Interface.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}L\+C\+D.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Range.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Pan\+Tilt.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Temp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Menu\+Defs.\+h\char`\"{}}\\*
 Include dependency graph for Menusystem.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -11,173 +16,158 @@ Include dependency graph for Menusystem.\+c\+:\nopagebreak
 \includegraphics[width=350pt]{Menusystem_8c__incl}
 \end{center}
 \end{figure}
-\subsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \hyperlink{Menusystem_8c_a667b04d7fb6ef46db4da4af554c5b6f7}{width}~80
-\item 
-\#define \hyperlink{Menusystem_8c_a64f9f90ece96c7bab4aee3deacf170e0}{height}~24
-\item 
-\#define \hyperlink{Menusystem_8c_a59e24be624462b0016d40f9ada6bbb69}{top1}~0x\+F\+F
-\item 
-\#define \hyperlink{Menusystem_8c_ac6732d277bcb2f666784f4f3f5e17f39}{auto11}~0x10
-\item 
-\#define \hyperlink{Menusystem_8c_abed1ba920ec7390cfb509ce3d3b514eb}{manu12}~0x20
-\item 
-\#define \hyperlink{Menusystem_8c_a65912490d63985a47ca283029e911b2b}{manugoto121}~0x21
-\item 
-\#define \hyperlink{Menusystem_8c_abae4a42361e301d3ac9dbb5aad94f03d}{manusetl122}~0x22
-\item 
-\#define \hyperlink{Menusystem_8c_a257270ed391fc5cf1577e20beb72b82d}{manushow123}~0x23
-\item 
-\#define \hyperlink{Menusystem_8c_ae60b73d9ad027f8210c2a7789349428b}{stat13}~0x30
-\item 
-\#define \hyperlink{Menusystem_8c_a99fdb7c018e6ad7decf89ca228db518f}{swap14}~0x40
-\item 
-\#define \hyperlink{Menusystem_8c_a38bd38059a23acf74ca3559d13c2a6d5}{slee15}~0x50
-\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{Menusystem_8c_afa234d458057237e03e355d30fafac84}{menu} (char menuselect)
+void \hyperlink{Menusystem_8c_a3e308d6e9b426c6463bea038c996aa35}{send\+R\+O\+M} (const static rom char $\ast$romchar)
+\begin{DoxyCompactList}\small\item\em Include\+: Local to \hyperlink{Menusystem_8c}{Menusystem.\+c}. \end{DoxyCompactList}\item 
+void \hyperlink{Menusystem_8c_a67e96e514d9f296c79378f7fbfba457a}{clear\+Screen} (void)
 \item 
-void \hyperlink{Menusystem_8c_a4ec0accaddbc5d42e2c1cf77d22693c3}{topmenu} (void)
-\item 
-void \hyperlink{Menusystem_8c_a4437457cad71a9015dbfbac75f9b2b99}{topmenudisp} (void)
-\item 
-void \hyperlink{Menusystem_8c_ae3777c5b2ceab74d5d90b444da874d14}{disptoptions} (void)
-\item 
-void \hyperlink{Menusystem_8c_aec49123d1c8f1231607dc9159ae138a4}{clearscreen} (char length)
+void \hyperlink{Menusystem_8c_a9f7902dc2a501ad1f16ec5011415bbbc}{send\+New\+Line} (char length)
 \item 
 void \hyperlink{Menusystem_8c_a4bb64cc936229611900f25e483381dc7}{filler} (char length)
 \item 
+void \hyperlink{Menusystem_8c_a423b16a9c8b8570e98a887785bf2a22e}{err\+Out\+Of\+Range} (int lower\+Bound, int upper\+Bound)
+\item 
+char $\ast$ \hyperlink{Menusystem_8c_a40370230fa4791386274f271dc7ae5d4}{int\+To\+Ascii} (int num)
+\item 
+void \hyperlink{Menusystem_8c_a784ca8abb2edaa219d98a4b659363d75}{autodisp} (void)
+\item 
+int \hyperlink{Menusystem_8c_ad3ebde8bf1da78fb419653e5a495837b}{parse\+Numeric} (char $\ast$number)
+\begin{DoxyCompactList}\small\item\em parses user input string into a number \end{DoxyCompactList}\item 
+int \hyperlink{Menusystem_8c_a8b63a4216144880e0f72493bb99327b9}{get\+Serial\+Numeric\+Input} ()
+\begin{DoxyCompactList}\small\item\em Waits for input and parses number. \end{DoxyCompactList}\item 
+void \hyperlink{Menusystem_8c_ae3704e422195d3ea14aea5806572ca3c}{configure\+Timer0} (void)
+\item 
+int \hyperlink{Menusystem_8c_a8ad24eca1f986bb074931fc811f84045}{get\+Local\+Input\+Menu} (int max\+States, int($\ast$function)(int))
+\item 
+int \hyperlink{Menusystem_8c_a1b85c6297d06880716723d3be78a24d6}{get\+Local\+Pot\+Result} (int min, int max, int interval)
+\item 
+void \hyperlink{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}{set\+Value} (int input)
+\item 
+void \hyperlink{Menusystem_8c_af00ad1f1fdd6abc9dfc5d1682463a2f9}{set\+Menu} (struct \hyperlink{structmenuStruct}{menu\+Struct} menu)
+\item 
+void \hyperlink{Menusystem_8c_ab17e13186f1dddfbf68dc90ccfe322ab}{navigate\+Top\+Menu} (int input\+Result)
+\item 
+void \hyperlink{Menusystem_8c_a2290887f83a7977e63e6d47b29787b72}{no\+Function\+Numeric} (int input)
+\item 
+void \hyperlink{Menusystem_8c_a9e1cce0abdcaa8e7be3c6721e6870c44}{no\+Function} (void)
+\item 
+void \hyperlink{Menusystem_8c_a1f79564c961f89ad492d5b2bfea82f88}{return\+To\+Top\+Menu} (void)
+\item 
+void \hyperlink{Menusystem_8c_a75a683e37aa01ac8a92db781e2ead1e0}{return\+To\+Az\+Menu} (void)
+\item 
+void \hyperlink{Menusystem_8c_a012a074b7a3d034a0a2c22bfeb8625f7}{return\+To\+El\+Menu} (void)
+\item 
+void \hyperlink{Menusystem_8c_a73b63e32a55a7050b917457b4c35dd1f}{return\+To\+Rng\+Menu} (void)
+\item 
+void \hyperlink{Menusystem_8c_a37aeebed834c183bf7f9d9a8870bb0c5}{navigate\+Azimuth\+Menu} (int input\+Result)
+\item 
+void \hyperlink{Menusystem_8c_a247abfc7b6502e8fe71b329099887de7}{navigate\+Elevation\+Menu} (int input\+Result)
+\item 
+void \hyperlink{Menusystem_8c_ae76ae1f6774b7bb49057cb9d22df62cc}{navigate\+Range\+Menu} (int input\+Result)
+\item 
+void \hyperlink{Menusystem_8c_ab02601af02510b224cf1b970adc92f37}{disp\+Top\+Options} (void)
+\item 
+void \hyperlink{Menusystem_8c_aae2d111e2cbcfe93d493729e9c9c1f2b}{display\+Menu\+Serial} ()
+\item 
+void \hyperlink{Menusystem_8c_afdf5fa380a1afae9687b1ccbbd23017e}{disp\+Az\+Options} (void)
+\item 
+void \hyperlink{Menusystem_8c_af3008931f4215a7917069a31719a8f3c}{disp\+El\+Options} (void)
+\item 
+void \hyperlink{Menusystem_8c_ae43312996b2d5f53d2149163888f88a2}{disp\+Rng\+Options} (void)
+\item 
+void \hyperlink{Menusystem_8c_a68e5fd71e2e27b77d08445f294598629}{disp\+Temp\+Serial\+Message} (void)
+\item 
+void \hyperlink{Menusystem_8c_a2f408553850e88d8345218700a252115}{disp\+Serial\+Message} (void)
+\item 
+void \hyperlink{Menusystem_8c_a1e7fd2754bf0b951881c71742eb0b738}{disp\+L\+C\+D\+Top\+Menu} (int option)
+\begin{DoxyCompactList}\small\item\em L\+C\+D Display Functions. \end{DoxyCompactList}\item 
+void \hyperlink{Menusystem_8c_a079b09fa0789834e079349c0ec5d49ab}{disp\+L\+C\+D\+Az\+Menu} (int option)
+\item 
+void \hyperlink{Menusystem_8c_abb30afb1811664d4879a518cd89b4bd9}{disp\+L\+C\+D\+El\+Menu} (int option)
+\item 
+void \hyperlink{Menusystem_8c_a6108e2b81dfa20c01e27fe17ba8ad856}{disp\+L\+C\+D\+Rng\+Menu} (int option)
+\item 
+void \hyperlink{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}{disp\+L\+C\+D\+Num} (int option)
+\item 
 void \hyperlink{Menusystem_8c_a94b96ccbb8f3c627c5d59189498a3c1b}{initialise\+Menu} (void)
 \begin{DoxyCompactList}\small\item\em Initialises the menu system. \end{DoxyCompactList}\item 
-void \hyperlink{Menusystem_8c_afc5a5c12a076ae6c7424df4f4124a521}{service\+Menu} (void)
+char \hyperlink{Menusystem_8c_a0c5137bf380f59ecbe803283c32f7c2c}{check\+For\+Serial\+Input} (void)
 \begin{DoxyCompactList}\small\item\em services any user interface with the menu \end{DoxyCompactList}\item 
-void \hyperlink{Menusystem_8c_a0f329206447b1f40e6f730b346aaaf44}{menu\+I\+S\+R} (void)
-\begin{DoxyCompactList}\small\item\em I\+S\+R function for the menu subsystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{Menusystem_8c_afc5a5c12a076ae6c7424df4f4124a521}{service\+Menu} (void)
+\begin{DoxyCompactList}\small\item\em services any user interface with the menu \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-char \hyperlink{Menusystem_8c_a5ba864b4bbe4a84e0ca85b979ec2c10b}{t\+M\+E\+S\+S\+A\+G\+E} \mbox{[}$\,$\mbox{]} = \char`\"{}Hello 123\textbackslash{}n\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_a9776d72f343a51a87a19e8afedd90157}{top\+Menu} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914a51f6c706c1d0e0d7a5f4ae4530b52179}{T\+O\+P\+\_\+\+L\+E\+V\+E\+L}, \hyperlink{Menusystem_8h_a9663e81d5c03c3b9d55547a7026a4399}{welcome}, \hyperlink{Menusystem_8h_a84fb109e00ae7ee666d0f993bcca1eee}{welcome\+Lcd},1, 6, 1, \hyperlink{Menusystem_8c_ab02601af02510b224cf1b970adc92f37}{disp\+Top\+Options}, \hyperlink{Menusystem_8c_ab17e13186f1dddfbf68dc90ccfe322ab}{navigate\+Top\+Menu}, \hyperlink{Menusystem_8c_a1e7fd2754bf0b951881c71742eb0b738}{disp\+L\+C\+D\+Top\+Menu}, \hyperlink{Menusystem_8c_a9e1cce0abdcaa8e7be3c6721e6870c44}{no\+Function}\}
 \item 
-char \hyperlink{Menusystem_8c_ae6c5caedc34899ea80a6b011fec5f2a4}{fillerthing} \mbox{[}$\,$\mbox{]} = \char`\"{}+\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_af48fe27b102950b409a220944b333792}{Az\+Menu} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914a1b53702692042a9da62d4fc091893382}{A\+Z\+\_\+\+M\+E\+N\+U}, \hyperlink{Menusystem_8h_af0410aceeaafeed4193093e2f6ed32cc}{az\+Menu}, \hyperlink{Menusystem_8h_a1a92c31ccfeb8eefc39a4f365a1186be}{az\+Menu\+Lcd},1, 6, 1, \hyperlink{Menusystem_8c_afdf5fa380a1afae9687b1ccbbd23017e}{disp\+Az\+Options}, \hyperlink{Menusystem_8c_a37aeebed834c183bf7f9d9a8870bb0c5}{navigate\+Azimuth\+Menu}, \hyperlink{Menusystem_8c_a079b09fa0789834e079349c0ec5d49ab}{disp\+L\+C\+D\+Az\+Menu}, \hyperlink{Menusystem_8c_a1f79564c961f89ad492d5b2bfea82f88}{return\+To\+Top\+Menu}\}
 \item 
-char \hyperlink{Menusystem_8c_a3e47bea989735dbc22688e1ee25ebe9c}{newline} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}n\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_afea84bb932bd813d1fe647d30ba24a36}{El\+Menu} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914acf98ffe350ac27e97d43f85ff44a6605}{E\+L\+\_\+\+M\+E\+N\+U}, \hyperlink{Menusystem_8h_a196dd4fcfd805cd8999ec22b8b4e8e68}{el\+Menu}, \hyperlink{Menusystem_8h_a8998899192a07aa6a93e220f7016b6ef}{el\+Menu\+Lcd},1, 6, 1, \hyperlink{Menusystem_8c_af3008931f4215a7917069a31719a8f3c}{disp\+El\+Options}, \hyperlink{Menusystem_8c_a247abfc7b6502e8fe71b329099887de7}{navigate\+Elevation\+Menu}, \hyperlink{Menusystem_8c_abb30afb1811664d4879a518cd89b4bd9}{disp\+L\+C\+D\+El\+Menu}, \hyperlink{Menusystem_8c_a1f79564c961f89ad492d5b2bfea82f88}{return\+To\+Top\+Menu}\}
 \item 
-char \hyperlink{Menusystem_8c_a9cb97c7ce3babec16a2e500625985994}{choose} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t\+Please select your option (eg. 2)\+: \textbackslash{}n\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_a8d023f6ad48a74dd953eb0aa6a2e45cf}{Range\+Menu} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914a643fdf4e05dfbcf8754475747d4927a1}{R\+A\+N\+G\+E\+\_\+\+M\+E\+N\+U}, \hyperlink{Menusystem_8h_af95916e64b16841bb2232ca7f9041559}{rng\+Menu}, \hyperlink{Menusystem_8h_a311b0648043e955e6cf18087a81a8333}{rng\+Menu\+Lcd},1, 6, 1, \hyperlink{Menusystem_8c_ae43312996b2d5f53d2149163888f88a2}{disp\+Rng\+Options}, \hyperlink{Menusystem_8c_ae76ae1f6774b7bb49057cb9d22df62cc}{navigate\+Range\+Menu}, \hyperlink{Menusystem_8c_a6108e2b81dfa20c01e27fe17ba8ad856}{disp\+L\+C\+D\+Rng\+Menu}, \hyperlink{Menusystem_8c_a1f79564c961f89ad492d5b2bfea82f88}{return\+To\+Top\+Menu}\}
 \item 
-char \hyperlink{Menusystem_8c_a009126ac947a1079b52555366ac7b7f3}{goup} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t\+Up a level\textbackslash{}n\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_a146add3e3f286525825798267d213e1e}{Az\+Goto} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914ad1739e1a8e5122b5ee86527f2f29b655}{A\+Z\+\_\+\+G\+O\+T\+O}, \hyperlink{Menusystem_8h_af08ae36d6761047ce0e7cec4d5a768fc}{goto\+Az\+Angle}, \hyperlink{Menusystem_8h_a2e34ffaa5831640472cc470b1e92b914}{goto\+Az\+Angle\+L\+C\+D},\hyperlink{MenuDefs_8h_af0c8371fec94777ebc63078999b3f0c8}{M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, \hyperlink{MenuDefs_8h_adabfde8ad5ce5d527e94c4d0af85cda7}{M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5,\hyperlink{Menusystem_8c_a2f408553850e88d8345218700a252115}{disp\+Serial\+Message}, \hyperlink{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}{set\+Value}, \hyperlink{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}{disp\+L\+C\+D\+Num}, \hyperlink{Menusystem_8c_a75a683e37aa01ac8a92db781e2ead1e0}{return\+To\+Az\+Menu}\}
+\begin{DoxyCompactList}\small\item\em Remote/\+Local Functions. \end{DoxyCompactList}\item 
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_a480a4bdfa8470c82ee5b3173711ce6db}{El\+Goto} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914afc622f81d3ce6a3336a55f913039a45b}{E\+L\+\_\+\+G\+O\+T\+O}, \hyperlink{Menusystem_8h_a0bcfa136f866b44f9a0a0957bf424c45}{goto\+El\+Angle}, \hyperlink{Menusystem_8h_a80fb9d027a27545fc0b67e0ecd653ddd}{goto\+E\+L\+Angle\+L\+C\+D},\hyperlink{MenuDefs_8h_af0c8371fec94777ebc63078999b3f0c8}{M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, \hyperlink{MenuDefs_8h_adabfde8ad5ce5d527e94c4d0af85cda7}{M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5,\hyperlink{Menusystem_8c_a2f408553850e88d8345218700a252115}{disp\+Serial\+Message}, \hyperlink{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}{set\+Value}, \hyperlink{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}{disp\+L\+C\+D\+Num}, \hyperlink{Menusystem_8c_a012a074b7a3d034a0a2c22bfeb8625f7}{return\+To\+El\+Menu}\}
 \item 
-char \hyperlink{Menusystem_8c_a532e72c4b620eecff97eee6b0eed5bdd}{welcome} \mbox{[}$\,$\mbox{]} = \char`\"{}Welcome to Yavin I\+V Defence System\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_a05de406d11b779ede3b72845d543a078}{Az\+Min} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914a04dc8a41e35e595c6ddd955a5b80aaeb}{A\+Z\+\_\+\+M\+I\+N}, \hyperlink{Menusystem_8h_a02b7efee76f8ae20c758883e025bac9b}{min\+Az1}, \hyperlink{Menusystem_8h_aeaa116394681e1306afeda71f21df0f3}{min\+Az\+Set\+Str},\hyperlink{MenuDefs_8h_af0c8371fec94777ebc63078999b3f0c8}{M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, \hyperlink{MenuDefs_8h_a677ca3d7f9ed95c39fd4f32d1697e6ed}{M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5, \hyperlink{Menusystem_8c_a2f408553850e88d8345218700a252115}{disp\+Serial\+Message}, \hyperlink{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}{set\+Value}, \hyperlink{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}{disp\+L\+C\+D\+Num}, \hyperlink{Menusystem_8c_a75a683e37aa01ac8a92db781e2ead1e0}{return\+To\+Az\+Menu}\}
 \item 
-char \hyperlink{Menusystem_8c_a1985e3f1b27ce97bff59359bed67bd58}{topoption1} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t1\+:\textbackslash{}t\+Automatic Tracking\textbackslash{}n\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_ad68782ae3168c17238991f23d3303237}{Az\+Max} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914aed8b1bf200c5dfac4b81db1b9e93bbb1}{A\+Z\+\_\+\+M\+A\+X}, \hyperlink{Menusystem_8h_acf51c764ea258021840229cf74bd0876}{max\+Az1}, \hyperlink{Menusystem_8h_ab0fafcb82ba132956c269eea6c5586da}{max\+Az\+Set\+Str},\hyperlink{MenuDefs_8h_a0834a8b365bb9464535ae207b1ee5221}{M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, \hyperlink{MenuDefs_8h_adabfde8ad5ce5d527e94c4d0af85cda7}{M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5, \hyperlink{Menusystem_8c_a2f408553850e88d8345218700a252115}{disp\+Serial\+Message}, \hyperlink{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}{set\+Value}, \hyperlink{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}{disp\+L\+C\+D\+Num}, \hyperlink{Menusystem_8c_a75a683e37aa01ac8a92db781e2ead1e0}{return\+To\+Az\+Menu}\}
 \item 
-char \hyperlink{Menusystem_8c_acefc91d5187b4570470476a6cd0b68e9}{topoption2} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t2\+:\textbackslash{}t\+Manual Tracking\textbackslash{}n\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_a3aebdcbaa8ecfdb1f96ef11dbc7573ce}{El\+Min} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914a9bec47160dc53447e51687a58b44ccde}{E\+L\+\_\+\+M\+I\+N}, \hyperlink{Menusystem_8h_ac2bb5a4e18a0582824a43baa92d7883e}{min\+El1}, \hyperlink{Menusystem_8h_a27044e69d7b8bdcf45f6005f8f66f64a}{min\+El\+Set\+Str},\hyperlink{MenuDefs_8h_af0c8371fec94777ebc63078999b3f0c8}{M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, \hyperlink{MenuDefs_8h_a677ca3d7f9ed95c39fd4f32d1697e6ed}{M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5, \hyperlink{Menusystem_8c_a2f408553850e88d8345218700a252115}{disp\+Serial\+Message}, \hyperlink{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}{set\+Value}, \hyperlink{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}{disp\+L\+C\+D\+Num}, \hyperlink{Menusystem_8c_a012a074b7a3d034a0a2c22bfeb8625f7}{return\+To\+El\+Menu}\}
 \item 
-char \hyperlink{Menusystem_8c_ac241270fe5f174769b3034e81c0a574e}{topoption3} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\textbackslash{}t\+Status\textbackslash{}n\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_a2179390acd9271dd76ab0f0f9fe4834b}{El\+Max} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914a8c429e8648016418c3e9ad3965235699}{E\+L\+\_\+\+M\+A\+X}, \hyperlink{Menusystem_8h_a5466dea4f6f0401303431d6ab1edd928}{max\+El1}, \hyperlink{Menusystem_8h_a454ccf4689150b73851eb8ef361f6bf4}{max\+El\+Set\+Str},\hyperlink{MenuDefs_8h_a0834a8b365bb9464535ae207b1ee5221}{M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, \hyperlink{MenuDefs_8h_adabfde8ad5ce5d527e94c4d0af85cda7}{M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5, \hyperlink{Menusystem_8c_a2f408553850e88d8345218700a252115}{disp\+Serial\+Message}, \hyperlink{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}{set\+Value}, \hyperlink{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}{disp\+L\+C\+D\+Num}, \hyperlink{Menusystem_8c_a012a074b7a3d034a0a2c22bfeb8625f7}{return\+To\+El\+Menu}\}
 \item 
-char \hyperlink{Menusystem_8c_a5d44776e05294f14fa1a49e2c9b4820f}{topoption4} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\textbackslash{}t\+Go To Local Mode\textbackslash{}n\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_aaadc7e24f2564a94f052f0e65e6749af}{Rng\+Min} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914af709147ae6477f202a23948b319ea54f}{R\+A\+N\+G\+E\+\_\+\+M\+I\+N}, \hyperlink{Menusystem_8h_aa51017b2f9456eb0c2d6bf1b6336fd60}{min\+Rng\+Serial\+Str}, \hyperlink{Menusystem_8h_a79f561bdfea295e07e23302e4927d9de}{min\+Rng\+Set\+Str}, \hyperlink{MenuDefs_8h_a858279c7607badea7b737cfdd31ed546}{M\+I\+N\+\_\+\+R\+A\+N\+G\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, \hyperlink{MenuDefs_8h_a35450f8e8f6d48c9558406c4892d7a66}{M\+I\+N\+\_\+\+R\+A\+N\+G\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 50, \hyperlink{Menusystem_8c_a2f408553850e88d8345218700a252115}{disp\+Serial\+Message}, \hyperlink{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}{set\+Value}, \hyperlink{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}{disp\+L\+C\+D\+Num}, \hyperlink{Menusystem_8c_a73b63e32a55a7050b917457b4c35dd1f}{return\+To\+Rng\+Menu}\}
 \item 
-char \hyperlink{Menusystem_8c_a53c72e5e662134afa6e04b4f2aa2863c}{topoption5} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t5\+:\textbackslash{}t\+Sleep\textbackslash{}n\char`\"{}
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_a38b0787e2615d19b426455b30e1e1d75}{Rng\+Max} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914af733cc73150864363799ef2a46110d51}{R\+A\+N\+G\+E\+\_\+\+M\+A\+X}, \hyperlink{Menusystem_8h_aa8e428262d4c3d6b83b922309279d68e}{max\+Rng\+Serial\+Str}, \hyperlink{Menusystem_8h_a6c61a9b8091c05dedab1a209f02e8394}{max\+Rng\+Set\+Str}, \hyperlink{MenuDefs_8h_a00293b76811c5d62410489d0b0ee8799}{M\+A\+X\+\_\+\+R\+A\+N\+G\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, \hyperlink{MenuDefs_8h_a1c0c41f3097ddebbad9a5f470baa6287}{M\+A\+X\+\_\+\+R\+A\+N\+G\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 50, \hyperlink{Menusystem_8c_a2f408553850e88d8345218700a252115}{disp\+Serial\+Message}, \hyperlink{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}{set\+Value}, \hyperlink{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}{disp\+L\+C\+D\+Num}, \hyperlink{Menusystem_8c_a73b63e32a55a7050b917457b4c35dd1f}{return\+To\+Rng\+Menu}\}
+\item 
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_a293c99e69c70b825f695ab0dfd8d5afc}{Show\+Temp} = \{\hyperlink{MenuDefs_8h_ab59168e7e65e85a345dd7e860b097914aa01d20a055c12aa48a259e3bbd62aa3c}{S\+H\+O\+W\+\_\+\+T\+E\+M\+P}, \hyperlink{Menusystem_8h_a93fde150eed1fc6eb628d84af5ab5282}{show\+Temp\+L\+C\+D\+Title}, \hyperlink{Menusystem_8h_a93fde150eed1fc6eb628d84af5ab5282}{show\+Temp\+L\+C\+D\+Title}, 0, 0, 0, \hyperlink{Menusystem_8c_a68e5fd71e2e27b77d08445f294598629}{disp\+Temp\+Serial\+Message}, \hyperlink{Menusystem_8c_a2290887f83a7977e63e6d47b29787b72}{no\+Function\+Numeric}, \hyperlink{Menusystem_8c_a2290887f83a7977e63e6d47b29787b72}{no\+Function\+Numeric}, \hyperlink{Menusystem_8c_a1f79564c961f89ad492d5b2bfea82f88}{return\+To\+Top\+Menu}\}
+\item 
+struct \hyperlink{structmenuStruct}{menu\+Struct} \hyperlink{Menusystem_8c_a8f68b12c69c7e6bb1f5cb87b05ac1fce}{m\+\_\+current\+Menu}
+\item 
+static \hyperlink{MenuDefs_8h_aa098c58ecdb6f99f3480138f9f740d47}{user\+State} \hyperlink{Menusystem_8c_a607f4e1757c0e658a135c1ef598991a9}{m\+\_\+user\+Mode}
 \end{DoxyCompactItemize}
 
 
-\subsection{Macro Definition Documentation}
-\hypertarget{Menusystem_8c_ac6732d277bcb2f666784f4f3f5e17f39}{\index{Menusystem.\+c@{Menusystem.\+c}!auto11@{auto11}}
-\index{auto11@{auto11}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{auto11}]{\setlength{\rightskip}{0pt plus 5cm}\#define auto11~0x10}}\label{Menusystem_8c_ac6732d277bcb2f666784f4f3f5e17f39}
-\hypertarget{Menusystem_8c_a64f9f90ece96c7bab4aee3deacf170e0}{\index{Menusystem.\+c@{Menusystem.\+c}!height@{height}}
-\index{height@{height}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{height}]{\setlength{\rightskip}{0pt plus 5cm}\#define height~24}}\label{Menusystem_8c_a64f9f90ece96c7bab4aee3deacf170e0}
-\hypertarget{Menusystem_8c_abed1ba920ec7390cfb509ce3d3b514eb}{\index{Menusystem.\+c@{Menusystem.\+c}!manu12@{manu12}}
-\index{manu12@{manu12}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{manu12}]{\setlength{\rightskip}{0pt plus 5cm}\#define manu12~0x20}}\label{Menusystem_8c_abed1ba920ec7390cfb509ce3d3b514eb}
-\hypertarget{Menusystem_8c_a65912490d63985a47ca283029e911b2b}{\index{Menusystem.\+c@{Menusystem.\+c}!manugoto121@{manugoto121}}
-\index{manugoto121@{manugoto121}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{manugoto121}]{\setlength{\rightskip}{0pt plus 5cm}\#define manugoto121~0x21}}\label{Menusystem_8c_a65912490d63985a47ca283029e911b2b}
-\hypertarget{Menusystem_8c_abae4a42361e301d3ac9dbb5aad94f03d}{\index{Menusystem.\+c@{Menusystem.\+c}!manusetl122@{manusetl122}}
-\index{manusetl122@{manusetl122}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{manusetl122}]{\setlength{\rightskip}{0pt plus 5cm}\#define manusetl122~0x22}}\label{Menusystem_8c_abae4a42361e301d3ac9dbb5aad94f03d}
-\hypertarget{Menusystem_8c_a257270ed391fc5cf1577e20beb72b82d}{\index{Menusystem.\+c@{Menusystem.\+c}!manushow123@{manushow123}}
-\index{manushow123@{manushow123}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{manushow123}]{\setlength{\rightskip}{0pt plus 5cm}\#define manushow123~0x23}}\label{Menusystem_8c_a257270ed391fc5cf1577e20beb72b82d}
-\hypertarget{Menusystem_8c_a38bd38059a23acf74ca3559d13c2a6d5}{\index{Menusystem.\+c@{Menusystem.\+c}!slee15@{slee15}}
-\index{slee15@{slee15}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{slee15}]{\setlength{\rightskip}{0pt plus 5cm}\#define slee15~0x50}}\label{Menusystem_8c_a38bd38059a23acf74ca3559d13c2a6d5}
-\hypertarget{Menusystem_8c_ae60b73d9ad027f8210c2a7789349428b}{\index{Menusystem.\+c@{Menusystem.\+c}!stat13@{stat13}}
-\index{stat13@{stat13}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{stat13}]{\setlength{\rightskip}{0pt plus 5cm}\#define stat13~0x30}}\label{Menusystem_8c_ae60b73d9ad027f8210c2a7789349428b}
-\hypertarget{Menusystem_8c_a99fdb7c018e6ad7decf89ca228db518f}{\index{Menusystem.\+c@{Menusystem.\+c}!swap14@{swap14}}
-\index{swap14@{swap14}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{swap14}]{\setlength{\rightskip}{0pt plus 5cm}\#define swap14~0x40}}\label{Menusystem_8c_a99fdb7c018e6ad7decf89ca228db518f}
-\hypertarget{Menusystem_8c_a59e24be624462b0016d40f9ada6bbb69}{\index{Menusystem.\+c@{Menusystem.\+c}!top1@{top1}}
-\index{top1@{top1}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{top1}]{\setlength{\rightskip}{0pt plus 5cm}\#define top1~0x\+F\+F}}\label{Menusystem_8c_a59e24be624462b0016d40f9ada6bbb69}
-\hypertarget{Menusystem_8c_a667b04d7fb6ef46db4da4af554c5b6f7}{\index{Menusystem.\+c@{Menusystem.\+c}!width@{width}}
-\index{width@{width}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{width}]{\setlength{\rightskip}{0pt plus 5cm}\#define width~80}}\label{Menusystem_8c_a667b04d7fb6ef46db4da4af554c5b6f7}
-
-
- File\+: \hyperlink{Menusystem_8c}{Menusystem.\+c} Author\+:
-
-Description\+:
-
-Duties\+:
-
-Functions\+:
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000002}{Todo}]Complete, test and document this code!!!\end{DoxyRefDesc}
-
-
-Created on 16 September 2014, 6\+:47 P\+M 
-
 \subsection{Function Documentation}
-\hypertarget{Menusystem_8c_aec49123d1c8f1231607dc9159ae138a4}{\index{Menusystem.\+c@{Menusystem.\+c}!clearscreen@{clearscreen}}
-\index{clearscreen@{clearscreen}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{clearscreen}]{\setlength{\rightskip}{0pt plus 5cm}void clearscreen (
-\begin{DoxyParamCaption}
-\item[{char}]{length}
-\end{DoxyParamCaption}
-)}}\label{Menusystem_8c_aec49123d1c8f1231607dc9159ae138a4}
-
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=235pt]{Menusystem_8c_aec49123d1c8f1231607dc9159ae138a4_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{Menusystem_8c_aec49123d1c8f1231607dc9159ae138a4_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{Menusystem_8c_ae3777c5b2ceab74d5d90b444da874d14}{\index{Menusystem.\+c@{Menusystem.\+c}!disptoptions@{disptoptions}}
-\index{disptoptions@{disptoptions}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{disptoptions}]{\setlength{\rightskip}{0pt plus 5cm}void disptoptions (
+\hypertarget{Menusystem_8c_a784ca8abb2edaa219d98a4b659363d75}{\index{Menusystem.\+c@{Menusystem.\+c}!autodisp@{autodisp}}
+\index{autodisp@{autodisp}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{autodisp}]{\setlength{\rightskip}{0pt plus 5cm}void autodisp (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}}\label{Menusystem_8c_ae3777c5b2ceab74d5d90b444da874d14}
+)}}\label{Menusystem_8c_a784ca8abb2edaa219d98a4b659363d75}
+\hypertarget{Menusystem_8c_a0c5137bf380f59ecbe803283c32f7c2c}{\index{Menusystem.\+c@{Menusystem.\+c}!check\+For\+Serial\+Input@{check\+For\+Serial\+Input}}
+\index{check\+For\+Serial\+Input@{check\+For\+Serial\+Input}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{check\+For\+Serial\+Input}]{\setlength{\rightskip}{0pt plus 5cm}char check\+For\+Serial\+Input (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a0c5137bf380f59ecbe803283c32f7c2c}
 
+
+services any user interface with the menu 
+
+
+
+ Function\+: wait\+For\+Input(void)
+
+Include\+:
+
+Description\+: Checks the serial/local buffers for inputs
+
+Arguments\+: None
+
+Returns\+: 1 if input has been received, 0 otherwise Wait until the receive buffer is no longer empty Indicating that a command has been passed 
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=237pt]{Menusystem_8c_ae3777c5b2ceab74d5d90b444da874d14_cgraph}
+\includegraphics[width=283pt]{Menusystem_8c_a0c5137bf380f59ecbe803283c32f7c2c_cgraph}
 \end{center}
 \end{figure}
 
@@ -188,7 +178,262 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{Menusystem_8c_ae3777c5b2ceab74d5d90b444da874d14_icgraph}
+\includegraphics[width=350pt]{Menusystem_8c_a0c5137bf380f59ecbe803283c32f7c2c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a67e96e514d9f296c79378f7fbfba457a}{\index{Menusystem.\+c@{Menusystem.\+c}!clear\+Screen@{clear\+Screen}}
+\index{clear\+Screen@{clear\+Screen}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{clear\+Screen}]{\setlength{\rightskip}{0pt plus 5cm}void clear\+Screen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a67e96e514d9f296c79378f7fbfba457a}
+Clears the Serial display 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{Menusystem_8c_a67e96e514d9f296c79378f7fbfba457a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_ae3704e422195d3ea14aea5806572ca3c}{\index{Menusystem.\+c@{Menusystem.\+c}!configure\+Timer0@{configure\+Timer0}}
+\index{configure\+Timer0@{configure\+Timer0}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{configure\+Timer0}]{\setlength{\rightskip}{0pt plus 5cm}void configure\+Timer0 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_ae3704e422195d3ea14aea5806572ca3c}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{Menusystem_8c_ae3704e422195d3ea14aea5806572ca3c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_afdf5fa380a1afae9687b1ccbbd23017e}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+Az\+Options@{disp\+Az\+Options}}
+\index{disp\+Az\+Options@{disp\+Az\+Options}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+Az\+Options}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+Az\+Options (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_afdf5fa380a1afae9687b1ccbbd23017e}
+Display the user options for the Azimuth menu 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_afdf5fa380a1afae9687b1ccbbd23017e_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_af3008931f4215a7917069a31719a8f3c}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+El\+Options@{disp\+El\+Options}}
+\index{disp\+El\+Options@{disp\+El\+Options}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+El\+Options}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+El\+Options (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_af3008931f4215a7917069a31719a8f3c}
+Display the user options for the Azimuth menu 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_af3008931f4215a7917069a31719a8f3c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_aae2d111e2cbcfe93d493729e9c9c1f2b}{\index{Menusystem.\+c@{Menusystem.\+c}!display\+Menu\+Serial@{display\+Menu\+Serial}}
+\index{display\+Menu\+Serial@{display\+Menu\+Serial}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{display\+Menu\+Serial}]{\setlength{\rightskip}{0pt plus 5cm}void display\+Menu\+Serial (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_aae2d111e2cbcfe93d493729e9c9c1f2b}
+Display the current menu Title and other information over serial 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_aae2d111e2cbcfe93d493729e9c9c1f2b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_aae2d111e2cbcfe93d493729e9c9c1f2b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a079b09fa0789834e079349c0ec5d49ab}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+L\+C\+D\+Az\+Menu@{disp\+L\+C\+D\+Az\+Menu}}
+\index{disp\+L\+C\+D\+Az\+Menu@{disp\+L\+C\+D\+Az\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+L\+C\+D\+Az\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+L\+C\+D\+Az\+Menu (
+\begin{DoxyParamCaption}
+\item[{int}]{option}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a079b09fa0789834e079349c0ec5d49ab}
+Displays the current potentiometer reading on the L\+C\+D based on the menu options contextualised by the Azimuth menu. \hypertarget{Menusystem_8c_abb30afb1811664d4879a518cd89b4bd9}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+L\+C\+D\+El\+Menu@{disp\+L\+C\+D\+El\+Menu}}
+\index{disp\+L\+C\+D\+El\+Menu@{disp\+L\+C\+D\+El\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+L\+C\+D\+El\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+L\+C\+D\+El\+Menu (
+\begin{DoxyParamCaption}
+\item[{int}]{option}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_abb30afb1811664d4879a518cd89b4bd9}
+Displays the current potentiometer reading on the L\+C\+D based on the menu options contextualised by the Elevation menu. \hypertarget{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+L\+C\+D\+Num@{disp\+L\+C\+D\+Num}}
+\index{disp\+L\+C\+D\+Num@{disp\+L\+C\+D\+Num}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+L\+C\+D\+Num}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+L\+C\+D\+Num (
+\begin{DoxyParamCaption}
+\item[{int}]{option}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_ac349125f8c839423db6203e102a1f54a}
+Description\+: Displays the current converted value from the potentiometer onto the L\+C\+D display
+
+Arguments\+: The integer converted from the A\+D\+C 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{Menusystem_8c_ac349125f8c839423db6203e102a1f54a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a6108e2b81dfa20c01e27fe17ba8ad856}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+L\+C\+D\+Rng\+Menu@{disp\+L\+C\+D\+Rng\+Menu}}
+\index{disp\+L\+C\+D\+Rng\+Menu@{disp\+L\+C\+D\+Rng\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+L\+C\+D\+Rng\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+L\+C\+D\+Rng\+Menu (
+\begin{DoxyParamCaption}
+\item[{int}]{option}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a6108e2b81dfa20c01e27fe17ba8ad856}
+Displays the current potentiometer reading on the L\+C\+D based on the menu options contextualised by the Range menu. \hypertarget{Menusystem_8c_a1e7fd2754bf0b951881c71742eb0b738}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+L\+C\+D\+Top\+Menu@{disp\+L\+C\+D\+Top\+Menu}}
+\index{disp\+L\+C\+D\+Top\+Menu@{disp\+L\+C\+D\+Top\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+L\+C\+D\+Top\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+L\+C\+D\+Top\+Menu (
+\begin{DoxyParamCaption}
+\item[{int}]{option}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a1e7fd2754bf0b951881c71742eb0b738}
+
+
+L\+C\+D Display Functions. 
+
+Displays the current potentiometer reading on the L\+C\+D based on the menu options contextualised by the Home menu. \hypertarget{Menusystem_8c_ae43312996b2d5f53d2149163888f88a2}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+Rng\+Options@{disp\+Rng\+Options}}
+\index{disp\+Rng\+Options@{disp\+Rng\+Options}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+Rng\+Options}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+Rng\+Options (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_ae43312996b2d5f53d2149163888f88a2}
+Display the user options for the Azimuth menu 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_ae43312996b2d5f53d2149163888f88a2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a2f408553850e88d8345218700a252115}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+Serial\+Message@{disp\+Serial\+Message}}
+\index{disp\+Serial\+Message@{disp\+Serial\+Message}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+Serial\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+Serial\+Message (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a2f408553850e88d8345218700a252115}
+Display the menu serial message 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a2f408553850e88d8345218700a252115_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a68e5fd71e2e27b77d08445f294598629}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+Temp\+Serial\+Message@{disp\+Temp\+Serial\+Message}}
+\index{disp\+Temp\+Serial\+Message@{disp\+Temp\+Serial\+Message}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+Temp\+Serial\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+Temp\+Serial\+Message (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a68e5fd71e2e27b77d08445f294598629}
+Display the Show Temperature serial message 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a68e5fd71e2e27b77d08445f294598629_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_ab02601af02510b224cf1b970adc92f37}{\index{Menusystem.\+c@{Menusystem.\+c}!disp\+Top\+Options@{disp\+Top\+Options}}
+\index{disp\+Top\+Options@{disp\+Top\+Options}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{disp\+Top\+Options}]{\setlength{\rightskip}{0pt plus 5cm}void disp\+Top\+Options (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_ab02601af02510b224cf1b970adc92f37}
+Display the user options for the top level home menu 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_ab02601af02510b224cf1b970adc92f37_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a423b16a9c8b8570e98a887785bf2a22e}{\index{Menusystem.\+c@{Menusystem.\+c}!err\+Out\+Of\+Range@{err\+Out\+Of\+Range}}
+\index{err\+Out\+Of\+Range@{err\+Out\+Of\+Range}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{err\+Out\+Of\+Range}]{\setlength{\rightskip}{0pt plus 5cm}void err\+Out\+Of\+Range (
+\begin{DoxyParamCaption}
+\item[{int}]{lower\+Bound, }
+\item[{int}]{upper\+Bound}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a423b16a9c8b8570e98a887785bf2a22e}
+Description\+: Displays a number out of range error 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a423b16a9c8b8570e98a887785bf2a22e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{Menusystem_8c_a423b16a9c8b8570e98a887785bf2a22e_icgraph}
 \end{center}
 \end{figure}
 
@@ -222,6 +467,88 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
+\hypertarget{Menusystem_8c_a8ad24eca1f986bb074931fc811f84045}{\index{Menusystem.\+c@{Menusystem.\+c}!get\+Local\+Input\+Menu@{get\+Local\+Input\+Menu}}
+\index{get\+Local\+Input\+Menu@{get\+Local\+Input\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{get\+Local\+Input\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Local\+Input\+Menu (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+States, }
+\item[{int($\ast$)(int)}]{function}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a8ad24eca1f986bb074931fc811f84045}
+\hypertarget{Menusystem_8c_a1b85c6297d06880716723d3be78a24d6}{\index{Menusystem.\+c@{Menusystem.\+c}!get\+Local\+Pot\+Result@{get\+Local\+Pot\+Result}}
+\index{get\+Local\+Pot\+Result@{get\+Local\+Pot\+Result}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{get\+Local\+Pot\+Result}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Local\+Pot\+Result (
+\begin{DoxyParamCaption}
+\item[{int}]{min, }
+\item[{int}]{max, }
+\item[{int}]{interval}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a1b85c6297d06880716723d3be78a24d6}
+Description\+: Returns the value of the potentiometer on the user interface, given a maximum and minimum value, and the interval between values (eg 10-\/100 in multiples of 10). 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{Menusystem_8c_a1b85c6297d06880716723d3be78a24d6_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a1b85c6297d06880716723d3be78a24d6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a8b63a4216144880e0f72493bb99327b9}{\index{Menusystem.\+c@{Menusystem.\+c}!get\+Serial\+Numeric\+Input@{get\+Serial\+Numeric\+Input}}
+\index{get\+Serial\+Numeric\+Input@{get\+Serial\+Numeric\+Input}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{get\+Serial\+Numeric\+Input}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Serial\+Numeric\+Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a8b63a4216144880e0f72493bb99327b9}
+
+
+Waits for input and parses number. 
+
+
+
+ Function\+: wait\+For\+Numeric\+Input
+
+Include\+:
+
+Description\+: Waits in a loop for a user command ended with a new line character. Once a command is received, it is converted into the appropriate numeric value that the user has given.
+
+Arguments\+: None
+
+Returns\+: The integer result of the string input E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+N\+U\+M\+E\+R\+I\+C for any non-\/numeric input E\+R\+R\+\_\+\+N\+U\+M\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+G\+E for 0 digits or 5+ digits E\+S\+C\+\_\+\+P\+R\+E\+S\+S\+E\+D if escape was pressed Get the input string and store it in  
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{Menusystem_8c_a8b63a4216144880e0f72493bb99327b9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a8b63a4216144880e0f72493bb99327b9_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{Menusystem_8c_a94b96ccbb8f3c627c5d59189498a3c1b}{\index{Menusystem.\+c@{Menusystem.\+c}!initialise\+Menu@{initialise\+Menu}}
 \index{initialise\+Menu@{initialise\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
 \subsubsection[{initialise\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void initialise\+Menu (
@@ -243,46 +570,321 @@ Description\+: initialises the menu system so that it is fully operational
 
 Arguments\+: None
 
-Returns\+: None \hypertarget{Menusystem_8c_afa234d458057237e03e355d30fafac84}{\index{Menusystem.\+c@{Menusystem.\+c}!menu@{menu}}
-\index{menu@{menu}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{menu}]{\setlength{\rightskip}{0pt plus 5cm}void menu (
+Returns\+: None 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{Menusystem_8c_a94b96ccbb8f3c627c5d59189498a3c1b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a40370230fa4791386274f271dc7ae5d4}{\index{Menusystem.\+c@{Menusystem.\+c}!int\+To\+Ascii@{int\+To\+Ascii}}
+\index{int\+To\+Ascii@{int\+To\+Ascii}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{int\+To\+Ascii}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ int\+To\+Ascii (
 \begin{DoxyParamCaption}
-\item[{char}]{menuselect}
+\item[{int}]{num}
 \end{DoxyParamCaption}
-)}}\label{Menusystem_8c_afa234d458057237e03e355d30fafac84}
-Call the serial configuration to enable U\+S\+A\+R\+T Subsysten 
+)}}\label{Menusystem_8c_a40370230fa4791386274f271dc7ae5d4}
+Description\+: Converts a number to a string Can only print numbers under 8 digits 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a40370230fa4791386274f271dc7ae5d4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a37aeebed834c183bf7f9d9a8870bb0c5}{\index{Menusystem.\+c@{Menusystem.\+c}!navigate\+Azimuth\+Menu@{navigate\+Azimuth\+Menu}}
+\index{navigate\+Azimuth\+Menu@{navigate\+Azimuth\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{navigate\+Azimuth\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void navigate\+Azimuth\+Menu (
+\begin{DoxyParamCaption}
+\item[{int}]{input\+Result}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a37aeebed834c183bf7f9d9a8870bb0c5}
+
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{Menusystem_8c_afa234d458057237e03e355d30fafac84_cgraph}
+\includegraphics[width=350pt]{Menusystem_8c_a37aeebed834c183bf7f9d9a8870bb0c5_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{Menusystem_8c_a0f329206447b1f40e6f730b346aaaf44}{\index{Menusystem.\+c@{Menusystem.\+c}!menu\+I\+S\+R@{menu\+I\+S\+R}}
-\index{menu\+I\+S\+R@{menu\+I\+S\+R}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{menu\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}void menu\+I\+S\+R (
+\hypertarget{Menusystem_8c_a247abfc7b6502e8fe71b329099887de7}{\index{Menusystem.\+c@{Menusystem.\+c}!navigate\+Elevation\+Menu@{navigate\+Elevation\+Menu}}
+\index{navigate\+Elevation\+Menu@{navigate\+Elevation\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{navigate\+Elevation\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void navigate\+Elevation\+Menu (
+\begin{DoxyParamCaption}
+\item[{int}]{input\+Result}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a247abfc7b6502e8fe71b329099887de7}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a247abfc7b6502e8fe71b329099887de7_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_ae76ae1f6774b7bb49057cb9d22df62cc}{\index{Menusystem.\+c@{Menusystem.\+c}!navigate\+Range\+Menu@{navigate\+Range\+Menu}}
+\index{navigate\+Range\+Menu@{navigate\+Range\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{navigate\+Range\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void navigate\+Range\+Menu (
+\begin{DoxyParamCaption}
+\item[{int}]{input\+Result}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_ae76ae1f6774b7bb49057cb9d22df62cc}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_ae76ae1f6774b7bb49057cb9d22df62cc_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_ab17e13186f1dddfbf68dc90ccfe322ab}{\index{Menusystem.\+c@{Menusystem.\+c}!navigate\+Top\+Menu@{navigate\+Top\+Menu}}
+\index{navigate\+Top\+Menu@{navigate\+Top\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{navigate\+Top\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void navigate\+Top\+Menu (
+\begin{DoxyParamCaption}
+\item[{int}]{input\+Result}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_ab17e13186f1dddfbf68dc90ccfe322ab}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_ab17e13186f1dddfbf68dc90ccfe322ab_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a9e1cce0abdcaa8e7be3c6721e6870c44}{\index{Menusystem.\+c@{Menusystem.\+c}!no\+Function@{no\+Function}}
+\index{no\+Function@{no\+Function}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{no\+Function}]{\setlength{\rightskip}{0pt plus 5cm}void no\+Function (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}}\label{Menusystem_8c_a0f329206447b1f40e6f730b346aaaf44}
+)}}\label{Menusystem_8c_a9e1cce0abdcaa8e7be3c6721e6870c44}
+\hypertarget{Menusystem_8c_a2290887f83a7977e63e6d47b29787b72}{\index{Menusystem.\+c@{Menusystem.\+c}!no\+Function\+Numeric@{no\+Function\+Numeric}}
+\index{no\+Function\+Numeric@{no\+Function\+Numeric}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{no\+Function\+Numeric}]{\setlength{\rightskip}{0pt plus 5cm}void no\+Function\+Numeric (
+\begin{DoxyParamCaption}
+\item[{int}]{input}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a2290887f83a7977e63e6d47b29787b72}
+\hypertarget{Menusystem_8c_ad3ebde8bf1da78fb419653e5a495837b}{\index{Menusystem.\+c@{Menusystem.\+c}!parse\+Numeric@{parse\+Numeric}}
+\index{parse\+Numeric@{parse\+Numeric}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{parse\+Numeric}]{\setlength{\rightskip}{0pt plus 5cm}static int parse\+Numeric (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{number}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_ad3ebde8bf1da78fb419653e5a495837b}
 
 
-I\+S\+R function for the menu subsystem. 
+parses user input string into a number 
 
 
 
- Function\+: \hyperlink{Menusystem_8c_a0f329206447b1f40e6f730b346aaaf44}{menu\+I\+S\+R(void)}
+ Function\+: \hyperlink{Menusystem2_8c_ad3ebde8bf1da78fb419653e5a495837b}{parse\+Numeric(char $\ast$number)}
 
-Include\+: \hyperlink{Menusystem_8h}{Menusystem.\+h}
+Include\+:
 
-Description\+: services any interrupts associated with the menu system
+Description\+: Converts A\+S\+C\+I\+I input to a number, and records an error for non-\/numeric input, or if the number is larger than 4 digits. No number used by the user in this program will be larger than 4 digits.
+
+Arguments\+: The A\+S\+C\+I\+I string to decode
+
+Returns\+: The integer result of the string E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+N\+U\+M\+E\+R\+I\+C for any non-\/numeric input E\+R\+R\+\_\+\+N\+U\+M\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+G\+E for 0 digits or 5+ digits
+
+
+
+ Function\+: \hyperlink{Menusystem2_8c_ad3ebde8bf1da78fb419653e5a495837b}{parse\+Numeric(char $\ast$number)}
+
+Include\+:
+
+Description\+: Calls the function which matches the user input
 
 Arguments\+: None
 
-Returns\+: None \hypertarget{Menusystem_8c_afc5a5c12a076ae6c7424df4f4124a521}{\index{Menusystem.\+c@{Menusystem.\+c}!service\+Menu@{service\+Menu}}
+Returns\+: None 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_ad3ebde8bf1da78fb419653e5a495837b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a75a683e37aa01ac8a92db781e2ead1e0}{\index{Menusystem.\+c@{Menusystem.\+c}!return\+To\+Az\+Menu@{return\+To\+Az\+Menu}}
+\index{return\+To\+Az\+Menu@{return\+To\+Az\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{return\+To\+Az\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void return\+To\+Az\+Menu (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a75a683e37aa01ac8a92db781e2ead1e0}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a75a683e37aa01ac8a92db781e2ead1e0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a012a074b7a3d034a0a2c22bfeb8625f7}{\index{Menusystem.\+c@{Menusystem.\+c}!return\+To\+El\+Menu@{return\+To\+El\+Menu}}
+\index{return\+To\+El\+Menu@{return\+To\+El\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{return\+To\+El\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void return\+To\+El\+Menu (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a012a074b7a3d034a0a2c22bfeb8625f7}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a012a074b7a3d034a0a2c22bfeb8625f7_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a73b63e32a55a7050b917457b4c35dd1f}{\index{Menusystem.\+c@{Menusystem.\+c}!return\+To\+Rng\+Menu@{return\+To\+Rng\+Menu}}
+\index{return\+To\+Rng\+Menu@{return\+To\+Rng\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{return\+To\+Rng\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void return\+To\+Rng\+Menu (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a73b63e32a55a7050b917457b4c35dd1f}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a73b63e32a55a7050b917457b4c35dd1f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a1f79564c961f89ad492d5b2bfea82f88}{\index{Menusystem.\+c@{Menusystem.\+c}!return\+To\+Top\+Menu@{return\+To\+Top\+Menu}}
+\index{return\+To\+Top\+Menu@{return\+To\+Top\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{return\+To\+Top\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void return\+To\+Top\+Menu (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a1f79564c961f89ad492d5b2bfea82f88}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a1f79564c961f89ad492d5b2bfea82f88_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a9f7902dc2a501ad1f16ec5011415bbbc}{\index{Menusystem.\+c@{Menusystem.\+c}!send\+New\+Line@{send\+New\+Line}}
+\index{send\+New\+Line@{send\+New\+Line}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{send\+New\+Line}]{\setlength{\rightskip}{0pt plus 5cm}void send\+New\+Line (
+\begin{DoxyParamCaption}
+\item[{char}]{length}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a9f7902dc2a501ad1f16ec5011415bbbc}
+\+: Prints a number of new line (~\newline
+) characters. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{Menusystem_8c_a9f7902dc2a501ad1f16ec5011415bbbc_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a9f7902dc2a501ad1f16ec5011415bbbc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_a3e308d6e9b426c6463bea038c996aa35}{\index{Menusystem.\+c@{Menusystem.\+c}!send\+R\+O\+M@{send\+R\+O\+M}}
+\index{send\+R\+O\+M@{send\+R\+O\+M}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{send\+R\+O\+M}]{\setlength{\rightskip}{0pt plus 5cm}void send\+R\+O\+M (
+\begin{DoxyParamCaption}
+\item[{const static rom char $\ast$}]{romchar}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8c_a3e308d6e9b426c6463bea038c996aa35}
+
+
+Include\+: Local to \hyperlink{Menusystem_8c}{Menusystem.\+c}. 
+
+
+
+ File\+: \hyperlink{Menusystem_8c}{Menusystem.\+c} Author\+:
+
+Description\+:
+
+Duties\+:
+
+Functions\+:
+
+Created on 16 September 2014, 6\+:47 P\+M
+
+
+
+ Function\+: send\+R\+O\+M(void)
+
+\+: Transmits the given string from R\+O\+M over serial
+
+The string to transmit
+
+Returns\+: None 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{Menusystem_8c_a3e308d6e9b426c6463bea038c996aa35_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8c_a3e308d6e9b426c6463bea038c996aa35_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_afc5a5c12a076ae6c7424df4f4124a521}{\index{Menusystem.\+c@{Menusystem.\+c}!service\+Menu@{service\+Menu}}
 \index{service\+Menu@{service\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
 \subsubsection[{service\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void service\+Menu (
 \begin{DoxyParamCaption}
@@ -303,30 +905,33 @@ Description\+: Checks if the user has made any inputs to the system. If not the 
 
 Arguments\+: None
 
-Returns\+: None \hypertarget{Menusystem_8c_a4ec0accaddbc5d42e2c1cf77d22693c3}{\index{Menusystem.\+c@{Menusystem.\+c}!topmenu@{topmenu}}
-\index{topmenu@{topmenu}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{topmenu}]{\setlength{\rightskip}{0pt plus 5cm}void topmenu (
+Returns\+: None If Esc or Back button pressed, return
+
+Otherwise Confirm the selection 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{Menusystem_8c_afc5a5c12a076ae6c7424df4f4124a521_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Menusystem_8c_af00ad1f1fdd6abc9dfc5d1682463a2f9}{\index{Menusystem.\+c@{Menusystem.\+c}!set\+Menu@{set\+Menu}}
+\index{set\+Menu@{set\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{set\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Menu (
 \begin{DoxyParamCaption}
-\item[{void}]{}
+\item[{struct {\bf menu\+Struct}}]{menu}
 \end{DoxyParamCaption}
-)}}\label{Menusystem_8c_a4ec0accaddbc5d42e2c1cf77d22693c3}
-Display the menu screen via serial wait for/get serial input make decision based on input
+)}}\label{Menusystem_8c_af00ad1f1fdd6abc9dfc5d1682463a2f9}
 
-Wait until the receive buffer is no longer empty
-
-Indicating that a command has been passed
-
-Reset status flag
-
-Get the input string and store it in 
-
-test 
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{Menusystem_8c_a4ec0accaddbc5d42e2c1cf77d22693c3_cgraph}
+\includegraphics[width=350pt]{Menusystem_8c_af00ad1f1fdd6abc9dfc5d1682463a2f9_cgraph}
 \end{center}
 \end{figure}
 
@@ -337,36 +942,25 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=211pt]{Menusystem_8c_a4ec0accaddbc5d42e2c1cf77d22693c3_icgraph}
+\includegraphics[width=350pt]{Menusystem_8c_af00ad1f1fdd6abc9dfc5d1682463a2f9_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{Menusystem_8c_a4437457cad71a9015dbfbac75f9b2b99}{\index{Menusystem.\+c@{Menusystem.\+c}!topmenudisp@{topmenudisp}}
-\index{topmenudisp@{topmenudisp}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{topmenudisp}]{\setlength{\rightskip}{0pt plus 5cm}void topmenudisp (
+\hypertarget{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}{\index{Menusystem.\+c@{Menusystem.\+c}!set\+Value@{set\+Value}}
+\index{set\+Value@{set\+Value}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{set\+Value}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Value (
 \begin{DoxyParamCaption}
-\item[{void}]{}
+\item[{int}]{input}
 \end{DoxyParamCaption}
-)}}\label{Menusystem_8c_a4437457cad71a9015dbfbac75f9b2b99}
-
+)}}\label{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e}
+Description\+: General funtion for menus which set values (Such as Set Max Range). This calls the appropriate function, and transmits user messages. 
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=345pt]{Menusystem_8c_a4437457cad71a9015dbfbac75f9b2b99_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=319pt]{Menusystem_8c_a4437457cad71a9015dbfbac75f9b2b99_icgraph}
+\includegraphics[width=350pt]{Menusystem_8c_abd46c913c8c99480b9cdd7e0dfa42c4e_cgraph}
 \end{center}
 \end{figure}
 
@@ -374,36 +968,52 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 \subsection{Variable Documentation}
-\hypertarget{Menusystem_8c_a9cb97c7ce3babec16a2e500625985994}{\index{Menusystem.\+c@{Menusystem.\+c}!choose@{choose}}
-\index{choose@{choose}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{choose}]{\setlength{\rightskip}{0pt plus 5cm}char choose\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t\+Please select your option (eg. 2)\+: \textbackslash{}n\char`\"{}}}\label{Menusystem_8c_a9cb97c7ce3babec16a2e500625985994}
-\hypertarget{Menusystem_8c_ae6c5caedc34899ea80a6b011fec5f2a4}{\index{Menusystem.\+c@{Menusystem.\+c}!fillerthing@{fillerthing}}
-\index{fillerthing@{fillerthing}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{fillerthing}]{\setlength{\rightskip}{0pt plus 5cm}char fillerthing\mbox{[}$\,$\mbox{]} = \char`\"{}+\char`\"{}}}\label{Menusystem_8c_ae6c5caedc34899ea80a6b011fec5f2a4}
-\hypertarget{Menusystem_8c_a009126ac947a1079b52555366ac7b7f3}{\index{Menusystem.\+c@{Menusystem.\+c}!goup@{goup}}
-\index{goup@{goup}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{goup}]{\setlength{\rightskip}{0pt plus 5cm}char goup\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t\+Up a level\textbackslash{}n\char`\"{}}}\label{Menusystem_8c_a009126ac947a1079b52555366ac7b7f3}
-\hypertarget{Menusystem_8c_a3e47bea989735dbc22688e1ee25ebe9c}{\index{Menusystem.\+c@{Menusystem.\+c}!newline@{newline}}
-\index{newline@{newline}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{newline}]{\setlength{\rightskip}{0pt plus 5cm}char newline\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}n\char`\"{}}}\label{Menusystem_8c_a3e47bea989735dbc22688e1ee25ebe9c}
-\hypertarget{Menusystem_8c_a5ba864b4bbe4a84e0ca85b979ec2c10b}{\index{Menusystem.\+c@{Menusystem.\+c}!t\+M\+E\+S\+S\+A\+G\+E@{t\+M\+E\+S\+S\+A\+G\+E}}
-\index{t\+M\+E\+S\+S\+A\+G\+E@{t\+M\+E\+S\+S\+A\+G\+E}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{t\+M\+E\+S\+S\+A\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}char t\+M\+E\+S\+S\+A\+G\+E\mbox{[}$\,$\mbox{]} = \char`\"{}Hello 123\textbackslash{}n\char`\"{}}}\label{Menusystem_8c_a5ba864b4bbe4a84e0ca85b979ec2c10b}
-\hypertarget{Menusystem_8c_a1985e3f1b27ce97bff59359bed67bd58}{\index{Menusystem.\+c@{Menusystem.\+c}!topoption1@{topoption1}}
-\index{topoption1@{topoption1}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{topoption1}]{\setlength{\rightskip}{0pt plus 5cm}char topoption1\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t1\+:\textbackslash{}t\+Automatic Tracking\textbackslash{}n\char`\"{}}}\label{Menusystem_8c_a1985e3f1b27ce97bff59359bed67bd58}
-\hypertarget{Menusystem_8c_acefc91d5187b4570470476a6cd0b68e9}{\index{Menusystem.\+c@{Menusystem.\+c}!topoption2@{topoption2}}
-\index{topoption2@{topoption2}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{topoption2}]{\setlength{\rightskip}{0pt plus 5cm}char topoption2\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t2\+:\textbackslash{}t\+Manual Tracking\textbackslash{}n\char`\"{}}}\label{Menusystem_8c_acefc91d5187b4570470476a6cd0b68e9}
-\hypertarget{Menusystem_8c_ac241270fe5f174769b3034e81c0a574e}{\index{Menusystem.\+c@{Menusystem.\+c}!topoption3@{topoption3}}
-\index{topoption3@{topoption3}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{topoption3}]{\setlength{\rightskip}{0pt plus 5cm}char topoption3\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\textbackslash{}t\+Status\textbackslash{}n\char`\"{}}}\label{Menusystem_8c_ac241270fe5f174769b3034e81c0a574e}
-\hypertarget{Menusystem_8c_a5d44776e05294f14fa1a49e2c9b4820f}{\index{Menusystem.\+c@{Menusystem.\+c}!topoption4@{topoption4}}
-\index{topoption4@{topoption4}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{topoption4}]{\setlength{\rightskip}{0pt plus 5cm}char topoption4\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\textbackslash{}t\+Go To Local Mode\textbackslash{}n\char`\"{}}}\label{Menusystem_8c_a5d44776e05294f14fa1a49e2c9b4820f}
-\hypertarget{Menusystem_8c_a53c72e5e662134afa6e04b4f2aa2863c}{\index{Menusystem.\+c@{Menusystem.\+c}!topoption5@{topoption5}}
-\index{topoption5@{topoption5}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{topoption5}]{\setlength{\rightskip}{0pt plus 5cm}char topoption5\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t5\+:\textbackslash{}t\+Sleep\textbackslash{}n\char`\"{}}}\label{Menusystem_8c_a53c72e5e662134afa6e04b4f2aa2863c}
-\hypertarget{Menusystem_8c_a532e72c4b620eecff97eee6b0eed5bdd}{\index{Menusystem.\+c@{Menusystem.\+c}!welcome@{welcome}}
-\index{welcome@{welcome}!Menusystem.\+c@{Menusystem.\+c}}
-\subsubsection[{welcome}]{\setlength{\rightskip}{0pt plus 5cm}char welcome\mbox{[}$\,$\mbox{]} = \char`\"{}Welcome to Yavin I\+V Defence System\char`\"{}}}\label{Menusystem_8c_a532e72c4b620eecff97eee6b0eed5bdd}
+\hypertarget{Menusystem_8c_a146add3e3f286525825798267d213e1e}{\index{Menusystem.\+c@{Menusystem.\+c}!Az\+Goto@{Az\+Goto}}
+\index{Az\+Goto@{Az\+Goto}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{Az\+Goto}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} Az\+Goto = \{{\bf A\+Z\+\_\+\+G\+O\+T\+O}, {\bf goto\+Az\+Angle}, {\bf goto\+Az\+Angle\+L\+C\+D},{\bf M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, {\bf M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5,{\bf disp\+Serial\+Message}, {\bf set\+Value}, {\bf disp\+L\+C\+D\+Num}, {\bf return\+To\+Az\+Menu}\}}}\label{Menusystem_8c_a146add3e3f286525825798267d213e1e}
+
+
+Remote/\+Local Functions. 
+
+\hypertarget{Menusystem_8c_ad68782ae3168c17238991f23d3303237}{\index{Menusystem.\+c@{Menusystem.\+c}!Az\+Max@{Az\+Max}}
+\index{Az\+Max@{Az\+Max}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{Az\+Max}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} Az\+Max = \{{\bf A\+Z\+\_\+\+M\+A\+X}, {\bf max\+Az1}, {\bf max\+Az\+Set\+Str},{\bf M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, {\bf M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5, {\bf disp\+Serial\+Message}, {\bf set\+Value}, {\bf disp\+L\+C\+D\+Num}, {\bf return\+To\+Az\+Menu}\}}}\label{Menusystem_8c_ad68782ae3168c17238991f23d3303237}
+\hypertarget{Menusystem_8c_af48fe27b102950b409a220944b333792}{\index{Menusystem.\+c@{Menusystem.\+c}!Az\+Menu@{Az\+Menu}}
+\index{Az\+Menu@{Az\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{Az\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} Az\+Menu = \{{\bf A\+Z\+\_\+\+M\+E\+N\+U}, {\bf az\+Menu}, {\bf az\+Menu\+Lcd},1, 6, 1, {\bf disp\+Az\+Options}, {\bf navigate\+Azimuth\+Menu}, {\bf disp\+L\+C\+D\+Az\+Menu}, {\bf return\+To\+Top\+Menu}\}}}\label{Menusystem_8c_af48fe27b102950b409a220944b333792}
+\hypertarget{Menusystem_8c_a05de406d11b779ede3b72845d543a078}{\index{Menusystem.\+c@{Menusystem.\+c}!Az\+Min@{Az\+Min}}
+\index{Az\+Min@{Az\+Min}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{Az\+Min}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} Az\+Min = \{{\bf A\+Z\+\_\+\+M\+I\+N}, {\bf min\+Az1}, {\bf min\+Az\+Set\+Str},{\bf M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, {\bf M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5, {\bf disp\+Serial\+Message}, {\bf set\+Value}, {\bf disp\+L\+C\+D\+Num}, {\bf return\+To\+Az\+Menu}\}}}\label{Menusystem_8c_a05de406d11b779ede3b72845d543a078}
+\hypertarget{Menusystem_8c_a480a4bdfa8470c82ee5b3173711ce6db}{\index{Menusystem.\+c@{Menusystem.\+c}!El\+Goto@{El\+Goto}}
+\index{El\+Goto@{El\+Goto}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{El\+Goto}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} El\+Goto = \{{\bf E\+L\+\_\+\+G\+O\+T\+O}, {\bf goto\+El\+Angle}, {\bf goto\+E\+L\+Angle\+L\+C\+D},{\bf M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, {\bf M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5,{\bf disp\+Serial\+Message}, {\bf set\+Value}, {\bf disp\+L\+C\+D\+Num}, {\bf return\+To\+El\+Menu}\}}}\label{Menusystem_8c_a480a4bdfa8470c82ee5b3173711ce6db}
+\hypertarget{Menusystem_8c_a2179390acd9271dd76ab0f0f9fe4834b}{\index{Menusystem.\+c@{Menusystem.\+c}!El\+Max@{El\+Max}}
+\index{El\+Max@{El\+Max}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{El\+Max}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} El\+Max = \{{\bf E\+L\+\_\+\+M\+A\+X}, {\bf max\+El1}, {\bf max\+El\+Set\+Str},{\bf M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, {\bf M\+A\+X\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5, {\bf disp\+Serial\+Message}, {\bf set\+Value}, {\bf disp\+L\+C\+D\+Num}, {\bf return\+To\+El\+Menu}\}}}\label{Menusystem_8c_a2179390acd9271dd76ab0f0f9fe4834b}
+\hypertarget{Menusystem_8c_afea84bb932bd813d1fe647d30ba24a36}{\index{Menusystem.\+c@{Menusystem.\+c}!El\+Menu@{El\+Menu}}
+\index{El\+Menu@{El\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{El\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} El\+Menu = \{{\bf E\+L\+\_\+\+M\+E\+N\+U}, {\bf el\+Menu}, {\bf el\+Menu\+Lcd},1, 6, 1, {\bf disp\+El\+Options}, {\bf navigate\+Elevation\+Menu}, {\bf disp\+L\+C\+D\+El\+Menu}, {\bf return\+To\+Top\+Menu}\}}}\label{Menusystem_8c_afea84bb932bd813d1fe647d30ba24a36}
+\hypertarget{Menusystem_8c_a3aebdcbaa8ecfdb1f96ef11dbc7573ce}{\index{Menusystem.\+c@{Menusystem.\+c}!El\+Min@{El\+Min}}
+\index{El\+Min@{El\+Min}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{El\+Min}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} El\+Min = \{{\bf E\+L\+\_\+\+M\+I\+N}, {\bf min\+El1}, {\bf min\+El\+Set\+Str},{\bf M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, {\bf M\+I\+N\+\_\+\+A\+N\+G\+L\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 5, {\bf disp\+Serial\+Message}, {\bf set\+Value}, {\bf disp\+L\+C\+D\+Num}, {\bf return\+To\+El\+Menu}\}}}\label{Menusystem_8c_a3aebdcbaa8ecfdb1f96ef11dbc7573ce}
+\hypertarget{Menusystem_8c_a8f68b12c69c7e6bb1f5cb87b05ac1fce}{\index{Menusystem.\+c@{Menusystem.\+c}!m\+\_\+current\+Menu@{m\+\_\+current\+Menu}}
+\index{m\+\_\+current\+Menu@{m\+\_\+current\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{m\+\_\+current\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} m\+\_\+current\+Menu}}\label{Menusystem_8c_a8f68b12c69c7e6bb1f5cb87b05ac1fce}
+Global variable with the current menu position \hypertarget{Menusystem_8c_a607f4e1757c0e658a135c1ef598991a9}{\index{Menusystem.\+c@{Menusystem.\+c}!m\+\_\+user\+Mode@{m\+\_\+user\+Mode}}
+\index{m\+\_\+user\+Mode@{m\+\_\+user\+Mode}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{m\+\_\+user\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf user\+State} m\+\_\+user\+Mode\hspace{0.3cm}{\ttfamily [static]}}}\label{Menusystem_8c_a607f4e1757c0e658a135c1ef598991a9}
+Global variable with the current user mode\+: Local, remote or factory \hypertarget{Menusystem_8c_a8d023f6ad48a74dd953eb0aa6a2e45cf}{\index{Menusystem.\+c@{Menusystem.\+c}!Range\+Menu@{Range\+Menu}}
+\index{Range\+Menu@{Range\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{Range\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} Range\+Menu = \{{\bf R\+A\+N\+G\+E\+\_\+\+M\+E\+N\+U}, {\bf rng\+Menu}, {\bf rng\+Menu\+Lcd},1, 6, 1, {\bf disp\+Rng\+Options}, {\bf navigate\+Range\+Menu}, {\bf disp\+L\+C\+D\+Rng\+Menu}, {\bf return\+To\+Top\+Menu}\}}}\label{Menusystem_8c_a8d023f6ad48a74dd953eb0aa6a2e45cf}
+\hypertarget{Menusystem_8c_a38b0787e2615d19b426455b30e1e1d75}{\index{Menusystem.\+c@{Menusystem.\+c}!Rng\+Max@{Rng\+Max}}
+\index{Rng\+Max@{Rng\+Max}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{Rng\+Max}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} Rng\+Max = \{{\bf R\+A\+N\+G\+E\+\_\+\+M\+A\+X}, {\bf max\+Rng\+Serial\+Str}, {\bf max\+Rng\+Set\+Str}, {\bf M\+A\+X\+\_\+\+R\+A\+N\+G\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, {\bf M\+A\+X\+\_\+\+R\+A\+N\+G\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 50, {\bf disp\+Serial\+Message}, {\bf set\+Value}, {\bf disp\+L\+C\+D\+Num}, {\bf return\+To\+Rng\+Menu}\}}}\label{Menusystem_8c_a38b0787e2615d19b426455b30e1e1d75}
+\hypertarget{Menusystem_8c_aaadc7e24f2564a94f052f0e65e6749af}{\index{Menusystem.\+c@{Menusystem.\+c}!Rng\+Min@{Rng\+Min}}
+\index{Rng\+Min@{Rng\+Min}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{Rng\+Min}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} Rng\+Min = \{{\bf R\+A\+N\+G\+E\+\_\+\+M\+I\+N}, {\bf min\+Rng\+Serial\+Str}, {\bf min\+Rng\+Set\+Str}, {\bf M\+I\+N\+\_\+\+R\+A\+N\+G\+E\+\_\+\+I\+N\+F\+I\+M\+U\+M}, {\bf M\+I\+N\+\_\+\+R\+A\+N\+G\+E\+\_\+\+S\+U\+P\+R\+E\+M\+U\+M}, 50, {\bf disp\+Serial\+Message}, {\bf set\+Value}, {\bf disp\+L\+C\+D\+Num}, {\bf return\+To\+Rng\+Menu}\}}}\label{Menusystem_8c_aaadc7e24f2564a94f052f0e65e6749af}
+\hypertarget{Menusystem_8c_a293c99e69c70b825f695ab0dfd8d5afc}{\index{Menusystem.\+c@{Menusystem.\+c}!Show\+Temp@{Show\+Temp}}
+\index{Show\+Temp@{Show\+Temp}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{Show\+Temp}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} Show\+Temp = \{{\bf S\+H\+O\+W\+\_\+\+T\+E\+M\+P}, {\bf show\+Temp\+L\+C\+D\+Title}, {\bf show\+Temp\+L\+C\+D\+Title}, 0, 0, 0, {\bf disp\+Temp\+Serial\+Message}, {\bf no\+Function\+Numeric}, {\bf no\+Function\+Numeric}, {\bf return\+To\+Top\+Menu}\}}}\label{Menusystem_8c_a293c99e69c70b825f695ab0dfd8d5afc}
+\hypertarget{Menusystem_8c_a9776d72f343a51a87a19e8afedd90157}{\index{Menusystem.\+c@{Menusystem.\+c}!top\+Menu@{top\+Menu}}
+\index{top\+Menu@{top\+Menu}!Menusystem.\+c@{Menusystem.\+c}}
+\subsubsection[{top\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf menu\+Struct} top\+Menu = \{{\bf T\+O\+P\+\_\+\+L\+E\+V\+E\+L}, {\bf welcome}, {\bf welcome\+Lcd},1, 6, 1, {\bf disp\+Top\+Options}, {\bf navigate\+Top\+Menu}, {\bf disp\+L\+C\+D\+Top\+Menu}, {\bf no\+Function}\}}}\label{Menusystem_8c_a9776d72f343a51a87a19e8afedd90157}

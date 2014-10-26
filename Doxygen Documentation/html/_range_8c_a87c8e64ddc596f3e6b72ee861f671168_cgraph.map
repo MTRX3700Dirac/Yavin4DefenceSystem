@@ -1,9 +1,0 @@
-<map id="readTargetState" name="readTargetState">
-<area shape="rect" id="node2" href="$_range_8c.html#aff3698f3a7b3b5963d8e6b305a165d71" title="range" alt="" coords="194,81,249,108"/>
-<area shape="rect" id="node8" href="$_range_8c.html#a3e5554f5a076ded63b937d50b7e5c9db" title="getTargetState" alt="" coords="168,132,275,159"/>
-<area shape="rect" id="node3" href="$_range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2" title="configureRange" alt="" coords="323,31,433,57"/>
-<area shape="rect" id="node7" href="$_range_8c.html#a91b55894b9e6d74e4495ea610246c856" title="rangeIR" alt="" coords="345,81,411,108"/>
-<area shape="rect" id="node4" href="$_temp_8c.html#afd08db2b1a6d6af19e39f10dc453332c" title="readTemp" alt="" coords="488,5,567,32"/>
-<area shape="rect" id="node6" href="$_range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a" title="configureAD" alt="" coords="481,56,573,83"/>
-<area shape="rect" id="node5" href="$_temp_8c.html#a4946ccbc1990e831667bffded1147c4f" title="readTempx2" alt="" coords="621,5,715,32"/>
-</map>

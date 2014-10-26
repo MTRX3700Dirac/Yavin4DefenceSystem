@@ -13,5 +13,6 @@ var searchData=
   ['osctunebits',['OSCTUNEbits',['../p18f4520_8h.html#a88ceae0307237898c0988d570d281f1d',1,'p18f4520.h']]],
   ['osts',['OSTS',['../p18f4520_8h.html#a6829fc2fe5d6ed3b4f4b0b300cb62556',1,'p18f4520.h']]],
   ['out_5fof_5fir',['OUT_OF_IR',['../Common_8h.html#a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275',1,'Common.h']]],
+  ['out_5fof_5firs',['out_of_irs',['../structTargetStateData.html#a36c38be840b4157a4b13c29bf08de2f1',1,'TargetStateData']]],
   ['ov',['OV',['../p18f4520_8h.html#a708a252af439571331085cd1fc12b698',1,'p18f4520.h']]]
 ];

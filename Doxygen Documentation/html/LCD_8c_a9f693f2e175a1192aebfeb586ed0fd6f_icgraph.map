@@ -1,7 +1,6 @@
 <map id="lcdBusy" name="lcdBusy">
-<area shape="rect" id="node2" href="$LCD_8h.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="123,56,193,83"/>
-<area shape="rect" id="node3" href="$LCD_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Feed character, line (1 or 2), and column(1&#45;16) " alt="" coords="265,5,321,32"/>
-<area shape="rect" id="node5" href="$LCD_8h.html#a70a8f1041fdd13688a8f8e9fd897ccda" title="Feed character string, and line (1 or 2) " alt="" coords="241,56,345,83"/>
-<area shape="rect" id="node6" href="$LCD_8h.html#a69bb3d698d74da5ea85d8a455dbb3b28" title="Feed character string, and line (1 or 2) " alt="" coords="245,107,342,133"/>
-<area shape="rect" id="node4" href="$Menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="393,5,495,32"/>
+<area shape="rect" id="node2" href="$LCD_8c.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="123,5,193,32"/>
+<area shape="rect" id="node3" href="$LCD_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Feed character, line (1 or 2), and column(1&#45;16) " alt="" coords="241,5,297,32"/>
+<area shape="rect" id="node4" href="$Menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="345,5,447,32"/>
+<area shape="rect" id="node5" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="495,5,545,32"/>
 </map>

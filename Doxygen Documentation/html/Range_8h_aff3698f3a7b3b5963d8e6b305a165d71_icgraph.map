@@ -1,11 +1,9 @@
 <map id="range" name="range">
-<area shape="rect" id="node2" href="$Range_8c.html#af470fd0f0b96399b344f11783b4ef7f3" title="rangeUS" alt="" coords="129,81,201,107"/>
-<area shape="rect" id="node3" href="$Range_8c.html#a8606bd1052dde0e7c32eddad8699f4f4" title="calibrateRange" alt="" coords="273,30,381,57"/>
-<area shape="rect" id="node6" href="$Range_8c.html#a91b55894b9e6d74e4495ea610246c856" title="rangeIR" alt="" coords="132,30,199,57"/>
-<area shape="rect" id="node7" href="$Range_8h.html#a87c8e64ddc596f3e6b72ee861f671168" title="readTargetState" alt="" coords="108,131,223,158"/>
-<area shape="rect" id="node10" href="$Tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30" title="track" alt="" coords="301,182,352,209"/>
-<area shape="rect" id="node4" href="$Range_8h.html#a5b063989d39d2958d2ecebc0106cb1da" title="rangeUltrasonic" alt="" coords="271,81,383,107"/>
-<area shape="rect" id="node5" href="$newmain_8c.html#a562b6fc99e2386f66e66353386d80212" title="transRange" alt="" coords="431,81,519,107"/>
-<area shape="rect" id="node8" href="$Tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9" title="search" alt="" coords="296,131,357,158"/>
-<area shape="rect" id="node9" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="449,157,500,183"/>
+<area shape="rect" id="node2" href="$Range_8c.html#af470fd0f0b96399b344f11783b4ef7f3" title="rangeUS" alt="" coords="129,5,201,32"/>
+<area shape="rect" id="node3" href="$Range_8c.html#a8606bd1052dde0e7c32eddad8699f4f4" title="calibrateRange" alt="" coords="111,56,219,83"/>
+<area shape="rect" id="node4" href="$Range_8h.html#a87c8e64ddc596f3e6b72ee861f671168" title="readTargetState" alt="" coords="108,107,223,133"/>
+<area shape="rect" id="node7" href="$Tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30" title="track" alt="" coords="276,157,327,184"/>
+<area shape="rect" id="node8" href="$Range_8c.html#a71fa1634c2a7d76287ac872b5cfed382" title="fuseRange" alt="" coords="124,208,207,235"/>
+<area shape="rect" id="node5" href="$Tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9" title="search" alt="" coords="271,107,332,133"/>
+<area shape="rect" id="node6" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="380,132,431,159"/>
 </map>

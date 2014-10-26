@@ -2,23 +2,23 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="CircularBuffers_8h" kind="file">
     <compoundname>CircularBuffers.h</compoundname>
-    <includedby refid="Serial_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c</includedby>
-    <includedby refid="User__Interface_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c</includedby>
+    <includedby refid="Serial_8c" local="yes">Yavin4DefenceSystem/Code/Serial.c</includedby>
+    <includedby refid="User__Interface_8c" local="yes">Yavin4DefenceSystem/Code/User_Interface.c</includedby>
     <invincdepgraph>
-      <node id="244">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c</label>
+      <node id="338">
+        <label>Yavin4DefenceSystem/Code/Serial.c</label>
         <link refid="Serial_8c"/>
       </node>
-      <node id="245">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c</label>
+      <node id="339">
+        <label>Yavin4DefenceSystem/Code/User_Interface.c</label>
         <link refid="User__Interface_8c"/>
       </node>
-      <node id="243">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h</label>
+      <node id="337">
+        <label>Yavin4DefenceSystem/Code/CircularBuffers.h</label>
         <link refid="CircularBuffers.h"/>
-        <childnode refid="244" relation="include">
+        <childnode refid="338" relation="include">
         </childnode>
-        <childnode refid="245" relation="include">
+        <childnode refid="339" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -48,12 +48,13 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="23" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="23" bodyend="-1"/>
-        <referencedby refid="Serial_8h_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="Serial_8c" startline="90" endline="103">transmit</referencedby>
-        <referencedby refid="Serial_8h_1a42f5165187634304f89709eebe7c9f8c" compoundref="Serial_8c" startline="136" endline="139">receiveEmpty</referencedby>
-        <referencedby refid="Serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="Serial_8c" startline="206" endline="218">readString</referencedby>
-        <referencedby refid="Serial_8h_1a96a7d5e668a1b77fd5bbd343c7f1cbfc" compoundref="Serial_8c" startline="232" endline="235">transmitted</referencedby>
-        <referencedby refid="Serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="Serial_8c" startline="248" endline="289">serialISR</referencedby>
-        <referencedby refid="User__Interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="User__Interface_8c" startline="115" endline="118">userEmpty</referencedby>
+        <referencedby refid="Serial_8h_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="Serial_8c" startline="92" endline="105">transmit</referencedby>
+        <referencedby refid="Serial_8h_1a42f5165187634304f89709eebe7c9f8c" compoundref="Serial_8c" startline="138" endline="141">receiveEmpty</referencedby>
+        <referencedby refid="Serial_8h_1af7757e126aed6e958b291076653e24f9" compoundref="Serial_8c" startline="221" endline="229">popEsc</referencedby>
+        <referencedby refid="Serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="Serial_8c" startline="246" endline="259">readString</referencedby>
+        <referencedby refid="Serial_8h_1a96a7d5e668a1b77fd5bbd343c7f1cbfc" compoundref="Serial_8c" startline="273" endline="276">transmitted</referencedby>
+        <referencedby refid="Serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="Serial_8c" startline="289" endline="334">serialISR</referencedby>
+        <referencedby refid="User__Interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="User__Interface_8c" startline="166" endline="169">userEmpty</referencedby>
       </memberdef>
       <memberdef kind="define" id="CircularBuffers_8h_1a380cd5dd5680e22e1b6d839a57781661" prot="public" static="no">
         <name>full</name>
@@ -78,9 +79,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="25" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="25" bodyend="-1"/>
-        <referencedby refid="Serial_8h_1a6e41eb5b433439d82f67def509ade010" compoundref="Serial_8c" startline="153" endline="156">receivePeek</referencedby>
-        <referencedby refid="Serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="Serial_8c" startline="248" endline="289">serialISR</referencedby>
-        <referencedby refid="User__Interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" compoundref="User__Interface_8c" startline="150" endline="153">userPeek</referencedby>
+        <referencedby refid="Serial_8h_1a6e41eb5b433439d82f67def509ade010" compoundref="Serial_8c" startline="155" endline="158">receivePeek</referencedby>
+        <referencedby refid="Serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="Serial_8c" startline="289" endline="334">serialISR</referencedby>
+        <referencedby refid="User__Interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" compoundref="User__Interface_8c" startline="201" endline="204">userPeek</referencedby>
       </memberdef>
       <memberdef kind="define" id="CircularBuffers_8h_1aba30707c86c50590824a646a3ef26fbb" prot="public" static="no">
         <name>push</name>
@@ -94,9 +95,10 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="27" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="27" bodyend="-1"/>
-        <referencedby refid="Serial_8h_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="Serial_8c" startline="90" endline="103">transmit</referencedby>
-        <referencedby refid="Serial_8h_1aabfd643e8a01ba453ff6a88164b9eff8" compoundref="Serial_8c" startline="116" endline="123">transChar</referencedby>
-        <referencedby refid="Serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="Serial_8c" startline="248" endline="289">serialISR</referencedby>
+        <referencedby refid="Serial_8h_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="Serial_8c" startline="92" endline="105">transmit</referencedby>
+        <referencedby refid="Serial_8h_1aabfd643e8a01ba453ff6a88164b9eff8" compoundref="Serial_8c" startline="118" endline="125">transChar</referencedby>
+        <referencedby refid="Serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="Serial_8c" startline="289" endline="334">serialISR</referencedby>
+        <referencedby refid="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" compoundref="User__Interface_8c" startline="60" endline="73">userISR</referencedby>
       </memberdef>
       <memberdef kind="define" id="CircularBuffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" prot="public" static="no">
         <name>pop</name>
@@ -109,10 +111,11 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="28" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="28" bodyend="-1"/>
-        <referencedby refid="Serial_8h_1abb74ccb0bd81e0e4779854c93851c804" compoundref="Serial_8c" startline="169" endline="173">receivePop</referencedby>
-        <referencedby refid="Serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="Serial_8c" startline="206" endline="218">readString</referencedby>
-        <referencedby refid="Serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="Serial_8c" startline="248" endline="289">serialISR</referencedby>
-        <referencedby refid="User__Interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" compoundref="User__Interface_8c" startline="131" endline="136">userPop</referencedby>
+        <referencedby refid="Serial_8h_1abb74ccb0bd81e0e4779854c93851c804" compoundref="Serial_8c" startline="171" endline="175">receivePop</referencedby>
+        <referencedby refid="Serial_8h_1af7757e126aed6e958b291076653e24f9" compoundref="Serial_8c" startline="221" endline="229">popEsc</referencedby>
+        <referencedby refid="Serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="Serial_8c" startline="246" endline="259">readString</referencedby>
+        <referencedby refid="Serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" compoundref="Serial_8c" startline="289" endline="334">serialISR</referencedby>
+        <referencedby refid="User__Interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" compoundref="User__Interface_8c" startline="182" endline="187">userPop</referencedby>
       </memberdef>
       <memberdef kind="define" id="CircularBuffers_8h_1a526002aa17fac30d010d4d7315d5d81c" prot="public" static="no">
         <name>init</name>
@@ -125,12 +128,12 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" line="29" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/CircularBuffers.h" bodystart="29" bodyend="-1"/>
-        <referencedby refid="Serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="Serial_8c" startline="57" endline="75">configureSerial</referencedby>
-        <referencedby refid="User__Interface_8h_1a58e473ed40d00e18bd61277428e4d36c" compoundref="User__Interface_8c" startline="67" endline="71">configUSER</referencedby>
+        <referencedby refid="Serial_8h_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="Serial_8c" startline="58" endline="77">configureSerial</referencedby>
+        <referencedby refid="User__Interface_8h_1a58e473ed40d00e18bd61277428e4d36c" compoundref="User__Interface_8c" startline="86" endline="113">configUSER</referencedby>
       </memberdef>
       <memberdef kind="define" id="CircularBuffers_8h_1a5a69f707d5405fe875b322c6bfbace46" prot="public" static="no">
         <name>BUFFERLENGTH</name>
-        <initializer>30</initializer>
+        <initializer>80</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -170,7 +173,7 @@
 <codeline lineno="29" refid="CircularBuffers_8h_1a526002aa17fac30d010d4d7315d5d81c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>init(buf)<sp/>buf.tail<sp/>=<sp/>0;<sp/>buf.head<sp/>=<sp/>0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//NOTE:<sp/>The<sp/>BUFFERLENGTH<sp/>can<sp/>be<sp/>redefined<sp/>at<sp/>the<sp/>top<sp/>of<sp/>any<sp/>module<sp/>if<sp/>a<sp/>different<sp/>length<sp/>is<sp/>desired</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32" refid="CircularBuffers_8h_1a5a69f707d5405fe875b322c6bfbace46" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUFFERLENGTH<sp/>30</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="CircularBuffers_8h_1a5a69f707d5405fe875b322c6bfbace46" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUFFERLENGTH<sp/>80</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49" refid="structcircularBuffer" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal">{</highlight></codeline>

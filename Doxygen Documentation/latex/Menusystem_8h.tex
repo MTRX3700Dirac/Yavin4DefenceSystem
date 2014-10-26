@@ -1,47 +1,227 @@
-\hypertarget{Menusystem_8h}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Menusystem.h File Reference}
-\label{Menusystem_8h}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Menusystem.\+h@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Menusystem.\+h}}
+\hypertarget{Menusystem_8h}{\section{Yavin4\+Defence\+System/\+Code/\+Menusystem.h File Reference}
+\label{Menusystem_8h}\index{Yavin4\+Defence\+System/\+Code/\+Menusystem.\+h@{Yavin4\+Defence\+System/\+Code/\+Menusystem.\+h}}
 }
 This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{Menusystem_8h__dep__incl}
+\includegraphics[width=326pt]{Menusystem_8h__dep__incl}
 \end{center}
 \end{figure}
-\subsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \hyperlink{Menusystem_8h_abe3db97a849df459252001e1f4b3721c}{M\+E\+N\+U\+\_\+\+I\+S\+R}~0
-\item 
-\#define \hyperlink{Menusystem_8h_a9552ba249c0540ffe9a08a05d1b92504}{M\+E\+N\+U\+\_\+\+H}
-\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{Menusystem_8h_a94b96ccbb8f3c627c5d59189498a3c1b}{initialise\+Menu} (void)
 \begin{DoxyCompactList}\small\item\em Initialises the menu system. \end{DoxyCompactList}\item 
-void \hyperlink{Menusystem_8h_afc5a5c12a076ae6c7424df4f4124a521}{service\+Menu} (void)
+char \hyperlink{Menusystem_8h_a0c5137bf380f59ecbe803283c32f7c2c}{check\+For\+Serial\+Input} (void)
 \begin{DoxyCompactList}\small\item\em services any user interface with the menu \end{DoxyCompactList}\item 
 void \hyperlink{Menusystem_8h_a0f329206447b1f40e6f730b346aaaf44}{menu\+I\+S\+R} (void)
 \begin{DoxyCompactList}\small\item\em I\+S\+R function for the menu subsystem. \end{DoxyCompactList}\item 
-void \hyperlink{Menusystem_8h_ad16e5e62f3579a7048e6b981b172885e}{menu} (void)
+void \hyperlink{Menusystem_8h_afc5a5c12a076ae6c7424df4f4124a521}{service\+Menu} (void)
+\begin{DoxyCompactList}\small\item\em services any user interface with the menu \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const rom char \hyperlink{Menusystem_8h_a894b8103e76ff076b3e44dc4fce50cae}{new\+Line} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a5e200b19e322ccb9a3fb9c65555daf85}{C\+H\+O\+O\+S\+E} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}n\textbackslash{}n\textbackslash{}t\+Please select your option (eg. 2)\+: \textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_ac6d4335de27bb39d52e0baad84b022a8}{menu\+Prefix3} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a1344458b11a58d1495ab67a701f5058a}{menu\+Prefix4} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a1c9349cff12c59bf87bb2ba1befcc7df}{menu\+Prefix5} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t5\+:\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a84aca8e46b67414e24439878ab2ec412}{menu\+Prefix8} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t8\+:\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a7486ea443917f593fdf8335e166ef5a5}{go\+Up} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t\+Return to previous menu\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_ae283ceb6858b52420406c05644db9a7a}{go\+Up2} \mbox{[}$\,$\mbox{]} = \char`\"{}Press Esc to return to the previous menu.\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a60cb1a799f0caa9452beac0635066aa6}{err\+Num\+Out\+Of\+Range} \mbox{[}$\,$\mbox{]} = \char`\"{} Error\+: Please enter a number between \char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a158e4a9523cfcc6e1e200a9a6a14f5f9}{and} \mbox{[}$\,$\mbox{]} = \char`\"{} and \char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a9663e81d5c03c3b9d55547a7026a4399}{welcome} \mbox{[}$\,$\mbox{]} = \char`\"{} Welcome to Yavin I\+V Defence System \char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a84fb109e00ae7ee666d0f993bcca1eee}{welcome\+Lcd} \mbox{[}$\,$\mbox{]} = \char`\"{} Welcome!\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a31475565799b1401bbdfbdbc9cf01615}{top\+Option1} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t1\+:\textbackslash{}t\+Automatic Tracking\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a7ec7c8c825ad848f55b4e9bab9746c61}{top\+Option2} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t2\+:\textbackslash{}t\+Azimuth Options\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ad9098d4f350b47b27e2536a5be2f6860}{top\+Option3} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\textbackslash{}t\+Elevation Options\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a4a4801f2969ced100ed11a0e4b77d1bf}{top\+Option4} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\textbackslash{}t\+Range Options\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ad13da78bb30c39392a67fbe0cab7f64e}{top\+Option5} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t5\+:\textbackslash{}t\+Display Current Temperature\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ad926ea7382efe6d7f71a99cc7be95412}{top\+Option\+Cal\+Temp} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t6\+:\textbackslash{}t\+Calibrate the Temperature sensor\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a61696474144c1ffb967695824fea81df}{top\+Option\+Local} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t6\+:\textbackslash{}t\+Switch to Local mode\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a19aa2e40910ff9eb2fce3a043b17c669}{top\+Option\+Factory} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t7\+:\textbackslash{}t\+Switch to Factory mode\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ac3885618f839e1bda77df8e97165ba03}{top\+Option\+Remote} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t6\+:\textbackslash{}t\+Switch to Remote Serial mode\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a92244e44259433598dcd9a03a45d1300}{top\+Option\+Remote\+L\+C\+D} \mbox{[}$\,$\mbox{]} = \char`\"{}Switch to Remote\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_af0410aceeaafeed4193093e2f6ed32cc}{az\+Menu} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n\+Azimuth Configuration\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a1a92c31ccfeb8eefc39a4f365a1186be}{az\+Menu\+Lcd} \mbox{[}$\,$\mbox{]} = \char`\"{}Azimuth Options\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a69046a8196b1545ca5f7629fa77af2df}{az\+Option1} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t1\+:\textbackslash{}t\+Go to a specified azimuth angle\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ae59528a1a04b130bfba24f38f55e205e}{az\+Option2} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t2\+:\textbackslash{}t\+Set the minimum azimuth angle\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a7ae29fbab51b34bf2452c6aa569311ce}{az\+Option3} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\textbackslash{}t\+Set the maximum azimuth angle\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a5cc84655e1232d96cef6582120284479}{az\+Option4} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\textbackslash{}t\+Calibrate the azimuth motor\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a196dd4fcfd805cd8999ec22b8b4e8e68}{el\+Menu} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n\+Elevation Configuration\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a8998899192a07aa6a93e220f7016b6ef}{el\+Menu\+Lcd} \mbox{[}$\,$\mbox{]} = \char`\"{}Elevation Options\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a4c1e9c4dfb7fe830a2ee8c1bb3d7fbe6}{el\+Option1} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t1\+:\textbackslash{}t\+Go to a specified elevation angle\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a23c94355a833dd2f90769b14d291f262}{el\+Option2} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t2\+:\textbackslash{}t\+Set the minimum elevation angle\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a5200c7b545cbfe745c692155567ace7e}{el\+Option3} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\textbackslash{}t\+Set the maximum elevation angle\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a4789796069b86e83bbb588c13615341a}{el\+Option4} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\textbackslash{}t\+Calibrate the elevation motor\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_af95916e64b16841bb2232ca7f9041559}{rng\+Menu} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n\+Range Configuration\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const rom char \hyperlink{Menusystem_8h_a311b0648043e955e6cf18087a81a8333}{rng\+Menu\+Lcd} \mbox{[}$\,$\mbox{]} = \char`\"{}Range Options\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ab59efc86a2841b03d3757cd968d1f124}{rng\+Option1} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t1\+:\textbackslash{}t\+Set the minimum system range\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a43703fafefa33236f502d8423d24c1f7}{rng\+Option2} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t2\+:\textbackslash{}t\+Set the maximum system range\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ad50d9f60bf22d01b4de3808d5e7ea930}{rng\+Option3} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\textbackslash{}t\+View the raw ultrasound \hyperlink{Menusystem_8h_a158e4a9523cfcc6e1e200a9a6a14f5f9}{and} infrared sensor readings\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_af8f06237825a158526775ff711118d8d}{rng\+Option4} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\textbackslash{}t\+Set the ultrasound sample rate\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a21021e259bf70bf056e947341143bfe8}{rng\+Option5} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t5\+:\textbackslash{}t\+Set the number of ultrasound samples used per estimate\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a569a936faab100bde38e09e147892082}{rng\+Option6} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t6\+:\textbackslash{}t\+Set the infrared sample rate\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a17908e476d3e40de2d4cc1853455971c}{rng\+Option7} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t7\+:\textbackslash{}t\+Set the number of infrared samples used per estimate\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a93fde150eed1fc6eb628d84af5ab5282}{show\+Temp\+L\+C\+D\+Title} \mbox{[}$\,$\mbox{]} = \char`\"{}Display Temp\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a7eae478ace129d5b332daedee70efa05}{show\+Temp\+L\+C\+D} \mbox{[}$\,$\mbox{]} = \char`\"{}Temp = \char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a53af767e2ed6afe678da4e9a5b3cd181}{show\+Temp1} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n The current temperature is \char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a86bcce8e72af390d9e852aa0055f95a8}{show\+Temp2} \mbox{[}$\,$\mbox{]} = \char`\"{} degrees Celcius. \textbackslash{}r\textbackslash{}n\textbackslash{}n Press Esc to return.\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_af08ae36d6761047ce0e7cec4d5a768fc}{goto\+Az\+Angle} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Enter the azimuth angle in degrees. \textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a2e34ffaa5831640472cc470b1e92b914}{goto\+Az\+Angle\+L\+C\+D} \mbox{[}$\,$\mbox{]} = \char`\"{}Go to Azimuth\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a0bcfa136f866b44f9a0a0957bf424c45}{goto\+El\+Angle} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Enter the elevation angle in degrees. \textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a80fb9d027a27545fc0b67e0ecd653ddd}{goto\+E\+L\+Angle\+L\+C\+D} \mbox{[}$\,$\mbox{]} = \char`\"{}Go to Elevation\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ae5ad0cd48aae0c50a7953273ebd85dad}{goto\+Angle2} \mbox{[}$\,$\mbox{]} = \char`\"{} The current minimum \hyperlink{Menusystem_8h_a158e4a9523cfcc6e1e200a9a6a14f5f9}{and} maximum angles are \char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a0a8b550dcd2cf3ed90fbedb18404446c}{angle\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Angle\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ab517451b8173a7eaaba2ea327ea8c939}{max\+Az\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Max Azimuth\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ab0fafcb82ba132956c269eea6c5586da}{max\+Az\+Set\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Set \hyperlink{Menusystem2_8c_a6f607e5b0a90c0748c665c008d632093}{Max} Azimuth\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_acf51c764ea258021840229cf74bd0876}{max\+Az1} \mbox{[}$\,$\mbox{]} = \char`\"{} Enter a new maximum azimuth angle\+: \textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_abbf210dff9ad26eb8b6c1e1d5b2c5654}{max\+Az3} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Maximum azimuth angle set to \char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_aec1548d621add95a778fa1090b217c2e}{current\+Min\+Angle\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n The current minimum angle is \char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a7693ac388992b938163dc0b07178b46b}{min\+Az\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Min Azimuth\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_aeaa116394681e1306afeda71f21df0f3}{min\+Az\+Set\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Set \hyperlink{Menusystem2_8c_ae3f81077129a28d7185c8a241434c00d}{Min} Azimuth\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a02b7efee76f8ae20c758883e025bac9b}{min\+Az1} \mbox{[}$\,$\mbox{]} = \char`\"{} Enter a new minimum azimuth angle\+: \textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ad550b62385ad7bb0590d7ef23a9fc44b}{min\+Az3} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Minimum azimuth angle set to \char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a8c19982476b12787955e39d3336680a4}{calibrate\+Angle1} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Enter the true angle of the current position \textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ae5ae025aff6d51d96e716ebc64e9749b}{max\+El\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Max Elevation\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a454ccf4689150b73851eb8ef361f6bf4}{max\+El\+Set\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Set \hyperlink{Menusystem2_8c_a6f607e5b0a90c0748c665c008d632093}{Max} Elevation\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a5466dea4f6f0401303431d6ab1edd928}{max\+El1} \mbox{[}$\,$\mbox{]} = \char`\"{} Enter a new maximum elevation angle\+: \textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a2cc25780759bcdbad5ced60e7b9601a0}{max\+El3} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Maximum elevation angle set to \char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a05fd32eb695d62a03d150e0b47e332b9}{min\+El\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Min Elevation\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a27044e69d7b8bdcf45f6005f8f66f64a}{min\+El\+Set\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Set \hyperlink{Menusystem2_8c_ae3f81077129a28d7185c8a241434c00d}{Min} Elevation\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ac2bb5a4e18a0582824a43baa92d7883e}{min\+El1} \mbox{[}$\,$\mbox{]} = \char`\"{} Enter a new minimum elevation angle\+: \textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a42dd47b41d655b4309fd9890de72a9ba}{min\+El3} \mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Minimum elevation angle set to \char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_ab45baccd3c3b2464882aa7cb320d8bf2}{min\+Rng\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Min Range\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a79f561bdfea295e07e23302e4927d9de}{min\+Rng\+Set\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Set \hyperlink{Menusystem2_8c_ae3f81077129a28d7185c8a241434c00d}{Min} Range\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_aa51017b2f9456eb0c2d6bf1b6336fd60}{min\+Rng\+Serial\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Enter a new minimum range\+: \textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a98c4f9a1b0571a585aa77fbb878ed1a0}{max\+Rng\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Max Range\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_a6c61a9b8091c05dedab1a209f02e8394}{max\+Rng\+Set\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Set \hyperlink{Menusystem2_8c_a6f607e5b0a90c0748c665c008d632093}{Max} Range\char`\"{}
+\item 
+const far rom char \hyperlink{Menusystem_8h_aa8e428262d4c3d6b83b922309279d68e}{max\+Rng\+Serial\+Str} \mbox{[}$\,$\mbox{]} = \char`\"{}Enter a new minimum range\+: \textbackslash{}r\textbackslash{}n\char`\"{}
 \end{DoxyCompactItemize}
 
 
-\subsection{Macro Definition Documentation}
-\hypertarget{Menusystem_8h_a9552ba249c0540ffe9a08a05d1b92504}{\index{Menusystem.\+h@{Menusystem.\+h}!M\+E\+N\+U\+\_\+\+H@{M\+E\+N\+U\+\_\+\+H}}
-\index{M\+E\+N\+U\+\_\+\+H@{M\+E\+N\+U\+\_\+\+H}!Menusystem.\+h@{Menusystem.\+h}}
-\subsubsection[{M\+E\+N\+U\+\_\+\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+H}}\label{Menusystem_8h_a9552ba249c0540ffe9a08a05d1b92504}
-\hypertarget{Menusystem_8h_abe3db97a849df459252001e1f4b3721c}{\index{Menusystem.\+h@{Menusystem.\+h}!M\+E\+N\+U\+\_\+\+I\+S\+R@{M\+E\+N\+U\+\_\+\+I\+S\+R}}
-\index{M\+E\+N\+U\+\_\+\+I\+S\+R@{M\+E\+N\+U\+\_\+\+I\+S\+R}!Menusystem.\+h@{Menusystem.\+h}}
-\subsubsection[{M\+E\+N\+U\+\_\+\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+I\+S\+R~0}}\label{Menusystem_8h_abe3db97a849df459252001e1f4b3721c}
-
-
- File\+: \hyperlink{Menusystem_8h}{Menusystem.\+h} Author\+: Jacob
-
-Created on 7 October 2014, 9\+:56 P\+M 
-
 \subsection{Function Documentation}
+\hypertarget{Menusystem_8h_a0c5137bf380f59ecbe803283c32f7c2c}{\index{Menusystem.\+h@{Menusystem.\+h}!check\+For\+Serial\+Input@{check\+For\+Serial\+Input}}
+\index{check\+For\+Serial\+Input@{check\+For\+Serial\+Input}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{check\+For\+Serial\+Input}]{\setlength{\rightskip}{0pt plus 5cm}char check\+For\+Serial\+Input (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Menusystem_8h_a0c5137bf380f59ecbe803283c32f7c2c}
+
+
+services any user interface with the menu 
+
+
+
+ Function\+: wait\+For\+Input(void)
+
+Include\+:
+
+Description\+: Checks the serial/local buffers for inputs
+
+Arguments\+: None
+
+Returns\+: 1 if input has been received, 0 otherwise Wait until the receive buffer is no longer empty Indicating that a command has been passed 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{Menusystem_8h_a0c5137bf380f59ecbe803283c32f7c2c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menusystem_8h_a0c5137bf380f59ecbe803283c32f7c2c_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{Menusystem_8h_a94b96ccbb8f3c627c5d59189498a3c1b}{\index{Menusystem.\+h@{Menusystem.\+h}!initialise\+Menu@{initialise\+Menu}}
 \index{initialise\+Menu@{initialise\+Menu}!Menusystem.\+h@{Menusystem.\+h}}
 \subsubsection[{initialise\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}void initialise\+Menu (
@@ -74,13 +254,17 @@ Here is the call graph for this function\+:\nopagebreak
 \end{figure}
 
 
-\hypertarget{Menusystem_8h_ad16e5e62f3579a7048e6b981b172885e}{\index{Menusystem.\+h@{Menusystem.\+h}!menu@{menu}}
-\index{menu@{menu}!Menusystem.\+h@{Menusystem.\+h}}
-\subsubsection[{menu}]{\setlength{\rightskip}{0pt plus 5cm}void menu (
-\begin{DoxyParamCaption}
-\item[{void}]{}
-\end{DoxyParamCaption}
-)}}\label{Menusystem_8h_ad16e5e62f3579a7048e6b981b172885e}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{Menusystem_8h_a94b96ccbb8f3c627c5d59189498a3c1b_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{Menusystem_8h_a0f329206447b1f40e6f730b346aaaf44}{\index{Menusystem.\+h@{Menusystem.\+h}!menu\+I\+S\+R@{menu\+I\+S\+R}}
 \index{menu\+I\+S\+R@{menu\+I\+S\+R}!Menusystem.\+h@{Menusystem.\+h}}
 \subsubsection[{menu\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}void menu\+I\+S\+R (
@@ -94,7 +278,7 @@ I\+S\+R function for the menu subsystem.
 
 
 
- Function\+: \hyperlink{Menusystem_8c_a0f329206447b1f40e6f730b346aaaf44}{menu\+I\+S\+R(void)}
+ Function\+: \hyperlink{Menusystem2_8c_a0f329206447b1f40e6f730b346aaaf44}{menu\+I\+S\+R(void)}
 
 Include\+: \hyperlink{Menusystem_8h}{Menusystem.\+h}
 
@@ -123,14 +307,261 @@ Description\+: Checks if the user has made any inputs to the system. If not the 
 
 Arguments\+: None
 
-Returns\+: None 
+Returns\+: None If Esc or Back button pressed, return
+
+Otherwise Confirm the selection 
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=264pt]{Menusystem_8h_afc5a5c12a076ae6c7424df4f4124a521_cgraph}
+\includegraphics[width=350pt]{Menusystem_8h_afc5a5c12a076ae6c7424df4f4124a521_cgraph}
 \end{center}
 \end{figure}
 
 
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{Menusystem_8h_afc5a5c12a076ae6c7424df4f4124a521_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{Menusystem_8h_a158e4a9523cfcc6e1e200a9a6a14f5f9}{\index{Menusystem.\+h@{Menusystem.\+h}!and@{and}}
+\index{and@{and}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{and}]{\setlength{\rightskip}{0pt plus 5cm}const rom char and\mbox{[}$\,$\mbox{]} = \char`\"{} and \char`\"{}}}\label{Menusystem_8h_a158e4a9523cfcc6e1e200a9a6a14f5f9}
+\hypertarget{Menusystem_8h_a0a8b550dcd2cf3ed90fbedb18404446c}{\index{Menusystem.\+h@{Menusystem.\+h}!angle\+Str@{angle\+Str}}
+\index{angle\+Str@{angle\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{angle\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char angle\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Angle\char`\"{}}}\label{Menusystem_8h_a0a8b550dcd2cf3ed90fbedb18404446c}
+\hypertarget{Menusystem_8h_af0410aceeaafeed4193093e2f6ed32cc}{\index{Menusystem.\+h@{Menusystem.\+h}!az\+Menu@{az\+Menu}}
+\index{az\+Menu@{az\+Menu}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{az\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}const rom char az\+Menu\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n\+Azimuth Configuration\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_af0410aceeaafeed4193093e2f6ed32cc}
+\hypertarget{Menusystem_8h_a1a92c31ccfeb8eefc39a4f365a1186be}{\index{Menusystem.\+h@{Menusystem.\+h}!az\+Menu\+Lcd@{az\+Menu\+Lcd}}
+\index{az\+Menu\+Lcd@{az\+Menu\+Lcd}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{az\+Menu\+Lcd}]{\setlength{\rightskip}{0pt plus 5cm}const rom char az\+Menu\+Lcd\mbox{[}$\,$\mbox{]} = \char`\"{}Azimuth Options\char`\"{}}}\label{Menusystem_8h_a1a92c31ccfeb8eefc39a4f365a1186be}
+\hypertarget{Menusystem_8h_a69046a8196b1545ca5f7629fa77af2df}{\index{Menusystem.\+h@{Menusystem.\+h}!az\+Option1@{az\+Option1}}
+\index{az\+Option1@{az\+Option1}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{az\+Option1}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char az\+Option1\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t1\+:\textbackslash{}t\+Go to a specified azimuth angle\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a69046a8196b1545ca5f7629fa77af2df}
+\hypertarget{Menusystem_8h_ae59528a1a04b130bfba24f38f55e205e}{\index{Menusystem.\+h@{Menusystem.\+h}!az\+Option2@{az\+Option2}}
+\index{az\+Option2@{az\+Option2}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{az\+Option2}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char az\+Option2\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t2\+:\textbackslash{}t\+Set the minimum azimuth angle\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_ae59528a1a04b130bfba24f38f55e205e}
+\hypertarget{Menusystem_8h_a7ae29fbab51b34bf2452c6aa569311ce}{\index{Menusystem.\+h@{Menusystem.\+h}!az\+Option3@{az\+Option3}}
+\index{az\+Option3@{az\+Option3}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{az\+Option3}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char az\+Option3\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\textbackslash{}t\+Set the maximum azimuth angle\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a7ae29fbab51b34bf2452c6aa569311ce}
+\hypertarget{Menusystem_8h_a5cc84655e1232d96cef6582120284479}{\index{Menusystem.\+h@{Menusystem.\+h}!az\+Option4@{az\+Option4}}
+\index{az\+Option4@{az\+Option4}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{az\+Option4}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char az\+Option4\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\textbackslash{}t\+Calibrate the azimuth motor\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a5cc84655e1232d96cef6582120284479}
+\hypertarget{Menusystem_8h_a8c19982476b12787955e39d3336680a4}{\index{Menusystem.\+h@{Menusystem.\+h}!calibrate\+Angle1@{calibrate\+Angle1}}
+\index{calibrate\+Angle1@{calibrate\+Angle1}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{calibrate\+Angle1}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char calibrate\+Angle1\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Enter the true angle of the current position \textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a8c19982476b12787955e39d3336680a4}
+\hypertarget{Menusystem_8h_a5e200b19e322ccb9a3fb9c65555daf85}{\index{Menusystem.\+h@{Menusystem.\+h}!C\+H\+O\+O\+S\+E@{C\+H\+O\+O\+S\+E}}
+\index{C\+H\+O\+O\+S\+E@{C\+H\+O\+O\+S\+E}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{C\+H\+O\+O\+S\+E}]{\setlength{\rightskip}{0pt plus 5cm}const rom char C\+H\+O\+O\+S\+E\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}n\textbackslash{}n\textbackslash{}t\+Please select your option (eg. 2)\+: \textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a5e200b19e322ccb9a3fb9c65555daf85}
+\hypertarget{Menusystem_8h_aec1548d621add95a778fa1090b217c2e}{\index{Menusystem.\+h@{Menusystem.\+h}!current\+Min\+Angle\+Str@{current\+Min\+Angle\+Str}}
+\index{current\+Min\+Angle\+Str@{current\+Min\+Angle\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{current\+Min\+Angle\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char current\+Min\+Angle\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n The current minimum angle is \char`\"{}}}\label{Menusystem_8h_aec1548d621add95a778fa1090b217c2e}
+\hypertarget{Menusystem_8h_a196dd4fcfd805cd8999ec22b8b4e8e68}{\index{Menusystem.\+h@{Menusystem.\+h}!el\+Menu@{el\+Menu}}
+\index{el\+Menu@{el\+Menu}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{el\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}const rom char el\+Menu\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n\+Elevation Configuration\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a196dd4fcfd805cd8999ec22b8b4e8e68}
+\hypertarget{Menusystem_8h_a8998899192a07aa6a93e220f7016b6ef}{\index{Menusystem.\+h@{Menusystem.\+h}!el\+Menu\+Lcd@{el\+Menu\+Lcd}}
+\index{el\+Menu\+Lcd@{el\+Menu\+Lcd}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{el\+Menu\+Lcd}]{\setlength{\rightskip}{0pt plus 5cm}const rom char el\+Menu\+Lcd\mbox{[}$\,$\mbox{]} = \char`\"{}Elevation Options\char`\"{}}}\label{Menusystem_8h_a8998899192a07aa6a93e220f7016b6ef}
+\hypertarget{Menusystem_8h_a4c1e9c4dfb7fe830a2ee8c1bb3d7fbe6}{\index{Menusystem.\+h@{Menusystem.\+h}!el\+Option1@{el\+Option1}}
+\index{el\+Option1@{el\+Option1}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{el\+Option1}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char el\+Option1\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t1\+:\textbackslash{}t\+Go to a specified elevation angle\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a4c1e9c4dfb7fe830a2ee8c1bb3d7fbe6}
+\hypertarget{Menusystem_8h_a23c94355a833dd2f90769b14d291f262}{\index{Menusystem.\+h@{Menusystem.\+h}!el\+Option2@{el\+Option2}}
+\index{el\+Option2@{el\+Option2}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{el\+Option2}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char el\+Option2\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t2\+:\textbackslash{}t\+Set the minimum elevation angle\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a23c94355a833dd2f90769b14d291f262}
+\hypertarget{Menusystem_8h_a5200c7b545cbfe745c692155567ace7e}{\index{Menusystem.\+h@{Menusystem.\+h}!el\+Option3@{el\+Option3}}
+\index{el\+Option3@{el\+Option3}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{el\+Option3}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char el\+Option3\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\textbackslash{}t\+Set the maximum elevation angle\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a5200c7b545cbfe745c692155567ace7e}
+\hypertarget{Menusystem_8h_a4789796069b86e83bbb588c13615341a}{\index{Menusystem.\+h@{Menusystem.\+h}!el\+Option4@{el\+Option4}}
+\index{el\+Option4@{el\+Option4}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{el\+Option4}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char el\+Option4\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\textbackslash{}t\+Calibrate the elevation motor\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a4789796069b86e83bbb588c13615341a}
+\hypertarget{Menusystem_8h_a60cb1a799f0caa9452beac0635066aa6}{\index{Menusystem.\+h@{Menusystem.\+h}!err\+Num\+Out\+Of\+Range@{err\+Num\+Out\+Of\+Range}}
+\index{err\+Num\+Out\+Of\+Range@{err\+Num\+Out\+Of\+Range}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{err\+Num\+Out\+Of\+Range}]{\setlength{\rightskip}{0pt plus 5cm}const rom char err\+Num\+Out\+Of\+Range\mbox{[}$\,$\mbox{]} = \char`\"{} Error\+: Please enter a number between \char`\"{}}}\label{Menusystem_8h_a60cb1a799f0caa9452beac0635066aa6}
+\hypertarget{Menusystem_8h_ae5ad0cd48aae0c50a7953273ebd85dad}{\index{Menusystem.\+h@{Menusystem.\+h}!goto\+Angle2@{goto\+Angle2}}
+\index{goto\+Angle2@{goto\+Angle2}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{goto\+Angle2}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char goto\+Angle2\mbox{[}$\,$\mbox{]} = \char`\"{} The current minimum {\bf and} maximum angles are \char`\"{}}}\label{Menusystem_8h_ae5ad0cd48aae0c50a7953273ebd85dad}
+\hypertarget{Menusystem_8h_af08ae36d6761047ce0e7cec4d5a768fc}{\index{Menusystem.\+h@{Menusystem.\+h}!goto\+Az\+Angle@{goto\+Az\+Angle}}
+\index{goto\+Az\+Angle@{goto\+Az\+Angle}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{goto\+Az\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char goto\+Az\+Angle\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Enter the azimuth angle in degrees. \textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_af08ae36d6761047ce0e7cec4d5a768fc}
+\hypertarget{Menusystem_8h_a2e34ffaa5831640472cc470b1e92b914}{\index{Menusystem.\+h@{Menusystem.\+h}!goto\+Az\+Angle\+L\+C\+D@{goto\+Az\+Angle\+L\+C\+D}}
+\index{goto\+Az\+Angle\+L\+C\+D@{goto\+Az\+Angle\+L\+C\+D}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{goto\+Az\+Angle\+L\+C\+D}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char goto\+Az\+Angle\+L\+C\+D\mbox{[}$\,$\mbox{]} = \char`\"{}Go to Azimuth\char`\"{}}}\label{Menusystem_8h_a2e34ffaa5831640472cc470b1e92b914}
+\hypertarget{Menusystem_8h_a0bcfa136f866b44f9a0a0957bf424c45}{\index{Menusystem.\+h@{Menusystem.\+h}!goto\+El\+Angle@{goto\+El\+Angle}}
+\index{goto\+El\+Angle@{goto\+El\+Angle}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{goto\+El\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char goto\+El\+Angle\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Enter the elevation angle in degrees. \textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a0bcfa136f866b44f9a0a0957bf424c45}
+\hypertarget{Menusystem_8h_a80fb9d027a27545fc0b67e0ecd653ddd}{\index{Menusystem.\+h@{Menusystem.\+h}!goto\+E\+L\+Angle\+L\+C\+D@{goto\+E\+L\+Angle\+L\+C\+D}}
+\index{goto\+E\+L\+Angle\+L\+C\+D@{goto\+E\+L\+Angle\+L\+C\+D}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{goto\+E\+L\+Angle\+L\+C\+D}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char goto\+E\+L\+Angle\+L\+C\+D\mbox{[}$\,$\mbox{]} = \char`\"{}Go to Elevation\char`\"{}}}\label{Menusystem_8h_a80fb9d027a27545fc0b67e0ecd653ddd}
+\hypertarget{Menusystem_8h_a7486ea443917f593fdf8335e166ef5a5}{\index{Menusystem.\+h@{Menusystem.\+h}!go\+Up@{go\+Up}}
+\index{go\+Up@{go\+Up}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{go\+Up}]{\setlength{\rightskip}{0pt plus 5cm}const rom char go\+Up\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t\+Return to previous menu\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a7486ea443917f593fdf8335e166ef5a5}
+\hypertarget{Menusystem_8h_ae283ceb6858b52420406c05644db9a7a}{\index{Menusystem.\+h@{Menusystem.\+h}!go\+Up2@{go\+Up2}}
+\index{go\+Up2@{go\+Up2}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{go\+Up2}]{\setlength{\rightskip}{0pt plus 5cm}const rom char go\+Up2\mbox{[}$\,$\mbox{]} = \char`\"{}Press Esc to return to the previous menu.\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_ae283ceb6858b52420406c05644db9a7a}
+\hypertarget{Menusystem_8h_acf51c764ea258021840229cf74bd0876}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+Az1@{max\+Az1}}
+\index{max\+Az1@{max\+Az1}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+Az1}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+Az1\mbox{[}$\,$\mbox{]} = \char`\"{} Enter a new maximum azimuth angle\+: \textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_acf51c764ea258021840229cf74bd0876}
+\hypertarget{Menusystem_8h_abbf210dff9ad26eb8b6c1e1d5b2c5654}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+Az3@{max\+Az3}}
+\index{max\+Az3@{max\+Az3}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+Az3}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+Az3\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Maximum azimuth angle set to \char`\"{}}}\label{Menusystem_8h_abbf210dff9ad26eb8b6c1e1d5b2c5654}
+\hypertarget{Menusystem_8h_ab0fafcb82ba132956c269eea6c5586da}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+Az\+Set\+Str@{max\+Az\+Set\+Str}}
+\index{max\+Az\+Set\+Str@{max\+Az\+Set\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+Az\+Set\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+Az\+Set\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Set {\bf Max} Azimuth\char`\"{}}}\label{Menusystem_8h_ab0fafcb82ba132956c269eea6c5586da}
+\hypertarget{Menusystem_8h_ab517451b8173a7eaaba2ea327ea8c939}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+Az\+Str@{max\+Az\+Str}}
+\index{max\+Az\+Str@{max\+Az\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+Az\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+Az\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Max Azimuth\char`\"{}}}\label{Menusystem_8h_ab517451b8173a7eaaba2ea327ea8c939}
+\hypertarget{Menusystem_8h_a5466dea4f6f0401303431d6ab1edd928}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+El1@{max\+El1}}
+\index{max\+El1@{max\+El1}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+El1}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+El1\mbox{[}$\,$\mbox{]} = \char`\"{} Enter a new maximum elevation angle\+: \textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a5466dea4f6f0401303431d6ab1edd928}
+\hypertarget{Menusystem_8h_a2cc25780759bcdbad5ced60e7b9601a0}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+El3@{max\+El3}}
+\index{max\+El3@{max\+El3}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+El3}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+El3\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Maximum elevation angle set to \char`\"{}}}\label{Menusystem_8h_a2cc25780759bcdbad5ced60e7b9601a0}
+\hypertarget{Menusystem_8h_a454ccf4689150b73851eb8ef361f6bf4}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+El\+Set\+Str@{max\+El\+Set\+Str}}
+\index{max\+El\+Set\+Str@{max\+El\+Set\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+El\+Set\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+El\+Set\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Set {\bf Max} Elevation\char`\"{}}}\label{Menusystem_8h_a454ccf4689150b73851eb8ef361f6bf4}
+\hypertarget{Menusystem_8h_ae5ae025aff6d51d96e716ebc64e9749b}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+El\+Str@{max\+El\+Str}}
+\index{max\+El\+Str@{max\+El\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+El\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+El\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Max Elevation\char`\"{}}}\label{Menusystem_8h_ae5ae025aff6d51d96e716ebc64e9749b}
+\hypertarget{Menusystem_8h_aa8e428262d4c3d6b83b922309279d68e}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+Rng\+Serial\+Str@{max\+Rng\+Serial\+Str}}
+\index{max\+Rng\+Serial\+Str@{max\+Rng\+Serial\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+Rng\+Serial\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+Rng\+Serial\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Enter a new minimum range\+: \textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_aa8e428262d4c3d6b83b922309279d68e}
+\hypertarget{Menusystem_8h_a6c61a9b8091c05dedab1a209f02e8394}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+Rng\+Set\+Str@{max\+Rng\+Set\+Str}}
+\index{max\+Rng\+Set\+Str@{max\+Rng\+Set\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+Rng\+Set\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+Rng\+Set\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Set {\bf Max} Range\char`\"{}}}\label{Menusystem_8h_a6c61a9b8091c05dedab1a209f02e8394}
+\hypertarget{Menusystem_8h_a98c4f9a1b0571a585aa77fbb878ed1a0}{\index{Menusystem.\+h@{Menusystem.\+h}!max\+Rng\+Str@{max\+Rng\+Str}}
+\index{max\+Rng\+Str@{max\+Rng\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{max\+Rng\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char max\+Rng\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Max Range\char`\"{}}}\label{Menusystem_8h_a98c4f9a1b0571a585aa77fbb878ed1a0}
+\hypertarget{Menusystem_8h_ac6d4335de27bb39d52e0baad84b022a8}{\index{Menusystem.\+h@{Menusystem.\+h}!menu\+Prefix3@{menu\+Prefix3}}
+\index{menu\+Prefix3@{menu\+Prefix3}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{menu\+Prefix3}]{\setlength{\rightskip}{0pt plus 5cm}const rom char menu\+Prefix3\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\char`\"{}}}\label{Menusystem_8h_ac6d4335de27bb39d52e0baad84b022a8}
+\hypertarget{Menusystem_8h_a1344458b11a58d1495ab67a701f5058a}{\index{Menusystem.\+h@{Menusystem.\+h}!menu\+Prefix4@{menu\+Prefix4}}
+\index{menu\+Prefix4@{menu\+Prefix4}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{menu\+Prefix4}]{\setlength{\rightskip}{0pt plus 5cm}const rom char menu\+Prefix4\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\char`\"{}}}\label{Menusystem_8h_a1344458b11a58d1495ab67a701f5058a}
+\hypertarget{Menusystem_8h_a1c9349cff12c59bf87bb2ba1befcc7df}{\index{Menusystem.\+h@{Menusystem.\+h}!menu\+Prefix5@{menu\+Prefix5}}
+\index{menu\+Prefix5@{menu\+Prefix5}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{menu\+Prefix5}]{\setlength{\rightskip}{0pt plus 5cm}const rom char menu\+Prefix5\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t5\+:\char`\"{}}}\label{Menusystem_8h_a1c9349cff12c59bf87bb2ba1befcc7df}
+\hypertarget{Menusystem_8h_a84aca8e46b67414e24439878ab2ec412}{\index{Menusystem.\+h@{Menusystem.\+h}!menu\+Prefix8@{menu\+Prefix8}}
+\index{menu\+Prefix8@{menu\+Prefix8}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{menu\+Prefix8}]{\setlength{\rightskip}{0pt plus 5cm}const rom char menu\+Prefix8\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t8\+:\char`\"{}}}\label{Menusystem_8h_a84aca8e46b67414e24439878ab2ec412}
+\hypertarget{Menusystem_8h_a02b7efee76f8ae20c758883e025bac9b}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+Az1@{min\+Az1}}
+\index{min\+Az1@{min\+Az1}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+Az1}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+Az1\mbox{[}$\,$\mbox{]} = \char`\"{} Enter a new minimum azimuth angle\+: \textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a02b7efee76f8ae20c758883e025bac9b}
+\hypertarget{Menusystem_8h_ad550b62385ad7bb0590d7ef23a9fc44b}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+Az3@{min\+Az3}}
+\index{min\+Az3@{min\+Az3}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+Az3}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+Az3\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Minimum azimuth angle set to \char`\"{}}}\label{Menusystem_8h_ad550b62385ad7bb0590d7ef23a9fc44b}
+\hypertarget{Menusystem_8h_aeaa116394681e1306afeda71f21df0f3}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+Az\+Set\+Str@{min\+Az\+Set\+Str}}
+\index{min\+Az\+Set\+Str@{min\+Az\+Set\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+Az\+Set\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+Az\+Set\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Set {\bf Min} Azimuth\char`\"{}}}\label{Menusystem_8h_aeaa116394681e1306afeda71f21df0f3}
+\hypertarget{Menusystem_8h_a7693ac388992b938163dc0b07178b46b}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+Az\+Str@{min\+Az\+Str}}
+\index{min\+Az\+Str@{min\+Az\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+Az\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+Az\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Min Azimuth\char`\"{}}}\label{Menusystem_8h_a7693ac388992b938163dc0b07178b46b}
+\hypertarget{Menusystem_8h_ac2bb5a4e18a0582824a43baa92d7883e}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+El1@{min\+El1}}
+\index{min\+El1@{min\+El1}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+El1}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+El1\mbox{[}$\,$\mbox{]} = \char`\"{} Enter a new minimum elevation angle\+: \textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_ac2bb5a4e18a0582824a43baa92d7883e}
+\hypertarget{Menusystem_8h_a42dd47b41d655b4309fd9890de72a9ba}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+El3@{min\+El3}}
+\index{min\+El3@{min\+El3}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+El3}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+El3\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n Minimum elevation angle set to \char`\"{}}}\label{Menusystem_8h_a42dd47b41d655b4309fd9890de72a9ba}
+\hypertarget{Menusystem_8h_a27044e69d7b8bdcf45f6005f8f66f64a}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+El\+Set\+Str@{min\+El\+Set\+Str}}
+\index{min\+El\+Set\+Str@{min\+El\+Set\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+El\+Set\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+El\+Set\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Set {\bf Min} Elevation\char`\"{}}}\label{Menusystem_8h_a27044e69d7b8bdcf45f6005f8f66f64a}
+\hypertarget{Menusystem_8h_a05fd32eb695d62a03d150e0b47e332b9}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+El\+Str@{min\+El\+Str}}
+\index{min\+El\+Str@{min\+El\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+El\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+El\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Min Elevation\char`\"{}}}\label{Menusystem_8h_a05fd32eb695d62a03d150e0b47e332b9}
+\hypertarget{Menusystem_8h_aa51017b2f9456eb0c2d6bf1b6336fd60}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+Rng\+Serial\+Str@{min\+Rng\+Serial\+Str}}
+\index{min\+Rng\+Serial\+Str@{min\+Rng\+Serial\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+Rng\+Serial\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+Rng\+Serial\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Enter a new minimum range\+: \textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_aa51017b2f9456eb0c2d6bf1b6336fd60}
+\hypertarget{Menusystem_8h_a79f561bdfea295e07e23302e4927d9de}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+Rng\+Set\+Str@{min\+Rng\+Set\+Str}}
+\index{min\+Rng\+Set\+Str@{min\+Rng\+Set\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+Rng\+Set\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+Rng\+Set\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Set {\bf Min} Range\char`\"{}}}\label{Menusystem_8h_a79f561bdfea295e07e23302e4927d9de}
+\hypertarget{Menusystem_8h_ab45baccd3c3b2464882aa7cb320d8bf2}{\index{Menusystem.\+h@{Menusystem.\+h}!min\+Rng\+Str@{min\+Rng\+Str}}
+\index{min\+Rng\+Str@{min\+Rng\+Str}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{min\+Rng\+Str}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char min\+Rng\+Str\mbox{[}$\,$\mbox{]} = \char`\"{}Min Range\char`\"{}}}\label{Menusystem_8h_ab45baccd3c3b2464882aa7cb320d8bf2}
+\hypertarget{Menusystem_8h_a894b8103e76ff076b3e44dc4fce50cae}{\index{Menusystem.\+h@{Menusystem.\+h}!new\+Line@{new\+Line}}
+\index{new\+Line@{new\+Line}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{new\+Line}]{\setlength{\rightskip}{0pt plus 5cm}const rom char new\+Line\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a894b8103e76ff076b3e44dc4fce50cae}
+\hypertarget{Menusystem_8h_af95916e64b16841bb2232ca7f9041559}{\index{Menusystem.\+h@{Menusystem.\+h}!rng\+Menu@{rng\+Menu}}
+\index{rng\+Menu@{rng\+Menu}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{rng\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}const rom char rng\+Menu\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n\+Range Configuration\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_af95916e64b16841bb2232ca7f9041559}
+\hypertarget{Menusystem_8h_a311b0648043e955e6cf18087a81a8333}{\index{Menusystem.\+h@{Menusystem.\+h}!rng\+Menu\+Lcd@{rng\+Menu\+Lcd}}
+\index{rng\+Menu\+Lcd@{rng\+Menu\+Lcd}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{rng\+Menu\+Lcd}]{\setlength{\rightskip}{0pt plus 5cm}const rom char rng\+Menu\+Lcd\mbox{[}$\,$\mbox{]} = \char`\"{}Range Options\char`\"{}}}\label{Menusystem_8h_a311b0648043e955e6cf18087a81a8333}
+\hypertarget{Menusystem_8h_ab59efc86a2841b03d3757cd968d1f124}{\index{Menusystem.\+h@{Menusystem.\+h}!rng\+Option1@{rng\+Option1}}
+\index{rng\+Option1@{rng\+Option1}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{rng\+Option1}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char rng\+Option1\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t1\+:\textbackslash{}t\+Set the minimum system range\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_ab59efc86a2841b03d3757cd968d1f124}
+\hypertarget{Menusystem_8h_a43703fafefa33236f502d8423d24c1f7}{\index{Menusystem.\+h@{Menusystem.\+h}!rng\+Option2@{rng\+Option2}}
+\index{rng\+Option2@{rng\+Option2}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{rng\+Option2}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char rng\+Option2\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t2\+:\textbackslash{}t\+Set the maximum system range\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a43703fafefa33236f502d8423d24c1f7}
+\hypertarget{Menusystem_8h_ad50d9f60bf22d01b4de3808d5e7ea930}{\index{Menusystem.\+h@{Menusystem.\+h}!rng\+Option3@{rng\+Option3}}
+\index{rng\+Option3@{rng\+Option3}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{rng\+Option3}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char rng\+Option3\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\textbackslash{}t\+View the raw ultrasound {\bf and} infrared sensor readings\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_ad50d9f60bf22d01b4de3808d5e7ea930}
+\hypertarget{Menusystem_8h_af8f06237825a158526775ff711118d8d}{\index{Menusystem.\+h@{Menusystem.\+h}!rng\+Option4@{rng\+Option4}}
+\index{rng\+Option4@{rng\+Option4}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{rng\+Option4}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char rng\+Option4\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\textbackslash{}t\+Set the ultrasound sample rate\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_af8f06237825a158526775ff711118d8d}
+\hypertarget{Menusystem_8h_a21021e259bf70bf056e947341143bfe8}{\index{Menusystem.\+h@{Menusystem.\+h}!rng\+Option5@{rng\+Option5}}
+\index{rng\+Option5@{rng\+Option5}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{rng\+Option5}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char rng\+Option5\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t5\+:\textbackslash{}t\+Set the number of ultrasound samples used per estimate\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a21021e259bf70bf056e947341143bfe8}
+\hypertarget{Menusystem_8h_a569a936faab100bde38e09e147892082}{\index{Menusystem.\+h@{Menusystem.\+h}!rng\+Option6@{rng\+Option6}}
+\index{rng\+Option6@{rng\+Option6}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{rng\+Option6}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char rng\+Option6\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t6\+:\textbackslash{}t\+Set the infrared sample rate\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a569a936faab100bde38e09e147892082}
+\hypertarget{Menusystem_8h_a17908e476d3e40de2d4cc1853455971c}{\index{Menusystem.\+h@{Menusystem.\+h}!rng\+Option7@{rng\+Option7}}
+\index{rng\+Option7@{rng\+Option7}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{rng\+Option7}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char rng\+Option7\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t7\+:\textbackslash{}t\+Set the number of infrared samples used per estimate\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a17908e476d3e40de2d4cc1853455971c}
+\hypertarget{Menusystem_8h_a53af767e2ed6afe678da4e9a5b3cd181}{\index{Menusystem.\+h@{Menusystem.\+h}!show\+Temp1@{show\+Temp1}}
+\index{show\+Temp1@{show\+Temp1}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{show\+Temp1}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char show\+Temp1\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}r\textbackslash{}n The current temperature is \char`\"{}}}\label{Menusystem_8h_a53af767e2ed6afe678da4e9a5b3cd181}
+\hypertarget{Menusystem_8h_a86bcce8e72af390d9e852aa0055f95a8}{\index{Menusystem.\+h@{Menusystem.\+h}!show\+Temp2@{show\+Temp2}}
+\index{show\+Temp2@{show\+Temp2}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{show\+Temp2}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char show\+Temp2\mbox{[}$\,$\mbox{]} = \char`\"{} degrees Celcius. \textbackslash{}r\textbackslash{}n\textbackslash{}n Press Esc to return.\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a86bcce8e72af390d9e852aa0055f95a8}
+\hypertarget{Menusystem_8h_a7eae478ace129d5b332daedee70efa05}{\index{Menusystem.\+h@{Menusystem.\+h}!show\+Temp\+L\+C\+D@{show\+Temp\+L\+C\+D}}
+\index{show\+Temp\+L\+C\+D@{show\+Temp\+L\+C\+D}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{show\+Temp\+L\+C\+D}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char show\+Temp\+L\+C\+D\mbox{[}$\,$\mbox{]} = \char`\"{}Temp = \char`\"{}}}\label{Menusystem_8h_a7eae478ace129d5b332daedee70efa05}
+\hypertarget{Menusystem_8h_a93fde150eed1fc6eb628d84af5ab5282}{\index{Menusystem.\+h@{Menusystem.\+h}!show\+Temp\+L\+C\+D\+Title@{show\+Temp\+L\+C\+D\+Title}}
+\index{show\+Temp\+L\+C\+D\+Title@{show\+Temp\+L\+C\+D\+Title}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{show\+Temp\+L\+C\+D\+Title}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char show\+Temp\+L\+C\+D\+Title\mbox{[}$\,$\mbox{]} = \char`\"{}Display Temp\char`\"{}}}\label{Menusystem_8h_a93fde150eed1fc6eb628d84af5ab5282}
+\hypertarget{Menusystem_8h_a31475565799b1401bbdfbdbc9cf01615}{\index{Menusystem.\+h@{Menusystem.\+h}!top\+Option1@{top\+Option1}}
+\index{top\+Option1@{top\+Option1}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{top\+Option1}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char top\+Option1\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t1\+:\textbackslash{}t\+Automatic Tracking\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a31475565799b1401bbdfbdbc9cf01615}
+\hypertarget{Menusystem_8h_a7ec7c8c825ad848f55b4e9bab9746c61}{\index{Menusystem.\+h@{Menusystem.\+h}!top\+Option2@{top\+Option2}}
+\index{top\+Option2@{top\+Option2}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{top\+Option2}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char top\+Option2\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t2\+:\textbackslash{}t\+Azimuth Options\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a7ec7c8c825ad848f55b4e9bab9746c61}
+\hypertarget{Menusystem_8h_ad9098d4f350b47b27e2536a5be2f6860}{\index{Menusystem.\+h@{Menusystem.\+h}!top\+Option3@{top\+Option3}}
+\index{top\+Option3@{top\+Option3}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{top\+Option3}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char top\+Option3\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t3\+:\textbackslash{}t\+Elevation Options\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_ad9098d4f350b47b27e2536a5be2f6860}
+\hypertarget{Menusystem_8h_a4a4801f2969ced100ed11a0e4b77d1bf}{\index{Menusystem.\+h@{Menusystem.\+h}!top\+Option4@{top\+Option4}}
+\index{top\+Option4@{top\+Option4}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{top\+Option4}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char top\+Option4\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t4\+:\textbackslash{}t\+Range Options\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a4a4801f2969ced100ed11a0e4b77d1bf}
+\hypertarget{Menusystem_8h_ad13da78bb30c39392a67fbe0cab7f64e}{\index{Menusystem.\+h@{Menusystem.\+h}!top\+Option5@{top\+Option5}}
+\index{top\+Option5@{top\+Option5}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{top\+Option5}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char top\+Option5\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t5\+:\textbackslash{}t\+Display Current Temperature\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_ad13da78bb30c39392a67fbe0cab7f64e}
+\hypertarget{Menusystem_8h_ad926ea7382efe6d7f71a99cc7be95412}{\index{Menusystem.\+h@{Menusystem.\+h}!top\+Option\+Cal\+Temp@{top\+Option\+Cal\+Temp}}
+\index{top\+Option\+Cal\+Temp@{top\+Option\+Cal\+Temp}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{top\+Option\+Cal\+Temp}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char top\+Option\+Cal\+Temp\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t6\+:\textbackslash{}t\+Calibrate the Temperature sensor\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_ad926ea7382efe6d7f71a99cc7be95412}
+\hypertarget{Menusystem_8h_a19aa2e40910ff9eb2fce3a043b17c669}{\index{Menusystem.\+h@{Menusystem.\+h}!top\+Option\+Factory@{top\+Option\+Factory}}
+\index{top\+Option\+Factory@{top\+Option\+Factory}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{top\+Option\+Factory}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char top\+Option\+Factory\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t7\+:\textbackslash{}t\+Switch to Factory mode\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a19aa2e40910ff9eb2fce3a043b17c669}
+\hypertarget{Menusystem_8h_a61696474144c1ffb967695824fea81df}{\index{Menusystem.\+h@{Menusystem.\+h}!top\+Option\+Local@{top\+Option\+Local}}
+\index{top\+Option\+Local@{top\+Option\+Local}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{top\+Option\+Local}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char top\+Option\+Local\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t6\+:\textbackslash{}t\+Switch to Local mode\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_a61696474144c1ffb967695824fea81df}
+\hypertarget{Menusystem_8h_ac3885618f839e1bda77df8e97165ba03}{\index{Menusystem.\+h@{Menusystem.\+h}!top\+Option\+Remote@{top\+Option\+Remote}}
+\index{top\+Option\+Remote@{top\+Option\+Remote}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{top\+Option\+Remote}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char top\+Option\+Remote\mbox{[}$\,$\mbox{]} = \char`\"{}\textbackslash{}t6\+:\textbackslash{}t\+Switch to Remote Serial mode\textbackslash{}r\textbackslash{}n\char`\"{}}}\label{Menusystem_8h_ac3885618f839e1bda77df8e97165ba03}
+\hypertarget{Menusystem_8h_a92244e44259433598dcd9a03a45d1300}{\index{Menusystem.\+h@{Menusystem.\+h}!top\+Option\+Remote\+L\+C\+D@{top\+Option\+Remote\+L\+C\+D}}
+\index{top\+Option\+Remote\+L\+C\+D@{top\+Option\+Remote\+L\+C\+D}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{top\+Option\+Remote\+L\+C\+D}]{\setlength{\rightskip}{0pt plus 5cm}const far rom char top\+Option\+Remote\+L\+C\+D\mbox{[}$\,$\mbox{]} = \char`\"{}Switch to Remote\char`\"{}}}\label{Menusystem_8h_a92244e44259433598dcd9a03a45d1300}
+\hypertarget{Menusystem_8h_a9663e81d5c03c3b9d55547a7026a4399}{\index{Menusystem.\+h@{Menusystem.\+h}!welcome@{welcome}}
+\index{welcome@{welcome}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{welcome}]{\setlength{\rightskip}{0pt plus 5cm}const rom char welcome\mbox{[}$\,$\mbox{]} = \char`\"{} Welcome to Yavin I\+V Defence System \char`\"{}}}\label{Menusystem_8h_a9663e81d5c03c3b9d55547a7026a4399}
+\hypertarget{Menusystem_8h_a84fb109e00ae7ee666d0f993bcca1eee}{\index{Menusystem.\+h@{Menusystem.\+h}!welcome\+Lcd@{welcome\+Lcd}}
+\index{welcome\+Lcd@{welcome\+Lcd}!Menusystem.\+h@{Menusystem.\+h}}
+\subsubsection[{welcome\+Lcd}]{\setlength{\rightskip}{0pt plus 5cm}const rom char welcome\+Lcd\mbox{[}$\,$\mbox{]} = \char`\"{} Welcome!\char`\"{}}}\label{Menusystem_8h_a84fb109e00ae7ee666d0f993bcca1eee}

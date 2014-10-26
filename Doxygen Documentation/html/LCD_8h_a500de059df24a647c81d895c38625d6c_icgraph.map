@@ -1,6 +1,0 @@
-<map id="lcdWrite" name="lcdWrite">
-<area shape="rect" id="node2" href="$LCD_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Feed character, line (1 or 2), and column(1&#45;16) " alt="" coords="148,5,204,32"/>
-<area shape="rect" id="node4" href="$LCD_8h.html#a70a8f1041fdd13688a8f8e9fd897ccda" title="Feed character string, and line (1 or 2) " alt="" coords="124,56,228,83"/>
-<area shape="rect" id="node5" href="$LCD_8h.html#a69bb3d698d74da5ea85d8a455dbb3b28" title="Feed character string, and line (1 or 2) " alt="" coords="127,107,225,133"/>
-<area shape="rect" id="node3" href="$Menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="276,5,377,32"/>
-</map>

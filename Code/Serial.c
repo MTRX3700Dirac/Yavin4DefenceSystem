@@ -334,3 +334,5 @@ void serialISR(void)
 }
 
 void escANSI()
+{
+}

@@ -2,37 +2,44 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="Serial_8h" kind="file">
     <compoundname>Serial.h</compoundname>
-    <includedby refid="Interrupts_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Interrupts.c</includedby>
-    <includedby refid="Menusystem_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c</includedby>
-    <includedby refid="Menusystem2_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c</includedby>
-    <includedby refid="newmain_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c</includedby>
+    <includedby refid="Interrupts_8c" local="yes">Yavin4DefenceSystem/Code/Interrupts.c</includedby>
+    <includedby refid="Menusystem_8c" local="yes">Yavin4DefenceSystem/Code/Menusystem.c</includedby>
+    <includedby refid="Menusystem2_8c" local="yes">Yavin4DefenceSystem/Code/Menusystem2.c</includedby>
+    <includedby refid="newmain_8c" local="yes">Yavin4DefenceSystem/Code/newmain.c</includedby>
+    <includedby refid="User__Interface_8c" local="yes">Yavin4DefenceSystem/Code/User_Interface.c</includedby>
     <invincdepgraph>
-      <node id="427">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c</label>
+      <node id="574">
+        <label>Yavin4DefenceSystem/Code/Menusystem.c</label>
         <link refid="Menusystem_8c"/>
       </node>
-      <node id="426">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Interrupts.c</label>
+      <node id="573">
+        <label>Yavin4DefenceSystem/Code/Interrupts.c</label>
         <link refid="Interrupts_8c"/>
       </node>
-      <node id="429">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c</label>
+      <node id="576">
+        <label>Yavin4DefenceSystem/Code/newmain.c</label>
         <link refid="newmain_8c"/>
       </node>
-      <node id="425">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h</label>
+      <node id="572">
+        <label>Yavin4DefenceSystem/Code/Serial.h</label>
         <link refid="Serial.h"/>
-        <childnode refid="426" relation="include">
+        <childnode refid="573" relation="include">
         </childnode>
-        <childnode refid="427" relation="include">
+        <childnode refid="574" relation="include">
         </childnode>
-        <childnode refid="428" relation="include">
+        <childnode refid="575" relation="include">
         </childnode>
-        <childnode refid="429" relation="include">
+        <childnode refid="576" relation="include">
+        </childnode>
+        <childnode refid="577" relation="include">
         </childnode>
       </node>
-      <node id="428">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c</label>
+      <node id="577">
+        <label>Yavin4DefenceSystem/Code/User_Interface.c</label>
+        <link refid="User__Interface_8c"/>
+      </node>
+      <node id="575">
+        <label>Yavin4DefenceSystem/Code/Menusystem2.c</label>
         <link refid="Menusystem2_8c"/>
       </node>
     </invincdepgraph>
@@ -59,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="35" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="37" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -78,14 +85,19 @@
  Function: <ref refid="Serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" kindref="member">configureSerial(void)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: Configures the serial ready for communication</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="57" bodyend="75"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="58" bodyend="77"/>
         <references refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772">INTCONbits</references>
         <references refid="p18f4520_8h_1a00ea63e57cd6582e6e73158695e2b088">RCONbits</references>
         <references refid="CircularBuffers_8h_1a526002aa17fac30d010d4d7315d5d81c" compoundref="CircularBuffers_8h" startline="29">init</references>
         <references refid="Serial_8c_1a8cff2d32a612db164397b2a3b4ce2b5e" compoundref="Serial_8c" startline="44">carriageReturn</references>
-        <referencedby refid="Menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="Menusystem_8c" startline="150" endline="155">initialiseMenu</referencedby>
-        <referencedby refid="Menusystem_8c_1afa234d458057237e03e355d30fafac84" compoundref="Menusystem_8c" startline="197" endline="230">menu</referencedby>
-        <referencedby refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" compoundref="newmain_8c" startline="87" endline="93">initialization</referencedby>
+        <references refid="Serial_8c_1a625ea157d146adb4c20b402fe7de7d0d" compoundref="Serial_8c" startline="45">escPressed</references>
+        <references refid="usart_8h_1a97cd9f0d7678894aeb678238243ef440" compoundref="usart_8h" startline="97">USART_TX_INT_ON</references>
+        <references refid="usart_8h_1a977e3b97e355cdf939a03087cd07331d" compoundref="usart_8h" startline="99">USART_RX_INT_ON</references>
+        <references refid="usart_8h_1a47e36a169b1732cc401cab714c380cad" compoundref="usart_8h" startline="101">USART_BRGH_HIGH</references>
+        <references refid="usart_8h_1a3b38f957a6fff1ac093fa5796a84282d" compoundref="usart_8h" startline="108">USART_EIGHT_BIT</references>
+        <references refid="usart_8h_1a2478822de4dabae4bdf391746ac9bb08" compoundref="usart_8h" startline="110">USART_ASYNCH_MODE</references>
+        <referencedby refid="Menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="Menusystem_8c" startline="190" endline="196">initialiseMenu</referencedby>
+        <referencedby refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" compoundref="newmain_8c" startline="117" endline="129">initialization</referencedby>
       </memberdef>
       <memberdef kind="function" id="Serial_8h_1a6cf71700cdaeb2afeaf619777af19bfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -102,17 +114,18 @@
  Function: <ref refid="Serial_8c_1a6cf71700cdaeb2afeaf619777af19bfc" kindref="member">serialISR(void)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: Acts as the interrupt service routine for the serial module</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="21" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="248" bodyend="289"/>
-        <references refid="Common_8h_1aef3509d0d4bc8291df1b76f894a1e251" compoundref="Common_8h" startline="149">TX_INT</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="21" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="289" bodyend="334"/>
+        <references refid="Common_8h_1aef3509d0d4bc8291df1b76f894a1e251" compoundref="Common_8h" startline="145">TX_INT</references>
         <references refid="CircularBuffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="CircularBuffers_8h" startline="23">empty</references>
         <references refid="Serial_8c_1af4550af5f0b07a9dae44eaca1e30d809" compoundref="Serial_8c" startline="31">TX_INT_DISABLE</references>
         <references refid="CircularBuffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="CircularBuffers_8h" startline="28">pop</references>
         <references refid="Serial_8c_1ae75715981e20452ec65e09240954c901" compoundref="Serial_8c" startline="27">TX_INT_CLEAR</references>
-        <references refid="Common_8h_1a62ad39277340a9f95c1464e4a4b1b5a1" compoundref="Common_8h" startline="150">RC_INT</references>
+        <references refid="Common_8h_1a62ad39277340a9f95c1464e4a4b1b5a1" compoundref="Common_8h" startline="146">RC_INT</references>
         <references refid="CircularBuffers_8h_1ab6770f937bcc348970693cd84824bf9f" compoundref="CircularBuffers_8h" startline="25">peek</references>
+        <references refid="Serial_8c_1a4af1b6159e447ba72652bb7fcdfa726e" compoundref="Serial_8c" startline="37">ESC</references>
+        <references refid="Serial_8c_1a625ea157d146adb4c20b402fe7de7d0d" compoundref="Serial_8c" startline="45">escPressed</references>
         <references refid="Serial_8c_1a580a88f98668df1ac5e1683cae31c0b3" compoundref="Serial_8c" startline="39">BS</references>
         <references refid="Serial_8c_1a876ce77f3c672c7162658151e648389e" compoundref="Serial_8c" startline="35">CR</references>
-        <references refid="Serial_8c_1a4af1b6159e447ba72652bb7fcdfa726e" compoundref="Serial_8c" startline="37">ESC</references>
         <references refid="Serial_8c_1a4fc34b120ed3bd1120c1eb36abbcd6af" compoundref="Serial_8c" startline="36">NL</references>
         <references refid="CircularBuffers_8h_1aba30707c86c50590824a646a3ef26fbb" compoundref="CircularBuffers_8h" startline="27">push</references>
         <references refid="Serial_8c_1a8cff2d32a612db164397b2a3b4ce2b5e" compoundref="Serial_8c" startline="44">carriageReturn</references>
@@ -136,17 +149,20 @@
  Function: <ref refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kindref="member">transmit(char *string)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: Begins transmitting the string over serial (interrupt driven)</para><para>Arguments: string - pointer to the beginning of the string to transmit</para><para>Returns: None</para><para>NOTE: Must be Null Terminated! Cannot receive a literal. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="24" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="90" bodyend="103"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="24" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="92" bodyend="105"/>
         <references refid="CircularBuffers_8h_1aba30707c86c50590824a646a3ef26fbb" compoundref="CircularBuffers_8h" startline="27">push</references>
         <references refid="CircularBuffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="CircularBuffers_8h" startline="23">empty</references>
         <references refid="Serial_8c_1aed05378c71b5932db9fe75240763fcec" compoundref="Serial_8c" startline="29">TX_INT_ENABLE</references>
-        <referencedby refid="Menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" compoundref="Menusystem_8c" startline="58" endline="63">clearscreen</referencedby>
-        <referencedby refid="Menusystem_8c_1a4bb64cc936229611900f25e483381dc7" compoundref="Menusystem_8c" startline="65" endline="70">filler</referencedby>
-        <referencedby refid="Menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" compoundref="Menusystem_8c" startline="72" endline="78">disptoptions</referencedby>
-        <referencedby refid="Menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" compoundref="Menusystem_8c" startline="80" endline="96">topmenudisp</referencedby>
-        <referencedby refid="Menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" compoundref="Menusystem_8c" startline="98" endline="135">topmenu</referencedby>
+        <referencedby refid="Menusystem_8c_1a3e308d6e9b426c6463bea038c996aa35" compoundref="Menusystem_8c" startline="116" endline="124">sendROM</referencedby>
+        <referencedby refid="Menusystem_8c_1a9f7902dc2a501ad1f16ec5011415bbbc" compoundref="Menusystem_8c" startline="130" endline="144">sendNewLine</referencedby>
+        <referencedby refid="Menusystem_8c_1a67e96e514d9f296c79378f7fbfba457a" compoundref="Menusystem_8c" startline="149" endline="163">clearScreen</referencedby>
+        <referencedby refid="Menusystem_8c_1a4bb64cc936229611900f25e483381dc7" compoundref="Menusystem_8c" startline="165" endline="175">filler</referencedby>
+        <referencedby refid="Menusystem_8c_1a423b16a9c8b8570e98a887785bf2a22e" compoundref="Menusystem_8c" startline="281" endline="288">errOutOfRange</referencedby>
+        <referencedby refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" compoundref="Menusystem_8c" startline="424" endline="485">setValue</referencedby>
+        <referencedby refid="Menusystem_8c_1a68e5fd71e2e27b77d08445f294598629" compoundref="Menusystem_8c" startline="816" endline="822">dispTempSerialMessage</referencedby>
         <referencedby refid="Menusystem2_8c_1a4bee0e4646c0720d174aaf635246988c" compoundref="Menusystem2_8c" startline="197" endline="208">stateEntry</referencedby>
-        <referencedby refid="newmain_8c_1a562b6fc99e2386f66e66353386d80212" compoundref="newmain_8c" startline="108" endline="127">transRange</referencedby>
+        <referencedby refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" compoundref="newmain_8c" startline="117" endline="129">initialization</referencedby>
+        <referencedby refid="newmain_8c_1a2757d71d336e927bb4e6acf8016df536" compoundref="newmain_8c" startline="131" endline="171">dispTrack</referencedby>
       </memberdef>
       <memberdef kind="function" id="Serial_8h_1a96a7d5e668a1b77fd5bbd343c7f1cbfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -163,7 +179,7 @@
  Function: <ref refid="Serial_8c_1a96a7d5e668a1b77fd5bbd343c7f1cbfc" kindref="member">transmitted(void)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: returns non-zero if the message has been completely transmited e.g. if the transmit buffer is empty</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="25" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="232" bodyend="235"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="25" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="273" bodyend="276"/>
         <references refid="CircularBuffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="CircularBuffers_8h" startline="23">empty</references>
       </memberdef>
       <memberdef kind="function" id="Serial_8h_1aabfd643e8a01ba453ff6a88164b9eff8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -182,9 +198,11 @@
  Function: <ref refid="Serial_8c_1aabfd643e8a01ba453ff6a88164b9eff8" kindref="member">transChar(char c)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: Transmits a single character</para><para>Arguments: c - character to transmit</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="26" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="116" bodyend="123"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="26" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="118" bodyend="125"/>
         <references refid="CircularBuffers_8h_1aba30707c86c50590824a646a3ef26fbb" compoundref="CircularBuffers_8h" startline="27">push</references>
         <references refid="Serial_8c_1aed05378c71b5932db9fe75240763fcec" compoundref="Serial_8c" startline="29">TX_INT_ENABLE</references>
+        <referencedby refid="Menusystem_8c_1aae2d111e2cbcfe93d493729e9c9c1f2b" compoundref="Menusystem_8c" startline="701" endline="717">displayMenuSerial</referencedby>
+        <referencedby refid="newmain_8c_1a2757d71d336e927bb4e6acf8016df536" compoundref="newmain_8c" startline="131" endline="171">dispTrack</referencedby>
       </memberdef>
       <memberdef kind="function" id="Serial_8h_1a42f5165187634304f89709eebe7c9f8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -201,10 +219,9 @@
  Function: <ref refid="Serial_8c_1a42f5165187634304f89709eebe7c9f8c" kindref="member">receiveEmpty(void)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: Indicates if the receive buffer is empty</para><para>Arguments: None</para><para>Returns: returns true if the recieve buffer is empty </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="29" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="136" bodyend="139"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="29" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="138" bodyend="141"/>
         <references refid="CircularBuffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="CircularBuffers_8h" startline="23">empty</references>
-        <referencedby refid="Menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" compoundref="Menusystem_8c" startline="98" endline="135">topmenu</referencedby>
-        <referencedby refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem_8c" startline="173" endline="177">serviceMenu</referencedby>
+        <referencedby refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem2_8c" startline="87" endline="111">serviceMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="Serial_8h_1a6e41eb5b433439d82f67def509ade010" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -221,7 +238,7 @@
  Function: <ref refid="Serial_8c_1a6e41eb5b433439d82f67def509ade010" kindref="member">receivePeek(void)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: Returns the next character in the receive buffer without removing it from the buffer</para><para>Arguments: None</para><para>Returns: The next received character </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="30" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="153" bodyend="156"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="30" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="155" bodyend="158"/>
         <references refid="CircularBuffers_8h_1ab6770f937bcc348970693cd84824bf9f" compoundref="CircularBuffers_8h" startline="25">peek</references>
       </memberdef>
       <memberdef kind="function" id="Serial_8h_1abb74ccb0bd81e0e4779854c93851c804" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -239,7 +256,7 @@
  Function: <ref refid="Serial_8c_1abb74ccb0bd81e0e4779854c93851c804" kindref="member">receivePop(void)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: Pops the next received character from the received buffer</para><para>Arguments: None</para><para>Returns: The next character from the receive buffer </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="31" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="169" bodyend="173"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="31" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="171" bodyend="175"/>
         <references refid="CircularBuffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="CircularBuffers_8h" startline="28">pop</references>
         <referencedby refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem2_8c" startline="87" endline="111">serviceMenu</referencedby>
       </memberdef>
@@ -258,9 +275,30 @@
  Function: <ref refid="Serial_8c_1aca906fa91f67c730681400b51d426933" kindref="member">receiveCR(void)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: Indicates whether a Carriage Return has been received</para><para>Arguments: None</para><para>Returns: non-zero if CR has been received, zero otherwise </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="32" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="186" bodyend="189"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="32" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="188" bodyend="191"/>
         <references refid="Serial_8c_1a8cff2d32a612db164397b2a3b4ce2b5e" compoundref="Serial_8c" startline="44">carriageReturn</references>
+        <referencedby refid="Menusystem_8h_1a0c5137bf380f59ecbe803283c32f7c2c" compoundref="Menusystem_8c" startline="211" endline="215">checkForSerialInput</referencedby>
         <referencedby refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem2_8c" startline="87" endline="111">serviceMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="Serial_8h_1a26eab76ecdaba2d82581899cda8d9f11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char receiveEsc</definition>
+        <argsstring>(void)</argsstring>
+        <name>receiveEsc</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Serial_8c_1a26eab76ecdaba2d82581899cda8d9f11" kindref="member">receiveEsc(void)</ref></para><para>Include:</para><para>Description: Indicates whether an Escape character has been received</para><para>Arguments: None</para><para>Returns: non-zero if the Esc has been received, zero otherwise </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="33" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="204" bodyend="207"/>
+        <references refid="Serial_8c_1a625ea157d146adb4c20b402fe7de7d0d" compoundref="Serial_8c" startline="45">escPressed</references>
+        <referencedby refid="Menusystem_8h_1a0c5137bf380f59ecbe803283c32f7c2c" compoundref="Menusystem_8c" startline="211" endline="215">checkForSerialInput</referencedby>
+        <referencedby refid="Menusystem_8c_1a8b63a4216144880e0f72493bb99327b9" compoundref="Menusystem_8c" startline="308" endline="318">getSerialNumericInput</referencedby>
       </memberdef>
       <memberdef kind="function" id="Serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -275,16 +313,37 @@
         </briefdescription>
         <detaileddescription>
 <para><hruler/>
- Function: <ref refid="Serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" kindref="member">readString(char *string)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: Writes all received data up to a carriage return into given location.</para><para>Arguments: string - Pointer to location to store received data</para><para>Returns: Received data up to a carriage return</para><para>Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the location pointed to by string before calling this function. </para>        </detaileddescription>
+ Function: <ref refid="Serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" kindref="member">readString(char *string)</ref></para><para>Include: <ref refid="Serial_8h" kindref="compound">Serial.h</ref></para><para>Description: Writes all received data up to a carriage return into given location.</para><para>Arguments: string - Pointer to location to store received data</para><para>Returns: Received data including the carriage return</para><para>Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the location pointed to by string before calling this function. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="33" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="206" bodyend="218"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="34" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="246" bodyend="259"/>
         <references refid="CircularBuffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="CircularBuffers_8h" startline="23">empty</references>
         <references refid="CircularBuffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="CircularBuffers_8h" startline="28">pop</references>
         <references refid="Serial_8c_1a876ce77f3c672c7162658151e648389e" compoundref="Serial_8c" startline="35">CR</references>
         <references refid="Serial_8c_1a8cff2d32a612db164397b2a3b4ce2b5e" compoundref="Serial_8c" startline="44">carriageReturn</references>
-        <referencedby refid="Menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" compoundref="Menusystem_8c" startline="98" endline="135">topmenu</referencedby>
+        <referencedby refid="Menusystem_8c_1a8b63a4216144880e0f72493bb99327b9" compoundref="Menusystem_8c" startline="308" endline="318">getSerialNumericInput</referencedby>
         <referencedby refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem2_8c" startline="87" endline="111">serviceMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="Serial_8h_1af7757e126aed6e958b291076653e24f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void popEsc</definition>
+        <argsstring>(void)</argsstring>
+        <name>popEsc</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Serial_8c_1af7757e126aed6e958b291076653e24f9" kindref="member">popEsc(void)</ref></para><para>Include:</para><para>Description: Processes the Esc command and removes any input before the Esc command.</para><para>Arguments: None</para><para>Returns: </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" line="35" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.c" bodystart="221" bodyend="229"/>
+        <references refid="CircularBuffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="CircularBuffers_8h" startline="23">empty</references>
+        <references refid="CircularBuffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="CircularBuffers_8h" startline="28">pop</references>
+        <references refid="Serial_8c_1a625ea157d146adb4c20b402fe7de7d0d" compoundref="Serial_8c" startline="45">escPressed</references>
+        <referencedby refid="Menusystem_8c_1a8b63a4216144880e0f72493bb99327b9" compoundref="Menusystem_8c" startline="308" endline="318">getSerialNumericInput</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -313,10 +372,12 @@
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Serial_8h_1a6e41eb5b433439d82f67def509ade010" kindref="member">receivePeek</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Serial_8h_1abb74ccb0bd81e0e4779854c93851c804" kindref="member">receivePop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Serial_8h_1aca906fa91f67c730681400b51d426933" kindref="member">receiveCR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" kindref="member">readString</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="Serial_8h_1abd89d9fc65aaf89bc50e9b1252ca1bdd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERIAL_H</highlight></codeline>
-<codeline lineno="36"><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Serial_8h_1a26eab76ecdaba2d82581899cda8d9f11" kindref="member">receiveEsc</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" kindref="member">readString</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Serial_8h_1af7757e126aed6e958b291076653e24f9" kindref="member">popEsc</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="Serial_8h_1abd89d9fc65aaf89bc50e9b1252ca1bdd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERIAL_H</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h"/>
   </compounddef>

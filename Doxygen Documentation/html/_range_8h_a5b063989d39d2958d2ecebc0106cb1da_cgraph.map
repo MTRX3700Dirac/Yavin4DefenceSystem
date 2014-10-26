@@ -1,6 +1,0 @@
-<map id="rangeUltrasonic" name="rangeUltrasonic">
-<area shape="rect" id="node2" href="$_range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2" title="configureRange" alt="" coords="165,31,276,57"/>
-<area shape="rect" id="node3" href="$_temp_8c.html#afd08db2b1a6d6af19e39f10dc453332c" title="readTemp" alt="" coords="331,5,409,32"/>
-<area shape="rect" id="node5" href="$_range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a" title="configureAD" alt="" coords="324,56,416,83"/>
-<area shape="rect" id="node4" href="$_temp_8c.html#a4946ccbc1990e831667bffded1147c4f" title="readTempx2" alt="" coords="464,5,557,32"/>
-</map>

@@ -1,5 +1,5 @@
-\hypertarget{Serial_8c}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Serial.c File Reference}
-\label{Serial_8c}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Serial.\+c@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Serial.\+c}}
+\hypertarget{Serial_8c}{\section{Yavin4\+Defence\+System/\+Code/\+Serial.c File Reference}
+\label{Serial_8c}\index{Yavin4\+Defence\+System/\+Code/\+Serial.\+c@{Yavin4\+Defence\+System/\+Code/\+Serial.\+c}}
 }
 {\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
 {\ttfamily \#include $<$usart.\+h$>$}\\*
@@ -53,6 +53,10 @@ char \hyperlink{Serial_8c_abb74ccb0bd81e0e4779854c93851c804}{receive\+Pop} (void
 \item 
 char \hyperlink{Serial_8c_aca906fa91f67c730681400b51d426933}{receive\+C\+R} (void)
 \item 
+char \hyperlink{Serial_8c_a26eab76ecdaba2d82581899cda8d9f11}{receive\+Esc} (void)
+\item 
+void \hyperlink{Serial_8c_af7757e126aed6e958b291076653e24f9}{pop\+Esc} (void)
+\item 
 void \hyperlink{Serial_8c_ad5d0bd1e5c7b8380e3567f8dc474b6db}{read\+String} (char $\ast$string)
 \item 
 char \hyperlink{Serial_8c_a96a7d5e668a1b77fd5bbd343c7f1cbfc}{transmitted} (void)
@@ -67,6 +71,8 @@ static volatile \hyperlink{structcircularBuffer}{circular\+Buffer} \hyperlink{Se
 static volatile \hyperlink{structcircularBuffer}{circular\+Buffer} \hyperlink{Serial_8c_a8afe57d3e36e53a89cc8488b2812d012}{transmit\+\_\+buffer}
 \item 
 static volatile char \hyperlink{Serial_8c_a8cff2d32a612db164397b2a3b4ce2b5e}{carriage\+Return} = 0
+\item 
+static volatile char \hyperlink{Serial_8c_a625ea157d146adb4c20b402fe7de7d0d}{esc\+Pressed} = 0
 \end{DoxyCompactItemize}
 
 
@@ -169,6 +175,34 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
+\hypertarget{Serial_8c_af7757e126aed6e958b291076653e24f9}{\index{Serial.\+c@{Serial.\+c}!pop\+Esc@{pop\+Esc}}
+\index{pop\+Esc@{pop\+Esc}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{pop\+Esc}]{\setlength{\rightskip}{0pt plus 5cm}void pop\+Esc (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_af7757e126aed6e958b291076653e24f9}
+
+
+ Function\+: \hyperlink{Serial_8c_af7757e126aed6e958b291076653e24f9}{pop\+Esc(void)}
+
+Include\+:
+
+Description\+: Processes the Esc command and removes any input before the Esc command.
+
+Arguments\+: None
+
+Returns\+: 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Serial_8c_af7757e126aed6e958b291076653e24f9_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{Serial_8c_ad5d0bd1e5c7b8380e3567f8dc474b6db}{\index{Serial.\+c@{Serial.\+c}!read\+String@{read\+String}}
 \index{read\+String@{read\+String}!Serial.\+c@{Serial.\+c}}
 \subsubsection[{read\+String}]{\setlength{\rightskip}{0pt plus 5cm}void read\+String (
@@ -186,7 +220,7 @@ Description\+: Writes all received data up to a carriage return into given locat
 
 Arguments\+: string -\/ Pointer to location to store received data
 
-Returns\+: Received data up to a carriage return
+Returns\+: Received data including the carriage return
 
 Remarks\+: Make sure that you reserve at least B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+T\+H elements at the location pointed to by string before calling this function. 
 
@@ -194,7 +228,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=325pt]{Serial_8c_ad5d0bd1e5c7b8380e3567f8dc474b6db_icgraph}
+\includegraphics[width=350pt]{Serial_8c_ad5d0bd1e5c7b8380e3567f8dc474b6db_icgraph}
 \end{center}
 \end{figure}
 
@@ -222,7 +256,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=247pt]{Serial_8c_aca906fa91f67c730681400b51d426933_icgraph}
+\includegraphics[width=350pt]{Serial_8c_aca906fa91f67c730681400b51d426933_icgraph}
 \end{center}
 \end{figure}
 
@@ -250,7 +284,35 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=339pt]{Serial_8c_a42f5165187634304f89709eebe7c9f8c_icgraph}
+\includegraphics[width=262pt]{Serial_8c_a42f5165187634304f89709eebe7c9f8c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Serial_8c_a26eab76ecdaba2d82581899cda8d9f11}{\index{Serial.\+c@{Serial.\+c}!receive\+Esc@{receive\+Esc}}
+\index{receive\+Esc@{receive\+Esc}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{receive\+Esc}]{\setlength{\rightskip}{0pt plus 5cm}char receive\+Esc (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{Serial_8c_a26eab76ecdaba2d82581899cda8d9f11}
+
+
+ Function\+: \hyperlink{Serial_8c_a26eab76ecdaba2d82581899cda8d9f11}{receive\+Esc(void)}
+
+Include\+:
+
+Description\+: Indicates whether an Escape character has been received
+
+Arguments\+: None
+
+Returns\+: non-\/zero if the Esc has been received, zero otherwise 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Serial_8c_a26eab76ecdaba2d82581899cda8d9f11_icgraph}
 \end{center}
 \end{figure}
 
@@ -345,7 +407,18 @@ Description\+: Transmits a single character
 
 Arguments\+: c -\/ character to transmit
 
-Returns\+: None \hypertarget{Serial_8c_aab23d23c5b64a3bb7e5913afb4a3ed85}{\index{Serial.\+c@{Serial.\+c}!transmit@{transmit}}
+Returns\+: None 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Serial_8c_aabfd643e8a01ba453ff6a88164b9eff8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{Serial_8c_aab23d23c5b64a3bb7e5913afb4a3ed85}{\index{Serial.\+c@{Serial.\+c}!transmit@{transmit}}
 \index{transmit@{transmit}!Serial.\+c@{Serial.\+c}}
 \subsubsection[{transmit}]{\setlength{\rightskip}{0pt plus 5cm}void transmit (
 \begin{DoxyParamCaption}
@@ -398,6 +471,9 @@ Returns\+: None
 \hypertarget{Serial_8c_a8cff2d32a612db164397b2a3b4ce2b5e}{\index{Serial.\+c@{Serial.\+c}!carriage\+Return@{carriage\+Return}}
 \index{carriage\+Return@{carriage\+Return}!Serial.\+c@{Serial.\+c}}
 \subsubsection[{carriage\+Return}]{\setlength{\rightskip}{0pt plus 5cm}volatile char carriage\+Return = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{Serial_8c_a8cff2d32a612db164397b2a3b4ce2b5e}
+\hypertarget{Serial_8c_a625ea157d146adb4c20b402fe7de7d0d}{\index{Serial.\+c@{Serial.\+c}!esc\+Pressed@{esc\+Pressed}}
+\index{esc\+Pressed@{esc\+Pressed}!Serial.\+c@{Serial.\+c}}
+\subsubsection[{esc\+Pressed}]{\setlength{\rightskip}{0pt plus 5cm}volatile char esc\+Pressed = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{Serial_8c_a625ea157d146adb4c20b402fe7de7d0d}
 \hypertarget{Serial_8c_a5e9b32b4516262ed0d38be2a5c900eb2}{\index{Serial.\+c@{Serial.\+c}!receive\+\_\+buffer@{receive\+\_\+buffer}}
 \index{receive\+\_\+buffer@{receive\+\_\+buffer}!Serial.\+c@{Serial.\+c}}
 \subsubsection[{receive\+\_\+buffer}]{\setlength{\rightskip}{0pt plus 5cm}volatile {\bf circular\+Buffer} receive\+\_\+buffer\hspace{0.3cm}{\ttfamily [static]}}}\label{Serial_8c_a5e9b32b4516262ed0d38be2a5c900eb2}

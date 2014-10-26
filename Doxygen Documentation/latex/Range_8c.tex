@@ -1,8 +1,9 @@
-\hypertarget{Range_8c}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Range.c File Reference}
-\label{Range_8c}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Range.\+c@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Range.\+c}}
+\hypertarget{Range_8c}{\section{Yavin4\+Defence\+System/\+Code/\+Range.c File Reference}
+\label{Range_8c}\index{Yavin4\+Defence\+System/\+Code/\+Range.\+c@{Yavin4\+Defence\+System/\+Code/\+Range.\+c}}
 }
 {\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Temp.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$delays.\+h$>$}\\*
 Include dependency graph for Range.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -13,32 +14,30 @@ Include dependency graph for Range.\+c\+:\nopagebreak
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{Range_8c_a8dce7331368588b9016a33f044b71d91}{S\+P\+D\+\_\+\+S\+N\+D}(T)~(\hyperlink{Common_8h_a740656a5f724d0a99e528def8ce50125}{D\+I\+V\+\_\+1024}(T $\ast$ (unsigned int)614) + 331)
-\item 
 \#define \hyperlink{Range_8c_a13235bb583d24031d4129a10c126ef8e}{I\+R\+\_\+\+C\+O\+N\+V}(ad)~((unsigned long)135174 / (ad) -\/ 28)
-\item 
+\begin{DoxyCompactList}\small\item\em Converts A\+D reading into I\+R range. \end{DoxyCompactList}\item 
 \#define \hyperlink{Range_8c_a354db24d9e733cf8b3e15f727ab46624}{U\+L\+T\+R\+A\+\_\+\+C\+O\+N\+V}(tme, T)~\hyperlink{Common_8h_a9469c415aff989522dac534ab8adb35e}{D\+I\+V\+\_\+65536}(tme $\ast$ (unsigned long)(\hyperlink{Common_8h_a9469c415aff989522dac534ab8adb35e}{D\+I\+V\+\_\+65536}((unsigned long)519078 $\ast$ T) + (unsigned long)4362)) -\/ 18
-\item 
-\#define \hyperlink{Range_8c_acf4b9381566c4a7de8b59886038b9132}{N\+U\+M\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D\+S}~10
 \item 
 \#define \hyperlink{Range_8c_a885e4c51dcc91fcae14dadc2d564f270}{I\+N\+I\+T\+\_\+\+P\+I\+N}~\hyperlink{p18f4520_8h_ae6cab3544e1e4b7eaec41046bf007800}{P\+O\+R\+T\+Cbits.\+R\+C3}
 \item 
 \#define \hyperlink{Range_8c_a6e6430371976f713ccccb6372b19b810}{I\+N\+I\+T\+\_\+\+T\+R\+I\+S}~\hyperlink{p18f4520_8h_ae6cab3544e1e4b7eaec41046bf007800}{T\+R\+I\+S\+Cbits.\+R\+C3}
 \item 
 \#define \hyperlink{Range_8c_aa42da5a67cdb563f37b56c1674dd67bb}{C\+C\+P1\+\_\+\+I\+N\+P\+T}~\hyperlink{p18f4520_8h_a2155381890524f46a1a03878e5f52682}{T\+R\+I\+S\+Cbits.\+R\+C2}
+\item 
+\#define \hyperlink{Range_8c_a29a8f7ec1da49306cd91012204229f79}{range\+\_\+\+I\+R}~sum\+I\+R
+\item 
+\#define \hyperlink{Range_8c_ae485e01f6cadccf9f60a617cce776df4}{range\+\_\+\+U\+S}~sum\+U\+S
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 static void \hyperlink{Range_8c_a4571d632d0c84c18c4aefd1c7b63cb8a}{begin\+U\+S} (void)
 \item 
-static unsigned int \hyperlink{Range_8c_a91b55894b9e6d74e4495ea610246c856}{range\+I\+R} (void)
-\item 
 static unsigned int \hyperlink{Range_8c_af470fd0f0b96399b344f11783b4ef7f3}{range\+U\+S} (unsigned char temp)
 \item 
-void \hyperlink{Range_8c_a07a4c592815b5e6ae178f93a7764ceb2}{configure\+Range} (void)
+static unsigned int \hyperlink{Range_8c_a71fa1634c2a7d76287ac872b5cfed382}{fuse\+Range} (unsigned int us, unsigned int ir)
 \item 
-static unsigned int \hyperlink{Range_8c_ae7948eddefd58fbe1509d2bade4cd908}{sample\+I\+R} (char num\+Samples)
+void \hyperlink{Range_8c_a07a4c592815b5e6ae178f93a7764ceb2}{configure\+Range} (void)
 \item 
 void \hyperlink{Range_8c_ac7337ef2da4c9ab03257562ec33bbb8a}{configure\+A\+D} (void)
 \item 
@@ -49,9 +48,7 @@ void \hyperlink{Range_8c_a8606bd1052dde0e7c32eddad8699f4f4}{calibrate\+Range} (u
 unsigned int \hyperlink{Range_8c_a90ce8835c75e17b8e2d15eca3e6ae82f}{raw\+Range} (void)
 \item 
 unsigned int \hyperlink{Range_8c_aff3698f3a7b3b5963d8e6b305a165d71}{range} (void)
-\item 
-unsigned int \hyperlink{Range_8c_a5b063989d39d2958d2ecebc0106cb1da}{range\+Ultrasonic} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Samples the range. \end{DoxyCompactList}\item 
 \hyperlink{Common_8h_a2db986326a654991cce9b1c2b1670677}{Target\+State} \hyperlink{Range_8c_a3e5554f5a076ded63b937d50b7e5c9db}{get\+Target\+State} (void)
 \item 
 \hyperlink{Common_8h_a2db986326a654991cce9b1c2b1670677}{Target\+State} \hyperlink{Range_8c_a87c8e64ddc596f3e6b72ee861f671168}{read\+Target\+State} (void)
@@ -59,15 +56,23 @@ unsigned int \hyperlink{Range_8c_a5b063989d39d2958d2ecebc0106cb1da}{range\+Ultra
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-static signed int \hyperlink{Range_8c_a57a8488a51b36299fd5b363b10cad132}{calibration\+\_\+offset} = 0
-\item 
 static volatile char \hyperlink{Range_8c_a4b6dc56220469aa5e4180dad6d68335f}{measuring\+U\+S} = 0
 \item 
 static unsigned int \hyperlink{Range_8c_ad3cf40ad92b220b5e39aa159caa45f65}{last\+Range} = 0
 \item 
+static unsigned int \hyperlink{Range_8c_a44690364de54cfeef62a4e79880603c7}{last\+U\+S\+Range} = 0
+\item 
+static unsigned int \hyperlink{Range_8c_aab7f4dddd362aafa4a558c057f89319f}{last\+I\+R\+Range} = 0
+\item 
 static signed int \hyperlink{Range_8c_a8976a8edd47f4f691d54e563d4e649b7}{calibration\+\_\+offset\+\_\+\+I\+R} = 0
 \item 
 static signed int \hyperlink{Range_8c_af421fb22b292f4b39367c73817a26993}{calibration\+\_\+offset\+\_\+\+U\+S} = 0
+\item 
+static char \hyperlink{Range_8c_a5f013ef4cde14fb1aad7b871dba2c743}{num\+Samples} = 3
+\item 
+static unsigned char \hyperlink{Range_8c_ae4a5266a7e06afbf25a15633e657c49f}{rate\+U\+S} = 10
+\item 
+static unsigned int \hyperlink{Range_8c_ad58a5e610e756c41b622dade80cadeb6}{rate\+I\+R} = 200
 \item 
 static \hyperlink{Common_8h_a2db986326a654991cce9b1c2b1670677}{Target\+State} \hyperlink{Range_8c_a3e5f92f759a1957263c83a507c449b39}{current\+\_\+target\+\_\+state}
 \end{DoxyCompactItemize}
@@ -90,16 +95,10 @@ static \hyperlink{Common_8h_a2db986326a654991cce9b1c2b1670677}{Target\+State} \h
 \item[{}]{ad}
 \end{DoxyParamCaption}
 )~((unsigned long)135174 / (ad) -\/ 28)}}\label{Range_8c_a13235bb583d24031d4129a10c126ef8e}
-\hypertarget{Range_8c_acf4b9381566c4a7de8b59886038b9132}{\index{Range.\+c@{Range.\+c}!N\+U\+M\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D\+S@{N\+U\+M\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D\+S}}
-\index{N\+U\+M\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D\+S@{N\+U\+M\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D\+S}!Range.\+c@{Range.\+c}}
-\subsubsection[{N\+U\+M\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+U\+M\+\_\+\+I\+R\+\_\+\+R\+E\+A\+D\+S~10}}\label{Range_8c_acf4b9381566c4a7de8b59886038b9132}
-\hypertarget{Range_8c_a8dce7331368588b9016a33f044b71d91}{\index{Range.\+c@{Range.\+c}!S\+P\+D\+\_\+\+S\+N\+D@{S\+P\+D\+\_\+\+S\+N\+D}}
-\index{S\+P\+D\+\_\+\+S\+N\+D@{S\+P\+D\+\_\+\+S\+N\+D}!Range.\+c@{Range.\+c}}
-\subsubsection[{S\+P\+D\+\_\+\+S\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+D\+\_\+\+S\+N\+D(
-\begin{DoxyParamCaption}
-\item[{}]{T}
-\end{DoxyParamCaption}
-)~({\bf D\+I\+V\+\_\+1024}(T $\ast$ (unsigned int)614) + 331)}}\label{Range_8c_a8dce7331368588b9016a33f044b71d91}
+
+
+Converts A\+D reading into I\+R range. 
+
 
 
  File\+: \hyperlink{Range_8c}{Range.\+c} Author\+: Grant
@@ -110,7 +109,13 @@ Duties\+: -\/\+Interface to the I\+R and Ultrasonic sensors -\/\+Read the range 
 
 Functions\+:
 
-Created on 15 September 2014, 11\+:27 A\+M \hypertarget{Range_8c_a354db24d9e733cf8b3e15f727ab46624}{\index{Range.\+c@{Range.\+c}!U\+L\+T\+R\+A\+\_\+\+C\+O\+N\+V@{U\+L\+T\+R\+A\+\_\+\+C\+O\+N\+V}}
+Created on 15 September 2014, 11\+:27 A\+M \hypertarget{Range_8c_a29a8f7ec1da49306cd91012204229f79}{\index{Range.\+c@{Range.\+c}!range\+\_\+\+I\+R@{range\+\_\+\+I\+R}}
+\index{range\+\_\+\+I\+R@{range\+\_\+\+I\+R}!Range.\+c@{Range.\+c}}
+\subsubsection[{range\+\_\+\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define range\+\_\+\+I\+R~sum\+I\+R}}\label{Range_8c_a29a8f7ec1da49306cd91012204229f79}
+\hypertarget{Range_8c_ae485e01f6cadccf9f60a617cce776df4}{\index{Range.\+c@{Range.\+c}!range\+\_\+\+U\+S@{range\+\_\+\+U\+S}}
+\index{range\+\_\+\+U\+S@{range\+\_\+\+U\+S}!Range.\+c@{Range.\+c}}
+\subsubsection[{range\+\_\+\+U\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define range\+\_\+\+U\+S~sum\+U\+S}}\label{Range_8c_ae485e01f6cadccf9f60a617cce776df4}
+\hypertarget{Range_8c_a354db24d9e733cf8b3e15f727ab46624}{\index{Range.\+c@{Range.\+c}!U\+L\+T\+R\+A\+\_\+\+C\+O\+N\+V@{U\+L\+T\+R\+A\+\_\+\+C\+O\+N\+V}}
 \index{U\+L\+T\+R\+A\+\_\+\+C\+O\+N\+V@{U\+L\+T\+R\+A\+\_\+\+C\+O\+N\+V}!Range.\+c@{Range.\+c}}
 \subsubsection[{U\+L\+T\+R\+A\+\_\+\+C\+O\+N\+V}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+L\+T\+R\+A\+\_\+\+C\+O\+N\+V(
 \begin{DoxyParamCaption}
@@ -118,7 +123,7 @@ Created on 15 September 2014, 11\+:27 A\+M \hypertarget{Range_8c_a354db24d9e733c
 \item[{}]{T}
 \end{DoxyParamCaption}
 )~{\bf D\+I\+V\+\_\+65536}(tme $\ast$ (unsigned long)({\bf D\+I\+V\+\_\+65536}((unsigned long)519078 $\ast$ T) + (unsigned long)4362)) -\/ 18}}\label{Range_8c_a354db24d9e733cf8b3e15f727ab46624}
-
+Converts a time delay (in clock cycles) and a temperature into an ultrasonic distance Uses a linear appoximation of the speed of sound to temperature relation, which changes the gradient of the Ultrasonic calibration 
 
 \subsection{Function Documentation}
 \hypertarget{Range_8c_a4571d632d0c84c18c4aefd1c7b63cb8a}{\index{Range.\+c@{Range.\+c}!begin\+U\+S@{begin\+U\+S}}
@@ -166,11 +171,7 @@ Description\+: Calibrates the range of both the I\+R and ultrasonic sensors base
 
 Arguments\+: reference -\/ The distance in mm to calibrate the current measurements from
 
-Returns\+: None
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000012}{Todo}]Make sure this works properly, and does not do bad things in different target states \end{DoxyRefDesc}
-
+Returns\+: None 
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -196,11 +197,7 @@ Include\+: \hyperlink{Range_8h}{Range.\+h}
 
 Description\+: Configures the A\+D\+C, In A\+D\+C\+O\+N1, we set right-\/justified mode, and select A\+N0 as the input channel. In A\+D\+C\+O\+N0, we set a sample rate of Fosc/8, select A\+N0, and enable the A\+D\+C. Arguments\+: None
 
-Returns\+: None
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000010}{Todo}]Make absolutely sure this works on the minimal board, and with the temperature sensor, and pot and I\+R sensor \end{DoxyRefDesc}
-
+Returns\+: None 
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -250,6 +247,50 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
+\hypertarget{Range_8c_a71fa1634c2a7d76287ac872b5cfed382}{\index{Range.\+c@{Range.\+c}!fuse\+Range@{fuse\+Range}}
+\index{fuse\+Range@{fuse\+Range}!Range.\+c@{Range.\+c}}
+\subsubsection[{fuse\+Range}]{\setlength{\rightskip}{0pt plus 5cm}static unsigned int fuse\+Range (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{us, }
+\item[{unsigned int}]{ir}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_a71fa1634c2a7d76287ac872b5cfed382}
+
+
+ Function\+: \hyperlink{Range_8c_a71fa1634c2a7d76287ac872b5cfed382}{fuse\+Range(unsigned int us, unsigned int ir)}
+
+Include\+: \hyperlink{Range_8h}{Range.\+h}
+
+Description\+: Fuses the I\+R and Ultrasonic ranges, and sets the target state
+
+Arguments\+: us -\/ the Ultrasonic range (mm) ir -\/ the I\+R range (mm)
+
+Returns\+: the fused range
+
+Note\+: Also sets the current target state based on the reading from both the I\+R and ultrsonic sensors Implement I\+R in here a little?
+
+\+: Report Error? 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Range_8c_a71fa1634c2a7d76287ac872b5cfed382_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Range_8c_a71fa1634c2a7d76287ac872b5cfed382_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{Range_8c_a3e5554f5a076ded63b937d50b7e5c9db}{\index{Range.\+c@{Range.\+c}!get\+Target\+State@{get\+Target\+State}}
 \index{get\+Target\+State@{get\+Target\+State}!Range.\+c@{Range.\+c}}
 \subsubsection[{get\+Target\+State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Target\+State} get\+Target\+State (
@@ -267,18 +308,7 @@ Description\+: Returns the target state from the last range reading. E.\+g. Good
 
 Arguments\+: None
 
-Returns\+: the target state 
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{Range_8c_a3e5554f5a076ded63b937d50b7e5c9db_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{Range_8c_aff3698f3a7b3b5963d8e6b305a165d71}{\index{Range.\+c@{Range.\+c}!range@{range}}
+Returns\+: the target state \hypertarget{Range_8c_aff3698f3a7b3b5963d8e6b305a165d71}{\index{Range.\+c@{Range.\+c}!range@{range}}
 \index{range@{range}!Range.\+c@{Range.\+c}}
 \subsubsection[{range}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int range (
 \begin{DoxyParamCaption}
@@ -287,18 +317,20 @@ Here is the caller graph for this function\+:\nopagebreak
 )}}\label{Range_8c_aff3698f3a7b3b5963d8e6b305a165d71}
 
 
+Samples the range. 
+
+
+
  Function\+: \hyperlink{Range_8c_aff3698f3a7b3b5963d8e6b305a165d71}{range(void)}
 
 Include\+: \hyperlink{Range_8h}{Range.\+h}
 
-Description\+: Uses the I\+R and Ultrasonic sensors to find the range
+Description\+: Takes a number of samples of the ultrasonic sensor at a specified rate. Continues to sample the I\+R sensor at a different rate while sampling the ultrasonic. Then combines the ranges and sets the target state
 
 Arguments\+: None
 
-Returns\+: fused range as an unsigned int
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000013}{Todo}]Implement the sampling rate somehow \end{DoxyRefDesc}
+Returns\+: the range Standard room temperature for now\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]Read in temperature for U\+S calculation \end{DoxyRefDesc}
 
 
 Here is the call graph for this function\+:\nopagebreak
@@ -317,53 +349,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{Range_8c_aff3698f3a7b3b5963d8e6b305a165d71_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{Range_8c_a91b55894b9e6d74e4495ea610246c856}{\index{Range.\+c@{Range.\+c}!range\+I\+R@{range\+I\+R}}
-\index{range\+I\+R@{range\+I\+R}!Range.\+c@{Range.\+c}}
-\subsubsection[{range\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int range\+I\+R (
-\begin{DoxyParamCaption}
-\item[{void}]{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_a91b55894b9e6d74e4495ea610246c856}
-
-
- Function\+: \hyperlink{Range_8c_a91b55894b9e6d74e4495ea610246c856}{range\+I\+R(void)}
-
-Include\+:
-
-Description\+: Reads the range from the I\+R Sensor
-
-Arguments\+: None
-
-Returns\+: Range (in mm) as an unsigned int.
-
-Remark\+: Returns 0 if there is no target found
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000014}{Todo}]Double check calibration and accuracy 
-
-Make sure the calibration is the same every time, and does not change appreciably \end{DoxyRefDesc}
-
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{Range_8c_a91b55894b9e6d74e4495ea610246c856_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{Range_8c_a91b55894b9e6d74e4495ea610246c856_icgraph}
 \end{center}
 \end{figure}
 
@@ -396,47 +381,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
-\hypertarget{Range_8c_a5b063989d39d2958d2ecebc0106cb1da}{\index{Range.\+c@{Range.\+c}!range\+Ultrasonic@{range\+Ultrasonic}}
-\index{range\+Ultrasonic@{range\+Ultrasonic}!Range.\+c@{Range.\+c}}
-\subsubsection[{range\+Ultrasonic}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int range\+Ultrasonic (
-\begin{DoxyParamCaption}
-\item[{void}]{}
-\end{DoxyParamCaption}
-)}}\label{Range_8c_a5b063989d39d2958d2ecebc0106cb1da}
-
-
- Function\+: \hyperlink{Range_8c_a5b063989d39d2958d2ecebc0106cb1da}{range\+Ultrasonic(void)}
-
-Include\+:
-
-Description\+: performs an ultrasonic range reading. Pins\+:
-
-Arguments\+: None
-
-Returns\+: the average of the samples
-
-todo remove this function? 
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{Range_8c_a5b063989d39d2958d2ecebc0106cb1da_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=266pt]{Range_8c_a5b063989d39d2958d2ecebc0106cb1da_icgraph}
-\end{center}
-\end{figure}
-
-
 \hypertarget{Range_8c_af470fd0f0b96399b344f11783b4ef7f3}{\index{Range.\+c@{Range.\+c}!range\+U\+S@{range\+U\+S}}
 \index{range\+U\+S@{range\+U\+S}!Range.\+c@{Range.\+c}}
 \subsubsection[{range\+U\+S}]{\setlength{\rightskip}{0pt plus 5cm}static unsigned int range\+U\+S (
@@ -454,13 +398,7 @@ Description\+: Returns the result of the ultrasonic read (zero if no target foun
 
 Arguments\+: tempx2 -\/ 2x the temperature in deg Celsius
 
-Returns\+: Distance in mm (unsigned int)
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000011}{Todo}]Include temperature read (or get temperature) in Ultrasonic reading 
-
-Double check the calibration and accuracy \end{DoxyRefDesc}
-
+Returns\+: Distance in mm (unsigned int) 
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -491,15 +429,15 @@ Here is the caller graph for this function\+:\nopagebreak
 )}}\label{Range_8c_a90ce8835c75e17b8e2d15eca3e6ae82f}
 
 
- Function\+: \hyperlink{Range_8c_a90ce8835c75e17b8e2d15eca3e6ae82f}{raw\+Range(void)}
+ Function\+: speed\+\_\+sound(unsigned char tempx2)
 
-Include\+: \hyperlink{Range_8h}{Range.\+h}
+Include\+:
 
-Description\+: Returns uncalibrated range without the calibration offset
+Description\+: Returns the calibration offset to calculate the raw data
 
 Arguments\+: None
 
-Returns\+: distance (in mm) as an unsigned int \hypertarget{Range_8c_a87c8e64ddc596f3e6b72ee861f671168}{\index{Range.\+c@{Range.\+c}!read\+Target\+State@{read\+Target\+State}}
+Returns\+: None \hypertarget{Range_8c_a87c8e64ddc596f3e6b72ee861f671168}{\index{Range.\+c@{Range.\+c}!read\+Target\+State@{read\+Target\+State}}
 \index{read\+Target\+State@{read\+Target\+State}!Range.\+c@{Range.\+c}}
 \subsubsection[{read\+Target\+State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Target\+State} read\+Target\+State (
 \begin{DoxyParamCaption}
@@ -538,44 +476,9 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
-\hypertarget{Range_8c_ae7948eddefd58fbe1509d2bade4cd908}{\index{Range.\+c@{Range.\+c}!sample\+I\+R@{sample\+I\+R}}
-\index{sample\+I\+R@{sample\+I\+R}!Range.\+c@{Range.\+c}}
-\subsubsection[{sample\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}static unsigned int sample\+I\+R (
-\begin{DoxyParamCaption}
-\item[{char}]{num\+Samples}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_ae7948eddefd58fbe1509d2bade4cd908}
-
-
- Function\+: sample\+I\+R(void)
-
-Include\+:
-
-Description\+: takes num\+Samples samples of the I\+R sensor and returns the average
-
-Arguments\+: None
-
-Returns\+: the average of the samples
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000015}{Todo}]implement the sample rate somehow \end{DoxyRefDesc}
-
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{Range_8c_ae7948eddefd58fbe1509d2bade4cd908_icgraph}
-\end{center}
-\end{figure}
-
-
 
 
 \subsection{Variable Documentation}
-\hypertarget{Range_8c_a57a8488a51b36299fd5b363b10cad132}{\index{Range.\+c@{Range.\+c}!calibration\+\_\+offset@{calibration\+\_\+offset}}
-\index{calibration\+\_\+offset@{calibration\+\_\+offset}!Range.\+c@{Range.\+c}}
-\subsubsection[{calibration\+\_\+offset}]{\setlength{\rightskip}{0pt plus 5cm}signed int calibration\+\_\+offset = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_a57a8488a51b36299fd5b363b10cad132}
 \hypertarget{Range_8c_a8976a8edd47f4f691d54e563d4e649b7}{\index{Range.\+c@{Range.\+c}!calibration\+\_\+offset\+\_\+\+I\+R@{calibration\+\_\+offset\+\_\+\+I\+R}}
 \index{calibration\+\_\+offset\+\_\+\+I\+R@{calibration\+\_\+offset\+\_\+\+I\+R}!Range.\+c@{Range.\+c}}
 \subsubsection[{calibration\+\_\+offset\+\_\+\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}signed int calibration\+\_\+offset\+\_\+\+I\+R = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_a8976a8edd47f4f691d54e563d4e649b7}
@@ -585,9 +488,24 @@ Here is the caller graph for this function\+:\nopagebreak
 \hypertarget{Range_8c_a3e5f92f759a1957263c83a507c449b39}{\index{Range.\+c@{Range.\+c}!current\+\_\+target\+\_\+state@{current\+\_\+target\+\_\+state}}
 \index{current\+\_\+target\+\_\+state@{current\+\_\+target\+\_\+state}!Range.\+c@{Range.\+c}}
 \subsubsection[{current\+\_\+target\+\_\+state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Target\+State} current\+\_\+target\+\_\+state\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_a3e5f92f759a1957263c83a507c449b39}
+\hypertarget{Range_8c_aab7f4dddd362aafa4a558c057f89319f}{\index{Range.\+c@{Range.\+c}!last\+I\+R\+Range@{last\+I\+R\+Range}}
+\index{last\+I\+R\+Range@{last\+I\+R\+Range}!Range.\+c@{Range.\+c}}
+\subsubsection[{last\+I\+R\+Range}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int last\+I\+R\+Range = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_aab7f4dddd362aafa4a558c057f89319f}
 \hypertarget{Range_8c_ad3cf40ad92b220b5e39aa159caa45f65}{\index{Range.\+c@{Range.\+c}!last\+Range@{last\+Range}}
 \index{last\+Range@{last\+Range}!Range.\+c@{Range.\+c}}
 \subsubsection[{last\+Range}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int last\+Range = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_ad3cf40ad92b220b5e39aa159caa45f65}
+\hypertarget{Range_8c_a44690364de54cfeef62a4e79880603c7}{\index{Range.\+c@{Range.\+c}!last\+U\+S\+Range@{last\+U\+S\+Range}}
+\index{last\+U\+S\+Range@{last\+U\+S\+Range}!Range.\+c@{Range.\+c}}
+\subsubsection[{last\+U\+S\+Range}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int last\+U\+S\+Range = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_a44690364de54cfeef62a4e79880603c7}
 \hypertarget{Range_8c_a4b6dc56220469aa5e4180dad6d68335f}{\index{Range.\+c@{Range.\+c}!measuring\+U\+S@{measuring\+U\+S}}
 \index{measuring\+U\+S@{measuring\+U\+S}!Range.\+c@{Range.\+c}}
 \subsubsection[{measuring\+U\+S}]{\setlength{\rightskip}{0pt plus 5cm}volatile char measuring\+U\+S = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_a4b6dc56220469aa5e4180dad6d68335f}
+\hypertarget{Range_8c_a5f013ef4cde14fb1aad7b871dba2c743}{\index{Range.\+c@{Range.\+c}!num\+Samples@{num\+Samples}}
+\index{num\+Samples@{num\+Samples}!Range.\+c@{Range.\+c}}
+\subsubsection[{num\+Samples}]{\setlength{\rightskip}{0pt plus 5cm}char num\+Samples = 3\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_a5f013ef4cde14fb1aad7b871dba2c743}
+\hypertarget{Range_8c_ad58a5e610e756c41b622dade80cadeb6}{\index{Range.\+c@{Range.\+c}!rate\+I\+R@{rate\+I\+R}}
+\index{rate\+I\+R@{rate\+I\+R}!Range.\+c@{Range.\+c}}
+\subsubsection[{rate\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int rate\+I\+R = 200\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_ad58a5e610e756c41b622dade80cadeb6}
+\hypertarget{Range_8c_ae4a5266a7e06afbf25a15633e657c49f}{\index{Range.\+c@{Range.\+c}!rate\+U\+S@{rate\+U\+S}}
+\index{rate\+U\+S@{rate\+U\+S}!Range.\+c@{Range.\+c}}
+\subsubsection[{rate\+U\+S}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char rate\+U\+S = 10\hspace{0.3cm}{\ttfamily [static]}}}\label{Range_8c_ae4a5266a7e06afbf25a15633e657c49f}

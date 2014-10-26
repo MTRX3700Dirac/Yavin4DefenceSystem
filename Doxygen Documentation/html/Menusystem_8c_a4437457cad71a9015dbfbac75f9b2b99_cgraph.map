@@ -1,6 +1,9 @@
 <map id="topmenudisp" name="topmenudisp">
-<area shape="rect" id="node2" href="$Menusystem_8c.html#aec49123d1c8f1231607dc9159ae138a4" title="clearscreen" alt="" coords="151,5,240,32"/>
-<area shape="rect" id="node3" href="$Serial_8c.html#aab23d23c5b64a3bb7e5913afb4a3ed85" title="transmit" alt="" coords="289,81,359,108"/>
-<area shape="rect" id="node4" href="$Menusystem_8c.html#a4bb64cc936229611900f25e483381dc7" title="filler" alt="" coords="173,107,218,133"/>
-<area shape="rect" id="node5" href="$Menusystem_8c.html#ae3777c5b2ceab74d5d90b444da874d14" title="disptoptions" alt="" coords="149,157,241,184"/>
+<area shape="rect" id="node2" href="$Menusystem_8c.html#a67e96e514d9f296c79378f7fbfba457a" title="clearScreen" alt="" coords="309,5,400,32"/>
+<area shape="rect" id="node4" href="$Menusystem_8c.html#a4bb64cc936229611900f25e483381dc7" title="filler" alt="" coords="332,56,377,83"/>
+<area shape="rect" id="node5" href="$Menusystem_8c.html#a3e308d6e9b426c6463bea038c996aa35" title="sendROM" alt="" coords="315,132,395,159"/>
+<area shape="rect" id="node7" href="$Menusystem_8c.html#a9f7902dc2a501ad1f16ec5011415bbbc" title="sendNewLine" alt="" coords="156,157,255,184"/>
+<area shape="rect" id="node8" href="$Menusystem_8c.html#ab02601af02510b224cf1b970adc92f37" title="dispTopOptions" alt="" coords="149,208,261,235"/>
+<area shape="rect" id="node3" href="$Serial_8c.html#aab23d23c5b64a3bb7e5913afb4a3ed85" title="transmit" alt="" coords="469,56,539,83"/>
+<area shape="rect" id="node6" href="$ROM2RAM_8c.html#a576e4df736792ea0f9804499aa256fd7" title="strcpypgm2ram" alt="" coords="448,132,560,159"/>
 </map>

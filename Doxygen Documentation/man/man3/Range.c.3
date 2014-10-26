@@ -1,8 +1,8 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/Range.c" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c \- 
+Yavin4DefenceSystem/Code/Range.c \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -10,21 +10,18 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c \-
 .br
 \fC#include 'Temp\&.h'\fP
 .br
+\fC#include <delays\&.h>\fP
+.br
 
 .SS "Macros"
 
 .in +1c
 .ti -1c
-.RI "#define \fBSPD_SND\fP(T)   (\fBDIV_1024\fP(T * (unsigned int)614) + 331)"
-.br
-.ti -1c
 .RI "#define \fBIR_CONV\fP(ad)   ((unsigned long)135174 / (ad) - 28)"
 .br
+.RI "\fIConverts AD reading into IR range\&. \fP"
 .ti -1c
 .RI "#define \fBULTRA_CONV\fP(tme, T)   \fBDIV_65536\fP(tme * (unsigned long)(\fBDIV_65536\fP((unsigned long)519078 * T) + (unsigned long)4362)) - 18"
-.br
-.ti -1c
-.RI "#define \fBNUM_IR_READS\fP   10"
 .br
 .ti -1c
 .RI "#define \fBINIT_PIN\fP   \fBPORTCbits\&.RC3\fP"
@@ -35,6 +32,12 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c \-
 .ti -1c
 .RI "#define \fBCCP1_INPT\fP   \fBTRISCbits\&.RC2\fP"
 .br
+.ti -1c
+.RI "#define \fBrange_IR\fP   sumIR"
+.br
+.ti -1c
+.RI "#define \fBrange_US\fP   sumUS"
+.br
 .in -1c
 .SS "Functions"
 
@@ -43,16 +46,13 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c \-
 .RI "static void \fBbeginUS\fP (void)"
 .br
 .ti -1c
-.RI "static unsigned int \fBrangeIR\fP (void)"
-.br
-.ti -1c
 .RI "static unsigned int \fBrangeUS\fP (unsigned char temp)"
 .br
 .ti -1c
-.RI "void \fBconfigureRange\fP (void)"
+.RI "static unsigned int \fBfuseRange\fP (unsigned int us, unsigned int ir)"
 .br
 .ti -1c
-.RI "static unsigned int \fBsampleIR\fP (char numSamples)"
+.RI "void \fBconfigureRange\fP (void)"
 .br
 .ti -1c
 .RI "void \fBconfigureAD\fP (void)"
@@ -69,9 +69,7 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c \-
 .ti -1c
 .RI "unsigned int \fBrange\fP (void)"
 .br
-.ti -1c
-.RI "unsigned int \fBrangeUltrasonic\fP (void)"
-.br
+.RI "\fISamples the range\&. \fP"
 .ti -1c
 .RI "\fBTargetState\fP \fBgetTargetState\fP (void)"
 .br
@@ -83,19 +81,31 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c \-
 
 .in +1c
 .ti -1c
-.RI "static signed int \fBcalibration_offset\fP = 0"
-.br
-.ti -1c
 .RI "static volatile char \fBmeasuringUS\fP = 0"
 .br
 .ti -1c
 .RI "static unsigned int \fBlastRange\fP = 0"
 .br
 .ti -1c
+.RI "static unsigned int \fBlastUSRange\fP = 0"
+.br
+.ti -1c
+.RI "static unsigned int \fBlastIRRange\fP = 0"
+.br
+.ti -1c
 .RI "static signed int \fBcalibration_offset_IR\fP = 0"
 .br
 .ti -1c
 .RI "static signed int \fBcalibration_offset_US\fP = 0"
+.br
+.ti -1c
+.RI "static char \fBnumSamples\fP = 3"
+.br
+.ti -1c
+.RI "static unsigned char \fBrateUS\fP = 10"
+.br
+.ti -1c
+.RI "static unsigned int \fBrateIR\fP = 200"
 .br
 .ti -1c
 .RI "static \fBTargetState\fP \fBcurrent_target_state\fP"
@@ -111,10 +121,8 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.c \-
 
 .SS "#define IR_CONV(ad)   ((unsigned long)135174 / (ad) - 28)"
 
-.SS "#define NUM_IR_READS   10"
-
-.SS "#define SPD_SND(T)   (\fBDIV_1024\fP(T * (unsigned int)614) + 331)"
-
+.PP
+Converts AD reading into IR range\&. 
 .PP
  File: \fBRange\&.c\fP Author: Grant
 .PP
@@ -125,8 +133,12 @@ Duties: -Interface to the IR and Ultrasonic sensors -Read the range from the IR 
 Functions:
 .PP
 Created on 15 September 2014, 11:27 AM 
-.SS "#define ULTRA_CONV(tme, T)   \fBDIV_65536\fP(tme * (unsigned long)(\fBDIV_65536\fP((unsigned long)519078 * T) + (unsigned long)4362)) - 18"
+.SS "#define range_IR   sumIR"
 
+.SS "#define range_US   sumUS"
+
+.SS "#define ULTRA_CONV(tme, T)   \fBDIV_65536\fP(tme * (unsigned long)(\fBDIV_65536\fP((unsigned long)519078 * T) + (unsigned long)4362)) - 18"
+Converts a time delay (in clock cycles) and a temperature into an ultrasonic distance Uses a linear appoximation of the speed of sound to temperature relation, which changes the gradient of the Ultrasonic calibration 
 .SH "Function Documentation"
 .PP 
 .SS "static void beginUS (void)\fC [static]\fP"
@@ -152,14 +164,7 @@ Description: Calibrates the range of both the IR and ultrasonic sensors based on
 .PP
 Arguments: reference - The distance in mm to calibrate the current measurements from
 .PP
-Returns: None
-.PP
-\fBTodo\fP
-.RS 4
-Make sure this works properly, and does not do bad things in different target states 
-.RE
-.PP
-
+Returns: None 
 .SS "void configureAD (void)"
 
 .PP
@@ -169,14 +174,7 @@ Include: \fBRange\&.h\fP
 .PP
 Description: Configures the ADC, In ADCON1, we set right-justified mode, and select AN0 as the input channel\&. In ADCON0, we set a sample rate of Fosc/8, select AN0, and enable the ADC\&. Arguments: None
 .PP
-Returns: None
-.PP
-\fBTodo\fP
-.RS 4
-Make absolutely sure this works on the minimal board, and with the temperature sensor, and pot and IR sensor 
-.RE
-.PP
-
+Returns: None 
 .SS "void configureRange (void)"
 
 .PP
@@ -189,6 +187,22 @@ Description: Configures the Range module
 Arguments: None
 .PP
 Returns: None 
+.SS "static unsigned int fuseRange (unsigned intus, unsigned intir)\fC [static]\fP"
+
+.PP
+ Function: \fBfuseRange(unsigned int us, unsigned int ir)\fP
+.PP
+Include: \fBRange\&.h\fP
+.PP
+Description: Fuses the IR and Ultrasonic ranges, and sets the target state
+.PP
+Arguments: us - the Ultrasonic range (mm) ir - the IR range (mm)
+.PP
+Returns: the fused range
+.PP
+Note: Also sets the current target state based on the reading from both the IR and ultrsonic sensors Implement IR in here a little?
+.PP
+: Report Error? 
 .SS "\fBTargetState\fP getTargetState (void)"
 
 .PP
@@ -204,42 +218,21 @@ Returns: the target state
 .SS "unsigned int range (void)"
 
 .PP
+Samples the range\&. 
+.PP
  Function: \fBrange(void)\fP
 .PP
 Include: \fBRange\&.h\fP
 .PP
-Description: Uses the IR and Ultrasonic sensors to find the range
+Description: Takes a number of samples of the ultrasonic sensor at a specified rate\&. Continues to sample the IR sensor at a different rate while sampling the ultrasonic\&. Then combines the ranges and sets the target state
 .PP
 Arguments: None
 .PP
-Returns: fused range as an unsigned int
+Returns: the range Standard room temperature for now
 .PP
 \fBTodo\fP
 .RS 4
-Implement the sampling rate somehow 
-.RE
-.PP
-
-.SS "unsigned int rangeIR (void)\fC [static]\fP"
-
-.PP
- Function: \fBrangeIR(void)\fP
-.PP
-Include:
-.PP
-Description: Reads the range from the IR Sensor
-.PP
-Arguments: None
-.PP
-Returns: Range (in mm) as an unsigned int\&.
-.PP
-Remark: Returns 0 if there is no target found
-.PP
-\fBTodo\fP
-.RS 4
-Double check calibration and accuracy 
-.PP
-Make sure the calibration is the same every time, and does not change appreciably 
+Read in temperature for US calculation 
 .RE
 .PP
 
@@ -255,20 +248,6 @@ Description: Called when an range related interrupt is fired, acts as the servic
 Arguments: None
 .PP
 Returns: None 
-.SS "unsigned int rangeUltrasonic (void)"
-
-.PP
- Function: \fBrangeUltrasonic(void)\fP
-.PP
-Include:
-.PP
-Description: performs an ultrasonic range reading\&. Pins:
-.PP
-Arguments: None
-.PP
-Returns: the average of the samples
-.PP
-todo remove this function? 
 .SS "static unsigned int rangeUS (unsigned chartemp)\fC [static]\fP"
 
 .PP
@@ -280,28 +259,19 @@ Description: Returns the result of the ultrasonic read (zero if no target found)
 .PP
 Arguments: tempx2 - 2x the temperature in deg Celsius
 .PP
-Returns: Distance in mm (unsigned int)
-.PP
-\fBTodo\fP
-.RS 4
-Include temperature read (or get temperature) in Ultrasonic reading 
-.PP
-Double check the calibration and accuracy 
-.RE
-.PP
-
+Returns: Distance in mm (unsigned int) 
 .SS "unsigned int rawRange (void)"
 
 .PP
- Function: \fBrawRange(void)\fP
+ Function: speed_sound(unsigned char tempx2)
 .PP
-Include: \fBRange\&.h\fP
+Include:
 .PP
-Description: Returns uncalibrated range without the calibration offset
+Description: Returns the calibration offset to calculate the raw data
 .PP
 Arguments: None
 .PP
-Returns: distance (in mm) as an unsigned int 
+Returns: None 
 .SS "\fBTargetState\fP readTargetState (void)"
 
 .PP
@@ -314,38 +284,27 @@ Description: Does the same thing as getTargetState, but actually performs a \fBr
 Arguments: None
 .PP
 Returns: the target state 
-.SS "static unsigned int sampleIR (charnumSamples)\fC [static]\fP"
-
-.PP
- Function: sampleIR(void)
-.PP
-Include:
-.PP
-Description: takes numSamples samples of the IR sensor and returns the average
-.PP
-Arguments: None
-.PP
-Returns: the average of the samples
-.PP
-\fBTodo\fP
-.RS 4
-implement the sample rate somehow 
-.RE
-.PP
-
 .SH "Variable Documentation"
 .PP 
-.SS "signed int calibration_offset = 0\fC [static]\fP"
-
 .SS "signed int calibration_offset_IR = 0\fC [static]\fP"
 
 .SS "signed int calibration_offset_US = 0\fC [static]\fP"
 
 .SS "\fBTargetState\fP current_target_state\fC [static]\fP"
 
+.SS "unsigned int lastIRRange = 0\fC [static]\fP"
+
 .SS "unsigned int lastRange = 0\fC [static]\fP"
 
+.SS "unsigned int lastUSRange = 0\fC [static]\fP"
+
 .SS "volatile char measuringUS = 0\fC [static]\fP"
+
+.SS "char numSamples = 3\fC [static]\fP"
+
+.SS "unsigned int rateIR = 200\fC [static]\fP"
+
+.SS "unsigned char rateUS = 10\fC [static]\fP"
 
 .SH "Author"
 .PP 

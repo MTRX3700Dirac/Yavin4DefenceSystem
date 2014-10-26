@@ -1,55 +1,19 @@
 
 \begin{DoxyRefList}
-\item[\label{todo__todo000007}%
-\hypertarget{todo__todo000007}{}%
-Global \hyperlink{PanTilt_8h_a60e08860a1b4ca9efdc2dd43983731d5}{calibrate\+Pan\+Tilt} (\hyperlink{structDirection}{Direction} reference)]Actually write a function to calibrate the Pan\+Tilt, perhaps just offset  
-\item[\label{todo__todo000012}%
-\hypertarget{todo__todo000012}{}%
-Global \hyperlink{Range_8c_a8606bd1052dde0e7c32eddad8699f4f4}{calibrate\+Range} (unsigned int reference)]Make sure this works properly, and does not do bad things in different target states  
-\item[\label{todo__todo000010}%
-\hypertarget{todo__todo000010}{}%
-Global \hyperlink{Range_8h_ac7337ef2da4c9ab03257562ec33bbb8a}{configure\+A\+D} (void)]Make absolutely sure this works on the minimal board, and with the temperature sensor, and pot and I\+R sensor  
-\item[\label{todo__todo000005}%
-\hypertarget{todo__todo000005}{}%
-Global \hyperlink{PanTilt_8h_ab7b8c8f7bf051b4f8e3b151f7b567127}{configure\+Base} (void)]Test that configuring the base will send it to the default location (0, 0)  
 \item[\label{todo__todo000001}%
 \hypertarget{todo__todo000001}{}%
-Global \hyperlink{LCD_8h_aecaa9ab68490a0b8dedd20d200d5d0ef}{lcd\+Init} (void)]Complete, test, debug and document this code!!! 
-\item[\label{todo__todo000003}%
-\hypertarget{todo__todo000003}{}%
-Global \hyperlink{newmain_8c_acdef7a1fd863a6d3770c1268cb06add3}{main} ()]test and debug the Watch Dog Timer functionality  
-\item[\label{todo__todo000006}%
-\hypertarget{todo__todo000006}{}%
-Global \hyperlink{PanTilt_8h_a032fbfc434ca24d27d89b6d768455a42}{move} (\hyperlink{structDirection}{Direction} destination)]Perhaps non-\/arbitrary wait period  
-\item[\label{todo__todo000009}%
-\hypertarget{todo__todo000009}{}%
-Global \hyperlink{PanTilt_8h_a7f353056fb02f0d95fd997198f5b186f}{pan\+Tilt\+I\+S\+R} (void)]Ensure that other interrupts and running functionality is not going to affect the timing here  
-\item[\label{todo__todo000013}%
-\hypertarget{todo__todo000013}{}%
-Global \hyperlink{Range_8h_aff3698f3a7b3b5963d8e6b305a165d71}{range} (void)]Implement the sampling rate somehow  
-\item[\label{todo__todo000014}%
-\hypertarget{todo__todo000014}{}%
-Global \hyperlink{Range_8c_a91b55894b9e6d74e4495ea610246c856}{range\+I\+R} (void)]Double check calibration and accuracy 
+File \hyperlink{ConfigRegs18f4520_8h}{Config\+Regs18f4520.h} ]Consider if Watchdog Timer should be enabled for production code, and add W\+D\+T management code if so.
 
-Make sure the calibration is the same every time, and does not change appreciably  
-\item[\label{todo__todo000011}%
-\hypertarget{todo__todo000011}{}%
-Global \hyperlink{Range_8c_af470fd0f0b96399b344f11783b4ef7f3}{range\+U\+S} (unsigned char temp)]Include temperature read (or get temperature) in Ultrasonic reading 
+Consider if Stack Overflow Reset should be enabled for production code. It may be better not to, as there is no re-\/entrant or recursive code, or dynamic memory allocation here -\/ if the code loads statically it should run.
 
-Double check the calibration and accuracy  
-\item[\label{todo__todo000008}%
-\hypertarget{todo__todo000008}{}%
-Global \hyperlink{PanTilt_8h_a251ee95d75c68e21c4bb933ac99e5108}{raw\+Dir} (void)]Test this  
-\item[\label{todo__todo000016}%
-\hypertarget{todo__todo000016}{}%
-Global \hyperlink{Temp_8h_a4946ccbc1990e831667bffded1147c4f}{read\+Tempx2} (void)]Test and debug this function  
-\item[\label{todo__todo000015}%
-\hypertarget{todo__todo000015}{}%
-Global \hyperlink{Range_8c_ae7948eddefd58fbe1509d2bade4cd908}{sample\+I\+R} (char num\+Samples)]implement the sample rate somehow  
+Change startup code c016iz.\+c so that everything (including initialised variables) correctly re-\/starts if \hyperlink{HardUItest_8c_a6288eba0f8e8ad3ab1544ad731eb7667}{main()} ever exits or a B\+O\+R or W\+D\+T reset occurs.  
 \item[\label{todo__todo000004}%
 \hypertarget{todo__todo000004}{}%
-Global \hyperlink{newmain_8c_a562b6fc99e2386f66e66353386d80212}{trans\+Range} (void)]Remove this function before the final version  
-\item[\label{todo__todo000002}%
-\hypertarget{todo__todo000002}{}%
-Global \hyperlink{Menusystem_8c_a667b04d7fb6ef46db4da4af554c5b6f7}{width} ]Complete, test and document this code!!!
+Global \hyperlink{LCD_8c_a6d7066138d22070be0234d8b113cf776}{delay} (unsigned int t)]Complete, test, debug and document this code!!! 
+\item[\label{todo__todo000005}%
+\hypertarget{todo__todo000005}{}%
+Global \hyperlink{Range_8h_aff3698f3a7b3b5963d8e6b305a165d71}{range} (void)]Read in temperature for U\+S calculation  
+\item[\label{todo__todo000006}%
+\hypertarget{todo__todo000006}{}%
+Global \hyperlink{Temp_8h_a4946ccbc1990e831667bffded1147c4f}{read\+Tempx2} (void)]Test and debug this function 
 \end{DoxyRefList}

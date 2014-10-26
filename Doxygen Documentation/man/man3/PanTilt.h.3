@@ -1,8 +1,8 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/PanTilt.h" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h \- 
+Yavin4DefenceSystem/Code/PanTilt.h \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -96,14 +96,7 @@ Description: Calibrates the pan tile mechanism so that any future reference to m
 .PP
 Arguments: reference - A struct containing the azimuth and inclinaion you wish to define as this position\&.
 .PP
-Returns: None
-.PP
-\fBTodo\fP
-.RS 4
-Actually write a function to calibrate the PanTilt, perhaps just offset 
-.RE
-.PP
-
+Returns: None 
 .SS "void configureBase (void)"
 
 .PP
@@ -115,14 +108,7 @@ Description: Configures the Pan Tilt mechanism for operation
 .PP
 Arguments: None
 .PP
-Returns: None
-.PP
-\fBTodo\fP
-.RS 4
-Test that configuring the base will send it to the default location (0, 0) 
-.RE
-.PP
-
+Returns: None 
 .SS "\fBDirection\fP getDir (void)"
 
 .PP
@@ -218,14 +204,7 @@ Description: Moves the pan tilt actuator to the specified destination
 .PP
 Arguments: destionation - A struct containing the desired azimuth and inclination
 .PP
-Returns: None
-.PP
-\fBTodo\fP
-.RS 4
-Perhaps non-arbitrary wait period 
-.RE
-.PP
-
+Returns: None 
 .SS "void panTiltISR (void)"
 
 .PP
@@ -237,14 +216,7 @@ Description: Acts as the ISR for the PanTilt module
 .PP
 Arguments: None
 .PP
-Returns: None
-.PP
-\fBTodo\fP
-.RS 4
-Ensure that other interrupts and running functionality is not going to affect the timing here 
-.RE
-.PP
-
+Returns: None 
 .SS "\fBDirection\fP rawDir (void)"
 
 .PP
@@ -256,14 +228,7 @@ Description: returns the current PanTile position without calibrating
 .PP
 Arguments: None
 .PP
-Returns: The position of the pan tilt without any calibration
-.PP
-\fBTodo\fP
-.RS 4
-Test this 
-.RE
-.PP
-
+Returns: The position of the pan tilt without any calibration 
 .SS "void setMaxAzimuthAngle (charp_angle)"
 
 .PP

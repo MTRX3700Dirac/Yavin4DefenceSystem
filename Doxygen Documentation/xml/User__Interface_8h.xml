@@ -2,53 +2,155 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="User__Interface_8h" kind="file">
     <compoundname>User_Interface.h</compoundname>
-    <includedby refid="Interrupts_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Interrupts.c</includedby>
-    <includedby refid="Menusystem_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c</includedby>
-    <includedby refid="Menusystem2_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c</includedby>
-    <includedby refid="newmain_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c</includedby>
+    <includes refid="Common_8h" local="yes">Common.h</includes>
+    <includedby refid="Interrupts_8c" local="yes">Yavin4DefenceSystem/Code/Interrupts.c</includedby>
+    <includedby refid="Menusystem_8c" local="yes">Yavin4DefenceSystem/Code/Menusystem.c</includedby>
+    <includedby refid="Menusystem2_8c" local="yes">Yavin4DefenceSystem/Code/Menusystem2.c</includedby>
+    <includedby refid="newmain_8c" local="yes">Yavin4DefenceSystem/Code/newmain.c</includedby>
+    <includedby refid="User__Interface_8c" local="yes">Yavin4DefenceSystem/Code/User_Interface.c</includedby>
+    <incdepgraph>
+      <node id="656">
+        <label>stdlib.h</label>
+      </node>
+      <node id="661">
+        <label>adc.h</label>
+      </node>
+      <node id="654">
+        <label>Common.h</label>
+        <link refid="Common_8h"/>
+        <childnode refid="655" relation="include">
+        </childnode>
+        <childnode refid="656" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+        <childnode refid="658" relation="include">
+        </childnode>
+        <childnode refid="659" relation="include">
+        </childnode>
+        <childnode refid="660" relation="include">
+        </childnode>
+        <childnode refid="661" relation="include">
+        </childnode>
+        <childnode refid="662" relation="include">
+        </childnode>
+        <childnode refid="663" relation="include">
+        </childnode>
+        <childnode refid="665" relation="include">
+        </childnode>
+      </node>
+      <node id="664">
+        <label>pconfig.h</label>
+      </node>
+      <node id="658">
+        <label>string.h</label>
+      </node>
+      <node id="660">
+        <label>timers.h</label>
+      </node>
+      <node id="665">
+        <label>compare.h</label>
+      </node>
+      <node id="662">
+        <label>capture.h</label>
+      </node>
+      <node id="657">
+        <label>math.h</label>
+      </node>
+      <node id="663">
+        <label>usart.h</label>
+        <link refid="usart_8h"/>
+        <childnode refid="664" relation="include">
+        </childnode>
+      </node>
+      <node id="659">
+        <label>p18f4520.h</label>
+        <link refid="p18f4520_8h"/>
+      </node>
+      <node id="655">
+        <label>stdio.h</label>
+      </node>
+      <node id="653">
+        <label>Yavin4DefenceSystem/Code/User_Interface.h</label>
+        <link refid="User_Interface.h"/>
+        <childnode refid="654" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
     <invincdepgraph>
-      <node id="481">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c</label>
+      <node id="668">
+        <label>Yavin4DefenceSystem/Code/Menusystem.c</label>
         <link refid="Menusystem_8c"/>
       </node>
-      <node id="480">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Interrupts.c</label>
+      <node id="667">
+        <label>Yavin4DefenceSystem/Code/Interrupts.c</label>
         <link refid="Interrupts_8c"/>
       </node>
-      <node id="483">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c</label>
+      <node id="670">
+        <label>Yavin4DefenceSystem/Code/newmain.c</label>
         <link refid="newmain_8c"/>
       </node>
-      <node id="479">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h</label>
+      <node id="671">
+        <label>Yavin4DefenceSystem/Code/User_Interface.c</label>
+        <link refid="User__Interface_8c"/>
+      </node>
+      <node id="666">
+        <label>Yavin4DefenceSystem/Code/User_Interface.h</label>
         <link refid="User_Interface.h"/>
-        <childnode refid="480" relation="include">
+        <childnode refid="667" relation="include">
         </childnode>
-        <childnode refid="481" relation="include">
+        <childnode refid="668" relation="include">
         </childnode>
-        <childnode refid="482" relation="include">
+        <childnode refid="669" relation="include">
         </childnode>
-        <childnode refid="483" relation="include">
+        <childnode refid="670" relation="include">
+        </childnode>
+        <childnode refid="671" relation="include">
         </childnode>
       </node>
-      <node id="482">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c</label>
+      <node id="669">
+        <label>Yavin4DefenceSystem/Code/Menusystem2.c</label>
         <link refid="Menusystem2_8c"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
       <memberdef kind="define" id="User__Interface_8h_1a4358ad34c2ebafd83f49cb8e73fed3d5" prot="public" static="no">
         <name>USER_INT</name>
-        <initializer>0</initializer>
+        <initializer>(<ref refid="Common_8h_1afeb5099420bb15f8f59a24c3426de8f1" kindref="member">RB_INT</ref> || <ref refid="Common_8h_1ace4d61c3a12d8faab31305402fe1e074" kindref="member">INT0_INT</ref> || <ref refid="Common_8h_1ab4f2106ce0c15ddb2520ddba77c07522" kindref="member">INT1_INT</ref> )</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="15" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" bodystart="15" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="16" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" bodystart="16" bodyend="-1"/>
         <referencedby refid="Interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="Interrupts_8c" startline="88" endline="107">lowISR</referencedby>
         <referencedby refid="Interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="Interrupts_8c" startline="122" endline="141">highISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="User__Interface_8h_1adead3849e015340318de05db13537485" prot="public" static="no">
+        <name>CONFIRM_CHAR</name>
+        <initializer>0x0D</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="17" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem_8c" startline="360" endline="417">serviceMenu</referencedby>
+        <referencedby refid="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" compoundref="User__Interface_8c" startline="60" endline="73">userISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="User__Interface_8h_1a988901f3420148844c4e20d8f726ba2e" prot="public" static="no">
+        <name>BACK_CHAR</name>
+        <initializer>0x1B</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="18" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" compoundref="User__Interface_8c" startline="60" endline="73">userISR</referencedby>
       </memberdef>
       <memberdef kind="define" id="User__Interface_8h_1ad904f48bd4d9b62b4e5076a09951eee7" prot="public" static="no">
         <name>USER_H</name>
@@ -58,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="26" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" bodystart="26" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="30" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -78,7 +180,7 @@
  Function: <ref refid="User__Interface_8c_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display(TrackingData data)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: displays the current tracking information</para><para>Arguments: data - Struct which contains all known data concerning the The position of the target. A Range of 0 indicates that no target was observed.</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="18" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="35" bodyend="38"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="21" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -95,7 +197,12 @@
  Function: <ref refid="User__Interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR(void)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: Acts as the ISR for the User_interface module</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="19" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="51" bodyend="54"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="22" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="60" bodyend="73"/>
+        <references refid="User__Interface_8c_1ab793b8cea43e768f35f4c40e0069b47c" compoundref="User__Interface_8c" startline="22">CONFIRM_PRESS</references>
+        <references refid="CircularBuffers_8h_1aba30707c86c50590824a646a3ef26fbb" compoundref="CircularBuffers_8h" startline="27">push</references>
+        <references refid="User__Interface_8h_1adead3849e015340318de05db13537485" compoundref="User__Interface_8h" startline="17">CONFIRM_CHAR</references>
+        <references refid="User__Interface_8c_1ad934dc8f263c62a8159af0f0e6d70c64" compoundref="User__Interface_8c" startline="23">BACK_PRESS</references>
+        <references refid="User__Interface_8h_1a988901f3420148844c4e20d8f726ba2e" compoundref="User__Interface_8h" startline="18">BACK_CHAR</references>
         <referencedby refid="Interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="Interrupts_8c" startline="88" endline="107">lowISR</referencedby>
         <referencedby refid="Interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="Interrupts_8c" startline="122" endline="141">highISR</referencedby>
       </memberdef>
@@ -114,9 +221,16 @@
  Function: <ref refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER(void)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: Configures the user interface for use</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="67" bodyend="71"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="86" bodyend="113"/>
         <references refid="CircularBuffers_8h_1a526002aa17fac30d010d4d7315d5d81c" compoundref="CircularBuffers_8h" startline="29">init</references>
-        <referencedby refid="Menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="Menusystem_8c" startline="150" endline="155">initialiseMenu</referencedby>
+        <references refid="Range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="Range_8c" startline="79" endline="90">configureAD</references>
+        <references refid="p18f4520_8h_1a34c79aa37801a1c07caa6ffca946901f">TRISB</references>
+        <references refid="p18f4520_8h_1a34337bc9ccb72db88e471fd229a2774e">PORTB</references>
+        <references refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772">INTCONbits</references>
+        <references refid="p18f4520_8h_1a623fad3905d76d3d347bdef85490fc4e">INTCON2bits</references>
+        <references refid="p18f4520_8h_1a6017f9ff05d2a62d62d85c50c5517731">INTCON3bits</references>
+        <referencedby refid="Menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="Menusystem_8c" startline="190" endline="196">initialiseMenu</referencedby>
+        <referencedby refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" compoundref="newmain_8c" startline="117" endline="129">initialization</referencedby>
       </memberdef>
       <memberdef kind="function" id="User__Interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -133,9 +247,9 @@
  Function: <ref refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty(void)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: returns non-zero if the user interface buffer is empty (i.e. no user input has been detected)</para><para>Arguments: None</para><para>Returns: if the user input buffer is empty </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="22" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="115" bodyend="118"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="25" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="166" bodyend="169"/>
         <references refid="CircularBuffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="CircularBuffers_8h" startline="23">empty</references>
-        <referencedby refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem_8c" startline="173" endline="177">serviceMenu</referencedby>
+        <referencedby refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem_8c" startline="360" endline="417">serviceMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="User__Interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -152,8 +266,9 @@
  Function: <ref refid="User__Interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop(void)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: pops a character from the user interface receive buffer</para><para>Arguments: None</para><para>Returns: a character poped from the user Interface buffer </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="131" bodyend="136"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="26" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="182" bodyend="187"/>
         <references refid="CircularBuffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="CircularBuffers_8h" startline="28">pop</references>
+        <referencedby refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem_8c" startline="360" endline="417">serviceMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="User__Interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -170,8 +285,29 @@
  Function: <ref refid="User__Interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek(void)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: returns a character in the user_Interface buffer without removing it from the buffer</para><para>Arguments: None</para><para>Returns: a character in the user interface buffer </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="24" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="150" bodyend="153"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="27" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="201" bodyend="204"/>
         <references refid="CircularBuffers_8h_1ab6770f937bcc348970693cd84824bf9f" compoundref="CircularBuffers_8h" startline="25">peek</references>
+      </memberdef>
+      <memberdef kind="function" id="User__Interface_8h_1aa1e69bd94580864cea0b4563e5d56bc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int readDial</definition>
+        <argsstring>(unsigned int max)</argsstring>
+        <name>readDial</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: readDial(void)</para><para>Include:</para><para>Description: Read the position of the dial</para><para>Arguments: None</para><para>Returns: The dial position scaled by </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" line="28" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="126" bodyend="144"/>
+        <references refid="User__Interface_8c_1a555a695bf58df062dc03f0e892d95cd7" compoundref="User__Interface_8c" startline="26">ADC_MAX</references>
+        <referencedby refid="Menusystem_8c_1a1b85c6297d06880716723d3be78a24d6" compoundref="Menusystem_8c" startline="326" endline="331">getLocalPotResult</referencedby>
+        <referencedby refid="User__Interface_8c_1a7db12a07fa1fd8b30784f989d9d3def9" compoundref="User__Interface_8c" startline="149" endline="152">readDialForMenu</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -179,7 +315,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>User_Interface.h</highlight></codeline>
 <codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Grant</highlight></codeline>
 <codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
@@ -188,24 +324,28 @@
 <codeline lineno="7"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>15<sp/>September<sp/>2014,<sp/>1:20<sp/>PM</highlight></codeline>
 <codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//Ensure<sp/>that<sp/>there<sp/>is<sp/>only<sp/>1<sp/>inclusion<sp/>of<sp/>this<sp/>file<sp/>in<sp/>the<sp/>preprocessor<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>USER_H</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//User<sp/>interface<sp/>related<sp/>interrupts</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>USER_INT<sp/>(RB_INT<sp/>||<sp/>INT0_INT)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15" refid="User__Interface_8h_1a4358ad34c2ebafd83f49cb8e73fed3d5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>USER_INT<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//Public<sp/>function<sp/>external<sp/>declarations</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display</ref>(<ref refid="structTrackingData" kindref="compound">TrackingData</ref><sp/>data);</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26" refid="User__Interface_8h_1ad904f48bd4d9b62b4e5076a09951eee7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>USER_H</highlight></codeline>
-<codeline lineno="27"><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//Ensure<sp/>that<sp/>there<sp/>is<sp/>only<sp/>1<sp/>inclusion<sp/>of<sp/>this<sp/>file<sp/>in<sp/>the<sp/>preprocessor<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>USER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//User<sp/>interface<sp/>related<sp/>interrupts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="User__Interface_8h_1a4358ad34c2ebafd83f49cb8e73fed3d5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>USER_INT<sp/>(RB_INT<sp/>||<sp/>INT0_INT<sp/>||<sp/>INT1_INT<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="User__Interface_8h_1adead3849e015340318de05db13537485" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONFIRM_CHAR<sp/>0x0D</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="User__Interface_8h_1a988901f3420148844c4e20d8f726ba2e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BACK_CHAR<sp/>0x1B</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//Public<sp/>function<sp/>external<sp/>declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display</ref>(<ref refid="structTrackingData" kindref="compound">TrackingData</ref><sp/>data);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8h_1aa1e69bd94580864cea0b4563e5d56bc3" kindref="member">readDial</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="User__Interface_8h_1ad904f48bd4d9b62b4e5076a09951eee7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>USER_H</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h"/>
   </compounddef>

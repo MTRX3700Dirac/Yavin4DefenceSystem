@@ -36,7 +36,7 @@ void lcdWrite(unsigned char byte, unsigned char mode);
  *
  * Returns: None
  *************************************************************************/
-void lcdInit(void){
+void configLCD(void){
 
     Delay10KTCYx(6);
 

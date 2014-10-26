@@ -8,84 +8,97 @@
     <includes refid="LCD_8h" local="yes">LCD.h</includes>
     <includes refid="PanTilt_8h" local="yes">PanTilt.h</includes>
     <incdepgraph>
-      <node id="329">
+      <node id="455">
         <label>stdlib.h</label>
       </node>
-      <node id="333">
+      <node id="460">
         <label>adc.h</label>
       </node>
-      <node id="327">
+      <node id="453">
         <label>Common.h</label>
         <link refid="Common_8h"/>
-        <childnode refid="328" relation="include">
+        <childnode refid="454" relation="include">
         </childnode>
-        <childnode refid="329" relation="include">
+        <childnode refid="455" relation="include">
         </childnode>
-        <childnode refid="330" relation="include">
+        <childnode refid="456" relation="include">
         </childnode>
-        <childnode refid="331" relation="include">
+        <childnode refid="457" relation="include">
         </childnode>
-        <childnode refid="332" relation="include">
+        <childnode refid="458" relation="include">
         </childnode>
-        <childnode refid="333" relation="include">
+        <childnode refid="459" relation="include">
         </childnode>
-        <childnode refid="334" relation="include">
+        <childnode refid="460" relation="include">
         </childnode>
-        <childnode refid="335" relation="include">
+        <childnode refid="461" relation="include">
         </childnode>
-        <childnode refid="336" relation="include">
+        <childnode refid="462" relation="include">
+        </childnode>
+        <childnode refid="464" relation="include">
         </childnode>
       </node>
-      <node id="337">
+      <node id="465">
         <label>Serial.h</label>
         <link refid="Serial_8h"/>
       </node>
-      <node id="332">
+      <node id="463">
+        <label>pconfig.h</label>
+      </node>
+      <node id="457">
+        <label>string.h</label>
+      </node>
+      <node id="459">
         <label>timers.h</label>
       </node>
-      <node id="336">
+      <node id="464">
         <label>compare.h</label>
       </node>
-      <node id="334">
+      <node id="461">
         <label>capture.h</label>
       </node>
-      <node id="330">
+      <node id="456">
         <label>math.h</label>
       </node>
-      <node id="331">
+      <node id="462">
+        <label>usart.h</label>
+        <link refid="usart_8h"/>
+        <childnode refid="463" relation="include">
+        </childnode>
+      </node>
+      <node id="458">
         <label>p18f4520.h</label>
         <link refid="p18f4520_8h"/>
       </node>
-      <node id="335">
-        <label>usart.h</label>
-      </node>
-      <node id="339">
+      <node id="467">
         <label>LCD.h</label>
         <link refid="LCD_8h"/>
       </node>
-      <node id="328">
+      <node id="454">
         <label>stdio.h</label>
       </node>
-      <node id="340">
+      <node id="468">
         <label>PanTilt.h</label>
         <link refid="PanTilt_8h"/>
       </node>
-      <node id="338">
+      <node id="466">
         <label>User_Interface.h</label>
         <link refid="User__Interface_8h"/>
+        <childnode refid="453" relation="include">
+        </childnode>
       </node>
-      <node id="326">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c</label>
+      <node id="452">
+        <label>Yavin4DefenceSystem/Code/Menusystem2.c</label>
         <link refid="Menusystem2.c"/>
-        <childnode refid="327" relation="include">
+        <childnode refid="453" relation="include">
         </childnode>
-        <childnode refid="337" relation="include">
+        <childnode refid="465" relation="include">
         </childnode>
-        <childnode refid="338" relation="include">
+        <childnode refid="466" relation="include">
         </childnode>
-        <childnode refid="339" relation="include">
+        <childnode refid="467" relation="include">
         </childnode>
-        <childnode refid="340" relation="include">
+        <childnode refid="468" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -376,7 +389,7 @@
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="45" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="197" bodyend="208"/>
         <references refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" compoundref="Menusystem2_8c" startline="38">level</references>
         <references refid="structSubMenu_1ad86a4714605654261200ef4194e1657c" compoundref="Menusystem2_8c" startline="19">SubMenu::defaultFunction</references>
-        <references refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="Serial_8c" startline="90" endline="103">transmit</references>
+        <references refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" compoundref="Serial_8c" startline="92" endline="105">transmit</references>
         <references refid="structSubMenu_1a24706f7b55951b0e21967a256e107936" compoundref="Menusystem2_8c" startline="13">SubMenu::serialMessage</references>
         <references refid="structSubMenu_1a10ce8be3d2bbadbc9c262b6be4bb3aec" compoundref="Menusystem2_8c" startline="14">SubMenu::lcdMessage</references>
       </memberdef>
@@ -396,9 +409,11 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="60" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="60" bodyend="69"/>
-        <references refid="Serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="Serial_8c" startline="57" endline="75">configureSerial</references>
-        <references refid="LCD_8c_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="LCD_8c" startline="35" endline="57">lcdInit</references>
-        <references refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" compoundref="User__Interface_8c" startline="67" endline="71">configUSER</references>
+        <references refid="MenuDefs_8h_1aa098c58ecdb6f99f3480138f9f740d47a4ba7a18dad4c2b80d41444425fc4b818" compoundref="MenuDefs_8h" startline="52">REMOTE</references>
+        <references refid="Serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="Serial_8c" startline="58" endline="77">configureSerial</references>
+        <references refid="LCD_8c_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="LCD_8c" startline="39" endline="61">lcdInit</references>
+        <references refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" compoundref="User__Interface_8c" startline="86" endline="113">configUSER</references>
+        <references refid="Menusystem_8c_1af00ad1f1fdd6abc9dfc5d1682463a2f9" compoundref="Menusystem_8c" startline="487" endline="492">setMenu</references>
         <references refid="Menusystem2_8c_1a157eac1dc94359e4d223f8328f6d59e0" compoundref="Menusystem2_8c" startline="35">Root</references>
         <references refid="Menusystem2_8c_1ab7c54bfc8293491beeef98a08b8b56d5" compoundref="Menusystem2_8c" startline="30">AutoTrack</references>
         <references refid="Menusystem2_8c_1ae3f81077129a28d7185c8a241434c00d" compoundref="Menusystem2_8c" startline="27">Min</references>
@@ -417,16 +432,31 @@
 <para><hruler/>
  Function: <ref refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" kindref="member">serviceMenu(void)</ref></para><para>Include:</para><para>Description: Checks if the user has made any inputs to the system. If not the function simply returns. If they have then it services the inputs, displays the correct outputs and performs the specified actions</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
-        </inbodydescription>
+<para>If Esc or Back button pressed, return</para><para>Otherwise Confirm the selection </para>        </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" line="87" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="87" bodyend="111"/>
-        <references refid="Serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="Serial_8c" startline="136" endline="139">receiveEmpty</references>
-        <references refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="User__Interface_8c" startline="115" endline="118">userEmpty</references>
+        <references refid="MenuDefs_8h_1aa098c58ecdb6f99f3480138f9f740d47a4ba7a18dad4c2b80d41444425fc4b818" compoundref="MenuDefs_8h" startline="52">REMOTE</references>
+        <references refid="MenuDefs_8h_1aa098c58ecdb6f99f3480138f9f740d47a44158b5e87162ba1c35cda193922d021" compoundref="MenuDefs_8h" startline="52">FACTORY</references>
+        <references refid="Menusystem_8c_1a0c5137bf380f59ecbe803283c32f7c2c" compoundref="Menusystem_8c" startline="211" endline="215">checkForSerialInput</references>
+        <references refid="Menusystem_8c_1a8b63a4216144880e0f72493bb99327b9" compoundref="Menusystem_8c" startline="308" endline="318">getSerialNumericInput</references>
+        <references refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="User__Interface_8c" startline="166" endline="169">userEmpty</references>
+        <references refid="Menusystem_8c_1a1b85c6297d06880716723d3be78a24d6" compoundref="Menusystem_8c" startline="326" endline="331">getLocalPotResult</references>
+        <references refid="Menusystem_8c_1a8f68b12c69c7e6bb1f5cb87b05ac1fce" compoundref="Menusystem_8c" startline="94">m_currentMenu</references>
+        <references refid="structmenuStruct_1a3dfb56fce4a9944b52c4e8287eebed8c" compoundref="MenuDefs_8h" startline="93">menuStruct::minVal</references>
+        <references refid="structmenuStruct_1a058fc3d0b450f32fd3a113acd5fa84b9" compoundref="MenuDefs_8h" startline="94">menuStruct::maxVal</references>
+        <references refid="structmenuStruct_1ad4064acf502195fc199a543aeec54de1" compoundref="MenuDefs_8h" startline="95">menuStruct::increment</references>
+        <references refid="structmenuStruct_1a547bbd90c8e0b7b933db848413cd2ba0" compoundref="MenuDefs_8h" startline="98">menuStruct::lcdDisplayFunction</references>
+        <references refid="User__Interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" compoundref="User__Interface_8c" startline="182" endline="187">userPop</references>
+        <references refid="User__Interface_8h_1adead3849e015340318de05db13537485" compoundref="User__Interface_8h" startline="17">CONFIRM_CHAR</references>
+        <references refid="MenuDefs_8h_1aacd3d48d77b9b154e32e586724e5aeeb" compoundref="MenuDefs_8h" startline="60">ESC_PRESSED</references>
+        <references refid="structmenuStruct_1a4a793df9b579e46aa1aead30a3e01172" compoundref="MenuDefs_8h" startline="99">menuStruct::returnToPrevious</references>
+        <references refid="structmenuStruct_1ad951b71abf9e8f1dfe126e3b9d921826" compoundref="MenuDefs_8h" startline="97">menuStruct::confirmFunction</references>
+        <references refid="Serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="Serial_8c" startline="138" endline="141">receiveEmpty</references>
         <references refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" compoundref="Menusystem2_8c" startline="38">level</references>
         <references refid="structSubMenu_1a1dae2f8dad8e2d2a30b13ee69ea542db" compoundref="Menusystem2_8c" startline="18">SubMenu::numericFunction</references>
-        <references refid="Serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="Serial_8c" startline="186" endline="189">receiveCR</references>
-        <references refid="Serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="Serial_8c" startline="206" endline="218">readString</references>
+        <references refid="Serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="Serial_8c" startline="188" endline="191">receiveCR</references>
+        <references refid="Serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="Serial_8c" startline="246" endline="259">readString</references>
         <references refid="Menusystem2_8c_1ad3ebde8bf1da78fb419653e5a495837b" compoundref="Menusystem2_8c" startline="176" endline="182">parseNumeric</references>
-        <references refid="Serial_8c_1abb74ccb0bd81e0e4779854c93851c804" compoundref="Serial_8c" startline="169" endline="173">receivePop</references>
+        <references refid="Serial_8c_1abb74ccb0bd81e0e4779854c93851c804" compoundref="Serial_8c" startline="171" endline="175">receivePop</references>
         <references refid="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" compoundref="Menusystem2_8c" startline="144" endline="161">parseInput</references>
       </memberdef>
       <memberdef kind="function" id="Menusystem2_8c_1a0f329206447b1f40e6f730b346aaaf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

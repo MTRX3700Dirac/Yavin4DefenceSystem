@@ -1,7 +1,0 @@
-<map id="serviceMenu" name="serviceMenu">
-<area shape="rect" id="node2" href="$_serial_8c.html#a42f5165187634304f89709eebe7c9f8c" title="receiveEmpty" alt="" coords="148,5,248,32"/>
-<area shape="rect" id="node3" href="$_user___interface_8c.html#a62fd5de2781acb67fe5133d79ae580cc" title="userEmpty" alt="" coords="155,56,241,83"/>
-<area shape="rect" id="node4" href="$_serial_8c.html#aca906fa91f67c730681400b51d426933" title="receiveCR" alt="" coords="158,107,238,133"/>
-<area shape="rect" id="node5" href="$_serial_8c.html#ad5d0bd1e5c7b8380e3567f8dc474b6db" title="readString" alt="" coords="157,157,239,184"/>
-<area shape="rect" id="node6" href="$_serial_8c.html#abb74ccb0bd81e0e4779854c93851c804" title="receivePop" alt="" coords="155,208,241,235"/>
-</map>

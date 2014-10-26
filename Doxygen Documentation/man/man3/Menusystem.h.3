@@ -1,21 +1,11 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/Menusystem.h" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h \- 
+Yavin4DefenceSystem/Code/Menusystem.h \- 
 .SH SYNOPSIS
 .br
 .PP
-.SS "Macros"
-
-.in +1c
-.ti -1c
-.RI "#define \fBMENU_ISR\fP   0"
-.br
-.ti -1c
-.RI "#define \fBMENU_H\fP"
-.br
-.in -1c
 .SS "Functions"
 
 .in +1c
@@ -24,7 +14,7 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h \-
 .br
 .RI "\fIInitialises the menu system\&. \fP"
 .ti -1c
-.RI "void \fBserviceMenu\fP (void)"
+.RI "char \fBcheckForSerialInput\fP (void)"
 .br
 .RI "\fIservices any user interface with the menu \fP"
 .ti -1c
@@ -32,21 +22,261 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h \-
 .br
 .RI "\fIISR function for the menu subsystem\&. \fP"
 .ti -1c
-.RI "void \fBmenu\fP (void)"
+.RI "void \fBserviceMenu\fP (void)"
+.br
+.RI "\fIservices any user interface with the menu \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const rom char \fBnewLine\fP [] = '\\r\\n'"
+.br
+.ti -1c
+.RI "const rom char \fBCHOOSE\fP [] = '\\n\\n\\tPlease select your option (eg\&. 2): \\r\\n'"
+.br
+.ti -1c
+.RI "const rom char \fBmenuPrefix3\fP [] = '\\t3:'"
+.br
+.ti -1c
+.RI "const rom char \fBmenuPrefix4\fP [] = '\\t4:'"
+.br
+.ti -1c
+.RI "const rom char \fBmenuPrefix5\fP [] = '\\t5:'"
+.br
+.ti -1c
+.RI "const rom char \fBmenuPrefix8\fP [] = '\\t8:'"
+.br
+.ti -1c
+.RI "const rom char \fBgoUp\fP [] = '\\tReturn to previous menu\\r\\n'"
+.br
+.ti -1c
+.RI "const rom char \fBgoUp2\fP [] = 'Press Esc to return to the previous menu\&.\\r\\n'"
+.br
+.ti -1c
+.RI "const rom char \fBerrNumOutOfRange\fP [] = ' Error: Please enter a number between '"
+.br
+.ti -1c
+.RI "const rom char \fBand\fP [] = ' and '"
+.br
+.ti -1c
+.RI "const rom char \fBwelcome\fP [] = ' Welcome to Yavin IV Defence System '"
+.br
+.ti -1c
+.RI "const rom char \fBwelcomeLcd\fP [] = ' Welcome!'"
+.br
+.ti -1c
+.RI "const far rom char \fBtopOption1\fP [] = '\\t1:\\tAutomatic Tracking\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBtopOption2\fP [] = '\\t2:\\tAzimuth Options\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBtopOption3\fP [] = '\\t3:\\tElevation Options\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBtopOption4\fP [] = '\\t4:\\tRange Options\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBtopOption5\fP [] = '\\t5:\\tDisplay Current Temperature\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBtopOptionCalTemp\fP [] = '\\t6:\\tCalibrate the Temperature sensor\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBtopOptionLocal\fP [] = '\\t6:\\tSwitch to Local mode\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBtopOptionFactory\fP [] = '\\t7:\\tSwitch to Factory mode\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBtopOptionRemote\fP [] = '\\t6:\\tSwitch to Remote Serial mode\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBtopOptionRemoteLCD\fP [] = 'Switch to Remote'"
+.br
+.ti -1c
+.RI "const rom char \fBazMenu\fP [] = '\\r\\nAzimuth Configuration\\r\\n'"
+.br
+.ti -1c
+.RI "const rom char \fBazMenuLcd\fP [] = 'Azimuth Options'"
+.br
+.ti -1c
+.RI "const far rom char \fBazOption1\fP [] = '\\t1:\\tGo to a specified azimuth angle\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBazOption2\fP [] = '\\t2:\\tSet the minimum azimuth angle\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBazOption3\fP [] = '\\t3:\\tSet the maximum azimuth angle\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBazOption4\fP [] = '\\t4:\\tCalibrate the azimuth motor\\r\\n'"
+.br
+.ti -1c
+.RI "const rom char \fBelMenu\fP [] = '\\r\\nElevation Configuration\\r\\n'"
+.br
+.ti -1c
+.RI "const rom char \fBelMenuLcd\fP [] = 'Elevation Options'"
+.br
+.ti -1c
+.RI "const far rom char \fBelOption1\fP [] = '\\t1:\\tGo to a specified elevation angle\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBelOption2\fP [] = '\\t2:\\tSet the minimum elevation angle\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBelOption3\fP [] = '\\t3:\\tSet the maximum elevation angle\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBelOption4\fP [] = '\\t4:\\tCalibrate the elevation motor\\r\\n'"
+.br
+.ti -1c
+.RI "const rom char \fBrngMenu\fP [] = '\\r\\nRange Configuration\\r\\n'"
+.br
+.ti -1c
+.RI "const rom char \fBrngMenuLcd\fP [] = 'Range Options'"
+.br
+.ti -1c
+.RI "const far rom char \fBrngOption1\fP [] = '\\t1:\\tSet the minimum system range\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBrngOption2\fP [] = '\\t2:\\tSet the maximum system range\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBrngOption3\fP [] = '\\t3:\\tView the raw ultrasound \fBand\fP infrared sensor readings\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBrngOption4\fP [] = '\\t4:\\tSet the ultrasound sample rate\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBrngOption5\fP [] = '\\t5:\\tSet the number of ultrasound samples used per estimate\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBrngOption6\fP [] = '\\t6:\\tSet the infrared sample rate\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBrngOption7\fP [] = '\\t7:\\tSet the number of infrared samples used per estimate\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBshowTempLCDTitle\fP [] = 'Display Temp'"
+.br
+.ti -1c
+.RI "const far rom char \fBshowTempLCD\fP [] = 'Temp = '"
+.br
+.ti -1c
+.RI "const far rom char \fBshowTemp1\fP [] = '\\r\\n The current temperature is '"
+.br
+.ti -1c
+.RI "const far rom char \fBshowTemp2\fP [] = ' degrees Celcius\&. \\r\\n\\n Press Esc to return\&.\\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBgotoAzAngle\fP [] = '\\r\\n Enter the azimuth angle in degrees\&. \\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBgotoAzAngleLCD\fP [] = 'Go to Azimuth'"
+.br
+.ti -1c
+.RI "const far rom char \fBgotoElAngle\fP [] = '\\r\\n Enter the elevation angle in degrees\&. \\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBgotoELAngleLCD\fP [] = 'Go to Elevation'"
+.br
+.ti -1c
+.RI "const far rom char \fBgotoAngle2\fP [] = ' The current minimum \fBand\fP maximum angles are '"
+.br
+.ti -1c
+.RI "const far rom char \fBangleStr\fP [] = 'Angle'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxAzStr\fP [] = 'Max Azimuth'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxAzSetStr\fP [] = 'Set \fBMax\fP Azimuth'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxAz1\fP [] = ' Enter a new maximum azimuth angle: \\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxAz3\fP [] = '\\r\\n Maximum azimuth angle set to '"
+.br
+.ti -1c
+.RI "const far rom char \fBcurrentMinAngleStr\fP [] = '\\r\\n The current minimum angle is '"
+.br
+.ti -1c
+.RI "const far rom char \fBminAzStr\fP [] = 'Min Azimuth'"
+.br
+.ti -1c
+.RI "const far rom char \fBminAzSetStr\fP [] = 'Set \fBMin\fP Azimuth'"
+.br
+.ti -1c
+.RI "const far rom char \fBminAz1\fP [] = ' Enter a new minimum azimuth angle: \\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBminAz3\fP [] = '\\r\\n Minimum azimuth angle set to '"
+.br
+.ti -1c
+.RI "const far rom char \fBcalibrateAngle1\fP [] = '\\r\\n Enter the true angle of the current position \\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxElStr\fP [] = 'Max Elevation'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxElSetStr\fP [] = 'Set \fBMax\fP Elevation'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxEl1\fP [] = ' Enter a new maximum elevation angle: \\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxEl3\fP [] = '\\r\\n Maximum elevation angle set to '"
+.br
+.ti -1c
+.RI "const far rom char \fBminElStr\fP [] = 'Min Elevation'"
+.br
+.ti -1c
+.RI "const far rom char \fBminElSetStr\fP [] = 'Set \fBMin\fP Elevation'"
+.br
+.ti -1c
+.RI "const far rom char \fBminEl1\fP [] = ' Enter a new minimum elevation angle: \\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBminEl3\fP [] = '\\r\\n Minimum elevation angle set to '"
+.br
+.ti -1c
+.RI "const far rom char \fBminRngStr\fP [] = 'Min Range'"
+.br
+.ti -1c
+.RI "const far rom char \fBminRngSetStr\fP [] = 'Set \fBMin\fP Range'"
+.br
+.ti -1c
+.RI "const far rom char \fBminRngSerialStr\fP [] = 'Enter a new minimum range: \\r\\n'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxRngStr\fP [] = 'Max Range'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxRngSetStr\fP [] = 'Set \fBMax\fP Range'"
+.br
+.ti -1c
+.RI "const far rom char \fBmaxRngSerialStr\fP [] = 'Enter a new minimum range: \\r\\n'"
 .br
 .in -1c
-.SH "Macro Definition Documentation"
-.PP 
-.SS "#define MENU_H"
-
-.SS "#define MENU_ISR   0"
-
-.PP
- File: \fBMenusystem\&.h\fP Author: Jacob
-.PP
-Created on 7 October 2014, 9:56 PM 
 .SH "Function Documentation"
 .PP 
+.SS "char checkForSerialInput (void)"
+
+.PP
+services any user interface with the menu 
+.PP
+ Function: waitForInput(void)
+.PP
+Include:
+.PP
+Description: Checks the serial/local buffers for inputs
+.PP
+Arguments: None
+.PP
+Returns: 1 if input has been received, 0 otherwise Wait until the receive buffer is no longer empty Indicating that a command has been passed 
 .SS "void initialiseMenu (void)"
 
 .PP
@@ -61,8 +291,6 @@ Description: initialises the menu system so that it is fully operational
 Arguments: None
 .PP
 Returns: None 
-.SS "void menu (void)"
-
 .SS "void menuISR (void)"
 
 .PP
@@ -90,7 +318,165 @@ Description: Checks if the user has made any inputs to the system\&. If not the 
 .PP
 Arguments: None
 .PP
-Returns: None 
+Returns: None If Esc or Back button pressed, return
+.PP
+Otherwise Confirm the selection 
+.SH "Variable Documentation"
+.PP 
+.SS "const rom char and[] = ' and '"
+
+.SS "const far rom char angleStr[] = 'Angle'"
+
+.SS "const rom char azMenu[] = '\\r\\nAzimuth Configuration\\r\\n'"
+
+.SS "const rom char azMenuLcd[] = 'Azimuth Options'"
+
+.SS "const far rom char azOption1[] = '\\t1:\\tGo to a specified azimuth angle\\r\\n'"
+
+.SS "const far rom char azOption2[] = '\\t2:\\tSet the minimum azimuth angle\\r\\n'"
+
+.SS "const far rom char azOption3[] = '\\t3:\\tSet the maximum azimuth angle\\r\\n'"
+
+.SS "const far rom char azOption4[] = '\\t4:\\tCalibrate the azimuth motor\\r\\n'"
+
+.SS "const far rom char calibrateAngle1[] = '\\r\\n Enter the true angle of the current position \\r\\n'"
+
+.SS "const rom char CHOOSE[] = '\\n\\n\\tPlease select your option (eg\&. 2): \\r\\n'"
+
+.SS "const far rom char currentMinAngleStr[] = '\\r\\n The current minimum angle is '"
+
+.SS "const rom char elMenu[] = '\\r\\nElevation Configuration\\r\\n'"
+
+.SS "const rom char elMenuLcd[] = 'Elevation Options'"
+
+.SS "const far rom char elOption1[] = '\\t1:\\tGo to a specified elevation angle\\r\\n'"
+
+.SS "const far rom char elOption2[] = '\\t2:\\tSet the minimum elevation angle\\r\\n'"
+
+.SS "const far rom char elOption3[] = '\\t3:\\tSet the maximum elevation angle\\r\\n'"
+
+.SS "const far rom char elOption4[] = '\\t4:\\tCalibrate the elevation motor\\r\\n'"
+
+.SS "const rom char errNumOutOfRange[] = ' Error: Please enter a number between '"
+
+.SS "const far rom char gotoAngle2[] = ' The current minimum \fBand\fP maximum angles are '"
+
+.SS "const far rom char gotoAzAngle[] = '\\r\\n Enter the azimuth angle in degrees\&. \\r\\n'"
+
+.SS "const far rom char gotoAzAngleLCD[] = 'Go to Azimuth'"
+
+.SS "const far rom char gotoElAngle[] = '\\r\\n Enter the elevation angle in degrees\&. \\r\\n'"
+
+.SS "const far rom char gotoELAngleLCD[] = 'Go to Elevation'"
+
+.SS "const rom char goUp[] = '\\tReturn to previous menu\\r\\n'"
+
+.SS "const rom char goUp2[] = 'Press Esc to return to the previous menu\&.\\r\\n'"
+
+.SS "const far rom char maxAz1[] = ' Enter a new maximum azimuth angle: \\r\\n'"
+
+.SS "const far rom char maxAz3[] = '\\r\\n Maximum azimuth angle set to '"
+
+.SS "const far rom char maxAzSetStr[] = 'Set \fBMax\fP Azimuth'"
+
+.SS "const far rom char maxAzStr[] = 'Max Azimuth'"
+
+.SS "const far rom char maxEl1[] = ' Enter a new maximum elevation angle: \\r\\n'"
+
+.SS "const far rom char maxEl3[] = '\\r\\n Maximum elevation angle set to '"
+
+.SS "const far rom char maxElSetStr[] = 'Set \fBMax\fP Elevation'"
+
+.SS "const far rom char maxElStr[] = 'Max Elevation'"
+
+.SS "const far rom char maxRngSerialStr[] = 'Enter a new minimum range: \\r\\n'"
+
+.SS "const far rom char maxRngSetStr[] = 'Set \fBMax\fP Range'"
+
+.SS "const far rom char maxRngStr[] = 'Max Range'"
+
+.SS "const rom char menuPrefix3[] = '\\t3:'"
+
+.SS "const rom char menuPrefix4[] = '\\t4:'"
+
+.SS "const rom char menuPrefix5[] = '\\t5:'"
+
+.SS "const rom char menuPrefix8[] = '\\t8:'"
+
+.SS "const far rom char minAz1[] = ' Enter a new minimum azimuth angle: \\r\\n'"
+
+.SS "const far rom char minAz3[] = '\\r\\n Minimum azimuth angle set to '"
+
+.SS "const far rom char minAzSetStr[] = 'Set \fBMin\fP Azimuth'"
+
+.SS "const far rom char minAzStr[] = 'Min Azimuth'"
+
+.SS "const far rom char minEl1[] = ' Enter a new minimum elevation angle: \\r\\n'"
+
+.SS "const far rom char minEl3[] = '\\r\\n Minimum elevation angle set to '"
+
+.SS "const far rom char minElSetStr[] = 'Set \fBMin\fP Elevation'"
+
+.SS "const far rom char minElStr[] = 'Min Elevation'"
+
+.SS "const far rom char minRngSerialStr[] = 'Enter a new minimum range: \\r\\n'"
+
+.SS "const far rom char minRngSetStr[] = 'Set \fBMin\fP Range'"
+
+.SS "const far rom char minRngStr[] = 'Min Range'"
+
+.SS "const rom char newLine[] = '\\r\\n'"
+
+.SS "const rom char rngMenu[] = '\\r\\nRange Configuration\\r\\n'"
+
+.SS "const rom char rngMenuLcd[] = 'Range Options'"
+
+.SS "const far rom char rngOption1[] = '\\t1:\\tSet the minimum system range\\r\\n'"
+
+.SS "const far rom char rngOption2[] = '\\t2:\\tSet the maximum system range\\r\\n'"
+
+.SS "const far rom char rngOption3[] = '\\t3:\\tView the raw ultrasound \fBand\fP infrared sensor readings\\r\\n'"
+
+.SS "const far rom char rngOption4[] = '\\t4:\\tSet the ultrasound sample rate\\r\\n'"
+
+.SS "const far rom char rngOption5[] = '\\t5:\\tSet the number of ultrasound samples used per estimate\\r\\n'"
+
+.SS "const far rom char rngOption6[] = '\\t6:\\tSet the infrared sample rate\\r\\n'"
+
+.SS "const far rom char rngOption7[] = '\\t7:\\tSet the number of infrared samples used per estimate\\r\\n'"
+
+.SS "const far rom char showTemp1[] = '\\r\\n The current temperature is '"
+
+.SS "const far rom char showTemp2[] = ' degrees Celcius\&. \\r\\n\\n Press Esc to return\&.\\r\\n'"
+
+.SS "const far rom char showTempLCD[] = 'Temp = '"
+
+.SS "const far rom char showTempLCDTitle[] = 'Display Temp'"
+
+.SS "const far rom char topOption1[] = '\\t1:\\tAutomatic Tracking\\r\\n'"
+
+.SS "const far rom char topOption2[] = '\\t2:\\tAzimuth Options\\r\\n'"
+
+.SS "const far rom char topOption3[] = '\\t3:\\tElevation Options\\r\\n'"
+
+.SS "const far rom char topOption4[] = '\\t4:\\tRange Options\\r\\n'"
+
+.SS "const far rom char topOption5[] = '\\t5:\\tDisplay Current Temperature\\r\\n'"
+
+.SS "const far rom char topOptionCalTemp[] = '\\t6:\\tCalibrate the Temperature sensor\\r\\n'"
+
+.SS "const far rom char topOptionFactory[] = '\\t7:\\tSwitch to Factory mode\\r\\n'"
+
+.SS "const far rom char topOptionLocal[] = '\\t6:\\tSwitch to Local mode\\r\\n'"
+
+.SS "const far rom char topOptionRemote[] = '\\t6:\\tSwitch to Remote Serial mode\\r\\n'"
+
+.SS "const far rom char topOptionRemoteLCD[] = 'Switch to Remote'"
+
+.SS "const rom char welcome[] = ' Welcome to Yavin IV Defence System '"
+
+.SS "const rom char welcomeLcd[] = ' Welcome!'"
+
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Yavin IV Death Star Tracker from the source code\&.

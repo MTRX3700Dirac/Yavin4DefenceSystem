@@ -1,18 +1,16 @@
 <map id="track" name="track">
-<area shape="rect" id="node2" href="$PanTilt_8c.html#ad1d9638bad5a5021969d19769e70c775" title="getDir" alt="" coords="133,19,189,45"/>
-<area shape="rect" id="node3" href="$PanTilt_8c.html#a032fbfc434ca24d27d89b6d768455a42" title="move" alt="" coords="135,69,187,96"/>
-<area shape="rect" id="node7" href="$Range_8c.html#a87c8e64ddc596f3e6b72ee861f671168" title="readTargetState" alt="" coords="104,171,219,197"/>
-<area shape="rect" id="node8" href="$Range_8c.html#aff3698f3a7b3b5963d8e6b305a165d71" title="range" alt="" coords="295,157,349,184"/>
-<area shape="rect" id="node4" href="$PanTilt_8c.html#a96270ab040ad40095a6c0b24ffb0f994" title="direction2Delay" alt="" coords="267,12,377,39"/>
-<area shape="rect" id="node6" href="$PanTilt_8c.html#abe8bae9cf0445d5d64cacb685f2bd934" title="delay2Direction" alt="" coords="267,69,377,96"/>
+<area shape="rect" id="node2" href="$PanTilt_8c.html#ad1d9638bad5a5021969d19769e70c775" title="getDir" alt="" coords="133,5,189,32"/>
+<area shape="rect" id="node3" href="$PanTilt_8c.html#a032fbfc434ca24d27d89b6d768455a42" title="move" alt="" coords="135,56,187,83"/>
+<area shape="rect" id="node7" href="$Range_8c.html#a87c8e64ddc596f3e6b72ee861f671168" title="readTargetState" alt="" coords="104,107,219,133"/>
+<area shape="rect" id="node8" href="$Range_8c.html#aff3698f3a7b3b5963d8e6b305a165d71" title="Samples the range. " alt="" coords="295,157,349,184"/>
+<area shape="rect" id="node4" href="$PanTilt_8c.html#a96270ab040ad40095a6c0b24ffb0f994" title="direction2Delay" alt="" coords="267,5,377,32"/>
+<area shape="rect" id="node6" href="$PanTilt_8c.html#abe8bae9cf0445d5d64cacb685f2bd934" title="delay2Direction" alt="" coords="267,56,377,83"/>
 <area shape="rect" id="node5" href="$PanTilt_8c.html#a339d46c81d3203b479d9731ef06590d3" title="validate" alt="" coords="448,5,513,32"/>
-<area shape="rect" id="node17" href="$Range_8c.html#a3e5554f5a076ded63b937d50b7e5c9db" title="getTargetState" alt="" coords="269,208,375,235"/>
 <area shape="rect" id="node9" href="$Range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2" title="configureRange" alt="" coords="425,56,536,83"/>
 <area shape="rect" id="node13" href="$Range_8c.html#a4571d632d0c84c18c4aefd1c7b63cb8a" title="beginUS" alt="" coords="445,107,516,133"/>
-<area shape="rect" id="node14" href="$Range_8c.html#a91b55894b9e6d74e4495ea610246c856" title="rangeIR" alt="" coords="447,157,514,184"/>
-<area shape="rect" id="node16" href="$Range_8c.html#af470fd0f0b96399b344f11783b4ef7f3" title="rangeUS" alt="" coords="445,208,517,235"/>
+<area shape="rect" id="node14" href="$Range_8c.html#af470fd0f0b96399b344f11783b4ef7f3" title="rangeUS" alt="" coords="445,157,517,184"/>
+<area shape="rect" id="node15" href="$Range_8c.html#a71fa1634c2a7d76287ac872b5cfed382" title="fuseRange" alt="" coords="439,208,522,235"/>
 <area shape="rect" id="node10" href="$Temp_8c.html#afd08db2b1a6d6af19e39f10dc453332c" title="readTemp" alt="" coords="591,31,669,57"/>
 <area shape="rect" id="node12" href="$Range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a" title="configureAD" alt="" coords="584,81,676,108"/>
 <area shape="rect" id="node11" href="$Temp_8c.html#a4946ccbc1990e831667bffded1147c4f" title="readTempx2" alt="" coords="724,31,817,57"/>
-<area shape="rect" id="node15" href="$Range_8c.html#ae7948eddefd58fbe1509d2bade4cd908" title="sampleIR" alt="" coords="592,157,668,184"/>
 </map>

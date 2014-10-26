@@ -1,8 +1,8 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/newmain.c" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c \- 
+Yavin4DefenceSystem/Code/newmain.c \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -21,6 +21,13 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c \-
 \fC#include 'Menusystem\&.h'\fP
 .br
 
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBUPDATE_TIME\fP   1000"
+.br
+.in -1c
 .SS "Functions"
 
 .in +1c
@@ -31,13 +38,19 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c \-
 .RI "static void \fBtransRange\fP (void)"
 .br
 .ti -1c
+.RI "void \fBconfigureTimer0\fP (void)"
+.br
+.ti -1c
 .RI "void \fBmain\fP ()"
 .br
 .RI "\fIProgram entry point\&. \fP"
+.ti -1c
+.RI "static void \fBdispTrack\fP (\fBTrackingData\fP target)"
+.br
 .in -1c
-.SH "Function Documentation"
+.SH "Macro Definition Documentation"
 .PP 
-.SS "static void initialization (\fBsystemState\fP *state)\fC [static]\fP"
+.SS "#define UPDATE_TIME   1000"
 
 .PP
  File: \fBnewmain\&.c\fP
@@ -46,8 +59,15 @@ Author: Grant
 .PP
 Description: Controls the main system state of the product based on a state transition type template\&.
 .PP
-Created on 7 September 2014, 4:12 PM
-.PP
+Created on 7 September 2014, 4:12 PM 
+.SH "Function Documentation"
+.PP 
+.SS "void configureTimer0 (void)"
+
+.SS "static void dispTrack (\fBTrackingData\fPtarget)\fC [static]\fP"
+
+.SS "static void initialization (\fBsystemState\fP *state)\fC [static]\fP"
+
 .PP
  Function: \fBinitialization(systemState *state)\fP
 .PP
@@ -58,7 +78,7 @@ Description: Initializes the system, turns on the sensors and checks if they are
 Arguments: state - The current state of the system
 .PP
 Returns: The next system state - At the moment always just transitions to CHECK 
-.SS "void main ()"
+.SS "void main (void)"
 
 .PP
 Program entry point\&. 
@@ -71,32 +91,8 @@ Description: stores the current system state and manages all transitions
 .PP
 Arguments: None
 .PP
-Returns: None
-.PP
-\fBTodo\fP
-.RS 4
-test and debug the Watch Dog Timer functionality 
-.RE
-.PP
-
+Returns: None 
 .SS "static void transRange (void)\fC [static]\fP"
-
-.PP
- Function: \fBtransRange(void)\fP
-.PP
-Include: Local to \fBnewmain\&.c\fP
-.PP
-Description: Measures and Transmits the range -> for testing purposes only
-.PP
-Arguments: None
-.PP
-Returns: None; Prints range to the screen
-.PP
-\fBTodo\fP
-.RS 4
-Remove this function before the final version 
-.RE
-.PP
 
 .SH "Author"
 .PP 

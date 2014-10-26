@@ -15,13 +15,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="77" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="77" bodyend="-1"/>
-        <referencedby refid="PanTilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="PanTilt_8c" startline="174" endline="180">increment</referencedby>
-        <referencedby refid="PanTilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="PanTilt_8c" startline="193" endline="210">incrementFine</referencedby>
-        <referencedby refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="459" endline="470">delay2Direction</referencedby>
-        <referencedby refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="487" endline="502">direction2Delay</referencedby>
-        <referencedby refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="62" endline="110">search</referencedby>
-        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="145" endline="202">track</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="73" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" compoundref="Menusystem_8c" startline="424" endline="485">setValue</referencedby>
+        <referencedby refid="PanTilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="PanTilt_8c" startline="170" endline="176">increment</referencedby>
+        <referencedby refid="PanTilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="PanTilt_8c" startline="189" endline="206">incrementFine</referencedby>
+        <referencedby refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="449" endline="460">delay2Direction</referencedby>
+        <referencedby refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="477" endline="492">direction2Delay</referencedby>
+        <referencedby refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="87" endline="135">search</referencedby>
+        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="167" endline="229">track</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structDirection_1af308b9934394c8bcf7614eb1df2d863f" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -34,13 +35,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="78" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="78" bodyend="-1"/>
-        <referencedby refid="PanTilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="PanTilt_8c" startline="174" endline="180">increment</referencedby>
-        <referencedby refid="PanTilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="PanTilt_8c" startline="193" endline="210">incrementFine</referencedby>
-        <referencedby refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="459" endline="470">delay2Direction</referencedby>
-        <referencedby refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="487" endline="502">direction2Delay</referencedby>
-        <referencedby refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="62" endline="110">search</referencedby>
-        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="145" endline="202">track</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="74" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" compoundref="Menusystem_8c" startline="424" endline="485">setValue</referencedby>
+        <referencedby refid="PanTilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="PanTilt_8c" startline="170" endline="176">increment</referencedby>
+        <referencedby refid="PanTilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="PanTilt_8c" startline="189" endline="206">incrementFine</referencedby>
+        <referencedby refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="449" endline="460">delay2Direction</referencedby>
+        <referencedby refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="477" endline="492">direction2Delay</referencedby>
+        <referencedby refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="87" endline="135">search</referencedby>
+        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="167" endline="229">track</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -48,7 +50,7 @@
     <detaileddescription>
 <para><hruler/>
  typedef of <ref refid="structDirection" kindref="compound">Direction</ref> struct</para><para>Description: A fully defined direction in which to point the pan tilt actuator or any other such purpose</para><para>Elements: -Azimuth: Contains the azimuth component of the direction (generally degrees) -Inclination: Contains the inclination component of the direction (generally degrees) </para>    </detaileddescription>
-    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="76" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="75" bodyend="79"/>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="72" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="71" bodyend="75"/>
     <listofallmembers>
       <member refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" prot="public" virt="non-virtual"><scope>Direction</scope><name>azimuth</name></member>
       <member refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" prot="public" virt="non-virtual"><scope>Direction</scope><name>inclination</name></member>

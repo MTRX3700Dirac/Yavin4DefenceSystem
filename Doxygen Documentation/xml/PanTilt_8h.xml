@@ -2,37 +2,44 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="PanTilt_8h" kind="file">
     <compoundname>PanTilt.h</compoundname>
-    <includedby refid="Interrupts_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Interrupts.c</includedby>
-    <includedby refid="Menusystem2_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c</includedby>
-    <includedby refid="newmain_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c</includedby>
-    <includedby refid="Tracking_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c</includedby>
+    <includedby refid="Interrupts_8c" local="yes">Yavin4DefenceSystem/Code/Interrupts.c</includedby>
+    <includedby refid="Menusystem_8c" local="yes">Yavin4DefenceSystem/Code/Menusystem.c</includedby>
+    <includedby refid="Menusystem2_8c" local="yes">Yavin4DefenceSystem/Code/Menusystem2.c</includedby>
+    <includedby refid="newmain_8c" local="yes">Yavin4DefenceSystem/Code/newmain.c</includedby>
+    <includedby refid="Tracking_8c" local="yes">Yavin4DefenceSystem/Code/Tracking.c</includedby>
     <invincdepgraph>
-      <node id="392">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c</label>
+      <node id="526">
+        <label>Yavin4DefenceSystem/Code/Menusystem.c</label>
+        <link refid="Menusystem_8c"/>
+      </node>
+      <node id="529">
+        <label>Yavin4DefenceSystem/Code/Tracking.c</label>
         <link refid="Tracking_8c"/>
       </node>
-      <node id="389">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Interrupts.c</label>
+      <node id="525">
+        <label>Yavin4DefenceSystem/Code/Interrupts.c</label>
         <link refid="Interrupts_8c"/>
       </node>
-      <node id="391">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c</label>
+      <node id="528">
+        <label>Yavin4DefenceSystem/Code/newmain.c</label>
         <link refid="newmain_8c"/>
       </node>
-      <node id="388">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h</label>
+      <node id="524">
+        <label>Yavin4DefenceSystem/Code/PanTilt.h</label>
         <link refid="PanTilt.h"/>
-        <childnode refid="389" relation="include">
+        <childnode refid="525" relation="include">
         </childnode>
-        <childnode refid="390" relation="include">
+        <childnode refid="526" relation="include">
         </childnode>
-        <childnode refid="391" relation="include">
+        <childnode refid="527" relation="include">
         </childnode>
-        <childnode refid="392" relation="include">
+        <childnode refid="528" relation="include">
+        </childnode>
+        <childnode refid="529" relation="include">
         </childnode>
       </node>
-      <node id="390">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c</label>
+      <node id="527">
+        <label>Yavin4DefenceSystem/Code/Menusystem2.c</label>
         <link refid="Menusystem2_8c"/>
       </node>
     </invincdepgraph>
@@ -75,11 +82,11 @@
         </briefdescription>
         <detaileddescription>
 <para><hruler/>
- Function: <ref refid="PanTilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" kindref="member">configureBase(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Configures the Pan Tilt mechanism for operation</para><para>Arguments: None</para><para>Returns: None</para><para><xrefsect id="todo_1_todo000005"><xreftitle>Todo</xreftitle><xrefdescription><para>Test that configuring the base will send it to the default location (0, 0) </para></xrefdescription></xrefsect></para>        </detaileddescription>
+ Function: <ref refid="PanTilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" kindref="member">configureBase(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Configures the Pan Tilt mechanism for operation</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="18" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="107" bodyend="137"/>
-        <references refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="487" endline="502">direction2Delay</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="18" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="105" bodyend="135"/>
+        <references refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="477" endline="492">direction2Delay</references>
         <references refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772">INTCONbits</references>
         <references refid="p18f4520_8h_1a00ea63e57cd6582e6e73158695e2b088">RCONbits</references>
         <references refid="PanTilt_8c_1afed42813fde734ec03d642316c880a8f" compoundref="PanTilt_8c" startline="72">SERVO_INIT</references>
@@ -88,7 +95,7 @@
         <references refid="PanTilt_8c_1a58dfba1b3d8bb3d01daa95c48f4718a8" compoundref="PanTilt_8c" startline="86">azimuth_angle_min</references>
         <references refid="PanTilt_8c_1a955ba3af78fb52f91cbcc6d0946b4377" compoundref="PanTilt_8c" startline="87">elevation_angle_max</references>
         <references refid="PanTilt_8c_1a31600a9d5d5ee579b21294939a29f29b" compoundref="PanTilt_8c" startline="88">elevation_angle_min</references>
-        <referencedby refid="Tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" compoundref="Tracking_8c" startline="41" endline="45">configureTracking</referencedby>
+        <referencedby refid="Tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" compoundref="Tracking_8c" startline="65" endline="73">configureTracking</referencedby>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1a032fbfc434ca24d27d89b6d768455a42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -103,14 +110,15 @@
         </briefdescription>
         <detaileddescription>
 <para><hruler/>
- Function: <ref refid="PanTilt_8c_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move(Direction destination)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Moves the pan tilt actuator to the specified destination</para><para>Arguments: destionation - A struct containing the desired azimuth and inclination</para><para>Returns: None</para><para><xrefsect id="todo_1_todo000006"><xreftitle>Todo</xreftitle><xrefdescription><para>Perhaps non-arbitrary wait period </para></xrefdescription></xrefsect></para>        </detaileddescription>
+ Function: <ref refid="PanTilt_8c_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move(Direction destination)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Moves the pan tilt actuator to the specified destination</para><para>Arguments: destionation - A struct containing the desired azimuth and inclination</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="19" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="152" bodyend="161"/>
-        <references refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="487" endline="502">direction2Delay</references>
-        <references refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="459" endline="470">delay2Direction</references>
-        <referencedby refid="PanTilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="PanTilt_8c" startline="174" endline="180">increment</referencedby>
-        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="145" endline="202">track</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="19" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="148" bodyend="157"/>
+        <references refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="477" endline="492">direction2Delay</references>
+        <references refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="449" endline="460">delay2Direction</references>
+        <referencedby refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" compoundref="Menusystem_8c" startline="424" endline="485">setValue</referencedby>
+        <referencedby refid="PanTilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="PanTilt_8c" startline="170" endline="176">increment</referencedby>
+        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="167" endline="229">track</referencedby>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1af8e57fbe1513bb48274f4f0f46717fa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -128,11 +136,11 @@
  Function: <ref refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment(Direction difference)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Moves the pan tilt actuator to the specified destination</para><para>Arguments: destionation - A struct containing the desired azimuth and inclination</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="174" bodyend="180"/>
-        <references refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="Common_8h" startline="77">Direction::azimuth</references>
-        <references refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" compoundref="Common_8h" startline="78">Direction::inclination</references>
-        <references refid="PanTilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="PanTilt_8c" startline="152" endline="161">move</references>
-        <referencedby refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="62" endline="110">search</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="170" bodyend="176"/>
+        <references refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="Common_8h" startline="73">Direction::azimuth</references>
+        <references refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" compoundref="Common_8h" startline="74">Direction::inclination</references>
+        <references refid="PanTilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="PanTilt_8c" startline="148" endline="157">move</references>
+        <referencedby refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="87" endline="135">search</referencedby>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1a5350e3f473fb25899612d382c1baa642" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -150,15 +158,15 @@
  Function: <ref refid="PanTilt_8c_1a5350e3f473fb25899612d382c1baa642" kindref="member">incrementFine(Direction difference)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Moves the pan tilt actuator to the specified (Relative) destination</para><para>Arguments: destionation - A struct containing the desired azimuth and inclination</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="21" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="193" bodyend="210"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="21" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="189" bodyend="206"/>
         <references refid="structDelay_1aacc83952fc6c5812597bc96d622f5317" compoundref="PanTilt_8c" startline="51">Delay::AzimuthDelay</references>
-        <references refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="Common_8h" startline="77">Direction::azimuth</references>
+        <references refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="Common_8h" startline="73">Direction::azimuth</references>
         <references refid="PanTilt_8c_1ac829b6acf6662103690f1bca3c422f34" compoundref="PanTilt_8c" startline="62">PWM_HALF_PERIOD</references>
         <references refid="structDelay_1a4f5b10a6a07a4aaed02134ab2691b8ec" compoundref="PanTilt_8c" startline="52">Delay::InclinationDelay</references>
-        <references refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" compoundref="Common_8h" startline="78">Direction::inclination</references>
+        <references refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" compoundref="Common_8h" startline="74">Direction::inclination</references>
         <references refid="PanTilt_8c_1a32ba76cc676dc9b248bce3b722e811e5" compoundref="PanTilt_8c" startline="70">LATENCY</references>
-        <references refid="PanTilt_8c_1a339d46c81d3203b479d9731ef06590d3" compoundref="PanTilt_8c" startline="516" endline="526">validate</references>
-        <references refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="459" endline="470">delay2Direction</references>
+        <references refid="PanTilt_8c_1a339d46c81d3203b479d9731ef06590d3" compoundref="PanTilt_8c" startline="506" endline="516">validate</references>
+        <references refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="449" endline="460">delay2Direction</references>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1ad1d9638bad5a5021969d19769e70c775" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structDirection" kindref="compound">Direction</ref></type>
@@ -175,10 +183,11 @@
  Function: <ref refid="PanTilt_8c_1ad1d9638bad5a5021969d19769e70c775" kindref="member">getDir(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the current position of the pan tilt mechanism</para><para>Arguments: None</para><para>Returns: A struct containing the azimuth and inclination </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="22" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="223" bodyend="226"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="22" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="219" bodyend="222"/>
         <references refid="PanTilt_8c_1a13975daacd911b86f59406a226829309" compoundref="PanTilt_8c" startline="91">current_direction</references>
-        <referencedby refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="62" endline="110">search</referencedby>
-        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="145" endline="202">track</referencedby>
+        <referencedby refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" compoundref="Menusystem_8c" startline="424" endline="485">setValue</referencedby>
+        <referencedby refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="87" endline="135">search</referencedby>
+        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="167" endline="229">track</referencedby>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1a60e08860a1b4ca9efdc2dd43983731d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -193,10 +202,10 @@
         </briefdescription>
         <detaileddescription>
 <para><hruler/>
- Function: <ref refid="PanTilt_8c_1a60e08860a1b4ca9efdc2dd43983731d5" kindref="member">calibratePanTilt(Direction reference)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Calibrates the pan tile mechanism so that any future reference to move to the reference value specified in the function call will move the pan tilt back to the current position.</para><para>Arguments: reference - A struct containing the azimuth and inclinaion you wish to define as this position.</para><para>Returns: None</para><para><xrefsect id="todo_1_todo000007"><xreftitle>Todo</xreftitle><xrefdescription><para>Actually write a function to calibrate the PanTilt, perhaps just offset </para></xrefdescription></xrefsect></para>        </detaileddescription>
+ Function: <ref refid="PanTilt_8c_1a60e08860a1b4ca9efdc2dd43983731d5" kindref="member">calibratePanTilt(Direction reference)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Calibrates the pan tile mechanism so that any future reference to move to the reference value specified in the function call will move the pan tilt back to the current position.</para><para>Arguments: reference - A struct containing the azimuth and inclinaion you wish to define as this position.</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="370" bodyend="373"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="364" bodyend="367"/>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1a251ee95d75c68e21c4bb933ac99e5108" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structDirection" kindref="compound">Direction</ref></type>
@@ -210,11 +219,10 @@
         </briefdescription>
         <detaileddescription>
 <para><hruler/>
- Function: <ref refid="PanTilt_8c_1a251ee95d75c68e21c4bb933ac99e5108" kindref="member">rawDir(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the current PanTile position without calibrating</para><para>Arguments: None</para><para>Returns: The position of the pan tilt without any calibration</para><para><xrefsect id="todo_1_todo000008"><xreftitle>Todo</xreftitle><xrefdescription><para>Test this </para></xrefdescription></xrefsect></para>        </detaileddescription>
+ Function: <ref refid="PanTilt_8c_1a251ee95d75c68e21c4bb933ac99e5108" kindref="member">rawDir(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the current PanTile position without calibrating</para><para>Arguments: None</para><para>Returns: The position of the pan tilt without any calibration </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="24" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="388" bodyend="391"/>
-        <references refid="PanTilt_8c_1a13975daacd911b86f59406a226829309" compoundref="PanTilt_8c" startline="91">current_direction</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="24" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="380" bodyend="383"/>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1a3362a0aacdd7037d0329989d353c60b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -231,7 +239,7 @@
  Function: <ref refid="PanTilt_8c_1a3362a0aacdd7037d0329989d353c60b7" kindref="member">updated(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns true if the last move or increment or incrementFine function has taken effect. The new direction is only loaded in at the end of the PDM, so it could take up to 0.02 seconds for the change to take effect.</para><para>Arguments: delay - a pointer to the delay variable</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="25" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="542" bodyend="545"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="25" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="532" bodyend="535"/>
         <references refid="PanTilt_8c_1a9f097b2a247dc76d2d6e796f0d8599e1" compoundref="PanTilt_8c" startline="92">changed</references>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1a7f353056fb02f0d95fd997198f5b186f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -246,11 +254,11 @@
         </briefdescription>
         <detaileddescription>
 <para><hruler/>
- Function: <ref refid="PanTilt_8c_1a7f353056fb02f0d95fd997198f5b186f" kindref="member">panTiltISR(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Acts as the ISR for the PanTilt module</para><para>Arguments: None</para><para>Returns: None</para><para><xrefsect id="todo_1_todo000009"><xreftitle>Todo</xreftitle><xrefdescription><para>Ensure that other interrupts and running functionality is not going to affect the timing here </para></xrefdescription></xrefsect></para>        </detaileddescription>
+ Function: <ref refid="PanTilt_8c_1a7f353056fb02f0d95fd997198f5b186f" kindref="member">panTiltISR(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: Acts as the ISR for the PanTilt module</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="26" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="406" bodyend="442"/>
-        <references refid="Common_8h_1aee2ef60613898be37c57266698616e33" compoundref="Common_8h" startline="152">CCP2_INT</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="26" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="396" bodyend="432"/>
+        <references refid="Common_8h_1aee2ef60613898be37c57266698616e33" compoundref="Common_8h" startline="148">CCP2_INT</references>
         <references refid="PanTilt_8c_1aacaca0988244bd3a888ca5befa89f44b" compoundref="PanTilt_8c" startline="61">PWM_PERIOD</references>
         <references refid="PanTilt_8c_1aeccd74b3aafd22092066790005320b98" compoundref="PanTilt_8c" startline="57">IN_PWM_PIN</references>
         <references refid="PanTilt_8c_1a5c15d1f4273099e9b416d2e1f9a2f570" compoundref="PanTilt_8c" startline="82">global_delay</references>
@@ -278,7 +286,7 @@
  Function: <ref refid="PanTilt_8c_1ae8f9ea5919de15d1b5614be2e5e65be3" kindref="member">getMaxAzimuthAngle(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the maximum angle of the azimuth servo</para><para>Arguments: None</para><para>Returns: A char with the maximum azimuth angle. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="28" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="239" bodyend="242"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="28" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="235" bodyend="238"/>
         <references refid="PanTilt_8c_1a66860c53bfe53cb83293dced526226aa" compoundref="PanTilt_8c" startline="85">azimuth_angle_max</references>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1af45dd498eebe7f5ba7b228c15e7221c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -296,7 +304,7 @@
  Function: <ref refid="PanTilt_8c_1af45dd498eebe7f5ba7b228c15e7221c1" kindref="member">getMinAzimuthAngle(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the minimum angle of the azimuth servo</para><para>Arguments: None</para><para>Returns: A char with the minimum azimuth angle. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="29" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="255" bodyend="258"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="29" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="251" bodyend="254"/>
         <references refid="PanTilt_8c_1a58dfba1b3d8bb3d01daa95c48f4718a8" compoundref="PanTilt_8c" startline="86">azimuth_angle_min</references>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1a4278dbef7fe9034a7a54d02bcbb16de9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -314,7 +322,7 @@
  Function: <ref refid="PanTilt_8c_1a4278dbef7fe9034a7a54d02bcbb16de9" kindref="member">getMaxElevationAngle(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the maximum angle of the elevation servo</para><para>Arguments: None</para><para>Returns: A char with the maximum elevation angle. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="30" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="271" bodyend="274"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="30" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="267" bodyend="270"/>
         <references refid="PanTilt_8c_1a955ba3af78fb52f91cbcc6d0946b4377" compoundref="PanTilt_8c" startline="87">elevation_angle_max</references>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1af7fafa63e9c645a80f28aca253bba5cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -332,7 +340,7 @@
  Function: <ref refid="PanTilt_8c_1af7fafa63e9c645a80f28aca253bba5cc" kindref="member">getMinElevationAngle(void)</ref></para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: returns the minimum angle of the elevation servo</para><para>Arguments: None</para><para>Returns: A char with the minimum elevation angle. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="31" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="287" bodyend="290"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="31" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="283" bodyend="286"/>
         <references refid="PanTilt_8c_1a31600a9d5d5ee579b21294939a29f29b" compoundref="PanTilt_8c" startline="88">elevation_angle_min</references>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1a1f5e600a2655aeb9dd24b8325a777931" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -351,8 +359,9 @@
  Function: setMaxAzimuthAngle(void)</para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: sets the maximum angle of the azimuth servo</para><para>Arguments: The maximum angle (as char) to set for the azimuth servo</para><para>Returns: None. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="33" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="303" bodyend="306"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="33" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="299" bodyend="302"/>
         <references refid="PanTilt_8c_1a66860c53bfe53cb83293dced526226aa" compoundref="PanTilt_8c" startline="85">azimuth_angle_max</references>
+        <referencedby refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" compoundref="Menusystem_8c" startline="424" endline="485">setValue</referencedby>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1a157ea38d68fcd31082dc2eaba2944ef3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -370,8 +379,9 @@
  Function: setMinAzimuthAngle(void)</para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: sets the minimum angle of the azimuth servo</para><para>Arguments: The minimum angle (as char) to set for the azimuth servo</para><para>Returns: None. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="34" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="318" bodyend="321"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="34" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="314" bodyend="317"/>
         <references refid="PanTilt_8c_1a58dfba1b3d8bb3d01daa95c48f4718a8" compoundref="PanTilt_8c" startline="86">azimuth_angle_min</references>
+        <referencedby refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" compoundref="Menusystem_8c" startline="424" endline="485">setValue</referencedby>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1aa956697480994a26cb592b2cfcf3436c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -389,8 +399,9 @@
  Function: setMaxElevationAngle(void)</para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: sets the maximum angle of the elevation servo</para><para>Arguments: The maximum angle (as char) to set for the elevation servo</para><para>Returns: None. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="35" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="333" bodyend="336"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="35" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="329" bodyend="332"/>
         <references refid="PanTilt_8c_1a955ba3af78fb52f91cbcc6d0946b4377" compoundref="PanTilt_8c" startline="87">elevation_angle_max</references>
+        <referencedby refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" compoundref="Menusystem_8c" startline="424" endline="485">setValue</referencedby>
       </memberdef>
       <memberdef kind="function" id="PanTilt_8h_1a001917f3c38b200d142ab6932991e001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -408,8 +419,9 @@
  Function: setMinElevationAngle(void)</para><para>Include: <ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref></para><para>Description: sets the minimum angle of the elevation servo</para><para>Arguments: The minimum angle (as char) to set for the elevation servo</para><para>Returns: None. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="36" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="349" bodyend="352"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.h" line="36" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="345" bodyend="348"/>
         <references refid="PanTilt_8c_1a31600a9d5d5ee579b21294939a29f29b" compoundref="PanTilt_8c" startline="88">elevation_angle_min</references>
+        <referencedby refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" compoundref="Menusystem_8c" startline="424" endline="485">setValue</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

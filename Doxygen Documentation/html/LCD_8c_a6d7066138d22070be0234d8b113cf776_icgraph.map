@@ -1,8 +1,7 @@
 <map id="delay" name="delay">
-<area shape="rect" id="node2" href="$LCD_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Feed character, line (1 or 2), and column(1&#45;16) " alt="" coords="367,35,423,61"/>
-<area shape="rect" id="node4" href="$LCD_8h.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: " alt="" coords="107,35,176,61"/>
-<area shape="rect" id="node5" href="$LCD_8h.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="224,85,295,112"/>
-<area shape="rect" id="node6" href="$LCD_8h.html#a70a8f1041fdd13688a8f8e9fd897ccda" title="Feed character string, and line (1 or 2) " alt="" coords="343,111,447,137"/>
-<area shape="rect" id="node7" href="$LCD_8h.html#a69bb3d698d74da5ea85d8a455dbb3b28" title="Feed character string, and line (1 or 2) " alt="" coords="346,161,443,188"/>
-<area shape="rect" id="node3" href="$Menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="495,35,596,61"/>
+<area shape="rect" id="node2" href="$LCD_8h.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Feed character, line (1 or 2), and column(1&#45;16) " alt="" coords="343,5,399,32"/>
+<area shape="rect" id="node5" href="$LCD_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: " alt="" coords="107,31,176,57"/>
+<area shape="rect" id="node6" href="$LCD_8c.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="224,31,295,57"/>
+<area shape="rect" id="node3" href="$Menusystem_8h.html#a94b96ccbb8f3c627c5d59189498a3c1b" title="Initialises the menu system. " alt="" coords="447,5,548,32"/>
+<area shape="rect" id="node4" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="596,5,647,32"/>
 </map>

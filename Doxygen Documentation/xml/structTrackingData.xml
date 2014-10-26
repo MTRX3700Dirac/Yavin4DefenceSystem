@@ -15,8 +15,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="94" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="94" bodyend="-1"/>
-        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="145" endline="202">track</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="90" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="90" bodyend="-1"/>
+        <referencedby refid="newmain_8c_1a2757d71d336e927bb4e6acf8016df536" compoundref="newmain_8c" startline="131" endline="171">dispTrack</referencedby>
+        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="167" endline="229">track</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structTrackingData_1a866e78e12cb32dcaf1ded89bda8be8f5" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -29,8 +30,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="95" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="95" bodyend="-1"/>
-        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="145" endline="202">track</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="91" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="91" bodyend="-1"/>
+        <referencedby refid="newmain_8c_1a2757d71d336e927bb4e6acf8016df536" compoundref="newmain_8c" startline="131" endline="171">dispTrack</referencedby>
+        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="167" endline="229">track</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structTrackingData_1af308b9934394c8bcf7614eb1df2d863f" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -43,8 +45,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="96" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="96" bodyend="-1"/>
-        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="145" endline="202">track</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="92" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="92" bodyend="-1"/>
+        <referencedby refid="newmain_8c_1a2757d71d336e927bb4e6acf8016df536" compoundref="newmain_8c" startline="131" endline="171">dispTrack</referencedby>
+        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="167" endline="229">track</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -52,7 +55,7 @@
     <detaileddescription>
 <para><hruler/>
  typedef of <ref refid="structTrackingData" kindref="compound">TrackingData</ref> struct</para><para>Description: Stores distance, azimuth and inclination tracking data to the target. This struct is used by the tracking function and others to communicate the position of the target </para>    </detaileddescription>
-    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="93" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="92" bodyend="97"/>
+    <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" line="89" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" bodystart="88" bodyend="93"/>
     <listofallmembers>
       <member refid="structTrackingData_1a866e78e12cb32dcaf1ded89bda8be8f5" prot="public" virt="non-virtual"><scope>TrackingData</scope><name>azimuth</name></member>
       <member refid="structTrackingData_1a4bb47863775a37236bda65273c01b275" prot="public" virt="non-virtual"><scope>TrackingData</scope><name>distance</name></member>

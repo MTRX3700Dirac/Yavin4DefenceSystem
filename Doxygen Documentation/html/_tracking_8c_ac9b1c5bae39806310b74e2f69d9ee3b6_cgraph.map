@@ -1,7 +1,0 @@
-<map id="configureTracking" name="configureTracking">
-<area shape="rect" id="node2" href="$_pan_tilt_8c.html#ab7b8c8f7bf051b4f8e3b151f7b567127" title="configureBase" alt="" coords="179,5,283,32"/>
-<area shape="rect" id="node3" href="$_range_8c.html#a07a4c592815b5e6ae178f93a7764ceb2" title="configureRange" alt="" coords="176,56,287,83"/>
-<area shape="rect" id="node4" href="$_temp_8c.html#afd08db2b1a6d6af19e39f10dc453332c" title="readTemp" alt="" coords="341,31,420,57"/>
-<area shape="rect" id="node6" href="$_range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a" title="configureAD" alt="" coords="335,81,427,108"/>
-<area shape="rect" id="node5" href="$_temp_8c.html#a4946ccbc1990e831667bffded1147c4f" title="readTempx2" alt="" coords="475,31,568,57"/>
-</map>

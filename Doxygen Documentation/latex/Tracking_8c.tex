@@ -1,10 +1,11 @@
-\hypertarget{Tracking_8c}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Tracking.c File Reference}
-\label{Tracking_8c}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Tracking.\+c@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Tracking.\+c}}
+\hypertarget{Tracking_8c}{\section{Yavin4\+Defence\+System/\+Code/\+Tracking.c File Reference}
+\label{Tracking_8c}\index{Yavin4\+Defence\+System/\+Code/\+Tracking.\+c@{Yavin4\+Defence\+System/\+Code/\+Tracking.\+c}}
 }
 {\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Range.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Pan\+Tilt.\+h\char`\"{}}\\*
 {\ttfamily \#include $<$delays.\+h$>$}\\*
+{\ttfamily \#include $<$timers.\+h$>$}\\*
 Include dependency graph for Tracking.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -12,17 +13,26 @@ Include dependency graph for Tracking.\+c\+:\nopagebreak
 \includegraphics[width=350pt]{Tracking_8c__incl}
 \end{center}
 \end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structTargetStateData}{Target\+State\+Data}
+\begin{DoxyCompactList}\small\item\em Stores data about the last target track. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{Tracking_8c_ad21f01d2ff9eac3ae01bef0f67db54d0}{diff}~5
+\#define \hyperlink{Tracking_8c_ad21f01d2ff9eac3ae01bef0f67db54d0}{diff}~8
 \item 
 \#define \hyperlink{Tracking_8c_a343412bd951fd6a703531a20848e1b66}{T\+A\+R\+G\+E\+T\+\_\+\+R\+A\+D}~30
+\item 
+\#define \hyperlink{Tracking_8c_a50fac94864a77d583f680df8a0eaebb4}{sample\+Target\+State}~weight
 \item 
 \#define \hyperlink{Tracking_8c_a599217205dc3092c26567a2bd868ef3a}{T\+I\+M\+E\+R}~\hyperlink{p18f4520_8h_a76c40998983e904fda7c65db0eb4b16f}{T\+M\+R2}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
+\item 
+static char \hyperlink{Tracking_8c_a692bd90e8391dbba83a5985df166e4cb}{new\+Angle} (\hyperlink{structTargetStateData}{Target\+State\+Data} target\+\_\+data)
 \item 
 void \hyperlink{Tracking_8c_ac9b1c5bae39806310b74e2f69d9ee3b6}{configure\+Tracking} (void)
 \item 
@@ -33,13 +43,15 @@ void \hyperlink{Tracking_8c_ae3fa9fb57cd18477215f58aa448ce9d1}{tracking\+I\+S\+R
 \hyperlink{structTrackingData}{Tracking\+Data} \hyperlink{Tracking_8c_a4f0ebbcddf842d008fbfebb705374c30}{track} (\hyperlink{structsystemState}{system\+State} $\ast$state)
 \item 
 static \hyperlink{structDirection}{Direction} \hyperlink{Tracking_8c_ab3681bb15cfeebcc7b27d0c063dafc89}{prediction} (\hyperlink{structDirection}{Direction} current)
+\item 
+static char \hyperlink{Tracking_8c_afb53c1edd8f8b148150ccf950b62405c}{new\+Angle} (char angle, \hyperlink{structTargetStateData}{Target\+State\+Data} target\+\_\+data)
 \end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
 \hypertarget{Tracking_8c_ad21f01d2ff9eac3ae01bef0f67db54d0}{\index{Tracking.\+c@{Tracking.\+c}!diff@{diff}}
 \index{diff@{diff}!Tracking.\+c@{Tracking.\+c}}
-\subsubsection[{diff}]{\setlength{\rightskip}{0pt plus 5cm}\#define diff~5}}\label{Tracking_8c_ad21f01d2ff9eac3ae01bef0f67db54d0}
+\subsubsection[{diff}]{\setlength{\rightskip}{0pt plus 5cm}\#define diff~8}}\label{Tracking_8c_ad21f01d2ff9eac3ae01bef0f67db54d0}
 
 
  File\+: \hyperlink{Tracking_8c}{Tracking.\+c} Author\+: Grant
@@ -50,7 +62,10 @@ Duties\+: -\/\+Control and coordinate Pan Tilt and range sensors -\/\+Implement 
 
 Functions\+:
 
-Created on 15 September 2014, 1\+:42 P\+M \hypertarget{Tracking_8c_a343412bd951fd6a703531a20848e1b66}{\index{Tracking.\+c@{Tracking.\+c}!T\+A\+R\+G\+E\+T\+\_\+\+R\+A\+D@{T\+A\+R\+G\+E\+T\+\_\+\+R\+A\+D}}
+Created on 15 September 2014, 1\+:42 P\+M \hypertarget{Tracking_8c_a50fac94864a77d583f680df8a0eaebb4}{\index{Tracking.\+c@{Tracking.\+c}!sample\+Target\+State@{sample\+Target\+State}}
+\index{sample\+Target\+State@{sample\+Target\+State}!Tracking.\+c@{Tracking.\+c}}
+\subsubsection[{sample\+Target\+State}]{\setlength{\rightskip}{0pt plus 5cm}\#define sample\+Target\+State~weight}}\label{Tracking_8c_a50fac94864a77d583f680df8a0eaebb4}
+\hypertarget{Tracking_8c_a343412bd951fd6a703531a20848e1b66}{\index{Tracking.\+c@{Tracking.\+c}!T\+A\+R\+G\+E\+T\+\_\+\+R\+A\+D@{T\+A\+R\+G\+E\+T\+\_\+\+R\+A\+D}}
 \index{T\+A\+R\+G\+E\+T\+\_\+\+R\+A\+D@{T\+A\+R\+G\+E\+T\+\_\+\+R\+A\+D}!Tracking.\+c@{Tracking.\+c}}
 \subsubsection[{T\+A\+R\+G\+E\+T\+\_\+\+R\+A\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+A\+R\+G\+E\+T\+\_\+\+R\+A\+D~30}}\label{Tracking_8c_a343412bd951fd6a703531a20848e1b66}
 \hypertarget{Tracking_8c_a599217205dc3092c26567a2bd868ef3a}{\index{Tracking.\+c@{Tracking.\+c}!T\+I\+M\+E\+R@{T\+I\+M\+E\+R}}
@@ -88,6 +103,21 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
+\hypertarget{Tracking_8c_a692bd90e8391dbba83a5985df166e4cb}{\index{Tracking.\+c@{Tracking.\+c}!new\+Angle@{new\+Angle}}
+\index{new\+Angle@{new\+Angle}!Tracking.\+c@{Tracking.\+c}}
+\subsubsection[{new\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}static char new\+Angle (
+\begin{DoxyParamCaption}
+\item[{{\bf Target\+State\+Data}}]{target\+\_\+data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{Tracking_8c_a692bd90e8391dbba83a5985df166e4cb}
+\hypertarget{Tracking_8c_afb53c1edd8f8b148150ccf950b62405c}{\index{Tracking.\+c@{Tracking.\+c}!new\+Angle@{new\+Angle}}
+\index{new\+Angle@{new\+Angle}!Tracking.\+c@{Tracking.\+c}}
+\subsubsection[{new\+Angle}]{\setlength{\rightskip}{0pt plus 5cm}static char new\+Angle (
+\begin{DoxyParamCaption}
+\item[{char}]{angle, }
+\item[{{\bf Target\+State\+Data}}]{target\+\_\+data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{Tracking_8c_afb53c1edd8f8b148150ccf950b62405c}
 \hypertarget{Tracking_8c_ab3681bb15cfeebcc7b27d0c063dafc89}{\index{Tracking.\+c@{Tracking.\+c}!prediction@{prediction}}
 \index{prediction@{prediction}!Tracking.\+c@{Tracking.\+c}}
 \subsubsection[{prediction}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Direction} prediction (

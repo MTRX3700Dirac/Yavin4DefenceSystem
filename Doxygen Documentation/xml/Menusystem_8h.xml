@@ -2,48 +2,1148 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="Menusystem_8h" kind="file">
     <compoundname>Menusystem.h</compoundname>
-    <includedby refid="Interrupts_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Interrupts.c</includedby>
-    <includedby refid="newmain_8c" local="yes">C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c</includedby>
+    <includedby refid="Interrupts_8c" local="yes">Yavin4DefenceSystem/Code/Interrupts.c</includedby>
+    <includedby refid="newmain_8c" local="yes">Yavin4DefenceSystem/Code/newmain.c</includedby>
     <invincdepgraph>
-      <node id="323">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h</label>
+      <node id="449">
+        <label>Yavin4DefenceSystem/Code/Menusystem.h</label>
         <link refid="Menusystem.h"/>
-        <childnode refid="324" relation="include">
+        <childnode refid="450" relation="include">
         </childnode>
-        <childnode refid="325" relation="include">
+        <childnode refid="451" relation="include">
         </childnode>
       </node>
-      <node id="324">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Interrupts.c</label>
+      <node id="450">
+        <label>Yavin4DefenceSystem/Code/Interrupts.c</label>
         <link refid="Interrupts_8c"/>
       </node>
-      <node id="325">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/newmain.c</label>
+      <node id="451">
+        <label>Yavin4DefenceSystem/Code/newmain.c</label>
         <link refid="newmain_8c"/>
       </node>
     </invincdepgraph>
-      <sectiondef kind="define">
-      <memberdef kind="define" id="Menusystem_8h_1abe3db97a849df459252001e1f4b3721c" prot="public" static="no">
-        <name>MENU_ISR</name>
-        <initializer>0</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para><hruler/>
- File: <ref refid="Menusystem_8h" kindref="compound">Menusystem.h</ref> Author: Jacob</para><para>Created on 7 October 2014, 9:56 PM </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="11" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" bodystart="11" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="Menusystem_8h_1a9552ba249c0540ffe9a08a05d1b92504" prot="public" static="no">
-        <name>MENU_H</name>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Menusystem_8h_1a894b8103e76ff076b3e44dc4fce50cae" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char newLine[]</definition>
+        <argsstring>[]</argsstring>
+        <name>newLine</name>
+        <initializer>= &quot;\r\n&quot;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="19" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" bodystart="19" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="10" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="103" bodyend="-1"/>
+        <referencedby refid="newmain_8c_1a2757d71d336e927bb4e6acf8016df536" compoundref="newmain_8c" startline="131" endline="171">dispTrack</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a5e200b19e322ccb9a3fb9c65555daf85" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char CHOOSE[]</definition>
+        <argsstring>[]</argsstring>
+        <name>CHOOSE</name>
+        <initializer>= &quot;\n\n\tPlease select your option (eg. 2): \r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="11" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="104" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ab02601af02510b224cf1b970adc92f37" compoundref="Menusystem_8c" startline="722" endline="742">dispTopOptions</referencedby>
+        <referencedby refid="Menusystem_8c_1afdf5fa380a1afae9687b1ccbbd23017e" compoundref="Menusystem_8c" startline="747" endline="764">dispAzOptions</referencedby>
+        <referencedby refid="Menusystem_8c_1af3008931f4215a7917069a31719a8f3c" compoundref="Menusystem_8c" startline="769" endline="786">dispElOptions</referencedby>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ac6d4335de27bb39d52e0baad84b022a8" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char menuPrefix3[]</definition>
+        <argsstring>[]</argsstring>
+        <name>menuPrefix3</name>
+        <initializer>= &quot;\t3:&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="12" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="105" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a1344458b11a58d1495ab67a701f5058a" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char menuPrefix4[]</definition>
+        <argsstring>[]</argsstring>
+        <name>menuPrefix4</name>
+        <initializer>= &quot;\t4:&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="13" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="106" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1afdf5fa380a1afae9687b1ccbbd23017e" compoundref="Menusystem_8c" startline="747" endline="764">dispAzOptions</referencedby>
+        <referencedby refid="Menusystem_8c_1af3008931f4215a7917069a31719a8f3c" compoundref="Menusystem_8c" startline="769" endline="786">dispElOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a1c9349cff12c59bf87bb2ba1befcc7df" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char menuPrefix5[]</definition>
+        <argsstring>[]</argsstring>
+        <name>menuPrefix5</name>
+        <initializer>= &quot;\t5:&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="14" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="107" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1afdf5fa380a1afae9687b1ccbbd23017e" compoundref="Menusystem_8c" startline="747" endline="764">dispAzOptions</referencedby>
+        <referencedby refid="Menusystem_8c_1af3008931f4215a7917069a31719a8f3c" compoundref="Menusystem_8c" startline="769" endline="786">dispElOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a84aca8e46b67414e24439878ab2ec412" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char menuPrefix8[]</definition>
+        <argsstring>[]</argsstring>
+        <name>menuPrefix8</name>
+        <initializer>= &quot;\t8:&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="15" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="108" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a7486ea443917f593fdf8335e166ef5a5" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char goUp[]</definition>
+        <argsstring>[]</argsstring>
+        <name>goUp</name>
+        <initializer>= &quot;\tReturn to previous menu\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="16" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="109" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1afdf5fa380a1afae9687b1ccbbd23017e" compoundref="Menusystem_8c" startline="747" endline="764">dispAzOptions</referencedby>
+        <referencedby refid="Menusystem_8c_1af3008931f4215a7917069a31719a8f3c" compoundref="Menusystem_8c" startline="769" endline="786">dispElOptions</referencedby>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ae283ceb6858b52420406c05644db9a7a" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char goUp2[]</definition>
+        <argsstring>[]</argsstring>
+        <name>goUp2</name>
+        <initializer>= &quot;Press Esc to return to the previous menu.\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="17" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a60cb1a799f0caa9452beac0635066aa6" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char errNumOutOfRange[]</definition>
+        <argsstring>[]</argsstring>
+        <name>errNumOutOfRange</name>
+        <initializer>= &quot; Error: Please enter a number between &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="18" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="111" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1a423b16a9c8b8570e98a887785bf2a22e" compoundref="Menusystem_8c" startline="281" endline="288">errOutOfRange</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a158e4a9523cfcc6e1e200a9a6a14f5f9" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char and[]</definition>
+        <argsstring>[]</argsstring>
+        <name>and</name>
+        <initializer>= &quot; and &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="19" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="112" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1a423b16a9c8b8570e98a887785bf2a22e" compoundref="Menusystem_8c" startline="281" endline="288">errOutOfRange</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a9663e81d5c03c3b9d55547a7026a4399" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char welcome[]</definition>
+        <argsstring>[]</argsstring>
+        <name>welcome</name>
+        <initializer>= &quot; Welcome to Yavin IV Defence System &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="23" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="116" bodyend="-1"/>
+        <referencedby refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" compoundref="newmain_8c" startline="117" endline="129">initialization</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a84fb109e00ae7ee666d0f993bcca1eee" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char welcomeLcd[]</definition>
+        <argsstring>[]</argsstring>
+        <name>welcomeLcd</name>
+        <initializer>= &quot; Welcome!&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="24" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a31475565799b1401bbdfbdbc9cf01615" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char topOption1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topOption1</name>
+        <initializer>= &quot;\t1:\tAutomatic Tracking\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="25" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="118" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ab02601af02510b224cf1b970adc92f37" compoundref="Menusystem_8c" startline="722" endline="742">dispTopOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a7ec7c8c825ad848f55b4e9bab9746c61" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char topOption2[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topOption2</name>
+        <initializer>= &quot;\t2:\tAzimuth Options\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="26" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="119" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ab02601af02510b224cf1b970adc92f37" compoundref="Menusystem_8c" startline="722" endline="742">dispTopOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ad9098d4f350b47b27e2536a5be2f6860" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char topOption3[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topOption3</name>
+        <initializer>= &quot;\t3:\tElevation Options\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="27" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="120" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ab02601af02510b224cf1b970adc92f37" compoundref="Menusystem_8c" startline="722" endline="742">dispTopOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a4a4801f2969ced100ed11a0e4b77d1bf" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char topOption4[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topOption4</name>
+        <initializer>= &quot;\t4:\tRange Options\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="28" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="121" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ab02601af02510b224cf1b970adc92f37" compoundref="Menusystem_8c" startline="722" endline="742">dispTopOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ad13da78bb30c39392a67fbe0cab7f64e" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char topOption5[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topOption5</name>
+        <initializer>= &quot;\t5:\tDisplay Current Temperature\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="29" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="122" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ab02601af02510b224cf1b970adc92f37" compoundref="Menusystem_8c" startline="722" endline="742">dispTopOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ad926ea7382efe6d7f71a99cc7be95412" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char topOptionCalTemp[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topOptionCalTemp</name>
+        <initializer>= &quot;\t6:\tCalibrate the Temperature sensor\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="30" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="123" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ab02601af02510b224cf1b970adc92f37" compoundref="Menusystem_8c" startline="722" endline="742">dispTopOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a61696474144c1ffb967695824fea81df" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char topOptionLocal[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topOptionLocal</name>
+        <initializer>= &quot;\t6:\tSwitch to Local mode\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="31" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="124" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ab02601af02510b224cf1b970adc92f37" compoundref="Menusystem_8c" startline="722" endline="742">dispTopOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a19aa2e40910ff9eb2fce3a043b17c669" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char topOptionFactory[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topOptionFactory</name>
+        <initializer>= &quot;\t7:\tSwitch to Factory mode\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="32" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ac3885618f839e1bda77df8e97165ba03" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char topOptionRemote[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topOptionRemote</name>
+        <initializer>= &quot;\t6:\tSwitch to Remote Serial mode\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="33" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="126" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ab02601af02510b224cf1b970adc92f37" compoundref="Menusystem_8c" startline="722" endline="742">dispTopOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a92244e44259433598dcd9a03a45d1300" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char topOptionRemoteLCD[]</definition>
+        <argsstring>[]</argsstring>
+        <name>topOptionRemoteLCD</name>
+        <initializer>= &quot;Switch to Remote&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="34" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="127" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1a1e7fd2754bf0b951881c71742eb0b738" compoundref="Menusystem_8c" startline="840" endline="872">dispLCDTopMenu</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1af0410aceeaafeed4193093e2f6ed32cc" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char azMenu[]</definition>
+        <argsstring>[]</argsstring>
+        <name>azMenu</name>
+        <initializer>= &quot;\r\nAzimuth Configuration\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="52" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a1a92c31ccfeb8eefc39a4f365a1186be" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char azMenuLcd[]</definition>
+        <argsstring>[]</argsstring>
+        <name>azMenuLcd</name>
+        <initializer>= &quot;Azimuth Options&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="53" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a69046a8196b1545ca5f7629fa77af2df" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char azOption1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>azOption1</name>
+        <initializer>= &quot;\t1:\tGo to a specified azimuth angle\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="54" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="147" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1afdf5fa380a1afae9687b1ccbbd23017e" compoundref="Menusystem_8c" startline="747" endline="764">dispAzOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ae59528a1a04b130bfba24f38f55e205e" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char azOption2[]</definition>
+        <argsstring>[]</argsstring>
+        <name>azOption2</name>
+        <initializer>= &quot;\t2:\tSet the minimum azimuth angle\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="55" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="148" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1afdf5fa380a1afae9687b1ccbbd23017e" compoundref="Menusystem_8c" startline="747" endline="764">dispAzOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a7ae29fbab51b34bf2452c6aa569311ce" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char azOption3[]</definition>
+        <argsstring>[]</argsstring>
+        <name>azOption3</name>
+        <initializer>= &quot;\t3:\tSet the maximum azimuth angle\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="56" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="149" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1afdf5fa380a1afae9687b1ccbbd23017e" compoundref="Menusystem_8c" startline="747" endline="764">dispAzOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a5cc84655e1232d96cef6582120284479" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char azOption4[]</definition>
+        <argsstring>[]</argsstring>
+        <name>azOption4</name>
+        <initializer>= &quot;\t4:\tCalibrate the azimuth motor\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="57" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="150" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1afdf5fa380a1afae9687b1ccbbd23017e" compoundref="Menusystem_8c" startline="747" endline="764">dispAzOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a196dd4fcfd805cd8999ec22b8b4e8e68" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char elMenu[]</definition>
+        <argsstring>[]</argsstring>
+        <name>elMenu</name>
+        <initializer>= &quot;\r\nElevation Configuration\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="61" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a8998899192a07aa6a93e220f7016b6ef" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char elMenuLcd[]</definition>
+        <argsstring>[]</argsstring>
+        <name>elMenuLcd</name>
+        <initializer>= &quot;Elevation Options&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="62" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a4c1e9c4dfb7fe830a2ee8c1bb3d7fbe6" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char elOption1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>elOption1</name>
+        <initializer>= &quot;\t1:\tGo to a specified elevation angle\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="63" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="156" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1af3008931f4215a7917069a31719a8f3c" compoundref="Menusystem_8c" startline="769" endline="786">dispElOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a23c94355a833dd2f90769b14d291f262" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char elOption2[]</definition>
+        <argsstring>[]</argsstring>
+        <name>elOption2</name>
+        <initializer>= &quot;\t2:\tSet the minimum elevation angle\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="64" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="157" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1af3008931f4215a7917069a31719a8f3c" compoundref="Menusystem_8c" startline="769" endline="786">dispElOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a5200c7b545cbfe745c692155567ace7e" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char elOption3[]</definition>
+        <argsstring>[]</argsstring>
+        <name>elOption3</name>
+        <initializer>= &quot;\t3:\tSet the maximum elevation angle\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="65" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="158" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1af3008931f4215a7917069a31719a8f3c" compoundref="Menusystem_8c" startline="769" endline="786">dispElOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a4789796069b86e83bbb588c13615341a" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char elOption4[]</definition>
+        <argsstring>[]</argsstring>
+        <name>elOption4</name>
+        <initializer>= &quot;\t4:\tCalibrate the elevation motor\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="66" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="159" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1af3008931f4215a7917069a31719a8f3c" compoundref="Menusystem_8c" startline="769" endline="786">dispElOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1af95916e64b16841bb2232ca7f9041559" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char rngMenu[]</definition>
+        <argsstring>[]</argsstring>
+        <name>rngMenu</name>
+        <initializer>= &quot;\r\nRange Configuration\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="70" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a311b0648043e955e6cf18087a81a8333" prot="public" static="no" mutable="no">
+        <type>const rom char</type>
+        <definition>const rom char rngMenuLcd[]</definition>
+        <argsstring>[]</argsstring>
+        <name>rngMenuLcd</name>
+        <initializer>= &quot;Range Options&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="71" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ab59efc86a2841b03d3757cd968d1f124" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char rngOption1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>rngOption1</name>
+        <initializer>= &quot;\t1:\tSet the minimum system range\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="72" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="165" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a43703fafefa33236f502d8423d24c1f7" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char rngOption2[]</definition>
+        <argsstring>[]</argsstring>
+        <name>rngOption2</name>
+        <initializer>= &quot;\t2:\tSet the maximum system range\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="73" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="166" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ad50d9f60bf22d01b4de3808d5e7ea930" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char rngOption3[]</definition>
+        <argsstring>[]</argsstring>
+        <name>rngOption3</name>
+        <initializer>= &quot;\t3:\tView the raw ultrasound <ref refid="Menusystem_8h_1a158e4a9523cfcc6e1e200a9a6a14f5f9" kindref="member">and</ref> infrared sensor readings\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="74" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="167" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1af8f06237825a158526775ff711118d8d" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char rngOption4[]</definition>
+        <argsstring>[]</argsstring>
+        <name>rngOption4</name>
+        <initializer>= &quot;\t4:\tSet the ultrasound sample rate\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="75" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="168" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a21021e259bf70bf056e947341143bfe8" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char rngOption5[]</definition>
+        <argsstring>[]</argsstring>
+        <name>rngOption5</name>
+        <initializer>= &quot;\t5:\tSet the number of ultrasound samples used per estimate\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="76" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="169" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a569a936faab100bde38e09e147892082" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char rngOption6[]</definition>
+        <argsstring>[]</argsstring>
+        <name>rngOption6</name>
+        <initializer>= &quot;\t6:\tSet the infrared sample rate\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="77" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="170" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a17908e476d3e40de2d4cc1853455971c" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char rngOption7[]</definition>
+        <argsstring>[]</argsstring>
+        <name>rngOption7</name>
+        <initializer>= &quot;\t7:\tSet the number of infrared samples used per estimate\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="78" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="171" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" compoundref="Menusystem_8c" startline="791" endline="811">dispRngOptions</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a93fde150eed1fc6eb628d84af5ab5282" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char showTempLCDTitle[]</definition>
+        <argsstring>[]</argsstring>
+        <name>showTempLCDTitle</name>
+        <initializer>= &quot;Display Temp&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="82" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a7eae478ace129d5b332daedee70efa05" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char showTempLCD[]</definition>
+        <argsstring>[]</argsstring>
+        <name>showTempLCD</name>
+        <initializer>= &quot;Temp = &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="83" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a53af767e2ed6afe678da4e9a5b3cd181" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char showTemp1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>showTemp1</name>
+        <initializer>= &quot;\r\n The current temperature is &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="84" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="177" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1a68e5fd71e2e27b77d08445f294598629" compoundref="Menusystem_8c" startline="816" endline="822">dispTempSerialMessage</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a86bcce8e72af390d9e852aa0055f95a8" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char showTemp2[]</definition>
+        <argsstring>[]</argsstring>
+        <name>showTemp2</name>
+        <initializer>= &quot; degrees Celcius. \r\n\n Press Esc to return.\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="85" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="178" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1a68e5fd71e2e27b77d08445f294598629" compoundref="Menusystem_8c" startline="816" endline="822">dispTempSerialMessage</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1af08ae36d6761047ce0e7cec4d5a768fc" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char gotoAzAngle[]</definition>
+        <argsstring>[]</argsstring>
+        <name>gotoAzAngle</name>
+        <initializer>= &quot;\r\n Enter the azimuth angle in degrees. \r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="92" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a2e34ffaa5831640472cc470b1e92b914" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char gotoAzAngleLCD[]</definition>
+        <argsstring>[]</argsstring>
+        <name>gotoAzAngleLCD</name>
+        <initializer>= &quot;Go to Azimuth&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="93" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a0bcfa136f866b44f9a0a0957bf424c45" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char gotoElAngle[]</definition>
+        <argsstring>[]</argsstring>
+        <name>gotoElAngle</name>
+        <initializer>= &quot;\r\n Enter the elevation angle in degrees. \r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="94" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a80fb9d027a27545fc0b67e0ecd653ddd" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char gotoELAngleLCD[]</definition>
+        <argsstring>[]</argsstring>
+        <name>gotoELAngleLCD</name>
+        <initializer>= &quot;Go to Elevation&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="95" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ae5ad0cd48aae0c50a7953273ebd85dad" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char gotoAngle2[]</definition>
+        <argsstring>[]</argsstring>
+        <name>gotoAngle2</name>
+        <initializer>= &quot; The current minimum <ref refid="Menusystem_8h_1a158e4a9523cfcc6e1e200a9a6a14f5f9" kindref="member">and</ref> maximum angles are &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="96" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a0a8b550dcd2cf3ed90fbedb18404446c" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char angleStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>angleStr</name>
+        <initializer>= &quot;Angle&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="97" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="190" bodyend="-1"/>
+        <referencedby refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" compoundref="Menusystem_8c" startline="424" endline="485">setValue</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ab517451b8173a7eaaba2ea327ea8c939" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxAzStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxAzStr</name>
+        <initializer>= &quot;Max Azimuth&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="101" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ab0fafcb82ba132956c269eea6c5586da" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxAzSetStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxAzSetStr</name>
+        <initializer>= &quot;Set <ref refid="Menusystem2_8c_1a6f607e5b0a90c0748c665c008d632093" kindref="member">Max</ref> Azimuth&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="102" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1acf51c764ea258021840229cf74bd0876" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxAz1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxAz1</name>
+        <initializer>= &quot; Enter a new maximum azimuth angle: \r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="103" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1abbf210dff9ad26eb8b6c1e1d5b2c5654" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxAz3[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxAz3</name>
+        <initializer>= &quot;\r\n Maximum azimuth angle set to &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="104" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1aec1548d621add95a778fa1090b217c2e" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char currentMinAngleStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>currentMinAngleStr</name>
+        <initializer>= &quot;\r\n The current minimum angle is &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="108" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a7693ac388992b938163dc0b07178b46b" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minAzStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minAzStr</name>
+        <initializer>= &quot;Min Azimuth&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="109" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1aeaa116394681e1306afeda71f21df0f3" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minAzSetStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minAzSetStr</name>
+        <initializer>= &quot;Set <ref refid="Menusystem2_8c_1ae3f81077129a28d7185c8a241434c00d" kindref="member">Min</ref> Azimuth&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="110" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a02b7efee76f8ae20c758883e025bac9b" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minAz1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minAz1</name>
+        <initializer>= &quot; Enter a new minimum azimuth angle: \r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="111" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ad550b62385ad7bb0590d7ef23a9fc44b" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minAz3[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minAz3</name>
+        <initializer>= &quot;\r\n Minimum azimuth angle set to &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="112" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a8c19982476b12787955e39d3336680a4" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char calibrateAngle1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>calibrateAngle1</name>
+        <initializer>= &quot;\r\n Enter the true angle of the current position \r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="116" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ae5ae025aff6d51d96e716ebc64e9749b" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxElStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxElStr</name>
+        <initializer>= &quot;Max Elevation&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="120" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a454ccf4689150b73851eb8ef361f6bf4" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxElSetStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxElSetStr</name>
+        <initializer>= &quot;Set <ref refid="Menusystem2_8c_1a6f607e5b0a90c0748c665c008d632093" kindref="member">Max</ref> Elevation&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="121" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a5466dea4f6f0401303431d6ab1edd928" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxEl1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxEl1</name>
+        <initializer>= &quot; Enter a new maximum elevation angle: \r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="123" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a2cc25780759bcdbad5ced60e7b9601a0" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxEl3[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxEl3</name>
+        <initializer>= &quot;\r\n Maximum elevation angle set to &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="124" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a05fd32eb695d62a03d150e0b47e332b9" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minElStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minElStr</name>
+        <initializer>= &quot;Min Elevation&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="128" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a27044e69d7b8bdcf45f6005f8f66f64a" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minElSetStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minElSetStr</name>
+        <initializer>= &quot;Set <ref refid="Menusystem2_8c_1ae3f81077129a28d7185c8a241434c00d" kindref="member">Min</ref> Elevation&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="129" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ac2bb5a4e18a0582824a43baa92d7883e" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minEl1[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minEl1</name>
+        <initializer>= &quot; Enter a new minimum elevation angle: \r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="131" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a42dd47b41d655b4309fd9890de72a9ba" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minEl3[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minEl3</name>
+        <initializer>= &quot;\r\n Minimum elevation angle set to &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="132" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1ab45baccd3c3b2464882aa7cb320d8bf2" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minRngStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minRngStr</name>
+        <initializer>= &quot;Min Range&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="136" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a79f561bdfea295e07e23302e4927d9de" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minRngSetStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minRngSetStr</name>
+        <initializer>= &quot;Set <ref refid="Menusystem2_8c_1ae3f81077129a28d7185c8a241434c00d" kindref="member">Min</ref> Range&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="137" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1aa51017b2f9456eb0c2d6bf1b6336fd60" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char minRngSerialStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>minRngSerialStr</name>
+        <initializer>= &quot;Enter a new minimum range: \r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="138" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a98c4f9a1b0571a585aa77fbb878ed1a0" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxRngStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxRngStr</name>
+        <initializer>= &quot;Max Range&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="142" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1a6c61a9b8091c05dedab1a209f02e8394" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxRngSetStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxRngSetStr</name>
+        <initializer>= &quot;Set <ref refid="Menusystem2_8c_1a6f607e5b0a90c0748c665c008d632093" kindref="member">Max</ref> Range&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="143" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Menusystem_8h_1aa8e428262d4c3d6b83b922309279d68e" prot="public" static="no" mutable="no">
+        <type>const far rom char</type>
+        <definition>const far rom char maxRngSerialStr[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxRngSerialStr</name>
+        <initializer>= &quot;Enter a new minimum range: \r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="144" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/MenuDefs.h" bodystart="237" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -62,13 +1162,53 @@
  Function: <ref refid="Menusystem_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" kindref="member">initialiseMenu(void)</ref></para><para>Include: <ref refid="Menusystem_8h" kindref="compound">Menusystem.h</ref></para><para>Description: initialises the menu system so that it is fully operational</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="13" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="150" bodyend="155"/>
-        <references refid="Serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="Serial_8c" startline="57" endline="75">configureSerial</references>
-        <references refid="LCD_8c_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="LCD_8c" startline="35" endline="57">lcdInit</references>
-        <references refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" compoundref="User__Interface_8c" startline="67" endline="71">configUSER</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="147" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="190" bodyend="196"/>
+        <references refid="MenuDefs_8h_1aa098c58ecdb6f99f3480138f9f740d47a4ba7a18dad4c2b80d41444425fc4b818" compoundref="MenuDefs_8h" startline="52">REMOTE</references>
+        <references refid="Serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" compoundref="Serial_8c" startline="58" endline="77">configureSerial</references>
+        <references refid="LCD_8c_1aecaa9ab68490a0b8dedd20d200d5d0ef" compoundref="LCD_8c" startline="39" endline="61">lcdInit</references>
+        <references refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" compoundref="User__Interface_8c" startline="86" endline="113">configUSER</references>
+        <references refid="Menusystem_8c_1af00ad1f1fdd6abc9dfc5d1682463a2f9" compoundref="Menusystem_8c" startline="487" endline="492">setMenu</references>
         <references refid="Menusystem2_8c_1a157eac1dc94359e4d223f8328f6d59e0" compoundref="Menusystem2_8c" startline="35">Root</references>
         <references refid="Menusystem2_8c_1ab7c54bfc8293491beeef98a08b8b56d5" compoundref="Menusystem2_8c" startline="30">AutoTrack</references>
         <references refid="Menusystem2_8c_1ae3f81077129a28d7185c8a241434c00d" compoundref="Menusystem2_8c" startline="27">Min</references>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="55" endline="103">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="Menusystem_8h_1a0c5137bf380f59ecbe803283c32f7c2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char checkForSerialInput</definition>
+        <argsstring>(void)</argsstring>
+        <name>checkForSerialInput</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>services any user interface with the menu </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: waitForInput(void)</para><para>Include:</para><para>Description: Checks the serial/local buffers for inputs</para><para>Arguments: None</para><para>Returns: 1 if input has been received, 0 otherwise </para>        </detaileddescription>
+        <inbodydescription>
+<para>Wait until the receive buffer is no longer empty Indicating that a command has been passed </para>        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="148" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="211" bodyend="215"/>
+        <references refid="Serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="Serial_8c" startline="188" endline="191">receiveCR</references>
+        <references refid="Serial_8c_1a26eab76ecdaba2d82581899cda8d9f11" compoundref="Serial_8c" startline="204" endline="207">receiveEsc</references>
+        <referencedby refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem_8c" startline="360" endline="417">serviceMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="Menusystem_8h_1a0f329206447b1f40e6f730b346aaaf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void menuISR</definition>
+        <argsstring>(void)</argsstring>
+        <name>menuISR</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>ISR function for the menu subsystem. </para>        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ Function: <ref refid="Menusystem2_8c_1a0f329206447b1f40e6f730b346aaaf44" kindref="member">menuISR(void)</ref></para><para>Include: <ref refid="Menusystem_8h" kindref="compound">Menusystem.h</ref></para><para>Description: services any interrupts associated with the menu system</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="149" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem2.c" bodystart="126" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -84,50 +1224,33 @@
 <para><hruler/>
  Function: <ref refid="Menusystem_8c_1afc5a5c12a076ae6c7424df4f4124a521" kindref="member">serviceMenu(void)</ref></para><para>Include:</para><para>Description: Checks if the user has made any inputs to the system. If not the function simply returns. If they have then it services the inputs, displays the correct outputs and performs the specified actions</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="14" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="173" bodyend="177"/>
-        <references refid="Serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="Serial_8c" startline="136" endline="139">receiveEmpty</references>
-        <references refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="User__Interface_8c" startline="115" endline="118">userEmpty</references>
+<para>If Esc or Back button pressed, return</para><para>Otherwise Confirm the selection </para>        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="150" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="360" bodyend="417"/>
+        <references refid="MenuDefs_8h_1aa098c58ecdb6f99f3480138f9f740d47a4ba7a18dad4c2b80d41444425fc4b818" compoundref="MenuDefs_8h" startline="52">REMOTE</references>
+        <references refid="MenuDefs_8h_1aa098c58ecdb6f99f3480138f9f740d47a44158b5e87162ba1c35cda193922d021" compoundref="MenuDefs_8h" startline="52">FACTORY</references>
+        <references refid="Menusystem_8c_1a0c5137bf380f59ecbe803283c32f7c2c" compoundref="Menusystem_8c" startline="211" endline="215">checkForSerialInput</references>
+        <references refid="Menusystem_8c_1a8b63a4216144880e0f72493bb99327b9" compoundref="Menusystem_8c" startline="308" endline="318">getSerialNumericInput</references>
+        <references refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" compoundref="User__Interface_8c" startline="166" endline="169">userEmpty</references>
+        <references refid="Menusystem_8c_1a1b85c6297d06880716723d3be78a24d6" compoundref="Menusystem_8c" startline="326" endline="331">getLocalPotResult</references>
+        <references refid="Menusystem_8c_1a8f68b12c69c7e6bb1f5cb87b05ac1fce" compoundref="Menusystem_8c" startline="94">m_currentMenu</references>
+        <references refid="structmenuStruct_1a3dfb56fce4a9944b52c4e8287eebed8c" compoundref="MenuDefs_8h" startline="93">menuStruct::minVal</references>
+        <references refid="structmenuStruct_1a058fc3d0b450f32fd3a113acd5fa84b9" compoundref="MenuDefs_8h" startline="94">menuStruct::maxVal</references>
+        <references refid="structmenuStruct_1ad4064acf502195fc199a543aeec54de1" compoundref="MenuDefs_8h" startline="95">menuStruct::increment</references>
+        <references refid="structmenuStruct_1a547bbd90c8e0b7b933db848413cd2ba0" compoundref="MenuDefs_8h" startline="98">menuStruct::lcdDisplayFunction</references>
+        <references refid="User__Interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" compoundref="User__Interface_8c" startline="182" endline="187">userPop</references>
+        <references refid="User__Interface_8h_1adead3849e015340318de05db13537485" compoundref="User__Interface_8h" startline="17">CONFIRM_CHAR</references>
+        <references refid="MenuDefs_8h_1aacd3d48d77b9b154e32e586724e5aeeb" compoundref="MenuDefs_8h" startline="60">ESC_PRESSED</references>
+        <references refid="structmenuStruct_1a4a793df9b579e46aa1aead30a3e01172" compoundref="MenuDefs_8h" startline="99">menuStruct::returnToPrevious</references>
+        <references refid="structmenuStruct_1ad951b71abf9e8f1dfe126e3b9d921826" compoundref="MenuDefs_8h" startline="97">menuStruct::confirmFunction</references>
+        <references refid="Serial_8c_1a42f5165187634304f89709eebe7c9f8c" compoundref="Serial_8c" startline="138" endline="141">receiveEmpty</references>
         <references refid="Menusystem2_8c_1a42b8b18470f895499324fe78095618f0" compoundref="Menusystem2_8c" startline="38">level</references>
         <references refid="structSubMenu_1a1dae2f8dad8e2d2a30b13ee69ea542db" compoundref="Menusystem2_8c" startline="18">SubMenu::numericFunction</references>
-        <references refid="Serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="Serial_8c" startline="186" endline="189">receiveCR</references>
-        <references refid="Serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="Serial_8c" startline="206" endline="218">readString</references>
+        <references refid="Serial_8c_1aca906fa91f67c730681400b51d426933" compoundref="Serial_8c" startline="188" endline="191">receiveCR</references>
+        <references refid="Serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" compoundref="Serial_8c" startline="246" endline="259">readString</references>
         <references refid="Menusystem2_8c_1ad3ebde8bf1da78fb419653e5a495837b" compoundref="Menusystem2_8c" startline="176" endline="182">parseNumeric</references>
-        <references refid="Serial_8c_1abb74ccb0bd81e0e4779854c93851c804" compoundref="Serial_8c" startline="169" endline="173">receivePop</references>
+        <references refid="Serial_8c_1abb74ccb0bd81e0e4779854c93851c804" compoundref="Serial_8c" startline="171" endline="175">receivePop</references>
         <references refid="Menusystem2_8c_1a423782ab33e8cbadc444e932e6a52a73" compoundref="Menusystem2_8c" startline="144" endline="161">parseInput</references>
-      </memberdef>
-      <memberdef kind="function" id="Menusystem_8h_1a0f329206447b1f40e6f730b346aaaf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void menuISR</definition>
-        <argsstring>(void)</argsstring>
-        <name>menuISR</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>ISR function for the menu subsystem. </para>        </briefdescription>
-        <detaileddescription>
-<para><hruler/>
- Function: <ref refid="Menusystem_8c_1a0f329206447b1f40e6f730b346aaaf44" kindref="member">menuISR(void)</ref></para><para>Include: <ref refid="Menusystem_8h" kindref="compound">Menusystem.h</ref></para><para>Description: services any interrupts associated with the menu system</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="15" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" bodystart="192" bodyend="195"/>
-      </memberdef>
-      <memberdef kind="function" id="Menusystem_8h_1ad16e5e62f3579a7048e6b981b172885e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void menu</definition>
-        <argsstring>(void)</argsstring>
-        <name>menu</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h" line="17" column="1"/>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="55" endline="103">main</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -135,20 +1258,156 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"></codeline>
-<codeline lineno="8"><highlight class="comment">//Ensure<sp/>that<sp/>there<sp/>is<sp/>only<sp/>1<sp/>inclusion<sp/>of<sp/>this<sp/>file<sp/>in<sp/>the<sp/>preprocessor<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MENU_H</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight></codeline>
-<codeline lineno="11" refid="Menusystem_8h_1abe3db97a849df459252001e1f4b3721c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MENU_ISR<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" kindref="member">initialiseMenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" kindref="member">serviceMenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a0f329206447b1f40e6f730b346aaaf44" kindref="member">menuISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ad16e5e62f3579a7048e6b981b172885e" kindref="member">menu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19" refid="Menusystem_8h_1a9552ba249c0540ffe9a08a05d1b92504" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MENU_H</highlight></codeline>
-<codeline lineno="20"><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>File:<sp/><sp/><sp/>Menusystem.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Author:<sp/>Jacob</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Created<sp/>on<sp/>7<sp/>October<sp/>2014,<sp/>9:56<sp/>PM</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//Global</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a894b8103e76ff076b3e44dc4fce50cae" kindref="member">newLine</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a5e200b19e322ccb9a3fb9c65555daf85" kindref="member">CHOOSE</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\n\n\tPlease<sp/>select<sp/>your<sp/>option<sp/>(eg.<sp/>2):<sp/>\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ac6d4335de27bb39d52e0baad84b022a8" kindref="member">menuPrefix3</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t3:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a1344458b11a58d1495ab67a701f5058a" kindref="member">menuPrefix4</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t4:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a1c9349cff12c59bf87bb2ba1befcc7df" kindref="member">menuPrefix5</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t5:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a84aca8e46b67414e24439878ab2ec412" kindref="member">menuPrefix8</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t8:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a7486ea443917f593fdf8335e166ef5a5" kindref="member">goUp</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\tReturn<sp/>to<sp/>previous<sp/>menu\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ae283ceb6858b52420406c05644db9a7a" kindref="member">goUp2</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Press<sp/>Esc<sp/>to<sp/>return<sp/>to<sp/>the<sp/>previous<sp/>menu.\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a60cb1a799f0caa9452beac0635066aa6" kindref="member">errNumOutOfRange</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Error:<sp/>Please<sp/>enter<sp/>a<sp/>number<sp/>between<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a158e4a9523cfcc6e1e200a9a6a14f5f9" kindref="member">and</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>and<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//1:<sp/>Top</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a9663e81d5c03c3b9d55547a7026a4399" kindref="member">welcome</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Welcome<sp/>to<sp/>Yavin<sp/>IV<sp/>Defence<sp/>System<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a84fb109e00ae7ee666d0f993bcca1eee" kindref="member">welcomeLcd</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Welcome!&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a31475565799b1401bbdfbdbc9cf01615" kindref="member">topOption1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t1:\tAutomatic<sp/>Tracking\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a7ec7c8c825ad848f55b4e9bab9746c61" kindref="member">topOption2</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t2:\tAzimuth<sp/>Options\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ad9098d4f350b47b27e2536a5be2f6860" kindref="member">topOption3</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t3:\tElevation<sp/>Options\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a4a4801f2969ced100ed11a0e4b77d1bf" kindref="member">topOption4</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t4:\tRange<sp/>Options\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ad13da78bb30c39392a67fbe0cab7f64e" kindref="member">topOption5</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t5:\tDisplay<sp/>Current<sp/>Temperature\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ad926ea7382efe6d7f71a99cc7be95412" kindref="member">topOptionCalTemp</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t6:\tCalibrate<sp/>the<sp/>Temperature<sp/>sensor\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a61696474144c1ffb967695824fea81df" kindref="member">topOptionLocal</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t6:\tSwitch<sp/>to<sp/>Local<sp/>mode\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a19aa2e40910ff9eb2fce3a043b17c669" kindref="member">topOptionFactory</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t7:\tSwitch<sp/>to<sp/>Factory<sp/>mode\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ac3885618f839e1bda77df8e97165ba03" kindref="member">topOptionRemote</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t6:\tSwitch<sp/>to<sp/>Remote<sp/>Serial<sp/>mode\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a92244e44259433598dcd9a03a45d1300" kindref="member">topOptionRemoteLCD</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Switch<sp/>to<sp/>Remote&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//1.1:<sp/>Automatic<sp/>tracking</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>automessage[]<sp/>=<sp/>&quot;Automatic<sp/>Tracking<sp/>Mode&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>autoinit[]<sp/>=<sp/>&quot;\tInitialising<sp/>Automatic<sp/>Tracking...&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>autohelp1[]<sp/>=<sp/>&quot;\tEnter<sp/>any<sp/>key<sp/>to<sp/>end<sp/>session&quot;;</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>autogo[]<sp/>=<sp/>&quot;\t3...\n\t2...\n\t1...\n&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>autorange[]<sp/>=<sp/>&quot;\tRange:\t&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>autoeleva[]<sp/>=<sp/>&quot;\tElevation:\t&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>autoazimu[]<sp/>=<sp/>&quot;\tAzimuth:\t&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>autostatu[]<sp/>=<sp/>&quot;\tTarget<sp/>Status:\t&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>autoend[]<sp/>=<sp/>&quot;Tracking<sp/>Session<sp/>Terminated&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//1.2:<sp/>Azimuth<sp/>Menu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1af0410aceeaafeed4193093e2f6ed32cc" kindref="member">azMenu</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\nAzimuth<sp/>Configuration\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a1a92c31ccfeb8eefc39a4f365a1186be" kindref="member">azMenuLcd</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Azimuth<sp/>Options&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a69046a8196b1545ca5f7629fa77af2df" kindref="member">azOption1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t1:\tGo<sp/>to<sp/>a<sp/>specified<sp/>azimuth<sp/>angle\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ae59528a1a04b130bfba24f38f55e205e" kindref="member">azOption2</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t2:\tSet<sp/>the<sp/>minimum<sp/>azimuth<sp/>angle\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a7ae29fbab51b34bf2452c6aa569311ce" kindref="member">azOption3</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t3:\tSet<sp/>the<sp/>maximum<sp/>azimuth<sp/>angle\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a5cc84655e1232d96cef6582120284479" kindref="member">azOption4</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t4:\tCalibrate<sp/>the<sp/>azimuth<sp/>motor\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//1.3:<sp/>Elevation<sp/>Menu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a196dd4fcfd805cd8999ec22b8b4e8e68" kindref="member">elMenu</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\nElevation<sp/>Configuration\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a8998899192a07aa6a93e220f7016b6ef" kindref="member">elMenuLcd</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Elevation<sp/>Options&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a4c1e9c4dfb7fe830a2ee8c1bb3d7fbe6" kindref="member">elOption1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t1:\tGo<sp/>to<sp/>a<sp/>specified<sp/>elevation<sp/>angle\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a23c94355a833dd2f90769b14d291f262" kindref="member">elOption2</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t2:\tSet<sp/>the<sp/>minimum<sp/>elevation<sp/>angle\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a5200c7b545cbfe745c692155567ace7e" kindref="member">elOption3</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t3:\tSet<sp/>the<sp/>maximum<sp/>elevation<sp/>angle\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a4789796069b86e83bbb588c13615341a" kindref="member">elOption4</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t4:\tCalibrate<sp/>the<sp/>elevation<sp/>motor\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//1.4:<sp/>Range<sp/>Menu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1af95916e64b16841bb2232ca7f9041559" kindref="member">rngMenu</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\nRange<sp/>Configuration\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a311b0648043e955e6cf18087a81a8333" kindref="member">rngMenuLcd</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Range<sp/>Options&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ab59efc86a2841b03d3757cd968d1f124" kindref="member">rngOption1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t1:\tSet<sp/>the<sp/>minimum<sp/>system<sp/>range\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a43703fafefa33236f502d8423d24c1f7" kindref="member">rngOption2</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t2:\tSet<sp/>the<sp/>maximum<sp/>system<sp/>range\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ad50d9f60bf22d01b4de3808d5e7ea930" kindref="member">rngOption3</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t3:\tView<sp/>the<sp/>raw<sp/>ultrasound<sp/>and<sp/>infrared<sp/>sensor<sp/>readings\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1af8f06237825a158526775ff711118d8d" kindref="member">rngOption4</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t4:\tSet<sp/>the<sp/>ultrasound<sp/>sample<sp/>rate\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a21021e259bf70bf056e947341143bfe8" kindref="member">rngOption5</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t5:\tSet<sp/>the<sp/>number<sp/>of<sp/>ultrasound<sp/>samples<sp/>used<sp/>per<sp/>estimate\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a569a936faab100bde38e09e147892082" kindref="member">rngOption6</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t6:\tSet<sp/>the<sp/>infrared<sp/>sample<sp/>rate\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a17908e476d3e40de2d4cc1853455971c" kindref="member">rngOption7</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\t7:\tSet<sp/>the<sp/>number<sp/>of<sp/>infrared<sp/>samples<sp/>used<sp/>per<sp/>estimate\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//1.5:<sp/>Show<sp/>Temp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a93fde150eed1fc6eb628d84af5ab5282" kindref="member">showTempLCDTitle</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Display<sp/>Temp&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a7eae478ace129d5b332daedee70efa05" kindref="member">showTempLCD</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Temp<sp/>=<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a53af767e2ed6afe678da4e9a5b3cd181" kindref="member">showTemp1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n<sp/>The<sp/>current<sp/>temperature<sp/>is<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a86bcce8e72af390d9e852aa0055f95a8" kindref="member">showTemp2</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>degrees<sp/>Celcius.<sp/>\r\n\n<sp/>Press<sp/>Esc<sp/>to<sp/>return.\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//1.6:<sp/>Calibrate<sp/>Temperature</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//1.2.1:<sp/>Go<sp/>to<sp/>Azimuth<sp/>Angle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1af08ae36d6761047ce0e7cec4d5a768fc" kindref="member">gotoAzAngle</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n<sp/>Enter<sp/>the<sp/>azimuth<sp/>angle<sp/>in<sp/>degrees.<sp/>\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a2e34ffaa5831640472cc470b1e92b914" kindref="member">gotoAzAngleLCD</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Go<sp/>to<sp/>Azimuth&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a0bcfa136f866b44f9a0a0957bf424c45" kindref="member">gotoElAngle</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n<sp/>Enter<sp/>the<sp/>elevation<sp/>angle<sp/>in<sp/>degrees.<sp/>\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a80fb9d027a27545fc0b67e0ecd653ddd" kindref="member">gotoELAngleLCD</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Go<sp/>to<sp/>Elevation&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ae5ad0cd48aae0c50a7953273ebd85dad" kindref="member">gotoAngle2</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>The<sp/>current<sp/>minimum<sp/>and<sp/>maximum<sp/>angles<sp/>are<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a0a8b550dcd2cf3ed90fbedb18404446c" kindref="member">angleStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Angle&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//1.2.2:<sp/>Set<sp/>Max<sp/>Azimuth<sp/>Angle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ab517451b8173a7eaaba2ea327ea8c939" kindref="member">maxAzStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Max<sp/>Azimuth&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ab0fafcb82ba132956c269eea6c5586da" kindref="member">maxAzSetStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Set<sp/>Max<sp/>Azimuth&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1acf51c764ea258021840229cf74bd0876" kindref="member">maxAz1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Enter<sp/>a<sp/>new<sp/>maximum<sp/>azimuth<sp/>angle:<sp/>\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1abbf210dff9ad26eb8b6c1e1d5b2c5654" kindref="member">maxAz3</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n<sp/>Maximum<sp/>azimuth<sp/>angle<sp/>set<sp/>to<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//1.2.2:<sp/>Set<sp/>Min<sp/>Azimuth<sp/>Angle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1aec1548d621add95a778fa1090b217c2e" kindref="member">currentMinAngleStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n<sp/>The<sp/>current<sp/>minimum<sp/>angle<sp/>is<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a7693ac388992b938163dc0b07178b46b" kindref="member">minAzStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Min<sp/>Azimuth&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1aeaa116394681e1306afeda71f21df0f3" kindref="member">minAzSetStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Set<sp/>Min<sp/>Azimuth&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a02b7efee76f8ae20c758883e025bac9b" kindref="member">minAz1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Enter<sp/>a<sp/>new<sp/>minimum<sp/>azimuth<sp/>angle:<sp/>\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ad550b62385ad7bb0590d7ef23a9fc44b" kindref="member">minAz3</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n<sp/>Minimum<sp/>azimuth<sp/>angle<sp/>set<sp/>to<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//1.2.3:<sp/>Calibrate<sp/>Azimuth<sp/>/<sp/>Elevation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a8c19982476b12787955e39d3336680a4" kindref="member">calibrateAngle1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n<sp/>Enter<sp/>the<sp/>true<sp/>angle<sp/>of<sp/>the<sp/>current<sp/>position<sp/>\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">//1.3.2:<sp/>Set<sp/>Max<sp/>Elevation<sp/>Angle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ae5ae025aff6d51d96e716ebc64e9749b" kindref="member">maxElStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Max<sp/>Elevation&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a454ccf4689150b73851eb8ef361f6bf4" kindref="member">maxElSetStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Set<sp/>Max<sp/>Elevation&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>maxEl1[]<sp/>=<sp/>&quot;\r\n<sp/>The<sp/>current<sp/>maximum<sp/>elevation<sp/>angle<sp/>is<sp/>&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a5466dea4f6f0401303431d6ab1edd928" kindref="member">maxEl1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Enter<sp/>a<sp/>new<sp/>maximum<sp/>elevation<sp/>angle:<sp/>\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a2cc25780759bcdbad5ced60e7b9601a0" kindref="member">maxEl3</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n<sp/>Maximum<sp/>elevation<sp/>angle<sp/>set<sp/>to<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//1.3.2:<sp/>Set<sp/>Min<sp/>Elevation<sp/>Angle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a05fd32eb695d62a03d150e0b47e332b9" kindref="member">minElStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Min<sp/>Elevation&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a27044e69d7b8bdcf45f6005f8f66f64a" kindref="member">minElSetStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Set<sp/>Min<sp/>Elevation&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>const<sp/>far<sp/>rom<sp/>char<sp/>minEl1[]<sp/>=<sp/>&quot;\r\n<sp/>The<sp/>current<sp/>minimum<sp/>elevation<sp/>angle<sp/>is<sp/>&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ac2bb5a4e18a0582824a43baa92d7883e" kindref="member">minEl1</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Enter<sp/>a<sp/>new<sp/>minimum<sp/>elevation<sp/>angle:<sp/>\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a42dd47b41d655b4309fd9890de72a9ba" kindref="member">minEl3</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n<sp/>Minimum<sp/>elevation<sp/>angle<sp/>set<sp/>to<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//1.4.1<sp/>Range<sp/>Min</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1ab45baccd3c3b2464882aa7cb320d8bf2" kindref="member">minRngStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Min<sp/>Range&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a79f561bdfea295e07e23302e4927d9de" kindref="member">minRngSetStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Set<sp/>Min<sp/>Range&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1aa51017b2f9456eb0c2d6bf1b6336fd60" kindref="member">minRngSerialStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Enter<sp/>a<sp/>new<sp/>minimum<sp/>range:<sp/>\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment">//<sp/>1.4.2<sp/>Range<sp/>Max</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a98c4f9a1b0571a585aa77fbb878ed1a0" kindref="member">maxRngStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Max<sp/>Range&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a6c61a9b8091c05dedab1a209f02e8394" kindref="member">maxRngSetStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Set<sp/>Max<sp/>Range&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>far<sp/>rom<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1aa8e428262d4c3d6b83b922309279d68e" kindref="member">maxRngSerialStr</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Enter<sp/>a<sp/>new<sp/>minimum<sp/>range:<sp/>\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" kindref="member">initialiseMenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a0c5137bf380f59ecbe803283c32f7c2c" kindref="member">checkForSerialInput</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1a0f329206447b1f40e6f730b346aaaf44" kindref="member">menuISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" kindref="member">serviceMenu</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.h"/>
   </compounddef>

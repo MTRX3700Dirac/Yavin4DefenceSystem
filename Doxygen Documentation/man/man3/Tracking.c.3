@@ -1,8 +1,8 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/Tracking.c" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c \- 
+Yavin4DefenceSystem/Code/Tracking.c \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -14,15 +14,28 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c \-
 .br
 \fC#include <delays\&.h>\fP
 .br
+\fC#include <timers\&.h>\fP
+.br
 
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBTargetStateData\fP"
+.br
+.RI "\fIStores data about the last target track\&. \fP"
+.in -1c
 .SS "Macros"
 
 .in +1c
 .ti -1c
-.RI "#define \fBdiff\fP   5"
+.RI "#define \fBdiff\fP   8"
 .br
 .ti -1c
 .RI "#define \fBTARGET_RAD\fP   30"
+.br
+.ti -1c
+.RI "#define \fBsampleTargetState\fP   weight"
 .br
 .ti -1c
 .RI "#define \fBTIMER\fP   \fBTMR2\fP"
@@ -31,6 +44,9 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c \-
 .SS "Functions"
 
 .in +1c
+.ti -1c
+.RI "static char \fBnewAngle\fP (\fBTargetStateData\fP target_data)"
+.br
 .ti -1c
 .RI "void \fBconfigureTracking\fP (void)"
 .br
@@ -46,10 +62,13 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c \-
 .ti -1c
 .RI "static \fBDirection\fP \fBprediction\fP (\fBDirection\fP current)"
 .br
+.ti -1c
+.RI "static char \fBnewAngle\fP (char angle, \fBTargetStateData\fP target_data)"
+.br
 .in -1c
 .SH "Macro Definition Documentation"
 .PP 
-.SS "#define diff   5"
+.SS "#define diff   8"
 
 .PP
  File: \fBTracking\&.c\fP Author: Grant
@@ -61,6 +80,8 @@ Duties: -Control and coordinate Pan Tilt and range sensors -Implement searching 
 Functions:
 .PP
 Created on 15 September 2014, 1:42 PM 
+.SS "#define sampleTargetState   weight"
+
 .SS "#define TARGET_RAD   30"
 
 .SS "#define TIMER   \fBTMR2\fP"
@@ -68,6 +89,10 @@ Created on 15 September 2014, 1:42 PM
 .SH "Function Documentation"
 .PP 
 .SS "void configureTracking (void)"
+
+.SS "static char newAngle (\fBTargetStateData\fPtarget_data)\fC [static]\fP"
+
+.SS "static char newAngle (charangle, \fBTargetStateData\fPtarget_data)\fC [static]\fP"
 
 .SS "static \fBDirection\fP prediction (\fBDirection\fPcurrent)\fC [static]\fP"
 

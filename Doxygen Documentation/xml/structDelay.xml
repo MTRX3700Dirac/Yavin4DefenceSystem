@@ -15,10 +15,10 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="51" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="51" bodyend="-1"/>
-        <referencedby refid="PanTilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="PanTilt_8c" startline="193" endline="210">incrementFine</referencedby>
-        <referencedby refid="PanTilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="PanTilt_8c" startline="406" endline="442">panTiltISR</referencedby>
-        <referencedby refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="459" endline="470">delay2Direction</referencedby>
-        <referencedby refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="487" endline="502">direction2Delay</referencedby>
+        <referencedby refid="PanTilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="PanTilt_8c" startline="189" endline="206">incrementFine</referencedby>
+        <referencedby refid="PanTilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="PanTilt_8c" startline="396" endline="432">panTiltISR</referencedby>
+        <referencedby refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="449" endline="460">delay2Direction</referencedby>
+        <referencedby refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="477" endline="492">direction2Delay</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structDelay_1a4f5b10a6a07a4aaed02134ab2691b8ec" prot="public" static="no" mutable="no">
         <type>signed int</type>
@@ -32,10 +32,10 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" line="52" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/PanTilt.c" bodystart="52" bodyend="-1"/>
-        <referencedby refid="PanTilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="PanTilt_8c" startline="193" endline="210">incrementFine</referencedby>
-        <referencedby refid="PanTilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="PanTilt_8c" startline="406" endline="442">panTiltISR</referencedby>
-        <referencedby refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="459" endline="470">delay2Direction</referencedby>
-        <referencedby refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="487" endline="502">direction2Delay</referencedby>
+        <referencedby refid="PanTilt_8h_1a5350e3f473fb25899612d382c1baa642" compoundref="PanTilt_8c" startline="189" endline="206">incrementFine</referencedby>
+        <referencedby refid="PanTilt_8h_1a7f353056fb02f0d95fd997198f5b186f" compoundref="PanTilt_8c" startline="396" endline="432">panTiltISR</referencedby>
+        <referencedby refid="PanTilt_8c_1abe8bae9cf0445d5d64cacb685f2bd934" compoundref="PanTilt_8c" startline="449" endline="460">delay2Direction</referencedby>
+        <referencedby refid="PanTilt_8c_1a96270ab040ad40095a6c0b24ffb0f994" compoundref="PanTilt_8c" startline="477" endline="492">direction2Delay</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

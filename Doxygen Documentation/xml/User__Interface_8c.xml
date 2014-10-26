@@ -4,70 +4,143 @@
     <compoundname>User_Interface.c</compoundname>
     <includes refid="Common_8h" local="yes">Common.h</includes>
     <includes refid="CircularBuffers_8h" local="yes">CircularBuffers.h</includes>
+    <includes refid="Range_8h" local="yes">Range.h</includes>
+    <includes refid="User__Interface_8h" local="yes">User_Interface.h</includes>
+    <includes refid="Serial_8h" local="yes">Serial.h</includes>
     <incdepgraph>
-      <node id="468">
+      <node id="638">
         <label>stdlib.h</label>
       </node>
-      <node id="472">
+      <node id="643">
         <label>adc.h</label>
       </node>
-      <node id="466">
+      <node id="649">
+        <label>Range.h</label>
+        <link refid="Range_8h"/>
+      </node>
+      <node id="636">
         <label>Common.h</label>
         <link refid="Common_8h"/>
-        <childnode refid="467" relation="include">
+        <childnode refid="637" relation="include">
         </childnode>
-        <childnode refid="468" relation="include">
+        <childnode refid="638" relation="include">
         </childnode>
-        <childnode refid="469" relation="include">
+        <childnode refid="639" relation="include">
         </childnode>
-        <childnode refid="470" relation="include">
+        <childnode refid="640" relation="include">
         </childnode>
-        <childnode refid="471" relation="include">
+        <childnode refid="641" relation="include">
         </childnode>
-        <childnode refid="472" relation="include">
+        <childnode refid="642" relation="include">
         </childnode>
-        <childnode refid="473" relation="include">
+        <childnode refid="643" relation="include">
         </childnode>
-        <childnode refid="474" relation="include">
+        <childnode refid="644" relation="include">
         </childnode>
-        <childnode refid="475" relation="include">
+        <childnode refid="645" relation="include">
+        </childnode>
+        <childnode refid="647" relation="include">
         </childnode>
       </node>
-      <node id="471">
+      <node id="651">
+        <label>Serial.h</label>
+        <link refid="Serial_8h"/>
+      </node>
+      <node id="646">
+        <label>pconfig.h</label>
+      </node>
+      <node id="640">
+        <label>string.h</label>
+      </node>
+      <node id="642">
         <label>timers.h</label>
       </node>
-      <node id="475">
+      <node id="647">
         <label>compare.h</label>
       </node>
-      <node id="473">
+      <node id="644">
         <label>capture.h</label>
       </node>
-      <node id="469">
+      <node id="639">
         <label>math.h</label>
       </node>
-      <node id="470">
+      <node id="645">
+        <label>usart.h</label>
+        <link refid="usart_8h"/>
+        <childnode refid="646" relation="include">
+        </childnode>
+      </node>
+      <node id="641">
         <label>p18f4520.h</label>
         <link refid="p18f4520_8h"/>
       </node>
-      <node id="474">
-        <label>usart.h</label>
-      </node>
-      <node id="467">
+      <node id="637">
         <label>stdio.h</label>
       </node>
-      <node id="465">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c</label>
+      <node id="635">
+        <label>Yavin4DefenceSystem/Code/User_Interface.c</label>
         <link refid="User_Interface.c"/>
-        <childnode refid="466" relation="include">
+        <childnode refid="636" relation="include">
         </childnode>
-        <childnode refid="476" relation="include">
+        <childnode refid="648" relation="include">
+        </childnode>
+        <childnode refid="649" relation="include">
+        </childnode>
+        <childnode refid="650" relation="include">
+        </childnode>
+        <childnode refid="651" relation="include">
         </childnode>
       </node>
-      <node id="476">
+      <node id="650">
+        <label>User_Interface.h</label>
+        <link refid="User__Interface_8h"/>
+        <childnode refid="636" relation="include">
+        </childnode>
+      </node>
+      <node id="648">
         <label>CircularBuffers.h</label>
         <link refid="CircularBuffers_8h"/>
       </node>
     </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="User__Interface_8c_1ab793b8cea43e768f35f4c40e0069b47c" prot="public" static="no">
+        <name>CONFIRM_PRESS</name>
+        <initializer><ref refid="p18f4520_8h_1a9879ca934031776b77a0c19f1dce1b54" kindref="member">INTCONbits.INT0IF</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><hruler/>
+ File: <ref refid="User__Interface_8c" kindref="compound">User_Interface.c</ref> Author: Grant</para><para>Description: Contains all the functionality for the User_Interface module. Works the same way as the serial module, but for the user interface.</para><para>Duties: -Stores any local user input in a receive buffer -Sends display data to the LCD</para><para>Created on 15 September 2014, 1:21 PM </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="22" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="22" bodyend="-1"/>
+        <referencedby refid="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" compoundref="User__Interface_8c" startline="60" endline="73">userISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="User__Interface_8c_1ad934dc8f263c62a8159af0f0e6d70c64" prot="public" static="no">
+        <name>BACK_PRESS</name>
+        <initializer><ref refid="p18f4520_8h_1a75ff524e517fe834fc906f48fb7b2113" kindref="member">INTCON3bits.INT1F</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="23" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="23" bodyend="-1"/>
+        <referencedby refid="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" compoundref="User__Interface_8c" startline="60" endline="73">userISR</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="User__Interface_8c_1a555a695bf58df062dc03f0e892d95cd7" prot="public" static="no">
+        <name>ADC_MAX</name>
+        <initializer>1023</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="26" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="26" bodyend="-1"/>
+        <referencedby refid="User__Interface_8h_1aa1e69bd94580864cea0b4563e5d56bc3" compoundref="User__Interface_8c" startline="126" endline="144">readDial</referencedby>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="var">
       <memberdef kind="variable" id="User__Interface_8c_1ad7a739640da23ada15ee5822350aaf60" prot="public" static="no" mutable="no">
         <type><ref refid="structcircularBuffer" kindref="compound">circularBuffer</ref></type>
@@ -77,11 +150,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><hruler/>
- File: <ref refid="User__Interface_8c" kindref="compound">User_Interface.c</ref> Author: Grant</para><para>Description: Contains all the functionality for the User_Interface module. Works the same way as the serial module, but for the user interface.</para><para>Duties: -Stores any local user input in a receive buffer -Sends display data to the LCD</para><para>Created on 15 September 2014, 1:21 PM </para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="20" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="20" bodyend="-1"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="29" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -101,7 +173,7 @@
  Function: <ref refid="User__Interface_8c_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display(TrackingData data)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: displays the current tracking information</para><para>Arguments: data - Struct which contains all known data concerning the The position of the target. A Range of 0 indicates that no target was observed.</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="35" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="35" bodyend="38"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="44" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="User__Interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -118,7 +190,12 @@
  Function: <ref refid="User__Interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR(void)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: Acts as the ISR for the User_interface module</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="51" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="51" bodyend="54"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="60" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="60" bodyend="73"/>
+        <references refid="User__Interface_8c_1ab793b8cea43e768f35f4c40e0069b47c" compoundref="User__Interface_8c" startline="22">CONFIRM_PRESS</references>
+        <references refid="CircularBuffers_8h_1aba30707c86c50590824a646a3ef26fbb" compoundref="CircularBuffers_8h" startline="27">push</references>
+        <references refid="User__Interface_8h_1adead3849e015340318de05db13537485" compoundref="User__Interface_8h" startline="17">CONFIRM_CHAR</references>
+        <references refid="User__Interface_8c_1ad934dc8f263c62a8159af0f0e6d70c64" compoundref="User__Interface_8c" startline="23">BACK_PRESS</references>
+        <references refid="User__Interface_8h_1a988901f3420148844c4e20d8f726ba2e" compoundref="User__Interface_8h" startline="18">BACK_CHAR</references>
         <referencedby refid="Interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" compoundref="Interrupts_8c" startline="88" endline="107">lowISR</referencedby>
         <referencedby refid="Interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" compoundref="Interrupts_8c" startline="122" endline="141">highISR</referencedby>
       </memberdef>
@@ -137,9 +214,16 @@
  Function: <ref refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER(void)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: Configures the user interface for use</para><para>Arguments: None</para><para>Returns: None </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="67" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="67" bodyend="71"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="86" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="86" bodyend="113"/>
         <references refid="CircularBuffers_8h_1a526002aa17fac30d010d4d7315d5d81c" compoundref="CircularBuffers_8h" startline="29">init</references>
-        <referencedby refid="Menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="Menusystem_8c" startline="150" endline="155">initialiseMenu</referencedby>
+        <references refid="Range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" compoundref="Range_8c" startline="79" endline="90">configureAD</references>
+        <references refid="p18f4520_8h_1a34c79aa37801a1c07caa6ffca946901f">TRISB</references>
+        <references refid="p18f4520_8h_1a34337bc9ccb72db88e471fd229a2774e">PORTB</references>
+        <references refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772">INTCONbits</references>
+        <references refid="p18f4520_8h_1a623fad3905d76d3d347bdef85490fc4e">INTCON2bits</references>
+        <references refid="p18f4520_8h_1a6017f9ff05d2a62d62d85c50c5517731">INTCON3bits</references>
+        <referencedby refid="Menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" compoundref="Menusystem_8c" startline="190" endline="196">initialiseMenu</referencedby>
+        <referencedby refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" compoundref="newmain_8c" startline="117" endline="129">initialization</referencedby>
       </memberdef>
       <memberdef kind="function" id="User__Interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned int</type>
@@ -157,9 +241,28 @@
  Function: readDial(void)</para><para>Include:</para><para>Description: Read the position of the dial</para><para>Arguments: None</para><para>Returns: The dial position scaled by </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="84" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="84" bodyend="101"/>
-        <references refid="Common_8h_1a1518840d35b90121383f93c00eba9164" compoundref="Common_8h" startline="146">ADC_DIAL_READ</references>
-        <references refid="Common_8h_1a740656a5f724d0a99e528def8ce50125" compoundref="Common_8h" startline="136">DIV_1024</references>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="126" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="126" bodyend="144"/>
+        <references refid="User__Interface_8c_1a555a695bf58df062dc03f0e892d95cd7" compoundref="User__Interface_8c" startline="26">ADC_MAX</references>
+        <referencedby refid="Menusystem_8c_1a1b85c6297d06880716723d3be78a24d6" compoundref="Menusystem_8c" startline="326" endline="331">getLocalPotResult</referencedby>
+        <referencedby refid="User__Interface_8c_1a7db12a07fa1fd8b30784f989d9d3def9" compoundref="User__Interface_8c" startline="149" endline="152">readDialForMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="User__Interface_8c_1a7db12a07fa1fd8b30784f989d9d3def9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int readDialForMenu</definition>
+        <argsstring>(unsigned int max)</argsstring>
+        <name>readDialForMenu</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a value from 1 to max </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="149" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="149" bodyend="152"/>
+        <references refid="User__Interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" compoundref="User__Interface_8c" startline="126" endline="144">readDial</references>
       </memberdef>
       <memberdef kind="function" id="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -176,9 +279,9 @@
  Function: <ref refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty(void)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: returns non-zero if the user interface buffer is empty (i.e. no user input has been detected)</para><para>Arguments: None</para><para>Returns: if the user input buffer is empty </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="115" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="115" bodyend="118"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="166" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="166" bodyend="169"/>
         <references refid="CircularBuffers_8h_1aeabcb3d395f687162520f9f72c926edf" compoundref="CircularBuffers_8h" startline="23">empty</references>
-        <referencedby refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem_8c" startline="173" endline="177">serviceMenu</referencedby>
+        <referencedby refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem_8c" startline="360" endline="417">serviceMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="User__Interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -195,8 +298,9 @@
  Function: <ref refid="User__Interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop(void)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: pops a character from the user interface receive buffer</para><para>Arguments: None</para><para>Returns: a character poped from the user Interface buffer </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="131" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="131" bodyend="136"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="182" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="182" bodyend="187"/>
         <references refid="CircularBuffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" compoundref="CircularBuffers_8h" startline="28">pop</references>
+        <referencedby refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" compoundref="Menusystem_8c" startline="360" endline="417">serviceMenu</referencedby>
       </memberdef>
       <memberdef kind="function" id="User__Interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char</type>
@@ -213,7 +317,7 @@
  Function: <ref refid="User__Interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek(void)</ref></para><para>Include: <ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref></para><para>Description: returns a character in the user_Interface buffer without removing it from the buffer</para><para>Arguments: None</para><para>Returns: a character in the user interface buffer </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="150" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="150" bodyend="153"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" line="201" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c" bodystart="201" bodyend="204"/>
         <references refid="CircularBuffers_8h_1ab6770f937bcc348970693cd84824bf9f" compoundref="CircularBuffers_8h" startline="25">peek</references>
       </memberdef>
       </sectiondef>
@@ -225,61 +329,109 @@
 <codeline lineno="1"></codeline>
 <codeline lineno="16"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Common_8h" kindref="compound">Common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="CircularBuffers_8h" kindref="compound">CircularBuffers.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//Store<sp/>anything<sp/>entered<sp/>by<sp/>the<sp/>user</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20" refid="User__Interface_8c_1ad7a739640da23ada15ee5822350aaf60" refkind="member"><highlight class="normal"><ref refid="structcircularBuffer" kindref="compound">circularBuffer</ref><sp/><ref refid="User__Interface_8c_1ad7a739640da23ada15ee5822350aaf60" kindref="member">receive</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Range_8h" kindref="compound">Range.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="User__Interface_8h" kindref="compound">User_Interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Serial_8h" kindref="compound">Serial.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="User__Interface_8h_1a5711e8cdb2a3943783f50f60a15bde31" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display</ref>(<ref refid="structTrackingData" kindref="compound">TrackingData</ref><sp/>data)</highlight></codeline>
-<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51" refid="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67" refid="User__Interface_8h_1a58e473ed40d00e18bd61277428e4d36c" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Initialises<sp/>the<sp/>receive<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="CircularBuffers_8h_1a526002aa17fac30d010d4d7315d5d81c" kindref="member">init</ref>(receive);</highlight></codeline>
-<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84" refid="User__Interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" kindref="member">readDial</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max)</highlight></codeline>
-<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Sets<sp/>the<sp/>AD<sp/>channel<sp/>for<sp/>the<sp/>DIAL</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>SetChanADC(<ref refid="Common_8h_1a1518840d35b90121383f93c00eba9164" kindref="member">ADC_DIAL_READ</ref>);</highlight></codeline>
+<codeline lineno="22" refid="User__Interface_8c_1ab793b8cea43e768f35f4c40e0069b47c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONFIRM_PRESS<sp/>INTCONbits.INT0IF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="User__Interface_8c_1ad934dc8f263c62a8159af0f0e6d70c64" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BACK_PRESS<sp/>INTCON3bits.INT1F</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>BACK_PRESS<sp/>RB_INT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="User__Interface_8c_1a555a695bf58df062dc03f0e892d95cd7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_MAX<sp/>1023<sp/><sp/>//<sp/>Max<sp/>number<sp/>allocated<sp/>by<sp/>a<sp/>10<sp/>bit<sp/>number</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//Store<sp/>anything<sp/>entered<sp/>by<sp/>the<sp/>user</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="User__Interface_8c_1ad7a739640da23ada15ee5822350aaf60" refkind="member"><highlight class="normal"><ref refid="structcircularBuffer" kindref="compound">circularBuffer</ref><sp/><ref refid="User__Interface_8c_1ad7a739640da23ada15ee5822350aaf60" kindref="member">receive</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="User__Interface_8h_1a5711e8cdb2a3943783f50f60a15bde31" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a5711e8cdb2a3943783f50f60a15bde31" kindref="member">display</ref>(<ref refid="structTrackingData" kindref="compound">TrackingData</ref><sp/>data)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" kindref="member">userISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="User__Interface_8c_1ab793b8cea43e768f35f4c40e0069b47c" kindref="member">CONFIRM_PRESS</ref>)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="CircularBuffers_8h_1aba30707c86c50590824a646a3ef26fbb" kindref="member">push</ref>(<ref refid="User__Interface_8h_1adead3849e015340318de05db13537485" kindref="member">CONFIRM_CHAR</ref>,<sp/>receive);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="User__Interface_8c_1ab793b8cea43e768f35f4c40e0069b47c" kindref="member">CONFIRM_PRESS</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="User__Interface_8c_1ad934dc8f263c62a8159af0f0e6d70c64" kindref="member">BACK_PRESS</ref>)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="CircularBuffers_8h_1aba30707c86c50590824a646a3ef26fbb" kindref="member">push</ref>(<ref refid="User__Interface_8h_1a988901f3420148844c4e20d8f726ba2e" kindref="member">BACK_CHAR</ref>,<sp/>receive);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="User__Interface_8c_1ad934dc8f263c62a8159af0f0e6d70c64" kindref="member">BACK_PRESS</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="User__Interface_8h_1a58e473ed40d00e18bd61277428e4d36c" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kindref="member">configUSER</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Initialises<sp/>the<sp/>receive<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="CircularBuffers_8h_1a526002aa17fac30d010d4d7315d5d81c" kindref="member">init</ref>(receive);</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Begin<sp/>convertion</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>ConvertADC();</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(BusyADC());</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>value<sp/>=<sp/>ReadADC();</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Scale<sp/>the<sp/>value<sp/>to<sp/>the<sp/>maximum<sp/>(by<sp/>multiplying<sp/>and<sp/>then<sp/>dividing<sp/>by<sp/>1024)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//The<sp/>1024<sp/>division<sp/>creates<sp/>a<sp/>value<sp/>from<sp/>0-1<sp/>from<sp/>the<sp/>ADC</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>value<sp/>=<sp/><ref refid="Common_8h_1a740656a5f724d0a99e528def8ce50125" kindref="member">DIV_1024</ref>(value<sp/>*<sp/>max);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115" refid="User__Interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" refkind="member"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="CircularBuffers_8h_1aeabcb3d395f687162520f9f72c926edf" kindref="member">empty</ref>(receive);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131" refid="User__Interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" refkind="member"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="132"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c;</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>=<sp/><ref refid="CircularBuffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" kindref="member">pop</ref>(receive);</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>c;</highlight></codeline>
-<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="150" refid="User__Interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" refkind="member"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="151"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="CircularBuffers_8h_1ab6770f937bcc348970693cd84824bf9f" kindref="member">peek</ref>(receive);</highlight></codeline>
-<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" kindref="member">configureAD</ref>();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>//<sp/>Set<sp/>RB<sp/>0<sp/>and<sp/>1<sp/>to<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a34c79aa37801a1c07caa6ffca946901f" kindref="member">TRISB</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a34337bc9ccb72db88e471fd229a2774e" kindref="member">PORTB</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a34c79aa37801a1c07caa6ffca946901f" kindref="member">TRISB</ref><sp/>=<sp/>0xFF;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772" kindref="member">INTCONbits</ref>.GIE_GIEH<sp/>=<sp/>1;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*enable<sp/>high<sp/>priority<sp/>interrupts*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772" kindref="member">INTCONbits</ref>.PEIE_GIEL<sp/>=<sp/>1;<sp/><sp/><sp/></highlight><highlight class="comment">/*enable<sp/>low<sp/>priority<sp/>interrupts*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>INT0<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a623fad3905d76d3d347bdef85490fc4e" kindref="member">INTCON2bits</ref>.INTEDG0<sp/>=<sp/>1;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Interrupt<sp/>on<sp/>rising<sp/>edge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1af5bf03e76136efa0057405aa11f11772" kindref="member">INTCONbits</ref>.INT0IE<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>INTCON2bits.RBPU<sp/>=<sp/>1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>INTCON2bits.RBIP<sp/>=<sp/>1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>INTCONbits.RBIE<sp/>=<sp/>1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>INT1<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a6017f9ff05d2a62d62d85c50c5517731" kindref="member">INTCON3bits</ref>.INT1IP<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a623fad3905d76d3d347bdef85490fc4e" kindref="member">INTCON2bits</ref>.INTEDG1<sp/>=<sp/>1;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Interrupt<sp/>on<sp/>rising<sp/>edge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="p18f4520_8h_1a6017f9ff05d2a62d62d85c50c5517731" kindref="member">INTCON3bits</ref>.INT1E<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="User__Interface_8h_1aa1e69bd94580864cea0b4563e5d56bc3" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" kindref="member">readDial</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>divisor;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Sets<sp/>the<sp/>AD<sp/>channel<sp/>for<sp/>the<sp/>DIAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//SetChanADC(ADC_DIAL_READ);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>SetChanADC(0);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Begin<sp/>convertion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>ConvertADC();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(BusyADC());</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>value<sp/>=<sp/>ReadADC();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>&gt;=<sp/>(<ref refid="User__Interface_8c_1a555a695bf58df062dc03f0e892d95cd7" kindref="member">ADC_MAX</ref><sp/>-<sp/>9))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>max;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>divisor<sp/>=<sp/><ref refid="User__Interface_8c_1a555a695bf58df062dc03f0e892d95cd7" kindref="member">ADC_MAX</ref>/(max<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>number<sp/>from<sp/>0<sp/>-<sp/>max</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value/divisor);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="User__Interface_8c_1a7db12a07fa1fd8b30784f989d9d3def9" refkind="member"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a7db12a07fa1fd8b30784f989d9d3def9" kindref="member">readDialForMenu</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" kindref="member">readDial</ref>(max<sp/>-1<sp/>)<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="User__Interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" refkind="member"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kindref="member">userEmpty</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="CircularBuffers_8h_1aeabcb3d395f687162520f9f72c926edf" kindref="member">empty</ref>(receive);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="User__Interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" refkind="member"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" kindref="member">userPop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>=<sp/><ref refid="CircularBuffers_8h_1aea34ae72df51f27dbb0562f5d9a23de0" kindref="member">pop</ref>(receive);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>c;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="User__Interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" refkind="member"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="User__Interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" kindref="member">userPeek</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="CircularBuffers_8h_1ab6770f937bcc348970693cd84824bf9f" kindref="member">peek</ref>(receive);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.c"/>
   </compounddef>

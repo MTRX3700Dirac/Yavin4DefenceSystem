@@ -12,9 +12,11 @@ var Serial_8c =
     [ "TX_INT_DISABLE", "Serial_8c.html#af4550af5f0b07a9dae44eaca1e30d809", null ],
     [ "TX_INT_ENABLE", "Serial_8c.html#aed05378c71b5932db9fe75240763fcec", null ],
     [ "configureSerial", "Serial_8c.html#ae2cdcda889fcfed4b6b851835bf2b538", null ],
+    [ "popEsc", "Serial_8c.html#af7757e126aed6e958b291076653e24f9", null ],
     [ "readString", "Serial_8c.html#ad5d0bd1e5c7b8380e3567f8dc474b6db", null ],
     [ "receiveCR", "Serial_8c.html#aca906fa91f67c730681400b51d426933", null ],
     [ "receiveEmpty", "Serial_8c.html#a42f5165187634304f89709eebe7c9f8c", null ],
+    [ "receiveEsc", "Serial_8c.html#a26eab76ecdaba2d82581899cda8d9f11", null ],
     [ "receivePeek", "Serial_8c.html#a6e41eb5b433439d82f67def509ade010", null ],
     [ "receivePop", "Serial_8c.html#abb74ccb0bd81e0e4779854c93851c804", null ],
     [ "serialISR", "Serial_8c.html#a6cf71700cdaeb2afeaf619777af19bfc", null ],
@@ -22,6 +24,7 @@ var Serial_8c =
     [ "transmit", "Serial_8c.html#aab23d23c5b64a3bb7e5913afb4a3ed85", null ],
     [ "transmitted", "Serial_8c.html#a96a7d5e668a1b77fd5bbd343c7f1cbfc", null ],
     [ "carriageReturn", "Serial_8c.html#a8cff2d32a612db164397b2a3b4ce2b5e", null ],
+    [ "escPressed", "Serial_8c.html#a625ea157d146adb4c20b402fe7de7d0d", null ],
     [ "receive_buffer", "Serial_8c.html#a5e9b32b4516262ed0d38be2a5c900eb2", null ],
     [ "transmit_buffer", "Serial_8c.html#a8afe57d3e36e53a89cc8488b2812d012", null ]
 ];

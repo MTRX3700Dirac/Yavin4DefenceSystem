@@ -1,11 +1,11 @@
-\hypertarget{LCD_8h}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+L\+C\+D.h File Reference}
-\label{LCD_8h}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+L\+C\+D.\+h@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+L\+C\+D.\+h}}
+\hypertarget{LCD_8h}{\section{Yavin4\+Defence\+System/\+Code/\+L\+C\+D.h File Reference}
+\label{LCD_8h}\index{Yavin4\+Defence\+System/\+Code/\+L\+C\+D.\+h@{Yavin4\+Defence\+System/\+Code/\+L\+C\+D.\+h}}
 }
 This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{LCD_8h__dep__incl}
+\includegraphics[width=328pt]{LCD_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Macros}
@@ -16,18 +16,12 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{LCD_8h_a70a8f1041fdd13688a8f8e9fd897ccda}{lcd\+Write\+String} (char $\ast$string, unsigned char line)
-\begin{DoxyCompactList}\small\item\em Feed character string, and line (1 or 2) \end{DoxyCompactList}\item 
-void \hyperlink{LCD_8h_a69bb3d698d74da5ea85d8a455dbb3b28}{lcd\+Write\+Char} (unsigned char byte, unsigned char line, unsigned char column)
+void \hyperlink{LCD_8h_aca72620ac93e9ea1cca303ba51934e47}{lcd\+Write\+String} (char $\ast$string, char line)
+\begin{DoxyCompactList}\small\item\em Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}. \end{DoxyCompactList}\item 
+void \hyperlink{LCD_8h_a8b2a2dadc77b13c3a26fb69b26a5792e}{lcd\+Write\+Char} (char byte, char line, char column)
 \begin{DoxyCompactList}\small\item\em Feed character string, and line (1 or 2) \end{DoxyCompactList}\item 
 void \hyperlink{LCD_8h_aecaa9ab68490a0b8dedd20d200d5d0ef}{lcd\+Init} (void)
-\begin{DoxyCompactList}\small\item\em Feed character, line (1 or 2), and column(1-\/16) \end{DoxyCompactList}\item 
-void \hyperlink{LCD_8h_a6d7066138d22070be0234d8b113cf776}{delay} (unsigned int t)
-\begin{DoxyCompactList}\small\item\em Include\+: \end{DoxyCompactList}\item 
-char \hyperlink{LCD_8h_a9f693f2e175a1192aebfeb586ed0fd6f}{lcd\+Busy} (void)
-\begin{DoxyCompactList}\small\item\em Include\+: \end{DoxyCompactList}\item 
-void \hyperlink{LCD_8h_a500de059df24a647c81d895c38625d6c}{lcd\+Write} (unsigned char byte, unsigned char mode)
-\begin{DoxyCompactList}\small\item\em Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Feed character, line (1 or 2), and column(1-\/16) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
@@ -37,97 +31,6 @@ void \hyperlink{LCD_8h_a500de059df24a647c81d895c38625d6c}{lcd\+Write} (unsigned 
 
 
 \subsection{Function Documentation}
-\hypertarget{LCD_8h_a6d7066138d22070be0234d8b113cf776}{\index{L\+C\+D.\+h@{L\+C\+D.\+h}!delay@{delay}}
-\index{delay@{delay}!L\+C\+D.\+h@{L\+C\+D.\+h}}
-\subsubsection[{delay}]{\setlength{\rightskip}{0pt plus 5cm}void delay (
-\begin{DoxyParamCaption}
-\item[{unsigned int}]{t}
-\end{DoxyParamCaption}
-)}}\label{LCD_8h_a6d7066138d22070be0234d8b113cf776}
-
-
-Include\+: 
-
-
-
- Function\+: delay(void)
-
-Description\+:
-
-Arguments\+: t -\/
-
-Returns\+: None 
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{LCD_8h_a6d7066138d22070be0234d8b113cf776_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{LCD_8h_a9f693f2e175a1192aebfeb586ed0fd6f}{\index{L\+C\+D.\+h@{L\+C\+D.\+h}!lcd\+Busy@{lcd\+Busy}}
-\index{lcd\+Busy@{lcd\+Busy}!L\+C\+D.\+h@{L\+C\+D.\+h}}
-\subsubsection[{lcd\+Busy}]{\setlength{\rightskip}{0pt plus 5cm}char lcd\+Busy (
-\begin{DoxyParamCaption}
-\item[{void}]{}
-\end{DoxyParamCaption}
-)}}\label{LCD_8h_a9f693f2e175a1192aebfeb586ed0fd6f}
-
-
-Include\+: 
-
-
-
- Function\+: \hyperlink{LCD_8c_a9f693f2e175a1192aebfeb586ed0fd6f}{lcd\+Busy(void)}
-
-Description\+:
-
-Arguments\+: None
-
-Returns\+: None Set data lines to input
-
-Set the enable low, ensure clock signal is low
-
-Set R\+W to read read from L\+C\+D
-
-Set the register select to low for instruction
-
-Set the enable high, ensure clock signal is high to allow data transmission
-
-Set control lines to output
-
-Set data lines to output
-
-Set enable low to allow data to flow through
-
-Set control lines to output
-
-Set data lines to output
-
-Set enable low to allow data to flow through 
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=208pt]{LCD_8h_a9f693f2e175a1192aebfeb586ed0fd6f_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{LCD_8h_a9f693f2e175a1192aebfeb586ed0fd6f_icgraph}
-\end{center}
-\end{figure}
-
-
 \hypertarget{LCD_8h_aecaa9ab68490a0b8dedd20d200d5d0ef}{\index{L\+C\+D.\+h@{L\+C\+D.\+h}!lcd\+Init@{lcd\+Init}}
 \index{lcd\+Init@{lcd\+Init}!L\+C\+D.\+h@{L\+C\+D.\+h}}
 \subsubsection[{lcd\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+Init (
@@ -140,20 +43,6 @@ Here is the caller graph for this function\+:\nopagebreak
 Feed character, line (1 or 2), and column(1-\/16) 
 
 Feed character, line (1 or 2), and column(1-\/16)
-
-
-
- File\+: \hyperlink{User__Interface_8c}{User\+\_\+\+Interface.\+c} Author\+:
-
-Description\+: Contains all the interface to the L\+C\+D hardware
-
-Duties\+: -\/\+Interfaces with and controls the L\+C\+D -\/\+Displays data on the L\+C\+D
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000001}{Todo}]Complete, test, debug and document this code!!!\end{DoxyRefDesc}
-
-
-Created on 15 September 2014, 1\+:21 P\+M
 
 
 
@@ -171,7 +60,7 @@ Set control lines low
 
 8 bits, 2 lines, 5x7 dots, 0x38
 
-Display on, cursor off, blinking on (Z, 0x0\+F)
+Display on, cursor off, blinking off (Z, 0x0\+F)
 
 Cursor moves right?, display not shift (Z, 0x04)
 
@@ -192,68 +81,20 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=234pt]{LCD_8h_aecaa9ab68490a0b8dedd20d200d5d0ef_icgraph}
+\includegraphics[width=308pt]{LCD_8h_aecaa9ab68490a0b8dedd20d200d5d0ef_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{LCD_8h_a500de059df24a647c81d895c38625d6c}{\index{L\+C\+D.\+h@{L\+C\+D.\+h}!lcd\+Write@{lcd\+Write}}
-\index{lcd\+Write@{lcd\+Write}!L\+C\+D.\+h@{L\+C\+D.\+h}}
-\subsubsection[{lcd\+Write}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+Write (
-\begin{DoxyParamCaption}
-\item[{unsigned char}]{byte, }
-\item[{unsigned char}]{mode}
-\end{DoxyParamCaption}
-)}}\label{LCD_8h_a500de059df24a647c81d895c38625d6c}
-
-
-Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}. 
-
-
-
- Function\+: \hyperlink{LCD_8c_a500de059df24a647c81d895c38625d6c}{lcd\+Write(unsigned char byte, unsigned char mode)}
-
-Description\+:
-
-Arguments\+: byte -\/ mode -\/
-
-Returns\+: None Set data lines to output
-
-Write data to data lines
-
-Set clock high
-
-Set clock low 
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=297pt]{LCD_8h_a500de059df24a647c81d895c38625d6c_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{LCD_8h_a500de059df24a647c81d895c38625d6c_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{LCD_8h_a69bb3d698d74da5ea85d8a455dbb3b28}{\index{L\+C\+D.\+h@{L\+C\+D.\+h}!lcd\+Write\+Char@{lcd\+Write\+Char}}
+\hypertarget{LCD_8h_a8b2a2dadc77b13c3a26fb69b26a5792e}{\index{L\+C\+D.\+h@{L\+C\+D.\+h}!lcd\+Write\+Char@{lcd\+Write\+Char}}
 \index{lcd\+Write\+Char@{lcd\+Write\+Char}!L\+C\+D.\+h@{L\+C\+D.\+h}}
 \subsubsection[{lcd\+Write\+Char}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+Write\+Char (
 \begin{DoxyParamCaption}
-\item[{unsigned char}]{byte, }
-\item[{unsigned char}]{line, }
-\item[{unsigned char}]{column}
+\item[{char}]{byte, }
+\item[{char}]{line, }
+\item[{char}]{column}
 \end{DoxyParamCaption}
-)}}\label{LCD_8h_a69bb3d698d74da5ea85d8a455dbb3b28}
+)}}\label{LCD_8h_a8b2a2dadc77b13c3a26fb69b26a5792e}
 
 
 Feed character string, and line (1 or 2) 
@@ -262,7 +103,7 @@ Feed character string, and line (1 or 2)
 
 
 
- Function\+: \hyperlink{LCD_8h_a69bb3d698d74da5ea85d8a455dbb3b28}{lcd\+Write\+Char(unsigned char byte, unsigned char line, unsigned char column)}
+ Function\+: lcd\+Write\+Char(unsigned char byte, unsigned char line, unsigned char column)
 
 Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}
 
@@ -270,28 +111,17 @@ Description\+:
 
 Arguments\+: byte -\/ line -\/ column -\/
 
-Returns\+: None 
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{LCD_8h_a69bb3d698d74da5ea85d8a455dbb3b28_cgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{LCD_8h_a70a8f1041fdd13688a8f8e9fd897ccda}{\index{L\+C\+D.\+h@{L\+C\+D.\+h}!lcd\+Write\+String@{lcd\+Write\+String}}
+Returns\+: None\+Feed character, line (1 or 2), and column(1-\/16) \hypertarget{LCD_8h_aca72620ac93e9ea1cca303ba51934e47}{\index{L\+C\+D.\+h@{L\+C\+D.\+h}!lcd\+Write\+String@{lcd\+Write\+String}}
 \index{lcd\+Write\+String@{lcd\+Write\+String}!L\+C\+D.\+h@{L\+C\+D.\+h}}
 \subsubsection[{lcd\+Write\+String}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+Write\+String (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{string, }
-\item[{unsigned char}]{line}
+\item[{char}]{line}
 \end{DoxyParamCaption}
-)}}\label{LCD_8h_a70a8f1041fdd13688a8f8e9fd897ccda}
+)}}\label{LCD_8h_aca72620ac93e9ea1cca303ba51934e47}
 
 
-Feed character string, and line (1 or 2) 
+Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}. 
 
 
 
@@ -303,22 +133,10 @@ Created on 17 September 2014, 9\+:01 P\+M
 
 
 
- Function\+: \hyperlink{LCD_8c_a70a8f1041fdd13688a8f8e9fd897ccda}{lcd\+Write\+String(char $\ast$string, unsigned char line)}
-
-Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}
+ Function\+: lcd\+Write\+String(char $\ast$string, unsigned char line)
 
 Description\+:
 
 Arguments\+: string -\/ line -\/
 
-Returns\+: None 
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{LCD_8h_a70a8f1041fdd13688a8f8e9fd897ccda_cgraph}
-\end{center}
-\end{figure}
-
-
+Returns\+: None\+Feed character string, and line (1 or 2) Also include information about which row 

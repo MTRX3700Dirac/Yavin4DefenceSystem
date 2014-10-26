@@ -1,8 +1,17 @@
 <map id="initialiseMenu" name="initialiseMenu">
-<area shape="rect" id="node2" href="$Serial_8c.html#ae2cdcda889fcfed4b6b851835bf2b538" title="configureSerial" alt="" coords="155,5,261,32"/>
-<area shape="rect" id="node3" href="$LCD_8c.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Initialises the LCD so that it can be used. " alt="" coords="180,56,236,83"/>
-<area shape="rect" id="node7" href="$User__Interface_8c.html#a58e473ed40d00e18bd61277428e4d36c" title="configUSER" alt="" coords="162,107,254,133"/>
-<area shape="rect" id="node4" href="$LCD_8c.html#a6d7066138d22070be0234d8b113cf776" title="Include: " alt="" coords="545,81,599,108"/>
-<area shape="rect" id="node5" href="$LCD_8c.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="309,81,380,108"/>
-<area shape="rect" id="node6" href="$LCD_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: " alt="" coords="428,132,497,159"/>
+<area shape="rect" id="node2" href="$Serial_8c.html#ae2cdcda889fcfed4b6b851835bf2b538" title="configureSerial" alt="" coords="155,56,261,83"/>
+<area shape="rect" id="node3" href="$LCD_8c.html#aecaa9ab68490a0b8dedd20d200d5d0ef" title="Initialises the LCD so that it can be used. " alt="" coords="180,107,236,133"/>
+<area shape="rect" id="node7" href="$User__Interface_8c.html#a58e473ed40d00e18bd61277428e4d36c" title="configUSER" alt="" coords="162,157,254,184"/>
+<area shape="rect" id="node9" href="$Menusystem_8c.html#af00ad1f1fdd6abc9dfc5d1682463a2f9" title="setMenu" alt="" coords="172,208,244,235"/>
+<area shape="rect" id="node4" href="$LCD_8c.html#a500de059df24a647c81d895c38625d6c" title="Include: LCD.h. " alt="" coords="338,56,409,83"/>
+<area shape="rect" id="node6" href="$LCD_8c.html#a6d7066138d22070be0234d8b113cf776" title="Include: " alt="" coords="661,56,715,83"/>
+<area shape="rect" id="node5" href="$LCD_8c.html#a9f693f2e175a1192aebfeb586ed0fd6f" title="Include: " alt="" coords="500,5,569,32"/>
+<area shape="rect" id="node8" href="$Range_8c.html#ac7337ef2da4c9ab03257562ec33bbb8a" title="configureAD" alt="" coords="327,157,419,184"/>
+<area shape="rect" id="node10" href="$Menusystem_8c.html#aae2d111e2cbcfe93d493729e9c9c1f2b" title="displayMenuSerial" alt="" coords="309,208,437,235"/>
+<area shape="rect" id="node11" href="$Menusystem_8c.html#a9f7902dc2a501ad1f16ec5011415bbbc" title="sendNewLine" alt="" coords="485,157,584,184"/>
+<area shape="rect" id="node13" href="$Menusystem_8c.html#a4bb64cc936229611900f25e483381dc7" title="filler" alt="" coords="512,208,557,235"/>
+<area shape="rect" id="node14" href="$Serial_8c.html#aabfd643e8a01ba453ff6a88164b9eff8" title="transChar" alt="" coords="495,259,574,285"/>
+<area shape="rect" id="node15" href="$Menusystem_8c.html#a3e308d6e9b426c6463bea038c996aa35" title="Include: Local to Menusystem.c. " alt="" coords="495,309,575,336"/>
+<area shape="rect" id="node12" href="$Serial_8c.html#aab23d23c5b64a3bb7e5913afb4a3ed85" title="transmit" alt="" coords="653,208,723,235"/>
+<area shape="rect" id="node16" href="$ROM2RAM_8c.html#a576e4df736792ea0f9804499aa256fd7" title="strcpypgm2ram" alt="" coords="632,309,744,336"/>
 </map>

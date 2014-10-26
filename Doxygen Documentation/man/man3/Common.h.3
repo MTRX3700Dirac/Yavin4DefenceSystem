@@ -1,8 +1,8 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/Common.h" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h \- 
+Yavin4DefenceSystem/Code/Common.h \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -11,6 +11,8 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h \-
 \fC#include <stdlib\&.h>\fP
 .br
 \fC#include <math\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
 .br
 \fC#include <p18f4520\&.h>\fP
 .br
@@ -122,6 +124,12 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h \-
 .RI "#define \fBINT0_INT\fP   (\fBINTCONbits\&.INT0IF\fP && \fBINTCONbits\&.INT0IE\fP)"
 .br
 .ti -1c
+.RI "#define \fBINT1_INT\fP   (\fBINTCON3bits\&.INT1IF\fP && \fBINTCON3bits\&.INT1IE\fP)"
+.br
+.ti -1c
+.RI "#define \fBINT2_INT\fP   (\fBINTCON3bits\&.INT2IF\fP && \fBINTCON3bits\&.INT2IE\fP)"
+.br
+.ti -1c
 .RI "#define \fBRB_INT\fP   (\fBINTCONbits\&.RBIF\fP && \fBINTCONbits\&.RBIE\fP)"
 .br
 .ti -1c
@@ -153,12 +161,6 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Common.h \-
 .br
 .ti -1c
 .RI "#define \fBCCP2_CLEAR\fP   (\fBPIR2bits\&.CCP2IF\fP = 0)"
-.br
-.ti -1c
-.RI "#define \fBWDT_EN\fP   \fBWDTCONbits\&.SWDTE\fP = 1; \fBWDTCONbits\&.SWDTEN\fP = 1;"
-.br
-.ti -1c
-.RI "#define \fBWDT_CLR\fP   _asm CLRWDT _endasm"
 .br
 .ti -1c
 .RI "#define \fBCLOCK\fP   10000000"
@@ -241,6 +243,10 @@ Efficient Division macros based on bit shifting, Cannot be used on negative numb
 
 .SS "#define INT0_INT   (\fBINTCONbits\&.INT0IF\fP && \fBINTCONbits\&.INT0IE\fP)"
 
+.SS "#define INT1_INT   (\fBINTCON3bits\&.INT1IF\fP && \fBINTCON3bits\&.INT1IE\fP)"
+
+.SS "#define INT2_INT   (\fBINTCON3bits\&.INT2IF\fP && \fBINTCON3bits\&.INT2IE\fP)"
+
 .SS "#define LVD_INT   (\fBPIR2bits\&.LVDIF\fP && \fBPIE2bits\&.LVDIE\fP)"
 
 .SS "#define MNML"
@@ -281,10 +287,6 @@ Swaps the values in two variables\&.
 
 .PP
 Interrupt macros\&. 
-.SS "#define WDT_CLR   _asm CLRWDT _endasm"
-
-.SS "#define WDT_EN   \fBWDTCONbits\&.SWDTE\fP = 1; \fBWDTCONbits\&.SWDTEN\fP = 1;"
-
 .SH "Enumeration Type Documentation"
 .PP 
 .SS "enum \fBpossible_states\fP"

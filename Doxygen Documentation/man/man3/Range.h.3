@@ -1,8 +1,8 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/Range.h" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h \- 
+Yavin4DefenceSystem/Code/Range.h \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -28,6 +28,7 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h \-
 .ti -1c
 .RI "unsigned int \fBrange\fP (void)"
 .br
+.RI "\fISamples the range\&. \fP"
 .ti -1c
 .RI "void \fBrangeISR\fP (void)"
 .br
@@ -42,12 +43,6 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Range.h \-
 .br
 .ti -1c
 .RI "\fBTargetState\fP \fBreadTargetState\fP (void)"
-.br
-.ti -1c
-.RI "unsigned int \fBrangeIR\fP (void)"
-.br
-.ti -1c
-.RI "unsigned int \fBrangeUltrasonic\fP (void)"
 .br
 .in -1c
 .SH "Macro Definition Documentation"
@@ -75,14 +70,7 @@ Include: \fBRange\&.h\fP
 .PP
 Description: Configures the ADC, In ADCON1, we set right-justified mode, and select AN0 as the input channel\&. In ADCON0, we set a sample rate of Fosc/8, select AN0, and enable the ADC\&. Arguments: None
 .PP
-Returns: None
-.PP
-\fBTodo\fP
-.RS 4
-Make absolutely sure this works on the minimal board, and with the temperature sensor, and pot and IR sensor 
-.RE
-.PP
-
+Returns: None 
 .SS "void configureRange (void)"
 
 .PP
@@ -110,23 +98,23 @@ Returns: the target state
 .SS "unsigned int range (void)"
 
 .PP
+Samples the range\&. 
+.PP
  Function: \fBrange(void)\fP
 .PP
 Include: \fBRange\&.h\fP
 .PP
-Description: Uses the IR and Ultrasonic sensors to find the range
+Description: Takes a number of samples of the ultrasonic sensor at a specified rate\&. Continues to sample the IR sensor at a different rate while sampling the ultrasonic\&. Then combines the ranges and sets the target state
 .PP
 Arguments: None
 .PP
-Returns: fused range as an unsigned int
+Returns: the range Standard room temperature for now
 .PP
 \fBTodo\fP
 .RS 4
-Implement the sampling rate somehow 
+Read in temperature for US calculation 
 .RE
 .PP
-
-.SS "unsigned int rangeIR (void)"
 
 .SS "void rangeISR (void)"
 
@@ -140,32 +128,18 @@ Description: Called when an range related interrupt is fired, acts as the servic
 Arguments: None
 .PP
 Returns: None 
-.SS "unsigned int rangeUltrasonic (void)"
-
-.PP
- Function: \fBrangeUltrasonic(void)\fP
-.PP
-Include:
-.PP
-Description: performs an ultrasonic range reading\&. Pins:
-.PP
-Arguments: None
-.PP
-Returns: the average of the samples
-.PP
-todo remove this function? 
 .SS "signed int rawRange (void)"
 
 .PP
- Function: \fBrawRange(void)\fP
+ Function: speed_sound(unsigned char tempx2)
 .PP
-Include: \fBRange\&.h\fP
+Include:
 .PP
-Description: Returns uncalibrated range without the calibration offset
+Description: Returns the calibration offset to calculate the raw data
 .PP
 Arguments: None
 .PP
-Returns: distance (in mm) as an unsigned int 
+Returns: None 
 .SS "\fBTargetState\fP readTargetState (void)"
 
 .PP

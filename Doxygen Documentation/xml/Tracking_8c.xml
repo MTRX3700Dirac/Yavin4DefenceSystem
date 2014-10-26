@@ -6,85 +6,100 @@
     <includes refid="Range_8h" local="yes">Range.h</includes>
     <includes refid="PanTilt_8h" local="yes">PanTilt.h</includes>
     <includes local="no">delays.h</includes>
+    <includes local="no">timers.h</includes>
     <incdepgraph>
-      <node id="459">
+      <node id="613">
         <label>delays.h</label>
       </node>
-      <node id="446">
-        <label>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c</label>
+      <node id="598">
+        <label>Yavin4DefenceSystem/Code/Tracking.c</label>
         <link refid="Tracking.c"/>
-        <childnode refid="447" relation="include">
+        <childnode refid="599" relation="include">
         </childnode>
-        <childnode refid="457" relation="include">
+        <childnode refid="611" relation="include">
         </childnode>
-        <childnode refid="458" relation="include">
+        <childnode refid="612" relation="include">
         </childnode>
-        <childnode refid="459" relation="include">
+        <childnode refid="613" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
         </childnode>
       </node>
-      <node id="449">
+      <node id="601">
         <label>stdlib.h</label>
       </node>
-      <node id="453">
+      <node id="606">
         <label>adc.h</label>
       </node>
-      <node id="457">
+      <node id="611">
         <label>Range.h</label>
         <link refid="Range_8h"/>
       </node>
-      <node id="447">
+      <node id="599">
         <label>Common.h</label>
         <link refid="Common_8h"/>
-        <childnode refid="448" relation="include">
+        <childnode refid="600" relation="include">
         </childnode>
-        <childnode refid="449" relation="include">
+        <childnode refid="601" relation="include">
         </childnode>
-        <childnode refid="450" relation="include">
+        <childnode refid="602" relation="include">
         </childnode>
-        <childnode refid="451" relation="include">
+        <childnode refid="603" relation="include">
         </childnode>
-        <childnode refid="452" relation="include">
+        <childnode refid="604" relation="include">
         </childnode>
-        <childnode refid="453" relation="include">
+        <childnode refid="605" relation="include">
         </childnode>
-        <childnode refid="454" relation="include">
+        <childnode refid="606" relation="include">
         </childnode>
-        <childnode refid="455" relation="include">
+        <childnode refid="607" relation="include">
         </childnode>
-        <childnode refid="456" relation="include">
+        <childnode refid="608" relation="include">
+        </childnode>
+        <childnode refid="610" relation="include">
         </childnode>
       </node>
-      <node id="452">
+      <node id="609">
+        <label>pconfig.h</label>
+      </node>
+      <node id="603">
+        <label>string.h</label>
+      </node>
+      <node id="605">
         <label>timers.h</label>
       </node>
-      <node id="456">
+      <node id="610">
         <label>compare.h</label>
       </node>
-      <node id="454">
+      <node id="607">
         <label>capture.h</label>
       </node>
-      <node id="450">
+      <node id="602">
         <label>math.h</label>
       </node>
-      <node id="451">
+      <node id="608">
+        <label>usart.h</label>
+        <link refid="usart_8h"/>
+        <childnode refid="609" relation="include">
+        </childnode>
+      </node>
+      <node id="604">
         <label>p18f4520.h</label>
         <link refid="p18f4520_8h"/>
       </node>
-      <node id="455">
-        <label>usart.h</label>
-      </node>
-      <node id="448">
+      <node id="600">
         <label>stdio.h</label>
       </node>
-      <node id="458">
+      <node id="612">
         <label>PanTilt.h</label>
         <link refid="PanTilt_8h"/>
       </node>
     </incdepgraph>
+    <innerclass refid="structTargetStateData" prot="public">TargetStateData</innerclass>
       <sectiondef kind="define">
       <memberdef kind="define" id="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" prot="public" static="no">
         <name>diff</name>
-        <initializer>5</initializer>
+        <initializer>8</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -93,7 +108,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="26" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="26" bodyend="-1"/>
-        <referencedby refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="62" endline="110">search</referencedby>
+        <referencedby refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" compoundref="Tracking_8c" startline="87" endline="135">search</referencedby>
       </memberdef>
       <memberdef kind="define" id="Tracking_8c_1a343412bd951fd6a703531a20848e1b66" prot="public" static="no">
         <name>TARGET_RAD</name>
@@ -106,6 +121,18 @@
         </inbodydescription>
         <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="27" column="9" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="27" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="define" id="Tracking_8c_1a50fac94864a77d583f680df8a0eaebb4" prot="public" static="no">
+        <name>sampleTargetState</name>
+        <initializer>weight</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="169" column="9"/>
+        <referencedby refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" compoundref="Tracking_8c" startline="167" endline="229">track</referencedby>
+      </memberdef>
       <memberdef kind="define" id="Tracking_8c_1a599217205dc3092c26567a2bd868ef3a" prot="public" static="no">
         <name>TIMER</name>
         <initializer><ref refid="p18f4520_8h_1a76c40998983e904fda7c65db0eb4b16f" kindref="member">TMR2</ref></initializer>
@@ -115,10 +142,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="220" column="9"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="245" column="9"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
+      <memberdef kind="function" id="Tracking_8c_1a692bd90e8391dbba83a5985df166e4cb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>static char newAngle</definition>
+        <argsstring>(TargetStateData target_data)</argsstring>
+        <name>newAngle</name>
+        <param>
+          <type><ref refid="structTargetStateData" kindref="compound">TargetStateData</ref></type>
+          <declname>target_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="52" column="1"/>
+      </memberdef>
       <memberdef kind="function" id="Tracking_8c_1ac9b1c5bae39806310b74e2f69d9ee3b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void configureTracking</definition>
@@ -133,10 +177,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="41" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="41" bodyend="45"/>
-        <references refid="PanTilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="PanTilt_8c" startline="107" endline="137">configureBase</references>
-        <references refid="Range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="Range_8c" startline="105" endline="139">configureRange</references>
-        <referencedby refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" compoundref="newmain_8c" startline="87" endline="93">initialization</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="65" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="65" bodyend="73"/>
+        <references refid="PanTilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" compoundref="PanTilt_8c" startline="105" endline="135">configureBase</references>
+        <references refid="Range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" compoundref="Range_8c" startline="103" endline="137">configureRange</references>
+        <referencedby refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" compoundref="newmain_8c" startline="117" endline="129">initialization</referencedby>
       </memberdef>
       <memberdef kind="function" id="Tracking_8c_1ac80b505821d79e98e9108b12d12c5db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -153,18 +197,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="62" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="62" bodyend="110"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="87" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="87" bodyend="135"/>
         <references refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" compoundref="Tracking_8c" startline="26">diff</references>
-        <references refid="PanTilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="PanTilt_8c" startline="223" endline="226">getDir</references>
-        <references refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="Common_8h" startline="77">Direction::azimuth</references>
-        <references refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="PanTilt_8c" startline="174" endline="180">increment</references>
-        <references refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" compoundref="Common_8h" startline="78">Direction::inclination</references>
-        <references refid="Range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="Range_8c" startline="533" endline="539">readTargetState</references>
-        <references refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="Common_8h" startline="101">GOOD_TRACK</references>
-        <references refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="Common_8h" startline="106">NEXT_STATE_PTR</references>
-        <references refid="Common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" compoundref="Common_8h" startline="109">TRCK</references>
-        <references refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="Common_8h" startline="101">BAD_DIR</references>
-        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="46" endline="73">main</referencedby>
+        <references refid="PanTilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="PanTilt_8c" startline="219" endline="222">getDir</references>
+        <references refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="Common_8h" startline="73">Direction::azimuth</references>
+        <references refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" compoundref="PanTilt_8c" startline="170" endline="176">increment</references>
+        <references refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" compoundref="Common_8h" startline="74">Direction::inclination</references>
+        <references refid="Range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="Range_8c" startline="380" endline="384">readTargetState</references>
+        <references refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="Common_8h" startline="97">GOOD_TRACK</references>
+        <references refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="Common_8h" startline="102">NEXT_STATE_PTR</references>
+        <references refid="Common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" compoundref="Common_8h" startline="105">TRCK</references>
+        <references refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="Common_8h" startline="97">BAD_DIR</references>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="55" endline="103">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="Tracking_8c_1ae3fa9fb57cd18477215f58aa448ce9d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -180,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="123" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="123" bodyend="126"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="148" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="148" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="Tracking_8c_1a4f0ebbcddf842d008fbfebb705374c30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structTrackingData" kindref="compound">TrackingData</ref></type>
@@ -197,21 +241,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="145" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="145" bodyend="202"/>
-        <references refid="PanTilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="PanTilt_8c" startline="223" endline="226">getDir</references>
-        <references refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="Common_8h" startline="77">Direction::azimuth</references>
-        <references refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" compoundref="Common_8h" startline="78">Direction::inclination</references>
-        <references refid="PanTilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="PanTilt_8c" startline="152" endline="161">move</references>
-        <references refid="Range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="Range_8c" startline="533" endline="539">readTargetState</references>
-        <references refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="Common_8h" startline="101">GOOD_TRACK</references>
-        <references refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="Common_8h" startline="101">BAD_DIR</references>
-        <references refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="Common_8h" startline="106">NEXT_STATE_PTR</references>
-        <references refid="Common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" compoundref="Common_8h" startline="109">SRCH</references>
-        <references refid="structTrackingData_1a4bb47863775a37236bda65273c01b275" compoundref="Common_8h" startline="94">TrackingData::distance</references>
-        <references refid="Range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="Range_8c" startline="317" endline="401">range</references>
-        <references refid="structTrackingData_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="Common_8h" startline="95">TrackingData::azimuth</references>
-        <references refid="structTrackingData_1af308b9934394c8bcf7614eb1df2d863f" compoundref="Common_8h" startline="96">TrackingData::inclination</references>
-        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="46" endline="73">main</referencedby>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="167" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="167" bodyend="229"/>
+        <references refid="PanTilt_8c_1ad1d9638bad5a5021969d19769e70c775" compoundref="PanTilt_8c" startline="219" endline="222">getDir</references>
+        <references refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="Common_8h" startline="73">Direction::azimuth</references>
+        <references refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" compoundref="Common_8h" startline="74">Direction::inclination</references>
+        <references refid="PanTilt_8c_1a032fbfc434ca24d27d89b6d768455a42" compoundref="PanTilt_8c" startline="148" endline="157">move</references>
+        <references refid="Tracking_8c_1a50fac94864a77d583f680df8a0eaebb4">sampleTargetState</references>
+        <references refid="Range_8c_1a87c8e64ddc596f3e6b72ee861f671168" compoundref="Range_8c" startline="380" endline="384">readTargetState</references>
+        <references refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" compoundref="Common_8h" startline="97">GOOD_TRACK</references>
+        <references refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" compoundref="Common_8h" startline="97">BAD_DIR</references>
+        <references refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275" compoundref="Common_8h" startline="97">OUT_OF_IR</references>
+        <references refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" compoundref="Common_8h" startline="102">NEXT_STATE_PTR</references>
+        <references refid="Common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" compoundref="Common_8h" startline="105">SRCH</references>
+        <references refid="structTrackingData_1a4bb47863775a37236bda65273c01b275" compoundref="Common_8h" startline="90">TrackingData::distance</references>
+        <references refid="Range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" compoundref="Range_8c" startline="300" endline="348">range</references>
+        <references refid="structTrackingData_1a866e78e12cb32dcaf1ded89bda8be8f5" compoundref="Common_8h" startline="91">TrackingData::azimuth</references>
+        <references refid="structTrackingData_1af308b9934394c8bcf7614eb1df2d863f" compoundref="Common_8h" startline="92">TrackingData::inclination</references>
+        <referencedby refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" compoundref="newmain_8c" startline="55" endline="103">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="Tracking_8c_1ab3681bb15cfeebcc7b27d0c063dafc89" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structDirection" kindref="compound">Direction</ref></type>
@@ -228,7 +274,32 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="218" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="218" bodyend="225"/>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="243" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="243" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="Tracking_8c_1afb53c1edd8f8b148150ccf950b62405c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>static char newAngle</definition>
+        <argsstring>(char angle, TargetStateData target_data)</argsstring>
+        <name>newAngle</name>
+        <param>
+          <type>char</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type><ref refid="structTargetStateData" kindref="compound">TargetStateData</ref></type>
+          <declname>target_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" line="265" column="1" bodyfile="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c" bodystart="265" bodyend="276"/>
+        <references refid="structTargetStateData_1af1c1a652047e16b61fba368c04c99bc2" compoundref="Tracking_8c" startline="49">TargetStateData::centre</references>
+        <references refid="structTargetStateData_1a14c96a3f499b71215ea44a6212573c31" compoundref="Tracking_8c" startline="48">TargetStateData::good_tracks</references>
+        <references refid="structTargetStateData_1a537d4acb0d2cf4b4ddf13b4b634e6dde" compoundref="Tracking_8c" startline="46">TargetStateData::bad_dirs</references>
+        <references refid="structTargetStateData_1a36c38be840b4157a4b13c29bf08de2f1" compoundref="Tracking_8c" startline="47">TargetStateData::out_of_irs</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -241,206 +312,244 @@
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Range_8h" kindref="compound">Range.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PanTilt_8h" kindref="compound">PanTilt.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26" refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>diff<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>diff<sp/>8</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27" refid="Tracking_8c_1a343412bd951fd6a703531a20848e1b66" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TARGET_RAD<sp/>30<sp/><sp/>//The<sp/>diameter<sp/>of<sp/>the<sp/>target<sp/>in<sp/>mm<sp/>(slightly<sp/>larger)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;delays.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>Function:<sp/>configureTracking(void)</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Tracking.h</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Configures<sp/>the<sp/>System<sp/>to<sp/>begin<sp/>tracking/searching</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>None</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>None</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="Tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Tracking_8c_1ac9b1c5bae39806310b74e2f69d9ee3b6" kindref="member">configureTracking</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" kindref="member">configureBase</ref>();</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" kindref="member">configureRange</ref>();</highlight></codeline>
-<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>Function:<sp/>search(void)</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Tracking.h</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Performs<sp/>an<sp/>incrimental<sp/>change<sp/>in<sp/>position.<sp/>Local<sp/>variables</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>store<sp/>previous<sp/>movements<sp/>to<sp/>create<sp/>a<sp/>search<sp/>pattern</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>None</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;timers.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="structTargetStateData" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46" refid="structTargetStateData_1a537d4acb0d2cf4b4ddf13b4b634e6dde" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>bad_dirs<sp/>:<sp/>2;</highlight></codeline>
+<codeline lineno="47" refid="structTargetStateData_1a36c38be840b4157a4b13c29bf08de2f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>out_of_irs<sp/>:<sp/>2;</highlight></codeline>
+<codeline lineno="48" refid="structTargetStateData_1a14c96a3f499b71215ea44a6212573c31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>good_tracks<sp/>:<sp/>2;</highlight></codeline>
+<codeline lineno="49" refid="structTargetStateData_1af1c1a652047e16b61fba368c04c99bc2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>centre<sp/>:<sp/>2;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}<sp/><ref refid="structTargetStateData" kindref="compound">TargetStateData</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Tracking_8c_1a692bd90e8391dbba83a5985df166e4cb" kindref="member">newAngle</ref>(<ref refid="structTargetStateData" kindref="compound">TargetStateData</ref><sp/>target_data);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>Function:<sp/>configureTracking(void)</highlight></codeline>
 <codeline lineno="56"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>None</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Tracking.h</highlight></codeline>
 <codeline lineno="58"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@todo<sp/>Possibly<sp/>better<sp/>searchin<sp/>algorithm?<sp/>Tune<sp/>parameters<sp/>etc.</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@todo<sp/>Coordinate<sp/>sampling<sp/>rate<sp/>with<sp/>searching</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62" refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Tracking_8c_1ac80b505821d79e98e9108b12d12c5db9" kindref="member">search</ref>(<ref refid="structsystemState" kindref="compound">systemState</ref><sp/>*state)</highlight></codeline>
-<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Vertical<sp/>and<sp/>laterial<sp/>incremental<sp/>movements</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>lateral<sp/>=<sp/>{<ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>,<sp/>0};</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>vertical<sp/>=<sp/>{0,<sp/><ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>};</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref><sp/>previousState;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref><sp/>currentState;</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>dir;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>dir<sp/>=<sp/><ref refid="PanTilt_8c_1ad1d9638bad5a5021969d19769e70c775" kindref="member">getDir</ref>();</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>10000;<sp/>j++);</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//If<sp/>max<sp/>azimuth<sp/>range,<sp/>increment<sp/>vertical<sp/>and<sp/>change<sp/>azimuth<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&gt;<sp/>40<sp/>||<sp/>dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&lt;<sp/>-40)</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment</ref>(vertical);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Move<sp/>up<sp/>(or<sp/>down)<sp/>vertically<sp/>1<sp/>degree</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&lt;<sp/>0<sp/>&amp;&amp;<sp/>dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&lt;<sp/>0)<sp/>lateral.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/><ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>;<sp/></highlight><highlight class="comment">//Move<sp/>in<sp/>the<sp/>opposite<sp/>azimuth</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&gt;<sp/>0)<sp/>lateral.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/>-<ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment</ref>(lateral);</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//If<sp/>max<sp/>inclination<sp/>range,<sp/>change<sp/>vertical<sp/>direction<sp/>and<sp/>increment<sp/>vertical</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&gt;<sp/>10<sp/>||<sp/>dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&lt;<sp/>-40)</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&lt;<sp/>0<sp/>&amp;&amp;<sp/>dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&lt;<sp/>0)<sp/>vertical.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/><ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>;<sp/></highlight><highlight class="comment">//Move<sp/>in<sp/>the<sp/>opposite<sp/>azimuth</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&gt;<sp/>0)<sp/>vertical.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/>-<ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment</ref>(vertical);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Alse<sp/>just<sp/>move<sp/>in<sp/>azimuth</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment</ref>(lateral);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>previousState<sp/>=<sp/>currentState;</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>currentState<sp/>=<sp/><ref refid="Range_8c_1a87c8e64ddc596f3e6b72ee861f671168" kindref="member">readTargetState</ref>();</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(currentState)</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" kindref="member">GOOD_TRACK</ref>:</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" kindref="member">NEXT_STATE_PTR</ref>(<ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" kindref="member">TRCK</ref>,<sp/>state);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" kindref="member">BAD_DIR</ref>:</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//In<sp/>the<sp/>correct<sp/>vicinity,<sp/>but<sp/>not<sp/>exact</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" kindref="member">NEXT_STATE_PTR</ref>(<ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" kindref="member">TRCK</ref>,<sp/>state);</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
-<codeline lineno="113"><highlight class="comment"><sp/>*<sp/>Function:<sp/>trackingISR(void)</highlight></codeline>
-<codeline lineno="114"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="115"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Tracking.h</highlight></codeline>
-<codeline lineno="116"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Acts<sp/>as<sp/>the<sp/>Interrupt<sp/>Service<sp/>Routine<sp/>for<sp/>the<sp/>Tracking<sp/>module</highlight></codeline>
-<codeline lineno="118"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="119"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>None</highlight></codeline>
-<codeline lineno="120"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="121"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>None</highlight></codeline>
-<codeline lineno="122"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123" refid="Tracking_8h_1ae3fa9fb57cd18477215f58aa448ce9d1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Tracking_8c_1ae3fa9fb57cd18477215f58aa448ce9d1" kindref="member">trackingISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="124"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
-<codeline lineno="129"><highlight class="comment"><sp/>*<sp/>Function:<sp/>track(void)</highlight></codeline>
-<codeline lineno="130"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="131"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Tracking.h</highlight></codeline>
-<codeline lineno="132"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="133"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Finds<sp/>the<sp/>Edge<sp/>of<sp/>the<sp/>target<sp/>in<sp/>both<sp/>the<sp/>azimuth<sp/>and<sp/>inclination</highlight></codeline>
-<codeline lineno="134"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>uses<sp/>this<sp/>to<sp/>find<sp/>(and<sp/>move<sp/>to)<sp/>the<sp/>center<sp/>of<sp/>the<sp/>target.</highlight></codeline>
-<codeline lineno="135"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="136"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>None</highlight></codeline>
-<codeline lineno="137"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="138"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>TargetData<sp/>-<sp/>The<sp/>current<sp/>target<sp/>information<sp/>(Azimuth,<sp/>inclination</highlight></codeline>
-<codeline lineno="139"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>range<sp/>to<sp/>the<sp/>target).<sp/>This<sp/>information<sp/>is<sp/>then<sp/>used</highlight></codeline>
-<codeline lineno="140"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>the<sp/>Display<sp/>in<sp/>the<sp/>User<sp/>interface<sp/>module.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Configures<sp/>the<sp/>System<sp/>to<sp/>begin<sp/>tracking/searching</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>None</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>None</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="Tracking_8h_1ac9b1c5bae39806310b74e2f69d9ee3b6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Tracking_8c_1ac9b1c5bae39806310b74e2f69d9ee3b6" kindref="member">configureTracking</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1ab7b8c8f7bf051b4f8e3b151f7b567127" kindref="member">configureBase</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" kindref="member">configureRange</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>up<sp/>TMR2<sp/>for<sp/>prediction<sp/>purposes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>CloseTimer0();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>OpenTimer0(T0_16BIT<sp/>&amp;<sp/>T0_SOURCE_INT<sp/>&amp;<sp/>T0_PS_1_256);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>Function:<sp/>search(void)</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Tracking.h</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Performs<sp/>an<sp/>incrimental<sp/>change<sp/>in<sp/>position.<sp/>Local<sp/>variables</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>store<sp/>previous<sp/>movements<sp/>to<sp/>create<sp/>a<sp/>search<sp/>pattern</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>None</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>None</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="Tracking_8h_1ac80b505821d79e98e9108b12d12c5db9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Tracking_8c_1ac80b505821d79e98e9108b12d12c5db9" kindref="member">search</ref>(<ref refid="structsystemState" kindref="compound">systemState</ref><sp/>*state)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Vertical<sp/>and<sp/>laterial<sp/>incremental<sp/>movements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>lateral<sp/>=<sp/>{<ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>,<sp/>0};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>vertical<sp/>=<sp/>{0,<sp/><ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>};</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref><sp/>previousState;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677" kindref="member">TargetState</ref><sp/>currentState;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>dir;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>dir<sp/>=<sp/><ref refid="PanTilt_8c_1ad1d9638bad5a5021969d19769e70c775" kindref="member">getDir</ref>();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>10000;<sp/>j++);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//If<sp/>max<sp/>azimuth<sp/>range,<sp/>increment<sp/>vertical<sp/>and<sp/>change<sp/>azimuth<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&gt;<sp/>40<sp/>||<sp/>dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&lt;<sp/>-40)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment</ref>(vertical);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Move<sp/>up<sp/>(or<sp/>down)<sp/>vertically<sp/>1<sp/>degree</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&lt;<sp/>0<sp/>&amp;&amp;<sp/>dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&lt;<sp/>0)<sp/>lateral.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/><ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>;<sp/></highlight><highlight class="comment">//Move<sp/>in<sp/>the<sp/>opposite<sp/>azimuth</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>&gt;<sp/>0)<sp/>lateral.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/>-<ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment</ref>(lateral);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//If<sp/>max<sp/>inclination<sp/>range,<sp/>change<sp/>vertical<sp/>direction<sp/>and<sp/>increment<sp/>vertical</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&gt;<sp/>10<sp/>||<sp/>dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&lt;<sp/>-40)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&lt;<sp/>0<sp/>&amp;&amp;<sp/>dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&lt;<sp/>0)<sp/>vertical.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/><ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>;<sp/></highlight><highlight class="comment">//Move<sp/>in<sp/>the<sp/>opposite<sp/>azimuth</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>&gt;<sp/>0)<sp/>vertical.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/>-<ref refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kindref="member">diff</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment</ref>(vertical);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Alse<sp/>just<sp/>move<sp/>in<sp/>azimuth</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1af8e57fbe1513bb48274f4f0f46717fa1" kindref="member">increment</ref>(lateral);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>previousState<sp/>=<sp/>currentState;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>currentState<sp/>=<sp/><ref refid="Range_8c_1a87c8e64ddc596f3e6b72ee861f671168" kindref="member">readTargetState</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(currentState)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" kindref="member">GOOD_TRACK</ref>:</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" kindref="member">NEXT_STATE_PTR</ref>(<ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" kindref="member">TRCK</ref>,<sp/>state);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" kindref="member">BAD_DIR</ref>:</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//In<sp/>the<sp/>correct<sp/>vicinity,<sp/>but<sp/>not<sp/>exact</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" kindref="member">NEXT_STATE_PTR</ref>(<ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" kindref="member">TRCK</ref>,<sp/>state);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/>*<sp/>Function:<sp/>trackingISR(void)</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Tracking.h</highlight></codeline>
 <codeline lineno="141"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="142"><highlight class="comment"><sp/>*<sp/>@todo<sp/>Incorperate<sp/>prediction,<sp/>and<sp/>calculate<sp/>offset<sp/>angle<sp/>based<sp/>on<sp/>distance,<sp/>and<sp/>known<sp/>accuracy</highlight></codeline>
-<codeline lineno="143"><highlight class="comment"><sp/>*<sp/>@todo<sp/>Include<sp/>a<sp/>sampling<sp/>rate<sp/>into<sp/>tracking</highlight></codeline>
-<codeline lineno="144"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="145" refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" refkind="member"><highlight class="normal"><ref refid="structTrackingData" kindref="compound">TrackingData</ref><sp/><ref refid="Tracking_8c_1a4f0ebbcddf842d008fbfebb705374c30" kindref="member">track</ref>(<ref refid="structsystemState" kindref="compound">systemState</ref><sp/>*state)</highlight></codeline>
-<codeline lineno="146"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>i,<sp/>count<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>weight;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j;</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>centre;</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>inclination<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>azimuth<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTrackingData" kindref="compound">TrackingData</ref><sp/>result;</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>dir;</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>inc[]<sp/>=<sp/>{{1,<sp/>0},<sp/>{0,<sp/>1},<sp/>{-1,<sp/>0},<sp/>{0,<sp/>-1}};<sp/></highlight><highlight class="comment">//Incremental<sp/>change<sp/>in<sp/>direction<sp/>NOT<sp/>IN<sp/>DEGREES!<sp/>(much<sp/>finer<sp/>increments)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>angle;</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//angle<sp/>=<sp/>TARGET_RAD<sp/>*<sp/>(unsigned<sp/>int)57<sp/>/<sp/>range();</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>angle<sp/>=<sp/>8;</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>centre<sp/>=<sp/><ref refid="PanTilt_8c_1ad1d9638bad5a5021969d19769e70c775" kindref="member">getDir</ref>();</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>i++)</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Calc<sp/>new<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/>centre.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>+<sp/>inc[i].<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>*<sp/>angle;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/>centre.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>+<sp/>inc[i].<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>*<sp/>angle;</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Move<sp/>to<sp/>new<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move</ref>(dir);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Get<sp/>target<sp/>state<sp/>(stored<sp/>in<sp/>weight<sp/>temporarily)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>weight<sp/>=<sp/><ref refid="Range_8c_1a87c8e64ddc596f3e6b72ee861f671168" kindref="member">readTargetState</ref>();</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Calculate<sp/>weighting<sp/>of<sp/>that<sp/>sample</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>weight<sp/>=<sp/>(weight<sp/>==<sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" kindref="member">GOOD_TRACK</ref>)<sp/>*<sp/>4<sp/>+<sp/>(weight<sp/>==<sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" kindref="member">BAD_DIR</ref>);</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count<sp/>+=<sp/>weight;</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>azimuth<sp/>+=<sp/>(int)weight<sp/>*<sp/>dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>;</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inclination<sp/>+=<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)weight<sp/>*<sp/>dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>;</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Go<sp/>back<sp/>to<sp/>searching<sp/>if<sp/>there<sp/>is<sp/>not<sp/>a<sp/>good<sp/>track,<sp/>else<sp/>stay<sp/>in<sp/>track</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(count<sp/>==<sp/>0)</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" kindref="member">NEXT_STATE_PTR</ref>(<ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" kindref="member">SRCH</ref>,<sp/>state);</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Calculate<sp/>weighted<sp/>average<sp/>of<sp/>the<sp/>results</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>centre.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/>azimuth<sp/>/<sp/>count;</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>centre.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/>inclination<sp/>/<sp/>count;</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move</ref>(centre);</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Acts<sp/>as<sp/>the<sp/>Interrupt<sp/>Service<sp/>Routine<sp/>for<sp/>the<sp/>Tracking<sp/>module</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>None</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>None</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="Tracking_8h_1ae3fa9fb57cd18477215f58aa448ce9d1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Tracking_8c_1ae3fa9fb57cd18477215f58aa448ce9d1" kindref="member">trackingISR</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/>*<sp/>Function:<sp/>track(void)</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Tracking.h</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Finds<sp/>the<sp/>Edge<sp/>of<sp/>the<sp/>target<sp/>in<sp/>both<sp/>the<sp/>azimuth<sp/>and<sp/>inclination</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>uses<sp/>this<sp/>to<sp/>find<sp/>(and<sp/>move<sp/>to)<sp/>the<sp/>center<sp/>of<sp/>the<sp/>target.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>None</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>TargetData<sp/>-<sp/>The<sp/>current<sp/>target<sp/>information<sp/>(Azimuth,<sp/>inclination</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>range<sp/>to<sp/>the<sp/>target).<sp/>This<sp/>information<sp/>is<sp/>then<sp/>used</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>the<sp/>Display<sp/>in<sp/>the<sp/>User<sp/>interface<sp/>module.</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" refkind="member"><highlight class="normal"><ref refid="structTrackingData" kindref="compound">TrackingData</ref><sp/><ref refid="Tracking_8c_1a4f0ebbcddf842d008fbfebb705374c30" kindref="member">track</ref>(<ref refid="structsystemState" kindref="compound">systemState</ref><sp/>*state)</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sampleTargetState<sp/>weight</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>i,<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>weight;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>centre;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>inclination<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>azimuth<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTrackingData" kindref="compound">TrackingData</ref><sp/>result;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>dir;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>inc[]<sp/>=<sp/>{{1,<sp/>0},<sp/>{0,<sp/>1},<sp/>{-1,<sp/>0},<sp/>{0,<sp/>-1}};<sp/></highlight><highlight class="comment">//Incremental<sp/>change<sp/>in<sp/>direction<sp/>NOT<sp/>IN<sp/>DEGREES!<sp/>(much<sp/>finer<sp/>increments)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>angle;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTargetStateData" kindref="compound">TargetStateData</ref><sp/>target_data;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//angle<sp/>=<sp/>2<sp/>*<sp/>TARGET_RAD<sp/>*<sp/>(unsigned<sp/>int)57<sp/>/<sp/>range();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>angle<sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>centre<sp/>=<sp/><ref refid="PanTilt_8c_1ad1d9638bad5a5021969d19769e70c775" kindref="member">getDir</ref>();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>i++)</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Calc<sp/>new<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/>centre.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>+<sp/>inc[i].<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>*<sp/>angle;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/>centre.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>+<sp/>inc[i].<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>*<sp/>angle;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Move<sp/>to<sp/>new<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move</ref>(dir);</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTrackingData_1a4bb47863775a37236bda65273c01b275" kindref="member">distance</ref><sp/>=<sp/><ref refid="Range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>();</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTrackingData_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/>centre.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>;</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTrackingData_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/>centre.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>;</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>10000;<sp/>j++);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Get<sp/>target<sp/>state<sp/>(stored<sp/>in<sp/>weight<sp/>temporarily)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Tracking_8c_1a50fac94864a77d583f680df8a0eaebb4" kindref="member">sampleTargetState</ref><sp/>=<sp/><ref refid="Range_8c_1a87c8e64ddc596f3e6b72ee861f671168" kindref="member">readTargetState</ref>();</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"></highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
-<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
-<codeline lineno="205"><highlight class="comment"><sp/>*<sp/>Function:<sp/>prediction(Direction<sp/>current)</highlight></codeline>
-<codeline lineno="206"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="207"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Local<sp/>to<sp/>Tracking.c</highlight></codeline>
-<codeline lineno="208"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="209"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Predicts<sp/>where<sp/>the<sp/>object<sp/>is<sp/>likely<sp/>to<sp/>be<sp/>found<sp/>based<sp/>on<sp/>previous</highlight></codeline>
-<codeline lineno="210"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>movement<sp/>and<sp/>prediction<sp/>algorithms</highlight></codeline>
-<codeline lineno="211"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="212"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>current<sp/>-<sp/>The<sp/>current<sp/>position<sp/>of<sp/>the<sp/>target</highlight></codeline>
-<codeline lineno="213"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="214"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>Direction<sp/>-<sp/>The<sp/>Predicted<sp/>likely<sp/>location</highlight></codeline>
-<codeline lineno="215"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="216"><highlight class="comment"><sp/>*<sp/>@todo<sp/>Finish<sp/>and<sp/>test<sp/>this<sp/>function,<sp/>incorperate<sp/>it<sp/>into<sp/>tracking</highlight></codeline>
-<codeline lineno="217"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="218" refid="Tracking_8c_1ab3681bb15cfeebcc7b27d0c063dafc89" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/><ref refid="Tracking_8c_1ab3681bb15cfeebcc7b27d0c063dafc89" kindref="member">prediction</ref>(<ref refid="structDirection" kindref="compound">Direction</ref><sp/>current)</highlight></codeline>
-<codeline lineno="219"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TIMER<sp/><sp/><sp/>TMR2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//General<sp/>purpose<sp/>timer</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>previous<sp/>=<sp/>{0,<sp/>0};</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>prev_time;</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>next_predict;</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>next_predict;</highlight></codeline>
-<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Calculate<sp/>weighting<sp/>of<sp/>that<sp/>sample</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>weight<sp/>=<sp/>(<ref refid="Tracking_8c_1a50fac94864a77d583f680df8a0eaebb4" kindref="member">sampleTargetState</ref><sp/>==<sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f" kindref="member">GOOD_TRACK</ref>)<sp/>*<sp/>5<sp/>+<sp/>(<ref refid="Tracking_8c_1a50fac94864a77d583f680df8a0eaebb4" kindref="member">sampleTargetState</ref><sp/>==<sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a49a975d06b51d93badc62d5685898851" kindref="member">BAD_DIR</ref>)<sp/>+<sp/>(<ref refid="Tracking_8c_1a50fac94864a77d583f680df8a0eaebb4" kindref="member">sampleTargetState</ref><sp/>==<sp/><ref refid="Common_8h_1a2db986326a654991cce9b1c2b1670677a02f92f801598d94c6fd997546781a275" kindref="member">OUT_OF_IR</ref>);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count<sp/>+=<sp/>weight;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>azimuth<sp/>+=<sp/>(int)weight<sp/>*<sp/>dir.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inclination<sp/>+=<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)weight<sp/>*<sp/>dir.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Go<sp/>back<sp/>to<sp/>searching<sp/>if<sp/>there<sp/>is<sp/>not<sp/>a<sp/>good<sp/>track,<sp/>else<sp/>stay<sp/>in<sp/>track</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(count<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Common_8h_1a26a5416cb7bb43bd2f2eaaa7feaff84d" kindref="member">NEXT_STATE_PTR</ref>(<ref refid="Common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" kindref="member">SRCH</ref>,<sp/>state);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Calculate<sp/>weighted<sp/>average<sp/>of<sp/>the<sp/>results</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>centre.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/>azimuth<sp/>/<sp/>count;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>centre.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/>inclination<sp/>/<sp/>count;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PanTilt_8c_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move</ref>(centre);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTrackingData_1a4bb47863775a37236bda65273c01b275" kindref="member">distance</ref><sp/>=<sp/><ref refid="Range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>();</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTrackingData_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref><sp/>=<sp/>centre.<ref refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kindref="member">azimuth</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structTrackingData_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref><sp/>=<sp/>centre.<ref refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kindref="member">inclination</ref>;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>sampleTargetState</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/>*<sp/>Function:<sp/>prediction(Direction<sp/>current)</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Local<sp/>to<sp/>Tracking.c</highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Predicts<sp/>where<sp/>the<sp/>object<sp/>is<sp/>likely<sp/>to<sp/>be<sp/>found<sp/>based<sp/>on<sp/>previous</highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>movement<sp/>and<sp/>prediction<sp/>algorithms</highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>current<sp/>-<sp/>The<sp/>current<sp/>position<sp/>of<sp/>the<sp/>target</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="241"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>Direction<sp/>-<sp/>The<sp/>Predicted<sp/>likely<sp/>location</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="Tracking_8c_1ab3681bb15cfeebcc7b27d0c063dafc89" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/><ref refid="Tracking_8c_1ab3681bb15cfeebcc7b27d0c063dafc89" kindref="member">prediction</ref>(<ref refid="structDirection" kindref="compound">Direction</ref><sp/>current)</highlight></codeline>
+<codeline lineno="244"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TIMER<sp/><sp/><sp/>TMR2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//General<sp/>purpose<sp/>timer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>previous<sp/>=<sp/>{0,<sp/>0};</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>prev_time;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structDirection" kindref="compound">Direction</ref><sp/>next_predict;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>next_predict;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>**********************************************************************</highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/>*<sp/>Function:<sp/>newAngle(void)</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="255"><highlight class="comment"><sp/>*<sp/>Include:<sp/>Local<sp/>to<sp/>Tracking.c</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/>*<sp/>Description:<sp/>Calculates<sp/>the<sp/>new<sp/>angle<sp/>offset</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="259"><highlight class="comment"><sp/>*<sp/>Arguments:<sp/>angle<sp/>-<sp/>The<sp/>previous<sp/>angle</highlight></codeline>
+<codeline lineno="260"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target_data<sp/>-<sp/>The<sp/>data<sp/>from<sp/>the<sp/>last<sp/>target<sp/>sample</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/>*<sp/>Returns:<sp/>Angle<sp/>-<sp/>The<sp/>new<sp/>angle<sp/>to<sp/>offset<sp/>the<sp/>direction</highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/>*************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="Tracking_8c_1afb53c1edd8f8b148150ccf950b62405c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Tracking_8c_1a692bd90e8391dbba83a5985df166e4cb" kindref="member">newAngle</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>angle,<sp/><ref refid="structTargetStateData" kindref="compound">TargetStateData</ref><sp/>target_data)</highlight></codeline>
+<codeline lineno="266"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Target<sp/>field<sp/>too<sp/>narrow,<sp/>and<sp/>a<sp/>little<sp/>out,<sp/>so<sp/>increase<sp/>range<sp/>to<sp/>get<sp/>some<sp/>direction<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(target_data.<ref refid="structTargetStateData_1af1c1a652047e16b61fba368c04c99bc2" kindref="member">centre</ref><sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>angle<sp/>+=<sp/>(target_data.<ref refid="structTargetStateData_1a14c96a3f499b71215ea44a6212573c31" kindref="member">good_tracks</ref><sp/>&gt;<sp/>2)<sp/>-<sp/>(target_data.<ref refid="structTargetStateData_1a14c96a3f499b71215ea44a6212573c31" kindref="member">good_tracks</ref><sp/>==<sp/>1<sp/>&amp;&amp;<sp/>(target_data.<ref refid="structTargetStateData_1a537d4acb0d2cf4b4ddf13b4b634e6dde" kindref="member">bad_dirs</ref><sp/>+<sp/>target_data.<ref refid="structTargetStateData_1a36c38be840b4157a4b13c29bf08de2f1" kindref="member">out_of_irs</ref><sp/>==<sp/>4));</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>&lt;<sp/>1)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>angle;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Tracking.c"/>
   </compounddef>

@@ -13,6 +13,18 @@
     <member refid="structDirection_1a866e78e12cb32dcaf1ded89bda8be8f5" kind="variable"><name>azimuth</name></member>
     <member refid="structDirection_1af308b9934394c8bcf7614eb1df2d863f" kind="variable"><name>inclination</name></member>
   </compound>
+  <compound refid="structmenuStruct" kind="struct"><name>menuStruct</name>
+    <member refid="structmenuStruct_1a62f26d2bba7b564d944f7fb652b78cbe" kind="variable"><name>menuNum</name></member>
+    <member refid="structmenuStruct_1a03b41257072f95b216a0da8c882bfdb0" kind="variable"><name>serialMessage</name></member>
+    <member refid="structmenuStruct_1ac1ee1efaaaccb646bb502f229a4e0224" kind="variable"><name>lcdTitleMessage</name></member>
+    <member refid="structmenuStruct_1a3dfb56fce4a9944b52c4e8287eebed8c" kind="variable"><name>minVal</name></member>
+    <member refid="structmenuStruct_1a058fc3d0b450f32fd3a113acd5fa84b9" kind="variable"><name>maxVal</name></member>
+    <member refid="structmenuStruct_1ad4064acf502195fc199a543aeec54de1" kind="variable"><name>increment</name></member>
+    <member refid="structmenuStruct_1a084cc1bb47b43325a54870f134027a6f" kind="variable"><name>serialDisplayFunction</name></member>
+    <member refid="structmenuStruct_1ad951b71abf9e8f1dfe126e3b9d921826" kind="variable"><name>confirmFunction</name></member>
+    <member refid="structmenuStruct_1a547bbd90c8e0b7b933db848413cd2ba0" kind="variable"><name>lcdDisplayFunction</name></member>
+    <member refid="structmenuStruct_1a4a793df9b579e46aa1aead30a3e01172" kind="variable"><name>returnToPrevious</name></member>
+  </compound>
   <compound refid="structSubMenu" kind="struct"><name>SubMenu</name>
     <member refid="structSubMenu_1a24706f7b55951b0e21967a256e107936" kind="variable"><name>serialMessage</name></member>
     <member refid="structSubMenu_1a10ce8be3d2bbadbc9c262b6be4bb3aec" kind="variable"><name>lcdMessage</name></member>
@@ -25,6 +37,12 @@
   <compound refid="structsystemState" kind="struct"><name>systemState</name>
     <member refid="structsystemState_1a18284a4a782e71c070e1d2e80734509d" kind="variable"><name>current</name></member>
     <member refid="structsystemState_1af2f2716b4afa23c8b53a9351a0924b6b" kind="variable"><name>previous</name></member>
+  </compound>
+  <compound refid="structTargetStateData" kind="struct"><name>TargetStateData</name>
+    <member refid="structTargetStateData_1a537d4acb0d2cf4b4ddf13b4b634e6dde" kind="variable"><name>bad_dirs</name></member>
+    <member refid="structTargetStateData_1a36c38be840b4157a4b13c29bf08de2f1" kind="variable"><name>out_of_irs</name></member>
+    <member refid="structTargetStateData_1a14c96a3f499b71215ea44a6212573c31" kind="variable"><name>good_tracks</name></member>
+    <member refid="structTargetStateData_1af1c1a652047e16b61fba368c04c99bc2" kind="variable"><name>centre</name></member>
   </compound>
   <compound refid="structTrackingData" kind="struct"><name>TrackingData</name>
     <member refid="structTrackingData_1a4bb47863775a37236bda65273c01b275" kind="variable"><name>distance</name></member>
@@ -67,6 +85,8 @@
     <member refid="Common_8h_1a1673a1a80febeafd51f3f02508a0ea71" kind="define"><name>CCP1_INT</name></member>
     <member refid="Common_8h_1aee2ef60613898be37c57266698616e33" kind="define"><name>CCP2_INT</name></member>
     <member refid="Common_8h_1ace4d61c3a12d8faab31305402fe1e074" kind="define"><name>INT0_INT</name></member>
+    <member refid="Common_8h_1ab4f2106ce0c15ddb2520ddba77c07522" kind="define"><name>INT1_INT</name></member>
+    <member refid="Common_8h_1ae056543bdef9b9f2c852146d8de1bd92" kind="define"><name>INT2_INT</name></member>
     <member refid="Common_8h_1afeb5099420bb15f8f59a24c3426de8f1" kind="define"><name>RB_INT</name></member>
     <member refid="Common_8h_1af6baae9385e65b47397c25f253cd8893" kind="define"><name>TMR2_INT</name></member>
     <member refid="Common_8h_1a5d4ee5c980131f617eac819f887ccff8" kind="define"><name>TMR0_INT</name></member>
@@ -78,8 +98,6 @@
     <member refid="Common_8h_1ab3771f37588656c8d037de34edf2a88f" kind="define"><name>LVD_INT</name></member>
     <member refid="Common_8h_1ae8aa3ab3a23a388dab62ac86ee5e2545" kind="define"><name>CCP1_CLEAR</name></member>
     <member refid="Common_8h_1a4e461245300e8ea7e5c6af0741a33855" kind="define"><name>CCP2_CLEAR</name></member>
-    <member refid="Common_8h_1adec3f206eb531c41e22d3c5c274d4f6a" kind="define"><name>WDT_EN</name></member>
-    <member refid="Common_8h_1add818f0aac38c42e0b7010b486e9d94a" kind="define"><name>WDT_CLR</name></member>
     <member refid="Common_8h_1a3be7ef61d339af381862a81d4b363efb" kind="define"><name>CLOCK</name></member>
     <member refid="Common_8h_1a644329678dec72e39b8847963e59c35d" kind="define"><name>FOSC_4</name></member>
     <member refid="Common_8h_1a0a1448a83b84de478fdbd7612e81acb1" kind="define"><name>COMMON_H</name></member>
@@ -95,6 +113,31 @@
     <member refid="Common_8h_1a05931287b056487cf89495f39026fbe1a6e8623178c4e7a9db6aed4db75f8bd07" kind="enumvalue"><name>SRCH</name></member>
     <member refid="Common_8h_1a05931287b056487cf89495f39026fbe1a70ca1afd3ed8312624a30c3993afc279" kind="enumvalue"><name>TRCK</name></member>
   </compound>
+  <compound refid="ConfigRegs18f4520_8h" kind="file"><name>ConfigRegs18f4520.h</name>
+  </compound>
+  <compound refid="EEPROM_8c" kind="file"><name>EEPROM.c</name>
+  </compound>
+  <compound refid="HardUItest_8c" kind="file"><name>HardUItest.c</name>
+    <member refid="HardUItest_8c_1ac107134152e2f2c734103605615f7b3c" kind="define"><name>ADCON0_set</name></member>
+    <member refid="HardUItest_8c_1a1ab533e81252ed17360433380f514855" kind="define"><name>ADCON1_patch</name></member>
+    <member refid="HardUItest_8c_1afc3f92c401045981c0e034060a2c95df" kind="variable"><name>LEDtest</name></member>
+    <member refid="HardUItest_8c_1ae5b075b12b4845b66107cd6d9ee45da3" kind="variable"><name>LEDson</name></member>
+    <member refid="HardUItest_8c_1a0b33ca63468ea4047da478709f789950" kind="variable"><name>LEDtestpntr</name></member>
+    <member refid="HardUItest_8c_1a1cceb9ee6ab26c8010fd4266bb3b7409" kind="variable"><name>LEDsonpntr</name></member>
+    <member refid="HardUItest_8c_1a27106289d08aa22aeed35a0a765455f5" kind="function"><name>PORTconfig</name></member>
+    <member refid="HardUItest_8c_1ac77b3df0fa3670e9915adc31709cceb0" kind="function"><name>LEDselect</name></member>
+    <member refid="HardUItest_8c_1a7dfd9b79bc5a37d7df40207afbc5431f" kind="function"><name>setup</name></member>
+    <member refid="HardUItest_8c_1ac9f5db61a3a4a650ed5af7a18cff6ff2" kind="function"><name>INTconfig</name></member>
+    <member refid="HardUItest_8c_1a32e45dfb7de45f8e36a9375889cab146" kind="function"><name>ADconfig</name></member>
+    <member refid="HardUItest_8c_1a390ced3d3957254b097dc9939e6f9bf6" kind="function"><name>ADgo</name></member>
+    <member refid="HardUItest_8c_1ad9e7c1aa957b1dfb35e68f0b57563121" kind="function"><name>ISR_high_vect</name></member>
+    <member refid="HardUItest_8c_1a4833a72493b1bae520fcfe42325e1a1c" kind="function"><name>ISR_high</name></member>
+    <member refid="HardUItest_8c_1aca5ff18ceaf955a5684564722ad49b65" kind="function"><name>ISR_low_vect</name></member>
+    <member refid="HardUItest_8c_1aa6dbcd83100d57522c77e1f100a9a921" kind="function"><name>ISR_low</name></member>
+    <member refid="HardUItest_8c_1a6288eba0f8e8ad3ab1544ad731eb7667" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="HardUItest_8h" kind="file"><name>HardUItest.h</name>
+  </compound>
   <compound refid="Interrupts_8c" kind="file"><name>Interrupts.c</name>
     <member refid="Interrupts_8c_1ac835f50b358d0d663df1b8b835f9bb87" kind="function"><name>lowISR</name></member>
     <member refid="Interrupts_8c_1ae1ef1358e10604d046f54fc0b93c514c" kind="function"><name>highISR</name></member>
@@ -102,21 +145,18 @@
     <member refid="Interrupts_8c_1a0bf42af14e1d16197d7eb27ac5addca0" kind="function"><name>lowVector</name></member>
   </compound>
   <compound refid="LCD_8c" kind="file"><name>LCD.c</name>
-    <member refid="LCD_8c_1aecaa9ab68490a0b8dedd20d200d5d0ef" kind="function"><name>lcdInit</name></member>
-    <member refid="LCD_8c_1a9f693f2e175a1192aebfeb586ed0fd6f" kind="function"><name>lcdBusy</name></member>
     <member refid="LCD_8c_1a6d7066138d22070be0234d8b113cf776" kind="function"><name>delay</name></member>
+    <member refid="LCD_8c_1a9f693f2e175a1192aebfeb586ed0fd6f" kind="function"><name>lcdBusy</name></member>
     <member refid="LCD_8c_1a500de059df24a647c81d895c38625d6c" kind="function"><name>lcdWrite</name></member>
-    <member refid="LCD_8c_1a70a8f1041fdd13688a8f8e9fd897ccda" kind="function"><name>lcdWriteString</name></member>
-    <member refid="LCD_8c_1a69bb3d698d74da5ea85d8a455dbb3b28" kind="function"><name>lcdWriteChar</name></member>
+    <member refid="LCD_8c_1aecaa9ab68490a0b8dedd20d200d5d0ef" kind="function"><name>lcdInit</name></member>
+    <member refid="LCD_8c_1aca72620ac93e9ea1cca303ba51934e47" kind="function"><name>lcdWriteString</name></member>
+    <member refid="LCD_8c_1a8b2a2dadc77b13c3a26fb69b26a5792e" kind="function"><name>lcdWriteChar</name></member>
   </compound>
   <compound refid="LCD_8h" kind="file"><name>LCD.h</name>
     <member refid="LCD_8h_1a137b94e8638bc4b6a0740668aefe5a58" kind="define"><name>LCD_H</name></member>
-    <member refid="LCD_8h_1a70a8f1041fdd13688a8f8e9fd897ccda" kind="function"><name>lcdWriteString</name></member>
-    <member refid="LCD_8h_1a69bb3d698d74da5ea85d8a455dbb3b28" kind="function"><name>lcdWriteChar</name></member>
+    <member refid="LCD_8h_1aca72620ac93e9ea1cca303ba51934e47" kind="function"><name>lcdWriteString</name></member>
+    <member refid="LCD_8h_1a8b2a2dadc77b13c3a26fb69b26a5792e" kind="function"><name>lcdWriteChar</name></member>
     <member refid="LCD_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" kind="function"><name>lcdInit</name></member>
-    <member refid="LCD_8h_1a6d7066138d22070be0234d8b113cf776" kind="function"><name>delay</name></member>
-    <member refid="LCD_8h_1a9f693f2e175a1192aebfeb586ed0fd6f" kind="function"><name>lcdBusy</name></member>
-    <member refid="LCD_8h_1a500de059df24a647c81d895c38625d6c" kind="function"><name>lcdWrite</name></member>
   </compound>
   <compound refid="LCD__defs_8h" kind="file"><name>LCD_defs.h</name>
     <member refid="LCD__defs_8h_1ab1956831e022c90f2b658a8a840ef09e" kind="define"><name>LCD_D0</name></member>
@@ -190,46 +230,273 @@
     <member refid="LCD__defs_8h_1ac508ef39f3ee20e7416e9258c1e5fb42" kind="define"><name>LINESTART</name></member>
     <member refid="LCD__defs_8h_1aaa7c97861ef6e1dea96e036b27db80c2" kind="define"><name>LINEEND</name></member>
   </compound>
+  <compound refid="MenuDefs_8h" kind="file"><name>MenuDefs.h</name>
+    <member refid="MenuDefs_8h_1abe3db97a849df459252001e1f4b3721c" kind="define"><name>MENU_ISR</name></member>
+    <member refid="MenuDefs_8h_1a667b04d7fb6ef46db4da4af554c5b6f7" kind="define"><name>width</name></member>
+    <member refid="MenuDefs_8h_1a64f9f90ece96c7bab4aee3deacf170e0" kind="define"><name>height</name></member>
+    <member refid="MenuDefs_8h_1adabfde8ad5ce5d527e94c4d0af85cda7" kind="define"><name>MAX_ANGLE_SUPREMUM</name></member>
+    <member refid="MenuDefs_8h_1a0834a8b365bb9464535ae207b1ee5221" kind="define"><name>MAX_ANGLE_INFIMUM</name></member>
+    <member refid="MenuDefs_8h_1a677ca3d7f9ed95c39fd4f32d1697e6ed" kind="define"><name>MIN_ANGLE_SUPREMUM</name></member>
+    <member refid="MenuDefs_8h_1af0c8371fec94777ebc63078999b3f0c8" kind="define"><name>MIN_ANGLE_INFIMUM</name></member>
+    <member refid="MenuDefs_8h_1a1c0c41f3097ddebbad9a5f470baa6287" kind="define"><name>MAX_RANGE_SUPREMUM</name></member>
+    <member refid="MenuDefs_8h_1a00293b76811c5d62410489d0b0ee8799" kind="define"><name>MAX_RANGE_INFIMUM</name></member>
+    <member refid="MenuDefs_8h_1a35450f8e8f6d48c9558406c4892d7a66" kind="define"><name>MIN_RANGE_SUPREMUM</name></member>
+    <member refid="MenuDefs_8h_1a858279c7607badea7b737cfdd31ed546" kind="define"><name>MIN_RANGE_INFIMUM</name></member>
+    <member refid="MenuDefs_8h_1aec13622d12a31811ebdc1b64a5c38093" kind="define"><name>SAMPLE_PER_AVG_MIN</name></member>
+    <member refid="MenuDefs_8h_1a9f017858a073562599a04abc1f7917b6" kind="define"><name>SAMPLE_PER_AVG_MAX</name></member>
+    <member refid="MenuDefs_8h_1af3a7cb33a5ae7392934b3197ac67e080" kind="define"><name>MAX_SER_MSG_LEN</name></member>
+    <member refid="MenuDefs_8h_1a803e4f9d2e28d9ab24055cb970ea12c3" kind="define"><name>MAX_LCD_MSG_LEN</name></member>
+    <member refid="MenuDefs_8h_1a4af6c296bfd0fe78724f82630046512e" kind="define"><name>ERR_NUM_OUT_OF_RANGE</name></member>
+    <member refid="MenuDefs_8h_1aa81059b50528eb5d8263a594b2a6477b" kind="define"><name>ERR_NOT_NUMERIC</name></member>
+    <member refid="MenuDefs_8h_1a9a1dca93c750f14a44ce66ff753b4fd1" kind="define"><name>ERR_NO_NUMBER</name></member>
+    <member refid="MenuDefs_8h_1aacd3d48d77b9b154e32e586724e5aeeb" kind="define"><name>ESC_PRESSED</name></member>
+    <member refid="MenuDefs_8h_1afc5baa56c8e78a45d25f3bdc86bc374b" kind="define"><name>MINUS_CHAR</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914" kind="enum"><name>menuState</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a51f6c706c1d0e0d7a5f4ae4530b52179" kind="enumvalue"><name>TOP_LEVEL</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a5b83dded44924a6ef0fc0c08bac2c232" kind="enumvalue"><name>TRACKING</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a1b53702692042a9da62d4fc091893382" kind="enumvalue"><name>AZ_MENU</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914ad1739e1a8e5122b5ee86527f2f29b655" kind="enumvalue"><name>AZ_GOTO</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914aed8b1bf200c5dfac4b81db1b9e93bbb1" kind="enumvalue"><name>AZ_MAX</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a04dc8a41e35e595c6ddd955a5b80aaeb" kind="enumvalue"><name>AZ_MIN</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a84c9006a17483c175ea71a50f6acdc7f" kind="enumvalue"><name>AZ_CALIBRATE</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914acf98ffe350ac27e97d43f85ff44a6605" kind="enumvalue"><name>EL_MENU</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914afc622f81d3ce6a3336a55f913039a45b" kind="enumvalue"><name>EL_GOTO</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a8c429e8648016418c3e9ad3965235699" kind="enumvalue"><name>EL_MAX</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a9bec47160dc53447e51687a58b44ccde" kind="enumvalue"><name>EL_MIN</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914ad49624a76b684d40abbf8eefde9a79a0" kind="enumvalue"><name>EL_CALIBRATE</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a643fdf4e05dfbcf8754475747d4927a1" kind="enumvalue"><name>RANGE_MENU</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914af733cc73150864363799ef2a46110d51" kind="enumvalue"><name>RANGE_MAX</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914af709147ae6477f202a23948b319ea54f" kind="enumvalue"><name>RANGE_MIN</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914ae8287ccb7cadbd1f37ccc83860ce579a" kind="enumvalue"><name>US_SAMPLE_RATE</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a0250bbc2f046c7be3504bce6a4e02e1f" kind="enumvalue"><name>US_SAMPLE_AVG</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a3dd619d5e271156b1e9e4ce22e3d3ed6" kind="enumvalue"><name>IR_SAMPLE_RATE</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914ae157743433e8f032f56c9a5863d50987" kind="enumvalue"><name>IR_SAMPLE_AVG</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914a79c240d024e50caa68d7e94d828de7be" kind="enumvalue"><name>RANGE_RAW</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914aa01d20a055c12aa48a259e3bbd62aa3c" kind="enumvalue"><name>SHOW_TEMP</name></member>
+    <member refid="MenuDefs_8h_1ab59168e7e65e85a345dd7e860b097914ac7a137d9fc2edae496986a64415ed19f" kind="enumvalue"><name>CALIBRATE_TEMP</name></member>
+    <member refid="MenuDefs_8h_1aa098c58ecdb6f99f3480138f9f740d47" kind="enum"><name>userState</name></member>
+    <member refid="MenuDefs_8h_1aa098c58ecdb6f99f3480138f9f740d47ad0ef00e708ed18ba004480dceb79ecfb" kind="enumvalue"><name>LOCAL</name></member>
+    <member refid="MenuDefs_8h_1aa098c58ecdb6f99f3480138f9f740d47a4ba7a18dad4c2b80d41444425fc4b818" kind="enumvalue"><name>REMOTE</name></member>
+    <member refid="MenuDefs_8h_1aa098c58ecdb6f99f3480138f9f740d47a44158b5e87162ba1c35cda193922d021" kind="enumvalue"><name>FACTORY</name></member>
+    <member refid="MenuDefs_8h_1aa9a9509492a081ff1e32ad4d7bfcde26" kind="typedef"><name>numericInputFunction</name></member>
+    <member refid="MenuDefs_8h_1acdb086e78380c2c1c5f8c3f53c799009" kind="typedef"><name>voidFunction</name></member>
+    <member refid="MenuDefs_8h_1a2934a71d90db5290f256050e9f273151" kind="variable"><name>menuStruct</name></member>
+    <member refid="MenuDefs_8h_1a894b8103e76ff076b3e44dc4fce50cae" kind="variable"><name>newLine</name></member>
+    <member refid="MenuDefs_8h_1a5e200b19e322ccb9a3fb9c65555daf85" kind="variable"><name>CHOOSE</name></member>
+    <member refid="MenuDefs_8h_1ac6d4335de27bb39d52e0baad84b022a8" kind="variable"><name>menuPrefix3</name></member>
+    <member refid="MenuDefs_8h_1a1344458b11a58d1495ab67a701f5058a" kind="variable"><name>menuPrefix4</name></member>
+    <member refid="MenuDefs_8h_1a1c9349cff12c59bf87bb2ba1befcc7df" kind="variable"><name>menuPrefix5</name></member>
+    <member refid="MenuDefs_8h_1a84aca8e46b67414e24439878ab2ec412" kind="variable"><name>menuPrefix8</name></member>
+    <member refid="MenuDefs_8h_1a7486ea443917f593fdf8335e166ef5a5" kind="variable"><name>goUp</name></member>
+    <member refid="MenuDefs_8h_1ae283ceb6858b52420406c05644db9a7a" kind="variable"><name>goUp2</name></member>
+    <member refid="MenuDefs_8h_1a60cb1a799f0caa9452beac0635066aa6" kind="variable"><name>errNumOutOfRange</name></member>
+    <member refid="MenuDefs_8h_1a158e4a9523cfcc6e1e200a9a6a14f5f9" kind="variable"><name>and</name></member>
+    <member refid="MenuDefs_8h_1a9663e81d5c03c3b9d55547a7026a4399" kind="variable"><name>welcome</name></member>
+    <member refid="MenuDefs_8h_1a84fb109e00ae7ee666d0f993bcca1eee" kind="variable"><name>welcomeLcd</name></member>
+    <member refid="MenuDefs_8h_1a31475565799b1401bbdfbdbc9cf01615" kind="variable"><name>topOption1</name></member>
+    <member refid="MenuDefs_8h_1a7ec7c8c825ad848f55b4e9bab9746c61" kind="variable"><name>topOption2</name></member>
+    <member refid="MenuDefs_8h_1ad9098d4f350b47b27e2536a5be2f6860" kind="variable"><name>topOption3</name></member>
+    <member refid="MenuDefs_8h_1a4a4801f2969ced100ed11a0e4b77d1bf" kind="variable"><name>topOption4</name></member>
+    <member refid="MenuDefs_8h_1ad13da78bb30c39392a67fbe0cab7f64e" kind="variable"><name>topOption5</name></member>
+    <member refid="MenuDefs_8h_1ad926ea7382efe6d7f71a99cc7be95412" kind="variable"><name>topOptionCalTemp</name></member>
+    <member refid="MenuDefs_8h_1a61696474144c1ffb967695824fea81df" kind="variable"><name>topOptionLocal</name></member>
+    <member refid="MenuDefs_8h_1a19aa2e40910ff9eb2fce3a043b17c669" kind="variable"><name>topOptionFactory</name></member>
+    <member refid="MenuDefs_8h_1ac3885618f839e1bda77df8e97165ba03" kind="variable"><name>topOptionRemote</name></member>
+    <member refid="MenuDefs_8h_1a92244e44259433598dcd9a03a45d1300" kind="variable"><name>topOptionRemoteLCD</name></member>
+    <member refid="MenuDefs_8h_1af0410aceeaafeed4193093e2f6ed32cc" kind="variable"><name>azMenu</name></member>
+    <member refid="MenuDefs_8h_1a1a92c31ccfeb8eefc39a4f365a1186be" kind="variable"><name>azMenuLcd</name></member>
+    <member refid="MenuDefs_8h_1a69046a8196b1545ca5f7629fa77af2df" kind="variable"><name>azOption1</name></member>
+    <member refid="MenuDefs_8h_1ae59528a1a04b130bfba24f38f55e205e" kind="variable"><name>azOption2</name></member>
+    <member refid="MenuDefs_8h_1a7ae29fbab51b34bf2452c6aa569311ce" kind="variable"><name>azOption3</name></member>
+    <member refid="MenuDefs_8h_1a5cc84655e1232d96cef6582120284479" kind="variable"><name>azOption4</name></member>
+    <member refid="MenuDefs_8h_1a196dd4fcfd805cd8999ec22b8b4e8e68" kind="variable"><name>elMenu</name></member>
+    <member refid="MenuDefs_8h_1a8998899192a07aa6a93e220f7016b6ef" kind="variable"><name>elMenuLcd</name></member>
+    <member refid="MenuDefs_8h_1a4c1e9c4dfb7fe830a2ee8c1bb3d7fbe6" kind="variable"><name>elOption1</name></member>
+    <member refid="MenuDefs_8h_1a23c94355a833dd2f90769b14d291f262" kind="variable"><name>elOption2</name></member>
+    <member refid="MenuDefs_8h_1a5200c7b545cbfe745c692155567ace7e" kind="variable"><name>elOption3</name></member>
+    <member refid="MenuDefs_8h_1a4789796069b86e83bbb588c13615341a" kind="variable"><name>elOption4</name></member>
+    <member refid="MenuDefs_8h_1af95916e64b16841bb2232ca7f9041559" kind="variable"><name>rngMenu</name></member>
+    <member refid="MenuDefs_8h_1a311b0648043e955e6cf18087a81a8333" kind="variable"><name>rngMenuLcd</name></member>
+    <member refid="MenuDefs_8h_1ab59efc86a2841b03d3757cd968d1f124" kind="variable"><name>rngOption1</name></member>
+    <member refid="MenuDefs_8h_1a43703fafefa33236f502d8423d24c1f7" kind="variable"><name>rngOption2</name></member>
+    <member refid="MenuDefs_8h_1ad50d9f60bf22d01b4de3808d5e7ea930" kind="variable"><name>rngOption3</name></member>
+    <member refid="MenuDefs_8h_1af8f06237825a158526775ff711118d8d" kind="variable"><name>rngOption4</name></member>
+    <member refid="MenuDefs_8h_1a21021e259bf70bf056e947341143bfe8" kind="variable"><name>rngOption5</name></member>
+    <member refid="MenuDefs_8h_1a569a936faab100bde38e09e147892082" kind="variable"><name>rngOption6</name></member>
+    <member refid="MenuDefs_8h_1a17908e476d3e40de2d4cc1853455971c" kind="variable"><name>rngOption7</name></member>
+    <member refid="MenuDefs_8h_1a93fde150eed1fc6eb628d84af5ab5282" kind="variable"><name>showTempLCDTitle</name></member>
+    <member refid="MenuDefs_8h_1a7eae478ace129d5b332daedee70efa05" kind="variable"><name>showTempLCD</name></member>
+    <member refid="MenuDefs_8h_1a53af767e2ed6afe678da4e9a5b3cd181" kind="variable"><name>showTemp1</name></member>
+    <member refid="MenuDefs_8h_1a86bcce8e72af390d9e852aa0055f95a8" kind="variable"><name>showTemp2</name></member>
+    <member refid="MenuDefs_8h_1af08ae36d6761047ce0e7cec4d5a768fc" kind="variable"><name>gotoAzAngle</name></member>
+    <member refid="MenuDefs_8h_1a2e34ffaa5831640472cc470b1e92b914" kind="variable"><name>gotoAzAngleLCD</name></member>
+    <member refid="MenuDefs_8h_1a0bcfa136f866b44f9a0a0957bf424c45" kind="variable"><name>gotoElAngle</name></member>
+    <member refid="MenuDefs_8h_1a80fb9d027a27545fc0b67e0ecd653ddd" kind="variable"><name>gotoELAngleLCD</name></member>
+    <member refid="MenuDefs_8h_1ae5ad0cd48aae0c50a7953273ebd85dad" kind="variable"><name>gotoAngle2</name></member>
+    <member refid="MenuDefs_8h_1a0a8b550dcd2cf3ed90fbedb18404446c" kind="variable"><name>angleStr</name></member>
+    <member refid="MenuDefs_8h_1ab517451b8173a7eaaba2ea327ea8c939" kind="variable"><name>maxAzStr</name></member>
+    <member refid="MenuDefs_8h_1ab0fafcb82ba132956c269eea6c5586da" kind="variable"><name>maxAzSetStr</name></member>
+    <member refid="MenuDefs_8h_1acf51c764ea258021840229cf74bd0876" kind="variable"><name>maxAz1</name></member>
+    <member refid="MenuDefs_8h_1abbf210dff9ad26eb8b6c1e1d5b2c5654" kind="variable"><name>maxAz3</name></member>
+    <member refid="MenuDefs_8h_1aec1548d621add95a778fa1090b217c2e" kind="variable"><name>currentMinAngleStr</name></member>
+    <member refid="MenuDefs_8h_1a7693ac388992b938163dc0b07178b46b" kind="variable"><name>minAzStr</name></member>
+    <member refid="MenuDefs_8h_1aeaa116394681e1306afeda71f21df0f3" kind="variable"><name>minAzSetStr</name></member>
+    <member refid="MenuDefs_8h_1a02b7efee76f8ae20c758883e025bac9b" kind="variable"><name>minAz1</name></member>
+    <member refid="MenuDefs_8h_1ad550b62385ad7bb0590d7ef23a9fc44b" kind="variable"><name>minAz3</name></member>
+    <member refid="MenuDefs_8h_1a8c19982476b12787955e39d3336680a4" kind="variable"><name>calibrateAngle1</name></member>
+    <member refid="MenuDefs_8h_1ae5ae025aff6d51d96e716ebc64e9749b" kind="variable"><name>maxElStr</name></member>
+    <member refid="MenuDefs_8h_1a454ccf4689150b73851eb8ef361f6bf4" kind="variable"><name>maxElSetStr</name></member>
+    <member refid="MenuDefs_8h_1a5466dea4f6f0401303431d6ab1edd928" kind="variable"><name>maxEl1</name></member>
+    <member refid="MenuDefs_8h_1a2cc25780759bcdbad5ced60e7b9601a0" kind="variable"><name>maxEl3</name></member>
+    <member refid="MenuDefs_8h_1a05fd32eb695d62a03d150e0b47e332b9" kind="variable"><name>minElStr</name></member>
+    <member refid="MenuDefs_8h_1a27044e69d7b8bdcf45f6005f8f66f64a" kind="variable"><name>minElSetStr</name></member>
+    <member refid="MenuDefs_8h_1ac2bb5a4e18a0582824a43baa92d7883e" kind="variable"><name>minEl1</name></member>
+    <member refid="MenuDefs_8h_1a42dd47b41d655b4309fd9890de72a9ba" kind="variable"><name>minEl3</name></member>
+    <member refid="MenuDefs_8h_1ab45baccd3c3b2464882aa7cb320d8bf2" kind="variable"><name>minRngStr</name></member>
+    <member refid="MenuDefs_8h_1a79f561bdfea295e07e23302e4927d9de" kind="variable"><name>minRngSetStr</name></member>
+    <member refid="MenuDefs_8h_1aa51017b2f9456eb0c2d6bf1b6336fd60" kind="variable"><name>minRngSerialStr</name></member>
+    <member refid="MenuDefs_8h_1a98c4f9a1b0571a585aa77fbb878ed1a0" kind="variable"><name>maxRngStr</name></member>
+    <member refid="MenuDefs_8h_1a6c61a9b8091c05dedab1a209f02e8394" kind="variable"><name>maxRngSetStr</name></member>
+    <member refid="MenuDefs_8h_1aa8e428262d4c3d6b83b922309279d68e" kind="variable"><name>maxRngSerialStr</name></member>
+  </compound>
   <compound refid="Menusystem_8c" kind="file"><name>Menusystem.c</name>
-    <member refid="Menusystem_8c_1a667b04d7fb6ef46db4da4af554c5b6f7" kind="define"><name>width</name></member>
-    <member refid="Menusystem_8c_1a64f9f90ece96c7bab4aee3deacf170e0" kind="define"><name>height</name></member>
-    <member refid="Menusystem_8c_1a59e24be624462b0016d40f9ada6bbb69" kind="define"><name>top1</name></member>
-    <member refid="Menusystem_8c_1ac6732d277bcb2f666784f4f3f5e17f39" kind="define"><name>auto11</name></member>
-    <member refid="Menusystem_8c_1abed1ba920ec7390cfb509ce3d3b514eb" kind="define"><name>manu12</name></member>
-    <member refid="Menusystem_8c_1a65912490d63985a47ca283029e911b2b" kind="define"><name>manugoto121</name></member>
-    <member refid="Menusystem_8c_1abae4a42361e301d3ac9dbb5aad94f03d" kind="define"><name>manusetl122</name></member>
-    <member refid="Menusystem_8c_1a257270ed391fc5cf1577e20beb72b82d" kind="define"><name>manushow123</name></member>
-    <member refid="Menusystem_8c_1ae60b73d9ad027f8210c2a7789349428b" kind="define"><name>stat13</name></member>
-    <member refid="Menusystem_8c_1a99fdb7c018e6ad7decf89ca228db518f" kind="define"><name>swap14</name></member>
-    <member refid="Menusystem_8c_1a38bd38059a23acf74ca3559d13c2a6d5" kind="define"><name>slee15</name></member>
-    <member refid="Menusystem_8c_1a5ba864b4bbe4a84e0ca85b979ec2c10b" kind="variable"><name>tMESSAGE</name></member>
-    <member refid="Menusystem_8c_1ae6c5caedc34899ea80a6b011fec5f2a4" kind="variable"><name>fillerthing</name></member>
-    <member refid="Menusystem_8c_1a3e47bea989735dbc22688e1ee25ebe9c" kind="variable"><name>newline</name></member>
-    <member refid="Menusystem_8c_1a9cb97c7ce3babec16a2e500625985994" kind="variable"><name>choose</name></member>
-    <member refid="Menusystem_8c_1a009126ac947a1079b52555366ac7b7f3" kind="variable"><name>goup</name></member>
-    <member refid="Menusystem_8c_1a532e72c4b620eecff97eee6b0eed5bdd" kind="variable"><name>welcome</name></member>
-    <member refid="Menusystem_8c_1a1985e3f1b27ce97bff59359bed67bd58" kind="variable"><name>topoption1</name></member>
-    <member refid="Menusystem_8c_1acefc91d5187b4570470476a6cd0b68e9" kind="variable"><name>topoption2</name></member>
-    <member refid="Menusystem_8c_1ac241270fe5f174769b3034e81c0a574e" kind="variable"><name>topoption3</name></member>
-    <member refid="Menusystem_8c_1a5d44776e05294f14fa1a49e2c9b4820f" kind="variable"><name>topoption4</name></member>
-    <member refid="Menusystem_8c_1a53c72e5e662134afa6e04b4f2aa2863c" kind="variable"><name>topoption5</name></member>
-    <member refid="Menusystem_8c_1afa234d458057237e03e355d30fafac84" kind="function"><name>menu</name></member>
-    <member refid="Menusystem_8c_1a4ec0accaddbc5d42e2c1cf77d22693c3" kind="function"><name>topmenu</name></member>
-    <member refid="Menusystem_8c_1a4437457cad71a9015dbfbac75f9b2b99" kind="function"><name>topmenudisp</name></member>
-    <member refid="Menusystem_8c_1ae3777c5b2ceab74d5d90b444da874d14" kind="function"><name>disptoptions</name></member>
-    <member refid="Menusystem_8c_1aec49123d1c8f1231607dc9159ae138a4" kind="function"><name>clearscreen</name></member>
+    <member refid="Menusystem_8c_1a9776d72f343a51a87a19e8afedd90157" kind="variable"><name>topMenu</name></member>
+    <member refid="Menusystem_8c_1af48fe27b102950b409a220944b333792" kind="variable"><name>AzMenu</name></member>
+    <member refid="Menusystem_8c_1afea84bb932bd813d1fe647d30ba24a36" kind="variable"><name>ElMenu</name></member>
+    <member refid="Menusystem_8c_1a8d023f6ad48a74dd953eb0aa6a2e45cf" kind="variable"><name>RangeMenu</name></member>
+    <member refid="Menusystem_8c_1a146add3e3f286525825798267d213e1e" kind="variable"><name>AzGoto</name></member>
+    <member refid="Menusystem_8c_1a480a4bdfa8470c82ee5b3173711ce6db" kind="variable"><name>ElGoto</name></member>
+    <member refid="Menusystem_8c_1a05de406d11b779ede3b72845d543a078" kind="variable"><name>AzMin</name></member>
+    <member refid="Menusystem_8c_1ad68782ae3168c17238991f23d3303237" kind="variable"><name>AzMax</name></member>
+    <member refid="Menusystem_8c_1a3aebdcbaa8ecfdb1f96ef11dbc7573ce" kind="variable"><name>ElMin</name></member>
+    <member refid="Menusystem_8c_1a2179390acd9271dd76ab0f0f9fe4834b" kind="variable"><name>ElMax</name></member>
+    <member refid="Menusystem_8c_1aaadc7e24f2564a94f052f0e65e6749af" kind="variable"><name>RngMin</name></member>
+    <member refid="Menusystem_8c_1a38b0787e2615d19b426455b30e1e1d75" kind="variable"><name>RngMax</name></member>
+    <member refid="Menusystem_8c_1a293c99e69c70b825f695ab0dfd8d5afc" kind="variable"><name>ShowTemp</name></member>
+    <member refid="Menusystem_8c_1a8f68b12c69c7e6bb1f5cb87b05ac1fce" kind="variable"><name>m_currentMenu</name></member>
+    <member refid="Menusystem_8c_1a607f4e1757c0e658a135c1ef598991a9" kind="variable"><name>m_userMode</name></member>
+    <member refid="Menusystem_8c_1a3e308d6e9b426c6463bea038c996aa35" kind="function"><name>sendROM</name></member>
+    <member refid="Menusystem_8c_1a67e96e514d9f296c79378f7fbfba457a" kind="function"><name>clearScreen</name></member>
+    <member refid="Menusystem_8c_1a9f7902dc2a501ad1f16ec5011415bbbc" kind="function"><name>sendNewLine</name></member>
     <member refid="Menusystem_8c_1a4bb64cc936229611900f25e483381dc7" kind="function"><name>filler</name></member>
+    <member refid="Menusystem_8c_1a423b16a9c8b8570e98a887785bf2a22e" kind="function"><name>errOutOfRange</name></member>
+    <member refid="Menusystem_8c_1a40370230fa4791386274f271dc7ae5d4" kind="function"><name>intToAscii</name></member>
+    <member refid="Menusystem_8c_1a784ca8abb2edaa219d98a4b659363d75" kind="function"><name>autodisp</name></member>
+    <member refid="Menusystem_8c_1ad3ebde8bf1da78fb419653e5a495837b" kind="function"><name>parseNumeric</name></member>
+    <member refid="Menusystem_8c_1a8b63a4216144880e0f72493bb99327b9" kind="function"><name>getSerialNumericInput</name></member>
+    <member refid="Menusystem_8c_1ae3704e422195d3ea14aea5806572ca3c" kind="function"><name>configureTimer0</name></member>
+    <member refid="Menusystem_8c_1a8ad24eca1f986bb074931fc811f84045" kind="function"><name>getLocalInputMenu</name></member>
+    <member refid="Menusystem_8c_1a1b85c6297d06880716723d3be78a24d6" kind="function"><name>getLocalPotResult</name></member>
+    <member refid="Menusystem_8c_1abd46c913c8c99480b9cdd7e0dfa42c4e" kind="function"><name>setValue</name></member>
+    <member refid="Menusystem_8c_1af00ad1f1fdd6abc9dfc5d1682463a2f9" kind="function"><name>setMenu</name></member>
+    <member refid="Menusystem_8c_1ab17e13186f1dddfbf68dc90ccfe322ab" kind="function"><name>navigateTopMenu</name></member>
+    <member refid="Menusystem_8c_1a2290887f83a7977e63e6d47b29787b72" kind="function"><name>noFunctionNumeric</name></member>
+    <member refid="Menusystem_8c_1a9e1cce0abdcaa8e7be3c6721e6870c44" kind="function"><name>noFunction</name></member>
+    <member refid="Menusystem_8c_1a1f79564c961f89ad492d5b2bfea82f88" kind="function"><name>returnToTopMenu</name></member>
+    <member refid="Menusystem_8c_1a75a683e37aa01ac8a92db781e2ead1e0" kind="function"><name>returnToAzMenu</name></member>
+    <member refid="Menusystem_8c_1a012a074b7a3d034a0a2c22bfeb8625f7" kind="function"><name>returnToElMenu</name></member>
+    <member refid="Menusystem_8c_1a73b63e32a55a7050b917457b4c35dd1f" kind="function"><name>returnToRngMenu</name></member>
+    <member refid="Menusystem_8c_1a37aeebed834c183bf7f9d9a8870bb0c5" kind="function"><name>navigateAzimuthMenu</name></member>
+    <member refid="Menusystem_8c_1a247abfc7b6502e8fe71b329099887de7" kind="function"><name>navigateElevationMenu</name></member>
+    <member refid="Menusystem_8c_1ae76ae1f6774b7bb49057cb9d22df62cc" kind="function"><name>navigateRangeMenu</name></member>
+    <member refid="Menusystem_8c_1ab02601af02510b224cf1b970adc92f37" kind="function"><name>dispTopOptions</name></member>
+    <member refid="Menusystem_8c_1aae2d111e2cbcfe93d493729e9c9c1f2b" kind="function"><name>displayMenuSerial</name></member>
+    <member refid="Menusystem_8c_1afdf5fa380a1afae9687b1ccbbd23017e" kind="function"><name>dispAzOptions</name></member>
+    <member refid="Menusystem_8c_1af3008931f4215a7917069a31719a8f3c" kind="function"><name>dispElOptions</name></member>
+    <member refid="Menusystem_8c_1ae43312996b2d5f53d2149163888f88a2" kind="function"><name>dispRngOptions</name></member>
+    <member refid="Menusystem_8c_1a68e5fd71e2e27b77d08445f294598629" kind="function"><name>dispTempSerialMessage</name></member>
+    <member refid="Menusystem_8c_1a2f408553850e88d8345218700a252115" kind="function"><name>dispSerialMessage</name></member>
+    <member refid="Menusystem_8c_1a1e7fd2754bf0b951881c71742eb0b738" kind="function"><name>dispLCDTopMenu</name></member>
+    <member refid="Menusystem_8c_1a079b09fa0789834e079349c0ec5d49ab" kind="function"><name>dispLCDAzMenu</name></member>
+    <member refid="Menusystem_8c_1abb30afb1811664d4879a518cd89b4bd9" kind="function"><name>dispLCDElMenu</name></member>
+    <member refid="Menusystem_8c_1a6108e2b81dfa20c01e27fe17ba8ad856" kind="function"><name>dispLCDRngMenu</name></member>
+    <member refid="Menusystem_8c_1ac349125f8c839423db6203e102a1f54a" kind="function"><name>dispLCDNum</name></member>
     <member refid="Menusystem_8c_1a94b96ccbb8f3c627c5d59189498a3c1b" kind="function"><name>initialiseMenu</name></member>
+    <member refid="Menusystem_8c_1a0c5137bf380f59ecbe803283c32f7c2c" kind="function"><name>checkForSerialInput</name></member>
     <member refid="Menusystem_8c_1afc5a5c12a076ae6c7424df4f4124a521" kind="function"><name>serviceMenu</name></member>
-    <member refid="Menusystem_8c_1a0f329206447b1f40e6f730b346aaaf44" kind="function"><name>menuISR</name></member>
   </compound>
   <compound refid="Menusystem_8h" kind="file"><name>Menusystem.h</name>
-    <member refid="Menusystem_8h_1abe3db97a849df459252001e1f4b3721c" kind="define"><name>MENU_ISR</name></member>
-    <member refid="Menusystem_8h_1a9552ba249c0540ffe9a08a05d1b92504" kind="define"><name>MENU_H</name></member>
+    <member refid="Menusystem_8h_1a894b8103e76ff076b3e44dc4fce50cae" kind="variable"><name>newLine</name></member>
+    <member refid="Menusystem_8h_1a5e200b19e322ccb9a3fb9c65555daf85" kind="variable"><name>CHOOSE</name></member>
+    <member refid="Menusystem_8h_1ac6d4335de27bb39d52e0baad84b022a8" kind="variable"><name>menuPrefix3</name></member>
+    <member refid="Menusystem_8h_1a1344458b11a58d1495ab67a701f5058a" kind="variable"><name>menuPrefix4</name></member>
+    <member refid="Menusystem_8h_1a1c9349cff12c59bf87bb2ba1befcc7df" kind="variable"><name>menuPrefix5</name></member>
+    <member refid="Menusystem_8h_1a84aca8e46b67414e24439878ab2ec412" kind="variable"><name>menuPrefix8</name></member>
+    <member refid="Menusystem_8h_1a7486ea443917f593fdf8335e166ef5a5" kind="variable"><name>goUp</name></member>
+    <member refid="Menusystem_8h_1ae283ceb6858b52420406c05644db9a7a" kind="variable"><name>goUp2</name></member>
+    <member refid="Menusystem_8h_1a60cb1a799f0caa9452beac0635066aa6" kind="variable"><name>errNumOutOfRange</name></member>
+    <member refid="Menusystem_8h_1a158e4a9523cfcc6e1e200a9a6a14f5f9" kind="variable"><name>and</name></member>
+    <member refid="Menusystem_8h_1a9663e81d5c03c3b9d55547a7026a4399" kind="variable"><name>welcome</name></member>
+    <member refid="Menusystem_8h_1a84fb109e00ae7ee666d0f993bcca1eee" kind="variable"><name>welcomeLcd</name></member>
+    <member refid="Menusystem_8h_1a31475565799b1401bbdfbdbc9cf01615" kind="variable"><name>topOption1</name></member>
+    <member refid="Menusystem_8h_1a7ec7c8c825ad848f55b4e9bab9746c61" kind="variable"><name>topOption2</name></member>
+    <member refid="Menusystem_8h_1ad9098d4f350b47b27e2536a5be2f6860" kind="variable"><name>topOption3</name></member>
+    <member refid="Menusystem_8h_1a4a4801f2969ced100ed11a0e4b77d1bf" kind="variable"><name>topOption4</name></member>
+    <member refid="Menusystem_8h_1ad13da78bb30c39392a67fbe0cab7f64e" kind="variable"><name>topOption5</name></member>
+    <member refid="Menusystem_8h_1ad926ea7382efe6d7f71a99cc7be95412" kind="variable"><name>topOptionCalTemp</name></member>
+    <member refid="Menusystem_8h_1a61696474144c1ffb967695824fea81df" kind="variable"><name>topOptionLocal</name></member>
+    <member refid="Menusystem_8h_1a19aa2e40910ff9eb2fce3a043b17c669" kind="variable"><name>topOptionFactory</name></member>
+    <member refid="Menusystem_8h_1ac3885618f839e1bda77df8e97165ba03" kind="variable"><name>topOptionRemote</name></member>
+    <member refid="Menusystem_8h_1a92244e44259433598dcd9a03a45d1300" kind="variable"><name>topOptionRemoteLCD</name></member>
+    <member refid="Menusystem_8h_1af0410aceeaafeed4193093e2f6ed32cc" kind="variable"><name>azMenu</name></member>
+    <member refid="Menusystem_8h_1a1a92c31ccfeb8eefc39a4f365a1186be" kind="variable"><name>azMenuLcd</name></member>
+    <member refid="Menusystem_8h_1a69046a8196b1545ca5f7629fa77af2df" kind="variable"><name>azOption1</name></member>
+    <member refid="Menusystem_8h_1ae59528a1a04b130bfba24f38f55e205e" kind="variable"><name>azOption2</name></member>
+    <member refid="Menusystem_8h_1a7ae29fbab51b34bf2452c6aa569311ce" kind="variable"><name>azOption3</name></member>
+    <member refid="Menusystem_8h_1a5cc84655e1232d96cef6582120284479" kind="variable"><name>azOption4</name></member>
+    <member refid="Menusystem_8h_1a196dd4fcfd805cd8999ec22b8b4e8e68" kind="variable"><name>elMenu</name></member>
+    <member refid="Menusystem_8h_1a8998899192a07aa6a93e220f7016b6ef" kind="variable"><name>elMenuLcd</name></member>
+    <member refid="Menusystem_8h_1a4c1e9c4dfb7fe830a2ee8c1bb3d7fbe6" kind="variable"><name>elOption1</name></member>
+    <member refid="Menusystem_8h_1a23c94355a833dd2f90769b14d291f262" kind="variable"><name>elOption2</name></member>
+    <member refid="Menusystem_8h_1a5200c7b545cbfe745c692155567ace7e" kind="variable"><name>elOption3</name></member>
+    <member refid="Menusystem_8h_1a4789796069b86e83bbb588c13615341a" kind="variable"><name>elOption4</name></member>
+    <member refid="Menusystem_8h_1af95916e64b16841bb2232ca7f9041559" kind="variable"><name>rngMenu</name></member>
+    <member refid="Menusystem_8h_1a311b0648043e955e6cf18087a81a8333" kind="variable"><name>rngMenuLcd</name></member>
+    <member refid="Menusystem_8h_1ab59efc86a2841b03d3757cd968d1f124" kind="variable"><name>rngOption1</name></member>
+    <member refid="Menusystem_8h_1a43703fafefa33236f502d8423d24c1f7" kind="variable"><name>rngOption2</name></member>
+    <member refid="Menusystem_8h_1ad50d9f60bf22d01b4de3808d5e7ea930" kind="variable"><name>rngOption3</name></member>
+    <member refid="Menusystem_8h_1af8f06237825a158526775ff711118d8d" kind="variable"><name>rngOption4</name></member>
+    <member refid="Menusystem_8h_1a21021e259bf70bf056e947341143bfe8" kind="variable"><name>rngOption5</name></member>
+    <member refid="Menusystem_8h_1a569a936faab100bde38e09e147892082" kind="variable"><name>rngOption6</name></member>
+    <member refid="Menusystem_8h_1a17908e476d3e40de2d4cc1853455971c" kind="variable"><name>rngOption7</name></member>
+    <member refid="Menusystem_8h_1a93fde150eed1fc6eb628d84af5ab5282" kind="variable"><name>showTempLCDTitle</name></member>
+    <member refid="Menusystem_8h_1a7eae478ace129d5b332daedee70efa05" kind="variable"><name>showTempLCD</name></member>
+    <member refid="Menusystem_8h_1a53af767e2ed6afe678da4e9a5b3cd181" kind="variable"><name>showTemp1</name></member>
+    <member refid="Menusystem_8h_1a86bcce8e72af390d9e852aa0055f95a8" kind="variable"><name>showTemp2</name></member>
+    <member refid="Menusystem_8h_1af08ae36d6761047ce0e7cec4d5a768fc" kind="variable"><name>gotoAzAngle</name></member>
+    <member refid="Menusystem_8h_1a2e34ffaa5831640472cc470b1e92b914" kind="variable"><name>gotoAzAngleLCD</name></member>
+    <member refid="Menusystem_8h_1a0bcfa136f866b44f9a0a0957bf424c45" kind="variable"><name>gotoElAngle</name></member>
+    <member refid="Menusystem_8h_1a80fb9d027a27545fc0b67e0ecd653ddd" kind="variable"><name>gotoELAngleLCD</name></member>
+    <member refid="Menusystem_8h_1ae5ad0cd48aae0c50a7953273ebd85dad" kind="variable"><name>gotoAngle2</name></member>
+    <member refid="Menusystem_8h_1a0a8b550dcd2cf3ed90fbedb18404446c" kind="variable"><name>angleStr</name></member>
+    <member refid="Menusystem_8h_1ab517451b8173a7eaaba2ea327ea8c939" kind="variable"><name>maxAzStr</name></member>
+    <member refid="Menusystem_8h_1ab0fafcb82ba132956c269eea6c5586da" kind="variable"><name>maxAzSetStr</name></member>
+    <member refid="Menusystem_8h_1acf51c764ea258021840229cf74bd0876" kind="variable"><name>maxAz1</name></member>
+    <member refid="Menusystem_8h_1abbf210dff9ad26eb8b6c1e1d5b2c5654" kind="variable"><name>maxAz3</name></member>
+    <member refid="Menusystem_8h_1aec1548d621add95a778fa1090b217c2e" kind="variable"><name>currentMinAngleStr</name></member>
+    <member refid="Menusystem_8h_1a7693ac388992b938163dc0b07178b46b" kind="variable"><name>minAzStr</name></member>
+    <member refid="Menusystem_8h_1aeaa116394681e1306afeda71f21df0f3" kind="variable"><name>minAzSetStr</name></member>
+    <member refid="Menusystem_8h_1a02b7efee76f8ae20c758883e025bac9b" kind="variable"><name>minAz1</name></member>
+    <member refid="Menusystem_8h_1ad550b62385ad7bb0590d7ef23a9fc44b" kind="variable"><name>minAz3</name></member>
+    <member refid="Menusystem_8h_1a8c19982476b12787955e39d3336680a4" kind="variable"><name>calibrateAngle1</name></member>
+    <member refid="Menusystem_8h_1ae5ae025aff6d51d96e716ebc64e9749b" kind="variable"><name>maxElStr</name></member>
+    <member refid="Menusystem_8h_1a454ccf4689150b73851eb8ef361f6bf4" kind="variable"><name>maxElSetStr</name></member>
+    <member refid="Menusystem_8h_1a5466dea4f6f0401303431d6ab1edd928" kind="variable"><name>maxEl1</name></member>
+    <member refid="Menusystem_8h_1a2cc25780759bcdbad5ced60e7b9601a0" kind="variable"><name>maxEl3</name></member>
+    <member refid="Menusystem_8h_1a05fd32eb695d62a03d150e0b47e332b9" kind="variable"><name>minElStr</name></member>
+    <member refid="Menusystem_8h_1a27044e69d7b8bdcf45f6005f8f66f64a" kind="variable"><name>minElSetStr</name></member>
+    <member refid="Menusystem_8h_1ac2bb5a4e18a0582824a43baa92d7883e" kind="variable"><name>minEl1</name></member>
+    <member refid="Menusystem_8h_1a42dd47b41d655b4309fd9890de72a9ba" kind="variable"><name>minEl3</name></member>
+    <member refid="Menusystem_8h_1ab45baccd3c3b2464882aa7cb320d8bf2" kind="variable"><name>minRngStr</name></member>
+    <member refid="Menusystem_8h_1a79f561bdfea295e07e23302e4927d9de" kind="variable"><name>minRngSetStr</name></member>
+    <member refid="Menusystem_8h_1aa51017b2f9456eb0c2d6bf1b6336fd60" kind="variable"><name>minRngSerialStr</name></member>
+    <member refid="Menusystem_8h_1a98c4f9a1b0571a585aa77fbb878ed1a0" kind="variable"><name>maxRngStr</name></member>
+    <member refid="Menusystem_8h_1a6c61a9b8091c05dedab1a209f02e8394" kind="variable"><name>maxRngSetStr</name></member>
+    <member refid="Menusystem_8h_1aa8e428262d4c3d6b83b922309279d68e" kind="variable"><name>maxRngSerialStr</name></member>
     <member refid="Menusystem_8h_1a94b96ccbb8f3c627c5d59189498a3c1b" kind="function"><name>initialiseMenu</name></member>
-    <member refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" kind="function"><name>serviceMenu</name></member>
+    <member refid="Menusystem_8h_1a0c5137bf380f59ecbe803283c32f7c2c" kind="function"><name>checkForSerialInput</name></member>
     <member refid="Menusystem_8h_1a0f329206447b1f40e6f730b346aaaf44" kind="function"><name>menuISR</name></member>
-    <member refid="Menusystem_8h_1ad16e5e62f3579a7048e6b981b172885e" kind="function"><name>menu</name></member>
+    <member refid="Menusystem_8h_1afc5a5c12a076ae6c7424df4f4124a521" kind="function"><name>serviceMenu</name></member>
   </compound>
   <compound refid="Menusystem2_8c" kind="file"><name>Menusystem2.c</name>
     <member refid="Menusystem2_8c_1af3a7cb33a5ae7392934b3197ac67e080" kind="define"><name>MAX_SER_MSG_LEN</name></member>
@@ -257,10 +524,15 @@
     <member refid="Menusystem2_8c_1afc5a5c12a076ae6c7424df4f4124a521" kind="function"><name>serviceMenu</name></member>
     <member refid="Menusystem2_8c_1a0f329206447b1f40e6f730b346aaaf44" kind="function"><name>menuISR</name></member>
   </compound>
+  <compound refid="newfile_8h" kind="file"><name>newfile.h</name>
+  </compound>
   <compound refid="newmain_8c" kind="file"><name>newmain.c</name>
+    <member refid="newmain_8c_1af706869d3f5c53d54533ee9eb6cd0450" kind="define"><name>UPDATE_TIME</name></member>
     <member refid="newmain_8c_1a1ff28a3e20f1261c410c00f62e9f9c33" kind="function"><name>initialization</name></member>
     <member refid="newmain_8c_1a562b6fc99e2386f66e66353386d80212" kind="function"><name>transRange</name></member>
+    <member refid="newmain_8c_1ae3704e422195d3ea14aea5806572ca3c" kind="function"><name>configureTimer0</name></member>
     <member refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" kind="function"><name>main</name></member>
+    <member refid="newmain_8c_1a2757d71d336e927bb4e6acf8016df536" kind="function"><name>dispTrack</name></member>
   </compound>
   <compound refid="p18f4520_8h" kind="file"><name>p18f4520.h</name>
     <member refid="p18f4520_8h_1a321a20f839f3d9ccd0db1dc865850dc7" kind="define"><name>ACCESS</name></member>
@@ -1058,30 +1330,32 @@
     <member refid="PanTilt_8h_1a001917f3c38b200d142ab6932991e001" kind="function"><name>setMinElevationAngle</name></member>
   </compound>
   <compound refid="Range_8c" kind="file"><name>Range.c</name>
-    <member refid="Range_8c_1a8dce7331368588b9016a33f044b71d91" kind="define"><name>SPD_SND</name></member>
     <member refid="Range_8c_1a13235bb583d24031d4129a10c126ef8e" kind="define"><name>IR_CONV</name></member>
     <member refid="Range_8c_1a354db24d9e733cf8b3e15f727ab46624" kind="define"><name>ULTRA_CONV</name></member>
-    <member refid="Range_8c_1acf4b9381566c4a7de8b59886038b9132" kind="define"><name>NUM_IR_READS</name></member>
     <member refid="Range_8c_1a885e4c51dcc91fcae14dadc2d564f270" kind="define"><name>INIT_PIN</name></member>
     <member refid="Range_8c_1a6e6430371976f713ccccb6372b19b810" kind="define"><name>INIT_TRIS</name></member>
     <member refid="Range_8c_1aa42da5a67cdb563f37b56c1674dd67bb" kind="define"><name>CCP1_INPT</name></member>
-    <member refid="Range_8c_1a57a8488a51b36299fd5b363b10cad132" kind="variable"><name>calibration_offset</name></member>
+    <member refid="Range_8c_1a29a8f7ec1da49306cd91012204229f79" kind="define"><name>range_IR</name></member>
+    <member refid="Range_8c_1ae485e01f6cadccf9f60a617cce776df4" kind="define"><name>range_US</name></member>
     <member refid="Range_8c_1a4b6dc56220469aa5e4180dad6d68335f" kind="variable"><name>measuringUS</name></member>
     <member refid="Range_8c_1ad3cf40ad92b220b5e39aa159caa45f65" kind="variable"><name>lastRange</name></member>
+    <member refid="Range_8c_1a44690364de54cfeef62a4e79880603c7" kind="variable"><name>lastUSRange</name></member>
+    <member refid="Range_8c_1aab7f4dddd362aafa4a558c057f89319f" kind="variable"><name>lastIRRange</name></member>
     <member refid="Range_8c_1a8976a8edd47f4f691d54e563d4e649b7" kind="variable"><name>calibration_offset_IR</name></member>
     <member refid="Range_8c_1af421fb22b292f4b39367c73817a26993" kind="variable"><name>calibration_offset_US</name></member>
+    <member refid="Range_8c_1a5f013ef4cde14fb1aad7b871dba2c743" kind="variable"><name>numSamples</name></member>
+    <member refid="Range_8c_1ae4a5266a7e06afbf25a15633e657c49f" kind="variable"><name>rateUS</name></member>
+    <member refid="Range_8c_1ad58a5e610e756c41b622dade80cadeb6" kind="variable"><name>rateIR</name></member>
     <member refid="Range_8c_1a3e5f92f759a1957263c83a507c449b39" kind="variable"><name>current_target_state</name></member>
     <member refid="Range_8c_1a4571d632d0c84c18c4aefd1c7b63cb8a" kind="function"><name>beginUS</name></member>
-    <member refid="Range_8c_1a91b55894b9e6d74e4495ea610246c856" kind="function"><name>rangeIR</name></member>
     <member refid="Range_8c_1af470fd0f0b96399b344f11783b4ef7f3" kind="function"><name>rangeUS</name></member>
+    <member refid="Range_8c_1a71fa1634c2a7d76287ac872b5cfed382" kind="function"><name>fuseRange</name></member>
     <member refid="Range_8c_1a07a4c592815b5e6ae178f93a7764ceb2" kind="function"><name>configureRange</name></member>
-    <member refid="Range_8c_1ae7948eddefd58fbe1509d2bade4cd908" kind="function"><name>sampleIR</name></member>
     <member refid="Range_8c_1ac7337ef2da4c9ab03257562ec33bbb8a" kind="function"><name>configureAD</name></member>
     <member refid="Range_8c_1a64e9d21d140ac54a306dab455b49adcf" kind="function"><name>rangeISR</name></member>
     <member refid="Range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" kind="function"><name>calibrateRange</name></member>
     <member refid="Range_8c_1a90ce8835c75e17b8e2d15eca3e6ae82f" kind="function"><name>rawRange</name></member>
     <member refid="Range_8c_1aff3698f3a7b3b5963d8e6b305a165d71" kind="function"><name>range</name></member>
-    <member refid="Range_8c_1a5b063989d39d2958d2ecebc0106cb1da" kind="function"><name>rangeUltrasonic</name></member>
     <member refid="Range_8c_1a3e5554f5a076ded63b937d50b7e5c9db" kind="function"><name>getTargetState</name></member>
     <member refid="Range_8c_1a87c8e64ddc596f3e6b72ee861f671168" kind="function"><name>readTargetState</name></member>
   </compound>
@@ -1096,8 +1370,9 @@
     <member refid="Range_8h_1a2c0a42fe463e1d8bd954fe3679aef5c2" kind="function"><name>rawRange</name></member>
     <member refid="Range_8h_1a3e5554f5a076ded63b937d50b7e5c9db" kind="function"><name>getTargetState</name></member>
     <member refid="Range_8h_1a87c8e64ddc596f3e6b72ee861f671168" kind="function"><name>readTargetState</name></member>
-    <member refid="Range_8h_1a91b55894b9e6d74e4495ea610246c856" kind="function"><name>rangeIR</name></member>
-    <member refid="Range_8h_1a5b063989d39d2958d2ecebc0106cb1da" kind="function"><name>rangeUltrasonic</name></member>
+  </compound>
+  <compound refid="ROM2RAM_8c" kind="file"><name>ROM2RAM.c</name>
+    <member refid="ROM2RAM_8c_1a576e4df736792ea0f9804499aa256fd7" kind="function"><name>strcpypgm2ram</name></member>
   </compound>
   <compound refid="Serial_8c" kind="file"><name>Serial.c</name>
     <member refid="Serial_8c_1ae75715981e20452ec65e09240954c901" kind="define"><name>TX_INT_CLEAR</name></member>
@@ -1114,6 +1389,7 @@
     <member refid="Serial_8c_1a5e9b32b4516262ed0d38be2a5c900eb2" kind="variable"><name>receive_buffer</name></member>
     <member refid="Serial_8c_1a8afe57d3e36e53a89cc8488b2812d012" kind="variable"><name>transmit_buffer</name></member>
     <member refid="Serial_8c_1a8cff2d32a612db164397b2a3b4ce2b5e" kind="variable"><name>carriageReturn</name></member>
+    <member refid="Serial_8c_1a625ea157d146adb4c20b402fe7de7d0d" kind="variable"><name>escPressed</name></member>
     <member refid="Serial_8c_1ae2cdcda889fcfed4b6b851835bf2b538" kind="function"><name>configureSerial</name></member>
     <member refid="Serial_8c_1aab23d23c5b64a3bb7e5913afb4a3ed85" kind="function"><name>transmit</name></member>
     <member refid="Serial_8c_1aabfd643e8a01ba453ff6a88164b9eff8" kind="function"><name>transChar</name></member>
@@ -1121,6 +1397,8 @@
     <member refid="Serial_8c_1a6e41eb5b433439d82f67def509ade010" kind="function"><name>receivePeek</name></member>
     <member refid="Serial_8c_1abb74ccb0bd81e0e4779854c93851c804" kind="function"><name>receivePop</name></member>
     <member refid="Serial_8c_1aca906fa91f67c730681400b51d426933" kind="function"><name>receiveCR</name></member>
+    <member refid="Serial_8c_1a26eab76ecdaba2d82581899cda8d9f11" kind="function"><name>receiveEsc</name></member>
+    <member refid="Serial_8c_1af7757e126aed6e958b291076653e24f9" kind="function"><name>popEsc</name></member>
     <member refid="Serial_8c_1ad5d0bd1e5c7b8380e3567f8dc474b6db" kind="function"><name>readString</name></member>
     <member refid="Serial_8c_1a96a7d5e668a1b77fd5bbd343c7f1cbfc" kind="function"><name>transmitted</name></member>
     <member refid="Serial_8c_1a6cf71700cdaeb2afeaf619777af19bfc" kind="function"><name>serialISR</name></member>
@@ -1137,7 +1415,9 @@
     <member refid="Serial_8h_1a6e41eb5b433439d82f67def509ade010" kind="function"><name>receivePeek</name></member>
     <member refid="Serial_8h_1abb74ccb0bd81e0e4779854c93851c804" kind="function"><name>receivePop</name></member>
     <member refid="Serial_8h_1aca906fa91f67c730681400b51d426933" kind="function"><name>receiveCR</name></member>
+    <member refid="Serial_8h_1a26eab76ecdaba2d82581899cda8d9f11" kind="function"><name>receiveEsc</name></member>
     <member refid="Serial_8h_1ad5d0bd1e5c7b8380e3567f8dc474b6db" kind="function"><name>readString</name></member>
+    <member refid="Serial_8h_1af7757e126aed6e958b291076653e24f9" kind="function"><name>popEsc</name></member>
   </compound>
   <compound refid="Temp_8c" kind="file"><name>Temp.c</name>
     <member refid="Temp_8c_1afc2cbd0c08b512ee436d03063c3c94d5" kind="variable"><name>calibration_offset</name></member>
@@ -1161,12 +1441,15 @@
   <compound refid="Tracking_8c" kind="file"><name>Tracking.c</name>
     <member refid="Tracking_8c_1ad21f01d2ff9eac3ae01bef0f67db54d0" kind="define"><name>diff</name></member>
     <member refid="Tracking_8c_1a343412bd951fd6a703531a20848e1b66" kind="define"><name>TARGET_RAD</name></member>
+    <member refid="Tracking_8c_1a50fac94864a77d583f680df8a0eaebb4" kind="define"><name>sampleTargetState</name></member>
     <member refid="Tracking_8c_1a599217205dc3092c26567a2bd868ef3a" kind="define"><name>TIMER</name></member>
+    <member refid="Tracking_8c_1a692bd90e8391dbba83a5985df166e4cb" kind="function"><name>newAngle</name></member>
     <member refid="Tracking_8c_1ac9b1c5bae39806310b74e2f69d9ee3b6" kind="function"><name>configureTracking</name></member>
     <member refid="Tracking_8c_1ac80b505821d79e98e9108b12d12c5db9" kind="function"><name>search</name></member>
     <member refid="Tracking_8c_1ae3fa9fb57cd18477215f58aa448ce9d1" kind="function"><name>trackingISR</name></member>
     <member refid="Tracking_8c_1a4f0ebbcddf842d008fbfebb705374c30" kind="function"><name>track</name></member>
     <member refid="Tracking_8c_1ab3681bb15cfeebcc7b27d0c063dafc89" kind="function"><name>prediction</name></member>
+    <member refid="Tracking_8c_1afb53c1edd8f8b148150ccf950b62405c" kind="function"><name>newAngle</name></member>
   </compound>
   <compound refid="Tracking_8h" kind="file"><name>Tracking.h</name>
     <member refid="Tracking_8h_1a6ca0b1676fe27fee5166ac22ce6eb3dc" kind="define"><name>TRACK_INT</name></member>
@@ -1176,18 +1459,47 @@
     <member refid="Tracking_8h_1a4f0ebbcddf842d008fbfebb705374c30" kind="function"><name>track</name></member>
     <member refid="Tracking_8h_1ae3fa9fb57cd18477215f58aa448ce9d1" kind="function"><name>trackingISR</name></member>
   </compound>
+  <compound refid="usart_8h" kind="file"><name>usart.h</name>
+    <member refid="usart_8h_1a43f8f4495621e421192c8390f8e120c9" kind="define"><name>MEM_MODEL</name></member>
+    <member refid="usart_8h_1a97cd9f0d7678894aeb678238243ef440" kind="define"><name>USART_TX_INT_ON</name></member>
+    <member refid="usart_8h_1ac3281fc4776e71a1e36c491468c70fac" kind="define"><name>USART_TX_INT_OFF</name></member>
+    <member refid="usart_8h_1a977e3b97e355cdf939a03087cd07331d" kind="define"><name>USART_RX_INT_ON</name></member>
+    <member refid="usart_8h_1a95fb637436fca2159f9d5401f422cc6a" kind="define"><name>USART_RX_INT_OFF</name></member>
+    <member refid="usart_8h_1a47e36a169b1732cc401cab714c380cad" kind="define"><name>USART_BRGH_HIGH</name></member>
+    <member refid="usart_8h_1a58afef5782a40739b47482a2954be8da" kind="define"><name>USART_BRGH_LOW</name></member>
+    <member refid="usart_8h_1aa2f9e869ecfc51471518d65734fc147c" kind="define"><name>USART_CONT_RX</name></member>
+    <member refid="usart_8h_1a6847ae438f81bcaa40424695606bc45c" kind="define"><name>USART_SINGLE_RX</name></member>
+    <member refid="usart_8h_1abb9a405c2e2113d26c69b9ac31336deb" kind="define"><name>USART_SYNC_MASTER</name></member>
+    <member refid="usart_8h_1aff53dd1d018b2b412801ad23cff9adc6" kind="define"><name>USART_SYNC_SLAVE</name></member>
+    <member refid="usart_8h_1a0471a0c1164a0995511304f819401cc8" kind="define"><name>USART_NINE_BIT</name></member>
+    <member refid="usart_8h_1a3b38f957a6fff1ac093fa5796a84282d" kind="define"><name>USART_EIGHT_BIT</name></member>
+    <member refid="usart_8h_1a9a8b85b5e3a5315af6e3cd07890554fe" kind="define"><name>USART_SYNCH_MODE</name></member>
+    <member refid="usart_8h_1a2478822de4dabae4bdf391746ac9bb08" kind="define"><name>USART_ASYNCH_MODE</name></member>
+    <member refid="usart_8h_1a585c5d1a310b90c10066b3ffd0427bd0" kind="define"><name>USART_ADDEN_ON</name></member>
+    <member refid="usart_8h_1a18ee3610096e24cafef655720c446733" kind="define"><name>USART_ADDEN_OFF</name></member>
+    <member refid="usart_8h_1a0893ed375809b0efc5b0fb1e308e602e" kind="define"><name>BAUD_IDLE_RX_PIN_STATE_HIGH</name></member>
+    <member refid="usart_8h_1a1a0a2a95dbbbb7a9f7daf406276f7b46" kind="define"><name>BAUD_IDLE_RX_PIN_STATE_LOW</name></member>
+    <member refid="usart_8h_1af76b1c4fd51a4b9053a91d8fc52d518e" kind="define"><name>BAUD_IDLE_TX_PIN_STATE_HIGH</name></member>
+    <member refid="usart_8h_1a1ed3cf398177eef25b7e77ad375a1533" kind="define"><name>BAUD_IDLE_TX_PIN_STATE_LOW</name></member>
+  </compound>
   <compound refid="User__Interface_8c" kind="file"><name>User_Interface.c</name>
+    <member refid="User__Interface_8c_1ab793b8cea43e768f35f4c40e0069b47c" kind="define"><name>CONFIRM_PRESS</name></member>
+    <member refid="User__Interface_8c_1ad934dc8f263c62a8159af0f0e6d70c64" kind="define"><name>BACK_PRESS</name></member>
+    <member refid="User__Interface_8c_1a555a695bf58df062dc03f0e892d95cd7" kind="define"><name>ADC_MAX</name></member>
     <member refid="User__Interface_8c_1ad7a739640da23ada15ee5822350aaf60" kind="variable"><name>receive</name></member>
     <member refid="User__Interface_8c_1a5711e8cdb2a3943783f50f60a15bde31" kind="function"><name>display</name></member>
     <member refid="User__Interface_8c_1a3c2574813b4d75b20d43aa67ec0af650" kind="function"><name>userISR</name></member>
     <member refid="User__Interface_8c_1a58e473ed40d00e18bd61277428e4d36c" kind="function"><name>configUSER</name></member>
     <member refid="User__Interface_8c_1aa1e69bd94580864cea0b4563e5d56bc3" kind="function"><name>readDial</name></member>
+    <member refid="User__Interface_8c_1a7db12a07fa1fd8b30784f989d9d3def9" kind="function"><name>readDialForMenu</name></member>
     <member refid="User__Interface_8c_1a62fd5de2781acb67fe5133d79ae580cc" kind="function"><name>userEmpty</name></member>
     <member refid="User__Interface_8c_1a3f61f7acd05df7af4bb136a5f98c3e54" kind="function"><name>userPop</name></member>
     <member refid="User__Interface_8c_1a3d17c3d0eb62b407b6badfd343da5181" kind="function"><name>userPeek</name></member>
   </compound>
   <compound refid="User__Interface_8h" kind="file"><name>User_Interface.h</name>
     <member refid="User__Interface_8h_1a4358ad34c2ebafd83f49cb8e73fed3d5" kind="define"><name>USER_INT</name></member>
+    <member refid="User__Interface_8h_1adead3849e015340318de05db13537485" kind="define"><name>CONFIRM_CHAR</name></member>
+    <member refid="User__Interface_8h_1a988901f3420148844c4e20d8f726ba2e" kind="define"><name>BACK_CHAR</name></member>
     <member refid="User__Interface_8h_1ad904f48bd4d9b62b4e5076a09951eee7" kind="define"><name>USER_H</name></member>
     <member refid="User__Interface_8h_1a5711e8cdb2a3943783f50f60a15bde31" kind="function"><name>display</name></member>
     <member refid="User__Interface_8h_1a3c2574813b4d75b20d43aa67ec0af650" kind="function"><name>userISR</name></member>
@@ -1195,9 +1507,12 @@
     <member refid="User__Interface_8h_1a62fd5de2781acb67fe5133d79ae580cc" kind="function"><name>userEmpty</name></member>
     <member refid="User__Interface_8h_1a3f61f7acd05df7af4bb136a5f98c3e54" kind="function"><name>userPop</name></member>
     <member refid="User__Interface_8h_1a3d17c3d0eb62b407b6badfd343da5181" kind="function"><name>userPeek</name></member>
+    <member refid="User__Interface_8h_1aa1e69bd94580864cea0b4563e5d56bc3" kind="function"><name>readDial</name></member>
   </compound>
   <compound refid="todo" kind="page"><name>todo</name>
   </compound>
-  <compound refid="dir_23fdee2f6995db16c755697cdf620cf4" kind="dir"><name>C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code</name>
+  <compound refid="dir_f71e1a7f144f8c2f668bd726f80a92e7" kind="dir"><name>Yavin4DefenceSystem/Code</name>
+  </compound>
+  <compound refid="dir_5b9ca4eeeea8b3ce940d3fd19626ea02" kind="dir"><name>Yavin4DefenceSystem</name>
   </compound>
 </doxygenindex>

@@ -1,8 +1,8 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/Menusystem.c" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c \- 
+Yavin4DefenceSystem/Code/Menusystem.c \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -12,163 +12,267 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Menusystem.c \-
 .br
 \fC#include 'User_Interface\&.h'\fP
 .br
+\fC#include 'LCD\&.h'\fP
+.br
+\fC#include 'Range\&.h'\fP
+.br
+\fC#include 'PanTilt\&.h'\fP
+.br
+\fC#include 'Temp\&.h'\fP
+.br
+\fC#include 'MenuDefs\&.h'\fP
+.br
 
-.SS "Macros"
-
-.in +1c
-.ti -1c
-.RI "#define \fBwidth\fP   80"
-.br
-.ti -1c
-.RI "#define \fBheight\fP   24"
-.br
-.ti -1c
-.RI "#define \fBtop1\fP   0xFF"
-.br
-.ti -1c
-.RI "#define \fBauto11\fP   0x10"
-.br
-.ti -1c
-.RI "#define \fBmanu12\fP   0x20"
-.br
-.ti -1c
-.RI "#define \fBmanugoto121\fP   0x21"
-.br
-.ti -1c
-.RI "#define \fBmanusetl122\fP   0x22"
-.br
-.ti -1c
-.RI "#define \fBmanushow123\fP   0x23"
-.br
-.ti -1c
-.RI "#define \fBstat13\fP   0x30"
-.br
-.ti -1c
-.RI "#define \fBswap14\fP   0x40"
-.br
-.ti -1c
-.RI "#define \fBslee15\fP   0x50"
-.br
-.in -1c
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "void \fBmenu\fP (char menuselect)"
+.RI "void \fBsendROM\fP (const static rom char *romchar)"
+.br
+.RI "\fIInclude: Local to \fBMenusystem\&.c\fP\&. \fP"
+.ti -1c
+.RI "void \fBclearScreen\fP (void)"
 .br
 .ti -1c
-.RI "void \fBtopmenu\fP (void)"
-.br
-.ti -1c
-.RI "void \fBtopmenudisp\fP (void)"
-.br
-.ti -1c
-.RI "void \fBdisptoptions\fP (void)"
-.br
-.ti -1c
-.RI "void \fBclearscreen\fP (char length)"
+.RI "void \fBsendNewLine\fP (char length)"
 .br
 .ti -1c
 .RI "void \fBfiller\fP (char length)"
+.br
+.ti -1c
+.RI "void \fBerrOutOfRange\fP (int lowerBound, int upperBound)"
+.br
+.ti -1c
+.RI "char * \fBintToAscii\fP (int num)"
+.br
+.ti -1c
+.RI "void \fBautodisp\fP (void)"
+.br
+.ti -1c
+.RI "int \fBparseNumeric\fP (char *number)"
+.br
+.RI "\fIparses user input string into a number \fP"
+.ti -1c
+.RI "int \fBgetSerialNumericInput\fP ()"
+.br
+.RI "\fIWaits for input and parses number\&. \fP"
+.ti -1c
+.RI "void \fBconfigureTimer0\fP (void)"
+.br
+.ti -1c
+.RI "int \fBgetLocalInputMenu\fP (int maxStates, int(*function)(int))"
+.br
+.ti -1c
+.RI "int \fBgetLocalPotResult\fP (int min, int max, int interval)"
+.br
+.ti -1c
+.RI "void \fBsetValue\fP (int input)"
+.br
+.ti -1c
+.RI "void \fBsetMenu\fP (struct \fBmenuStruct\fP menu)"
+.br
+.ti -1c
+.RI "void \fBnavigateTopMenu\fP (int inputResult)"
+.br
+.ti -1c
+.RI "void \fBnoFunctionNumeric\fP (int input)"
+.br
+.ti -1c
+.RI "void \fBnoFunction\fP (void)"
+.br
+.ti -1c
+.RI "void \fBreturnToTopMenu\fP (void)"
+.br
+.ti -1c
+.RI "void \fBreturnToAzMenu\fP (void)"
+.br
+.ti -1c
+.RI "void \fBreturnToElMenu\fP (void)"
+.br
+.ti -1c
+.RI "void \fBreturnToRngMenu\fP (void)"
+.br
+.ti -1c
+.RI "void \fBnavigateAzimuthMenu\fP (int inputResult)"
+.br
+.ti -1c
+.RI "void \fBnavigateElevationMenu\fP (int inputResult)"
+.br
+.ti -1c
+.RI "void \fBnavigateRangeMenu\fP (int inputResult)"
+.br
+.ti -1c
+.RI "void \fBdispTopOptions\fP (void)"
+.br
+.ti -1c
+.RI "void \fBdisplayMenuSerial\fP ()"
+.br
+.ti -1c
+.RI "void \fBdispAzOptions\fP (void)"
+.br
+.ti -1c
+.RI "void \fBdispElOptions\fP (void)"
+.br
+.ti -1c
+.RI "void \fBdispRngOptions\fP (void)"
+.br
+.ti -1c
+.RI "void \fBdispTempSerialMessage\fP (void)"
+.br
+.ti -1c
+.RI "void \fBdispSerialMessage\fP (void)"
+.br
+.ti -1c
+.RI "void \fBdispLCDTopMenu\fP (int option)"
+.br
+.RI "\fILCD Display Functions\&. \fP"
+.ti -1c
+.RI "void \fBdispLCDAzMenu\fP (int option)"
+.br
+.ti -1c
+.RI "void \fBdispLCDElMenu\fP (int option)"
+.br
+.ti -1c
+.RI "void \fBdispLCDRngMenu\fP (int option)"
+.br
+.ti -1c
+.RI "void \fBdispLCDNum\fP (int option)"
 .br
 .ti -1c
 .RI "void \fBinitialiseMenu\fP (void)"
 .br
 .RI "\fIInitialises the menu system\&. \fP"
 .ti -1c
-.RI "void \fBserviceMenu\fP (void)"
+.RI "char \fBcheckForSerialInput\fP (void)"
 .br
 .RI "\fIservices any user interface with the menu \fP"
 .ti -1c
-.RI "void \fBmenuISR\fP (void)"
+.RI "void \fBserviceMenu\fP (void)"
 .br
-.RI "\fIISR function for the menu subsystem\&. \fP"
+.RI "\fIservices any user interface with the menu \fP"
 .in -1c
 .SS "Variables"
 
 .in +1c
 .ti -1c
-.RI "char \fBtMESSAGE\fP [] = 'Hello 123\\n'"
+.RI "struct \fBmenuStruct\fP \fBtopMenu\fP = {\fBTOP_LEVEL\fP, \fBwelcome\fP, \fBwelcomeLcd\fP,1, 6, 1, \fBdispTopOptions\fP, \fBnavigateTopMenu\fP, \fBdispLCDTopMenu\fP, \fBnoFunction\fP}"
 .br
 .ti -1c
-.RI "char \fBfillerthing\fP [] = '+'"
+.RI "struct \fBmenuStruct\fP \fBAzMenu\fP = {\fBAZ_MENU\fP, \fBazMenu\fP, \fBazMenuLcd\fP,1, 6, 1, \fBdispAzOptions\fP, \fBnavigateAzimuthMenu\fP, \fBdispLCDAzMenu\fP, \fBreturnToTopMenu\fP}"
 .br
 .ti -1c
-.RI "char \fBnewline\fP [] = '\\n'"
+.RI "struct \fBmenuStruct\fP \fBElMenu\fP = {\fBEL_MENU\fP, \fBelMenu\fP, \fBelMenuLcd\fP,1, 6, 1, \fBdispElOptions\fP, \fBnavigateElevationMenu\fP, \fBdispLCDElMenu\fP, \fBreturnToTopMenu\fP}"
 .br
 .ti -1c
-.RI "char \fBchoose\fP [] = '\\tPlease select your option (eg\&. 2): \\n'"
+.RI "struct \fBmenuStruct\fP \fBRangeMenu\fP = {\fBRANGE_MENU\fP, \fBrngMenu\fP, \fBrngMenuLcd\fP,1, 6, 1, \fBdispRngOptions\fP, \fBnavigateRangeMenu\fP, \fBdispLCDRngMenu\fP, \fBreturnToTopMenu\fP}"
 .br
 .ti -1c
-.RI "char \fBgoup\fP [] = '\\tUp a level\\n'"
+.RI "struct \fBmenuStruct\fP \fBAzGoto\fP = {\fBAZ_GOTO\fP, \fBgotoAzAngle\fP, \fBgotoAzAngleLCD\fP,\fBMIN_ANGLE_INFIMUM\fP, \fBMAX_ANGLE_SUPREMUM\fP, 5,\fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToAzMenu\fP}"
+.br
+.RI "\fIRemote/Local Functions\&. \fP"
+.ti -1c
+.RI "struct \fBmenuStruct\fP \fBElGoto\fP = {\fBEL_GOTO\fP, \fBgotoElAngle\fP, \fBgotoELAngleLCD\fP,\fBMIN_ANGLE_INFIMUM\fP, \fBMAX_ANGLE_SUPREMUM\fP, 5,\fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToElMenu\fP}"
 .br
 .ti -1c
-.RI "char \fBwelcome\fP [] = 'Welcome to Yavin IV Defence System'"
+.RI "struct \fBmenuStruct\fP \fBAzMin\fP = {\fBAZ_MIN\fP, \fBminAz1\fP, \fBminAzSetStr\fP,\fBMIN_ANGLE_INFIMUM\fP, \fBMIN_ANGLE_SUPREMUM\fP, 5, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToAzMenu\fP}"
 .br
 .ti -1c
-.RI "char \fBtopoption1\fP [] = '\\t1:\\tAutomatic Tracking\\n'"
+.RI "struct \fBmenuStruct\fP \fBAzMax\fP = {\fBAZ_MAX\fP, \fBmaxAz1\fP, \fBmaxAzSetStr\fP,\fBMAX_ANGLE_INFIMUM\fP, \fBMAX_ANGLE_SUPREMUM\fP, 5, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToAzMenu\fP}"
 .br
 .ti -1c
-.RI "char \fBtopoption2\fP [] = '\\t2:\\tManual Tracking\\n'"
+.RI "struct \fBmenuStruct\fP \fBElMin\fP = {\fBEL_MIN\fP, \fBminEl1\fP, \fBminElSetStr\fP,\fBMIN_ANGLE_INFIMUM\fP, \fBMIN_ANGLE_SUPREMUM\fP, 5, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToElMenu\fP}"
 .br
 .ti -1c
-.RI "char \fBtopoption3\fP [] = '\\t3:\\tStatus\\n'"
+.RI "struct \fBmenuStruct\fP \fBElMax\fP = {\fBEL_MAX\fP, \fBmaxEl1\fP, \fBmaxElSetStr\fP,\fBMAX_ANGLE_INFIMUM\fP, \fBMAX_ANGLE_SUPREMUM\fP, 5, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToElMenu\fP}"
 .br
 .ti -1c
-.RI "char \fBtopoption4\fP [] = '\\t4:\\tGo To Local Mode\\n'"
+.RI "struct \fBmenuStruct\fP \fBRngMin\fP = {\fBRANGE_MIN\fP, \fBminRngSerialStr\fP, \fBminRngSetStr\fP, \fBMIN_RANGE_INFIMUM\fP, \fBMIN_RANGE_SUPREMUM\fP, 50, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToRngMenu\fP}"
 .br
 .ti -1c
-.RI "char \fBtopoption5\fP [] = '\\t5:\\tSleep\\n'"
+.RI "struct \fBmenuStruct\fP \fBRngMax\fP = {\fBRANGE_MAX\fP, \fBmaxRngSerialStr\fP, \fBmaxRngSetStr\fP, \fBMAX_RANGE_INFIMUM\fP, \fBMAX_RANGE_SUPREMUM\fP, 50, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToRngMenu\fP}"
+.br
+.ti -1c
+.RI "struct \fBmenuStruct\fP \fBShowTemp\fP = {\fBSHOW_TEMP\fP, \fBshowTempLCDTitle\fP, \fBshowTempLCDTitle\fP, 0, 0, 0, \fBdispTempSerialMessage\fP, \fBnoFunctionNumeric\fP, \fBnoFunctionNumeric\fP, \fBreturnToTopMenu\fP}"
+.br
+.ti -1c
+.RI "struct \fBmenuStruct\fP \fBm_currentMenu\fP"
+.br
+.ti -1c
+.RI "static \fBuserState\fP \fBm_userMode\fP"
 .br
 .in -1c
-.SH "Macro Definition Documentation"
-.PP 
-.SS "#define auto11   0x10"
-
-.SS "#define height   24"
-
-.SS "#define manu12   0x20"
-
-.SS "#define manugoto121   0x21"
-
-.SS "#define manusetl122   0x22"
-
-.SS "#define manushow123   0x23"
-
-.SS "#define slee15   0x50"
-
-.SS "#define stat13   0x30"
-
-.SS "#define swap14   0x40"
-
-.SS "#define top1   0xFF"
-
-.SS "#define width   80"
-
-.PP
- File: \fBMenusystem\&.c\fP Author:
-.PP
-Description:
-.PP
-Duties:
-.PP
-Functions:
-.PP
-\fBTodo\fP
-.RS 4
-Complete, test and document this code!!!
-.RE
-.PP
-.PP
-Created on 16 September 2014, 6:47 PM 
 .SH "Function Documentation"
 .PP 
-.SS "void clearscreen (charlength)"
+.SS "void autodisp (void)"
 
-.SS "void disptoptions (void)"
+.SS "char checkForSerialInput (void)"
 
+.PP
+services any user interface with the menu 
+.PP
+ Function: waitForInput(void)
+.PP
+Include:
+.PP
+Description: Checks the serial/local buffers for inputs
+.PP
+Arguments: None
+.PP
+Returns: 1 if input has been received, 0 otherwise Wait until the receive buffer is no longer empty Indicating that a command has been passed 
+.SS "void clearScreen ()"
+Clears the Serial display 
+.SS "void configureTimer0 (void)"
+
+.SS "void dispAzOptions ()"
+Display the user options for the Azimuth menu 
+.SS "void dispElOptions ()"
+Display the user options for the Azimuth menu 
+.SS "void displayMenuSerial ()"
+Display the current menu Title and other information over serial 
+.SS "void dispLCDAzMenu (intoption)"
+Displays the current potentiometer reading on the LCD based on the menu options contextualised by the Azimuth menu\&. 
+.SS "void dispLCDElMenu (intoption)"
+Displays the current potentiometer reading on the LCD based on the menu options contextualised by the Elevation menu\&. 
+.SS "void dispLCDNum (intoption)"
+Description: Displays the current converted value from the potentiometer onto the LCD display
+.PP
+Arguments: The integer converted from the ADC 
+.SS "void dispLCDRngMenu (intoption)"
+Displays the current potentiometer reading on the LCD based on the menu options contextualised by the Range menu\&. 
+.SS "void dispLCDTopMenu (intoption)"
+
+.PP
+LCD Display Functions\&. Displays the current potentiometer reading on the LCD based on the menu options contextualised by the Home menu\&. 
+.SS "void dispRngOptions ()"
+Display the user options for the Azimuth menu 
+.SS "void dispSerialMessage (void)"
+Display the menu serial message 
+.SS "void dispTempSerialMessage (void)"
+Display the Show Temperature serial message 
+.SS "void dispTopOptions (void)"
+Display the user options for the top level home menu 
+.SS "void errOutOfRange (intlowerBound, intupperBound)"
+Description: Displays a number out of range error 
 .SS "void filler (charlength)"
 
+.SS "int getLocalInputMenu (intmaxStates, int(*)(int)function)"
+
+.SS "int getLocalPotResult (intmin, intmax, intinterval)"
+Description: Returns the value of the potentiometer on the user interface, given a maximum and minimum value, and the interval between values (eg 10-100 in multiples of 10)\&. 
+.SS "int getSerialNumericInput ()"
+
+.PP
+Waits for input and parses number\&. 
+.PP
+ Function: waitForNumericInput
+.PP
+Include:
+.PP
+Description: Waits in a loop for a user command ended with a new line character\&. Once a command is received, it is converted into the appropriate numeric value that the user has given\&.
+.PP
+Arguments: None
+.PP
+Returns: The integer result of the string input ERR_NOT_NUMERIC for any non-numeric input ERR_NUM_OUT_OF_RANGE for 0 digits or 5+ digits ESC_PRESSED if escape was pressed Get the input string and store it in  
 .SS "void initialiseMenu (void)"
 
 .PP
@@ -183,20 +287,78 @@ Description: initialises the menu system so that it is fully operational
 Arguments: None
 .PP
 Returns: None 
-.SS "void menu (charmenuselect)"
-Call the serial configuration to enable USART Subsysten 
-.SS "void menuISR (void)"
+.SS "char * intToAscii (intnum)"
+Description: Converts a number to a string Can only print numbers under 8 digits 
+.SS "void navigateAzimuthMenu (intinputResult)"
+
+.SS "void navigateElevationMenu (intinputResult)"
+
+.SS "void navigateRangeMenu (intinputResult)"
+
+.SS "void navigateTopMenu (intinputResult)"
+
+.SS "void noFunction (void)"
+
+.SS "void noFunctionNumeric (intinput)"
+
+.SS "static int parseNumeric (char *number)"
 
 .PP
-ISR function for the menu subsystem\&. 
+parses user input string into a number 
 .PP
- Function: \fBmenuISR(void)\fP
+ Function: \fBparseNumeric(char *number)\fP
 .PP
-Include: \fBMenusystem\&.h\fP
+Include:
 .PP
-Description: services any interrupts associated with the menu system
+Description: Converts ASCII input to a number, and records an error for non-numeric input, or if the number is larger than 4 digits\&. No number used by the user in this program will be larger than 4 digits\&.
+.PP
+Arguments: The ASCII string to decode
+.PP
+Returns: The integer result of the string ERR_NOT_NUMERIC for any non-numeric input ERR_NUM_OUT_OF_RANGE for 0 digits or 5+ digits
+.PP
+.PP
+ Function: \fBparseNumeric(char *number)\fP
+.PP
+Include:
+.PP
+Description: Calls the function which matches the user input
 .PP
 Arguments: None
+.PP
+Returns: None 
+.SS "void returnToAzMenu (void)"
+
+.SS "void returnToElMenu (void)"
+
+.SS "void returnToRngMenu (void)"
+
+.SS "void returnToTopMenu (void)"
+
+.SS "void sendNewLine (charlength)"
+: Prints a number of new line (
+.br
+) characters\&. 
+.SS "void sendROM (const static rom char *romchar)"
+
+.PP
+Include: Local to \fBMenusystem\&.c\fP\&. 
+.PP
+ File: \fBMenusystem\&.c\fP Author:
+.PP
+Description:
+.PP
+Duties:
+.PP
+Functions:
+.PP
+Created on 16 September 2014, 6:47 PM
+.PP
+.PP
+ Function: sendROM(void)
+.PP
+: Transmits the given string from ROM over serial
+.PP
+The string to transmit
 .PP
 Returns: None 
 .SS "void serviceMenu (void)"
@@ -212,44 +374,46 @@ Description: Checks if the user has made any inputs to the system\&. If not the 
 .PP
 Arguments: None
 .PP
-Returns: None 
-.SS "void topmenu (void)"
-Display the menu screen via serial wait for/get serial input make decision based on input
+Returns: None If Esc or Back button pressed, return
 .PP
-Wait until the receive buffer is no longer empty
-.PP
-Indicating that a command has been passed
-.PP
-Reset status flag
-.PP
-Get the input string and store it in 
-.PP
-test 
-.SS "void topmenudisp (void)"
+Otherwise Confirm the selection 
+.SS "void setMenu (struct \fBmenuStruct\fPmenu)"
 
+.SS "void setValue (intinput)"
+Description: General funtion for menus which set values (Such as Set Max Range)\&. This calls the appropriate function, and transmits user messages\&. 
 .SH "Variable Documentation"
 .PP 
-.SS "char choose[] = '\\tPlease select your option (eg\&. 2): \\n'"
+.SS "struct \fBmenuStruct\fP AzGoto = {\fBAZ_GOTO\fP, \fBgotoAzAngle\fP, \fBgotoAzAngleLCD\fP,\fBMIN_ANGLE_INFIMUM\fP, \fBMAX_ANGLE_SUPREMUM\fP, 5,\fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToAzMenu\fP}"
 
-.SS "char fillerthing[] = '+'"
+.PP
+Remote/Local Functions\&. 
+.SS "struct \fBmenuStruct\fP AzMax = {\fBAZ_MAX\fP, \fBmaxAz1\fP, \fBmaxAzSetStr\fP,\fBMAX_ANGLE_INFIMUM\fP, \fBMAX_ANGLE_SUPREMUM\fP, 5, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToAzMenu\fP}"
 
-.SS "char goup[] = '\\tUp a level\\n'"
+.SS "struct \fBmenuStruct\fP AzMenu = {\fBAZ_MENU\fP, \fBazMenu\fP, \fBazMenuLcd\fP,1, 6, 1, \fBdispAzOptions\fP, \fBnavigateAzimuthMenu\fP, \fBdispLCDAzMenu\fP, \fBreturnToTopMenu\fP}"
 
-.SS "char newline[] = '\\n'"
+.SS "struct \fBmenuStruct\fP AzMin = {\fBAZ_MIN\fP, \fBminAz1\fP, \fBminAzSetStr\fP,\fBMIN_ANGLE_INFIMUM\fP, \fBMIN_ANGLE_SUPREMUM\fP, 5, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToAzMenu\fP}"
 
-.SS "char tMESSAGE[] = 'Hello 123\\n'"
+.SS "struct \fBmenuStruct\fP ElGoto = {\fBEL_GOTO\fP, \fBgotoElAngle\fP, \fBgotoELAngleLCD\fP,\fBMIN_ANGLE_INFIMUM\fP, \fBMAX_ANGLE_SUPREMUM\fP, 5,\fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToElMenu\fP}"
 
-.SS "char topoption1[] = '\\t1:\\tAutomatic Tracking\\n'"
+.SS "struct \fBmenuStruct\fP ElMax = {\fBEL_MAX\fP, \fBmaxEl1\fP, \fBmaxElSetStr\fP,\fBMAX_ANGLE_INFIMUM\fP, \fBMAX_ANGLE_SUPREMUM\fP, 5, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToElMenu\fP}"
 
-.SS "char topoption2[] = '\\t2:\\tManual Tracking\\n'"
+.SS "struct \fBmenuStruct\fP ElMenu = {\fBEL_MENU\fP, \fBelMenu\fP, \fBelMenuLcd\fP,1, 6, 1, \fBdispElOptions\fP, \fBnavigateElevationMenu\fP, \fBdispLCDElMenu\fP, \fBreturnToTopMenu\fP}"
 
-.SS "char topoption3[] = '\\t3:\\tStatus\\n'"
+.SS "struct \fBmenuStruct\fP ElMin = {\fBEL_MIN\fP, \fBminEl1\fP, \fBminElSetStr\fP,\fBMIN_ANGLE_INFIMUM\fP, \fBMIN_ANGLE_SUPREMUM\fP, 5, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToElMenu\fP}"
 
-.SS "char topoption4[] = '\\t4:\\tGo To Local Mode\\n'"
+.SS "struct \fBmenuStruct\fP m_currentMenu"
+Global variable with the current menu position 
+.SS "\fBuserState\fP m_userMode\fC [static]\fP"
+Global variable with the current user mode: Local, remote or factory 
+.SS "struct \fBmenuStruct\fP RangeMenu = {\fBRANGE_MENU\fP, \fBrngMenu\fP, \fBrngMenuLcd\fP,1, 6, 1, \fBdispRngOptions\fP, \fBnavigateRangeMenu\fP, \fBdispLCDRngMenu\fP, \fBreturnToTopMenu\fP}"
 
-.SS "char topoption5[] = '\\t5:\\tSleep\\n'"
+.SS "struct \fBmenuStruct\fP RngMax = {\fBRANGE_MAX\fP, \fBmaxRngSerialStr\fP, \fBmaxRngSetStr\fP, \fBMAX_RANGE_INFIMUM\fP, \fBMAX_RANGE_SUPREMUM\fP, 50, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToRngMenu\fP}"
 
-.SS "char welcome[] = 'Welcome to Yavin IV Defence System'"
+.SS "struct \fBmenuStruct\fP RngMin = {\fBRANGE_MIN\fP, \fBminRngSerialStr\fP, \fBminRngSetStr\fP, \fBMIN_RANGE_INFIMUM\fP, \fBMIN_RANGE_SUPREMUM\fP, 50, \fBdispSerialMessage\fP, \fBsetValue\fP, \fBdispLCDNum\fP, \fBreturnToRngMenu\fP}"
+
+.SS "struct \fBmenuStruct\fP ShowTemp = {\fBSHOW_TEMP\fP, \fBshowTempLCDTitle\fP, \fBshowTempLCDTitle\fP, 0, 0, 0, \fBdispTempSerialMessage\fP, \fBnoFunctionNumeric\fP, \fBnoFunctionNumeric\fP, \fBreturnToTopMenu\fP}"
+
+.SS "struct \fBmenuStruct\fP topMenu = {\fBTOP_LEVEL\fP, \fBwelcome\fP, \fBwelcomeLcd\fP,1, 6, 1, \fBdispTopOptions\fP, \fBnavigateTopMenu\fP, \fBdispLCDTopMenu\fP, \fBnoFunction\fP}"
 
 .SH "Author"
 .PP 

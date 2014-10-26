@@ -1,16 +1,25 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/User_Interface.h" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h \- 
+Yavin4DefenceSystem/Code/User_Interface.h \- 
 .SH SYNOPSIS
 .br
 .PP
+\fC#include 'Common\&.h'\fP
+.br
+
 .SS "Macros"
 
 .in +1c
 .ti -1c
-.RI "#define \fBUSER_INT\fP   0"
+.RI "#define \fBUSER_INT\fP   (\fBRB_INT\fP || \fBINT0_INT\fP || \fBINT1_INT\fP )"
+.br
+.ti -1c
+.RI "#define \fBCONFIRM_CHAR\fP   0x0D"
+.br
+.ti -1c
+.RI "#define \fBBACK_CHAR\fP   0x1B"
 .br
 .ti -1c
 .RI "#define \fBUSER_H\fP"
@@ -37,12 +46,19 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/User_Interface.h \-
 .ti -1c
 .RI "char \fBuserPeek\fP (void)"
 .br
+.ti -1c
+.RI "unsigned int \fBreadDial\fP (unsigned int max)"
+.br
 .in -1c
 .SH "Macro Definition Documentation"
 .PP 
+.SS "#define BACK_CHAR   0x1B"
+
+.SS "#define CONFIRM_CHAR   0x0D"
+
 .SS "#define USER_H"
 
-.SS "#define USER_INT   0"
+.SS "#define USER_INT   (\fBRB_INT\fP || \fBINT0_INT\fP || \fBINT1_INT\fP )"
 
 .SH "Function Documentation"
 .PP 
@@ -70,6 +86,18 @@ Description: displays the current tracking information
 Arguments: data - Struct which contains all known data concerning the The position of the target\&. A Range of 0 indicates that no target was observed\&.
 .PP
 Returns: None 
+.SS "unsigned int readDial (unsigned intmax)"
+
+.PP
+ Function: readDial(void)
+.PP
+Include:
+.PP
+Description: Read the position of the dial
+.PP
+Arguments: None
+.PP
+Returns: The dial position scaled by 
 .SS "char userEmpty (void)"
 
 .PP

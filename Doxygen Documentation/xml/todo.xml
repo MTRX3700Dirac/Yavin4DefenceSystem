@@ -5,38 +5,14 @@
     <title>Todo List</title>
     <detaileddescription>
 <para><variablelist>
-<varlistentry><term><anchor id="todo_1_todo000007"/>Global <ref refid="PanTilt_8h_1a60e08860a1b4ca9efdc2dd43983731d5" kindref="member">calibratePanTilt</ref>  (<ref refid="structDirection" kindref="compound">Direction</ref> reference)</term></varlistentry>
-<listitem><para>Actually write a function to calibrate the PanTilt, perhaps just offset  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000012"/>Global <ref refid="Range_8c_1a8606bd1052dde0e7c32eddad8699f4f4" kindref="member">calibrateRange</ref>  (unsigned int reference)</term></varlistentry>
-<listitem><para>Make sure this works properly, and does not do bad things in different target states  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000010"/>Global <ref refid="Range_8h_1ac7337ef2da4c9ab03257562ec33bbb8a" kindref="member">configureAD</ref>  (void)</term></varlistentry>
-<listitem><para>Make absolutely sure this works on the minimal board, and with the temperature sensor, and pot and IR sensor  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000005"/>Global <ref refid="PanTilt_8h_1ab7b8c8f7bf051b4f8e3b151f7b567127" kindref="member">configureBase</ref>  (void)</term></varlistentry>
-<listitem><para>Test that configuring the base will send it to the default location (0, 0)  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000001"/>Global <ref refid="LCD_8h_1aecaa9ab68490a0b8dedd20d200d5d0ef" kindref="member">lcdInit</ref>  (void)</term></varlistentry>
+<varlistentry><term><anchor id="todo_1_todo000001"/>File <ref refid="ConfigRegs18f4520_8h" kindref="compound">ConfigRegs18f4520.h</ref>  </term></varlistentry>
+<listitem><para>Consider if Watchdog Timer should be enabled for production code, and add WDT management code if so.</para><para>Consider if Stack Overflow Reset should be enabled for production code. It may be better not to, as there is no re-entrant or recursive code, or dynamic memory allocation here - if the code loads statically it should run.</para><para>Change startup code c016iz.c so that everything (including initialised variables) correctly re-starts if <ref refid="HardUItest_8c_1a6288eba0f8e8ad3ab1544ad731eb7667" kindref="member">main()</ref> ever exits or a BOR or WDT reset occurs.  </para></listitem>
+<varlistentry><term><anchor id="todo_1_todo000004"/>Global <ref refid="LCD_8c_1a6d7066138d22070be0234d8b113cf776" kindref="member">delay</ref>  (unsigned int t)</term></varlistentry>
 <listitem><para>Complete, test, debug and document this code!!! </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000003"/>Global <ref refid="newmain_8c_1acdef7a1fd863a6d3770c1268cb06add3" kindref="member">main</ref>  ()</term></varlistentry>
-<listitem><para>test and debug the Watch Dog Timer functionality  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000006"/>Global <ref refid="PanTilt_8h_1a032fbfc434ca24d27d89b6d768455a42" kindref="member">move</ref>  (<ref refid="structDirection" kindref="compound">Direction</ref> destination)</term></varlistentry>
-<listitem><para>Perhaps non-arbitrary wait period  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000009"/>Global <ref refid="PanTilt_8h_1a7f353056fb02f0d95fd997198f5b186f" kindref="member">panTiltISR</ref>  (void)</term></varlistentry>
-<listitem><para>Ensure that other interrupts and running functionality is not going to affect the timing here  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000013"/>Global <ref refid="Range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>  (void)</term></varlistentry>
-<listitem><para>Implement the sampling rate somehow  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000014"/>Global <ref refid="Range_8c_1a91b55894b9e6d74e4495ea610246c856" kindref="member">rangeIR</ref>  (void)</term></varlistentry>
-<listitem><para>Double check calibration and accuracy </para><para>Make sure the calibration is the same every time, and does not change appreciably  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000011"/>Global <ref refid="Range_8c_1af470fd0f0b96399b344f11783b4ef7f3" kindref="member">rangeUS</ref>  (unsigned char temp)</term></varlistentry>
-<listitem><para>Include temperature read (or get temperature) in Ultrasonic reading </para><para>Double check the calibration and accuracy  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000008"/>Global <ref refid="PanTilt_8h_1a251ee95d75c68e21c4bb933ac99e5108" kindref="member">rawDir</ref>  (void)</term></varlistentry>
-<listitem><para>Test this  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000016"/>Global <ref refid="Temp_8h_1a4946ccbc1990e831667bffded1147c4f" kindref="member">readTempx2</ref>  (void)</term></varlistentry>
-<listitem><para>Test and debug this function  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000015"/>Global <ref refid="Range_8c_1ae7948eddefd58fbe1509d2bade4cd908" kindref="member">sampleIR</ref>  (char numSamples)</term></varlistentry>
-<listitem><para>implement the sample rate somehow  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000004"/>Global <ref refid="newmain_8c_1a562b6fc99e2386f66e66353386d80212" kindref="member">transRange</ref>  (void)</term></varlistentry>
-<listitem><para>Remove this function before the final version  </para></listitem>
-<varlistentry><term><anchor id="todo_1_todo000002"/>Global <ref refid="Menusystem_8c_1a667b04d7fb6ef46db4da4af554c5b6f7" kindref="member">width</ref>  </term></varlistentry>
-<listitem><para>Complete, test and document this code!!!</para></listitem>
+<varlistentry><term><anchor id="todo_1_todo000005"/>Global <ref refid="Range_8h_1aff3698f3a7b3b5963d8e6b305a165d71" kindref="member">range</ref>  (void)</term></varlistentry>
+<listitem><para>Read in temperature for US calculation  </para></listitem>
+<varlistentry><term><anchor id="todo_1_todo000006"/>Global <ref refid="Temp_8h_1a4946ccbc1990e831667bffded1147c4f" kindref="member">readTempx2</ref>  (void)</term></varlistentry>
+<listitem><para>Test and debug this function </para></listitem>
 </variablelist>
 </para>    </detaileddescription>
   </compounddef>

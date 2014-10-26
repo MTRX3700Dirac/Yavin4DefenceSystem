@@ -1,8 +1,8 @@
-.TH "C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "Yavin4DefenceSystem/Code/Serial.h" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h \- 
+Yavin4DefenceSystem/Code/Serial.h \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -47,7 +47,13 @@ C:/Users/Grant/Documents/GitHub/Yavin4DefenceSystem/Code/Serial.h \-
 .RI "char \fBreceiveCR\fP (void)"
 .br
 .ti -1c
+.RI "char \fBreceiveEsc\fP (void)"
+.br
+.ti -1c
 .RI "void \fBreadString\fP (char *string)"
+.br
+.ti -1c
+.RI "void \fBpopEsc\fP (void)"
 .br
 .in -1c
 .SH "Macro Definition Documentation"
@@ -76,6 +82,18 @@ Description: Configures the serial ready for communication
 Arguments: None
 .PP
 Returns: None 
+.SS "void popEsc (void)"
+
+.PP
+ Function: \fBpopEsc(void)\fP
+.PP
+Include:
+.PP
+Description: Processes the Esc command and removes any input before the Esc command\&.
+.PP
+Arguments: None
+.PP
+Returns: 
 .SS "void readString (char *string)"
 
 .PP
@@ -87,7 +105,7 @@ Description: Writes all received data up to a carriage return into given locatio
 .PP
 Arguments: string - Pointer to location to store received data
 .PP
-Returns: Received data up to a carriage return
+Returns: Received data including the carriage return
 .PP
 Remarks: Make sure that you reserve at least BUFFERLENGTH elements at the location pointed to by string before calling this function\&. 
 .SS "char receiveCR (void)"
@@ -114,6 +132,18 @@ Description: Indicates if the receive buffer is empty
 Arguments: None
 .PP
 Returns: returns true if the recieve buffer is empty 
+.SS "char receiveEsc (void)"
+
+.PP
+ Function: \fBreceiveEsc(void)\fP
+.PP
+Include:
+.PP
+Description: Indicates whether an Escape character has been received
+.PP
+Arguments: None
+.PP
+Returns: non-zero if the Esc has been received, zero otherwise 
 .SS "char receivePeek (void)"
 
 .PP

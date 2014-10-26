@@ -48,11 +48,22 @@ var searchData=
   ['an7',['AN7',['../p18f4520_8h.html#a64648fddbfdf871c5d48221ee969230b',1,'p18f4520.h']]],
   ['an8',['AN8',['../p18f4520_8h.html#abbfae8cbd12f0a3d16923d2aaa521b7c',1,'p18f4520.h']]],
   ['an9',['AN9',['../p18f4520_8h.html#a0b73b0a8566abfb960e29b58ab23da23',1,'p18f4520.h']]],
+  ['and',['and',['../MenuDefs_8h.html#a158e4a9523cfcc6e1e200a9a6a14f5f9',1,'and():&#160;MenuDefs.h'],['../Menusystem_8h.html#a158e4a9523cfcc6e1e200a9a6a14f5f9',1,'and():&#160;MenuDefs.h']]],
+  ['anglestr',['angleStr',['../MenuDefs_8h.html#a0a8b550dcd2cf3ed90fbedb18404446c',1,'angleStr():&#160;MenuDefs.h'],['../Menusystem_8h.html#a0a8b550dcd2cf3ed90fbedb18404446c',1,'angleStr():&#160;MenuDefs.h']]],
   ['arcrange',['arcRange',['../PanTilt_8c.html#aef9a9f54b74039d7b9f8789155a3dce6',1,'PanTilt.c']]],
   ['autotrack',['AutoTrack',['../Menusystem2_8c.html#ab7c54bfc8293491beeef98a08b8b56d5',1,'Menusystem2.c']]],
   ['az',['Az',['../Menusystem2_8c.html#a5ff18a829db4a7a11ecea563f8c57861',1,'Menusystem2.c']]],
+  ['azgoto',['AzGoto',['../Menusystem_8c.html#a146add3e3f286525825798267d213e1e',1,'Menusystem.c']]],
   ['azimuth',['azimuth',['../structDirection.html#a866e78e12cb32dcaf1ded89bda8be8f5',1,'Direction::azimuth()'],['../structTrackingData.html#a866e78e12cb32dcaf1ded89bda8be8f5',1,'TrackingData::azimuth()']]],
   ['azimuth_5fangle_5fmax',['azimuth_angle_max',['../PanTilt_8c.html#a66860c53bfe53cb83293dced526226aa',1,'PanTilt.c']]],
   ['azimuth_5fangle_5fmin',['azimuth_angle_min',['../PanTilt_8c.html#a58dfba1b3d8bb3d01daa95c48f4718a8',1,'PanTilt.c']]],
-  ['azimuthdelay',['AzimuthDelay',['../structDelay.html#aacc83952fc6c5812597bc96d622f5317',1,'Delay']]]
+  ['azimuthdelay',['AzimuthDelay',['../structDelay.html#aacc83952fc6c5812597bc96d622f5317',1,'Delay']]],
+  ['azmax',['AzMax',['../Menusystem_8c.html#ad68782ae3168c17238991f23d3303237',1,'Menusystem.c']]],
+  ['azmenu',['azMenu',['../MenuDefs_8h.html#af0410aceeaafeed4193093e2f6ed32cc',1,'azMenu():&#160;MenuDefs.h'],['../Menusystem_8h.html#af0410aceeaafeed4193093e2f6ed32cc',1,'azMenu():&#160;MenuDefs.h'],['../Menusystem_8c.html#af48fe27b102950b409a220944b333792',1,'AzMenu():&#160;Menusystem.c']]],
+  ['azmenulcd',['azMenuLcd',['../MenuDefs_8h.html#a1a92c31ccfeb8eefc39a4f365a1186be',1,'azMenuLcd():&#160;MenuDefs.h'],['../Menusystem_8h.html#a1a92c31ccfeb8eefc39a4f365a1186be',1,'azMenuLcd():&#160;MenuDefs.h']]],
+  ['azmin',['AzMin',['../Menusystem_8c.html#a05de406d11b779ede3b72845d543a078',1,'Menusystem.c']]],
+  ['azoption1',['azOption1',['../MenuDefs_8h.html#a69046a8196b1545ca5f7629fa77af2df',1,'azOption1():&#160;MenuDefs.h'],['../Menusystem_8h.html#a69046a8196b1545ca5f7629fa77af2df',1,'azOption1():&#160;MenuDefs.h']]],
+  ['azoption2',['azOption2',['../MenuDefs_8h.html#ae59528a1a04b130bfba24f38f55e205e',1,'azOption2():&#160;MenuDefs.h'],['../Menusystem_8h.html#ae59528a1a04b130bfba24f38f55e205e',1,'azOption2():&#160;MenuDefs.h']]],
+  ['azoption3',['azOption3',['../MenuDefs_8h.html#a7ae29fbab51b34bf2452c6aa569311ce',1,'azOption3():&#160;MenuDefs.h'],['../Menusystem_8h.html#a7ae29fbab51b34bf2452c6aa569311ce',1,'azOption3():&#160;MenuDefs.h']]],
+  ['azoption4',['azOption4',['../MenuDefs_8h.html#a5cc84655e1232d96cef6582120284479',1,'azOption4():&#160;MenuDefs.h'],['../Menusystem_8h.html#a5cc84655e1232d96cef6582120284479',1,'azOption4():&#160;MenuDefs.h']]]
 ];

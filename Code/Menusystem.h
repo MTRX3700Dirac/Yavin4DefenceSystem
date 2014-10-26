@@ -5,7 +5,6 @@
  * Created on 7 October 2014, 9:56 PM
  */
 
-
 //Global
 extern const rom char newLine[];
 extern const rom char CHOOSE[];

@@ -2,6 +2,8 @@ var searchData=
 [
   ['range_5fh',['RANGE_H',['../Range_8h.html#a4e591dd86c476b236ffdb3c26e266469',1,'Range.h']]],
   ['range_5fint',['RANGE_INT',['../Range_8h.html#acbdd28592e68851fc99aa81a3b917fc9',1,'Range.h']]],
+  ['range_5fir',['range_IR',['../Range_8c.html#a29a8f7ec1da49306cd91012204229f79',1,'Range.c']]],
+  ['range_5fus',['range_US',['../Range_8c.html#ae485e01f6cadccf9f60a617cce776df4',1,'Range.c']]],
   ['rb_5fint',['RB_INT',['../Common_8h.html#afeb5099420bb15f8f59a24c3426de8f1',1,'Common.h']]],
   ['rc_5fint',['RC_INT',['../Common_8h.html#a62ad39277340a9f95c1464e4a4b1b5a1',1,'Common.h']]],
   ['rc_5fint_5fclear',['RC_INT_CLEAR',['../Serial_8c.html#a9607804df44b42159397aeee01326b93',1,'Serial.c']]],

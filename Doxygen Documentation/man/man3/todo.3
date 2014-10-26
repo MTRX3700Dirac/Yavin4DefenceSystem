@@ -1,44 +1,20 @@
-.TH "todo" 3 "Wed Oct 22 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
+.TH "todo" 3 "Sun Oct 26 2014" "Version V1.1" "Yavin IV Death Star Tracker" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 todo \- Todo List 
 
-.IP "\fBGlobal \fBcalibratePanTilt\fP (\fBDirection\fP reference)\fP" 1c
-Actually write a function to calibrate the PanTilt, perhaps just offset  
-.IP "\fBGlobal \fBcalibrateRange\fP (unsigned int reference)\fP" 1c
-Make sure this works properly, and does not do bad things in different target states  
-.IP "\fBGlobal \fBconfigureAD\fP (void)\fP" 1c
-Make absolutely sure this works on the minimal board, and with the temperature sensor, and pot and IR sensor  
-.IP "\fBGlobal \fBconfigureBase\fP (void)\fP" 1c
-Test that configuring the base will send it to the default location (0, 0)  
-.IP "\fBGlobal \fBlcdInit\fP (void)\fP" 1c
+.IP "\fBFile \fBConfigRegs18f4520\&.h\fP \fP" 1c
+Consider if Watchdog Timer should be enabled for production code, and add WDT management code if so\&.
+.PP
+Consider if Stack Overflow Reset should be enabled for production code\&. It may be better not to, as there is no re-entrant or recursive code, or dynamic memory allocation here - if the code loads statically it should run\&.
+.PP
+Change startup code c016iz\&.c so that everything (including initialised variables) correctly re-starts if \fBmain()\fP ever exits or a BOR or WDT reset occurs\&.  
+.IP "\fBGlobal \fBdelay\fP (unsigned int t)\fP" 1c
 Complete, test, debug and document this code!!! 
-.IP "\fBGlobal \fBmain\fP ()\fP" 1c
-test and debug the Watch Dog Timer functionality  
-.IP "\fBGlobal \fBmove\fP (\fBDirection\fP destination)\fP" 1c
-Perhaps non-arbitrary wait period  
-.IP "\fBGlobal \fBpanTiltISR\fP (void)\fP" 1c
-Ensure that other interrupts and running functionality is not going to affect the timing here  
 .IP "\fBGlobal \fBrange\fP (void)\fP" 1c
-Implement the sampling rate somehow  
-.IP "\fBGlobal \fBrangeIR\fP (void)\fP" 1c
-Double check calibration and accuracy 
-.PP
-Make sure the calibration is the same every time, and does not change appreciably  
-.IP "\fBGlobal \fBrangeUS\fP (unsigned char temp)\fP" 1c
-Include temperature read (or get temperature) in Ultrasonic reading 
-.PP
-Double check the calibration and accuracy  
-.IP "\fBGlobal \fBrawDir\fP (void)\fP" 1c
-Test this  
+Read in temperature for US calculation  
 .IP "\fBGlobal \fBreadTempx2\fP (void)\fP" 1c
-Test and debug this function  
-.IP "\fBGlobal \fBsampleIR\fP (char numSamples)\fP" 1c
-implement the sample rate somehow  
-.IP "\fBGlobal \fBtransRange\fP (void)\fP" 1c
-Remove this function before the final version  
-.IP "\fBGlobal \fBwidth\fP \fP" 1c
-Complete, test and document this code!!!
+Test and debug this function 
 .PP
 

@@ -1,9 +1,10 @@
-\hypertarget{Common_8h}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Common.h File Reference}
-\label{Common_8h}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Common.\+h@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+Common.\+h}}
+\hypertarget{Common_8h}{\section{Yavin4\+Defence\+System/\+Code/\+Common.h File Reference}
+\label{Common_8h}\index{Yavin4\+Defence\+System/\+Code/\+Common.\+h@{Yavin4\+Defence\+System/\+Code/\+Common.\+h}}
 }
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
 {\ttfamily \#include $<$stdlib.\+h$>$}\\*
 {\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
 {\ttfamily \#include $<$p18f4520.\+h$>$}\\*
 {\ttfamily \#include $<$timers.\+h$>$}\\*
 {\ttfamily \#include $<$adc.\+h$>$}\\*
@@ -84,6 +85,10 @@ struct \hyperlink{structsystemState}{system\+State}
 \item 
 \#define \hyperlink{Common_8h_ace4d61c3a12d8faab31305402fe1e074}{I\+N\+T0\+\_\+\+I\+N\+T}~(\hyperlink{p18f4520_8h_a9879ca934031776b77a0c19f1dce1b54}{I\+N\+T\+C\+O\+Nbits.\+I\+N\+T0\+I\+F} \&\& \hyperlink{p18f4520_8h_a35711f92541b36401c4a6a1575cb18ea}{I\+N\+T\+C\+O\+Nbits.\+I\+N\+T0\+I\+E})
 \item 
+\#define \hyperlink{Common_8h_ab4f2106ce0c15ddb2520ddba77c07522}{I\+N\+T1\+\_\+\+I\+N\+T}~(\hyperlink{p18f4520_8h_a4e56150cdbcf8dcb0ba5b66a194e49cc}{I\+N\+T\+C\+O\+N3bits.\+I\+N\+T1\+I\+F} \&\& \hyperlink{p18f4520_8h_aa43f84a678c56d6197ff78d6e20de6f3}{I\+N\+T\+C\+O\+N3bits.\+I\+N\+T1\+I\+E})
+\item 
+\#define \hyperlink{Common_8h_ae056543bdef9b9f2c852146d8de1bd92}{I\+N\+T2\+\_\+\+I\+N\+T}~(\hyperlink{p18f4520_8h_a61bc052ba769d17e910f929ea5c9896b}{I\+N\+T\+C\+O\+N3bits.\+I\+N\+T2\+I\+F} \&\& \hyperlink{p18f4520_8h_a40775ef3627f159afeae925fa701ee29}{I\+N\+T\+C\+O\+N3bits.\+I\+N\+T2\+I\+E})
+\item 
 \#define \hyperlink{Common_8h_afeb5099420bb15f8f59a24c3426de8f1}{R\+B\+\_\+\+I\+N\+T}~(\hyperlink{p18f4520_8h_ad8f6df4237b4615b8389534a9bd451da}{I\+N\+T\+C\+O\+Nbits.\+R\+B\+I\+F} \&\& \hyperlink{p18f4520_8h_ab20cb587b32c351a91e1b912ce3e29f4}{I\+N\+T\+C\+O\+Nbits.\+R\+B\+I\+E})
 \item 
 \#define \hyperlink{Common_8h_af6baae9385e65b47397c25f253cd8893}{T\+M\+R2\+\_\+\+I\+N\+T}~(\hyperlink{p18f4520_8h_a3e1791e78ad5d0e6b89e44e50c74f2c6}{P\+I\+R1bits.\+T\+M\+R2\+I\+F} \&\& \hyperlink{p18f4520_8h_a2616057e89e17857a0232b45825b8a4a}{P\+I\+E1bits.\+T\+M\+R2\+I\+E})
@@ -105,10 +110,6 @@ struct \hyperlink{structsystemState}{system\+State}
 \#define \hyperlink{Common_8h_ae8aa3ab3a23a388dab62ac86ee5e2545}{C\+C\+P1\+\_\+\+C\+L\+E\+A\+R}~(\hyperlink{p18f4520_8h_a6daa84b9e3f6496da3121a80506f444e}{P\+I\+R1bits.\+C\+C\+P1\+I\+F} = 0)
 \item 
 \#define \hyperlink{Common_8h_a4e461245300e8ea7e5c6af0741a33855}{C\+C\+P2\+\_\+\+C\+L\+E\+A\+R}~(\hyperlink{p18f4520_8h_a7d689151681a8a50c953ecefd618eeb4}{P\+I\+R2bits.\+C\+C\+P2\+I\+F} = 0)
-\item 
-\#define \hyperlink{Common_8h_adec3f206eb531c41e22d3c5c274d4f6a}{W\+D\+T\+\_\+\+E\+N}~\hyperlink{p18f4520_8h_a497ebe7d2a2605c811b394ff1d158fef}{W\+D\+T\+C\+O\+Nbits.\+S\+W\+D\+T\+E} = 1; \hyperlink{p18f4520_8h_ad336e4fd3e892bd5d33157de4abd75f4}{W\+D\+T\+C\+O\+Nbits.\+S\+W\+D\+T\+E\+N} = 1;
-\item 
-\#define \hyperlink{Common_8h_add818f0aac38c42e0b7010b486e9d94a}{W\+D\+T\+\_\+\+C\+L\+R}~\+\_\+asm C\+L\+R\+W\+D\+T \+\_\+endasm
 \item 
 \#define \hyperlink{Common_8h_a3be7ef61d339af381862a81d4b363efb}{C\+L\+O\+C\+K}~10000000
 \begin{DoxyCompactList}\small\item\em Dfine the clock rate and F\+O\+S\+C\+\_\+4. \end{DoxyCompactList}\item 
@@ -272,6 +273,12 @@ Efficient Division macros based on bit shifting, Cannot be used on negative numb
 \hypertarget{Common_8h_ace4d61c3a12d8faab31305402fe1e074}{\index{Common.\+h@{Common.\+h}!I\+N\+T0\+\_\+\+I\+N\+T@{I\+N\+T0\+\_\+\+I\+N\+T}}
 \index{I\+N\+T0\+\_\+\+I\+N\+T@{I\+N\+T0\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{I\+N\+T0\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+T0\+\_\+\+I\+N\+T~({\bf I\+N\+T\+C\+O\+Nbits.\+I\+N\+T0\+I\+F} \&\& {\bf I\+N\+T\+C\+O\+Nbits.\+I\+N\+T0\+I\+E})}}\label{Common_8h_ace4d61c3a12d8faab31305402fe1e074}
+\hypertarget{Common_8h_ab4f2106ce0c15ddb2520ddba77c07522}{\index{Common.\+h@{Common.\+h}!I\+N\+T1\+\_\+\+I\+N\+T@{I\+N\+T1\+\_\+\+I\+N\+T}}
+\index{I\+N\+T1\+\_\+\+I\+N\+T@{I\+N\+T1\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
+\subsubsection[{I\+N\+T1\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+T1\+\_\+\+I\+N\+T~({\bf I\+N\+T\+C\+O\+N3bits.\+I\+N\+T1\+I\+F} \&\& {\bf I\+N\+T\+C\+O\+N3bits.\+I\+N\+T1\+I\+E})}}\label{Common_8h_ab4f2106ce0c15ddb2520ddba77c07522}
+\hypertarget{Common_8h_ae056543bdef9b9f2c852146d8de1bd92}{\index{Common.\+h@{Common.\+h}!I\+N\+T2\+\_\+\+I\+N\+T@{I\+N\+T2\+\_\+\+I\+N\+T}}
+\index{I\+N\+T2\+\_\+\+I\+N\+T@{I\+N\+T2\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
+\subsubsection[{I\+N\+T2\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+T2\+\_\+\+I\+N\+T~({\bf I\+N\+T\+C\+O\+N3bits.\+I\+N\+T2\+I\+F} \&\& {\bf I\+N\+T\+C\+O\+N3bits.\+I\+N\+T2\+I\+E})}}\label{Common_8h_ae056543bdef9b9f2c852146d8de1bd92}
 \hypertarget{Common_8h_ab3771f37588656c8d037de34edf2a88f}{\index{Common.\+h@{Common.\+h}!L\+V\+D\+\_\+\+I\+N\+T@{L\+V\+D\+\_\+\+I\+N\+T}}
 \index{L\+V\+D\+\_\+\+I\+N\+T@{L\+V\+D\+\_\+\+I\+N\+T}!Common.\+h@{Common.\+h}}
 \subsubsection[{L\+V\+D\+\_\+\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+V\+D\+\_\+\+I\+N\+T~({\bf P\+I\+R2bits.\+L\+V\+D\+I\+F} \&\& {\bf P\+I\+E2bits.\+L\+V\+D\+I\+E})}}\label{Common_8h_ab3771f37588656c8d037de34edf2a88f}
@@ -346,12 +353,6 @@ Swaps the values in two variables.
 
 Interrupt macros. 
 
-\hypertarget{Common_8h_add818f0aac38c42e0b7010b486e9d94a}{\index{Common.\+h@{Common.\+h}!W\+D\+T\+\_\+\+C\+L\+R@{W\+D\+T\+\_\+\+C\+L\+R}}
-\index{W\+D\+T\+\_\+\+C\+L\+R@{W\+D\+T\+\_\+\+C\+L\+R}!Common.\+h@{Common.\+h}}
-\subsubsection[{W\+D\+T\+\_\+\+C\+L\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+D\+T\+\_\+\+C\+L\+R~\+\_\+asm C\+L\+R\+W\+D\+T \+\_\+endasm}}\label{Common_8h_add818f0aac38c42e0b7010b486e9d94a}
-\hypertarget{Common_8h_adec3f206eb531c41e22d3c5c274d4f6a}{\index{Common.\+h@{Common.\+h}!W\+D\+T\+\_\+\+E\+N@{W\+D\+T\+\_\+\+E\+N}}
-\index{W\+D\+T\+\_\+\+E\+N@{W\+D\+T\+\_\+\+E\+N}!Common.\+h@{Common.\+h}}
-\subsubsection[{W\+D\+T\+\_\+\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+D\+T\+\_\+\+E\+N~{\bf W\+D\+T\+C\+O\+Nbits.\+S\+W\+D\+T\+E} = 1; {\bf W\+D\+T\+C\+O\+Nbits.\+S\+W\+D\+T\+E\+N} = 1;}}\label{Common_8h_adec3f206eb531c41e22d3c5c274d4f6a}
 
 
 \subsection{Enumeration Type Documentation}

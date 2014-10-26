@@ -1,6 +1,7 @@
 <map id="move" name="move">
-<area shape="rect" id="node2" href="$PanTilt_8h.html#af8e57fbe1513bb48274f4f0f46717fa1" title="increment" alt="" coords="105,5,184,32"/>
-<area shape="rect" id="node5" href="$Tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30" title="track" alt="" coords="237,56,288,83"/>
-<area shape="rect" id="node3" href="$Tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9" title="search" alt="" coords="232,5,293,32"/>
-<area shape="rect" id="node4" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="341,31,392,57"/>
+<area shape="rect" id="node2" href="$Menusystem_8c.html#abd46c913c8c99480b9cdd7e0dfa42c4e" title="setValue" alt="" coords="108,5,181,32"/>
+<area shape="rect" id="node3" href="$PanTilt_8h.html#af8e57fbe1513bb48274f4f0f46717fa1" title="increment" alt="" coords="105,56,184,83"/>
+<area shape="rect" id="node6" href="$Tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30" title="track" alt="" coords="237,107,288,133"/>
+<area shape="rect" id="node4" href="$Tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9" title="search" alt="" coords="232,56,293,83"/>
+<area shape="rect" id="node5" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="341,81,392,108"/>
 </map>

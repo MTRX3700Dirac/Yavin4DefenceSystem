@@ -14,10 +14,12 @@
 #include "Common.h"
 #include "Serial.h"
 #include "User_Interface.h"
+#include "Menusystem.h"
 #include "LCD.h"
 #include "Range.h"
 #include "PanTilt.h"
 #include "Temp.h"
+#include "Menu_Strings.h"
 
 #include "MenuDefs.h"
 
@@ -212,7 +214,7 @@ void filler(char length) {
 void initialiseMenu(void) {
     m_userMode = REMOTE;
     configureSerial();
-    lcdInit();
+    configLCD();
     configUSER();
     setMenu(topMenu);
 }

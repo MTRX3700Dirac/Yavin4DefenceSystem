@@ -10,5 +10,7 @@ var searchData=
   ['clock',['CLOCK',['../Common_8h.html#a3be7ef61d339af381862a81d4b363efb',1,'Common.h']]],
   ['clrwdt',['ClrWdt',['../p18f4520_8h.html#afd3d2a511a2e746319056241f430ba70',1,'p18f4520.h']]],
   ['common_5fh',['COMMON_H',['../Common_8h.html#a0a1448a83b84de478fdbd7612e81acb1',1,'Common.h']]],
+  ['confirm_5fchar',['CONFIRM_CHAR',['../User__Interface_8h.html#adead3849e015340318de05db13537485',1,'User_Interface.h']]],
+  ['confirm_5fpress',['CONFIRM_PRESS',['../User__Interface_8c.html#ab793b8cea43e768f35f4c40e0069b47c',1,'User_Interface.c']]],
   ['cr',['CR',['../Serial_8c.html#a876ce77f3c672c7162658151e648389e',1,'Serial.c']]]
 ];

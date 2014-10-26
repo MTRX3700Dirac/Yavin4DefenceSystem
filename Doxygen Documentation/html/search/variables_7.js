@@ -9,5 +9,12 @@ var searchData=
   ['go',['GO',['../p18f4520_8h.html#a97893a02fc1a52be51f5d1c9a7d14f94',1,'p18f4520.h']]],
   ['go_5fdone',['GO_DONE',['../p18f4520_8h.html#a40275ed8e7bb39b33ba1801a3c0980e6',1,'p18f4520.h']]],
   ['go_5fnot_5fdone',['GO_NOT_DONE',['../p18f4520_8h.html#a1d2f91e7e539fe8ff3d57b2da1b59af0',1,'p18f4520.h']]],
-  ['goup',['goup',['../Menusystem_8c.html#a009126ac947a1079b52555366ac7b7f3',1,'Menusystem.c']]]
+  ['good_5ftracks',['good_tracks',['../structTargetStateData.html#a14c96a3f499b71215ea44a6212573c31',1,'TargetStateData']]],
+  ['gotoangle2',['gotoAngle2',['../MenuDefs_8h.html#ae5ad0cd48aae0c50a7953273ebd85dad',1,'gotoAngle2():&#160;MenuDefs.h'],['../Menusystem_8h.html#ae5ad0cd48aae0c50a7953273ebd85dad',1,'gotoAngle2():&#160;MenuDefs.h']]],
+  ['gotoazangle',['gotoAzAngle',['../MenuDefs_8h.html#af08ae36d6761047ce0e7cec4d5a768fc',1,'gotoAzAngle():&#160;MenuDefs.h'],['../Menusystem_8h.html#af08ae36d6761047ce0e7cec4d5a768fc',1,'gotoAzAngle():&#160;MenuDefs.h']]],
+  ['gotoazanglelcd',['gotoAzAngleLCD',['../MenuDefs_8h.html#a2e34ffaa5831640472cc470b1e92b914',1,'gotoAzAngleLCD():&#160;MenuDefs.h'],['../Menusystem_8h.html#a2e34ffaa5831640472cc470b1e92b914',1,'gotoAzAngleLCD():&#160;MenuDefs.h']]],
+  ['gotoelangle',['gotoElAngle',['../MenuDefs_8h.html#a0bcfa136f866b44f9a0a0957bf424c45',1,'gotoElAngle():&#160;MenuDefs.h'],['../Menusystem_8h.html#a0bcfa136f866b44f9a0a0957bf424c45',1,'gotoElAngle():&#160;MenuDefs.h']]],
+  ['gotoelanglelcd',['gotoELAngleLCD',['../MenuDefs_8h.html#a80fb9d027a27545fc0b67e0ecd653ddd',1,'gotoELAngleLCD():&#160;MenuDefs.h'],['../Menusystem_8h.html#a80fb9d027a27545fc0b67e0ecd653ddd',1,'gotoELAngleLCD():&#160;MenuDefs.h']]],
+  ['goup',['goUp',['../MenuDefs_8h.html#a7486ea443917f593fdf8335e166ef5a5',1,'goUp():&#160;MenuDefs.h'],['../Menusystem_8h.html#a7486ea443917f593fdf8335e166ef5a5',1,'goUp():&#160;MenuDefs.h']]],
+  ['goup2',['goUp2',['../MenuDefs_8h.html#ae283ceb6858b52420406c05644db9a7a',1,'goUp2():&#160;MenuDefs.h'],['../Menusystem_8h.html#ae283ceb6858b52420406c05644db9a7a',1,'goUp2():&#160;MenuDefs.h']]]
 ];

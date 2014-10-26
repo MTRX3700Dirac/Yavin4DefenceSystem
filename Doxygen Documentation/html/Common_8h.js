@@ -28,6 +28,8 @@ var Common_8h =
     [ "DIV_8", "Common_8h.html#a4f978d22e3309b4121d0a95a74a1faba", null ],
     [ "FOSC_4", "Common_8h.html#a644329678dec72e39b8847963e59c35d", null ],
     [ "INT0_INT", "Common_8h.html#ace4d61c3a12d8faab31305402fe1e074", null ],
+    [ "INT1_INT", "Common_8h.html#ab4f2106ce0c15ddb2520ddba77c07522", null ],
+    [ "INT2_INT", "Common_8h.html#ae056543bdef9b9f2c852146d8de1bd92", null ],
     [ "LVD_INT", "Common_8h.html#ab3771f37588656c8d037de34edf2a88f", null ],
     [ "MNML", "Common_8h.html#ad0d718ce41d188a939567abd92667796", null ],
     [ "NEXT_STATE", "Common_8h.html#ad9fa804805fca2632643680804f7e911", null ],
@@ -41,8 +43,6 @@ var Common_8h =
     [ "TMR2_INT", "Common_8h.html#af6baae9385e65b47397c25f253cd8893", null ],
     [ "TMR3_INT", "Common_8h.html#a37a3fed60a18eefca9f30c8929272a35", null ],
     [ "TX_INT", "Common_8h.html#aef3509d0d4bc8291df1b76f894a1e251", null ],
-    [ "WDT_CLR", "Common_8h.html#add818f0aac38c42e0b7010b486e9d94a", null ],
-    [ "WDT_EN", "Common_8h.html#adec3f206eb531c41e22d3c5c274d4f6a", null ],
     [ "possible_states", "Common_8h.html#a05931287b056487cf89495f39026fbe1", [
       [ "UNDEF", "Common_8h.html#a05931287b056487cf89495f39026fbe1a632fa39438c1676b435ec43e6a0f9647", null ],
       [ "INIT", "Common_8h.html#a05931287b056487cf89495f39026fbe1a0cb1b2c6a7db1f1084886c98909a3f36", null ],

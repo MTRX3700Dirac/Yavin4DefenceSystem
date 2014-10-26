@@ -8,6 +8,8 @@ var searchData=
   ['init_5fpin',['INIT_PIN',['../Range_8c.html#a885e4c51dcc91fcae14dadc2d564f270',1,'Range.c']]],
   ['init_5ftris',['INIT_TRIS',['../Range_8c.html#a6e6430371976f713ccccb6372b19b810',1,'Range.c']]],
   ['int0_5fint',['INT0_INT',['../Common_8h.html#ace4d61c3a12d8faab31305402fe1e074',1,'Common.h']]],
+  ['int1_5fint',['INT1_INT',['../Common_8h.html#ab4f2106ce0c15ddb2520ddba77c07522',1,'Common.h']]],
+  ['int2_5fint',['INT2_INT',['../Common_8h.html#ae056543bdef9b9f2c852146d8de1bd92',1,'Common.h']]],
   ['intsavelocs',['INTSAVELOCS',['../p18f4520_8h.html#a6fbafc3b67b7d1c9fb155337955dc9cc',1,'p18f4520.h']]],
   ['ir_5fconv',['IR_CONV',['../Range_8c.html#a13235bb583d24031d4129a10c126ef8e',1,'Range.c']]]
 ];

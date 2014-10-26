@@ -1,10 +1,11 @@
 <map id="direction2Delay" name="direction2Delay">
-<area shape="rect" id="node2" href="$PanTilt_8h.html#ab7b8c8f7bf051b4f8e3b151f7b567127" title="configureBase" alt="" coords="164,5,268,32"/>
-<area shape="rect" id="node6" href="$PanTilt_8h.html#a032fbfc434ca24d27d89b6d768455a42" title="move" alt="" coords="190,56,242,83"/>
+<area shape="rect" id="node2" href="$PanTilt_8h.html#ab7b8c8f7bf051b4f8e3b151f7b567127" title="configureBase" alt="" coords="164,19,268,45"/>
+<area shape="rect" id="node6" href="$PanTilt_8h.html#a032fbfc434ca24d27d89b6d768455a42" title="move" alt="" coords="190,95,242,121"/>
 <area shape="rect" id="node3" href="$Tracking_8h.html#ac9b1c5bae39806310b74e2f69d9ee3b6" title="configureTracking" alt="" coords="316,5,439,32"/>
-<area shape="rect" id="node4" href="$newmain_8c.html#a1ff28a3e20f1261c410c00f62e9f9c33" title="initialization" alt="" coords="487,5,577,32"/>
-<area shape="rect" id="node5" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="625,56,676,83"/>
-<area shape="rect" id="node7" href="$PanTilt_8h.html#af8e57fbe1513bb48274f4f0f46717fa1" title="increment" alt="" coords="338,56,417,83"/>
-<area shape="rect" id="node9" href="$Tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30" title="track" alt="" coords="507,107,557,133"/>
-<area shape="rect" id="node8" href="$Tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9" title="search" alt="" coords="501,56,563,83"/>
+<area shape="rect" id="node4" href="$newmain_8c.html#a1ff28a3e20f1261c410c00f62e9f9c33" title="initialization" alt="" coords="487,31,577,57"/>
+<area shape="rect" id="node5" href="$newmain_8c.html#acdef7a1fd863a6d3770c1268cb06add3" title="Program entry point. " alt="" coords="625,107,676,133"/>
+<area shape="rect" id="node7" href="$Menusystem_8c.html#abd46c913c8c99480b9cdd7e0dfa42c4e" title="setValue" alt="" coords="341,56,414,83"/>
+<area shape="rect" id="node8" href="$PanTilt_8h.html#af8e57fbe1513bb48274f4f0f46717fa1" title="increment" alt="" coords="338,107,417,133"/>
+<area shape="rect" id="node10" href="$Tracking_8h.html#a4f0ebbcddf842d008fbfebb705374c30" title="track" alt="" coords="507,157,557,184"/>
+<area shape="rect" id="node9" href="$Tracking_8h.html#ac80b505821d79e98e9108b12d12c5db9" title="search" alt="" coords="501,107,563,133"/>
 </map>

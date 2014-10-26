@@ -1,9 +1,9 @@
-\hypertarget{LCD_8c}{\section{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+L\+C\+D.c File Reference}
-\label{LCD_8c}\index{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+L\+C\+D.\+c@{C\+:/\+Users/\+Grant/\+Documents/\+Git\+Hub/\+Yavin4\+Defence\+System/\+Code/\+L\+C\+D.\+c}}
+\hypertarget{LCD_8c}{\section{Yavin4\+Defence\+System/\+Code/\+L\+C\+D.c File Reference}
+\label{LCD_8c}\index{Yavin4\+Defence\+System/\+Code/\+L\+C\+D.\+c@{Yavin4\+Defence\+System/\+Code/\+L\+C\+D.\+c}}
 }
 {\ttfamily \#include \char`\"{}Common.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}L\+C\+D.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}L\+C\+D\+\_\+defs.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$delays.\+h$>$}\\*
 Include dependency graph for L\+C\+D.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -14,17 +14,17 @@ Include dependency graph for L\+C\+D.\+c\+:\nopagebreak
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{LCD_8c_aecaa9ab68490a0b8dedd20d200d5d0ef}{lcd\+Init} (void)
-\begin{DoxyCompactList}\small\item\em Initialises the L\+C\+D so that it can be used. \end{DoxyCompactList}\item 
-char \hyperlink{LCD_8c_a9f693f2e175a1192aebfeb586ed0fd6f}{lcd\+Busy} (void)
-\begin{DoxyCompactList}\small\item\em Include\+: \end{DoxyCompactList}\item 
 void \hyperlink{LCD_8c_a6d7066138d22070be0234d8b113cf776}{delay} (unsigned int t)
+\begin{DoxyCompactList}\small\item\em Include\+: \end{DoxyCompactList}\item 
+char \hyperlink{LCD_8c_a9f693f2e175a1192aebfeb586ed0fd6f}{lcd\+Busy} (void)
 \begin{DoxyCompactList}\small\item\em Include\+: \end{DoxyCompactList}\item 
 void \hyperlink{LCD_8c_a500de059df24a647c81d895c38625d6c}{lcd\+Write} (unsigned char byte, unsigned char mode)
 \begin{DoxyCompactList}\small\item\em Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}. \end{DoxyCompactList}\item 
-void \hyperlink{LCD_8c_a70a8f1041fdd13688a8f8e9fd897ccda}{lcd\+Write\+String} (char $\ast$string, unsigned char line)
-\begin{DoxyCompactList}\small\item\em Feed character string, and line (1 or 2) \end{DoxyCompactList}\item 
-void \hyperlink{LCD_8c_a69bb3d698d74da5ea85d8a455dbb3b28}{lcd\+Write\+Char} (unsigned char byte, unsigned char line, unsigned char column)
+void \hyperlink{LCD_8c_aecaa9ab68490a0b8dedd20d200d5d0ef}{lcd\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initialises the L\+C\+D so that it can be used. \end{DoxyCompactList}\item 
+void \hyperlink{LCD_8c_aca72620ac93e9ea1cca303ba51934e47}{lcd\+Write\+String} (char $\ast$string, char line)
+\begin{DoxyCompactList}\small\item\em Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}. \end{DoxyCompactList}\item 
+void \hyperlink{LCD_8c_a8b2a2dadc77b13c3a26fb69b26a5792e}{lcd\+Write\+Char} (char byte, char line, char column)
 \begin{DoxyCompactList}\small\item\em Feed character, line (1 or 2), and column(1-\/16) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -39,6 +39,20 @@ void \hyperlink{LCD_8c_a69bb3d698d74da5ea85d8a455dbb3b28}{lcd\+Write\+Char} (uns
 
 
 Include\+: 
+
+
+
+ File\+: \hyperlink{User__Interface_8c}{User\+\_\+\+Interface.\+c} Author\+:
+
+Description\+: Contains all the interface to the L\+C\+D hardware
+
+Duties\+: -\/\+Interfaces with and controls the L\+C\+D -\/\+Displays data on the L\+C\+D
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]Complete, test, debug and document this code!!!\end{DoxyRefDesc}
+
+
+Created on 15 September 2014, 1\+:21 P\+M
 
 
 
@@ -135,20 +149,6 @@ Feed character, line (1 or 2), and column(1-\/16)
 
 
 
- File\+: \hyperlink{User__Interface_8c}{User\+\_\+\+Interface.\+c} Author\+:
-
-Description\+: Contains all the interface to the L\+C\+D hardware
-
-Duties\+: -\/\+Interfaces with and controls the L\+C\+D -\/\+Displays data on the L\+C\+D
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000001}{Todo}]Complete, test, debug and document this code!!!\end{DoxyRefDesc}
-
-
-Created on 15 September 2014, 1\+:21 P\+M
-
-
-
  Function\+: \hyperlink{LCD_8h_aecaa9ab68490a0b8dedd20d200d5d0ef}{lcd\+Init(void)}
 
 Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}
@@ -163,7 +163,7 @@ Set control lines low
 
 8 bits, 2 lines, 5x7 dots, 0x38
 
-Display on, cursor off, blinking on (Z, 0x0\+F)
+Display on, cursor off, blinking off (Z, 0x0\+F)
 
 Cursor moves right?, display not shift (Z, 0x04)
 
@@ -184,7 +184,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=234pt]{LCD_8c_aecaa9ab68490a0b8dedd20d200d5d0ef_icgraph}
+\includegraphics[width=308pt]{LCD_8c_aecaa9ab68490a0b8dedd20d200d5d0ef_icgraph}
 \end{center}
 \end{figure}
 
@@ -237,15 +237,15 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
-\hypertarget{LCD_8c_a69bb3d698d74da5ea85d8a455dbb3b28}{\index{L\+C\+D.\+c@{L\+C\+D.\+c}!lcd\+Write\+Char@{lcd\+Write\+Char}}
+\hypertarget{LCD_8c_a8b2a2dadc77b13c3a26fb69b26a5792e}{\index{L\+C\+D.\+c@{L\+C\+D.\+c}!lcd\+Write\+Char@{lcd\+Write\+Char}}
 \index{lcd\+Write\+Char@{lcd\+Write\+Char}!L\+C\+D.\+c@{L\+C\+D.\+c}}
 \subsubsection[{lcd\+Write\+Char}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+Write\+Char (
 \begin{DoxyParamCaption}
-\item[{unsigned char}]{byte, }
-\item[{unsigned char}]{line, }
-\item[{unsigned char}]{column}
+\item[{char}]{byte, }
+\item[{char}]{line, }
+\item[{char}]{column}
 \end{DoxyParamCaption}
-)}}\label{LCD_8c_a69bb3d698d74da5ea85d8a455dbb3b28}
+)}}\label{LCD_8c_a8b2a2dadc77b13c3a26fb69b26a5792e}
 
 
 Feed character, line (1 or 2), and column(1-\/16) 
@@ -254,7 +254,7 @@ Feed character string, and line (1 or 2)
 
 
 
- Function\+: \hyperlink{LCD_8h_a69bb3d698d74da5ea85d8a455dbb3b28}{lcd\+Write\+Char(unsigned char byte, unsigned char line, unsigned char column)}
+ Function\+: lcd\+Write\+Char(unsigned char byte, unsigned char line, unsigned char column)
 
 Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}
 
@@ -262,47 +262,24 @@ Description\+:
 
 Arguments\+: byte -\/ line -\/ column -\/
 
-Returns\+: None 
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{LCD_8c_a69bb3d698d74da5ea85d8a455dbb3b28_cgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{LCD_8c_a70a8f1041fdd13688a8f8e9fd897ccda}{\index{L\+C\+D.\+c@{L\+C\+D.\+c}!lcd\+Write\+String@{lcd\+Write\+String}}
+Returns\+: None\+Feed character, line (1 or 2), and column(1-\/16) \hypertarget{LCD_8c_aca72620ac93e9ea1cca303ba51934e47}{\index{L\+C\+D.\+c@{L\+C\+D.\+c}!lcd\+Write\+String@{lcd\+Write\+String}}
 \index{lcd\+Write\+String@{lcd\+Write\+String}!L\+C\+D.\+c@{L\+C\+D.\+c}}
 \subsubsection[{lcd\+Write\+String}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+Write\+String (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{string, }
-\item[{unsigned char}]{line}
+\item[{char}]{line}
 \end{DoxyParamCaption}
-)}}\label{LCD_8c_a70a8f1041fdd13688a8f8e9fd897ccda}
+)}}\label{LCD_8c_aca72620ac93e9ea1cca303ba51934e47}
 
 
-Feed character string, and line (1 or 2) 
+Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}. 
 
 
 
- Function\+: \hyperlink{LCD_8c_a70a8f1041fdd13688a8f8e9fd897ccda}{lcd\+Write\+String(char $\ast$string, unsigned char line)}
-
-Include\+: \hyperlink{LCD_8h}{L\+C\+D.\+h}
+ Function\+: lcd\+Write\+String(char $\ast$string, unsigned char line)
 
 Description\+:
 
 Arguments\+: string -\/ line -\/
 
-Returns\+: None 
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{LCD_8c_a70a8f1041fdd13688a8f8e9fd897ccda_cgraph}
-\end{center}
-\end{figure}
-
-
+Returns\+: None\+Feed character string, and line (1 or 2) Also include information about which row 

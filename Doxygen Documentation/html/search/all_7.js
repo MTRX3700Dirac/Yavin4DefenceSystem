@@ -2,10 +2,13 @@ var searchData=
 [
   ['gcen',['GCEN',['../p18f4520_8h.html#ad78199700673d1b061fded298551acf7',1,'p18f4520.h']]],
   ['getdir',['getDir',['../PanTilt_8c.html#ad1d9638bad5a5021969d19769e70c775',1,'getDir(void):&#160;PanTilt.c'],['../PanTilt_8h.html#ad1d9638bad5a5021969d19769e70c775',1,'getDir(void):&#160;PanTilt.c']]],
+  ['getlocalinputmenu',['getLocalInputMenu',['../Menusystem_8c.html#a8ad24eca1f986bb074931fc811f84045',1,'Menusystem.c']]],
+  ['getlocalpotresult',['getLocalPotResult',['../Menusystem_8c.html#a1b85c6297d06880716723d3be78a24d6',1,'Menusystem.c']]],
   ['getmaxazimuthangle',['getMaxAzimuthAngle',['../PanTilt_8c.html#ae8f9ea5919de15d1b5614be2e5e65be3',1,'getMaxAzimuthAngle(void):&#160;PanTilt.c'],['../PanTilt_8h.html#ae8f9ea5919de15d1b5614be2e5e65be3',1,'getMaxAzimuthAngle(void):&#160;PanTilt.c']]],
   ['getmaxelevationangle',['getMaxElevationAngle',['../PanTilt_8c.html#a4278dbef7fe9034a7a54d02bcbb16de9',1,'getMaxElevationAngle(void):&#160;PanTilt.c'],['../PanTilt_8h.html#a4278dbef7fe9034a7a54d02bcbb16de9',1,'getMaxElevationAngle(void):&#160;PanTilt.c']]],
   ['getminazimuthangle',['getMinAzimuthAngle',['../PanTilt_8c.html#af45dd498eebe7f5ba7b228c15e7221c1',1,'getMinAzimuthAngle(void):&#160;PanTilt.c'],['../PanTilt_8h.html#af45dd498eebe7f5ba7b228c15e7221c1',1,'getMinAzimuthAngle(void):&#160;PanTilt.c']]],
   ['getminelevationangle',['getMinElevationAngle',['../PanTilt_8c.html#af7fafa63e9c645a80f28aca253bba5cc',1,'getMinElevationAngle(void):&#160;PanTilt.c'],['../PanTilt_8h.html#af7fafa63e9c645a80f28aca253bba5cc',1,'getMinElevationAngle(void):&#160;PanTilt.c']]],
+  ['getserialnumericinput',['getSerialNumericInput',['../Menusystem_8c.html#a8b63a4216144880e0f72493bb99327b9',1,'Menusystem.c']]],
   ['gettargetstate',['getTargetState',['../Range_8c.html#a3e5554f5a076ded63b937d50b7e5c9db',1,'getTargetState(void):&#160;Range.c'],['../Range_8h.html#a3e5554f5a076ded63b937d50b7e5c9db',1,'getTargetState(void):&#160;Range.c']]],
   ['gettemp',['getTemp',['../Temp_8c.html#a31747860f4fe18bee4fc23c0d33b17d7',1,'getTemp(void):&#160;Temp.c'],['../Temp_8h.html#a31747860f4fe18bee4fc23c0d33b17d7',1,'getTemp(void):&#160;Temp.c']]],
   ['gie',['GIE',['../p18f4520_8h.html#a3e0353177df4a5af6f7c65625561311a',1,'p18f4520.h']]],
@@ -17,5 +20,12 @@ var searchData=
   ['go_5fdone',['GO_DONE',['../p18f4520_8h.html#a40275ed8e7bb39b33ba1801a3c0980e6',1,'p18f4520.h']]],
   ['go_5fnot_5fdone',['GO_NOT_DONE',['../p18f4520_8h.html#a1d2f91e7e539fe8ff3d57b2da1b59af0',1,'p18f4520.h']]],
   ['good_5ftrack',['GOOD_TRACK',['../Common_8h.html#a2db986326a654991cce9b1c2b1670677a4e09a3b8626706bec6e8b94f8e43007f',1,'Common.h']]],
-  ['goup',['goup',['../Menusystem_8c.html#a009126ac947a1079b52555366ac7b7f3',1,'Menusystem.c']]]
+  ['good_5ftracks',['good_tracks',['../structTargetStateData.html#a14c96a3f499b71215ea44a6212573c31',1,'TargetStateData']]],
+  ['gotoangle2',['gotoAngle2',['../MenuDefs_8h.html#ae5ad0cd48aae0c50a7953273ebd85dad',1,'gotoAngle2():&#160;MenuDefs.h'],['../Menusystem_8h.html#ae5ad0cd48aae0c50a7953273ebd85dad',1,'gotoAngle2():&#160;MenuDefs.h']]],
+  ['gotoazangle',['gotoAzAngle',['../MenuDefs_8h.html#af08ae36d6761047ce0e7cec4d5a768fc',1,'gotoAzAngle():&#160;MenuDefs.h'],['../Menusystem_8h.html#af08ae36d6761047ce0e7cec4d5a768fc',1,'gotoAzAngle():&#160;MenuDefs.h']]],
+  ['gotoazanglelcd',['gotoAzAngleLCD',['../MenuDefs_8h.html#a2e34ffaa5831640472cc470b1e92b914',1,'gotoAzAngleLCD():&#160;MenuDefs.h'],['../Menusystem_8h.html#a2e34ffaa5831640472cc470b1e92b914',1,'gotoAzAngleLCD():&#160;MenuDefs.h']]],
+  ['gotoelangle',['gotoElAngle',['../MenuDefs_8h.html#a0bcfa136f866b44f9a0a0957bf424c45',1,'gotoElAngle():&#160;MenuDefs.h'],['../Menusystem_8h.html#a0bcfa136f866b44f9a0a0957bf424c45',1,'gotoElAngle():&#160;MenuDefs.h']]],
+  ['gotoelanglelcd',['gotoELAngleLCD',['../MenuDefs_8h.html#a80fb9d027a27545fc0b67e0ecd653ddd',1,'gotoELAngleLCD():&#160;MenuDefs.h'],['../Menusystem_8h.html#a80fb9d027a27545fc0b67e0ecd653ddd',1,'gotoELAngleLCD():&#160;MenuDefs.h']]],
+  ['goup',['goUp',['../MenuDefs_8h.html#a7486ea443917f593fdf8335e166ef5a5',1,'goUp():&#160;MenuDefs.h'],['../Menusystem_8h.html#a7486ea443917f593fdf8335e166ef5a5',1,'goUp():&#160;MenuDefs.h']]],
+  ['goup2',['goUp2',['../MenuDefs_8h.html#ae283ceb6858b52420406c05644db9a7a',1,'goUp2():&#160;MenuDefs.h'],['../Menusystem_8h.html#ae283ceb6858b52420406c05644db9a7a',1,'goUp2():&#160;MenuDefs.h']]]
 ];
