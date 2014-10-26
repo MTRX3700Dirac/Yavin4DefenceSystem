@@ -25,19 +25,9 @@
 #include "Menusystem.h"
 //#include "ConfigRegs18f4520.h"
 
-// The time to check timer 0 against
-// 1953 = approx 0.1s on MNML
-#define UPDATE_TIME 1000
-
 //Local Function Prototypes:
 static void initialization(systemState *state);
 static void transRange(void);
-
-void configureTimer0(void)
-{
-    T0CON = 0b00000110;     // Select internal clock, 128x prescalar
-    T0CONbits.TMR0ON = 1;   // Enable Timer 1;
-}
 
 /*! **********************************************************************
  * Function: main(void)
@@ -62,25 +52,15 @@ void main() {
 //    configureSerial();
 //    configureRange();
 //    configUSER();
-    configureTimer0();
     initialiseMenu();
 
 //    for(;;)
 //    {
 //        transRange();
 //    }
-    WriteTimer0(0);
     for (;;)
 {
-        // Only refresh the screen every 100ms
-        if (ReadTimer0() >= UPDATE_TIME) {
-            // If a 300 milliseconds has passed
-            if (counter >= 1) {
-                serviceMenu();
-                counter = 0;
-            } else counter++;
-            WriteTimer0(0);
-        }
+       	serviceMenu();
 
         switch (state.current)
         {
