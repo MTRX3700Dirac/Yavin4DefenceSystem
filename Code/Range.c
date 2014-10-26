@@ -13,7 +13,7 @@
  *      -Fuse distances from the IR and ultrasonic sensors
  *      -Calibrate the IR and ultrasonic sensors
  *
- * Functions: 
+ * Functions:
  *
  * Created on 15 September 2014, 11:27 AM
  *******************************************************************************/
@@ -21,6 +21,11 @@
 #include "Common.h"
 #include "Temp.h"
 #include <delays.h>
+
+//ONLY FOR RANGE TESTING PURPOSES
+#include "Serial.h"
+static void transRange(unsigned int us, unsigned int ir);
+//
 
 ///Converts AD reading into IR range
 #define IR_CONV(ad) ((unsigned long)135174 / (ad) - 28)
@@ -62,6 +67,9 @@ static void beginUS(void);
 static unsigned int rangeUS(unsigned char temp);
 static unsigned int fuseRange(unsigned int us, unsigned int ir);
 
+
+static volatile unsigned int ccp_value;
+
 void configureRange(void);
 
 unsigned int range(void);
@@ -86,7 +94,7 @@ void configureAD(void)
     //Write the configuration values into the configuration registers
     ADCON1 = 0x8E;      // ADFM set
     ADCON0 = 0x41;
-    
+
     //Arbitrary wait period to allow the ADC to initialise
     for (i = 0; i < 1000; i++);
 }
@@ -105,7 +113,7 @@ void configureAD(void)
 void configureRange(void)
 {
     unsigned char config;
-    
+
     INIT_PIN = 0;
 
     //Enable global interrupts and interrupt priority
@@ -186,13 +194,15 @@ static unsigned int rangeUS(unsigned char temp)
     while (measuringUS);
 
     #ifdef MNML
-    if (CCPR1 < 0x1770) return 0;
+    //if (CCPR1 < 0x1770) return 0;
+    //if (CCPR1 < 0x5DC) return 0;
+    if (ccp_value < 0x100) return 0;
 
     //Perform calculation (ReadCapture in us, speed of sound in m/s->um)
     // um/1024 = ~mm
 
-    t = DIV_4096((unsigned long int) CCPR1 * (unsigned long int) 285) - 18;
-    
+    t = DIV_4096((unsigned long int) ccp_value * (unsigned long int) 285) - 18;
+
     #else
     if (CCPR1 < 5DC) return 0;
 
@@ -203,7 +213,7 @@ static unsigned int rangeUS(unsigned char temp)
     #endif
 
     range = (unsigned int) t;
-    
+
     return range;
 }
 
@@ -222,20 +232,55 @@ static unsigned int rangeUS(unsigned char temp)
 void rangeISR(void)
 {
     if (CCP1_INT && CCPR1 > 0x5DC)
+    //if (CCP1_INT && CCPR1 > 0x300)
     {   //Checks if the CCP2 module fired the interrupt
         measuringUS = 0;
         INIT_PIN = 0;
         PIE1bits.CCP1IE = 0;
+        ccp_value = CCPR1;
     }
     if (TMR1_INT)
     {
         measuringUS = 0;
         CCPR1 = 0;
+        ccp_value = 0;
         INIT_PIN = 0;
         PIR1bits.TMR1IF = 0;
         PIE1bits.TMR1IE = 0;
     }
     CCP1_CLEAR;
+}
+
+/*! **********************************************************************
+ * Function: rangeUltrasonic(void)
+ *
+ * Include:
+ *
+ * Description: performs an ultrasonic range reading.
+ * Pins:
+ *
+ * Arguments: None
+ *
+ * Returns: the average of the samples
+ *
+ * todo remove this function?
+ *************************************************************************/
+unsigned int rangeUltrasonic(void)
+{
+    unsigned int rng;
+
+        configureRange();
+
+        beginUS();
+
+        rng = rangeUS(25);
+
+        INIT_PIN = 0;
+        CloseCapture1();
+        CloseTimer1();
+
+        return rng;
+
 }
 
 /*! **********************************************************************
@@ -304,16 +349,25 @@ unsigned int range(void)
 #define range_IR sumIR      //Come conenient name changes
 #define range_US sumUS
     char i;
+    unsigned int temp;
     unsigned long int sumUS = 0;
     unsigned long int sumIR = 0;
-    unsigned int IR_samples = 0;
-    unsigned char delayUS = 100 / rateUS;       //100Hz will give 1 delay increment of 10ms
-    unsigned char delayIR = 10000 / rateIR;     //10KHz will give 1 delay increment of 0.1ms
+    int IR_samples = 0;
+    unsigned char delayUS = 25;//100 / rateUS;       //100Hz will give 1 delay increment of 10ms
+    unsigned char delayIR = 255;//10000 / rateIR;     //10KHz will give 1 delay increment of 0.1ms
+
+    unsigned int j;
+    char rng_string[] = "Range: ";
+    char ultrasonic[] = "Ultrasonic: ";
+    char infra[] = "Infra: ";
+    char newLine[] = "\n\r";
+    char neg = '-';
+    char num[5];
 
     //Multiplex onto the IR sensor
     SetChanADC(ADC_IR_READ);
 
-    for (i = 0; i < numSamples; i++)
+    //for (i = 0; i < numSamples; i++)
     {
         configureRange();   //Still have to reconfigure each time???
         beginUS();
@@ -323,26 +377,37 @@ unsigned int range(void)
         {
             ADCON0bits.GO = 1;
             while (ADCON0bits.GO_NOT_DONE);
-            sumIR += ADRES >> 6;
+            temp = ADRES >> 6;
+            if (temp > 100) sumIR += IR_CONV(temp);
+            else IR_samples--;
+            //sumIR += IR_CONV(ADRES >> 6);
             IR_samples++;
 
-            Delay100TCYx(delayIR);  //Delays in inrements of 100Tcy, which is 100 x 1us for 4MHz clock -> 0.1ms or 10KHz
+            Delay1KTCYx(delayIR);  //Delays in inrements of 100Tcy, which is 100 x 1us for 4MHz clock -> 0.1ms or 10KHz
         }
-        
+
         //get range of ultrasonic reading
         sumUS += rangeUS(25);   ///Standard room temperature for now @todo Read in temperature for US calculation
         Delay10KTCYx(delayUS);  //Delays in increments of 10KTcy, which is 10,000 * 1us for a 4MHz clock
     }
 
-    sumUS = sumUS / numSamples;     //Calculate the average Ultrasonic range
+    if (numSamples) sumUS = sumUS / numSamples;     //Calculate the average Ultrasonic range
+    else sumUS = 0;
 
     //Average all IR samples taken, and convert to distance
-    range_IR = sumIR / (unsigned int)numSamples;
-    if (range_IR < 100) range_IR = 0;
-    else range_IR = IR_CONV(range_IR);
+    if (IR_samples) range_IR = sumIR / IR_samples;
+    else sumIR = 0;
+    //if (range_IR < 100) range_IR = 0;
+    //else range_IR = IR_CONV(range_IR);
 
     lastIRRange = range_IR;
     lastUSRange = range_US;
+
+    transRange(range_US, range_IR);
+
+    //transChar(sumIR / 100 + '0');
+
+
 
     return lastRange = fuseRange(range_US, range_IR);
 #undef range_IR
@@ -463,4 +528,25 @@ static unsigned int fuseRange(unsigned int us, unsigned int ir)
         range = 0;
         current_target_state = NO_TARGET;
     }
+}
+
+static void transRange(unsigned int us, unsigned int ir)
+{
+    unsigned int j;
+    char rng_string[] = "Range: ";
+    char ultrasonic[] = "Ultrasonic: ";
+    char infra[] = "Infra: ";
+    char newLine[] = "\n\r";
+    char neg = '-';
+    char num[5];
+
+    transmit(ultrasonic);
+    sprintf(num, "%u", us);
+        transmit(num);
+        transmit(newLine);
+
+        transmit(infra);
+    sprintf(num, "%u", ir);
+        transmit(num);
+        transmit(newLine);
 }

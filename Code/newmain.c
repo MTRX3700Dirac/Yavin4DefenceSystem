@@ -50,15 +50,17 @@ void main() {
     //Direction dir = {20, 20};
 
 //
-//    configureSerial();
-//    configureRange();
+    configureSerial();
+    configureRange();
 //    configUSER();
+
+    for (;;)
+    {
+        range();
+    }
+
     initialiseMenu();
 
-//    for(;;)
-//    {
-//        transRange();
-//    }
     for (;;)
 {
        	serviceMenu();
