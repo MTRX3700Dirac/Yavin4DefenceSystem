@@ -49,7 +49,7 @@ typedef struct
     unsigned centre : 2;
 } TargetStateData;
 
-static char newAngle(TargetStateData target_data);
+static char newAngle(char angle, TargetStateData target_data);
 
 /* **********************************************************************
  * Function: configureTracking(void)

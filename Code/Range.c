@@ -64,6 +64,8 @@ static unsigned int fuseRange(unsigned int us, unsigned int ir);
 
 void configureRange(void);
 
+unsigned int range(void);
+
 /*! **********************************************************************
  * Function: configureAD(void)
  *

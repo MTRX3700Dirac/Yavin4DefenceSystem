@@ -19,62 +19,63 @@
 #include "Range.h"
 #include "PanTilt.h"
 #include "Temp.h"
-#include "Menu_Strings.h"
+//#include "Menu_Strings.h"
 
 #include "MenuDefs.h"
 
 
 
 // Serial Display
-void sendROM(const static rom char *romchar);
-void clearScreen(void);
-void sendNewLine(char length);
-void filler(char length);
-void errOutOfRange(int lowerBound, int upperBound);
-char* intToAscii(int num);
-void autodisp(void);
+//void sendROM(const static rom char *romchar);
+static void sendROM(const rom char *romchar);
+static void clearScreen(void);
+static void sendNewLine(char length);
+static void filler(char length);
+static void errOutOfRange(int lowerBound, int upperBound);
+static char* intToAscii(int num);
+static void autodisp(void);
 
-int parseNumeric(char *input);
-int getSerialNumericInput(void);
-void configureTimer0(void);
-int getLocalInputMenu(int maxStates, int (*function)(int));
-int getLocalPotResult(int min, int max, int interval);
+static int parseNumeric(char *input);
+static int getSerialNumericInput(void);
+static void configureTimer0(void);
+static int getLocalInputMenu(int maxStates, int (*function)(int));
+static int getLocalPotResult(int min, int max, int interval);
 
 // Confirm Methods
-void setValue(int input);
-void setMenu(struct menuStruct menu);
-void navigateTopMenu(int inputResult);
-void noFunctionNumeric(int input);
+static void setValue(int input);
+static void setMenu(struct menuStruct menu);
+static void navigateTopMenu(int inputResult);
+static void noFunctionNumeric(int input);
 
 // Return Methods
-void noFunction(void);
-void returnToTopMenu(void);
-void returnToAzMenu(void);
-void returnToElMenu(void);
-void returnToRngMenu(void);
+static void noFunction(void);
+static void returnToTopMenu(void);
+static void returnToAzMenu(void);
+static void returnToElMenu(void);
+static void returnToRngMenu(void);
 
 // Navigation Methods
-void navigateTopMenu(int inputResult);
-void navigateAzimuthMenu(int inputResult);
-void navigateElevationMenu(int inputResult);
-void navigateRangeMenu(int inputResult);
+static void navigateTopMenu(int inputResult);
+static void navigateAzimuthMenu(int inputResult);
+static void navigateElevationMenu(int inputResult);
+static void navigateRangeMenu(int inputResult);
 
 // Display methods
-void dispTopOptions(void);
-void displayMenuSerial();
-void dispTopOptions(void);
-void dispAzOptions(void);
-void dispElOptions(void);
-void dispRngOptions(void);
-void dispTempSerialMessage(void);
-void dispSerialMessage(void);
+static void dispTopOptions(void);
+static void displayMenuSerial();
+static void dispTopOptions(void);
+static void dispAzOptions(void);
+static void dispElOptions(void);
+static void dispRngOptions(void);
+static void dispTempSerialMessage(void);
+static void dispSerialMessage(void);
 
 /// LCD Display Functions
-void dispLCDTopMenu(int option);
-void dispLCDAzMenu(int option);
-void dispLCDElMenu(int option);
-void dispLCDRngMenu(int option);
-void dispLCDNum(int option);
+static void dispLCDTopMenu(int option);
+static void dispLCDAzMenu(int option);
+static void dispLCDElMenu(int option);
+static void dispLCDRngMenu(int option);
+static void dispLCDNum(int option);
 
 //// Menus
 struct menuStruct topMenu = {TOP_LEVEL, welcome, welcomeLcd,1, 6, 1, dispTopOptions, navigateTopMenu, dispLCDTopMenu, noFunction};
@@ -115,7 +116,7 @@ static userState m_userMode;
  *
  * Returns: None
  *************************************************************************/
-void sendROM(const rom char *romchar) {
+static void sendROM(const rom char *romchar) {
     char temp[80] = {0};
     int j;
 
@@ -138,7 +139,7 @@ void sendROM(const rom char *romchar) {
  *
  * Returns: None
  *************************************************************************/
-void sendNewLine(char length)
+static void sendNewLine(char length)
 {
     char index;
     char temp[height + 2] = {0};        // This is two greater for the \r and end message characters
@@ -170,7 +171,7 @@ void sendNewLine(char length)
  *
  * Returns: None
  *************************************************************************/
-void clearScreen()
+static void clearScreen()
 {
     char index;
     char temp[height + 2] = {0};        // This is two greater for the \r and end message characters
@@ -186,7 +187,7 @@ void clearScreen()
     for (j = 0; j < 1000; j++);
 }
 
-void filler(char length) {
+static void filler(char length) {
     char index = 0;
     char temp[81] = {0};
     int j;
@@ -256,7 +257,7 @@ char checkForSerialInput(void)
  *          ERR_NOT_NUMERIC for any non-numeric input
  *          ERR_NUM_OUT_OF_RANGE for 0 digits or 5+ digits
  *************************************************************************/
-int parseNumeric(char *number)
+static int parseNumeric(char *number)
 {
     char digits = 0;
     char index;
@@ -302,7 +303,7 @@ int parseNumeric(char *number)
 /*!
  * Description: Displays a number out of range error
  */
-void errOutOfRange(int lowerBound, int upperBound)
+static void errOutOfRange(int lowerBound, int upperBound)
 {
     sendROM(errNumOutOfRange);
     transmit(intToAscii(lowerBound));
@@ -329,7 +330,7 @@ void errOutOfRange(int lowerBound, int upperBound)
  *          ERR_NUM_OUT_OF_RANGE for 0 digits or 5+ digits
  *          ESC_PRESSED if escape was pressed
  *************************************************************************/
-int getSerialNumericInput()
+static int getSerialNumericInput()
 {
     char userget[80] = {0};
     if (receiveEsc())
@@ -347,7 +348,7 @@ int getSerialNumericInput()
  *              the interval between values (eg 10-100 in multiples
  *              of 10).
  */
-int getLocalPotResult(int min, int max, int interval)
+static int getLocalPotResult(int min, int max, int interval)
 {
     int adcResult = readDial((max - min)/interval);
     adcResult = min + interval*adcResult;
@@ -358,7 +359,7 @@ int getLocalPotResult(int min, int max, int interval)
  * Description: Converts a number to a string
  * Can only print numbers under 8 digits
  */
-char* intToAscii(int num)
+static char* intToAscii(int num)
 {
     char string[10] = {0};
     itoa(num, string);
@@ -445,7 +446,7 @@ void serviceMenu(void)
  *              (Such as Set Max Range). This calls the
  *              appropriate function, and transmits user messages.
  */
-void setValue(int input)
+static void setValue(int input)
 {
     char string[20] = " set to \0";
     Direction dir;
@@ -508,36 +509,36 @@ void setValue(int input)
     // @TODO sendLcdLine2("OK!");
 }
 
-void setMenu(struct menuStruct menu)
+static void setMenu(struct menuStruct menu)
 {
     m_currentMenu = menu;
     if (m_userMode == REMOTE || m_userMode == FACTORY) displayMenuSerial();
     // @TODO lcdLine1(*m_currentMenu.lcdMessage);
 }
 
-void noFunctionNumeric(int input)
+static void noFunctionNumeric(int input)
 {
     return;
 }
 
-void noFunction(void)
+static void noFunction(void)
 {
     return;
 }
 
-void returnToTopMenu(void)
+static void returnToTopMenu(void)
 {
     setMenu(topMenu);
 }
-void returnToAzMenu(void)
+static void returnToAzMenu(void)
 {
     setMenu(AzMenu);
 }
-void returnToElMenu(void)
+static void returnToElMenu(void)
 {
     setMenu(ElMenu);
 }
-void returnToRngMenu(void)
+static void returnToRngMenu(void)
 {
     setMenu(RangeMenu);
 }
@@ -546,7 +547,7 @@ void returnToRngMenu(void)
 // *************************** NAVIGATE MENUS *********************************
 // *****************************************************************************
 
-void navigateTopMenu(int inputResult) {
+static void navigateTopMenu(int inputResult) {
     switch (inputResult) {
         case 1:
             //auto();;
@@ -587,7 +588,7 @@ void navigateTopMenu(int inputResult) {
     }
 }
 
-void navigateAzimuthMenu(int inputResult) {
+static void navigateAzimuthMenu(int inputResult) {
     switch (inputResult) {
         case 1:
             // Go to elevation angle
@@ -622,7 +623,7 @@ void navigateAzimuthMenu(int inputResult) {
     }
 }
 
-void navigateRangeMenu(int inputResult)
+static void navigateRangeMenu(int inputResult)
 {
     switch (inputResult) {
         case 1:
@@ -679,7 +680,7 @@ void navigateRangeMenu(int inputResult)
     }
 }
 
-void navigateElevationMenu(int inputResult)
+static void navigateElevationMenu(int inputResult)
 {
         switch (inputResult) {
         case 1:
@@ -722,7 +723,7 @@ void navigateElevationMenu(int inputResult)
 /*!
  * Display the current menu Title and other information over serial
  */
-void displayMenuSerial()
+static void displayMenuSerial()
 {
     int j;
     sendNewLine(7);
@@ -743,7 +744,7 @@ void displayMenuSerial()
 /*!
  * Display the user options for the top level home menu
  */
-void dispTopOptions(void) {
+static void dispTopOptions(void) {
 
     sendROM(topOption1);
     sendROM(topOption2);
@@ -768,7 +769,7 @@ void dispTopOptions(void) {
 /*!
  * Display the user options for the Azimuth menu
  */
-void dispAzOptions()
+static void dispAzOptions()
 {
     sendROM(azOption1);
     sendROM(azOption2);
@@ -790,7 +791,7 @@ void dispAzOptions()
 /*!
  * Display the user options for the Azimuth menu
  */
-void dispElOptions()
+static void dispElOptions()
 {
     sendROM(elOption1);
     sendROM(elOption2);
@@ -812,7 +813,7 @@ void dispElOptions()
 /*!
  * Display the user options for the Azimuth menu
  */
-void dispRngOptions()
+static void dispRngOptions()
 {
     sendROM(rngOption1);
     sendROM(rngOption2);
@@ -837,7 +838,7 @@ void dispRngOptions()
 /*!
  * Display the Show Temperature serial message
  */
-void dispTempSerialMessage(void)
+static void dispTempSerialMessage(void)
 {
     char temp = readTemp();
     sendROM(showTemp1);
@@ -848,7 +849,7 @@ void dispTempSerialMessage(void)
 /*!
  * Display the menu serial message
  */
-void dispSerialMessage(void)
+static void dispSerialMessage(void)
 {
     sendROM(m_currentMenu.serialMessage);
 }
@@ -861,7 +862,7 @@ void dispSerialMessage(void)
  * Displays the current potentiometer reading on the LCD based on the
  * menu options contextualised by the Home menu.
  */
-void dispLCDTopMenu(int option)
+static void dispLCDTopMenu(int option)
 {
     char *string;
     switch(option)
@@ -898,7 +899,7 @@ void dispLCDTopMenu(int option)
  * Displays the current potentiometer reading on the LCD based on the
  * menu options contextualised by the Azimuth menu.
  */
-void dispLCDAzMenu(int option)
+static void dispLCDAzMenu(int option)
 {
     char *string;
     switch(option)
@@ -924,7 +925,7 @@ void dispLCDAzMenu(int option)
  * Displays the current potentiometer reading on the LCD based on the
  * menu options contextualised by the Elevation menu.
  */
-void dispLCDElMenu(int option)
+static void dispLCDElMenu(int option)
 {
     char *string;
     switch(option)
@@ -951,7 +952,7 @@ void dispLCDElMenu(int option)
  * Displays the current potentiometer reading on the LCD based on the
  * menu options contextualised by the Range menu.
  */
-void dispLCDRngMenu(int option)
+static void dispLCDRngMenu(int option)
 {
     char *string;
     switch(option)
@@ -976,7 +977,7 @@ void dispLCDRngMenu(int option)
  *
  * Arguments: The integer converted from the ADC
  */
-void dispLCDNum(int option)
+static void dispLCDNum(int option)
 {
     char *string = intToAscii(option);
     //@TODO lcdLine2Display(string);

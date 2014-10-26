@@ -368,7 +368,7 @@ char getMaxMin(PanTiltSettings setting)
             return azimuth_angle_min;
         case MAX_EL:
             return elevation_angle_max;
-        case MIN_AZ:
+        case MIN_EL:
             return elevation_angle_min;
     }
 }
@@ -398,7 +398,7 @@ void setMaxMin(char value, PanTiltSettings setting)
         case MAX_EL:
             elevation_angle_max = value;
             break;
-        case MIN_AZ:
+        case MIN_EL:
             elevation_angle_min = value;
             break;
     }
