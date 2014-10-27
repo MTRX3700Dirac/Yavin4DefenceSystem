@@ -46,6 +46,10 @@ static void dispTrack(TrackingData target);
  *************************************************************************/
 void main() {
     int counter = 0;
+    int num1=100;
+    int num2=900;
+    int num3;
+    int jess;
     systemState state = {INIT, UNDEF};
     TrackingData target;
     //Direction dir = {20, 20};
@@ -54,6 +58,13 @@ void main() {
     configureSerial();
     configureRange();
 //    configUSER();
+
+    sendEep(num1, 0x0200);
+    sendEep(num2, 0x0210);
+
+    num3=readEep(0x0200);
+    jess=readEep(0x0210);
+
 
     for (;;)
     {
