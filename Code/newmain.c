@@ -23,6 +23,7 @@
 #include "Serial.h"
 #include "PanTilt.h"
 #include "Menusystem.h"
+#include "jEEP.h"
 //#include "ConfigRegs18f4520.h"
 
 //Local Function Prototypes:

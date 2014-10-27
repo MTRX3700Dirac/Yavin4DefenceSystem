@@ -32,6 +32,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <eep.h>
 
 #ifdef MNML
 #include <p18f4520.h>
