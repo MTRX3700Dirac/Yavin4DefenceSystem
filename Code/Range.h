@@ -17,15 +17,20 @@
 #define RANGE_INT CCP1_INT | TMR1_INT
 
 //External declarations of the public access functions
+extern void initializeRange(void);
 extern void configureRange(void);
 extern void configureAD(void);
 extern unsigned int range(void);
+extern unsigned int lastRange(void);
 extern void rangeISR(void);
 extern void calibrateRange(signed int distance);
 extern signed int rawRange(void);
 
 extern TargetState getTargetState(void);
 extern TargetState readTargetState(void);
+
+extern void setMaxRange(int range);
+extern void setMinRange(int range);
 
 #define RANGE_H
 #endif

@@ -105,6 +105,39 @@ void transmit(char *string)
 }
 
 /*! **********************************************************************
+ * Function: transmit(char *string)
+ *
+ * Include: Serial.h
+ *
+ * Description: Begins transmitting the string over serial (interrupt driven)
+ *
+ * Arguments: string - pointer to the beginning of the string to transmit
+ *
+ * Returns: None
+ *
+ * NOTE: Must be Null Terminated! Cannot receive a literal.
+ *************************************************************************/
+void transmitROM(const rom char *string)
+{
+    char temp_buf[BUFFERLENGTH];
+    char *temp_point = temp_buf;
+
+    strcpypgm2ram(temp_buf, string);
+
+    //Push the string onto the transmit buffer
+    for (; *temp_point; temp_point++)
+    {
+        push(*temp_point, transmit_buffer);
+    }
+
+    //Return if there is nothing to transmit
+    if (empty(transmit_buffer)) return;
+
+    //Enable TX interrupts
+    TX_INT_ENABLE();
+}
+
+/*! **********************************************************************
  * Function: transChar(char c)
  *
  * Include: Serial.h
@@ -270,7 +303,7 @@ void readString(char *string)
  *
  * Returns: None
  *************************************************************************/
-char transmitted(void)
+char transmitComplete(void)
 {
     return empty(transmit_buffer);
 }

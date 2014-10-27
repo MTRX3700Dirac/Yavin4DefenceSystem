@@ -10,10 +10,10 @@
  * Created on 7 September 2014, 4:12 PM
  ****************************************************************************/
 
-#pragma config WDT = OFF	//Turns watchdog Timer off
-#pragma config OSC = HS		//The crystal oscillator set to "High Speed"
-#pragma config LVP = OFF	//
-#pragma config DEBUG = ON
+//#pragma config WDT = OFF	//Turns watchdog Timer off
+//#pragma config OSC = HS		//The crystal oscillator set to "High Speed"
+//#pragma config LVP = OFF	//
+//#pragma config DEBUG = ON
 
 #include "Common.h"
 
@@ -23,13 +23,13 @@
 #include "Serial.h"
 #include "PanTilt.h"
 #include "Menusystem.h"
+#include "ConfigRegs18f4520.h"
+#include "LCD.h"
 #include "jEEP.h"
-//#include "ConfigRegs18f4520.h"
 
 //Local Function Prototypes:
 static void initialization(systemState *state);
 //static void transRange(void);
-static void dispTrack(TrackingData target);
 
 /*! **********************************************************************
  * Function: main(void)
@@ -46,38 +46,22 @@ static void dispTrack(TrackingData target);
  *************************************************************************/
 void main() {
     int counter = 0;
-    int num1=100;
-    int num2=900;
-    int num3=0;
-    int jess;
-    int address = EEPADDRESS;
     systemState state = {INIT, UNDEF};
     TrackingData target;
     //Direction dir = {20, 20};
 
-//
 
+//    configureSerial();
+//    initializeRange()
+    //configureAD();
+    initialiseMenu(&state);
+    //    configUSER();
 
-    configureSerial();
-    configureRange();
-//    configUSER();
+//    for (;;)
+//    {
+//        range();
+//    }
 
-    sendEep(num1, address);
-    address++;
-    sendEep(num2, address);
-
-    address = EEPADDRESS;
-
-    num3=readEep(0x0200);
-    jess=readEep(0x0210);
-
-
-    for (;;)
-    {
-        range();
-    }
-
-    initialiseMenu();
 
     for (;;)
 {
@@ -90,10 +74,13 @@ void main() {
                 break;
             case SRCH:
                 search(&state);
+                dispSearching();
                 break;
             case TRCK:
                 target = track(&state);
                 dispTrack(target);
+                break;
+            case MENU:
                 break;
             default:     //Any other undefined state
                 NEXT_STATE(INIT, state);       //Set the next state to be Initialize
@@ -117,56 +104,21 @@ void main() {
  *************************************************************************/
 static void initialization(systemState *state)
 {
-    char temp[80];
+    Direction dir = {0,-45};
+    unsigned int i = 0;
     
     configureSerial();
     configureTracking();
     configUSER();
+    initializeRange();
 
-    strcpypgm2ram(temp, welcome);
-    transmit(temp);
+    transmitROM(welcome);
+    transmitROM(newLine);
 
-    NEXT_STATE_PTR(SRCH, state);   //Go to the searching state
+    move(dir);
+
+    for (i = 0; i < 10000; i++);
+
+    NEXT_STATE_PTR(MENU, state);   //Go to the searching state
 }
 
-static void dispTrack(TrackingData target)
-{
-    unsigned int j;
-    char rng_string[] = "Range: ";
-    char inc_string[] = "Inclination: ";
-    char az_string[] = "Azimuth: ";
-    char newLine[] = "\n\r";
-    char neg = '-';
-    char num[5];
-
-    transmit(rng_string);
-    if (target.distance < 0)
-    {
-        target.distance = - target.distance;
-        transChar(neg);
-    }
-    sprintf(num, "%u", target.distance);
-        transmit(num);
-        transmit(newLine);
-
-    transmit(inc_string);
-    if (target.inclination < 0)
-    {
-        target.inclination = - target.inclination;
-        transChar(neg);
-    }
-    sprintf(num, "%u", target.inclination);
-        transmit(num);
-        transmit(newLine);
-
-    transmit(az_string);
-
-    if (target.azimuth < 0)
-    {
-        target.azimuth = - target.azimuth;
-        transChar(neg);
-    }
-    sprintf(num, "%u", target.azimuth);
-        transmit(num);
-        transmit(newLine);
-}

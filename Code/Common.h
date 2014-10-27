@@ -108,7 +108,7 @@ typedef enum{CLR_SCN, ERS_LN} escSqnce;
 #define NEXT_STATE_PTR(s, state) state->previous = state->current; state->current = s
 
 ///Define the possible states the system can be in
-typedef enum{UNDEF, INIT, SRCH, TRCK} possible_states;
+typedef enum{UNDEF, INIT, SRCH, TRCK, MENU} possible_states;
 
 /*! ****************************************************************************
  * typedef of systemState struct
@@ -143,9 +143,9 @@ typedef struct {
 #define SWAP(x, y) (y = (y ^ (x = (x ^ (y = (x ^ y))))))
 
 ///ADC Channel Select macros
-#define ADC_IR_READ 0            //Sets ADC to read the IR
-#define ADC_TEMP_READ 1          //Sets the ADC to read the temp
-#define ADC_DIAL_READ 2          //Sets the ADC to read the DIAL
+#define ADC_IR_READ 0x01            //Sets ADC to read the IR
+#define ADC_TEMP_READ 0x05          //Sets the ADC to read the temp
+#define ADC_DIAL_READ 0x09          //Sets the ADC to read the DIAL
 
 ///Interrupt macros
 #define TX_INT (PIR1bits.TXIF && PIE1bits.TXIE)       //serial transmit interrupt fired

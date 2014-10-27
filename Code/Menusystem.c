@@ -19,11 +19,10 @@
 #include "Range.h"
 #include "PanTilt.h"
 #include "Temp.h"
-//#include "Menu_Strings.h"
 
 #include "MenuDefs.h"
 
-
+//#define LCD
 
 // Serial Display
 //void sendROM(const static rom char *romchar);
@@ -93,11 +92,15 @@ struct menuStruct ElMax = {EL_MAX, maxEl1, maxElSetStr,MAX_ANGLE_INFIMUM, MAX_AN
 struct menuStruct RngMin = {RANGE_MIN, minRngSerialStr, minRngSetStr, MIN_RANGE_INFIMUM, MIN_RANGE_SUPREMUM, 50, dispSerialMessage, setValue, dispLCDNum, returnToRngMenu};
 struct menuStruct RngMax = {RANGE_MAX, maxRngSerialStr, maxRngSetStr, MAX_RANGE_INFIMUM, MAX_RANGE_SUPREMUM, 50, dispSerialMessage, setValue, dispLCDNum, returnToRngMenu};
 struct menuStruct ShowTemp = {SHOW_TEMP, showTempLCDTitle, showTempLCDTitle, 0, 0, 0, dispTempSerialMessage, noFunctionNumeric, noFunctionNumeric, returnToTopMenu};
+struct menuStruct Tracking = {TRACKING, autoSerialMessage, autoLcdTitle, 0, 0, 0, dispSerialMessage, noFunctionNumeric, noFunctionNumeric, returnToTopMenu};
 /*! Global variable with the current menu position */
 struct menuStruct m_currentMenu;
 
 /*! Global variable with the current user mode: Local, remote or factory */
 static userState m_userMode;
+
+static systemState *m_trackingState;
+int lcdCounter;
 
 // *****************************************************************************
 // *********************** MENU STRUCTURE FUNCTIONS ****************************
@@ -177,13 +180,15 @@ static void clearScreen()
     char temp[height + 2] = {0};        // This is two greater for the \r and end message characters
     int j;
 
-    // Fills the buffer with \n characters
-    for (index = 0; index<height; index++) {
-        temp[index] = '\n';
-    }
-    // End with a line return
-    temp[height] = '\r';
-    transmit(temp);
+    char clearScreen[] = CLEAR_SCREEN_STRING;    // Clears the screen and writes from the top
+//    // Fills the buffer with \n characters
+//    for (index = 0; index<height; index++) {
+//        temp[index] = '\n';
+//    }
+//    // End with a line return
+//    temp[height] = '\r';
+//    transmit(temp);
+    transmit(clearScreen);
     for (j = 0; j < 1000; j++);
 }
 
@@ -212,12 +217,16 @@ static void filler(char length) {
  *
  * Returns: None
  *************************************************************************/
-void initialiseMenu(void) {
+void initialiseMenu(systemState *state) {
     m_userMode = REMOTE;
     configureSerial();
+#ifdef LCD
     configLCD();
+#endif
     configUSER();
     setMenu(topMenu);
+    m_trackingState = state;
+    lcdCounter = 0;
 }
 
 /*! **********************************************************************
@@ -385,11 +394,12 @@ static char* intToAscii(int num)
 void serviceMenu(void)
 {
     char buttonInput;
-    char string[50];
     int numericInpt;
 
+    // Check for Serial Vs Local
     if (m_userMode == REMOTE || m_userMode == FACTORY)
     {
+        // Check for serial input
         if (checkForSerialInput())
         {
             // Handle serial input
@@ -404,12 +414,21 @@ void serviceMenu(void)
     {
         if (userEmpty())
         {
-            // Display the current value on the LCD
-            // Get the Potentiometer result for the current menu
-            numericInpt = getLocalPotResult(m_currentMenu.minVal, m_currentMenu.maxVal, m_currentMenu.increment);
-            // Display string on LCD
-            m_currentMenu.lcdDisplayFunction(numericInpt);
-            return;
+            if (lcdCounter >=30000)
+            {
+                            // Display the current value on the LCD
+                // Get the Potentiometer result for the current menu
+                numericInpt = getLocalPotResult(m_currentMenu.minVal, m_currentMenu.maxVal, m_currentMenu.increment);
+                // Display string on LCD
+                m_currentMenu.lcdDisplayFunction(numericInpt);
+                lcdCounter = 0;
+                return;
+            }
+            else
+            {
+                lcdCounter++;
+                return;
+            }
         }
         else
         {
@@ -466,7 +485,7 @@ static void setValue(int input)
     // Handle Different cases
     // @TODO handle current values
     // @TODO Integrate
-    switch (m_currentMenu.menuNum)
+    switch (m_currentMenu.menuID)
     {
         case AZ_GOTO:
             dir.azimuth = input;
@@ -500,14 +519,23 @@ static void setValue(int input)
             ElGoto.maxVal = input;
             sendROM(angleStr);
             break;
+        case RANGE_MIN:
+            setMinRange(input);
+            sendROM(RngStr);
+            break;
+        case RANGE_MAX:
+            setMaxRange(input);
+            sendROM(RngStr);
+            break;
     }
 
     // Transmit the final part of the sentence
     transmit(string);
     transmit(intToAscii(input));
     sendNewLine(1);
-
+#ifdef LCD
     lcdWriteString(strcpypgm2ram(stringLcd, "OK!"), 2);
+#endif
 }
 
 static void setMenu(struct menuStruct menu)
@@ -515,7 +543,12 @@ static void setMenu(struct menuStruct menu)
     char stringLcd[20] = {0};
     m_currentMenu = menu;
     if (m_userMode == REMOTE || m_userMode == FACTORY) displayMenuSerial();
+
+#ifdef
     lcdWriteString(strcpypgm2ram(stringLcd, m_currentMenu.lcdTitleMessage), 1);
+#else
+    sendROM(m_currentMenu.lcdTitleMessage);
+#endif
 }
 
 static void noFunctionNumeric(int input)
@@ -553,6 +586,11 @@ static void navigateTopMenu(int inputResult) {
     switch (inputResult) {
         case 1:
             //auto();;
+            setMenu(Tracking);
+            if (m_trackingState->current = MENU)
+            {
+                m_trackingState->current = SRCH;
+            }
             break;
         case 2:
             // Go to the Azimuth menu
@@ -564,26 +602,27 @@ static void navigateTopMenu(int inputResult) {
             break;
         case 4:
             // Go to Range Menu
-            setMenu(RangeMenu);;
+            setMenu(RangeMenu);
             break;
-//        case 5:
-//            // Show Temperature
-//            m_currentMenu = SHOW_TEMP;
-//            break;
-//        case 6:
-//            // If Factory mode is on, calibrate Temperature
-//            if (m_userMode == FACTORY) {
-//                m_currentMenu = CALIBRATE_TEMP;
-//                break;
-//            } else {
-//                // Switch user mode!
-//                if (m_userMode == REMOTE) {
-//                    m_userMode = LOCAL;
-//                } else if (m_userMode == LOCAL) {
-//                    m_userMode = REMOTE;
-//                }
-//                break;
-//            }
+        case 5:
+            // Show Temperature
+            setMenu(ShowTemp);
+            break;
+        case 6:
+            // If Factory mode is on, calibrate Temperature
+            if (m_userMode == FACTORY) {
+                //setMenu(Calibrate);
+                break;
+            } else {
+                // Switch user mode!
+                if (m_userMode == REMOTE) {
+                    m_userMode = LOCAL;
+                } else if (m_userMode == LOCAL) {
+                    m_userMode = REMOTE;
+                }
+                setMenu(topMenu);
+                break;
+            }
         default:
             errOutOfRange(1, 5);
             break;
@@ -594,6 +633,7 @@ static void navigateAzimuthMenu(int inputResult) {
     switch (inputResult) {
         case 1:
             // Go to elevation angle
+            m_trackingState->current = MENU;
             setMenu(AzGoto);
             break;
         case 2:
@@ -687,6 +727,7 @@ static void navigateElevationMenu(int inputResult)
         switch (inputResult) {
         case 1:
             // Go to elevation angle
+            m_trackingState->current = MENU;
             setMenu(ElGoto);
             break;
         case 2:
@@ -728,7 +769,8 @@ static void navigateElevationMenu(int inputResult)
 static void displayMenuSerial()
 {
     int j;
-    sendNewLine(7);
+    //sendNewLine(7);
+    clearScreen();
     filler(width);
     sendNewLine(1);
     transChar('\t');
@@ -749,14 +791,20 @@ static void displayMenuSerial()
 static void dispTopOptions(void) {
 
     sendROM(topOption1);
+    sendNewLine(1);
     sendROM(topOption2);
+    sendNewLine(1);
     sendROM(topOption3);
+    sendNewLine(1);
     sendROM(topOption4);
+    sendNewLine(1);
     sendROM(topOption5);
+    sendNewLine(1);
 
     if (m_userMode == FACTORY)
     {
         sendROM(topOptionCalTemp);
+        sendNewLine(1);
         sendROM(topOptionRemote);
     }
     else
@@ -765,6 +813,7 @@ static void dispTopOptions(void) {
 //        if(factoryEnabled()) send(topOptionFactory);
     }
 
+    sendNewLine(2);
     sendROM(CHOOSE);
 }
 
@@ -774,19 +823,28 @@ static void dispTopOptions(void) {
 static void dispAzOptions()
 {
     sendROM(azOption1);
+    sendNewLine(1);
     sendROM(azOption2);
+    sendNewLine(1);
     sendROM(azOption3);
+    sendNewLine(1);
     if (m_userMode == FACTORY)
     {
         sendROM(azOption4);
+        sendNewLine(1);
+        transChar('\t');
         sendROM(menuPrefix5);
+        transChar('\t');
         sendROM(goUp);
     }
     else
     {
+        transChar('\t');
         sendROM(menuPrefix4);
+        transChar('\t');
         sendROM(goUp);
     }
+    sendNewLine(2);
     sendROM(CHOOSE);
 }
 
@@ -796,19 +854,28 @@ static void dispAzOptions()
 static void dispElOptions()
 {
     sendROM(elOption1);
+    sendNewLine(1);
     sendROM(elOption2);
+    sendNewLine(1);
     sendROM(elOption3);
+    sendNewLine(1);
     if (m_userMode == FACTORY)
     {
         sendROM(elOption4);
+        sendNewLine(1);
+        transChar('\t');
         sendROM(menuPrefix5);
+        transChar('\t');
         sendROM(goUp);
     }
     else
     {
+        transChar('\t');
         sendROM(menuPrefix4);
+        transChar('\t');
         sendROM(goUp);
     }
+    sendNewLine(2);
     sendROM(CHOOSE);
 }
 
@@ -818,22 +885,34 @@ static void dispElOptions()
 static void dispRngOptions()
 {
     sendROM(rngOption1);
+    sendNewLine(1);
     sendROM(rngOption2);
+    sendNewLine(1);
     if (m_userMode == FACTORY)
     {
         sendROM(rngOption3);
+        sendNewLine(1);
         sendROM(rngOption4);
+        sendNewLine(1);
         sendROM(rngOption5);
+        sendNewLine(1);
         sendROM(rngOption6);
+        sendNewLine(1);
         sendROM(rngOption7);
+        sendNewLine(1);
+        transChar('\t');
         sendROM(menuPrefix8);
+        transChar('\t');
         sendROM(goUp);
     }
     else
     {
+        transChar('\t');
         sendROM(menuPrefix3);
+        transChar('\t');
         sendROM(goUp);
     }
+    sendNewLine(2);
     sendROM(CHOOSE);
 }
 
@@ -842,9 +921,9 @@ static void dispRngOptions()
  */
 static void dispTempSerialMessage(void)
 {
-    char temp = readTemp();
+    int temp = readTemp();
     sendROM(showTemp1);
-    transmit(intToAscii((int) temp));
+    transmit(intToAscii(temp));
     sendROM(showTemp2);
 }
 
@@ -854,6 +933,66 @@ static void dispTempSerialMessage(void)
 static void dispSerialMessage(void)
 {
     sendROM(m_currentMenu.serialMessage);
+}
+
+/*!
+ * Displays the Tracking data over serial
+ */
+void dispTrack(TrackingData target)
+{
+    unsigned int j;
+    char rng_string[] = "Range: ";
+    char inc_string[] = "Inclination: ";
+    char az_string[] = "Azimuth: ";
+    char newLine[] = "\n\r";
+    char neg = '-';
+    char num[5];
+
+    // If in tracking mode, Display the Azimuth, Elevation and Range
+    if (m_currentMenu.menuID == TRACKING && transmitComplete())
+    {
+        transChar('/r');
+        transmit(rng_string);
+        if (target.distance < 0) {
+            target.distance = -target.distance;
+            transChar(neg);
+        }
+        sprintf(num, "%u", target.distance);
+        transmit(num);
+        transmit(newLine);
+
+        transmit(inc_string);
+        if (target.inclination < 0) {
+            target.inclination = -target.inclination;
+            transChar(neg);
+        }
+        sprintf(num, "%u", target.inclination);
+        transmit(num);
+        transmit(newLine);
+
+        transmit(az_string);
+
+        if (target.azimuth < 0) {
+            target.azimuth = -target.azimuth;
+            transChar(neg);
+        }
+        sprintf(num, "%u", target.azimuth);
+        transmit(num);
+        transmit(newLine);
+    }
+}
+
+void dispSearching()
+{
+    char buffer[] = "                    ";
+    // Clear display and search!
+    if (m_currentMenu.menuID == TRACKING && transmitComplete())
+    {
+        transChar('/r');
+        sendROM(autoSearching);
+        // Transmit the buffer to clear the extra chars
+        transmit(buffer);
+    }
 }
 
 // *****************************************************************************
@@ -871,6 +1010,7 @@ static void dispLCDTopMenu(int option)
     {
         case 1:
             //Automatic Tracking;
+            strcpypgm2ram(string, Tracking.lcdTitleMessage);
             break;
         case 2:
             // Azimuth Menu
@@ -895,7 +1035,11 @@ static void dispLCDTopMenu(int option)
         default:
             strcpypgm2ram(string, "ERROR");
     }
+#ifdef LCD
     lcdWriteString(string, 2);
+#else
+    transmit(string);
+#endif
 }
 /*!
  * Displays the current potentiometer reading on the LCD based on the
@@ -921,7 +1065,11 @@ static void dispLCDAzMenu(int option)
         default:
             strcpypgm2ram(string, "ERROR");
     }
+#ifdef LCD
     lcdWriteString(string, 2);
+#else
+    transmit(string);
+#endif
 }
 /*!
  * Displays the current potentiometer reading on the LCD based on the
@@ -947,7 +1095,11 @@ static void dispLCDElMenu(int option)
         default:
             strcpypgm2ram(string, "ERROR");
     }
+#ifdef LCD
     lcdWriteString(string, 2);
+#else
+    transmit(string);
+#endif
 }
 
 /*!
@@ -970,7 +1122,11 @@ static void dispLCDRngMenu(int option)
         default:
             strcpypgm2ram(string, "ERROR");
     }
+#ifdef LCD
     lcdWriteString(string, 2);
+#else
+    transmit(string);
+#endif
 }
 
 /*!
@@ -982,7 +1138,11 @@ static void dispLCDRngMenu(int option)
 static void dispLCDNum(int option)
 {
     char *string = intToAscii(option);
+#ifdef LCD
     lcdWriteString(string, 2);
+#else
+    transmit(string);
+#endif
 }
 
 

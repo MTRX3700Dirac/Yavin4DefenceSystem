@@ -131,7 +131,7 @@ unsigned int readDial(unsigned int max)
     //Sets the AD channel for the DIAL
 
     //SetChanADC(ADC_DIAL_READ);
-    SetChanADC(0);
+    ADCON0 = ADC_DIAL_READ;
 
     //Begin convertion
     ConvertADC();

@@ -22,7 +22,8 @@ extern void serialISR(void);
 
 //Transmit functions:
 extern void transmit(char *string);
-extern char transmitted(void);
+extern void transmitROM(const rom char *string);
+extern char transmitComplete(void);
 extern void transChar(char c);
 
 //Receive functions:

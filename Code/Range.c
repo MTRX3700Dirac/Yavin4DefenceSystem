@@ -22,8 +22,11 @@
 #include "Temp.h"
 #include <delays.h>
 
+#define MAX_RANGE 1000
+
 //ONLY FOR RANGE TESTING PURPOSES
 #include "Serial.h"
+#include "p18f4520.h"
 static void transRange(unsigned int us, unsigned int ir);
 //
 
@@ -46,6 +49,9 @@ static void transRange(unsigned int us, unsigned int ir);
 //Flag for performing an ultrasonic measurment
 volatile static char measuringUS = 0;
 
+static int m_minRange;
+static int m_maxRange;
+
 //Static variable to store the range
 static unsigned int lastRange = 0;
 static unsigned int lastUSRange = 0;    //These are used by the calibration function
@@ -56,8 +62,8 @@ static signed int calibration_offset_IR = 0;
 static signed int calibration_offset_US = 0;
 
 //Configuration variables
-static char numSamples = 3;         //Number of ultrasonic samples
-static unsigned char rateUS = 10;   //Ultrasonic sampling rate in Hz
+static char numSamples = 1;         //Number of ultrasonic samples
+static unsigned char rateUS = 2;   //Ultrasonic sampling rate in Hz
 static unsigned int rateIR = 200;   //IR sampling rate in Hz
 
 static TargetState current_target_state;
@@ -92,11 +98,22 @@ void configureAD(void)
     TRISA = 0xFF;
 
     //Write the configuration values into the configuration registers
-    ADCON1 = 0x8E;      // ADFM set
+    ADCON2bits.ADFM = 1; //Right justified
+    ADCON1 = 0x8C;      // AN0, AN1,  AN2 analogue inputs
     ADCON0 = 0x41;
 
     //Arbitrary wait period to allow the ADC to initialise
     for (i = 0; i < 1000; i++);
+}
+
+/*!
+ * Initialise once to stop reading temp
+ */
+void initializeRange(void)
+{
+    readTemp();
+    m_maxRange = 1000;
+    m_minRange = 250;
 }
 
 /*! **********************************************************************
@@ -119,9 +136,9 @@ void configureRange(void)
     //Enable global interrupts and interrupt priority
     INTCONbits.GIEH = 1;
     INTCONbits.GIEL = 1;
+    PIR1 = 0;
+    PIR2 = 0;
     RCONbits.IPEN = 1;
-
-    readTemp();
 
     //Make sure the AD is configured
     configureAD();
@@ -190,13 +207,16 @@ static unsigned int rangeUS(unsigned char temp)
 {
     unsigned int range;
     unsigned long int t;
+    unsigned long i = 0;
     //Continue to poll while measurement is still in progress
-    while (measuringUS);
+    // (measuringUS);
+    for (i = 0; i < 50000 && measuringUS; i++);
+    measuringUS = 0;
 
     #ifdef MNML
     //if (CCPR1 < 0x1770) return 0;
     //if (CCPR1 < 0x5DC) return 0;
-    if (ccp_value < 0x100) return 0;
+    if (ccp_value < 0x100 || i >=50000) return 0;
 
     //Perform calculation (ReadCapture in us, speed of sound in m/s->um)
     // um/1024 = ~mm
@@ -213,6 +233,8 @@ static unsigned int rangeUS(unsigned char temp)
     #endif
 
     range = (unsigned int) t;
+
+    if (range > m_maxRange) range = 0;
 
     return range;
 }
@@ -232,6 +254,7 @@ static unsigned int rangeUS(unsigned char temp)
 void rangeISR(void)
 {
     if (CCP1_INT && CCPR1 > 0x5DC)
+    //if (CCP1_INT)
     //if (CCP1_INT && CCPR1 > 0x300)
     {   //Checks if the CCP2 module fired the interrupt
         measuringUS = 0;
@@ -249,6 +272,7 @@ void rangeISR(void)
         PIE1bits.TMR1IE = 0;
     }
     CCP1_CLEAR;
+    measuringUS = 0;
 }
 
 /*! **********************************************************************
@@ -349,12 +373,13 @@ unsigned int range(void)
 #define range_IR sumIR      //Come conenient name changes
 #define range_US sumUS
     char i;
+    unsigned int k;
     unsigned int temp;
     unsigned long int sumUS = 0;
     unsigned long int sumIR = 0;
     int IR_samples = 0;
-    unsigned char delayUS = 25;//100 / rateUS;       //100Hz will give 1 delay increment of 10ms
-    unsigned char delayIR = 255;//10000 / rateIR;     //10KHz will give 1 delay increment of 0.1ms
+    unsigned char delayUS = 100 / rateUS;       //100Hz will give 1 delay increment of 10ms
+    unsigned char delayIR = 10000 / rateIR;     //10KHz will give 1 delay increment of 0.1ms
 
     unsigned int j;
     char rng_string[] = "Range: ";
@@ -367,7 +392,7 @@ unsigned int range(void)
     //Multiplex onto the IR sensor
     SetChanADC(ADC_IR_READ);
 
-    //for (i = 0; i < numSamples; i++)
+    for (i = 0; i < numSamples; i++)
     {
         configureRange();   //Still have to reconfigure each time???
         beginUS();
@@ -383,9 +408,8 @@ unsigned int range(void)
             //sumIR += IR_CONV(ADRES >> 6);
             IR_samples++;
 
-            Delay1KTCYx(delayIR);  //Delays in inrements of 100Tcy, which is 100 x 1us for 4MHz clock -> 0.1ms or 10KHz
+            Delay100TCYx(delayIR);  //Delays in inrements of 100Tcy, which is 100 x 1us for 4MHz clock -> 0.1ms or 10KHz
         }
-
         //get range of ultrasonic reading
         sumUS += rangeUS(25);   ///Standard room temperature for now @todo Read in temperature for US calculation
         Delay10KTCYx(delayUS);  //Delays in increments of 10KTcy, which is 10,000 * 1us for a 4MHz clock
@@ -397,19 +421,17 @@ unsigned int range(void)
     //Average all IR samples taken, and convert to distance
     if (IR_samples) range_IR = sumIR / IR_samples;
     else sumIR = 0;
-    //if (range_IR < 100) range_IR = 0;
-    //else range_IR = IR_CONV(range_IR);
+
+    if (range_IR > MAX_RANGE) range_IR = 0;
+    if (range_US > MAX_RANGE) range_US = 0;
 
     lastIRRange = range_IR;
     lastUSRange = range_US;
 
-    transRange(range_US, range_IR);
-
-    //transChar(sumIR / 100 + '0');
+    //transRange(range_US, range_IR);
 
 
-
-    return lastRange = fuseRange(range_US, range_IR);
+    return fuseRange(range_US, range_IR);
 #undef range_IR
 #undef range_US
 }
@@ -534,13 +556,13 @@ static void transRange(unsigned int us, unsigned int ir)
 {
     unsigned int j;
     char rng_string[] = "Range: ";
-    char ultrasonic[] = "Ultrasonic: ";
+    char ultra[] = "Ultrasonic: ";
     char infra[] = "Infra: ";
     char newLine[] = "\n\r";
     char neg = '-';
     char num[5];
 
-    transmit(ultrasonic);
+    transmit(ultra);
     sprintf(num, "%u", us);
         transmit(num);
         transmit(newLine);
@@ -549,4 +571,38 @@ static void transRange(unsigned int us, unsigned int ir)
     sprintf(num, "%u", ir);
         transmit(num);
         transmit(newLine);
+
+        for (j = 0; j < 10000; j++);
+}
+
+/*! **********************************************************************
+ * Function: setMaxRange()
+ *
+ * Include: Range.h
+ *
+ * Description: Sets the maximum range of the device
+ *
+ * Arguments: range - The max range to set in mm
+ *
+ * Returns: N/A
+ *************************************************************************/
+void setMaxRange(int range)
+{
+    m_maxRange = range;
+}
+
+/*! **********************************************************************
+ * Function: setMinRange()
+ *
+ * Include: Range.h
+ *
+ * Description: Sets the minimum range of the device
+ *
+ * Arguments: range - The min range to set in mm
+ *
+ * Returns: N/A
+ *************************************************************************/
+void setMinRange(int range)
+{
+    m_minRange = range;
 }

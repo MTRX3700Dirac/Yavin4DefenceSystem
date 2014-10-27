@@ -143,9 +143,11 @@ extern const far rom char maxRngSetStr[];
 extern const far rom char maxRngSerialStr[];
 //
 
-extern void initialiseMenu(void);
+extern void initialiseMenu(systemState *state);
 extern char checkForSerialInput(void);
 extern void menuISR(void);
 extern void serviceMenu(void);
+extern void dispTrack(TrackingData target);
+extern void dispSearching(void);
 
 

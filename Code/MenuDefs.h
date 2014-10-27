@@ -59,6 +59,7 @@ typedef enum {LOCAL, REMOTE, FACTORY} userState;
 #define ERR_NO_NUMBER -3000
 #define ESC_PRESSED -4000
 #define MINUS_CHAR 0x2D
+#define CLEAR_SCREEN_STRING "\033[2J\033[0;0H"
 
 //typedef enum setMenu {AZ_GOTO, AZ_MAX, AZ_MIN, EL_GOTO, EL_MIN, EL_MAX, RNG_MAX, RNG_MIN, IR_SAMPLE, IR_PER_AVG, US_SAMPLE, US_PER_AVG};
 typedef void (*numericInputFunction)(int);
@@ -86,7 +87,7 @@ typedef void (*voidFunction) (void);
  ******************************************************************************/
 struct menuStruct
 {
-    menuState menuNum;
+    menuState menuID;
     rom char* serialMessage;    //Serial Message to be displayed on entering the state
     rom char* lcdTitleMessage;       //LCD Message to be displayed on entering the state
 
@@ -110,125 +111,128 @@ const rom char goUp[] = "\tReturn to previous menu\r\n";
 const rom char goUp2[] = "Press Esc to return to the previous menu.\r\n";
 const rom char errNumOutOfRange[] = " Error: Please enter a number between ";
 const rom char and[] = " and ";
+const far rom char AzStr[] = "Azimuth";
+const far rom char ElStr[] = "Elevation";
+const far rom char RngStr[] = "Range";
+const far rom char tab[] = "\t";
 //
 
 //1: Top
 const rom char welcome[] = " Welcome to Yavin IV Defence System ";
 const rom char welcomeLcd[] = " Welcome!";
-const far rom char topOption1[] = "\t1:\tAutomatic Tracking\r\n";
-const far rom char topOption2[] = "\t2:\tAzimuth Options\r\n";
-const far rom char topOption3[] = "\t3:\tElevation Options\r\n";
-const far rom char topOption4[] = "\t4:\tRange Options\r\n";
-const far rom char topOption5[] = "\t5:\tDisplay Current Temperature\r\n";
-const far rom char topOptionCalTemp[] = "\t6:\tCalibrate the Temperature sensor\r\n";
-const far rom char topOptionLocal[] = "\t6:\tSwitch to Local mode\r\n";
-const far rom char topOptionFactory[] = "\t7:\tSwitch to Factory mode\r\n";
-const far rom char topOptionRemote[] = "\t6:\tSwitch to Remote Serial mode\r\n";
+//const far rom char topOption1[] = "\t1:\tAutomatic Tracking\r\n";
+const far rom char topOption1[] = "\t1:\tAutomatic Tracking";
+//const far rom char topOption2[] = "\t2:\tAzimuth Options\r\n";
+const far rom char topOption2[] = "\t2:\tAzimuth Options";
+const far rom char topOption3[] = "\t3:\tElevation Options";
+const far rom char topOption4[] = "\t4:\tRange Options";
+const far rom char topOption5[] = "\t5:\tDisplay Current Temperature";
+const far rom char topOptionCalTemp[] = "\t6:\tCalibrate the Temperature sensor";
+const far rom char topOptionLocal[] = "\t6:\tSwitch to Local mode";
+const far rom char topOptionFactory[] = "\t7:\tSwitch to Factory mode";
+const far rom char topOptionRemote[] = "\t6:\tSwitch to Remote Serial mode";
 const far rom char topOptionRemoteLCD[] = "Switch to Remote";
 //
 
 //1.1: Automatic tracking
-//const far rom char automessage[] = "Automatic Tracking Mode";
-//const far rom char autoinit[] = "\tInitialising Automatic Tracking...";
-//const far rom char autohelp1[] = "\tEnter any key to end session";
-////const far rom char autohelp2[] = "\tRange, Elevation, Azimuth and Tracking";
-////const far rom char autohelp3[] = " Status will be displayed every X seconds:";
-//const far rom char autogo[] = "\t3...\n\t2...\n\t1...\n";
-//const far rom char autorange[] = "\tRange:\t";
-//const far rom char autoeleva[] = "\tElevation:\t";
-//const far rom char autoazimu[] = "\tAzimuth:\t";
-//const far rom char autostatu[] = "\tTarget Status:\t";
-//const far rom char autoend[] = "Tracking Session Terminated";
+const far rom char autoSerialMessage[] = "Automatic tracking mode initiated.";
+const far rom char autoLcdTitle[] = "Auto-tracking";
+const far rom char autoSearching[] = "Searching...";
 //
+
+const rom char set[] = "Set";
+const rom char range_str[] = "Range";
+const rom char goto_str[] = "Go to";
+const rom char Options[] = "Options";
 
 //1.2: Azimuth Menu
 const rom char azMenu[] = "\r\nAzimuth Configuration\r\n";
 const rom char azMenuLcd[] = "Azimuth Options";
-const far rom char azOption1[] = "\t1:\tGo to a specified azimuth angle\r\n";
-const far rom char azOption2[] = "\t2:\tSet the minimum azimuth angle\r\n";
-const far rom char azOption3[] = "\t3:\tSet the maximum azimuth angle\r\n";
-const far rom char azOption4[] = "\t4:\tCalibrate the azimuth motor\r\n";
+const far rom char azOption1[] = "\t1:\tGo to a specified azimuth angle";
+const far rom char azOption2[] = "\t2:\tSet the min azimuth angle";
+const far rom char azOption3[] = "\t3:\tSet the max azimuth angle";
+const far rom char azOption4[] = "\t4:\tCalibrate the azimuth motor";
 //
 
 //1.3: Elevation Menu
-const rom char elMenu[] = "\r\nElevation Configuration\r\n";
+const rom char elMenu[] = "Elevation Configuration";
 const rom char elMenuLcd[] = "Elevation Options";
-const far rom char elOption1[] = "\t1:\tGo to a specified elevation angle\r\n";
-const far rom char elOption2[] = "\t2:\tSet the minimum elevation angle\r\n";
-const far rom char elOption3[] = "\t3:\tSet the maximum elevation angle\r\n";
-const far rom char elOption4[] = "\t4:\tCalibrate the elevation motor\r\n";
+const far rom char elOption1[] = "\t1:\tGo to a specified elevation angle";
+const far rom char elOption2[] = "\t2:\tSet min elevation angle";
+const far rom char elOption3[] = "\t3:\tSet max elevation angle";
+const far rom char elOption4[] = "\t4:\tCalibrate elevation servo";
 //
 
 //1.4: Range Menu
-const rom char rngMenu[] = "\r\nRange Configuration\r\n";
+const rom char rngMenu[] = "Range Configuration";
 const rom char rngMenuLcd[] = "Range Options";
-const far rom char rngOption1[] = "\t1:\tSet the minimum system range\r\n";
-const far rom char rngOption2[] = "\t2:\tSet the maximum system range\r\n";
-const far rom char rngOption3[] = "\t3:\tView the raw ultrasound and infrared sensor readings\r\n";
+const far rom char rngOption1[] = "\t1:\tSet min system range";
+const far rom char rngOption2[] = "\t2:\tSet max system range";
+const far rom char rngOption3[] = "\t3:\tView raw ultrasound and IR sensor data";
 const far rom char rngOption4[] = "\t4:\tSet the ultrasound sample rate\r\n";
-const far rom char rngOption5[] = "\t5:\tSet the number of ultrasound samples used per estimate\r\n";
-const far rom char rngOption6[] = "\t6:\tSet the infrared sample rate\r\n";
-const far rom char rngOption7[] = "\t7:\tSet the number of infrared samples used per estimate\r\n";
+const far rom char rngOption5[] = "\t5:\tSet number of ultrasound samples per estimate";
+const far rom char rngOption6[] = "\t6:\tSet IR sample rate\r\n";
+const far rom char rngOption7[] = "\t7:\tSet number of IR samples per estimate";
 //
 
 //1.5: Show Temp
 const far rom char showTempLCDTitle[] = "Display Temp";
 const far rom char showTempLCD[] = "Temp = ";
-const far rom char showTemp1[] = "\r\n The current temperature is ";
-const far rom char showTemp2[] = " degrees Celcius. \r\n\n Press Esc to return.\r\n";
+const far rom char showTemp1[] = "Temp: ";
+const far rom char showTemp2[] = " deg Celcius. \r\n\n Press Esc to return";
 //
 
 //1.6: Calibrate Temperature
 //
 
 //1.2.1: Go to Azimuth Angle
-const far rom char gotoAzAngle[] = "\r\n Enter the azimuth angle in degrees. \r\n";
+const far rom char gotoAzAngle[] = "Enter azimuth angle in degrees";
 const far rom char gotoAzAngleLCD[] = "Go to Azimuth";
-const far rom char gotoElAngle[] = "\r\n Enter the elevation angle in degrees. \r\n";
+const far rom char gotoElAngle[] = "Enter elevation angle in degrees";
 const far rom char gotoELAngleLCD[] = "Go to Elevation";
-const far rom char gotoAngle2[] = " The current minimum and maximum angles are ";
+const far rom char gotoAngle2[] = " Current min & max angles: ";
 const far rom char angleStr[] = "Angle";
 //
 
 //1.2.2: Set Max Azimuth Angle
 const far rom char maxAzStr[] = "Max Azimuth";
 const far rom char maxAzSetStr[] = "Set Max Azimuth";
-const far rom char maxAz1[] = " Enter a new maximum azimuth angle: \r\n";
-const far rom char maxAz3[] = "\r\n Maximum azimuth angle set to ";
+const far rom char maxAz1[] = " Enter a new max azimuth: ";
+const far rom char maxAz3[] = "Max azimuth set to ";
 //
 
 //1.2.2: Set Min Azimuth Angle
-const far rom char currentMinAngleStr[] = "\r\n The current minimum angle is ";
+const far rom char currentMinAngleStr[] = "Current min ";
 const far rom char minAzStr[] = "Min Azimuth";
 const far rom char minAzSetStr[] = "Set Min Azimuth";
-const far rom char minAz1[] = " Enter a new minimum azimuth angle: \r\n";
-const far rom char minAz3[] = "\r\n Minimum azimuth angle set to ";
+const far rom char minAz1[] = " Enter a new min azimuth: ";
+const far rom char minAz3[] = " Min azimuth set to ";
 //
 
 //1.2.3: Calibrate Azimuth / Elevation
-const far rom char calibrateAngle1[] = "\r\n Enter the true angle of the current position \r\n";
+const far rom char calibrateAngle1[] = "Enter Calibration angles: ";
 //
 
 //1.3.2: Set Max Elevation Angle
 const far rom char maxElStr[] = "Max Elevation";
 const far rom char maxElSetStr[] = "Set Max Elevation";
 //const far rom char maxEl1[] = "\r\n The current maximum elevation angle is ";
-const far rom char maxEl1[] = " Enter a new maximum elevation angle: \r\n";
-const far rom char maxEl3[] = "\r\n Maximum elevation angle set to ";
+const far rom char maxEl1[] = " Enter a new max elevation: ";
+const far rom char maxEl3[] = " Maximum elevation set to ";
 //
 
 //1.3.2: Set Min Elevation Angle
 const far rom char minElStr[] = "Min Elevation";
 const far rom char minElSetStr[] = "Set Min Elevation";
 //const far rom char minEl1[] = "\r\n The current minimum elevation angle is ";
-const far rom char minEl1[] = " Enter a new minimum elevation angle: \r\n";
-const far rom char minEl3[] = "\r\n Minimum elevation angle set to ";
+const far rom char minEl1[] = " Enter a new min elevation: ";
+const far rom char minEl3[] = " Min elevation set to ";
 //
 
 //1.4.1 Range Min
 const far rom char minRngStr[] = "Min Range";
 const far rom char minRngSetStr[] = "Set Min Range";
-const far rom char minRngSerialStr[] = "Enter a new minimum range: \r\n";
+const far rom char minRngSerialStr[] = "Enter a new min range: \r\n";
 //
 
 // 1.4.2 Range Max

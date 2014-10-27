@@ -55,14 +55,15 @@ void configureTemp(void)
 unsigned char readTempx2(void)
 {
     int ad_result;
-    unsigned char tempx2;
-
+    int tempx2;
+    char mod;
     int tempRaw;
     int tempmV;
-    int offset; //0mV at 2 degrees??
+    char offset = -20; //0mV at 2 degrees??
 
-    //Sets the ADC channel to read the temperature
-    SetChanADC(ADC_TEMP_READ);
+    //Sets the ADC channel to read the temperature to channel 1
+//    SetChanADC(ADC_TEMP_READ);
+    ADCON0 = ADC_TEMP_READ;
 
 //    //Performs the conversion
 //    ConvertADC();
@@ -72,12 +73,17 @@ unsigned char readTempx2(void)
 //    //10mV per deg C, which 0V at 0deg, with the ADC res ~5mV
 //    tempx2 = ad_result;
 
-        ADCON0bits.GO = 1;
-        while(ADCON0bits.GO_NOT_DONE == 1);
-        tempRaw = ADRESH + ADRESL;
-        tempmV  = tempRaw*4.8828 + offset; //each incrememnt of ADRES is 4.88mV
-
-    lastTempx2 = tempx2 = 2 * tempmV;
+    ADCON0bits.GO = 1;
+    while (ADCON0bits.GO_NOT_DONE == 1);
+    tempRaw = ADRES;
+    tempmV = tempRaw * 4.88 + offset; //each incrememnt of ADRES is 4.88mV
+    
+    // Store double to keep accuracy
+    tempmV = 2*tempmV;
+    // Round last digit
+    mod = tempmV % 10;
+    if (mod >= 5) tempmV = tempmV + (10 - mod);
+    lastTempx2 = tempx2 =tempmV/10;
     
     return tempx2 + calibration_offset;
 }

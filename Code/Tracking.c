@@ -66,10 +66,10 @@ void configureTracking(void)
 {
     configureBase();
     configureRange();
-
-    //Set up TMR2 for prediction purposes
-    CloseTimer0();
-    OpenTimer0(T0_16BIT & T0_SOURCE_INT & T0_PS_1_256);
+//
+//    //Set up TMR2 for prediction purposes
+//    CloseTimer0();
+//    OpenTimer0(T0_16BIT & T0_SOURCE_INT & T0_PS_1_256);
 }
 
 /* **********************************************************************
@@ -170,6 +170,7 @@ TrackingData track(systemState *state)
     char i, count = 0;
     char weight;
     unsigned int j;
+    unsigned int rng;
     Direction centre;
     signed long int inclination = 0;
     signed long int azimuth = 0;
@@ -180,7 +181,15 @@ TrackingData track(systemState *state)
     TargetStateData target_data;
 
     //angle = 2 * TARGET_RAD * (unsigned int)57 / range();
-    angle = 8;
+    rng = range();
+    if (rng)
+    {
+        angle = 13 * (unsigned int)300 / rng + 3;
+    }
+    else
+    {
+        angle = 10;
+    }
 
     centre = getDir();
 

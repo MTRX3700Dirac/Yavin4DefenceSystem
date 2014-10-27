@@ -29,7 +29,7 @@
 #define init(buf) buf.tail = 0; buf.head = 0
 
 //NOTE: The BUFFERLENGTH can be redefined at the top of any module if a different length is desired
-#define BUFFERLENGTH 80
+#define BUFFERLENGTH 50
 
 /*! ****************************************************************************
  * typedef of circularBuffer struct
