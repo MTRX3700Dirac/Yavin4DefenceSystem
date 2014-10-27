@@ -48,19 +48,25 @@ void main() {
     int counter = 0;
     int num1=100;
     int num2=900;
-    int num3;
+    int num3=0;
     int jess;
+    int address = EEPADDRESS;
     systemState state = {INIT, UNDEF};
     TrackingData target;
     //Direction dir = {20, 20};
 
 //
+
+
     configureSerial();
     configureRange();
 //    configUSER();
 
-    sendEep(num1, 0x0200);
-    sendEep(num2, 0x0210);
+    sendEep(num1, address);
+    address++;
+    sendEep(num2, address);
+
+    address = EEPADDRESS;
 
     num3=readEep(0x0200);
     jess=readEep(0x0210);
