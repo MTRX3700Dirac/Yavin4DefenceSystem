@@ -89,7 +89,6 @@
 //    PWRT = OFF          PWRT disabled
 
 #pragma config OSC   = HS
-//#pragma config OSC = INTIO67
 #pragma config FCMEN = OFF
 #pragma config IESO  = OFF
 #pragma config PWRT  = ON
@@ -143,10 +142,7 @@
 //    WDTPS = 32768       1:32768
 
 #pragma config WDT   = OFF
-//#pragma config WDT = ON         //Enable the WDT
-#pragma config WDTPS = 2048
-
-//512//32768    //32768*2.5MHz ~
+#pragma config WDTPS = 32768
 
 
 //  CCP2 MUX bit:

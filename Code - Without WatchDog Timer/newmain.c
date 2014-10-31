@@ -45,16 +45,14 @@ void main() {
     systemState state = {INIT, UNDEF};
     TrackingData target;
 
-    OSCCON = 0x64;              //Set the oscillator
-    WDTCONbits.SWDTEN = 1;       //Enable the Watch Dog time
 
+//    configureSerial();
+//    configureRange();
+    //configureAD();
     initialiseMenu(&state);
 
     for (;;)
     {
-        //Clear Watch Dog Timer
-        _asm CLRWDT _endasm
-
        	serviceMenu();
 
         switch (state.current)
