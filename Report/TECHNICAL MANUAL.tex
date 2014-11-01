@@ -122,7 +122,7 @@ The serial module should have the following performance characteristics:
 The following interface requirements are desirable:
 \begin{itemize}
 	\item Complete isolation/modularisation (e.g. no global interrupts) - the buffers are not accessible to the rest of the program
-	\item Very simple, intuitive and appropriately named interface functions taking 1 or no arguments.
+	\item Very simple, intuitive interface functions taking 1 or no arguments that are appropriately named.
 	\item As simple operation as possible - E.g. configureSerial() then transmit().
 \end{itemize}
 
@@ -185,5 +185,187 @@ The module takes the following inputs
 \begin{itemize}
 	\item Direction Struct
 \end{itemize}
+
+\subsubsection{Processes}
+The following processes must be operational for the functionality of the module
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Outputs}
+The only program output is the current pan tilt direction.
+The only other output is the PDM outputs to the servo which dictate their position.
+
+\subsubsection{Timing}
+The Pan Tilt module must have very precise timing to ensure that the servo positions are maintained precisely.
+\begin{itemize}
+	\item Module must be interrupt driven
+	\item Must have very low interrupt latency
+	\item PDM's must be offset so that the interrupts for elevation and azimuth don't interfere and block each other
+	\item Delay after movement function to allow the servo's to move to that position
+\end{itemize}
+
+\subsubsection{Failure Modes}
+The Pan Tilt module includes the following assurances against failure:
+\begin{itemize}
+	\item New delay information is only set at the end of a cycle to guarantee the PDM frequency
+	\item Validation function to ensure that the high time to within the specified range in the datasheet  
+\end{itemize}
+
+\subsubsection{Implemented Basic Functionality}
+The Pan Tilt module includes the following basic functionality:
+\begin{itemize}
+	\item Configure function to set up the module
+	\item Move function to move to any valid position
+	\item Get Direction function to return the current direction
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+The module should have the following performance characteristics to perform well:
+\begin{itemize}
+	\item Very low interrupt latency
+	\item Adjustment for interrupt latency
+\end{itemize}
+
+\subsubsection{Interfaces}
+The following interface characteristics are desirable:
+\begin{itemize}
+	\item Complete Isolation/modularity so that the rest of the program does not have access to any of the functionality of the module, but merely sets the direction of the Pan-Tilt module
+	\item Very simple, intuitive interface functions taking 1 or no arguments that are appropriately named.
+	\item Very simple module operation, such as configuration and move to desired location
+\end{itemize}
+
+\subsubsection{Implemented Additional Functionality}
+The following additional functionality has been implemented for the Pan Tilt Module
+\begin{itemize}
+	\item Incremental move function
+	\item Increment fine function for greater precision
+	\item Updated function to indicate whether a new delay setting has actually been written into the system yet
+\end{itemize}
+
+\subsection{Conceptual Design}
+This module uses a single output compare module to create the delays necessary to generate the PDM's of the desired duty cycle. Due to the interrupt latency of approximately 300$\mu$s, the PDM's are staggered so that the interrupt calls will never be closer than approximately 0.04 seconds. The full available duty cycle (1000$\mu$s) is divided over the given angular range. There is also an angular offset for calibration reasons. The Delay object is then created to define the necessary delays to create the desired PDM.
+NOTE: This module is interrupt driven, so the Interrupt.c file must be included in the project for it to work. \newline
+A data Flow diagram of the Pan Tilt Module is shown in Fig. \ref{PanTiltPins}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Pan Tilt Data Flow Diagram"}
+\caption[Pan Tilt Dataflow Diagram]{Dataflow diagram showing the transition from inputted direction to servo direction}
+\label{fig:PanTiltDataFlowDiagram}
+\end{figure}
+
+\subsubsection{Assumptions Made}
+The largest assumption made is that the clock frequencies in the code match those of the actual clock. Common.h defines the clock frequencies of the PICDEM and Minimal Boards which can be switched between. But there is no way for the system to verify the frequency of the clock, and if the clock is not the same then the PDM frequency will not be 50Hz, which can damage the servo's if faster. \newline
+The module does not assume that the interrupts fire instantly after the timing event, but that there is an approximately constant latency time, which is found experimentally, included as a \# define, and tuned.
+
+\subsubsection{Constraints on Pan Tilt Performance}
+The Pan Tilt module is restricted to the servo range of motion. Also the actual position is entirely dependant on the calibration as they merely take a PDM input.
+
+\subsubsection{Interface}
+Refer to the Technical User Manual For detailed explanations of the interface functions and how to use them.
+
+\section{Range}
+\subsection{Description}
+The range module uses the IR, Ultrasonic and temperature sensors to take range measurements.
+
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The range module takes no real inputs
+
+\subsubsection{Processes}
+The range module requires the following processes to function properly
+\begin{itemize}
+	\item Sample the Ultrasonic and IR sensors
+	\item Convert the sensor output to a range
+	\item Fuse the ranges from different sensors 
+\end{itemize}
+
+\subsubsection{Outputs}
+
+\subsubsection{Timing}
+
+\subsubsection{Failure Modes}
+
+\subsubsection{Implemented Basic Functionality}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+
+\subsubsection{Interfaces}
+
+\subsubsection{Implemented Additional Features}
+The range module also implements the following additional functionality
+\begin{itemize}
+	\item Fuse the ranges taking the distance into account - US better for long ranges, IR better for short
+	\item Categorise the target state based on which sensors return a reading
+	\item Range calibrating functions
+\end{itemize}
+
+\subsection{Conceptual Design}
+The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking. 
+
+\subsubsection{Assumptions Made}
+
+\subsubsection{Interface}
+
+
+\section{Interrupts}
+\subsection{Description}
+The PIC18F4520 has 2 ISR's, so an interrupt framework whereby each module defines an ISR function, and a macro which determines whether to call its ISR function. The ISR's are then included in their own file, and included here as a semi-module
+
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+For the interrupt framework to function each module must define a macro which checks the interrupt flags for all the interrupts associated with the module.
+
+\subsubsection{Processes}
+The interrupt framework must be capable of performing the following processes:
+\begin{itemize}
+	\item Check each module interrupt macro
+	\item Ability to call the associated function depending on macro results
+\end{itemize}
+
+\subsubsection{Outputs}
+The interrupt framework has no real outputs, but directs program execution to the appropriate module ISR
+
+\subsubsection{Timing}
+There are no hard timing requirements for the interrupt framework itself, but the high priority interrupts in particular need to be called as soon after the event as possible.
+
+\subsubsection{Implemented Basic Functionality}
+The interrupt framework includes the following basic functionality:
+\begin{itemize}
+	\item Ability to distribute interrupt execution to any module
+	\item Priorities (high and low)
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+The following characteristics are desirable for performance reasons:
+\begin{itemize}
+	\item All interrupts should be as fast and efficient as possible so as to interfere with background code, and other interrupts as little as possible. 
+	\item Any extended functionality should be placed into functions not called by the interrupts
+	\item Use of priorities to ensure precision for some modules such as the pan tilt which rely on it
+\end{itemize}
+
+
+\subsubsection{Implemented Additional Features}
+There are no additional features implemented for the interrupt framework
+
+\subsection{Conceptual Design}
+For convenience interrupt macros have been defined in Common.h for each possible interrupt call. Querying one of these macros will return true if that interrupt fired an interrupt. These macros look like: TX\_INT, CCP1\_INT.\newline
+Each module defines a macro (in its header file) which indicates which interrupts that module is using, by or-ing together the previously mentioned macros. When an interrupt fires it checks these macros for each module, and if true calls a 'module scope ISR'. These macros look like: SERIAL\_INT, RANGE\_INT etc. \newline
+These module scope ISR's are just functions defined within each interrupt driven module, which are called whenever an interrupt associated with that macro is called. Thus these functions act as ISR's for the module without conflicting with anything else in the program.
+
+\subsubsection{Assumptions Made}
+
+
+\subsubsection{Interface}
+There is no public interface for the interrupt framework and nothing can call any of its functions. However other modules must define a macro and a service routine which are used in the interrupt module
+
+\section{Temp}
+\subsection{Description}
+
+
 
 \end{document}          
