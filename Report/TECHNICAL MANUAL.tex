@@ -183,7 +183,7 @@ The Pan Tilt module is responsible for interfacing and driving the pan tilt mech
 \subsubsection{Inputs}
 The module takes the following inputs
 \begin{itemize}
-	\item Direction Struct
+	\item The Direction as a direction struct
 \end{itemize}
 
 \subsubsection{Processes}
@@ -193,7 +193,7 @@ The following processes must be operational for the functionality of the module
 \end{itemize}
 
 \subsubsection{Outputs}
-The only program output is the current pan tilt direction.
+The only program output is the current pan tilt direction. \newline
 The only other output is the PDM outputs to the servo which dictate their position.
 
 \subsubsection{Timing}
@@ -283,17 +283,26 @@ The range module requires the following processes to function properly
 \end{itemize}
 
 \subsubsection{Outputs}
+The output of the range module is the range to the target (in mm) as an unsigned int. The module also returns the state of the detected target as an enumeration.
 
 \subsubsection{Timing}
+The range module uses an input capture module to record the precise time the ultrasonic echo signal returns, which is then used for the range calculation. An interrupt is then used to indicate that the echo has returned, but precise timing for this is not required, as the echo return is stored in hardware when the echo is detected. 
 
 \subsubsection{Failure Modes}
+The system waits for the echo signal to return, but there is a possibility that the echo will never return. For this reason the system has a timeout feature so that if the signal does not return within a specified timeout then the range module returns nothing found. This means that the range module does not get stuck in the range module waiting for the echo signal to return.
 
 \subsubsection{Implemented Basic Functionality}
+The range module implements the follow functionality:
+\begin{itemize}
+	\item Configure the range module
+	\item Return the range to the target
+\end{itemize}
 
 \subsection{Non-Functional Requirements}
 \subsubsection{Performance}
 
 \subsubsection{Interfaces}
+Refer to the Technical Users Guide for a detailed explanation of the module interface
 
 \subsubsection{Implemented Additional Features}
 The range module also implements the following additional functionality
@@ -365,6 +374,75 @@ There is no public interface for the interrupt framework and nothing can call an
 
 \section{Temp}
 \subsection{Description}
+
+
+
+\chapter{User Interface Design}
+<Give a detailed description of the design of the user interface. This will gave the reader a god view of how the system functions from the user's perspective.>
+
+\section{Classes of User}
+<If there are different user interfaces presented to different classes of users, define there user casses, and how access by the various user classes is enabled or disabled.
+
+\section{Interface Design <User Class Y>}
+\subsection{User Inputs and Outputs}
+<Description of how the user presents inputs to the system, and how the system responds to those inputs. Include a description of how the user knows the state of the system.>
+
+\subsection{Input Validation and Error Trapping}
+<Describe how the system validates user input, and how operator errors are trapped and can be recovered from>
+
+\chapter{Hardware Design}
+<Give a detailed description of the design of hardware. The description should include mechanical drawings, location diagrams, electrical circuit schematics, circuit simulation or test results, PCB overlays, wiring diagrams, connector pin-out lists, pneumatic/hydraulic circuit diagrams>
+
+\section{Scope of the <Something> System Hardware}
+Statement of what is, and what is not, being designed and described here.
+
+\section{Hardware Design}
+\subsection{Power Supply}
+Power supply method and rating, fusing, distribution, grounding and protective earth as appropriate.
+
+\subsection{Computer Design}
+Description of computer hardware, including all interface circuitry to sensors, actuators, and I/O hardware.
+
+\subsubsection{Sensor Hardware}
+
+\subsubsection{Actuator Hardware}
+
+\subsubsection{Operator Input Hardware}
+
+\subsubsection{Operator Output Hardware}
+
+\subsubsection{Hardware Quality assurance}
+Describe any measures that were taken to control (improve) hardware quality and reliability - Heartbeats, brownout conditioning/resets, reset conditions, testing and validation, etc.
+
+\subsection{Hardware Validation}
+Details of any systematic testing to ensure that the hardware actually functions as intended
+
+\subsection{Hardware Validation}
+Details of any systematic testing to ensure that the hardware actually functions as intended.
+
+\subsection{Hardware Calibration Procedures}
+Procedures for calibration required in the factory, or in the field
+
+\subsection{Hardware Maintenance and Adjustment}
+Routine adjustment and maintenance procedures
+
+\chapter{Software Design}
+The software requirements and overview have been dealt with elsewhere in this section addresses the design and implementation of the software that forms the <X system>.
+
+\subsection{Software Design Process}
+The software was designed in a top down manner, around a basic state machine shown in Fig. \ref{fig:OperationStateTransitionDiagram}. A full detailed description of the system states is included in the state descriptions documents. Once the states and transitions were decided on a basic framework was written that stored the state as an enumeration and a switch case within an infinite loop that continuously calls functions based on the state. \newline
+From there stub functions were written for each of the states that would eventually become the full state functionality. \newline
+The modules were then designed. This was a fairly subjective manner of splitting the system into isolated, independent sections that performed one task. Most of the modules were Hardware Interface Layers such as the ultrasonic and infra red interfaces. \newline
+As the modules were completed they were tested, and then placed into the state functions. The maid idea was that the modules contain all the functionality of the system, and the state functions merely use that functionality. However, some of the state functions ended up being just functions within the modules. \newline
+while the system was designed in a top down manner many of the functions were designed bottom up, primarily the hardware interface functions which were designed by starting with the datasheet, and working upwards. This was however restricted to the individual functions and met the top down design at the function design level. \newline
+The entire system was designed to be simple, and fit together nicely. As such we had very few interface problems, and almost all of these were hardware related, due to things like common power supplies etc.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
+\caption[State Diagram]{System overview state diagram}
+\label{fig:OperationStateTransitionDiagram}
+\end{figure}
 
 
 
