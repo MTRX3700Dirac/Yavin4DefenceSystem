@@ -3,8 +3,11 @@
 \usepackage{graphicx}
 \usepackage{bookmark}
 
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+
 % Title Page
-\title{Technical Manuel \newline Yavin IV Defence System}
+\title{Technical Manual \newline Yavin IV Defence System}
 \author{Team Dirac}
 
 
@@ -68,28 +71,30 @@ The system was broken down into a number of independent modules which contain th
 
 
 
-\section{Serial}
-\subsection{Description}
-The serial module takes care of all communication (transmit and receive) over the serial UART (rs-232) port.
+\section{Module Requirements: Serial}
 
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
-The only external input to the system is characters or strings to transmit. \newline 
-Either transmit, or transmitROM must be used depending on if the string is in RAM or ROM. The incorrect usage will result in printing nothing. \newline
-Sending a string which in not null terminated will result in unexpected behaviour, most probably filling and overflowing the buffer until a null is reached. \newline
-Sending a different datatype such as a float instead of a char will result in syntax errors, but other integer types may be casted into a char, truncating data and resulting in unexpected results. Again, the function only takes char's and integers must first be converted to a char array.
+The module must be capable to receiving characters from a user program and transmitting them over serial. The ability to send strings is considered an extension of the basic functionality. \newline
+The system must be capable of receiving and storing characters over the serial line, and reporting them back to the user program when requested.
 
 \subsubsection{Processes}
-The following processes must be operational:
+The module must be capable of performing the following processes:
 \begin{itemize}
-	\item The circular buffer functionality - pushing and popping characters from buffers must work properly for the module to operate.
+	\item Receiving data over serial line
+	\item Sending data over serial line
+	\item Storing data to be transmitted
+	\item Storing data received
+	\item Interface with the user program
 \end{itemize}
 
 
 \subsubsection{Outputs}
-The system must output the following to work correctly: 
+The module must be capable of returning the following outputs:
 \begin{itemize}
 	\item exact characters received over the serial line in the correct order.
+	\item Whether the system has received anything
+	\item Data Characters over the serial line
 \end{itemize}
 
 \subsubsection{Timing}
@@ -98,16 +103,6 @@ The serial module must be capable of:
 	\item Storing characters as soon as they are received over serial
 	\item Retaining received characters until they are handled
 	\item Retaining transmission characters until they can be transmitted
-\end{itemize}
-
-\subsubsection{Implemented Basic Functionality}
-The serial module implements the following basic functionality:
-\begin{itemize}
-	\item Functioning receive and transmit serial interrupts
-	\item Configure function to set up the module
-	\item Separate circular buffers to store data received and data to be transmitted
-	\item Public Function to add data to the transmission buffer
-	\item Public Function to read from received buffer, and check if anything has been received
 \end{itemize}
 
 \subsection{Non-Functional Requirements}
@@ -133,20 +128,16 @@ The design of the serial module was constrained by the following:
 	\item Very little memory on the PIC - buffers were restricted to 30 characters
 \end{itemize}
 
-\subsubsection{Implemented Additional Functionality}
-In addition to the required functionality above, the serial module also offers the following functionality:
-\begin{itemize}
-	\item Push Null terminated strings to the transmit buffer
-	\item Check if carriage return, or esc has been received
-	\item Pop an entire string from the receive buffer up to a carriage return
-	\item Clear the buffers
-	\item Receiving backspace characters removes the last characters from the buffer (if not CR or ESC)
-	\item Read a string form program memory and transmit
-	\item Peek - Read character without removing from buffer
-	\item Indicate if transmit buffer is empty (all messages sent)
-\end{itemize}
+\section{Conceptual Design: Serial}
+\subsection{Description}
+The serial module takes care of all communication (transmit and receive) over the serial UART (rs-232) port.
 
-\subsection{Conceptual Design:}
+\subsection{Overall Design}
+The serial module was designed to be as simple and intuitive to use as possible. For this reason the final design ended up being very similar to the serial on an arduino. \newline
+There are two inbuilt circular buffers: a transmit buffer and a receive buffer. Any inputs to the serial module for transmission are simply placed into the transmission buffer to be transmitted at the next available opportunity. Any data received over serial is automatically pushed onto the receive buffer to be used by the program. \newline
+The buffers are completely hidden from the rest of the program, and the user simply interacts with the buffers in an intuitive manner to send and receive data
+
+\subsection{Detailed Description}
 The serial module is INTERRUPT DRIVEN. This means that any background code can be running while the module is transmitting and/or receiving data over the serial line, and no serial data should ever be missed, overlooked or cut out. \newline
 The module contains two circular buffers: a transmit buffer and a receive buffer. These buffers are NOT accessible by the rest of the program. Rather, the module provides a public function transmit() which takes a string, and places it into the transmit buffer. Anything in this buffer is then transmitted character by character when the transmit ready interrupt fires. \newline
 Whenever a character is received over serial it is stored in the received buffer by an interrupt. Again this buffer is NOT accessible to the rest of the program. Rather it provides a number of functions to interact with it. The most commonly used of which is the readString() function, which returns everything in the buffer up to a carriage return (e.g. a line of input entered by the user). \newline
@@ -160,10 +151,38 @@ Fig. \ref{fig:SerialModule} shows a conceptual diagram of the function of the se
 	\label{fig:SerialModule}
 \end{figure}
 
-\subsubsection{Assumptions Made}
+\subsection{Rational for Design}
+The rational for the serial module is fairly self explanatory: any decent serial module requires buffers to help prevent data loss, with the ideal implementation being circular buffers. The buffers are kept isolated for modularity and good programming practise, while it also serves to greatly simplify the usage and novice users are not confused by access to buffers and other data structures. The rest of the interface was then chosen to be as simple and intuitive as possible.
+
+\subsection{Implemented Functionality}
+\subsubsection{Implemented Basic Functionality}
+The serial module implements the following basic functionality:
+\begin{itemize}
+	\item Functioning receive and transmit serial interrupts
+	\item Configure function to set up the module
+	\item Separate circular buffers to store data received and data to be transmitted
+	\item Public Function to add data to the transmission buffer
+	\item Public Function to read from received buffer, and check if anything has been received
+\end{itemize}
+
+
+\subsubsection{Implemented Additional Functionality}
+In addition to the required functionality above, the serial module also offers the following functionality:
+\begin{itemize}
+	\item Push Null terminated strings to the transmit buffer
+	\item Check if carriage return, or esc has been received
+	\item Pop an entire string from the receive buffer up to a carriage return
+	\item Clear the buffers
+	\item Receiving backspace characters removes the last characters from the buffer (if not CR or ESC)
+	\item Read a string form program memory and transmit
+	\item Peek - Read character without removing from buffer
+	\item Indicate if transmit buffer is empty (all messages sent)
+\end{itemize}
+
+\subsection{Assumptions Made}
 The module assumes that the buffers will never be overfilled, i.e. is able to transmit data faster than being written into buffer, or that input is being handled in a timely fashion. Failing this, it is assumed that the oldest data (which is overwritten) is the least meaningful, and that loosing some data will not create catastrophic error in the system. It is recommended to include a wait if sending large blocks of text over serial.
 
-\subsubsection{Constraints on Serial Performance}
+\subsection{Constraints on Serial Performance}
 The main constraints on the serial module performance are:
 \begin{itemize}
 	\item Baud Rate
@@ -175,29 +194,53 @@ The interrupt latency is the time delay between the interrupt firing and the act
 \subsection{Interface}
 Refer to the Technical User Manual For detailed explanations of the interface functions and how to use them.
 
-\section{Pan Tilt}
-\subsubsection{Description}
-The Pan Tilt module is responsible for interfacing and driving the pan tilt mechanism. This primarily consists of generating the PDM signals required to send dictate the position of the servo's.
+\subsubsection{List of inputs}
+The following are inputs that can be sent to the serial module for transmission:
+\begin{itemize}
+	\item Strings (RAM char array) through transmit()
+	\item Strings (ROM char array) through sendROM()
+	\item Characters through transmitChar()
+\end{itemize}
+
+In addition, the serial module has serial input from whatever terminal it is communicating to. This is via TTL level logic rs-232 at 9600 baud. The terminal communicates at rs-232 level logic, which is then converted by an adapter on the minimal board.
+
+\subsubsection{List of Outputs}
+The following are outputs that can be requested from the serial module following reception:
+\begin{itemize}
+	\item Characters from receivePop(), receivePeek()
+	\item Strings from readString()
+\end{itemize}
+
+The serial module also outputs TTL level logic at 9600 baud rs-232 encoding which is then converted to rs-232 level logic to the terminal.
+
+
+
+\section{Module Requirements: Pan Tilt}
 
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
-The module takes the following inputs
+The Pan Tilt module must be capable of taking the following inputs:
 \begin{itemize}
-	\item The Direction as a direction struct
+	\item The desired direction
 \end{itemize}
 
 \subsubsection{Processes}
-The following processes must be operational for the functionality of the module
+The Pan Tilt module must be capable of performing the following processes:
 \begin{itemize}
-	\item 
+	\item Storing the current direction\\PDM
+	\item Converting a given direction into a PDM
+	\item Continuously generating the control PDM to send to the servo's
 \end{itemize}
 
 \subsubsection{Outputs}
-The only program output is the current pan tilt direction. \newline
-The only other output is the PDM outputs to the servo which dictate their position.
+The program must be capable of the following outputs:
+\begin{itemize}
+	\item PDM control signal to the servo's
+	\item Current direction back to the user program
+\end{itemize}
 
 \subsubsection{Timing}
-The Pan Tilt module must have very precise timing to ensure that the servo positions are maintained precisely.
+The Pan Tilt module must conform to the following timing specifications:
 \begin{itemize}
 	\item Module must be interrupt driven
 	\item Must have very low interrupt latency
@@ -210,14 +253,6 @@ The Pan Tilt module includes the following assurances against failure:
 \begin{itemize}
 	\item New delay information is only set at the end of a cycle to guarantee the PDM frequency
 	\item Validation function to ensure that the high time to within the specified range in the datasheet  
-\end{itemize}
-
-\subsubsection{Implemented Basic Functionality}
-The Pan Tilt module includes the following basic functionality:
-\begin{itemize}
-	\item Configure function to set up the module
-	\item Move function to move to any valid position
-	\item Get Direction function to return the current direction
 \end{itemize}
 
 \subsection{Non-Functional Requirements}
@@ -236,18 +271,22 @@ The following interface characteristics are desirable:
 	\item Very simple module operation, such as configuration and move to desired location
 \end{itemize}
 
-\subsubsection{Implemented Additional Functionality}
-The following additional functionality has been implemented for the Pan Tilt Module
-\begin{itemize}
-	\item Incremental move function
-	\item Increment fine function for greater precision
-	\item Updated function to indicate whether a new delay setting has actually been written into the system yet
-\end{itemize}
+\subsubsection{Design Constraints}
+The design of the Pan Tilt module was primarily constrained by the use of the input capture CCP1 for the ultrasonic sensor to capture the return signal. This meant that the remaining CCP module had to be used to generate both PDM's, which could only be done in software. Had an additional CCP module been available, we could have used the hardware PWM mode, which would give much better precision and guarantee in the generation of the PDM's as there would be no influence from software interrupt latency. Also this would make the design much simpler.
 
-\subsection{Conceptual Design}
+\section{Conceptual Design: Pan Tilt}
+\subsection{Description}
+The Pan Tilt module is responsible for interfacing and driving the pan tilt mechanism. This primarily consists of generating the PDM signals required to send dictate the position of the servo's.
+
+\subsection{Overall Design}
+The overall design of the system is to convert any inputted direction into a set of delays required to generate the PDM's. These PDM's are then realised by timing interrupts running off the calculated delays.
+
+\subsection{Detailed Design}
 This module uses a single output compare module to create the delays necessary to generate the PDM's of the desired duty cycle. Due to the interrupt latency of approximately 300$\mu$s, the PDM's are staggered so that the interrupt calls will never be closer than approximately 0.04 seconds. The full available duty cycle (1000$\mu$s) is divided over the given angular range. There is also an angular offset for calibration reasons. The Delay object is then created to define the necessary delays to create the desired PDM.
 NOTE: This module is interrupt driven, so the Interrupt.c file must be included in the project for it to work. \newline
-A data Flow diagram of the Pan Tilt Module is shown in Fig. \ref{PanTiltPins}.
+A data Flow diagram of the Pan Tilt Module is shown in Fig. \ref{PanTiltPins}. \newline
+The conversion from inputted angle to outputted PDM delay is simply to divide the full high time (1000$\mu$S to 2000$\mu$S) over a stored angular arc. The angular arc along with a reference offset completely define the calibration of he pan tilt mechanism. \newline
+The dataflow through the pan tilt module is depicted in Fig. \ref{fig:PanTiltDataFlowDiagram}.
 
 \begin{figure}
 \centering
@@ -256,19 +295,64 @@ A data Flow diagram of the Pan Tilt Module is shown in Fig. \ref{PanTiltPins}.
 \label{fig:PanTiltDataFlowDiagram}
 \end{figure}
 
-\subsubsection{Assumptions Made}
+\subsection{Implemented Functionality}
+\subsubsection{Implemented Basic Functionality}
+The Pan Tilt module includes the following basic functionality:
+\begin{itemize}
+	\item Configure function to set up the module
+	\item Move function to move to any valid position
+	\item Get Direction function to return the current direction
+\end{itemize}
+
+\subsubsection{Implemented Additional Functionality}
+The following additional functionality has been implemented for the Pan Tilt Module
+\begin{itemize}
+	\item Incremental move function
+	\item Increment fine function for greater precision
+	\item Updated function to indicate whether a new delay setting has actually been written into the system yet
+\end{itemize}
+
+\subsection{Assumptions Made}
 The largest assumption made is that the clock frequencies in the code match those of the actual clock. Common.h defines the clock frequencies of the PICDEM and Minimal Boards which can be switched between. But there is no way for the system to verify the frequency of the clock, and if the clock is not the same then the PDM frequency will not be 50Hz, which can damage the servo's if faster. \newline
 The module does not assume that the interrupts fire instantly after the timing event, but that there is an approximately constant latency time, which is found experimentally, included as a \# define, and tuned.
 
-\subsubsection{Constraints on Pan Tilt Performance}
+\subsection{Constraints on Pan Tilt Performance}
 The Pan Tilt module is restricted to the servo range of motion. Also the actual position is entirely dependant on the calibration as they merely take a PDM input.
 
-\subsubsection{Interface}
+\subsection{Interface}
 Refer to the Technical User Manual For detailed explanations of the interface functions and how to use them.
+
+\subsubsection{List of Inputs}
+The Pan Tilt Module takes the following inputs:
+\begin{itemize}
+	\item Absolute Direction to which to move (as Direction struct)
+	\item Incremental Direction in which to move (as Direction struct)
+	\item Calibration Directions (as direction structs)
+	\item Configurable system settings as chars
+\end{itemize}
+
+\subsubsection{List of Outputs}
+The Pan Tilt Module returns the following outputs:
+\begin{itemize}
+	\item The current direction (as Direction struct)
+	\item Position commands to servo's (as PDM's)
+	\item Current configurable system settings values (as chars)
+\end{itemize}
 
 \section{Range}
 \subsection{Description}
 The range module uses the IR, Ultrasonic and temperature sensors to take range measurements.
+
+\subsection{Hardware}
+The range module makes use of the following hardware:
+\begin{itemize}
+	\item 600 series Polaroid Ultrasonic range sensor
+	\item TL851 Sonar Ranging Control
+	\item Infra Red range sensor
+\end{itemize}
+
+\subsubsection{Pin Assignments}
+
 
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
@@ -374,8 +458,111 @@ There is no public interface for the interrupt framework and nothing can call an
 
 \section{Temp}
 \subsection{Description}
+The temperature module is responsible for sampling, storing and calibrating the temperature sensor, primarily for the ultrasonic range calculation and user output.
+
+\subsection{Hardware}
+\subsubsection{Pin Assignments}
 
 
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+
+
+\section{Module Requirements: LCD}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+
+\subsubsection{Processes}
+
+\subsubsection{Timing}
+
+\subsubsection{Failure Modes}
+
+\subsection{Implemented Basic Functionality}
+\subsubsection{Performance}
+
+\subsubsection{Interfaces}
+
+\section{Conceptual Design: LCD}
+\subsection{Description}
+The LCD module is designed to perform all interfacing with the LCD, as well as formatting inputed strings etc.
+
+\subsection{Hardware}
+The LCD module makes use of the following hardware:
+\begin{itemize}
+	\item 1602 LCD
+\end{itemize}
+
+\subsubsection{Pin Assignments}
+Fig. \ref{fig:LCDPinAssignments} shows the meaning of each of the pins on the LCD hardware package. Fig. \ref{fig:LCDPinWiringDiagram} shows which microcontroller pins are connected to the LCD. As shown in Fig. \ref{fig:LCDPinWiringDiagram} we have used the LCD 8 bit mode for simplicity and efficiency as we have no shortage of free digital pins. Were the system more complex, and digital pins were in shorter supply this could be changed to the 4 pin mode. \newline
+The data pins DB0-DB7 are connected to the whole PORTD and the control pins (RS, R/W and E) are connected to RC4, RC5 and RA4. VL which is connected to the GND via a 10K ohms potentiometer is the contrast voltage pin which controls the bias voltage. The BLA and BLK are the backlights pins which are not connected for our LCD since there is no backlights in our LCD mode.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/LCD Pin Assignments"}
+\caption{LCD Pin Assignments - shows the meaning of each of the pins on the 1602 LCD}
+\label{fig:LCDPinAssignments}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/LCD Pin Wiring Diagram"}
+\caption{LCD Wiring Diagram - Shows how the 1602 LCD is wired up, and which pins are used to interface to it using the 8 bit mode}
+\label{fig:LCDPinWiringDiagram}
+\end{figure}
+
+\subsection{Software}
+\subsubsection{Timing}
+Fig. \ref{fig:LCDTiming} shows the timing required to correctly interface with the LCD hardware.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/LCD Timing"}
+\caption{The LCD module requires precise timing, particularly for the initial configuration. This figure shows a timing diagram for the device taken from the datasheet}
+\label{fig:LCDTiming}
+\end{figure}
+
+\paragraph{Reading Operation}
+\begin{itemize}
+	\item Reading the commands: RS=0, R/W=1, E=1 to 0. When the pin E jumps from the high level voltage to the low level voltage, the commands can be read from the LCD data bus.
+	\item Reading the characters: RS=1, R/W=1, E=1 to 0. When the pin E jumps from the high level voltage to the low level voltage, the characters can be read from the LCD data bus.
+\end{itemize}
+
+\paragraph{Writing Operation}
+\begin{itemize}
+	\item Writing the commands: RS=0, R/W=0, E=1 to 0. When the pin E jumps from the high level voltage to the low level voltage, the commands can be written to the LCD display module.
+	\item Writing the characters: RS=1, R/W=0, E=1 to 0. When the pin E jumps from the high level voltage to the low level voltage, the characters can be written to the LCD display module.
+\end{itemize}
+
+\subsubsection{Programming the LCD}
+Fig. \ref{fig:LCDControlandDisplaycommands} shows the interface of how to send commands to the LCD.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/LCD Control and Display commands"}
+\caption{LCD Control and Display Commands}
+\label{fig:LCDControlandDisplaycommands}
+\end{figure}
+
+\paragraph{Writing the commands to the LCD}
+First check whether the Busy Flag is 0.  If it is 1, stay and wait until it changes to 0; if it is 0, set the RW and RS to 0 and the E to 1 first, let PORTD equal to the command, have a proper delay and set the E to 0 then the command is written in.
+
+\paragraph{Writing the characters to the LCD}
+First check whether the Busy Flag is 0. If it is 1, stay and wait until it changes to 0; If it is 0, set the RW to 0, the RS and E to 1 first, let PORTD equal to the ASCII of the character, have a proper delay and set the E to 0 then the character is written in.
+
+\paragraph{Checking the Busy Flag}
+DB7 (connected to PORTD7) is the Busy Flag bit which is used to check whether the LCD is busy. DB7 is 1 presents that the LCD is busy and cannot receive any commands or data sent from the controller. \newline
+Set the RW and RS to 0 and E to 1 following with a small delay. Check if the busy flag is 1, set the E to low and return 1 which means the LCD is not ready. Otherwise, set E to low and return 0 which means the LCD is ready for receiving the data.
+
+\paragraph{Configuring the LCD}
+Set all the pins to output and set all the control pins to 0. A configuring procedure can be:
+\begin{itemize}
+	\item Write 0x38, which sets the 1602 to 8 bits, 2 lines and 5*7 dots
+	\item Write 0x0F, which sets the display on, cursor on and blinking on
+	\item Write 0x06, which sets the 1602 as when write in a new character, the cursor shifts rightwards and the screen doesn't shift.
+	\item Write 0b01, Clear the screen, set the cursor to the first digit and set the address counter to 0.
+\end{itemize}
+
+     It is worth mentioning that since the first 3 commands has a fast operation speed which is about 40*$10^{-3}$ ms while the clearing screen command takes around 1 ms.  Therefore a proper delay is needed after the clearing screen command is written.
 
 \chapter{User Interface Design}
 <Give a detailed description of the design of the user interface. This will gave the reader a god view of how the system functions from the user's perspective.>
@@ -398,7 +585,17 @@ Statement of what is, and what is not, being designed and described here.
 
 \section{Hardware Design}
 \subsection{Power Supply}
-Power supply method and rating, fusing, distribution, grounding and protective earth as appropriate.
+\subsubsection{Power Source}
+The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and the entire thing is encased in an insulating enclosure that is not designed to be open-able by users. \newline
+\textbf{!!!Need to look up the power specifications for the regulators (e.g. max and min supply voltages) and include them here!!!}
+
+\subsubsection{Safety Features}
+Currently the prototype system does not make use of any type of internal fusing or circuit breaker functionality. Should the system be marketed as a commercial product such features would be essential.
+
+\subsubsection{Power Regulation}
+The internal system components run off a regulated 5v bus which can be supplied by any unregulated 9v supply as outlined above. The system contains two regulators so the ultrasonic sensor has its own regulated power supply to eliminate the 'heartbeat' effect on the voltage of the bus as the ultrasonic sensor draws very high current spikes. \newline
+All components are also bypassed with capacitors to avoid such effects, although the ultrasonic sensor called for additional measures.
+
 
 \subsection{Computer Design}
 Description of computer hardware, including all interface circuitry to sensors, actuators, and I/O hardware.
@@ -508,6 +705,22 @@ Present a prioritised list of improvements to be made in future releases, giving
 
 \chapter{Safety Implications}
 Must identify foreseeable safety hazards associated with the equipment and then assess and control th identified risks - By law (NSW Occupational Health and Safety Act 2000)
+
+\section{Hazard Risk Table}
+
+\begin{table}[h]
+	\begin{tabular}{|l|lllll}
+		\hline
+		& \multicolumn{5}{c|}{Consequence}                                                                                                                                                                                                                           \\ \cline{2-6} 
+		\multirow{-2}{*}{Likelihood} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}Severe} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}Major} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}Moderate} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}Minor} & \multicolumn{1}{l|}{Insignificant} \\ \hline
+		Almost Certain               & \cellcolor[HTML]{FE0000}Very High                   & \cellcolor[HTML]{FE0000}Very High                  & \cellcolor[HTML]{F56B00}High                          & \cellcolor[HTML]{F8FF00}Medium                     & \cellcolor[HTML]{F8FF00}Medium     \\ \cline{1-1}
+		Likely                       & \cellcolor[HTML]{FE0000}Very High                   & \cellcolor[HTML]{F56B00}High                       & \cellcolor[HTML]{F56B00}High                          & \cellcolor[HTML]{F8FF00}Medium                     & \cellcolor[HTML]{F8FF00}Medium     \\ \cline{1-1}
+		Possible                     & \cellcolor[HTML]{FE0000}Very High                   & \cellcolor[HTML]{F56B00}High                       & \cellcolor[HTML]{F56B00}High                          & \cellcolor[HTML]{FCFF2F}Medium                     & \cellcolor[HTML]{32CB00}Low        \\ \cline{1-1}
+		Unlikely                     & \cellcolor[HTML]{F56B00}High                        & \cellcolor[HTML]{F8FF00}Medium                     & \cellcolor[HTML]{F8FF00}Medium                        & \cellcolor[HTML]{32CB00}Low                        & \cellcolor[HTML]{32CB00}Low        \\ \cline{1-1}
+		Rare                         & \cellcolor[HTML]{F8FF00}Medium                      & \cellcolor[HTML]{F8FF00}Medium                     & \cellcolor[HTML]{F8FF00}Medium                        & \cellcolor[HTML]{32CB00}Low                        & \cellcolor[HTML]{32CB00}Low        \\ \cline{1-1}
+	\end{tabular}
+	\label{RiskMatrixTable}
+\end{table}
 
 \chapter{Conclusions}
 
