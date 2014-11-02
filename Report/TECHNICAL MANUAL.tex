@@ -429,13 +429,88 @@ Routine adjustment and maintenance procedures
 \chapter{Software Design}
 The software requirements and overview have been dealt with elsewhere in this section addresses the design and implementation of the software that forms the <X system>.
 
-\subsection{Software Design Process}
-The software was designed in a top down manner, around a basic state machine shown in Fig. \ref{fig:OperationStateTransitionDiagram}. A full detailed description of the system states is included in the state descriptions documents. Once the states and transitions were decided on a basic framework was written that stored the state as an enumeration and a switch case within an infinite loop that continuously calls functions based on the state. \newline
-From there stub functions were written for each of the states that would eventually become the full state functionality. \newline
-The modules were then designed. This was a fairly subjective manner of splitting the system into isolated, independent sections that performed one task. Most of the modules were Hardware Interface Layers such as the ultrasonic and infra red interfaces. \newline
-As the modules were completed they were tested, and then placed into the state functions. The maid idea was that the modules contain all the functionality of the system, and the state functions merely use that functionality. However, some of the state functions ended up being just functions within the modules. \newline
+\section{Software Design Process}
+The software was designed in a top down manner, around a basic state machine shown in Fig. \ref{fig:OperationStateTransitionDiagram}. A full detailed description of the system states is included in the state descriptions documents. 
+Once the states and transitions were decided on a basic framework was written that stored the state as an enumeration and a switch case within an infinite loop that continuously calls functions based on the state. \newline
 while the system was designed in a top down manner many of the functions were designed bottom up, primarily the hardware interface functions which were designed by starting with the datasheet, and working upwards. This was however restricted to the individual functions and met the top down design at the function design level. \newline
 The entire system was designed to be simple, and fit together nicely. As such we had very few interface problems, and almost all of these were hardware related, due to things like common power supplies etc.
+
+
+\subsection{Software Development Environment}
+The software was developed in the MPLAB X IDE v2.15 using the v3.47 C18 compiler. Much of the software was written and tested using the simulator included in the MPLAB environment, which allowed functionality to be tested without the need for actual hardware, which allows more flexibility and better debugging resources. The hardware interface however needed to be tested on either the minimal board or the PICDEM. Where possible, all code was designed for, written and tested on the minimal board so there would be no issues in porting it. Due to the parallel nature in which the code was written however some modules, the LCD in particular were written on the PICDEM which caused some issues when it came to integration. \newline
+For ease we defined the minimal board in the code, which whether defined or undefined would switch between the hardware. This was mainly the included headers and the clock frequencies. This was never actually tested as the main code was only ever run on the minimal board, and there may be some differences in library functions etc.
+
+\subsection{Software Implementation Stages and Test Plans}
+It should be noted that the following stages was often an iterative process, especially with the module stages, where each of the modules went through the described stages independently as they were finished.
+
+\subsubsection{State Design}
+The first stage of the software implementation was to design a state machine for the system. This was done by considering the problem at hand, and creating some preliminary idea of how we were going to solve it with the resources at hand. \newline
+The preliminary design is described in great detail in the State Descriptions document. This design did however change as we were implementing the software, particularly the tracking component, so the final system is as shown in Fig. \ref{fig:OperationStateTransitionDiagram}.
+
+\subsubsection{State Implementation}
+Once all the states were decided on, a basic state machine framework was written which consisted only of an infinite loop in the main function going through a switch case and calling a state function depending on the current state which was stored as an enumeration. The state variable was also implemented as a struct containing the current and previous states so the system would know if it was entering a state for the first time, and could perform different functionality. In the final design this was not necessary. \newline
+At this stage, all the state functions were implemented merely as stub functions that could be filled with actual functionality later.
+
+\subsubsection{Module Design}
+Once the initial framework was in place, the functionality of the system was broken into modules that could be coded and tested in complete isolation. Some modules, such as the tracking module make use of other modules, as shown in Fig. \ref{fig:Modules}, but otherwise the modules are completely separate, with no shared or global variables and were often coded in parallel. \newline
+A full description of the module breakdown is given in the Module Descriptions document, which details how the functionality is split into different modules, the public interfaces between modules and how they would communicate with the rest of the program. \newline
+Once the modules had been designed, skeleton code for the vast majority of modules (some additional modules were added, or changed) was written, outlining the basic framework of the module, and the public interface, as detailed in the module descriptions document. This skeleton code was supposed to reduce the daunting nature of trying to write an entire module for members with weaker programming backgrounds, as well as speed up the process for more experienced members, but primarily to ensure that everyone stuck to the decided upon design so that everything would work when we integrated it.
+
+\subsubsection{Module Implementation}
+This step, as expected took up the bulk of the time. Group members were allocated, or picked modules to work on, and there was much collaborating between group members to get modules working. The initial code was not difficult to write, because the system design had split everything into such workable segments the complete picture of each module and function was easy to visualise. Most of the difficulty was trying to get the hardware, and processor resources on the PIC to function correctly. This took the form of writing code primarily using the in-built library functions, finding it not working, and then trying to debug it and try to find why it was not working. There were also some other challenges associated with the compiler, such as the C18 compiler not supporting integer promotion, which means when variables are used in an operation with large intermediate values they often simply overflow and you end up with very strange undesirable results such as 17*30=8 without even a compiler warning.
+
+\subsubsection{Module Testing}
+There was a testing document drawn up at the beginning of the project which contained every function to be written, its current status, if it had been tested, verified, when and by whom. It also contained the working code so there would be no chance of making some changes, breaking it and not knowing what happened. However as the project took off, it was hard to police the testing, especially toward the end, with everyone just writing their own code and saying that it works without providing any documentation or evidence. Despite this much of the system (bar perhaps some of the final additions) were tested, and the testing document facilitated the detailing of a testing procedure by the author of the function, even if he did not perform the actual testing. \newline
+On this project we did not implement any kind of automated testing such as would be desirable in an industrial environment, but rigorous testing procedures were outlined, documented and implemented whenever possible.
+
+\subsubsection{Module Integration}
+As the modules were finished they were able to be placed into the state functions created in the state Implementation stage. Some of the state functions were also completely replaced by some of the module functions as there was little point having an entire function which just called another function. The interfaces to the modules had already been decided upon well in advance, and details on how to use each module existed, which made this stage surprisingly simple.
+
+\subsubsection{System Testing}
+At the end of the project there was very little time for rigorous system testing, however due to the way the system was designed to facilitate the integration of the modules there were very little issues. Our final system testing primarily consisted of simply playing with the system and making sure there were no issues. 
+
+\subsubsection{Dependencies}
+Personally I found there to be few dependencies throughout the project; while it was beneficial to have the serial operational when we were working on the range finding (to display the output), much of the debugging was spent stepping though code and the output was easily seen that way, really almost all the modules and things could be tested merely with dummy inputs to simulate what the rest of the program would output, and the entire functionality of a module could be tested in isolation of the other modules. The only real dependency was the tracking algorithm, which required both the range and the Pan Tilt modules. Even this could probably be tested without the other modules functioning with some complex wrapper function to supply inputs in order to illicit and test a particular response, but this would be unnecessary and much more effort than simply changing the order of the functions. However, it remains that the vast majority of the functionality could be written, tested and debugged in complete isolation of everything else.
+
+\subsubsection{Pseudocode (PDL)}
+It is my opinion that pseudocode should contain essentially the function declarations and the comment blocks of the functions, describing in an algorithmic manner the way that the function should operate without going into language specifics. For this reason we thought the skeleton code, and comment blocks that were written with the skeleton code, in addition to the module descriptions document adequate in lieu of dedicated pseudocode. If the solution was more complex algorithmically pseudocode would definitely have been warranted, but as it was, most of the code was simply interfacing with hardware, and the only modules that could really warrant pseudocode at all would be the tracking and menusystem modules. We had very few algorithmic related issues, but again, were the solution more complex we would have made use of pseudocode.
+
+\subsection{Software Quality Assurance}
+Describe any measures that were taken t control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
+
+\subsection{Software Design Description}
+\subsubsection{Architecture}
+Describe the high-level architecture of the software - that is, the top-level flow of control, and how the various functional modules communicate.
+In this section, you can put state transition diagrams, sequence diagrams, etc.
+
+\subsubsection{Software Interface}
+Describe the public interface of each software module
+
+\subsubsection{Software Components}
+This is a detailed view of the internal workings of each of the software modules
+
+\subsection{Preconditions for Software}
+\subsubsection{Preconditions for System Startup}
+Describe any preconditions that must be satisfied before the system can be started.
+
+\subsubsection{Preconditions for System Shutdown}
+Describe any preconditions that must be satisfied before the system can be stopped.
+
+\chapter{System Performance}
+\section{Performance Testing}
+Give the results of testing conducted to determine the characteristics and performance of the system - memory usage, loop time, system accuracy, repeatabability, ease of use, etc.
+
+\section{State of the System as Delivered}
+A statement of your group's opinion of the conformance of the system with the specification.
+
+\section{Future Improvements}
+Present a prioritised list of improvements to be made in future releases, giving reasons for the improvement and priority rank
+
+\chapter{Safety Implications}
+Must identify foreseeable safety hazards associated with the equipment and then assess and control th identified risks - By law (NSW Occupational Health and Safety Act 2000)
+
+\chapter{Conclusions}
+
 
 \begin{figure}
 \centering
