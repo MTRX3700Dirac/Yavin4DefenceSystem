@@ -16,27 +16,42 @@
 
 \chapter{Introduction}
 \section{Document Identification}
-This document describes the design of the Yavin IV Defence System. This document is prepared by Group DIRAC for assessment in MTRX3700 in 2014.
+This document describes the design and development of the "Yavin IV Orbital Tracking System".  This document and design brief is prepared by Dirac Defence Limited for assessment in MTRX3700, year 2014. The was approved by lieutenants Reid and Bell, and small scale testing initiated. 
 
 \section{System Overview}
-<A brief statement of the purpose of the system or subsystem to which this document applies>
-The Yavin IV Defence System is designed to provide accurate, low cost tracking for Death Stars and other similar objects.
+%A brief statement of the purpose of the system or subsystem to which this document applies.
+
+This document outlines a proposed and prototyped design in response to the Rebel Alliance Commander Rye's request for a defence system to combat the imminent threat posed by The Empire, and their Death Star weapons platform. This system is to effectively, efficiently and easily track a space-based planetary annihilator, approximately the size of a small moon.\newline
+The system described in this paper is the small scale prototype for stage one of implementation and testing prior to contract approval and large scale deployment. IV Defence System is designed to provide accurate, low cost tracking for Death Stars and other similar objects.
 
 \section{Document Overview}
-<A short "road map" of the document, to provide an orientation for the reader. Summarise the purpose and contents of this document.>
-This document describes the detailed technical specifications and functionality for the entire system. This includes the entire system design, implementation and usage.
+%A short “road map” of the document, to provide an orientation for the reader. Summarise the purpose and contents of this document.
+
+This technical document provides a detailed description of the design process and requirements of the various modules of the Orbital Tracking System. \newline
+
+Section one provides the main body of the technical document and outlines the development process of the system.\newline
+Chapter one introduces the system and document, details the technical jargon used and addresses reference documents used. \newline
+Chapter two describes the system requirements, operational scenarios, module design and module requirements. \newline
+Chapter three details the user interface design and interactions with different user classes. \newline
+Chapter four specifies the hardware design, validation and maintenance. \newline
+Chapter five details the software design process, architecture and preconditions for use. \newline
+Chapter six describes the performance of the system and future development. \newline
+Chapter seven outlines the safety implications of the system. \newline
+Chapter eight addresses conclusions and provides final final analysis of the system. \newline
+
+Section two contains the supporting documents, calculations, DOxygen documentation and code listings.
 
 \section{Reference Documents}
-The present document is prepared on the basis of the following reference documents, and should be read in conjunction with them.
-	<Insert relevant documents>
-\subsection{Acronyms and Abbreviations}
+The present document is prepared on the basis of the following reference document, and should be read in conjunction with it.\newline 
 
+"MTRX3700 Mechatronics 3, Major Project: Multi Sensor Death Star Tracker".  David Rye, Sydney, 2014.
+\subsection{Acronyms and Abbreviations}
 
 \begin{center}
 	\begin{tabular}{| l | c |}
 		\hline
 		Acronym & Meaning \\ \hline \hline
-		Thing & Meaning of Thing \\ \hline
+		OTS & Orbital Tracking System, the system under development \\ \hline
 		Stuff & Meaning of Stuff \\
 		\hline
 	\end{tabular}
@@ -46,11 +61,40 @@ The present document is prepared on the basis of the following reference documen
 This section is intended to give a general overview of the basis for the Yavin IV Defence System system design, of its division into hardware and software modules, and of its development and implementation.
 
 \section{Introduction}
-The system is broken into 
+<<<<<<< HEAD
+The system is broken into
 <Give a technical description of the function of the whole system, in terms of its constituent parts, here termed modules. Generally, a module will have hardware and software parts.
+=======
+%Give a technical description of the function of the whole system, in terms of its constituent parts, here termed modules. Generally, a module will have hardware and software parts.
+
+The Yavin IV Orbital Tracking System's primary function is to track the Empire's Death Star system in real-time. 
+It consists of the following two major modules, tracking and user interface.
+
+
+Tracking
+This module takes data from the range and pan-tilt modules
+unfinished
+
+-Range
+--Ultrasound 
+--Infrared
+--Temperature
+
+--Pan-Tilt
+
+Menu System
+--LCD
+--Local User Interface
+--Serial
+>>>>>>> 50f34201c84e59bb9ccad87b59cc1f5e35c54be5
 
 \section{Operational Scenarios}
-<Describe how the system is to be used. There may be several different ways that it ca be used perhaps involving different users, or classes of user. Present case diagrams here if you are using them. Each operational scenario is a part through a use case diagram - a way of using the system, with different outcomes or methods of use. You should also consider the various failures that may occur, and the consequences of these failures. >
+%Describe how the system is to be used. There may be several different ways that it ca be used perhaps involving different users, or classes of user. Present case diagrams here if you are using them. Each operational scenario is a part through a use case diagram - a way of using the system, with different outcomes or methods of use. You should also consider the various failures that may occur, and the consequences of these failures. 
+
+The system is designed to work in two different modes depending on the class of user, factory mode and end-user mode.\newline
+The end user mode is primarily designed to be implemented as the main operational mode, and offers automatic and manual tracking, serial and local user input and output. The factory mode allows technically trained users to calibrate various settings, change sample rates, show statistics and display raw readings, in addition to the full functionality available in end user mode.\newline
+Prior to distribution, the system will be calibrated in factory mode and upon distribution, the system will be initialised in user mode. This is to ensure the system is in optimal operating condition and so that the user may not inadvertently modify critical settings. \newline
+The factory mode is protected by a physically isolated electrical line and may be initialised by inserting and turning the factory key.
 
 \section{System Requirements}
 The operational scenarios considered place certain requirements on the whole Yavin IV Defence system, and on the modules that comprise it.
@@ -272,7 +316,7 @@ The Pan Tilt module must conform to the following timing specifications:
 The Pan Tilt module includes the following assurances against failure:
 \begin{itemize}
 	\item New delay information is only set at the end of a cycle to guarantee the PDM frequency
-	\item Validation function to ensure that the high time to within the specified range in the datasheet  
+	\item Validation function to ensure that the high time to within the specified range in the datasheet
 \end{itemize}
 
 \subsection{Non-Functional Requirements}
@@ -359,9 +403,71 @@ The Pan Tilt Module returns the following outputs:
 	\item Current configurable system settings values (as chars)
 \end{itemize}
 
-\section{Range}
+\section{Module Requirements: Range}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The range module must be capable of taking the following inputs:
+\begin{itemize}
+	\item Analogue input from the IR sensor
+	\item Time delayed echo signal from the Ultrasonic sensor
+\end{itemize}
+
+\subsubsection{Processes}
+The range module must be capable of performing the following processes:
+\begin{itemize}
+	\item Sample the ultrasonic and IR sensors
+	\item Convert the sensor output to a range
+	\item Fuse the ranges from different sensors
+\end{itemize}
+
+\subsubsection{Outputs}
+The range module must be capable of returning the following outputs:
+\begin{itemize}
+	\item The calculated and fused range
+\end{itemize}
+
+\subsubsection{Timing}
+
+The range module must be capable of precisely timing the delay from the starting of the ultrasonic sensor, and the return of the echo signal. In this implementation this is done via an input capture interrupt, which stores the timer value in hardware as soon as the event is triggered.
+
+\subsubsection{Failure Modes}
+The range system must be capable of timing out if no return echo signal is returned to avoid infinite loops. In this implementation we have a maximum delay before the sample times out.
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+
+\subsubsection{Interfaces}
+Refer to the Technical Users Guide for a detailed explanation of the module interface
+
+\section{Conceptual Design: Range}
 \subsection{Description}
 The range module uses the IR, Ultrasonic and temperature sensors to take range measurements.
+
+\subsection{Overall Design}
+The range module was designed to sample the Ulrasonic range a specified number of times at a specified frequency. The module then samples the IR sensor as many times as possible at a specified frequency while waiting for the US echo to return. The data is fused and outputted to the user program.
+
+\subsection{Detailed Design}
+The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking. 
+
+\subsection{Implemented Functionality}
+\subsubsection{Implemented Basic Functionality}
+The following basic functionality has been implemented for the range module:
+\begin{itemize}
+	\item Configure the range module
+	\item Return the range to the target
+\end{itemize}
+
+\subsubsection{Implemented Additional Functionality}
+The following additional functionality has been implemented for the range module:
+\begin{itemize}
+	\item Fuse the ranges taking the distance into account - US better for long ranges, IR better for short
+	\item Categorise the target state based on which sensors return a reading
+	\item Range calibrating functions
+\end{itemize}
+
+
+\subsection{Assumptions Made}
+The range module assumes that the IR sensor output is inverse linear with respect to range, that the delay time is linear with target distance, and that the speed of sound is linear with temperature. None of these assumptions is valid in general, however, as we are only dealing with small deviations around a set point, it is a simple matter to linearise the actual functions around this value with a taylor series expansion. The linear approximations match the actual values quite closely for small deviations, as shown in the testing document.
 
 \subsection{Hardware}
 The range module makes use of the following hardware:
@@ -372,57 +478,28 @@ The range module makes use of the following hardware:
 \end{itemize}
 
 \subsubsection{Pin Assignments}
-
-
-\subsection{Functional Requirements}
-\subsubsection{Inputs}
-The range module takes no real inputs
-
-\subsubsection{Processes}
-The range module requires the following processes to function properly
+The range module uses the following pins to interface with hardware:
 \begin{itemize}
-	\item Sample the Ultrasonic and IR sensors
-	\item Convert the sensor output to a range
-	\item Fuse the ranges from different sensors 
+	\item 
 \end{itemize}
 
-\subsubsection{Outputs}
-The output of the range module is the range to the target (in mm) as an unsigned int. The module also returns the state of the detected target as an enumeration.
+\subsection{Constraints On Range Performance}
+The main constraint on the performance of the range module is the rate at which the ultrasonic sensor can sample, due to the return time, and the maximum specified sampling rate without breaking the sensor.
 
-\subsubsection{Timing}
-The range module uses an input capture module to record the precise time the ultrasonic echo signal returns, which is then used for the range calculation. An interrupt is then used to indicate that the echo has returned, but precise timing for this is not required, as the echo return is stored in hardware when the echo is detected. 
-
-\subsubsection{Failure Modes}
-The system waits for the echo signal to return, but there is a possibility that the echo will never return. For this reason the system has a timeout feature so that if the signal does not return within a specified timeout then the range module returns nothing found. This means that the range module does not get stuck in the range module waiting for the echo signal to return.
-
-\subsubsection{Implemented Basic Functionality}
-The range module implements the follow functionality:
+\subsection{Interface}
+\subsubsection{List of Inputs}
+The range module takes the following inputs:
 \begin{itemize}
-	\item Configure the range module
-	\item Return the range to the target
+	\item The calibration range (in mm as an unsigned int)
+	\item The number of samples to take per estimate
 \end{itemize}
 
-\subsection{Non-Functional Requirements}
-\subsubsection{Performance}
-
-\subsubsection{Interfaces}
-Refer to the Technical Users Guide for a detailed explanation of the module interface
-
-\subsubsection{Implemented Additional Features}
-The range module also implements the following additional functionality
+\subsubsection{List of Outputs}
+The range module returns the following outputs:
 \begin{itemize}
-	\item Fuse the ranges taking the distance into account - US better for long ranges, IR better for short
-	\item Categorise the target state based on which sensors return a reading
-	\item Range calibrating functions
+	\item The measured, fused range to the target in mm (as an unsigned int)
+	\item An enumeration describing the type of signal return for searching and tracking purposes
 \end{itemize}
-
-\subsection{Conceptual Design}
-The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking. 
-
-\subsubsection{Assumptions Made}
-
-\subsubsection{Interface}
-
 
 \section{Interrupts}
 \subsection{Description}
@@ -456,7 +533,7 @@ The interrupt framework includes the following basic functionality:
 \subsubsection{Performance}
 The following characteristics are desirable for performance reasons:
 \begin{itemize}
-	\item All interrupts should be as fast and efficient as possible so as to interfere with background code, and other interrupts as little as possible. 
+	\item All interrupts should be as fast and efficient as possible so as to interfere with background code, and other interrupts as little as possible.
 	\item Any extended functionality should be placed into functions not called by the interrupts
 	\item Use of priorities to ensure precision for some modules such as the pan tilt which rely on it
 \end{itemize}
@@ -476,17 +553,264 @@ These module scope ISR's are just functions defined within each interrupt driven
 \subsubsection{Interface}
 There is no public interface for the interrupt framework and nothing can call any of its functions. However other modules must define a macro and a service routine which are used in the interrupt module
 
-\section{Temp}
+\section{Module Requirements: Circular Buffers}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+In order to function correctly the circular buffers sub-module must be capable of accepting the following inputs:
+\begin{itemize}
+	\item characters to push onto a buffer
+	\item a buffer to operate on
+\end{itemize}
+
+\subsubsection{Processes}
+In order to function correctly the circular buffers sub-module must be capable of performing the following processes:
+\begin{itemize}
+	\item Initialise buffer
+	\item Increment and modulus pointers
+	\item Push characters
+	\item Pop characters
+	\item Peek characters
+	\item Full and empty checking functionality
+\end{itemize}
+
+\subsubsection{Outputs}
+To function correctly the circular buffers sub-module must be capable of returning the following outputs:
+\begin{itemize}
+	\item Characters stored in the buffer
+	\item The current filled state of the buffer (full or empty)
+\end{itemize}
+
+\subsubsection{Failure Modes}
+The circular buffer functionality has some inbuilt safe-guards against accidental misuse such as:
+\begin{itemize}
+	\item Cannot pop an empty buffer
+	\item Pushing full buffer overwrites oldest data
+\end{itemize}
+Unfortunately the C language does not facilitate private object elements, so the user program could manually alter any elements in the buffer, which could likely result in errors. This could be remedied by making circular buffers a full module, with an actual source file, although this would reduce efficiency.
+
+\section{Conceptual Design: Circular Buffers}
+\subsection{Description}
+The circular buffers sub-module is a header containing everything required to utilise the circular buffer functionality.
+
+\subsection{Overall Design}
+Circular buffers are a mechanism used in several different modules, and for this reason the circular buffer definitions and functionality are included in a sub-module like fashion. This consists only of an include-able header which contains all the struct definitions and macro defines needed to fully utilise the buffers.
+
+\subsection{Detailed Design}
+The circular buffers header contains the circularBuffer struct definition, which is essentially an array with head and tail pointers which tell the system where to insert and read from the buffer. The header also defines the BUFFERLENGTH (which can be re-defined), and macros such as incMod to increment and modulus with the BUFFERLENGTH. It then contains all the standard circular buffer functionality such as push, pop, peek, empty functionality in the form of efficient macros, specifically designed to induce as little latency in the serial interrupts as possible. \newline
+This implementation of circular buffers overcomes the problem of differentiating between full and empty states by not incrementing the tail pointer if it would coincide with the head pointer, essentially reducing the buffer size by one. \newline
+Such a design facilitates speed, while still allowing the entire functionality to be alterable and update-able from a single place.
+
+\subsection{Implemented Functionality}
+The circular buffer sub-module implements the following functionality:
+\begin{itemize}
+	\item incMod
+	\item empty
+	\item full
+	\item peek
+	\item push
+	\item pop
+	\item init - Initialises (clears) the circular buffer
+\end{itemize}
+
+\subsection{Interface}
+The circular buffers sub-module has no real interface with the entire functionality being defined in the header to be included.
+
+\section{Module Requirements: Temp}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The temp module must be capable of taking the following inputs:
+\begin{itemize}
+	\item Reference temperature to which to calibrate
+\end{itemize}
+
+\subsubsection{Processes}
+The temp module must be capable of the following processes:
+\begin{itemize}
+	\item Configuring the system to sample the temperature
+	\item Sampling the temperature sensor
+	\item converting the sensor output to celcius
+	\item Calibrating the temperature sensor
+\end{itemize}
+
+\subsubsection{Outputs}
+The temp module must be capable of returning the following outputs:
+\begin{itemize}
+	\item The temperature in Degrees
+	\item The raw temperature in Degrees
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+For performance the temperature module stores the last temperature sampled, so that any call to the temperature module can simply return this value, meaning the temperature need only be sampled once a minute or so as the temperature does not vary quickly.
+
+\subsubsection{Interfaces}
+Please refer to the attached Module Descriptions document
+
+\section{Conceptual Design: Temp}
 \subsection{Description}
 The temperature module is responsible for sampling, storing and calibrating the temperature sensor, primarily for the ultrasonic range calculation and user output.
 
+\subsection{Overall/Detailed Design}
+The system revolves around the temperature sampling. There is a static offset which is calculated from the calibration function and gets added to any sensor reading. The static variable in the temperature module (storing the last temperature sampled) gets updated every time the temperature is read. Calling the getTemp() function simply returns this value without sampling the temperature.
+
+\subsection{Implemented Functionality}
+The temperature module implements the following functionality:
+\begin{itemize}
+	\item Temperature reading
+	\item Calibrating temperature
+	\item Raw temperature
+	\item configure temp module
+\end{itemize}
+
+\subsection{Assumptions Made}
+The primary assumption made in the temp module is that the system temperature will not change very quickly, which means that the temperature does not need to be sampled each time the temperature value is used. Instead it simply uses a previously sampled value, and ressamples the temperature at semi regular intervals.
+
+\subsection{Constraints on Pan Tilt Performance}
+The main constraint on the performance of the temperature module is the accuracy of the 
+
 \subsection{Hardware}
+The temperature module makes use of the following hardware:
+\begin{itemize}
+	\item Temperature sensor
+\end{itemize}
+Originally amplifiers were planned to set the analogue to digital converter to the same voltage range as the output of the temperature sensor. But this was deemed unnecessary because the resolution of the ADC was already greater than that of the temperature sensor.
+
 \subsubsection{Pin Assignments}
+The following pins are used to connect to the temperature module hardware:
+\begin{itemize}
+	\item Output of Temp sensor to AN1 Pin
+	\item Temp $V_{CC}$ to general purpose 5v bus
+	\item Temp GND to common ground
+\end{itemize}
 
+\subsection{Interface}
+Please refer to the attached Module Descriptions document
 
+\section{Module Requirements: Tracking}
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
+There are no real external inputs to the tracking module, as the functions are iterative they perform a single iteration and return. Thus they are simply called continuously whenever the system is detecting a target. The following inputs are requested by the tracking module from other modules such as range:
+\begin{itemize}
+	\item Current system state
+	\item Target Range
+	\item Target State
+	\item Pan Tilt Direction
+\end{itemize}
 
+\subsubsection{Processes}
+The tracking module is required to perform the following processes:
+\begin{itemize}
+	\item Move the Pan Tilt module in a search pattern
+	\item Use sensor data to detect targets
+	\item Use algorithms and sensors to track moving targets
+\end{itemize}
+
+\subsubsection{Outputs}
+The tracking module is required to return the following outputs:
+\begin{itemize}
+	\item The target details (range, azimuth, elevation)
+	\item whether it still has a target
+	\item the next system state
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+In order to perform well (defined as accurate and reliable track) the system should have the following characteristics:
+\begin{itemize}
+	\item Quite fast tracing step
+	\item Fine adjustments when target is fixed
+	\item Coarse adjustments when target is unknown
+	\item Efficient tracking algorithm
+\end{itemize}
+
+\subsubsection{Interfaces}
+The system should have the following interface characteristics:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Conceptual Design: Tracking}
+\subsection{Description}
+The tracking module contains the high level tracking and search algorithms used by the system. It then uses the Pan Tilt and Range modules to enact these modules.
+
+\subsubsection{Overall Design}
+The searching algorithm uses a simple raster scan variant which scans the azimuthal range, then increments (or decrements) the elevation and scans back the other way. When the system detects any object with either the ultrasonic or the infra red then it enters the tracking mode. \newline
+The tracking mode uses a simple weighted average technique, where the system increments the pan tilt direction up, down, left and right of the know target, and averages the directions based on the returns it samples at each of those points. The result is the new target position.
+
+\subsubsection{Detailed Design}
+The Tracking module contains two primary functions: search and track. Each of these functions is 'incremental' in nature. This means a single call will perform a single 'step', and these functions are called continuously to perform a constant action. \newline
+The search algorithm is based on a simple raster like scan. The system simply increments sweeps the azimuth, incrementing the elevation each time it hits the max or min azimuth. If it gets to the limits of the elevation then it reverses the direction of its increment variable, making the system scan the other way. \newline
+As mentioned previously the tracking algorithm is a simple weighted average. The algorithm is highly configurable with surprising ease, but currently it is configured so as to take sampled above, below, to the left and to the right of the know target location. If the system gets an ultrasonic return (i.e. in the large ultrasonic cone) then it assigns a weighting of 1, adding that direction to the sum. If it returns an IR reading it multiplies the direction by 8, and adds it, no return has no weighting. Then it divides by the sum of the weights to get the new target location. \newline
+This means that if it is far from the target, then only 1 direction will get returns and the system will necessarily move toward the target. If it is almost on the target, then the preferential return of ultrasonic and/or IR samples to one side will serve to tune the know position.
+
+\subsubsection{Assumptions Made}
+There are a number of assumptions made in this module these are as follows:
+\begin{itemize}
+	\item The searching algorithm does not 'miss' any targets (i.e. scans faster than they can move)
+	\item The target is approximately stationary compared to the speed of the tracking algorithm (so that all 5 samples can be considered for the target at a fixed location)
+	\item That the sensors do not exhibit any false positives or false negatives
+\end{itemize}
+Some of these assumptions may seem a little ambitious, however, in a real world scenario they seem to be sufficient to create a working system, albeit not an ideal one.
+
+\subsubsection{Constraints on the Tracking Performance}
+Below are some of the more major constraints on the performance of the tracking algorithm:
+\begin{itemize}
+	\item The maximum sampling rate of the ulrasonic - limited the overall tracking speed
+	\item The resolution of the servo's - made it difficult to accurately track distant targets
+\end{itemize}
+
+\subsubsection{Hardware}
+The tracking system itself made use of no dedicated hardware, it was simply a high level software module, however it did make use of many other modules utilising a range of hardware, such as the range and pan tilt modules.
+
+\subsubsection{Interface}
+Refer to the attached Module Descriptions document
+
+\section{Module Requirements: MenuSubsystem}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The menu subsystem must be capable of taking the following inputs in order to fulfil its purpose:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Processes}
+The menu subsystem must be capable of performing the following processes in order to fulfil its purpose:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Outputs}
+The menu subsystem must be capable of returning the following outputs in order to fulfil its purpose:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+The menu subsystem should have the following characteristics in order to operate efficiently:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Interfaces}
+The menu subsystem should have the following interface characteristics in order to operate efficiently:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Conceptual Design: MenuSubsystem}
+\subsection{Description}
+The menu subsystem is responsible for coordinating all the user inputs and outputs, storing the current menu state, and all the system strings and prompts to send to the users. In essence it turns the basic Hardware interface modules that are the serial and LCD modules and uses them to create the user interface to the entire system.
+
+\subsection{Overall Design}
+
+\subsection{Detailed Design}
+
+\subsection{Assumptions}
+
+\subsection{Constraints On the MenuSubsystem}
+
+\subsection{Interface}
 
 \section{Module Requirements: LCD}
 \subsection{Functional Requirements}
@@ -615,24 +939,21 @@ The final menu structure can be seen in \ref{fig:MenuStructureDiagram}.
 \subsection{Menu Appearance}
 
 \chapter{Hardware Design}
-<Give a detailed description of the design of hardware. The description should include mechanical drawings, location diagrams, electrical circuit schematics, circuit simulation or test results, PCB overlays, wiring diagrams, connector pin-out lists, pneumatic/hydraulic circuit diagrams>
+The system hardware consists of two main components: the local user interface controller, and the housing for the sensors and microcontroller.
 
-\section{Scope of the <Something> System Hardware}
-Statement of what is, and what is not, being designed and described here.
+\section{Scope of the Local User interface System Hardware}
+The local user controller consists of an LCD display, 2 buttons and a potentiometer, all mounted inside a black box with a cable running to the main sensor enclosure.
 
 \section{Hardware Design}
 \subsection{Power Supply}
 \subsubsection{Power Source}
-The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and the entire thing is encased in an insulating enclosure that is not designed to be open-able by users. \newline
+The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and all hardware is encased in an insulating enclosure that is not designed to be opened easily by users. \newline
+The power supply to the sensors and other hardware was split up into two independent and regulated 5V power rails, one exclusively for the ultrasonic module. This was done to limit the large surge currents the ultrasonic sensor draws from interfering with the rest of the circuit. A large capacitor was added across the ultrasonic power lines to limit this surge current from being drawn from the battery and causing voltage spikes.\newline
+The second power rail supplies power to the microcontroller, the servos, the infrared and temperature sensors,as well as to the local user controller interface.
 \textbf{!!!Need to look up the power specifications for the regulators (e.g. max and min supply voltages) and include them here!!!}
 
 \subsubsection{Safety Features}
 Currently the prototype system does not make use of any type of internal fusing or circuit breaker functionality. Should the system be marketed as a commercial product such features would be essential.
-
-\subsubsection{Power Regulation}
-The internal system components run off a regulated 5v bus which can be supplied by any unregulated 9v supply as outlined above. The system contains two regulators so the ultrasonic sensor has its own regulated power supply to eliminate the 'heartbeat' effect on the voltage of the bus as the ultrasonic sensor draws very high current spikes. \newline
-All components are also bypassed with capacitors to avoid such effects, although the ultrasonic sensor called for additional measures.
-
 
 \subsection{Computer Design}
 Description of computer hardware, including all interface circuitry to sensors, actuators, and I/O hardware.
@@ -664,7 +985,7 @@ Routine adjustment and maintenance procedures
 The software requirements and overview have been dealt with elsewhere in this section addresses the design and implementation of the software that forms the <X system>.
 
 \section{Software Design Process}
-The software was designed in a top down manner, around a basic state machine shown in Fig. \ref{fig:OperationStateTransitionDiagram}. A full detailed description of the system states is included in the state descriptions documents. 
+The software was designed in a top down manner, around a basic state machine shown in Fig. \ref{fig:OperationStateTransitionDiagram}. A full detailed description of the system states is included in the state descriptions documents.
 Once the states and transitions were decided on a basic framework was written that stored the state as an enumeration and a switch case within an infinite loop that continuously calls functions based on the state. \newline
 While the system was designed in a top down manner many of the functions were designed bottom up, primarily the hardware interface functions which were designed by starting with the datasheet, and working upwards. This was however restricted to the individual functions and met the top down design at the function design level. \newline
 The entire system was designed to be simple, and fit together nicely. As such we had very few interface problems, and almost all of these were hardware related, due to things like common power supplies etc.
@@ -701,7 +1022,7 @@ On this project we did not implement any kind of automated testing such as would
 As the modules were finished they were able to be placed into the state functions created in the state Implementation stage. Some of the state functions were also completely replaced by some of the module functions as there was little point having an entire function which just called another function. The interfaces to the modules had already been decided upon well in advance, and details on how to use each module existed, which made this stage surprisingly simple.
 
 \subsubsection{System Testing}
-At the end of the project there was very little time for rigorous system testing, however due to the way the system was designed to facilitate the integration of the modules there were very little issues. Our final system testing primarily consisted of simply playing with the system and making sure there were no issues. 
+At the end of the project there was very little time for rigorous system testing, however due to the way the system was designed to facilitate the integration of the modules there were very little issues. Our final system testing primarily consisted of simply playing with the system and making sure there were no issues.
 
 \subsubsection{Dependencies}
 Personally I found there to be few dependencies throughout the project; while it was beneficial to have the serial operational when we were working on the range finding (to display the output), much of the debugging was spent stepping though code and the output was easily seen that way, really almost all the modules and things could be tested merely with dummy inputs to simulate what the rest of the program would output, and the entire functionality of a module could be tested in isolation of the other modules. The only real dependency was the tracking algorithm, which required both the range and the Pan Tilt modules. Even this could probably be tested without the other modules functioning with some complex wrapper function to supply inputs in order to illicit and test a particular response, but this would be unnecessary and much more effort than simply changing the order of the functions. However, it remains that the vast majority of the functionality could be written, tested and debugged in complete isolation of everything else.
@@ -709,25 +1030,31 @@ Personally I found there to be few dependencies throughout the project; while it
 \subsubsection{Pseudocode (PDL)}
 It is my opinion that pseudocode should contain essentially the function declarations and the comment blocks of the functions, describing in an algorithmic manner the way that the function should operate without going into language specifics. For this reason we thought the skeleton code, and comment blocks that were written with the skeleton code, in addition to the module descriptions document adequate in lieu of dedicated pseudocode. If the solution was more complex algorithmically pseudocode would definitely have been warranted, but as it was, most of the code was simply interfacing with hardware, and the only modules that could really warrant pseudocode at all would be the tracking and menusystem modules. We had very few algorithmic related issues, but again, were the solution more complex we would have made use of pseudocode.
 
-\subsection{Software Quality Assurance}
+\section{Software Quality Assurance}
 Describe any measures that were taken t control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
 
-\subsection{Software Design Description}
-\subsubsection{Architecture}
-Describe the high-level architecture of the software - that is, the top-level flow of control, and how the various functional modules communicate.
-In this section, you can put state transition diagrams, sequence diagrams, etc.
+\section{Software Design Description}
+\subsection{Architecture}
+The system at its highest level is as basic state machine. Fig. \ref{fig:OperationStateTransitionDiagram} shows the states and transitions in the final version. The attached State descriptions document describes in great detail all the states and transitions as they were designed at the beginning of the project. Some of these states have changed since the document was written, but much of the basic concept is the same.
 
-\subsubsection{Software Interface}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
+	\caption[State Diagram]{System overview state diagram}
+	\label{fig:OperationStateTransitionDiagram}
+\end{figure}
+
+\subsection{Software Interface}
 Describe the public interface of each software module
 
-\subsubsection{Software Components}
+\subsection{Software Components}
 This is a detailed view of the internal workings of each of the software modules
 
-\subsection{Preconditions for Software}
-\subsubsection{Preconditions for System Startup}
+\section{Preconditions for Software}
+\subsection{Preconditions for System Startup}
 Describe any preconditions that must be satisfied before the system can be started.
 
-\subsubsection{Preconditions for System Shutdown}
+\subsection{Preconditions for System Shutdown}
 Describe any preconditions that must be satisfied before the system can be stopped.
 
 \chapter{System Performance}
@@ -748,7 +1075,7 @@ Must identify foreseeable safety hazards associated with the equipment and then 
 \begin{table}[h]
 	\begin{tabular}{|l|lllll}
 		\hline
-		& \multicolumn{5}{c|}{Consequence}                                                                                                                                                                                                                           \\ \cline{2-6} 
+		& \multicolumn{5}{c|}{Consequence}                                                                                                                                                                                                                           \\ \cline{2-6}
 		\multirow{-2}{*}{Likelihood} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}Severe} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}Major} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}Moderate} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}Minor} & \multicolumn{1}{l|}{Insignificant} \\ \hline
 		Almost Certain               & \cellcolor[HTML]{FE0000}Very High                   & \cellcolor[HTML]{FE0000}Very High                  & \cellcolor[HTML]{F56B00}High                          & \cellcolor[HTML]{F8FF00}Medium                     & \cellcolor[HTML]{F8FF00}Medium     \\ \cline{1-1}
 		Likely                       & \cellcolor[HTML]{FE0000}Very High                   & \cellcolor[HTML]{F56B00}High                       & \cellcolor[HTML]{F56B00}High                          & \cellcolor[HTML]{F8FF00}Medium                     & \cellcolor[HTML]{F8FF00}Medium     \\ \cline{1-1}
@@ -762,13 +1089,7 @@ Must identify foreseeable safety hazards associated with the equipment and then 
 \chapter{Conclusions}
 
 
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
-\caption[State Diagram]{System overview state diagram}
-\label{fig:OperationStateTransitionDiagram}
-\end{figure}
 
 
 
-\end{document}          
+\end{document}
