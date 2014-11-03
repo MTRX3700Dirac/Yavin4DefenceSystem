@@ -16,6 +16,7 @@
 
 \chapter{Introduction}
 \section{Document Identification}
+
 This document describes the design and development of the "Yavin IV Orbital Tracking System".  This document and design brief is prepared by Dirac Defence Limited for assessment in MTRX3700, year 2014. The was approved by lieutenants Reid and Bell, and small scale testing initiated. 
 
 \section{System Overview}
@@ -766,52 +767,79 @@ The tracking system itself made use of no dedicated hardware, it was simply a hi
 \subsubsection{Interface}
 Refer to the attached Module Descriptions document
 
-\section{Module Requirements: MenuSubsystem}
+\section{Module Requirements: Menu Subsystem}
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
 The menu subsystem must be capable of taking the following inputs in order to fulfil its purpose:
 \begin{itemize}
-	\item 
+	\item User inputs from the Serial and Local Interface modules
+	\item A pointer to a tracking state to be initialised to, so that the menu can modify or read whether the system is tracking, searching, or waiting for user input.
+	\item Inputs from the Range and PanTilt modules for the current value of the system settings that a user can modify. 
+	\item Digital logic level from a physical key switch attached to a pull-down resistor circuit to signal Factory mode is to be used. 
 \end{itemize}
 
 \subsubsection{Processes}
 The menu subsystem must be capable of performing the following processes in order to fulfil its purpose:
 \begin{itemize}
-	\item 
+	\item The menu system must be able to switch between a local, remote serial and factory serial user mode. 
+	\item Parse and convert user data from the Serial and Local User Interface modules into integer values which the menu system and other modules can effectively use. 
+	\item Switch to another menu when commanded to by the user.
+	\item Convert system values to ASCII messages to display.
+	\item Convert messages in the system's ROM memory bank to RAM so that the Serial module can display them. 
 \end{itemize}
 
 \subsubsection{Outputs}
 The menu subsystem must be capable of returning the following outputs in order to fulfil its purpose:
 \begin{itemize}
-	\item 
+	\item Messages and structure for the LCD module to display to show the local user interface.
+	\item Messages for the Serial module to display to form the serial menus.
+	\item Error messages when the user inputs incorrect values.
+	\item User input values to the corresponding modules to change system settings. 
 \end{itemize}
 
 \subsection{Non-Functional Requirements}
 \subsubsection{Performance}
 The menu subsystem should have the following characteristics in order to operate efficiently:
 \begin{itemize}
-	\item 
+	\item The system should be able to quickly respond to user input and quickly display messages, so that the user does not view the system as unresponsive and broken. A response time of 100 milliseconds or less is desired. 
+	\item The serial interface for the user must be easy to understand and use commonly used keys or commands. 
+	\item The user should be able to intuitively know where options are, and how to navigate between different menus.
+	\item The menus should be aesthetically pleasing and consistent between menus. 
 \end{itemize}
 
 \subsubsection{Interfaces}
 The menu subsystem should have the following interface characteristics in order to operate efficiently:
 \begin{itemize}
-	\item 
+	\item The menu system must be able to access the functions from the Range and PanTilt modules which can access and change system variables, such as the maximum system range. 
+	\item Tracking data from the Tracking module should be easily available to the menu system so that it can display the data to the user.
+	\item Range data from the infra-red and ultrasound sensors should be easily available to be displayed in the "Show Raw Data" menu. 
 \end{itemize}
 
-\section{Conceptual Design: MenuSubsystem}
+\section{Conceptual Design: Menu Subsystem}
 \subsection{Description}
 The menu subsystem is responsible for coordinating all the user inputs and outputs, storing the current menu state, and all the system strings and prompts to send to the users. In essence it turns the basic Hardware interface modules that are the serial and LCD modules and uses them to create the user interface to the entire system.
 
 \subsection{Overall Design}
+The menu system operates based on a handful of general functions that get called and do different things based on what the current menu is. Every cycle of the main program, the menu gets serviced, which involves the following events. First, there is a check for if the user has submitted any commands over serial for Remote/Factory users, or via the local interface for local users. If so, the input is read and converted to an integer, which is then used differently in each menu.
+
+The concept of the menu system revolves are instances of a menu object, which contain function pointers to other functions, so that a general function can be called from the main loop of the program. This was implemented after a menu system was created which used a series of long switch statements, however these were found to be expensive to the program memory, and hence the system was redesigned. 
 
 \subsection{Detailed Design}
 
-\subsection{Assumptions}
+\subsubsection{Menu Objects}
+Talk about each item in the struct here
+\subsubsection{User inputs}
+Talk about why we use numbers, intToAscii, asciiToInt etc.
 
-\subsection{Constraints On the MenuSubsystem}
+\subsection{Assumptions}
+The menu module assumes that the lower level modules are functioning correctly, especially the Serial and Local User Interface modules. If these modules do not function as designed, the menu would not be able to interact with the user as intended, as the side effects of a user's command would be unknown. 
+
+Secondly, the menu system also assumes that the hardware is connected properly. In Remote mode, it is assumed that a RS-232 cample is connected to the system, and to a computer running a terminal program with a serial transmission rate of 9600 bites per second. In Local mode, it is under the assumption that the local interface controller is connected and not damaged. 
+
+\subsection{Constraints On the Menu Subsystem}
 
 \subsection{Interface}
+See the Technical User Manual document for a full list of the public functions from this module.
 
 \section{Module Requirements: LCD}
 \subsection{Functional Requirements}
@@ -823,7 +851,7 @@ The menu subsystem is responsible for coordinating all the user inputs and outpu
 
 \subsubsection{Failure Modes}
 
-\subsection{Implemented Basic Functionality}
+\subsection{Implemented Basic Functionality}.
 \subsubsection{Performance}
 
 \subsubsection{Interfaces}
@@ -946,6 +974,10 @@ The serial interface is less limited by physical constraints, but was also impor
 For the physical appearance of the menu itself in the user's terminal program, the menu itself will always appear in the top left of the program's window. This is done by using a generic clear display command which is common to many terminal programs. This was chosen to reduce the possibility of the serial display looking incorrect in terminal programs other than TeraTerm, in which the serial display was tested, as the program will automatically clear whatever was written previously. 
 
 Each menu is framed by a filler character, the plus sign "+". This is done to easily bring attention to the current menu's title, and separate the user input section of the terminal from the printed messages. The menu title and other menu messages are all printed indented to the centre left of the terminal. This is again so that other terminal programs will be more likely to display the user interface correctly, on the small chance that some of the leftmost display is unreadable or not as aesthetically pleasing.  
+
+An example of a serial menu can be seen in \ref{fig:MenuSerialInterface}.
+
+Finally, the certain functional menus such as the "Autonomous Tracking" menu and the "View Raw Range" menu must be able to refresh the menu as new data is collected. This was performed using another general terminal command, this time to clear the current line. This allowed for data to be constantly overwritten, so that the user is not flooded with tracking data.
 
 \chapter{Hardware Design}
 The system hardware consists of two main components: the local user interface controller, and the housing for the sensors and microcontroller.
