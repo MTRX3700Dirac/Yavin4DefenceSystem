@@ -533,6 +533,68 @@ These module scope ISR's are just functions defined within each interrupt driven
 \subsubsection{Interface}
 There is no public interface for the interrupt framework and nothing can call any of its functions. However other modules must define a macro and a service routine which are used in the interrupt module
 
+\section{Module Requirements: Circular Buffers}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+In order to function correctly the circular buffers sub-module must be capable of accepting the following inputs:
+\begin{itemize}
+	\item characters to push onto a buffer
+	\item a buffer to operate on
+\end{itemize}
+
+\subsubsection{Processes}
+In order to function correctly the circular buffers sub-module must be capable of performing the following processes:
+\begin{itemize}
+	\item Initialise buffer
+	\item Increment and modulus pointers
+	\item Push characters
+	\item Pop characters
+	\item Peek characters
+	\item Full and empty checking functionality
+\end{itemize}
+
+\subsubsection{Outputs}
+To function correctly the circular buffers sub-module must be capable of returning the following outputs:
+\begin{itemize}
+	\item Characters stored in the buffer
+	\item The current filled state of the buffer (full or empty)
+\end{itemize}
+
+\subsubsection{Failure Modes}
+The circular buffer functionality has some inbuilt safe-guards against accidental misuse such as:
+\begin{itemize}
+	\item Cannot pop an empty buffer
+	\item Pushing full buffer overwrites oldest data
+\end{itemize}
+Unfortunately the C language does not facilitate private object elements, so the user program could manually alter any elements in the buffer, which could likely result in errors. This could be remedied by making circular buffers a full module, with an actual source file, although this would reduce efficiency.
+
+\section{Conceptual Design: Circular Buffers}
+\subsection{Description}
+The circular buffers sub-module is a header containing everything required to utilise the circular buffer functionality.
+
+\subsection{Overall Design}
+Circular buffers are a mechanism used in several different modules, and for this reason the circular buffer definitions and functionality are included in a sub-module like fashion. This consists only of an include-able header which contains all the struct definitions and macro defines needed to fully utilise the buffers.
+
+\subsection{Detailed Design}
+The circular buffers header contains the circularBuffer struct definition, which is essentially an array with head and tail pointers which tell the system where to insert and read from the buffer. The header also defines the BUFFERLENGTH (which can be re-defined), and macros such as incMod to increment and modulus with the BUFFERLENGTH. It then contains all the standard circular buffer functionality such as push, pop, peek, empty functionality in the form of efficient macros, specifically designed to induce as little latency in the serial interrupts as possible. \newline
+This implementation of circular buffers overcomes the problem of differentiating between full and empty states by not incrementing the tail pointer if it would coincide with the head pointer, essentially reducing the buffer size by one. \newline
+Such a design facilitates speed, while still allowing the entire functionality to be alterable and update-able from a single place.
+
+\subsection{Implemented Functionality}
+The circular buffer sub-module implements the following functionality:
+\begin{itemize}
+	\item incMod
+	\item empty
+	\item full
+	\item peek
+	\item push
+	\item pop
+	\item init - Initialises (clears) the circular buffer
+\end{itemize}
+
+\subsection{Interface}
+The circular buffers sub-module has no real interface with the entire functionality being defined in the header to be included.
+
 \section{Module Requirements: Temp}
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
@@ -599,7 +661,7 @@ The following pins are used to connect to the temperature module hardware:
 	\item 
 \end{itemize}
 
-\subsubsection{Interface}
+\subsection{Interface}
 
 
 \section{Module Requirements: Tracking}
@@ -679,6 +741,53 @@ Below are some of the more major constraints on the performance of the tracking 
 The tracking system itself made use of no dedicated hardware, it was simply a high level software module, however it did make use of many other modules utilising a range of hardware, such as the range and pan tilt modules.
 
 \subsubsection{Interface}
+
+\section{Module Requirements: MenuSubsystem}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The menu subsystem must be capable of taking the following inputs in order to fulfil its purpose:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Processes}
+The menu subsystem must be capable of performing the following processes in order to fulfil its purpose:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Outputs}
+The menu subsystem must be capable of returning the following outputs in order to fulfil its purpose:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+The menu subsystem should have the following characteristics in order to operate efficiently:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Interfaces}
+The menu subsystem should have the following interface characteristics in order to operate efficiently:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Conceptual Design: MenuSubsystem}
+\subsection{Description}
+The menu subsystem is responsible for coordinating all the user inputs and outputs, storing the current menu state, and all the system strings and prompts to send to the users. In essence it turns the basic Hardware interface modules that are the serial and LCD modules and uses them to create the user interface to the entire system.
+
+\subsection{Overall Design}
+
+\subsection{Detailed Design}
+
+\subsection{Assumptions}
+
+\subsection{Constraints On the MenuSubsystem}
+
+\subsection{Interface}
 
 \section{Module Requirements: LCD}
 \subsection{Functional Requirements}
