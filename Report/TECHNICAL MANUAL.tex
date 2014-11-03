@@ -16,27 +16,42 @@
 
 \chapter{Introduction}
 \section{Document Identification}
-This document describes the design of the Yavin IV Defence System. This document is prepared by Group DIRAC for assessment in MTRX3700 in 2014.
+This document describes the design and development of the "Yavin IV Orbital Tracking System".  This document and design brief is prepared by Dirac Defence Limited for assessment in MTRX3700, year 2014. The was approved by lieutenants Reid and Bell, and small scale testing initiated. 
 
 \section{System Overview}
-<A brief statement of the purpose of the system or subsystem to which this document applies>
-The Yavin IV Defence System is designed to provide accurate, low cost tracking for Death Stars and other similar objects.
+%A brief statement of the purpose of the system or subsystem to which this document applies.
+
+This document outlines a proposed and prototyped design in response to the Rebel Alliance Commander Rye's request for a defence system to combat the imminent threat posed by The Empire, and their Death Star weapons platform. This system is to effectively, efficiently and easily track a space-based planetary annihilator, approximately the size of a small moon.\newline
+The system described in this paper is the small scale prototype for stage one of implementation and testing prior to contract approval and large scale deployment. IV Defence System is designed to provide accurate, low cost tracking for Death Stars and other similar objects.
 
 \section{Document Overview}
-<A short "road map" of the document, to provide an orientation for the reader. Summarise the purpose and contents of this document.>
-This document describes the detailed technical specifications and functionality for the entire system. This includes the entire system design, implementation and usage.
+%A short “road map” of the document, to provide an orientation for the reader. Summarise the purpose and contents of this document.
+
+This technical document provides a detailed description of the design process and requirements of the various modules of the Orbital Tracking System. \newline
+
+Section one provides the main body of the technical document and outlines the development process of the system.\newline
+Chapter one introduces the system and document, details the technical jargon used and addresses reference documents used. \newline
+Chapter two describes the system requirements, operational scenarios, module design and module requirements. \newline
+Chapter three details the user interface design and interactions with different user classes. \newline
+Chapter four specifies the hardware design, validation and maintenance. \newline
+Chapter five details the software design process, architecture and preconditions for use. \newline
+Chapter six describes the performance of the system and future development. \newline
+Chapter seven outlines the safety implications of the system. \newline
+Chapter eight addresses conclusions and provides final final analysis of the system. \newline
+
+Section two contains the supporting documents, calculations, DOxygen documentation and code listings.
 
 \section{Reference Documents}
-The present document is prepared on the basis of the following reference documents, and should be read in conjunction with them.
-	<Insert relevant documents>
-\subsection{Acronyms and Abbreviations}
+The present document is prepared on the basis of the following reference document, and should be read in conjunction with it.\newline 
 
+"MTRX3700 Mechatronics 3, Major Project: Multi Sensor Death Star Tracker".  David Rye, Sydney, 2014.
+\subsection{Acronyms and Abbreviations}
 
 \begin{center}
 	\begin{tabular}{| l | c |}
 		\hline
 		Acronym & Meaning \\ \hline \hline
-		Thing & Meaning of Thing \\ \hline
+		OTS & Orbital Tracking System, the system under development \\ \hline
 		Stuff & Meaning of Stuff \\
 		\hline
 	\end{tabular}
@@ -46,11 +61,40 @@ The present document is prepared on the basis of the following reference documen
 This section is intended to give a general overview of the basis for the Yavin IV Defence System system design, of its division into hardware and software modules, and of its development and implementation.
 
 \section{Introduction}
+<<<<<<< HEAD
 The system is broken into
 <Give a technical description of the function of the whole system, in terms of its constituent parts, here termed modules. Generally, a module will have hardware and software parts.
+=======
+%Give a technical description of the function of the whole system, in terms of its constituent parts, here termed modules. Generally, a module will have hardware and software parts.
+
+The Yavin IV Orbital Tracking System's primary function is to track the Empire's Death Star system in real-time. 
+It consists of the following two major modules, tracking and user interface.
+
+
+Tracking
+This module takes data from the range and pan-tilt modules
+unfinished
+
+-Range
+--Ultrasound 
+--Infrared
+--Temperature
+
+--Pan-Tilt
+
+Menu System
+--LCD
+--Local User Interface
+--Serial
+>>>>>>> 50f34201c84e59bb9ccad87b59cc1f5e35c54be5
 
 \section{Operational Scenarios}
-<Describe how the system is to be used. There may be several different ways that it ca be used perhaps involving different users, or classes of user. Present case diagrams here if you are using them. Each operational scenario is a part through a use case diagram - a way of using the system, with different outcomes or methods of use. You should also consider the various failures that may occur, and the consequences of these failures. >
+%Describe how the system is to be used. There may be several different ways that it ca be used perhaps involving different users, or classes of user. Present case diagrams here if you are using them. Each operational scenario is a part through a use case diagram - a way of using the system, with different outcomes or methods of use. You should also consider the various failures that may occur, and the consequences of these failures. 
+
+The system is designed to work in two different modes depending on the class of user, factory mode and end-user mode.\newline
+The end user mode is primarily designed to be implemented as the main operational mode, and offers automatic and manual tracking, serial and local user input and output. The factory mode allows technically trained users to calibrate various settings, change sample rates, show statistics and display raw readings, in addition to the full functionality available in end user mode.\newline
+Prior to distribution, the system will be calibrated in factory mode and upon distribution, the system will be initialised in user mode. This is to ensure the system is in optimal operating condition and so that the user may not inadvertently modify critical settings. \newline
+The factory mode is protected by a physically isolated electrical line and may be initialised by inserting and turning the factory key.
 
 \section{System Requirements}
 The operational scenarios considered place certain requirements on the whole Yavin IV Defence system, and on the modules that comprise it.
@@ -339,9 +383,78 @@ The Pan Tilt Module returns the following outputs:
 	\item Current configurable system settings values (as chars)
 \end{itemize}
 
-\section{Range}
+\section{Module Requirements: Range}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The range module must be capable of taking the following inputs:
+\begin{itemize}
+	\item Analogue input from the IR sensor
+	\item Time delayed echo signal from the Ultrasonic sensor
+\end{itemize}
+
+\subsubsection{Processes}
+The range module must be capable of performing the following processes:
+\begin{itemize}
+	\item Sample the ultrasonic and IR sensors
+	\item Convert the sensor output to a range
+	\item Fuse the ranges from different sensors
+\end{itemize}
+
+\subsubsection{Outputs}
+The range module must be capable of returning the following outputs:
+\begin{itemize}
+	\item The calculated and fused range
+\end{itemize}
+
+\subsubsection{Timing}
+<<<<<<< HEAD
+The range module uses an input capture module to record the precise time the ultrasonic echo signal returns, which is then used for the range calculation. An interrupt is then used to indicate that the echo has returned, but precise timing for this is not required, as the echo return is stored in hardware when the echo is detected.
+=======
+The range module must be capable of precisely timing the delay from the starting of the ultrasonic sensor, and the return of the echo signal. In this implementation this is done via an input capture interrupt, which stores the timer value in hardware as soon as the event is triggered.
+>>>>>>> 50f34201c84e59bb9ccad87b59cc1f5e35c54be5
+
+\subsubsection{Failure Modes}
+The range system must be capable of timing out if no return echo signal is returned to avoid infinite loops. In this implementation we have a maximum delay before the sample times out.
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+
+\subsubsection{Interfaces}
+Refer to the Technical Users Guide for a detailed explanation of the module interface
+
+\section{Conceptual Design: Range}
 \subsection{Description}
 The range module uses the IR, Ultrasonic and temperature sensors to take range measurements.
+
+\subsection{Overall Design}
+The range module was designed to sample the Ulrasonic range a specified number of times at a specified frequency. The module then samples the IR sensor as many times as possible at a specified frequency while waiting for the US echo to return. The data is fused and outputted to the user program.
+
+\subsection{Detailed Design}
+The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking. 
+
+\subsection{Implemented Functionality}
+\subsubsection{Implemented Basic Functionality}
+The following basic functionality has been implemented for the range module:
+\begin{itemize}
+	\item Configure the range module
+	\item Return the range to the target
+\end{itemize}
+
+\subsubsection{Implemented Additional Functionality}
+The following additional functionality has been implemented for the range module:
+\begin{itemize}
+	\item Fuse the ranges taking the distance into account - US better for long ranges, IR better for short
+	\item Categorise the target state based on which sensors return a reading
+	\item Range calibrating functions
+\end{itemize}
+
+<<<<<<< HEAD
+\subsection{Conceptual Design}
+The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking.
+=======
+\subsection{Assumptions Made}
+The range module assumes that the IR sensor output is inverse linear with respect to range, that the delay time is linear with target distance, and that the speed of sound is linear with temperature. None of these assumptions is valid in general, however, as we are only dealing with small deviations around a set point, it is a simple matter to linearise the actual functions around this value with a taylor series expansion. The linear approximations match the actual values quite closely for small deviations, as shown in the testing document.
+>>>>>>> 50f34201c84e59bb9ccad87b59cc1f5e35c54be5
 
 \subsection{Hardware}
 The range module makes use of the following hardware:
@@ -352,57 +465,28 @@ The range module makes use of the following hardware:
 \end{itemize}
 
 \subsubsection{Pin Assignments}
-
-
-\subsection{Functional Requirements}
-\subsubsection{Inputs}
-The range module takes no real inputs
-
-\subsubsection{Processes}
-The range module requires the following processes to function properly
+The range module uses the following pins to interface with hardware:
 \begin{itemize}
-	\item Sample the Ultrasonic and IR sensors
-	\item Convert the sensor output to a range
-	\item Fuse the ranges from different sensors
+	\item 
 \end{itemize}
 
-\subsubsection{Outputs}
-The output of the range module is the range to the target (in mm) as an unsigned int. The module also returns the state of the detected target as an enumeration.
+\subsection{Constraints On Range Performance}
+The main constraint on the performance of the range module is the rate at which the ultrasonic sensor can sample, due to the return time, and the maximum specified sampling rate without breaking the sensor.
 
-\subsubsection{Timing}
-The range module uses an input capture module to record the precise time the ultrasonic echo signal returns, which is then used for the range calculation. An interrupt is then used to indicate that the echo has returned, but precise timing for this is not required, as the echo return is stored in hardware when the echo is detected.
-
-\subsubsection{Failure Modes}
-The system waits for the echo signal to return, but there is a possibility that the echo will never return. For this reason the system has a timeout feature so that if the signal does not return within a specified timeout then the range module returns nothing found. This means that the range module does not get stuck in the range module waiting for the echo signal to return.
-
-\subsubsection{Implemented Basic Functionality}
-The range module implements the follow functionality:
+\subsection{Interface}
+\subsubsection{List of Inputs}
+The range module takes the following inputs:
 \begin{itemize}
-	\item Configure the range module
-	\item Return the range to the target
+	\item The calibration range (in mm as an unsigned int)
+	\item The number of samples to take per estimate
 \end{itemize}
 
-\subsection{Non-Functional Requirements}
-\subsubsection{Performance}
-
-\subsubsection{Interfaces}
-Refer to the Technical Users Guide for a detailed explanation of the module interface
-
-\subsubsection{Implemented Additional Features}
-The range module also implements the following additional functionality
+\subsubsection{List of Outputs}
+The range module returns the following outputs:
 \begin{itemize}
-	\item Fuse the ranges taking the distance into account - US better for long ranges, IR better for short
-	\item Categorise the target state based on which sensors return a reading
-	\item Range calibrating functions
+	\item The measured, fused range to the target in mm (as an unsigned int)
+	\item An enumeration describing the type of signal return for searching and tracking purposes
 \end{itemize}
-
-\subsection{Conceptual Design}
-The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking.
-
-\subsubsection{Assumptions Made}
-
-\subsubsection{Interface}
-
 
 \section{Interrupts}
 \subsection{Description}
@@ -456,16 +540,34 @@ These module scope ISR's are just functions defined within each interrupt driven
 \subsubsection{Interface}
 There is no public interface for the interrupt framework and nothing can call any of its functions. However other modules must define a macro and a service routine which are used in the interrupt module
 
-\section{Temp}
+\section{Module Requirements: Temp}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The temp module must be capable of taking the following inputs:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Processes}
+
+\subsubsection{Outputs}
+
+\subsubsection{Timing}
+
+\subsubsection{Failure Modes}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+
+\subsubsection{Interfaces}
+
+\section{Conceptual Design: Temp}
 \subsection{Description}
 The temperature module is responsible for sampling, storing and calibrating the temperature sensor, primarily for the ultrasonic range calculation and user output.
 
 \subsection{Hardware}
 \subsubsection{Pin Assignments}
 
-
-\subsection{Functional Requirements}
-\subsubsection{Inputs}
 
 
 \section{Module Requirements: LCD}
