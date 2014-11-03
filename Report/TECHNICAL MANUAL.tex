@@ -43,7 +43,7 @@ Chapter eight addresses conclusions and provides final final analysis of the sys
 Section two contains the supporting documents, calculations, DOxygen documentation and code listings.
 
 \section{Reference Documents}
-The present document is prepared on the basis of the following reference document, and should be read in conjunction with it.\newline 
+The present document is prepared on the basis of the following reference document, and should be read in conjunction with it.\newline
 
 "MTRX3700 Mechatronics 3, Major Project: Multi Sensor Death Star Tracker".  David Rye, Sydney, 2014.
 \subsection{Acronyms and Abbreviations}
@@ -63,13 +63,10 @@ The present document is prepared on the basis of the following reference documen
 This section is intended to give a general overview of the basis for the Yavin IV Defence System system design, of its division into hardware and software modules, and of its development and implementation.
 
 \section{Introduction}
-<<<<<<< HEAD
-The system is broken into
-<Give a technical description of the function of the whole system, in terms of its constituent parts, here termed modules. Generally, a module will have hardware and software parts.
-=======
+
 %Give a technical description of the function of the whole system, in terms of its constituent parts, here termed modules. Generally, a module will have hardware and software parts.
 
-The Yavin IV Orbital Tracking System's primary function is to track the Empire's Death Star system in real-time. 
+The Yavin IV Orbital Tracking System's primary function is to track the Empire's Death Star system in real-time.
 It consists of the following two major modules, tracking and user interface.
 
 
@@ -78,7 +75,7 @@ This module takes data from the range and pan-tilt modules
 unfinished
 
 -Range
---Ultrasound 
+--Ultrasound
 --Infrared
 --Temperature
 
@@ -88,10 +85,9 @@ Menu System
 --LCD
 --Local User Interface
 --Serial
->>>>>>> 50f34201c84e59bb9ccad87b59cc1f5e35c54be5
 
 \section{Operational Scenarios}
-%Describe how the system is to be used. There may be several different ways that it ca be used perhaps involving different users, or classes of user. Present case diagrams here if you are using them. Each operational scenario is a part through a use case diagram - a way of using the system, with different outcomes or methods of use. You should also consider the various failures that may occur, and the consequences of these failures. 
+%Describe how the system is to be used. There may be several different ways that it ca be used perhaps involving different users, or classes of user. Present case diagrams here if you are using them. Each operational scenario is a part through a use case diagram - a way of using the system, with different outcomes or methods of use. You should also consider the various failures that may occur, and the consequences of these failures.
 
 The system is designed to work in two different modes depending on the class of user, factory mode and end-user mode.\newline
 The end user mode is primarily designed to be implemented as the main operational mode, and offers automatic and manual tracking, serial and local user input and output. The factory mode allows technically trained users to calibrate various settings, change sample rates, show statistics and display raw readings, in addition to the full functionality available in end user mode.\newline
@@ -449,7 +445,7 @@ The range module uses the IR, Ultrasonic and temperature sensors to take range m
 The range module was designed to sample the Ulrasonic range a specified number of times at a specified frequency. The module then samples the IR sensor as many times as possible at a specified frequency while waiting for the US echo to return. The data is fused and outputted to the user program.
 
 \subsection{Detailed Design}
-The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking. 
+The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking.
 
 \subsection{Implemented Functionality}
 \subsubsection{Implemented Basic Functionality}
@@ -482,7 +478,7 @@ The range module makes use of the following hardware:
 \subsubsection{Pin Assignments}
 The range module uses the following pins to interface with hardware:
 \begin{itemize}
-	\item 
+	\item
 \end{itemize}
 
 \subsection{Constraints On Range Performance}
@@ -990,8 +986,14 @@ The local user controller consists of an LCD display, 2 buttons and a potentiome
 \subsubsection{Power Source}
 The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and all hardware is encased in an insulating enclosure that is not designed to be opened easily by users. \newline
 The power supply to the sensors and other hardware was split up into two independent and regulated 5V power rails, one exclusively for the ultrasonic module. This was done to limit the large surge currents the ultrasonic sensor draws from interfering with the rest of the circuit. A large capacitor was added across the ultrasonic power lines to limit this surge current from being drawn from the battery and causing voltage spikes.\newline
-The second power rail supplies power to the microcontroller, the servos, the infrared and temperature sensors,as well as to the local user controller interface.
-\textbf{!!!Need to look up the power specifications for the regulators (e.g. max and min supply voltages) and include them here!!!}
+The second power rail supplies power to the microcontroller, the servos, the infrared and temperature sensors,as well as to the local user controller interface. This is shown in \label{PowerBusDiagram}\newline
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/PowerCircuit"}
+\caption[State Diagram]{Power circuit schematic on veroboard/stripboard}
+\label{fig:PowerBusDiagram}
+\end{figure}
 
 \subsubsection{Safety Features}
 Currently the prototype system does not make use of any type of internal fusing or circuit breaker functionality. Should the system be marketed as a commercial product such features would be essential.
@@ -1076,6 +1078,7 @@ Describe any measures that were taken t control (improve) the software quality -
 
 \section{Software Design Description}
 \subsection{Architecture}
+\subsubsection{System Overview}
 The system at its highest level is as basic state machine. Fig. \ref{fig:OperationStateTransitionDiagram} shows the states and transitions in the final version. The attached State descriptions document describes in great detail all the states and transitions as they were designed at the beginning of the project. Some of these states have changed since the document was written, but much of the basic concept is the same.
 
 \begin{figure}
@@ -1085,8 +1088,32 @@ The system at its highest level is as basic state machine. Fig. \ref{fig:Operati
 	\label{fig:OperationStateTransitionDiagram}
 \end{figure}
 
+Much of the code is functionality around hardware interfaces, most of which is self explanatory, or accessible through the datasheet. Here we will discuss some of the higher level software modules such as the search, tracking and menus.
+
+\subsubsection{Tracking}
+The tracking algorithm is really the heart of the specification - to design and build a death star tracker. Despite this there is alot of functionality that must be in place before the module is operational. Here only the high level tracking algorithm is discussed. \newline
+Fig. \ref{fig:TrackingStateDiagram} shows the original concept for tracking the moving targets. The basic concept was that the system would start somewhere on the target (after having detected it) and then move outward in each direction (up, down, left and right) until it found the edge, and would return to the centre, and begin again. The problem we found with that 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Tracking State Diagram"}
+\caption{State Transition Diagram depicting the Original Idea for the tracking algorithm}
+\label{fig:TrackingStateDiagram}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Tracking State Transition Diagram"}
+\caption{State Transition Diagram depicting the final tracking algorithm}
+\label{fig:TrackingStateTransitionDiagram}
+\end{figure}
+
+\subsubsection{Searching}
+
+\subsubsection{Menus}
+
 \subsection{Software Interface}
-Describe the public interface of each software module
+The software interfaces for each module are described in great detail in the module descriptions document.
 
 \subsection{Software Components}
 This is a detailed view of the internal workings of each of the software modules
@@ -1095,12 +1122,18 @@ This is a detailed view of the internal workings of each of the software modules
 \subsection{Preconditions for System Startup}
 Describe any preconditions that must be satisfied before the system can be started.
 
+Before the system can be started it must be connected to a power source with a sufficient power rating. Then it must be fully assembled. Apart from that there are no preconditions for the system to begin startup. The code is designed to configure all the modules and hardware that it needs automatically on startup. There is however some background bootloader which loads all the constants in from program memory and initialises the variables defined in the idata sections etc. Again this happens automatically at startup and requires no other preconditions. The Pan Tilt module is then moved to the starting point of (0,0).
+
 \subsection{Preconditions for System Shutdown}
-Describe any preconditions that must be satisfied before the system can be stopped.
+There are no preconditions for a system shutdown, and the system can be shutdown at any point with no warning. There is however an option to store the user changes for the configuration settings in the eeprom, and should the user wish to retain their settings this should be completed before shutting down the system. Also if the user were to shut down the system during the eeprom write the action may corrupt their stored settings. Other than this, the system can safely be shut down at any point with no consequences.
+
+
 
 \chapter{System Performance}
 \section{Performance Testing}
 Give the results of testing conducted to determine the characteristics and performance of the system - memory usage, loop time, system accuracy, repeatabability, ease of use, etc.
+
+The testing document goes through the testing procedures and results of each function as they were completed.
 
 \section{State of the System as Delivered}
 A statement of your group's opinion of the conformance of the system with the specification.
