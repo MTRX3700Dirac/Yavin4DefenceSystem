@@ -111,26 +111,6 @@ The system was broken down into a number of independent modules which contain th
 \label{fig:Modules}
 \end{figure}
 
-\section{Menu System}
-\subsection{Description}
-This module handles the creation of all the menu system used in both the serial user interface, the local user interface and the factory user interface. It handles the parsing of user inputs, navigation between menus, and interfacing with the other modules to change system values and relay important information to the user. 
-
-\subsection{Functional Requirements}
-\subsubsection{Inputs}
-The menu system receives a variety of different inputs from the modules discussed below, as it must receive information from each subsystem and relay it to the user. When the menu is initialised, it requires a pointer to the tracking state of the system, so that the menu can know if the system is tracking or searching, and so that the system can enable and disable tracking mode. 
-
-The menu interfaces with the Range module and PanTilt module to access system variables such as the current maximum and minimum ranges so that the current values can be presented to the user, assisting the user with their ability to fine tune the system. 
-
-The menu system module also handles the ability to switch between a the remote serial user interface and the factory user interface, which contains hidden functions not available to a normal user. 
-
-\subsubsection{Processes}
-\subsubsection{Outputs}
-\subsubsection{Timing}
-\subsection{Non-Functional Requirements}
-\subsection{Conceptual Design}
-\subsubsection{Menu Structures}
-\subsection{Software Interface}
-
 \section{Serial}
 \subsection{Description}
 The serial module takes care of all communication (transmit and receive) over the serial UART (rs-232) port.
@@ -813,7 +793,7 @@ The menu subsystem should have the following interface characteristics in order 
 
 \section{Conceptual Design: Menu Subsystem}
 \subsection{Description}
-The menu subsystem is responsible for coordinating all the user inputs and outputs, storing the current menu state, and all the system strings and prompts to send to the users. In essence it turns the basic Hardware interface modules that are the serial and LCD modules and uses them to create the user interface to the entire system.
+The menu subsystem is responsible for coordinating all the user inputs and outputs, storing the current menu state, and all the system strings and prompts to send to the users. It also interfaces with the other modules to change system values and relay important information to the user. In essence, it turns the basic Hardware interface modules that are the serial and LCD modules and uses them to create the user interface to the entire system.
 
 \subsection{Overall Design}
 The menu system operates based on a handful of general functions that get called and do different things based on what the current menu is. Every cycle of the main program, the menu gets serviced, which involves the following events. First, there is a check for if the user has submitted any commands over serial for Remote/Factory users, or via the local interface for local users. If so, the input is read and converted to an integer, which is then used differently in each menu.
@@ -823,7 +803,42 @@ The concept of the menu system revolves are instances of a menu object, which co
 \subsection{Detailed Design}
 
 \subsubsection{Menu Objects}
-Talk about each item in the struct here
+Each menu object contains a list of variables which is necessary for the menu to interact with the current system. These will be discussed below. 
+
+\paragraph{Menu ID:}
+Each menu is given an identification number which is unique to each menu. This is used to identify which menu the current menu is within switch statements, as the menu objects themselves canot be compared easily. 
+
+\paragraph{Serial Message:}
+Each menu contains a message to be displayed when the menu is first entered. These messages are often instructions to the user as to how to operate this specific module, and are often unique to each menu.
+
+\paragraph{LCD Title:}
+Each menu has a title, which is often within the 16 character limit on the LCD so that it can be used for both serial displays and LCD displays. 
+
+\paragraph{Minimum Value:}
+The minimum value integer represents the minimum input value that the user can enter for this menu. This is often 1 for menus which navigate to sub-menus, but is also acts as the lower bound for any menus which allow the user to change a system setting. 
+
+\paragraph{Maximum Value:}
+The maximum value integer represents the maximum input value that the user can enter for this menu. For menus which navigate to sub-menus, this value is the number of options the user has to navigate. This value also acts as the upper bound for any menus which allow the user to change a system setting. 
+
+\paragraph{Increment:}
+The increment value is used to indicate the value of the offset used when counting from the minimum value to the maximum value. This dictates how many possible states there are between the two boundary numbers. For a navigation menu, this is always 1. However for other options, especially for changing the range of the device, the increment value is quite large at 50 millimetres per division. This value is necessary for the local user interface as the potentiometer can only rotate within a fixed arc, so decreasing the number of possible states allows the user to sacrifice accuracy for being able to choose an approximate value in a much less finicky manner.
+
+\paragraph{Serial Display Function}
+This is a function pointer used to indicate which function should be called when the menu is entered via a serial command. There is a generic method which only prints the serial message variable from above, however other alternatives are created for displaying navigation menus with long lists of possible choices, and displaying messages for commands which set system variables, as the upper and lower bounds are also displayed, along with the setting's current value.
+
+\paragraph{LCD Display Function}
+Another function pointer, this time used to indicate how the menu is to display text on the second line of the LCD hardware, depending on the current position of the potentiometer. The user does not have to confirm their selection for this text to appear or change, but this function merely shows them what they may want to select. For instance, this is used to allow the user to cycle through sub-menu choices as they navigate the menu system. This function takes an integer representation as to what the potentiometer is currently pointing at, moved to within the bounds of the maximum and minimum values. 
+
+\paragraph{Confirm Function}
+The confirm function handles how the menu behaves once a user has selected the value they would like, whether by the serial interface or the local interface. These functions also take a numeric input of what the user has selected. These are broken down into two sets of functions. 
+
+The first is used when the user is trying to change a system setting. The function uses the menu's ID to call the corresponding function in another module, such as calling the "setMaxRange(int)" function from the Range module if the menu was for setting the maximum range. These are done using a switch statement, rather than using many very similar small functions, as the memory usage was approximately the same, and a switch statement assists in making code easier to read.   
+
+The second type of confirm function is for the navigation menus, which change the current menu depending on the user's input. The act of changing the menu changes a system variable internally, as well as clearing the serial display, and calling the Serial Display function so that the new menu is shown. Changing the menu also changes the message on the top level of the LCD. Using this method allows the menus to not be called directly from within each other, which reduces the load on the program stack, as the current menu finishes before the next menu is set.
+
+\paragraph{Return Function}
+This function simply allows the user to navigate up a level in the menu by setting the menu to whichever menu should be above it in the menu hierarchy. These functions are accessed by the user pressing the back key on the local interface, or the escape key (or the on-screen option) in the serial interface. These are hard coded so that one specific function always returns to each navigation menu, as having a general function passing in an argument did not seem to have a great effect on the system's memory usage. 
+
 \subsubsection{User inputs}
 Talk about why we use numbers, intToAscii, asciiToInt etc.
 
