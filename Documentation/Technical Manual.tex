@@ -18,6 +18,98 @@
 	This document describes how each of the modules (including both software and hardware) work, and how to use them.
 \end{abstract}
 
+\part{Overview}
+\chapter{Introduction}
+\section{Document Identification}
+This document describes the design and development of the "Yavin IV Orbital Tracking System".  This document and design brief is prepared by Dirac Defence Limited for assessment in MTRX3700, year 2014. The was approved by lieutenants Reid and Bell, and small scale testing initiated. 
+
+\section{System Overview}
+%A brief statement of the purpose of the system or subsystem to which this document applies.
+
+This document outlines a proposed and prototyped design in response to the Rebel Alliance Commander Rye's request for a defence system to combat the imminent threat posed by The Empire, and their Death Star weapons platform. This system is to effectively, efficiently and easily track a space-based planetary annihilator, approximately the size of a small moon.\newline
+The system described in this paper is the small scale prototype for stage one of implementation and testing prior to contract approval and large scale deployment.
+
+\section{Document Overview}
+%A short “road map” of the document, to provide an orientation for the reader. Summarise the purpose and contents of this document.
+
+This technical document provides a detailed description of the design process and requirements of the various modules of the Orbital Tracking System. \newline
+
+Section one provides the main body of the technical document and outlines the development process of the system.\newline
+Chapter one introduces the system and document, details the technical jargon used and addresses reference documents used. \newline
+Chapter two describes the system requirements, operational scenarios, module design and module requirements. \newline
+Chapter three details the user interface design and interactions with different user classes. \newline
+Chapter four specifies the hardware design, validation and maintenance. \newline
+Chapter five details the software design process, architecture and preconditions for use. \newline
+Chapter six describes the performance of the system and future development. \newline
+Chapter seven outlines the safety implications of the system. \newline
+Chapter eight addresses conclusions and provides final final analysis of the system. \newline
+
+Section two contains the supporting documents, calculations, DOxygen documentation and code listings.
+
+\section{Reference Documents}
+The present document is prepared on the basis of the following reference document, and should be read in conjunction with it.\newline 
+
+"MTRX3700 Mechatronics 3, Major Project: Multi Sensor Death Star Tracker".  David Rye, Sydney, 2014.
+
+\subsection{Acronyms and Abbreviations}
+
+\begin{center}
+	\begin{tabular}{| l | c |}
+		\hline
+		Acronym & Meaning \\ \hline \hline
+		OTS & Orbital Tracking System, the system under development \\ \hline
+		Stuff & Meaning of Stuff \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\chapter{System Description}
+This section is intended to give a general overview of the basis for the Yavin IV Orbital Tracking System design, of its division into hardware and software modules, and of its development and implementation.  
+\section{Introduction}
+%Give a technical description of the function of the whole system, in terms of its constituent parts, here termed modules. Generally, a module will have hardware and software parts.
+
+The Yavin IV Orbital Tracking System's primary function is to track the Empire's Death Star system in real-time. 
+It consists of the following two major modules, tracking and user interface.
+
+Tracking
+This module takes data from the range and pan-tilt modules
+
+-Range
+--Ultrasound 
+--Infrared
+--Temperature
+
+--Pan-Tilt
+
+Menu System
+--LCD
+--Local User Interface
+--Serial
+
+\section{Operational Scenarios}
+
+\section{System Requirements}
+
+\section{Module Design}
+
+\section{Module Requirements: Module X}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+\subsubsection{Processes}
+\subsubsection{Outputs}
+\subsubsection{Timing}
+\subsubsection{Failure Modes}
+
+\subsection{Non-Functional (Quality of Service) Requirements}
+\subsubsection{Performance}
+\subsubsection{Interfaces}
+\subsubsection{Design Constraints}
+
+
+\section{Conceptual Design: Module X}
+\subsection{Assumptions Made}
+\subsection{Constraints on Module X Performance}
+
 \part{Introduction}
 \section{Document Identification}
 
@@ -34,7 +126,6 @@
 
 \section{Operational Scenarios}
 
-\part{Overview}
 \chapter{Software Overview}
 \section{Description}
 This system is a state machine; there is a primary loop in main() which repeatedly calls functions based on the current state. Each of these functions can alter the state to transition based on their function.
