@@ -1,0 +1,593 @@
+\documentclass[]{report}
+
+\usepackage{graphicx}
+\usepackage{bookmark}
+
+% Title Page
+\title{Technical Manuel \newline Yavin IV Defence System}
+\author{Team Dirac}
+
+
+\begin{document}
+\maketitle
+
+\chapter{Introduction}
+\section{Document Identification}
+This document describes the design of the Yavin IV Defence System. This document is prepared by Group DIRAC for assessment in MTRX3700 in 2014.
+
+\section{System Overview}
+<A brief statement of the purpose of the system or subsystem to which this document applies>
+The Yavin IV Defence System is designed to provide accurate, low cost tracking for Death Stars and other similar objects.
+
+\section{Document Overview}
+<A short "road map" of the document, to provide an orientation for the reader. Summarise the purpose and contents of this document.>
+This document describes the detailed technical specifications and functionality for the entire system. This includes the entire system design, implementation and usage.
+
+\section{Reference Documents}
+The present document is prepared on the basis of the following reference documents, and should be read in conjunction with them.
+	<Insert relevant documents>
+\subsection{Acronyms and Abbreviations}
+
+
+\begin{center}
+	\begin{tabular}{| l | c |}
+		\hline
+		Acronym & Meaning \\ \hline \hline
+		LCD & Liquid Crystal Display \\ \hline
+		Thing & Meaning of Thing \\ \hline
+		Stuff & Meaning of Stuff \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\chapter{System Description}
+This section is intended to give a general overview of the basis for the Yavin IV Defence System system design, of its division into hardware and software modules, and of its development and implementation.
+
+\section{Introduction}
+The system is broken into 
+<Give a technical description of the function of the whole system, in terms of its constituent parts, here termed modules. Generally, a module will have hardware and software parts.
+
+\section{Operational Scenarios}
+<Describe how the system is to be used. There may be several different ways that it ca be used perhaps involving different users, or classes of user. Present case diagrams here if you are using them. Each operational scenario is a part through a use case diagram - a way of using the system, with different outcomes or methods of use. You should also consider the various failures that may occur, and the consequences of these failures. >
+
+\section{System Requirements}
+The operational scenarios considered place certain requirements on the whole Yavin IV Defence system, and on the modules that comprise it.
+<Statement of requirements that affect the system as a whole, and are not restricted to only a subset of its modules.>
+
+\section{Module Design}
+<Describe the breakdown of the design into functional modules. Each module probably contains both software and hardware.
+Then include a section like the following 2.5 for each module. Not all of the sub-headings may be relevant for each module.>
+
+The system was broken down into a number of independent modules which contain their own private variables, functions etc. Fig. \ref{fig:Modules} gives an approximate diagrammatic representation of the way the modules fit together.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{../Diagrams/Modules}
+\caption[Modules]{Conceptual Diagram of the module breakdown and interaction between modules.}
+\label{fig:Modules}
+\end{figure}
+
+\section{Menu System}
+\subsection{Description}
+This module handles the creation of all the menu system used in both the serial user interface, the local user interface and the factory user interface. It handles the parsing of user inputs, navigation between menus, and interfacing with the other modules to change system values and relay important information to the user. 
+
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The menu system receives a variety of different inputs from the modules discussed below, as it must receive information from each subsystem and relay it to the user. When the menu is initialised, it requires a pointer to the tracking state of the system, so that the menu can know if the system is tracking or searching, and so that the system can enable and disable tracking mode. 
+
+The menu interfaces with the Range module and PanTilt module to access system variables such as the current maximum and minimum ranges so that the current values can be presented to the user, assisting the user with their ability to fine tune the system. These values are inputs to the module by calls to the appropriate public functions. 
+
+The menu system module also handles the ability to switch between a the remote serial user interface and the factory user interface, which contains hidden functions not available to a normal user. This is performed using a physical key switch, which is connected to pin RB2 on Port B of the micro-controller. This key switch acts as a toggle switch, and was connected to a pull down resistor circuit to act as a digital input to the system, where a high signal is received when the key is inserted and the key is turned.
+
+The final input to the menu system is the user's input, whether from the local interface or over a serial connection. Using the remote connection, the user will enter strings which will be stored in a circular buffer in the Serial module, however the menu system must process and interpret these commands, report errors, or call the appropriate modules when the user selects a specific option. This must also be done via the local interface, although most of the input parsing is done in the Local User Interface module. 
+
+\subsubsection{Processes}
+The menu system module must be able to do the following processes: 
+\begin{itemize}
+	\item Receive and process different user inputs from the local interface
+	\item Receive string commands from the Serial Interface, and interpret them as input commands during remote user mode.
+	\item Switch between different menus only when required.
+	\item Display the the correct menu/function once user input has been received. 
+	\item Be able to switch between Remote, Local and Factory modes on command. 
+	\item Provide user access to other module's functionality when commanded to do so by having a menu for each user function in the system modules.
+	\item Process user input and pass information to other system modules. 
+\end{itemize}
+\subsubsection{Outputs}
+The menu system has a simple output goal; it must provide the user with a user interface which can respond to the user commands to navigate to the different functions of the system. It must be able to instruct the LCD and serial modules of what messages to print and when so that the user can successfully use the product. 
+
+The menu system must also act as a medium between the other system modules by processing the user input into data which other modules can take as input so that system settings can be changed. 
+\subsubsection{Timing}
+The menu system for the device must respond in a manner which is fast enough that the user does not feel as if the device is responding too slowly to user inputs. Usually this means that the menu must be able to be checked and serviced approximately 10 times per second, giving a response time of less than 100 milliseconds. 
+
+\subsection{Non-Functional Requirements}
+\subsection{Conceptual Design}
+The menu system module is designed around the concept of menu objects, which each have a variety of attributes which are unique to each menu. This allows a general "Service Menu" function to be called which calls function pointers to change how each menu reacts to the same user input. Servicing the menu works in a similar manner for both the local and remote/factory user modes: first the system checks if any command has been received, then if so, the input is parsed and translated into a more helpful data type, then the corresponding function is called depending on the current menu. User input is translated into an integer from a string, and different menu structures handle user input differently depending on if the current menu is used for navigation or to set a system setting. 
+
+\subsubsection{Menu Structures}
+
+\subsubsection{Assumptions made}
+The menu system module operates correctly under the assumption that the serial and local modules work correctly, so that the data which is provided to the menu is correct. Similarly, as the menu system is on the highest layer of abstraction to the user, it can also not work to fulfil all it's functional goals if the other modules are not working as designed. 
+
+The menu system also assumes that the hardware is connected when processing each user type. That is, when in remote or factory mode, it is assumed that a RS232 serial cable is connected to the device and another computer running a terminal program running at 9600 bits per second, and when in local mode, it is under the assumption that the local controller is connected and functioning entirely. 
+\subsection{Software Interface}
+Refer to the Technical User Manual for a detailed explanation of the public interface, and how to use each function. 
+
+\section{Serial}
+\subsection{Description}
+The serial module takes care of all communication (transmit and receive) over the serial UART (rs-232) port.
+
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The only external input to the system is characters or strings to transmit. \newline 
+Either transmit, or transmitROM must be used depending on if the string is in RAM or ROM. The incorrect usage will result in printing nothing. \newline
+Sending a string which in not null terminated will result in unexpected behaviour, most probably filling and overflowing the buffer until a null is reached. \newline
+Sending a different datatype such as a float instead of a char will result in syntax errors, but other integer types may be casted into a char, truncating data and resulting in unexpected results. Again, the function only takes char's and integers must first be converted to a char array.
+
+\subsubsection{Processes}
+The following processes must be operational:
+\begin{itemize}
+	\item The circular buffer functionality - pushing and popping characters from buffers must work properly for the module to operate.
+\end{itemize}
+
+
+\subsubsection{Outputs}
+The system must output the following to work correctly: 
+\begin{itemize}
+	\item exact characters received over the serial line in the correct order.
+\end{itemize}
+
+\subsubsection{Timing}
+The serial module must be capable of:
+\begin{itemize}
+	\item Storing characters as soon as they are received over serial
+	\item Retaining received characters until they are handled
+	\item Retaining transmission characters until they can be transmitted
+\end{itemize}
+
+\subsubsection{Implemented Basic Functionality}
+The serial module implements the following basic functionality:
+\begin{itemize}
+	\item Functioning receive and transmit serial interrupts
+	\item Configure function to set up the module
+	\item Separate circular buffers to store data received and data to be transmitted
+	\item Public Function to add data to the transmission buffer
+	\item Public Function to read from received buffer, and check if anything has been received
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+The serial module should have the following performance characteristics:
+\begin{itemize}
+	\item Very fast ISR's - to affect background code, and other waiting interrupts as little as possible
+	\item Very low ISR latency - So no characters are missed, and the the module transmits almost as soon as possible.
+\end{itemize}
+
+\subsubsection{Interfaces}
+The following interface requirements are desirable:
+\begin{itemize}
+	\item Complete isolation/modularisation (e.g. no global interrupts) - the buffers are not accessible to the rest of the program
+	\item Very simple, intuitive interface functions taking 1 or no arguments that are appropriately named.
+	\item As simple operation as possible - E.g. configureSerial() then transmit().
+\end{itemize}
+
+\subsubsection{Design Constraints}
+The design of the serial module was constrained by the following:
+\begin{itemize}
+	\item Only High and Low ISR's on the PIC - Needed a public ISR function that is called when a serial interrupt is fired - Reduced modularity and interrupt response
+	\item Very little memory on the PIC - buffers were restricted to 30 characters
+\end{itemize}
+
+\subsubsection{Implemented Additional Functionality}
+In addition to the required functionality above, the serial module also offers the following functionality:
+\begin{itemize}
+	\item Push Null terminated strings to the transmit buffer
+	\item Check if carriage return, or esc has been received
+	\item Pop an entire string from the receive buffer up to a carriage return
+	\item Clear the buffers
+	\item Receiving backspace characters removes the last characters from the buffer (if not CR or ESC)
+	\item Read a string form program memory and transmit
+	\item Peek - Read character without removing from buffer
+	\item Indicate if transmit buffer is empty (all messages sent)
+\end{itemize}
+
+\subsection{Conceptual Design:}
+The serial module is INTERRUPT DRIVEN. This means that any background code can be running while the module is transmitting and/or receiving data over the serial line, and no serial data should ever be missed, overlooked or cut out. \newline
+The module contains two circular buffers: a transmit buffer and a receive buffer. These buffers are NOT accessible by the rest of the program. Rather, the module provides a public function transmit() which takes a string, and places it into the transmit buffer. Anything in this buffer is then transmitted character by character when the transmit ready interrupt fires. \newline
+Whenever a character is received over serial it is stored in the received buffer by an interrupt. Again this buffer is NOT accessible to the rest of the program. Rather it provides a number of functions to interact with it. The most commonly used of which is the readString() function, which returns everything in the buffer up to a carriage return (e.g. a line of input entered by the user). \newline
+This serial module also allows users the opportunity to remove or change data they have already transmitted. If a backspace is received, then instead of storing it in the receive buffer it will remove the last received character from the buffer if that character is not a Carriage Return, Newline, or Escape operator. This enables a much more more user friendly system as otherwise there would be no way to fix any syntax error without pressing enter, getting an error and starting again. Furthermore, without this feature, if a user did backspace and change an input it would result in completely unexpected behaviour. \newline
+Fig. \ref{fig:SerialModule} shows a conceptual diagram of the function of the serial module.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{"../Diagrams/Serial Module"}
+	\caption[Serial Module]{Shows Conceptual Diagram of Serial Module -> Received input stored by interrupts into circular buffer to await pop commands. Transmit data pushed onto buffer which is transmitted via interrupts}
+	\label{fig:SerialModule}
+\end{figure}
+
+\subsubsection{Assumptions Made}
+The module assumes that the buffers will never be overfilled, i.e. is able to transmit data faster than being written into buffer, or that input is being handled in a timely fashion. Failing this, it is assumed that the oldest data (which is overwritten) is the least meaningful, and that loosing some data will not create catastrophic error in the system. It is recommended to include a wait if sending large blocks of text over serial.
+
+\subsubsection{Constraints on Serial Performance}
+The main constraints on the serial module performance are:
+\begin{itemize}
+	\item Baud Rate
+	\item Interrupt Latency
+\end{itemize}
+The baud rate sets a maximum rate data can be transferred, which along with the buffer length restricts the rate at which data can be written to the transmit buffer without an overflow occurring.
+The interrupt latency is the time delay between the interrupt firing and the actual event. This is generally very small (we found ~300$\mu$s), but a high latency could miss characters being received.
+
+\subsection{Interface}
+Refer to the Technical User Manual For detailed explanations of the interface functions and how to use them.
+
+\section{Local User Interface}
+\subsection{Description}
+
+\section{Pan Tilt}
+\subsubsection{Description}
+The Pan Tilt module is responsible for interfacing and driving the pan tilt mechanism. This primarily consists of generating the PDM signals required to send dictate the position of the servo's.
+
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The module takes the following inputs
+\begin{itemize}
+	\item The Direction as a direction struct
+\end{itemize}
+
+\subsubsection{Processes}
+The following processes must be operational for the functionality of the module
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Outputs}
+The only program output is the current pan tilt direction. \newline
+The only other output is the PDM outputs to the servo which dictate their position.
+
+\subsubsection{Timing}
+The Pan Tilt module must have very precise timing to ensure that the servo positions are maintained precisely.
+\begin{itemize}
+	\item Module must be interrupt driven
+	\item Must have very low interrupt latency
+	\item PDM's must be offset so that the interrupts for elevation and azimuth don't interfere and block each other
+	\item Delay after movement function to allow the servo's to move to that position
+\end{itemize}
+
+\subsubsection{Failure Modes}
+The Pan Tilt module includes the following assurances against failure:
+\begin{itemize}
+	\item New delay information is only set at the end of a cycle to guarantee the PDM frequency
+	\item Validation function to ensure that the high time to within the specified range in the datasheet  
+\end{itemize}
+
+\subsubsection{Implemented Basic Functionality}
+The Pan Tilt module includes the following basic functionality:
+\begin{itemize}
+	\item Configure function to set up the module
+	\item Move function to move to any valid position
+	\item Get Direction function to return the current direction
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+The module should have the following performance characteristics to perform well:
+\begin{itemize}
+	\item Very low interrupt latency
+	\item Adjustment for interrupt latency
+\end{itemize}
+
+\subsubsection{Interfaces}
+The following interface characteristics are desirable:
+\begin{itemize}
+	\item Complete Isolation/modularity so that the rest of the program does not have access to any of the functionality of the module, but merely sets the direction of the Pan-Tilt module
+	\item Very simple, intuitive interface functions taking 1 or no arguments that are appropriately named.
+	\item Very simple module operation, such as configuration and move to desired location
+\end{itemize}
+
+\subsubsection{Implemented Additional Functionality}
+The following additional functionality has been implemented for the Pan Tilt Module
+\begin{itemize}
+	\item Incremental move function
+	\item Increment fine function for greater precision
+	\item Updated function to indicate whether a new delay setting has actually been written into the system yet
+\end{itemize}
+
+\subsection{Conceptual Design}
+This module uses a single output compare module to create the delays necessary to generate the PDM's of the desired duty cycle. Due to the interrupt latency of approximately 300$\mu$s, the PDM's are staggered so that the interrupt calls will never be closer than approximately 0.04 seconds. The full available duty cycle (1000$\mu$s) is divided over the given angular range. There is also an angular offset for calibration reasons. The Delay object is then created to define the necessary delays to create the desired PDM.
+NOTE: This module is interrupt driven, so the Interrupt.c file must be included in the project for it to work. \newline
+A data Flow diagram of the Pan Tilt Module is shown in Fig. \ref{PanTiltPins}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Pan Tilt Data Flow Diagram"}
+\caption[Pan Tilt Dataflow Diagram]{Dataflow diagram showing the transition from inputted direction to servo direction}
+\label{fig:PanTiltDataFlowDiagram}
+\end{figure}
+
+\subsubsection{Assumptions Made}
+The largest assumption made is that the clock frequencies in the code match those of the actual clock. Common.h defines the clock frequencies of the PICDEM and Minimal Boards which can be switched between. But there is no way for the system to verify the frequency of the clock, and if the clock is not the same then the PDM frequency will not be 50Hz, which can damage the servo's if faster. \newline
+The module does not assume that the interrupts fire instantly after the timing event, but that there is an approximately constant latency time, which is found experimentally, included as a \# define, and tuned.
+
+\subsubsection{Constraints on Pan Tilt Performance}
+The Pan Tilt module is restricted to the servo range of motion. Also the actual position is entirely dependant on the calibration as they merely take a PDM input.
+
+\subsubsection{Interface}
+Refer to the Technical User Manual For detailed explanations of the interface functions and how to use them.
+
+\section{Range}
+\subsection{Description}
+The range module uses the IR, Ultrasonic and temperature sensors to take range measurements.
+
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The range module takes no real inputs
+
+\subsubsection{Processes}
+The range module requires the following processes to function properly
+\begin{itemize}
+	\item Sample the Ultrasonic and IR sensors
+	\item Convert the sensor output to a range
+	\item Fuse the ranges from different sensors 
+\end{itemize}
+
+\subsubsection{Outputs}
+The output of the range module is the range to the target (in mm) as an unsigned int. The module also returns the state of the detected target as an enumeration.
+
+\subsubsection{Timing}
+The range module uses an input capture module to record the precise time the ultrasonic echo signal returns, which is then used for the range calculation. An interrupt is then used to indicate that the echo has returned, but precise timing for this is not required, as the echo return is stored in hardware when the echo is detected. 
+
+\subsubsection{Failure Modes}
+The system waits for the echo signal to return, but there is a possibility that the echo will never return. For this reason the system has a timeout feature so that if the signal does not return within a specified timeout then the range module returns nothing found. This means that the range module does not get stuck in the range module waiting for the echo signal to return.
+
+\subsubsection{Implemented Basic Functionality}
+The range module implements the follow functionality:
+\begin{itemize}
+	\item Configure the range module
+	\item Return the range to the target
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+
+\subsubsection{Interfaces}
+Refer to the Technical Users Guide for a detailed explanation of the module interface
+
+\subsubsection{Implemented Additional Features}
+The range module also implements the following additional functionality
+\begin{itemize}
+	\item Fuse the ranges taking the distance into account - US better for long ranges, IR better for short
+	\item Categorise the target state based on which sensors return a reading
+	\item Range calibrating functions
+\end{itemize}
+
+\subsection{Conceptual Design}
+The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking. 
+
+\subsubsection{Assumptions Made}
+
+\subsubsection{Interface}
+
+
+\section{Interrupts}
+\subsection{Description}
+The PIC18F4520 has 2 ISR's, so an interrupt framework whereby each module defines an ISR function, and a macro which determines whether to call its ISR function. The ISR's are then included in their own file, and included here as a semi-module
+
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+For the interrupt framework to function each module must define a macro which checks the interrupt flags for all the interrupts associated with the module.
+
+\subsubsection{Processes}
+The interrupt framework must be capable of performing the following processes:
+\begin{itemize}
+	\item Check each module interrupt macro
+	\item Ability to call the associated function depending on macro results
+\end{itemize}
+
+\subsubsection{Outputs}
+The interrupt framework has no real outputs, but directs program execution to the appropriate module ISR
+
+\subsubsection{Timing}
+There are no hard timing requirements for the interrupt framework itself, but the high priority interrupts in particular need to be called as soon after the event as possible.
+
+\subsubsection{Implemented Basic Functionality}
+The interrupt framework includes the following basic functionality:
+\begin{itemize}
+	\item Ability to distribute interrupt execution to any module
+	\item Priorities (high and low)
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+The following characteristics are desirable for performance reasons:
+\begin{itemize}
+	\item All interrupts should be as fast and efficient as possible so as to interfere with background code, and other interrupts as little as possible. 
+	\item Any extended functionality should be placed into functions not called by the interrupts
+	\item Use of priorities to ensure precision for some modules such as the pan tilt which rely on it
+\end{itemize}
+
+
+\subsubsection{Implemented Additional Features}
+There are no additional features implemented for the interrupt framework
+
+\subsection{Conceptual Design}
+For convenience interrupt macros have been defined in Common.h for each possible interrupt call. Querying one of these macros will return true if that interrupt fired an interrupt. These macros look like: TX\_INT, CCP1\_INT.\newline
+Each module defines a macro (in its header file) which indicates which interrupts that module is using, by or-ing together the previously mentioned macros. When an interrupt fires it checks these macros for each module, and if true calls a 'module scope ISR'. These macros look like: SERIAL\_INT, RANGE\_INT etc. \newline
+These module scope ISR's are just functions defined within each interrupt driven module, which are called whenever an interrupt associated with that macro is called. Thus these functions act as ISR's for the module without conflicting with anything else in the program.
+
+\subsubsection{Assumptions Made}
+
+
+\subsubsection{Interface}
+There is no public interface for the interrupt framework and nothing can call any of its functions. However other modules must define a macro and a service routine which are used in the interrupt module
+
+\section{Temp}
+\subsection{Description}
+
+
+\chapter{User Interface Design}
+<Give a detailed description of the design of the user interface. This will gave the reader a god view of how the system functions from the user's perspective.>
+
+\section{Classes of User}
+<If there are different user interfaces presented to different classes of users, define there user casses, and how access by the various user classes is enabled or disabled.
+
+\section{Interface Design <User Class Y>}
+\subsection{User Inputs and Outputs}
+<Description of how the user presents inputs to the system, and how the system responds to those inputs. Include a description of how the user knows the state of the system.>
+
+\subsection{Input Validation and Error Trapping}
+<Describe how the system validates user input, and how operator errors are trapped and can be recovered from>
+
+\section{Menu Design}
+\subsection{Menu Structure}
+Different menu structures were considered for interfacing with the user over a serial connection and via the local interface's LCD screen. Early in product design, we had reached the idea of using a potentiometer or encoder with buttons as the method of user input when not using serial. We had also decided that it was best to share a menu system between the remote and local user modes to keep the system consistent, which helps the user feel lees confused or jarred when switching between user modes. 
+
+
+From these requirements, the menu could have either been designed and implemented in a tiered system with sub-menus to navigate between, or as a large cyclic menu. Due to the limited rotation of a potentiometer, the large cyclic menu concept was rejected, as each option would only have a few degrees of potentiometer rotation, which would make the ability to choose a specific option difficult. A tiered system was chosen for both the local and remote user interfaces. However, concepts from the cyclic design were used for choosing options from within a sub-menu using the potentiometer, as it was more feasible with a limited number of choices per sub-menu. 
+
+
+The next design decision came in how the functions of the system were to be broken up into sub-menus. Possible choices included splitting the functionality between an Autonomous Tracking sub-menu which displayed possible relevant menu options, and Manual Tracking which allowed the user to go to specific azimuth and elevation angles. Another option involved splitting the system menus into Autonomous Tracking, which just showed the user the current range and angles, then spilt the remaining functions based on their areas, such as user functions focused around changing the options to do with the azimuth angle, elevation angle, and range. This was the final design used, as it was more intuitive as to how to find the option that a user specifically wanted. However, this meant that navigating between options in different sub-menus took more time, such as switching between the "Go To Azimuth" and "Go To Elevation" functions meant that the user needed to navigate through 3 sub-menus.
+
+
+The final decision in menu structure decision that had to be made was where to include the factory options if the system was put into Factory mode. Either all the factory settings could have their own sub-menu which only appeared when Factory mode was entered, or the factory settings could be placed within their relevant menus, such as placing the "Calibrate Azimuth" function inside the azimuth menu. The final descision was made to place the factory settings in their corresponding menus for consistency, as all possible settings to do with one area of the system should consistently be under the same menu. The downside to this choice is again that navigating between different factory settings takes longer than the alternative, and that the factory settings are not easily identified in one location. 
+
+
+The final menu structure can be seen in \ref{fig:MenuStructureDiagram}.
+
+\subsection{Menu Appearance}
+Due to the limited numbers of characters on the LCD module, the interface design for the local menu system had to be kept simple. As the display used two lines of 16 characters, the first line was chosen to be dedicated to display the current menu/function title, and the second line is dedicated to how the user interacts with the menu, such as displaying sub-menu names or showing a value that the user can enter. 
+
+For the remote serial interface, each menu's title and message is places at the top of the user's terminal interface. This was done to reduce the chance of the interface appearing in an odd way when the user used a terminal program other than TeraTerm, on which the serial terminal was tested. This was implemented using a generic clear screen string which is common to most terminal interfaces. The menus are bordered by a filler character ('+'), which encompass the title and text so that the user interface is easy to understand and aesthetically pleasing. The menu's content was placed in the centre left of the terminal window, again to compensate for any possible differences between terminal software. 
+
+An example of the serial user interface can be seen in \ref{fig:MenuAppearanceSerial}.
+
+\chapter{Hardware Design}
+<Give a detailed description of the design of hardware. The description should include mechanical drawings, location diagrams, electrical circuit schematics, circuit simulation or test results, PCB overlays, wiring diagrams, connector pin-out lists, pneumatic/hydraulic circuit diagrams>
+
+\section{Scope of the <Something> System Hardware}
+Statement of what is, and what is not, being designed and described here.
+
+\section{Hardware Design}
+\subsection{Power Supply}
+Power supply method and rating, fusing, distribution, grounding and protective earth as appropriate.
+
+\subsection{Computer Design}
+Description of computer hardware, including all interface circuitry to sensors, actuators, and I/O hardware.
+
+\subsubsection{Sensor Hardware}
+
+\subsubsection{Actuator Hardware}
+
+\subsubsection{Operator Input Hardware}
+
+\subsubsection{Operator Output Hardware}
+
+\subsubsection{Hardware Quality assurance}
+Describe any measures that were taken to control (improve) hardware quality and reliability - Heartbeats, brownout conditioning/resets, reset conditions, testing and validation, etc.
+
+\subsection{Hardware Validation}
+Details of any systematic testing to ensure that the hardware actually functions as intended
+
+\subsection{Hardware Validation}
+Details of any systematic testing to ensure that the hardware actually functions as intended.
+
+\subsection{Hardware Calibration Procedures}
+Procedures for calibration required in the factory, or in the field
+
+\subsection{Hardware Maintenance and Adjustment}
+Routine adjustment and maintenance procedures
+
+\chapter{Software Design}
+The software requirements and overview have been dealt with elsewhere in this section addresses the design and implementation of the software that forms the <X system>.
+
+\section{Software Design Process}
+The software was designed in a top down manner, around a basic state machine shown in Fig. \ref{fig:OperationStateTransitionDiagram}. A full detailed description of the system states is included in the state descriptions documents. 
+Once the states and transitions were decided on a basic framework was written that stored the state as an enumeration and a switch case within an infinite loop that continuously calls functions based on the state. \newline
+While the system was designed in a top down manner many of the functions were designed bottom up, primarily the hardware interface functions which were designed by starting with the datasheet, and working upwards. This was however restricted to the individual functions and met the top down design at the function design level. \newline
+The entire system was designed to be simple, and fit together nicely. As such we had very few interface problems, and almost all of these were hardware related, due to things like common power supplies etc.
+
+
+\subsection{Software Development Environment}
+The software was developed in the MPLAB X IDE v2.15 using the v3.47 C18 compiler. Much of the software was written and tested using the simulator included in the MPLAB environment, which allowed functionality to be tested without the need for actual hardware, which allows more flexibility and better debugging resources. The hardware interface however needed to be tested on either the minimal board or the PICDEM. Where possible, all code was designed for, written and tested on the minimal board so there would be no issues in porting it. Due to the parallel nature in which the code was written however some modules, the LCD in particular were written on the PICDEM which caused some issues when it came to integration. \newline
+For ease we defined the minimal board in the code, which whether defined or undefined would switch between the hardware. This was mainly the included headers and the clock frequencies. This was never actually tested as the main code was only ever run on the minimal board, and there may be some differences in library functions etc.
+
+\subsection{Software Implementation Stages and Test Plans}
+It should be noted that the following stages was often an iterative process, especially with the module stages, where each of the modules went through the described stages independently as they were finished.
+
+\subsubsection{State Design}
+The first stage of the software implementation was to design a state machine for the system. This was done by considering the problem at hand, and creating some preliminary idea of how we were going to solve it with the resources at hand. \newline
+The preliminary design is described in great detail in the State Descriptions document. This design did however change as we were implementing the software, particularly the tracking component, so the final system is as shown in Fig. \ref{fig:OperationStateTransitionDiagram}.
+
+\subsubsection{State Implementation}
+Once all the states were decided on, a basic state machine framework was written which consisted only of an infinite loop in the main function going through a switch case and calling a state function depending on the current state which was stored as an enumeration. The state variable was also implemented as a struct containing the current and previous states so the system would know if it was entering a state for the first time, and could perform different functionality. In the final design this was not necessary. \newline
+At this stage, all the state functions were implemented merely as stub functions that could be filled with actual functionality later.
+
+\subsubsection{Module Design}
+Once the initial framework was in place, the functionality of the system was broken into modules that could be coded and tested in complete isolation. Some modules, such as the tracking module make use of other modules, as shown in Fig. \ref{fig:Modules}, but otherwise the modules are completely separate, with no shared or global variables and were often coded in parallel. \newline
+A full description of the module breakdown is given in the Module Descriptions document, which details how the functionality is split into different modules, the public interfaces between modules and how they would communicate with the rest of the program. \newline
+Once the modules had been designed, skeleton code for the vast majority of modules (some additional modules were added, or changed) was written, outlining the basic framework of the module, and the public interface, as detailed in the module descriptions document. This skeleton code was supposed to reduce the daunting nature of trying to write an entire module for members with weaker programming backgrounds, as well as speed up the process for more experienced members, but primarily to ensure that everyone stuck to the decided upon design so that everything would work when we integrated it.
+
+\subsubsection{Module Implementation}
+This step, as expected took up the bulk of the time. Group members were allocated, or picked modules to work on, and there was much collaborating between group members to get modules working. The initial code was not difficult to write, because the system design had split everything into such workable segments the complete picture of each module and function was easy to visualise. Most of the difficulty was trying to get the hardware, and processor resources on the PIC to function correctly. This took the form of writing code primarily using the in-built library functions, finding it not working, and then trying to debug it and try to find why it was not working. There were also some other challenges associated with the compiler, such as the C18 compiler not supporting integer promotion, which means when variables are used in an operation with large intermediate values they often simply overflow and you end up with very strange undesirable results such as 17*30=8 without even a compiler warning.
+
+\subsubsection{Module Testing}
+There was a testing document drawn up at the beginning of the project which contained every function to be written, its current status, if it had been tested, verified, when and by whom. It also contained the working code so there would be no chance of making some changes, breaking it and not knowing what happened. However as the project took off, it was hard to police the testing, especially toward the end, with everyone just writing their own code and saying that it works without providing any documentation or evidence. Despite this much of the system (bar perhaps some of the final additions) were tested, and the testing document facilitated the detailing of a testing procedure by the author of the function, even if he did not perform the actual testing. \newline
+On this project we did not implement any kind of automated testing such as would be desirable in an industrial environment, but rigorous testing procedures were outlined, documented and implemented whenever possible.
+
+\subsubsection{Module Integration}
+As the modules were finished they were able to be placed into the state functions created in the state Implementation stage. Some of the state functions were also completely replaced by some of the module functions as there was little point having an entire function which just called another function. The interfaces to the modules had already been decided upon well in advance, and details on how to use each module existed, which made this stage surprisingly simple.
+
+\subsubsection{System Testing}
+At the end of the project there was very little time for rigorous system testing, however due to the way the system was designed to facilitate the integration of the modules there were very little issues. Our final system testing primarily consisted of simply playing with the system and making sure there were no issues. 
+
+\subsubsection{Dependencies}
+Personally I found there to be few dependencies throughout the project; while it was beneficial to have the serial operational when we were working on the range finding (to display the output), much of the debugging was spent stepping though code and the output was easily seen that way, really almost all the modules and things could be tested merely with dummy inputs to simulate what the rest of the program would output, and the entire functionality of a module could be tested in isolation of the other modules. The only real dependency was the tracking algorithm, which required both the range and the Pan Tilt modules. Even this could probably be tested without the other modules functioning with some complex wrapper function to supply inputs in order to illicit and test a particular response, but this would be unnecessary and much more effort than simply changing the order of the functions. However, it remains that the vast majority of the functionality could be written, tested and debugged in complete isolation of everything else.
+
+\subsubsection{Pseudocode (PDL)}
+It is my opinion that pseudocode should contain essentially the function declarations and the comment blocks of the functions, describing in an algorithmic manner the way that the function should operate without going into language specifics. For this reason we thought the skeleton code, and comment blocks that were written with the skeleton code, in addition to the module descriptions document adequate in lieu of dedicated pseudocode. If the solution was more complex algorithmically pseudocode would definitely have been warranted, but as it was, most of the code was simply interfacing with hardware, and the only modules that could really warrant pseudocode at all would be the tracking and menusystem modules. We had very few algorithmic related issues, but again, were the solution more complex we would have made use of pseudocode.
+
+\subsection{Software Quality Assurance}
+Describe any measures that were taken t control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
+
+\subsection{Software Design Description}
+\subsubsection{Architecture}
+Describe the high-level architecture of the software - that is, the top-level flow of control, and how the various functional modules communicate.
+In this section, you can put state transition diagrams, sequence diagrams, etc.
+
+\subsubsection{Software Interface}
+Describe the public interface of each software module
+
+\subsubsection{Software Components}
+This is a detailed view of the internal workings of each of the software modules
+
+\subsection{Preconditions for Software}
+\subsubsection{Preconditions for System Startup}
+Describe any preconditions that must be satisfied before the system can be started.
+
+\subsubsection{Preconditions for System Shutdown}
+Describe any preconditions that must be satisfied before the system can be stopped.
+
+\chapter{System Performance}
+\section{Performance Testing}
+Give the results of testing conducted to determine the characteristics and performance of the system - memory usage, loop time, system accuracy, repeatabability, ease of use, etc.
+
+\section{State of the System as Delivered}
+A statement of your group's opinion of the conformance of the system with the specification.
+
+\section{Future Improvements}
+Present a prioritised list of improvements to be made in future releases, giving reasons for the improvement and priority rank
+
+\chapter{Safety Implications}
+Must identify foreseeable safety hazards associated with the equipment and then assess and control th identified risks - By law (NSW Occupational Health and Safety Act 2000)
+
+\chapter{Conclusions}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
+\caption[State Diagram]{System overview state diagram}
+\label{fig:OperationStateTransitionDiagram}
+\end{figure}
+
+
+
+\end{document}          

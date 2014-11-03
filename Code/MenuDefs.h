@@ -28,6 +28,7 @@
 #define SAMPLE_PER_AVG_MIN 1
 #define SAMPLE_PER_AVG_MAX 5
 
+/// An enum for the different menu IDs, in the with tabs idicating structure that the menus will be in
 typedef enum {TOP_LEVEL,
                     TRACKING,
                     AZ_MENU,
@@ -54,18 +55,19 @@ typedef enum {TOP_LEVEL,
             } menuState;
 typedef enum {LOCAL, REMOTE, FACTORY} userState;
 
+// Special Terminal Commands
 #define CLEAR_SCREEN_STRING "\033[2J\033[0;0H"
 #define CLEAR_LINE_STRING "\033[2K"
 #define SERIAL_CURSOR_OFF "\033[?25l"
 #define SERIAL_CURSOR_ON "\033[?25h"
 
+// Other Defines
 #define ERR_NUM_OUT_OF_RANGE -1000
 #define ERR_NOT_NUMERIC -2000
 #define ERR_NO_NUMBER -3000
 #define ESC_PRESSED -4000
 #define MINUS_CHAR 0x2D
 
-//typedef enum setMenu {AZ_GOTO, AZ_MAX, AZ_MIN, EL_GOTO, EL_MIN, EL_MAX, RNG_MAX, RNG_MIN, IR_SAMPLE, IR_PER_AVG, US_SAMPLE, US_PER_AVG};
 typedef void (*numericInputFunction)(int);
 typedef void (*voidFunction) (void);
 
@@ -83,7 +85,7 @@ typedef void (*voidFunction) (void);
  *      - LcdTitleMessage: LCD Message to be displayed on entering the state
  *      - MinVal: The minimum value accepted by the state
  *      - MaxVal: The maximum value accepted by the state
- *      - increment:
+ *      - increment: The increment between numbers (eg increment = 10 means 10, 20, 30 can be chosen)
  *      - serialDisplayFunction: Function to display result over serial
  *      - confirmFunction: Function to confirm entry
  *      - lcdDisplayFunction: Function to display result on LCD
@@ -104,9 +106,8 @@ struct menuStruct
     voidFunction returnToPrevious;
  } menuStruct;
 
-//Global
+//Global Strings
 const rom char newLine[] = "\r\n";
-//const rom char CHOOSE[] = "\n\n\tPlease select your option (eg. 2): \r\n";
 const rom char CHOOSE[] = "\tPlease select option (eg. 2)";
 const rom char CHOOSE2[] = "\tPress Enter to confirm, or Esc to return";
 const rom char menuPrefix3[] = "3:";
@@ -127,14 +128,16 @@ const rom char sampleRate[] = "Sampling Frequency (Hz)";
 const rom char numPerSample[] = "Number of samples per estimate";
 const rom char hz[] = "Hz";
 const rom char tab[] = "\t";
+const rom char set[] = "Set";
+const rom char range_str[] = "Range";
+const rom char goto_str[] = "Go to";
+const rom char Options[] = "Options";
 //
 
-//1: Top
+//1: Top Level Menu Strings
 const rom char title[] = "Welcome to the Yavin IV Defence System!";
 const rom char welcomeLcd[] = "Home Menu";
-//const rom char topOption1[] = "\t1:\tAutomatic Tracking\r\n";
 const rom char topOption1[] = "\t1:\tAutomatic Tracking";
-//const rom char topOption2[] = "\t2:\tAzimuth Options\r\n";
 const rom char topOption2[] = "\t2:\tAzimuth Options";
 const rom char topOption3[] = "\t3:\tElevation Options";
 const rom char topOption4[] = "\t4:\tRange Options";
@@ -146,18 +149,13 @@ const rom char topOptionRemote[] = "\t6:\tSwitch to Remote Serial mode";
 const rom char topOptionRemoteLCD[] = "Switch to Remote";
 //
 
-//1.1: Automatic tracking
+//1.1: Automatic tracking Strings
 const rom char autoSerialMessage[] = "Automatic tracking mode initiated.";
 const rom char autoLcdTitle[] = "Auto-tracking";
 const rom char autoSearching[] = "Searching...";
 //
 
-const rom char set[] = "Set";
-const rom char range_str[] = "Range";
-const rom char goto_str[] = "Go to";
-const rom char Options[] = "Options";
-
-//1.2: Azimuth Menu
+//1.2: Azimuth Menu Strings
 const rom char azMenu[] = "\r\nAzimuth Configuration\r\n";
 const rom char azMenuLcd[] = "Azimuth Options";
 const rom char azOption1[] = "\t1:\tGo to a specified azimuth angle";
@@ -166,7 +164,7 @@ const rom char azOption3[] = "\t3:\tSet the max azimuth angle";
 const rom char azOption4[] = "\t4:\tCalibrate the azimuth motor";
 //
 
-//1.3: Elevation Menu
+//1.3: Elevation Menu Strings
 const rom char elMenu[] = "Elevation Configuration";
 const rom char elMenuLcd[] = "Elevation Options";
 const rom char elOption1[] = "\t1:\tGo to a specified elevation angle";
@@ -175,7 +173,7 @@ const rom char elOption3[] = "\t3:\tSet max elevation angle";
 const rom char elOption4[] = "\t4:\tCalibrate elevation servo";
 //
 
-//1.4: Range Menu
+//1.4: Range Menu Strings
 const rom char rngMenu[] = "Range Configuration";
 const rom char rngMenuLcd[] = "Range Options";
 const rom char rngOption1[] = "\t1:\tSet min system range";
@@ -187,7 +185,7 @@ const rom char rngOption7[] = "\t6:\tSet number of IR samples per estimate";
 const rom char rngOption8[] = "\t7:\tCalibrate to a set range";
 //
 
-//1.5: Show Temp
+//1.5: Show Temp Strings
 const rom char showTempLCDTitle[] = "Display Temp";
 const rom char showTempLCD[] = "Temp = ";
 const rom char showTemp1[] = "Temp: ";
@@ -197,7 +195,7 @@ const rom char showTemp2[] = " deg Celcius. \r\n\n\tPress Esc to return";
 //1.6: Calibrate Temperature
 //
 
-//1.2.1: Go to Azimuth Angle
+//1.2.1: Go to Azimuth Angle Strings
 const rom char gotoAzAngle[] = "Enter azimuth angle in degrees";
 const rom char gotoAzAngleLCD[] = "Go to Azimuth";
 const rom char gotoElAngle[] = "Enter elevation angle in degrees";
@@ -206,14 +204,14 @@ const rom char gotoAngle2[] = " Current min & max angles: ";
 const rom char angleStr[] = "Angle";
 //
 
-//1.2.2: Set Max Azimuth Angle
+//1.2.2: Set Max Azimuth Angle Strings
 const rom char maxAzStr[] = "Max Azimuth";
 const rom char maxAzSetStr[] = "Set Max Azimuth";
 const rom char maxAz1[] = "Enter a new max azimuth: ";
 const rom char maxAz3[] = "Max azimuth set to ";
 //
 
-//1.2.2: Set Min Azimuth Angle
+//1.2.2: Set Min Azimuth Angle Strings
 const rom char currentMinAngleStr[] = "Current min ";
 const rom char minAzStr[] = "Min Azimuth";
 const rom char minAzSetStr[] = "Set Min Azimuth";
@@ -221,11 +219,11 @@ const rom char minAz1[] = "Enter a new min azimuth: ";
 const rom char minAz3[] = "Min azimuth set to ";
 //
 
-//1.2.3: Calibrate Azimuth / Elevation
+//1.2.3: Calibrate Azimuth / Elevation Strings
 const rom char calibrateAngle1[] = "Enter Calibration angles: ";
 //
 
-//1.3.2: Set Max Elevation Angle
+//1.3.2: Set Max Elevation Angle Strings
 const rom char maxElStr[] = "Max Elevation";
 const rom char maxElSetStr[] = "Set Max Elevation";
 //const rom char maxEl1[] = "\r\n The current maximum elevation angle is ";
@@ -233,7 +231,7 @@ const rom char maxEl1[] = "Enter a new max elevation: ";
 const rom char maxEl3[] = "Max elevation set to ";
 //
 
-//1.3.2: Set Min Elevation Angle
+//1.3.2: Set Min Elevation Angle Strings
 const rom char minElStr[] = "Min Elevation";
 const rom char minElSetStr[] = "Set Min Elevation";
 //const rom char minEl1[] = "\r\n The current minimum elevation angle is ";
@@ -241,34 +239,38 @@ const rom char minEl1[] = "Enter a new min elevation: ";
 const rom char minEl3[] = "Min elevation set to ";
 //
 
-//1.4.1 Range Min
+//1.4.1 Range Min Strings
 const rom char minRngStr[] = "Min Range";
 const rom char minRngSetStr[] = "Set Min Range";
 const rom char minRngSerialStr[] = "Enter a new min range: (mm)";
 //
 
-// 1.4.2 Range Max
+// 1.4.2 Range Max Strings
 const rom char maxRngStr[] = "Max Range";
 const rom char maxRngSetStr[] = "Set Max Range";
 const rom char maxRngSerialStr[] = "Enter a new max range (mm):";
 //
 
-// RAW RANGE
+// RAW RANGE Strings
 const rom char rawRangeStr[] = "Displaying raw range in mm:";
 const rom char rawRangeTitle[] = "Raw Range";
+//
 
-// CALIBRATE RANGE
+// CALIBRATE RANGE Strings
 const rom char calRangeStr[] = "Place an object 500mm away from the sensor and press enter.";
 const rom char calRangeTitle[] = "Calibrate Range";
 const rom char calRangeConfirm[] = "Range calibrated";
+//
 
-// US SAMPLE RATE
+// US SAMPLE RATE Strings
 const rom char usSampleRateStr[] = "Please enter a sample";
 const rom char usSampleRateTitle[] = "Ultrasound Sample Rate";
+//
 
-// US NUMBER OF SAMPLE
+// US NUMBER OF SAMPLE Strings
 const rom char numSamplesStr[] = "Enter a number of samples to take.";
 const rom char numSampleTitle[] = "Num. of Samples";
+//
 
 #endif	/* MENUDEFS_H */
 

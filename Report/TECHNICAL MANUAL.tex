@@ -52,6 +52,7 @@ The present document is prepared on the basis of the following reference documen
 		\hline
 		Acronym & Meaning \\ \hline \hline
 		OTS & Orbital Tracking System, the system under development \\ \hline
+		LCD & Liquid Crystal Display \\ \hline
 		Stuff & Meaning of Stuff \\
 		\hline
 	\end{tabular}
@@ -113,9 +114,29 @@ The system was broken down into a number of independent modules which contain th
 \label{fig:Modules}
 \end{figure}
 
+\section{Menu System}
+\subsection{Description}
+This module handles the creation of all the menu system used in both the serial user interface, the local user interface and the factory user interface. It handles the parsing of user inputs, navigation between menus, and interfacing with the other modules to change system values and relay important information to the user. 
 
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The menu system receives a variety of different inputs from the modules discussed below, as it must receive information from each subsystem and relay it to the user. When the menu is initialised, it requires a pointer to the tracking state of the system, so that the menu can know if the system is tracking or searching, and so that the system can enable and disable tracking mode. 
 
-\section{Module Requirements: Serial}
+The menu interfaces with the Range module and PanTilt module to access system variables such as the current maximum and minimum ranges so that the current values can be presented to the user, assisting the user with their ability to fine tune the system. 
+
+The menu system module also handles the ability to switch between a the remote serial user interface and the factory user interface, which contains hidden functions not available to a normal user. 
+
+\subsubsection{Processes}
+\subsubsection{Outputs}
+\subsubsection{Timing}
+\subsection{Non-Functional Requirements}
+\subsection{Conceptual Design}
+\subsubsection{Menu Structures}
+\subsection{Software Interface}
+
+\section{Serial}
+\subsection{Description}
+The serial module takes care of all communication (transmit and receive) over the serial UART (rs-232) port.
 
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
@@ -407,11 +428,8 @@ The range module must be capable of returning the following outputs:
 \end{itemize}
 
 \subsubsection{Timing}
-<<<<<<< HEAD
-The range module uses an input capture module to record the precise time the ultrasonic echo signal returns, which is then used for the range calculation. An interrupt is then used to indicate that the echo has returned, but precise timing for this is not required, as the echo return is stored in hardware when the echo is detected.
-=======
+
 The range module must be capable of precisely timing the delay from the starting of the ultrasonic sensor, and the return of the echo signal. In this implementation this is done via an input capture interrupt, which stores the timer value in hardware as soon as the event is triggered.
->>>>>>> 50f34201c84e59bb9ccad87b59cc1f5e35c54be5
 
 \subsubsection{Failure Modes}
 The range system must be capable of timing out if no return echo signal is returned to avoid infinite loops. In this implementation we have a maximum delay before the sample times out.
@@ -448,13 +466,9 @@ The following additional functionality has been implemented for the range module
 	\item Range calibrating functions
 \end{itemize}
 
-<<<<<<< HEAD
-\subsection{Conceptual Design}
-The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking.
-=======
+
 \subsection{Assumptions Made}
 The range module assumes that the IR sensor output is inverse linear with respect to range, that the delay time is linear with target distance, and that the speed of sound is linear with temperature. None of these assumptions is valid in general, however, as we are only dealing with small deviations around a set point, it is a simple matter to linearise the actual functions around this value with a taylor series expansion. The linear approximations match the actual values quite closely for small deviations, as shown in the testing document.
->>>>>>> 50f34201c84e59bb9ccad87b59cc1f5e35c54be5
 
 \subsection{Hardware}
 The range module makes use of the following hardware:
@@ -540,35 +554,268 @@ These module scope ISR's are just functions defined within each interrupt driven
 \subsubsection{Interface}
 There is no public interface for the interrupt framework and nothing can call any of its functions. However other modules must define a macro and a service routine which are used in the interrupt module
 
+\section{Module Requirements: Circular Buffers}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+In order to function correctly the circular buffers sub-module must be capable of accepting the following inputs:
+\begin{itemize}
+<<<<<<< HEAD
+	\item
+=======
+	\item characters to push onto a buffer
+	\item a buffer to operate on
+>>>>>>> e4fb1f420aea9fd2f8cc6b6e2acfd1195a5b60aa
+\end{itemize}
+
+\subsubsection{Processes}
+In order to function correctly the circular buffers sub-module must be capable of performing the following processes:
+\begin{itemize}
+	\item Initialise buffer
+	\item Increment and modulus pointers
+	\item Push characters
+	\item Pop characters
+	\item Peek characters
+	\item Full and empty checking functionality
+\end{itemize}
+
+\subsubsection{Outputs}
+To function correctly the circular buffers sub-module must be capable of returning the following outputs:
+\begin{itemize}
+	\item Characters stored in the buffer
+	\item The current filled state of the buffer (full or empty)
+\end{itemize}
+
+\subsubsection{Failure Modes}
+The circular buffer functionality has some inbuilt safe-guards against accidental misuse such as:
+\begin{itemize}
+	\item Cannot pop an empty buffer
+	\item Pushing full buffer overwrites oldest data
+\end{itemize}
+Unfortunately the C language does not facilitate private object elements, so the user program could manually alter any elements in the buffer, which could likely result in errors. This could be remedied by making circular buffers a full module, with an actual source file, although this would reduce efficiency.
+
+\section{Conceptual Design: Circular Buffers}
+\subsection{Description}
+The circular buffers sub-module is a header containing everything required to utilise the circular buffer functionality.
+
+\subsection{Overall Design}
+Circular buffers are a mechanism used in several different modules, and for this reason the circular buffer definitions and functionality are included in a sub-module like fashion. This consists only of an include-able header which contains all the struct definitions and macro defines needed to fully utilise the buffers.
+
+\subsection{Detailed Design}
+The circular buffers header contains the circularBuffer struct definition, which is essentially an array with head and tail pointers which tell the system where to insert and read from the buffer. The header also defines the BUFFERLENGTH (which can be re-defined), and macros such as incMod to increment and modulus with the BUFFERLENGTH. It then contains all the standard circular buffer functionality such as push, pop, peek, empty functionality in the form of efficient macros, specifically designed to induce as little latency in the serial interrupts as possible. \newline
+This implementation of circular buffers overcomes the problem of differentiating between full and empty states by not incrementing the tail pointer if it would coincide with the head pointer, essentially reducing the buffer size by one. \newline
+Such a design facilitates speed, while still allowing the entire functionality to be alterable and update-able from a single place.
+
+\subsection{Implemented Functionality}
+The circular buffer sub-module implements the following functionality:
+\begin{itemize}
+	\item incMod
+	\item empty
+	\item full
+	\item peek
+	\item push
+	\item pop
+	\item init - Initialises (clears) the circular buffer
+\end{itemize}
+
+\subsection{Interface}
+The circular buffers sub-module has no real interface with the entire functionality being defined in the header to be included.
+
 \section{Module Requirements: Temp}
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
 The temp module must be capable of taking the following inputs:
 \begin{itemize}
-	\item
+	\item Reference temperature to which to calibrate
 \end{itemize}
 
 \subsubsection{Processes}
+The temp module must be capable of the following processes:
+\begin{itemize}
+	\item Configuring the system to sample the temperature
+	\item Sampling the temperature sensor
+	\item converting the sensor output to celcius
+	\item Calibrating the temperature sensor
+\end{itemize}
 
 \subsubsection{Outputs}
-
-\subsubsection{Timing}
-
-\subsubsection{Failure Modes}
+The temp module must be capable of returning the following outputs:
+\begin{itemize}
+	\item The temperature in Degrees
+	\item The raw temperature in Degrees
+\end{itemize}
 
 \subsection{Non-Functional Requirements}
 \subsubsection{Performance}
+For performance the temperature module stores the last temperature sampled, so that any call to the temperature module can simply return this value, meaning the temperature need only be sampled once a minute or so as the temperature does not vary quickly.
 
 \subsubsection{Interfaces}
+Please refer to the attached Module Descriptions document
 
 \section{Conceptual Design: Temp}
 \subsection{Description}
 The temperature module is responsible for sampling, storing and calibrating the temperature sensor, primarily for the ultrasonic range calculation and user output.
 
+\subsection{Overall/Detailed Design}
+The system revolves around the temperature sampling. There is a static offset which is calculated from the calibration function and gets added to any sensor reading. The static variable in the temperature module (storing the last temperature sampled) gets updated every time the temperature is read. Calling the getTemp() function simply returns this value without sampling the temperature.
+
+\subsection{Implemented Functionality}
+The temperature module implements the following functionality:
+\begin{itemize}
+	\item Temperature reading
+	\item Calibrating temperature
+	\item Raw temperature
+	\item configure temp module
+\end{itemize}
+
+\subsection{Assumptions Made}
+The primary assumption made in the temp module is that the system temperature will not change very quickly, which means that the temperature does not need to be sampled each time the temperature value is used. Instead it simply uses a previously sampled value, and ressamples the temperature at semi regular intervals.
+
+\subsection{Constraints on Pan Tilt Performance}
+The main constraint on the performance of the temperature module is the accuracy of the 
+
 \subsection{Hardware}
+The temperature module makes use of the following hardware:
+\begin{itemize}
+	\item Temperature sensor
+\end{itemize}
+Originally amplifiers were planned to set the analogue to digital converter to the same voltage range as the output of the temperature sensor. But this was deemed unnecessary because the resolution of the ADC was already greater than that of the temperature sensor.
+
 \subsubsection{Pin Assignments}
+The following pins are used to connect to the temperature module hardware:
+\begin{itemize}
+	\item Output of Temp sensor to AN1 Pin
+	\item Temp $V_{CC}$ to general purpose 5v bus
+	\item Temp GND to common ground
+\end{itemize}
 
+\subsection{Interface}
+Please refer to the attached Module Descriptions document
 
+\section{Module Requirements: Tracking}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+There are no real external inputs to the tracking module, as the functions are iterative they perform a single iteration and return. Thus they are simply called continuously whenever the system is detecting a target. The following inputs are requested by the tracking module from other modules such as range:
+\begin{itemize}
+	\item Current system state
+	\item Target Range
+	\item Target State
+	\item Pan Tilt Direction
+\end{itemize}
+
+\subsubsection{Processes}
+The tracking module is required to perform the following processes:
+\begin{itemize}
+	\item Move the Pan Tilt module in a search pattern
+	\item Use sensor data to detect targets
+	\item Use algorithms and sensors to track moving targets
+\end{itemize}
+
+\subsubsection{Outputs}
+The tracking module is required to return the following outputs:
+\begin{itemize}
+	\item The target details (range, azimuth, elevation)
+	\item whether it still has a target
+	\item the next system state
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+In order to perform well (defined as accurate and reliable track) the system should have the following characteristics:
+\begin{itemize}
+	\item Quite fast tracing step
+	\item Fine adjustments when target is fixed
+	\item Coarse adjustments when target is unknown
+	\item Efficient tracking algorithm
+\end{itemize}
+
+\subsubsection{Interfaces}
+The system should have the following interface characteristics:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Conceptual Design: Tracking}
+\subsection{Description}
+The tracking module contains the high level tracking and search algorithms used by the system. It then uses the Pan Tilt and Range modules to enact these modules.
+
+\subsubsection{Overall Design}
+The searching algorithm uses a simple raster scan variant which scans the azimuthal range, then increments (or decrements) the elevation and scans back the other way. When the system detects any object with either the ultrasonic or the infra red then it enters the tracking mode. \newline
+The tracking mode uses a simple weighted average technique, where the system increments the pan tilt direction up, down, left and right of the know target, and averages the directions based on the returns it samples at each of those points. The result is the new target position.
+
+\subsubsection{Detailed Design}
+The Tracking module contains two primary functions: search and track. Each of these functions is 'incremental' in nature. This means a single call will perform a single 'step', and these functions are called continuously to perform a constant action. \newline
+The search algorithm is based on a simple raster like scan. The system simply increments sweeps the azimuth, incrementing the elevation each time it hits the max or min azimuth. If it gets to the limits of the elevation then it reverses the direction of its increment variable, making the system scan the other way. \newline
+As mentioned previously the tracking algorithm is a simple weighted average. The algorithm is highly configurable with surprising ease, but currently it is configured so as to take sampled above, below, to the left and to the right of the know target location. If the system gets an ultrasonic return (i.e. in the large ultrasonic cone) then it assigns a weighting of 1, adding that direction to the sum. If it returns an IR reading it multiplies the direction by 8, and adds it, no return has no weighting. Then it divides by the sum of the weights to get the new target location. \newline
+This means that if it is far from the target, then only 1 direction will get returns and the system will necessarily move toward the target. If it is almost on the target, then the preferential return of ultrasonic and/or IR samples to one side will serve to tune the know position.
+
+\subsubsection{Assumptions Made}
+There are a number of assumptions made in this module these are as follows:
+\begin{itemize}
+	\item The searching algorithm does not 'miss' any targets (i.e. scans faster than they can move)
+	\item The target is approximately stationary compared to the speed of the tracking algorithm (so that all 5 samples can be considered for the target at a fixed location)
+	\item That the sensors do not exhibit any false positives or false negatives
+\end{itemize}
+Some of these assumptions may seem a little ambitious, however, in a real world scenario they seem to be sufficient to create a working system, albeit not an ideal one.
+
+\subsubsection{Constraints on the Tracking Performance}
+Below are some of the more major constraints on the performance of the tracking algorithm:
+\begin{itemize}
+	\item The maximum sampling rate of the ulrasonic - limited the overall tracking speed
+	\item The resolution of the servo's - made it difficult to accurately track distant targets
+\end{itemize}
+
+\subsubsection{Hardware}
+The tracking system itself made use of no dedicated hardware, it was simply a high level software module, however it did make use of many other modules utilising a range of hardware, such as the range and pan tilt modules.
+
+\subsubsection{Interface}
+Refer to the attached Module Descriptions document
+
+\section{Module Requirements: MenuSubsystem}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The menu subsystem must be capable of taking the following inputs in order to fulfil its purpose:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Processes}
+The menu subsystem must be capable of performing the following processes in order to fulfil its purpose:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Outputs}
+The menu subsystem must be capable of returning the following outputs in order to fulfil its purpose:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+The menu subsystem should have the following characteristics in order to operate efficiently:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsubsection{Interfaces}
+The menu subsystem should have the following interface characteristics in order to operate efficiently:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Conceptual Design: MenuSubsystem}
+\subsection{Description}
+The menu subsystem is responsible for coordinating all the user inputs and outputs, storing the current menu state, and all the system strings and prompts to send to the users. In essence it turns the basic Hardware interface modules that are the serial and LCD modules and uses them to create the user interface to the entire system.
+
+\subsection{Overall Design}
+
+\subsection{Detailed Design}
+
+\subsection{Assumptions}
+
+\subsection{Constraints On the MenuSubsystem}
+
+\subsection{Interface}
 
 \section{Module Requirements: LCD}
 \subsection{Functional Requirements}
@@ -679,6 +926,31 @@ Set all the pins to output and set all the control pins to 0. A configuring proc
 \subsection{Input Validation and Error Trapping}
 <Describe how the system validates user input, and how operator errors are trapped and can be recovered from>
 
+\section{Menu Design}
+\subsection{Menu Structure}
+Different menu structures were considered for interfacing with the user over a serial connection and via the local interface's LCD screen. Early in product design, we had reached the idea of using a potentiometer or encoder with buttons as the method of user input when not using serial. We had also decided that it was best to share a menu system between the remote and local user modes to keep the system consistent, which helps the user feel lees confused or jarred when switching between user modes. 
+
+
+From these requirements, the menu could have either been designed and implemented in a tiered system with sub-menus to navigate between, or as a large cyclic menu. Due to the limited rotation of a potentiometer, the large cyclic menu concept was rejected, as each option would only have a few degrees of potentiometer rotation, which would make the ability to choose a specific option difficult. A tiered system was chosen for both the local and remote user interfaces. However, concepts from the cyclic design were used for choosing options from within a sub-menu using the potentiometer, as it was more feasible with a limited number of choices per sub-menu. 
+
+
+The next design decision came in how the functions of the system were to be broken up into sub-menus. Possible choices included splitting the functionality between an Autonomous Tracking sub-menu which displayed possible relevant menu options, and Manual Tracking which allowed the user to go to specific azimuth and elevation angles. Another option involved splitting the system menus into Autonomous Tracking, which just showed the user the current range and angles, then spilt the remaining functions based on their areas, such as user functions focused around changing the options to do with the azimuth angle, elevation angle, and range. This was the final design used, as it was more intuitive as to how to find the option that a user specifically wanted. However, this meant that navigating between options in different sub-menus took more time, such as switching between the "Go To Azimuth" and "Go To Elevation" functions meant that the user needed to navigate through 3 sub-menus.
+
+
+The final decision in menu structure decision that had to be made was where to include the factory options if the system was put into Factory mode. Either all the factory settings could have their own sub-menu which only appeared when Factory mode was entered, or the factory settings could be placed within their relevant menus, such as placing the "Calibrate Azimuth" function inside the azimuth menu. The final descision was made to place the factory settings in their corresponding menus for consistency, as all possible settings to do with one area of the system should consistently be under the same menu. The downside to this choice is again that navigating between different factory settings takes longer than the alternative, and that the factory settings are not easily identified in one location. 
+
+
+The final menu structure can be seen in \ref{fig:MenuStructureDiagram}.
+
+\subsection{Menu Appearance}
+Due to the limited display capabilities of the LCD hardware being used in the system, an intuitive design had to be constructed to convey information to a local user. The LCD module has the ability to write 16 characters to two lines independently. With this, the local user interface was designed so that the top row of the LCD always shows the user their current menu, such as "Azimuth Options" or "Set max range". This allows the second line of the display to be used to show the changes that the user is making, such as displaying sub-menu titles as the user scrolls through potential choices. 
+
+The serial interface is less limited by physical constraints, but was also important to design carefully. A similar style of approach was used; the user must always be shown their current location, along with all the possible options that they can take. This is simpler on the serial interface as many options can be displayed at once, so all correct serial inputs are shown for navigation menus, whilst ranges and current values are displayed in functions which change system settings. This allows to the user to more easily make correct choices as to how to interact with the system, and lets the user easily view their current settings. 
+
+For the physical appearance of the menu itself in the user's terminal program, the menu itself will always appear in the top left of the program's window. This is done by using a generic clear display command which is common to many terminal programs. This was chosen to reduce the possibility of the serial display looking incorrect in terminal programs other than TeraTerm, in which the serial display was tested, as the program will automatically clear whatever was written previously. 
+
+Each menu is framed by a filler character, the plus sign "+". This is done to easily bring attention to the current menu's title, and separate the user input section of the terminal from the printed messages. The menu title and other menu messages are all printed indented to the centre left of the terminal. This is again so that other terminal programs will be more likely to display the user interface correctly, on the small chance that some of the leftmost display is unreadable or not as aesthetically pleasing.  
+
 \chapter{Hardware Design}
 The system hardware consists of two main components: the local user interface controller, and the housing for the sensors and microcontroller.
 
@@ -734,7 +1006,7 @@ The software requirements and overview have been dealt with elsewhere in this se
 \section{Software Design Process}
 The software was designed in a top down manner, around a basic state machine shown in Fig. \ref{fig:OperationStateTransitionDiagram}. A full detailed description of the system states is included in the state descriptions documents.
 Once the states and transitions were decided on a basic framework was written that stored the state as an enumeration and a switch case within an infinite loop that continuously calls functions based on the state. \newline
-while the system was designed in a top down manner many of the functions were designed bottom up, primarily the hardware interface functions which were designed by starting with the datasheet, and working upwards. This was however restricted to the individual functions and met the top down design at the function design level. \newline
+While the system was designed in a top down manner many of the functions were designed bottom up, primarily the hardware interface functions which were designed by starting with the datasheet, and working upwards. This was however restricted to the individual functions and met the top down design at the function design level. \newline
 The entire system was designed to be simple, and fit together nicely. As such we had very few interface problems, and almost all of these were hardware related, due to things like common power supplies etc.
 
 
@@ -777,30 +1049,67 @@ Personally I found there to be few dependencies throughout the project; while it
 \subsubsection{Pseudocode (PDL)}
 It is my opinion that pseudocode should contain essentially the function declarations and the comment blocks of the functions, describing in an algorithmic manner the way that the function should operate without going into language specifics. For this reason we thought the skeleton code, and comment blocks that were written with the skeleton code, in addition to the module descriptions document adequate in lieu of dedicated pseudocode. If the solution was more complex algorithmically pseudocode would definitely have been warranted, but as it was, most of the code was simply interfacing with hardware, and the only modules that could really warrant pseudocode at all would be the tracking and menusystem modules. We had very few algorithmic related issues, but again, were the solution more complex we would have made use of pseudocode.
 
-\subsection{Software Quality Assurance}
+\section{Software Quality Assurance}
 Describe any measures that were taken t control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
 
-\subsection{Software Design Description}
-\subsubsection{Architecture}
-Describe the high-level architecture of the software - that is, the top-level flow of control, and how the various functional modules communicate.
-In this section, you can put state transition diagrams, sequence diagrams, etc.
+\section{Software Design Description}
+\subsection{Architecture}
+\subsubsection{System Overview}
+The system at its highest level is as basic state machine. Fig. \ref{fig:OperationStateTransitionDiagram} shows the states and transitions in the final version. The attached State descriptions document describes in great detail all the states and transitions as they were designed at the beginning of the project. Some of these states have changed since the document was written, but much of the basic concept is the same.
 
-\subsubsection{Software Interface}
-Describe the public interface of each software module
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
+	\caption[State Diagram]{System overview state diagram}
+	\label{fig:OperationStateTransitionDiagram}
+\end{figure}
 
-\subsubsection{Software Components}
+Much of the code is really just functionality around hardware interfaces, most of which is self explanatory, or accessible through the datasheet. Here we will discuss some of the higher level software modules such as the search, tracking and menus.
+
+\subsubsection{Tracking}
+The tracking algorithm is really the heart of the specification - to design and build a death star tracker. Despite this there is alot of functionality that must be in place before the module is operational. Here only the high level tracking algorithm is discussed. \newline
+Fig. \ref{fig:TrackingStateDiagram} shows the original concept for tracking the moving targets. The basic concept was that the system would start somewhere on the target (after having detected it) and then move outward in each direction (up, down, left and right) until it found the edge, and would return to the centre, and begin again. The problem we found with that 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Tracking State Diagram"}
+\caption{State Transition Diagram depicting the Original Idea for the tracking algorithm}
+\label{fig:TrackingStateDiagram}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Tracking State Transition Diagram"}
+\caption{State Transition Diagram depicting the final tracking algorithm}
+\label{fig:TrackingStateTransitionDiagram}
+\end{figure}
+
+\subsubsection{Searching}
+
+\subsubsection{Menus}
+
+\subsection{Software Interface}
+The software interfaces for each module are described in great detail in the module descriptions document. For the sake of conciseness I will not repeat most of that material here.
+
+\subsection{Software Components}
 This is a detailed view of the internal workings of each of the software modules
 
-\subsection{Preconditions for Software}
-\subsubsection{Preconditions for System Startup}
+\section{Preconditions for Software}
+\subsection{Preconditions for System Startup}
 Describe any preconditions that must be satisfied before the system can be started.
 
-\subsubsection{Preconditions for System Shutdown}
-Describe any preconditions that must be satisfied before the system can be stopped.
+Before the system can be started it must be connected to a power source with a sufficient power rating. Then obviously it must be fully assembled. Apart from that there are no preconditions for the system to begin startup. The code is designed to configure all the modules and hardware that it needs automatically on startup. There is however some background bootloader which loads all the constants in from program memory and initialises the variables defined in the idata sections etc. Again this happens automatically at startup and requires no other preconditions. The Pan Tilt module is then moved to the starting point of (0,0).
+
+\subsection{Preconditions for System Shutdown}
+There are no preconditions for a system shutdown, and the system can be shutdown at any point with no warning. There is however an option to store the user changes for the configuration settings in the eeprom, and should the user wish to retain their settings this should be completed before shutting down the system. Also if the user were to shut down the system during the eeprom write the action may corrupt their stored settings. Other than this, the system can safely be shut down at any point with no consequences.
+
+
 
 \chapter{System Performance}
 \section{Performance Testing}
 Give the results of testing conducted to determine the characteristics and performance of the system - memory usage, loop time, system accuracy, repeatabability, ease of use, etc.
+
+The testing document goes through the testing procedures and results of each function as they were completed.
 
 \section{State of the System as Delivered}
 A statement of your group's opinion of the conformance of the system with the specification.
@@ -830,12 +1139,6 @@ Must identify foreseeable safety hazards associated with the equipment and then 
 \chapter{Conclusions}
 
 
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
-\caption[State Diagram]{System overview state diagram}
-\label{fig:OperationStateTransitionDiagram}
-\end{figure}
 
 
 
