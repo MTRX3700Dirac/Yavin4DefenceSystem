@@ -407,11 +407,8 @@ The range module must be capable of returning the following outputs:
 \end{itemize}
 
 \subsubsection{Timing}
-<<<<<<< HEAD
-The range module uses an input capture module to record the precise time the ultrasonic echo signal returns, which is then used for the range calculation. An interrupt is then used to indicate that the echo has returned, but precise timing for this is not required, as the echo return is stored in hardware when the echo is detected.
-=======
+
 The range module must be capable of precisely timing the delay from the starting of the ultrasonic sensor, and the return of the echo signal. In this implementation this is done via an input capture interrupt, which stores the timer value in hardware as soon as the event is triggered.
->>>>>>> 50f34201c84e59bb9ccad87b59cc1f5e35c54be5
 
 \subsubsection{Failure Modes}
 The range system must be capable of timing out if no return echo signal is returned to avoid infinite loops. In this implementation we have a maximum delay before the sample times out.
@@ -448,13 +445,9 @@ The following additional functionality has been implemented for the range module
 	\item Range calibrating functions
 \end{itemize}
 
-<<<<<<< HEAD
-\subsection{Conceptual Design}
-The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking.
-=======
+
 \subsection{Assumptions Made}
 The range module assumes that the IR sensor output is inverse linear with respect to range, that the delay time is linear with target distance, and that the speed of sound is linear with temperature. None of these assumptions is valid in general, however, as we are only dealing with small deviations around a set point, it is a simple matter to linearise the actual functions around this value with a taylor series expansion. The linear approximations match the actual values quite closely for small deviations, as shown in the testing document.
->>>>>>> 50f34201c84e59bb9ccad87b59cc1f5e35c54be5
 
 \subsection{Hardware}
 The range module makes use of the following hardware:
@@ -606,6 +599,9 @@ The following pins are used to connect to the temperature module hardware:
 	\item 
 \end{itemize}
 
+\subsubsection{Interface}
+
+
 \section{Module Requirements: Tracking}
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
@@ -651,7 +647,38 @@ The system should have the following interface characteristics:
 
 \section{Conceptual Design: Tracking}
 \subsection{Description}
+The tracking module contains the high level tracking and search algorithms used by the system. It then uses the Pan Tilt and Range modules to enact these modules.
 
+\subsubsection{Overall Design}
+The searching algorithm uses a simple raster scan variant which scans the azimuthal range, then increments (or decrements) the elevation and scans back the other way. When the system detects any object with either the ultrasonic or the infra red then it enters the tracking mode. \newline
+The tracking mode uses a simple weighted average technique, where the system increments the pan tilt direction up, down, left and right of the know target, and averages the directions based on the returns it samples at each of those points. The result is the new target position.
+
+\subsubsection{Detailed Design}
+The Tracking module contains two primary functions: search and track. Each of these functions is 'incremental' in nature. This means a single call will perform a single 'step', and these functions are called continuously to perform a constant action. \newline
+The search algorithm is based on a simple raster like scan. The system simply increments sweeps the azimuth, incrementing the elevation each time it hits the max or min azimuth. If it gets to the limits of the elevation then it reverses the direction of its increment variable, making the system scan the other way. \newline
+As mentioned previously the tracking algorithm is a simple weighted average. The algorithm is highly configurable with surprising ease, but currently it is configured so as to take sampled above, below, to the left and to the right of the know target location. If the system gets an ultrasonic return (i.e. in the large ultrasonic cone) then it assigns a weighting of 1, adding that direction to the sum. If it returns an IR reading it multiplies the direction by 8, and adds it, no return has no weighting. Then it divides by the sum of the weights to get the new target location. \newline
+This means that if it is far from the target, then only 1 direction will get returns and the system will necessarily move toward the target. If it is almost on the target, then the preferential return of ultrasonic and/or IR samples to one side will serve to tune the know position.
+
+\subsubsection{Assumptions Made}
+There are a number of assumptions made in this module these are as follows:
+\begin{itemize}
+	\item The searching algorithm does not 'miss' any targets (i.e. scans faster than they can move)
+	\item The target is approximately stationary compared to the speed of the tracking algorithm (so that all 5 samples can be considered for the target at a fixed location)
+	\item That the sensors do not exhibit any false positives or false negatives
+\end{itemize}
+Some of these assumptions may seem a little ambitious, however, in a real world scenario they seem to be sufficient to create a working system, albeit not an ideal one.
+
+\subsubsection{Constraints on the Tracking Performance}
+Below are some of the more major constraints on the performance of the tracking algorithm:
+\begin{itemize}
+	\item The maximum sampling rate of the ulrasonic - limited the overall tracking speed
+	\item The resolution of the servo's - made it difficult to accurately track distant targets
+\end{itemize}
+
+\subsubsection{Hardware}
+The tracking system itself made use of no dedicated hardware, it was simply a high level software module, however it did make use of many other modules utilising a range of hardware, such as the range and pan tilt modules.
+
+\subsubsection{Interface}
 
 \section{Module Requirements: LCD}
 \subsection{Functional Requirements}
