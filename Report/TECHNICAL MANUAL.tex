@@ -545,29 +545,112 @@ There is no public interface for the interrupt framework and nothing can call an
 \subsubsection{Inputs}
 The temp module must be capable of taking the following inputs:
 \begin{itemize}
-	\item 
+	\item Reference temperature to which to calibrate
 \end{itemize}
 
 \subsubsection{Processes}
+The temp module must be capable of the following processes:
+\begin{itemize}
+	\item Configuring the system to sample the temperature
+	\item Sampling the temperature sensor
+	\item converting the sensor output to celcius
+	\item Calibrating the temperature sensor
+\end{itemize}
 
 \subsubsection{Outputs}
-
-\subsubsection{Timing}
-
-\subsubsection{Failure Modes}
+The temp module must be capable of returning the following outputs:
+\begin{itemize}
+	\item The temperature in Degrees
+	\item The raw temperature in Degrees
+\end{itemize}
 
 \subsection{Non-Functional Requirements}
 \subsubsection{Performance}
+For performance the temperature module stores the last temperature sampled, so that any call to the temperature module can simply return this value, meaning the temperature need only be sampled once a minute or so as the temperature does not vary quickly.
 
 \subsubsection{Interfaces}
+
 
 \section{Conceptual Design: Temp}
 \subsection{Description}
 The temperature module is responsible for sampling, storing and calibrating the temperature sensor, primarily for the ultrasonic range calculation and user output.
 
-\subsection{Hardware}
-\subsubsection{Pin Assignments}
+\subsection{Overall/Detailed Design}
+The system revolves around the temperature sampling. There is a static offset which is calculated from the calibration function and gets added to any sensor reading. The static variable in the temperature module (storing the last temperature sampled) gets updated every time the temperature is read. Calling the getTemp() function simply returns this value without sampling the temperature.
 
+\subsection{Implemented Functionality}
+The temperature module implements the following functionality:
+\begin{itemize}
+	\item Temperature reading
+	\item Calibrating temperature
+	\item Raw temperature
+	\item configure temp module
+\end{itemize}
+
+\subsection{Assumptions Made}
+The primary assumption made in the temp module is that the system temperature will not change very quickly, which means that the temperature does not need to be sampled each time the temperature value is used. Instead it simply uses a previously sampled value, and ressamples the temperature at semi regular intervals.
+
+\subsection{Constraints on Pan Tilt Performance}
+The main constraint on the performance of the temperature module is the accuracy of the 
+
+\subsection{Hardware}
+The temperature module makes use of the following hardware:
+\begin{itemize}
+	\item Temperature sensor
+\end{itemize}
+Originally amplifiers were planned to set the analogue to digital converter to the same voltage range as the output of the temperature sensor. But this was deemed unnecessary because the resolution of the ADC was already greater than that of the temperature sensor.
+
+\subsubsection{Pin Assignments}
+The following pins are used to connect to the temperature module hardware:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Module Requirements: Tracking}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+There are no real external inputs to the tracking module, as the functions are iterative they perform a single iteration and return. Thus they are simply called continuously whenever the system is detecting a target. The following inputs are requested by the tracking module from other modules such as range:
+\begin{itemize}
+	\item Current system state
+	\item Target Range
+	\item Target State
+	\item Pan Tilt Direction
+\end{itemize}
+
+\subsubsection{Processes}
+The tracking module is required to perform the following processes:
+\begin{itemize}
+	\item Move the Pan Tilt module in a search pattern
+	\item Use sensor data to detect targets
+	\item Use algorithms and sensors to track moving targets
+\end{itemize}
+
+\subsubsection{Outputs}
+The tracking module is required to return the following outputs:
+\begin{itemize}
+	\item The target details (range, azimuth, elevation)
+	\item whether it still has a target
+	\item the next system state
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+In order to perform well (defined as accurate and reliable track) the system should have the following characteristics:
+\begin{itemize}
+	\item Quite fast tracing step
+	\item Fine adjustments when target is fixed
+	\item Coarse adjustments when target is unknown
+	\item Efficient tracking algorithm
+\end{itemize}
+
+\subsubsection{Interfaces}
+The system should have the following interface characteristics:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Conceptual Design: Tracking}
+\subsection{Description}
 
 
 \section{Module Requirements: LCD}
