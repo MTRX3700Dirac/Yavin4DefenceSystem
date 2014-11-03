@@ -52,6 +52,7 @@ The present document is prepared on the basis of the following reference documen
 		\hline
 		Acronym & Meaning \\ \hline \hline
 		OTS & Orbital Tracking System, the system under development \\ \hline
+		LCD & Liquid Crystal Display \\ \hline
 		Stuff & Meaning of Stuff \\
 		\hline
 	\end{tabular}
@@ -936,7 +937,15 @@ The final decision in menu structure decision that had to be made was where to i
 
 
 The final menu structure can be seen in \ref{fig:MenuStructureDiagram}.
+
 \subsection{Menu Appearance}
+Due to the limited display capabilities of the LCD hardware being used in the system, an intuitive design had to be constructed to convey information to a local user. The LCD module has the ability to write 16 characters to two lines independently. With this, the local user interface was designed so that the top row of the LCD always shows the user their current menu, such as "Azimuth Options" or "Set max range". This allows the second line of the display to be used to show the changes that the user is making, such as displaying sub-menu titles as the user scrolls through potential choices. 
+
+The serial interface is less limited by physical constraints, but was also important to design carefully. A similar style of approach was used; the user must always be shown their current location, along with all the possible options that they can take. This is simpler on the serial interface as many options can be displayed at once, so all correct serial inputs are shown for navigation menus, whilst ranges and current values are displayed in functions which change system settings. This allows to the user to more easily make correct choices as to how to interact with the system, and lets the user easily view their current settings. 
+
+For the physical appearance of the menu itself in the user's terminal program, the menu itself will always appear in the top left of the program's window. This is done by using a generic clear display command which is common to many terminal programs. This was chosen to reduce the possibility of the serial display looking incorrect in terminal programs other than TeraTerm, in which the serial display was tested, as the program will automatically clear whatever was written previously. 
+
+Each menu is framed by a filler character, the plus sign "+". This is done to easily bring attention to the current menu's title, and separate the user input section of the terminal from the printed messages. The menu title and other menu messages are all printed indented to the centre left of the terminal. This is again so that other terminal programs will be more likely to display the user interface correctly, on the small chance that some of the leftmost display is unreadable or not as aesthetically pleasing.  
 
 \chapter{Hardware Design}
 The system hardware consists of two main components: the local user interface controller, and the housing for the sensors and microcontroller.
