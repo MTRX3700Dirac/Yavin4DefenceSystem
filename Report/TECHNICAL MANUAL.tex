@@ -998,6 +998,7 @@ Describe any measures that were taken t control (improve) the software quality -
 
 \section{Software Design Description}
 \subsection{Architecture}
+\subsubsection{System Overview}
 The system at its highest level is as basic state machine. Fig. \ref{fig:OperationStateTransitionDiagram} shows the states and transitions in the final version. The attached State descriptions document describes in great detail all the states and transitions as they were designed at the beginning of the project. Some of these states have changed since the document was written, but much of the basic concept is the same.
 
 \begin{figure}
@@ -1007,8 +1008,32 @@ The system at its highest level is as basic state machine. Fig. \ref{fig:Operati
 	\label{fig:OperationStateTransitionDiagram}
 \end{figure}
 
+Much of the code is really just functionality around hardware interfaces, most of which is self explanatory, or accessible through the datasheet. Here we will discuss some of the higher level software modules such as the search, tracking and menus.
+
+\subsubsection{Tracking}
+The tracking algorithm is really the heart of the specification - to design and build a death star tracker. Despite this there is alot of functionality that must be in place before the module is operational. Here only the high level tracking algorithm is discussed. \newline
+Fig. \ref{fig:TrackingStateDiagram} shows the original concept for tracking the moving targets. The basic concept was that the system would start somewhere on the target (after having detected it) and then move outward in each direction (up, down, left and right) until it found the edge, and would return to the centre, and begin again. The problem we found with that 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Tracking State Diagram"}
+\caption{State Transition Diagram depicting the Original Idea for the tracking algorithm}
+\label{fig:TrackingStateDiagram}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Tracking State Transition Diagram"}
+\caption{State Transition Diagram depicting the final tracking algorithm}
+\label{fig:TrackingStateTransitionDiagram}
+\end{figure}
+
+\subsubsection{Searching}
+
+\subsubsection{Menus}
+
 \subsection{Software Interface}
-Describe the public interface of each software module
+The software interfaces for each module are described in great detail in the module descriptions document. For the sake of conciseness I will not repeat most of that material here.
 
 \subsection{Software Components}
 This is a detailed view of the internal workings of each of the software modules
@@ -1017,12 +1042,18 @@ This is a detailed view of the internal workings of each of the software modules
 \subsection{Preconditions for System Startup}
 Describe any preconditions that must be satisfied before the system can be started.
 
+Before the system can be started it must be connected to a power source with a sufficient power rating. Then obviously it must be fully assembled. Apart from that there are no preconditions for the system to begin startup. The code is designed to configure all the modules and hardware that it needs automatically on startup. There is however some background bootloader which loads all the constants in from program memory and initialises the variables defined in the idata sections etc. Again this happens automatically at startup and requires no other preconditions. The Pan Tilt module is then moved to the starting point of (0,0).
+
 \subsection{Preconditions for System Shutdown}
-Describe any preconditions that must be satisfied before the system can be stopped.
+There are no preconditions for a system shutdown, and the system can be shutdown at any point with no warning. There is however an option to store the user changes for the configuration settings in the eeprom, and should the user wish to retain their settings this should be completed before shutting down the system. Also if the user were to shut down the system during the eeprom write the action may corrupt their stored settings. Other than this, the system can safely be shut down at any point with no consequences.
+
+
 
 \chapter{System Performance}
 \section{Performance Testing}
 Give the results of testing conducted to determine the characteristics and performance of the system - memory usage, loop time, system accuracy, repeatabability, ease of use, etc.
+
+The testing document goes through the testing procedures and results of each function as they were completed.
 
 \section{State of the System as Delivered}
 A statement of your group's opinion of the conformance of the system with the specification.
