@@ -644,7 +644,7 @@ The temperature module implements the following functionality:
 The primary assumption made in the temp module is that the system temperature will not change very quickly, which means that the temperature does not need to be sampled each time the temperature value is used. Instead it simply uses a previously sampled value, and ressamples the temperature at semi regular intervals.
 
 \subsection{Constraints on Pan Tilt Performance}
-The main constraint on the performance of the temperature module is the accuracy of the 
+The main constraint on the performance of the temperature module is the accuracy of the
 
 \subsection{Hardware}
 The temperature module makes use of the following hardware:
@@ -704,7 +704,7 @@ In order to perform well (defined as accurate and reliable track) the system sho
 \subsubsection{Interfaces}
 The system should have the following interface characteristics:
 \begin{itemize}
-	\item 
+	\item
 \end{itemize}
 
 \section{Conceptual Design: Tracking}
@@ -963,28 +963,28 @@ Set all the pins to output and set all the control pins to 0. A configuring proc
 
 \section{Menu Design}
 \subsection{Menu Structure}
-Different menu structures were considered for interfacing with the user over a serial connection and via the local interface's LCD screen. Early in product design, we had reached the idea of using a potentiometer or encoder with buttons as the method of user input when not using serial. We had also decided that it was best to share a menu system between the remote and local user modes to keep the system consistent, which helps the user feel lees confused or jarred when switching between user modes. 
+Different menu structures were considered for interfacing with the user over a serial connection and via the local interface's LCD screen. Early in product design, we had reached the idea of using a potentiometer or encoder with buttons as the method of user input when not using serial. We had also decided that it was best to share a menu system between the remote and local user modes to keep the system consistent, which helps the user feel lees confused or jarred when switching between user modes.
 
 
-From these requirements, the menu could have either been designed and implemented in a tiered system with sub-menus to navigate between, or as a large cyclic menu. Due to the limited rotation of a potentiometer, the large cyclic menu concept was rejected, as each option would only have a few degrees of potentiometer rotation, which would make the ability to choose a specific option difficult. A tiered system was chosen for both the local and remote user interfaces. However, concepts from the cyclic design were used for choosing options from within a sub-menu using the potentiometer, as it was more feasible with a limited number of choices per sub-menu. 
+From these requirements, the menu could have either been designed and implemented in a tiered system with sub-menus to navigate between, or as a large cyclic menu. Due to the limited rotation of a potentiometer, the large cyclic menu concept was rejected, as each option would only have a few degrees of potentiometer rotation, which would make the ability to choose a specific option difficult. A tiered system was chosen for both the local and remote user interfaces. However, concepts from the cyclic design were used for choosing options from within a sub-menu using the potentiometer, as it was more feasible with a limited number of choices per sub-menu.
 
 
 The next design decision came in how the functions of the system were to be broken up into sub-menus. Possible choices included splitting the functionality between an Autonomous Tracking sub-menu which displayed possible relevant menu options, and Manual Tracking which allowed the user to go to specific azimuth and elevation angles. Another option involved splitting the system menus into Autonomous Tracking, which just showed the user the current range and angles, then spilt the remaining functions based on their areas, such as user functions focused around changing the options to do with the azimuth angle, elevation angle, and range. This was the final design used, as it was more intuitive as to how to find the option that a user specifically wanted. However, this meant that navigating between options in different sub-menus took more time, such as switching between the "Go To Azimuth" and "Go To Elevation" functions meant that the user needed to navigate through 3 sub-menus.
 
 
-The final decision in menu structure decision that had to be made was where to include the factory options if the system was put into Factory mode. Either all the factory settings could have their own sub-menu which only appeared when Factory mode was entered, or the factory settings could be placed within their relevant menus, such as placing the "Calibrate Azimuth" function inside the azimuth menu. The final descision was made to place the factory settings in their corresponding menus for consistency, as all possible settings to do with one area of the system should consistently be under the same menu. The downside to this choice is again that navigating between different factory settings takes longer than the alternative, and that the factory settings are not easily identified in one location. 
+The final decision in menu structure decision that had to be made was where to include the factory options if the system was put into Factory mode. Either all the factory settings could have their own sub-menu which only appeared when Factory mode was entered, or the factory settings could be placed within their relevant menus, such as placing the "Calibrate Azimuth" function inside the azimuth menu. The final descision was made to place the factory settings in their corresponding menus for consistency, as all possible settings to do with one area of the system should consistently be under the same menu. The downside to this choice is again that navigating between different factory settings takes longer than the alternative, and that the factory settings are not easily identified in one location.
 
 
 The final menu structure can be seen in \ref{fig:MenuStructureDiagram}.
 
 \subsection{Menu Appearance}
-Due to the limited display capabilities of the LCD hardware being used in the system, an intuitive design had to be constructed to convey information to a local user. The LCD module has the ability to write 16 characters to two lines independently. With this, the local user interface was designed so that the top row of the LCD always shows the user their current menu, such as "Azimuth Options" or "Set max range". This allows the second line of the display to be used to show the changes that the user is making, such as displaying sub-menu titles as the user scrolls through potential choices. 
+Due to the limited display capabilities of the LCD hardware being used in the system, an intuitive design had to be constructed to convey information to a local user. The LCD module has the ability to write 16 characters to two lines independently. With this, the local user interface was designed so that the top row of the LCD always shows the user their current menu, such as "Azimuth Options" or "Set max range". This allows the second line of the display to be used to show the changes that the user is making, such as displaying sub-menu titles as the user scrolls through potential choices.
 
-The serial interface is less limited by physical constraints, but was also important to design carefully. A similar style of approach was used; the user must always be shown their current location, along with all the possible options that they can take. This is simpler on the serial interface as many options can be displayed at once, so all correct serial inputs are shown for navigation menus, whilst ranges and current values are displayed in functions which change system settings. This allows to the user to more easily make correct choices as to how to interact with the system, and lets the user easily view their current settings. 
+The serial interface is less limited by physical constraints, but was also important to design carefully. A similar style of approach was used; the user must always be shown their current location, along with all the possible options that they can take. This is simpler on the serial interface as many options can be displayed at once, so all correct serial inputs are shown for navigation menus, whilst ranges and current values are displayed in functions which change system settings. This allows to the user to more easily make correct choices as to how to interact with the system, and lets the user easily view their current settings.
 
-For the physical appearance of the menu itself in the user's terminal program, the menu itself will always appear in the top left of the program's window. This is done by using a generic clear display command which is common to many terminal programs. This was chosen to reduce the possibility of the serial display looking incorrect in terminal programs other than TeraTerm, in which the serial display was tested, as the program will automatically clear whatever was written previously. 
+For the physical appearance of the menu itself in the user's terminal program, the menu itself will always appear in the top left of the program's window. This is done by using a generic clear display command which is common to many terminal programs. This was chosen to reduce the possibility of the serial display looking incorrect in terminal programs other than TeraTerm, in which the serial display was tested, as the program will automatically clear whatever was written previously.
 
-Each menu is framed by a filler character, the plus sign "+". This is done to easily bring attention to the current menu's title, and separate the user input section of the terminal from the printed messages. The menu title and other menu messages are all printed indented to the centre left of the terminal. This is again so that other terminal programs will be more likely to display the user interface correctly, on the small chance that some of the leftmost display is unreadable or not as aesthetically pleasing.  
+Each menu is framed by a filler character, the plus sign "+". This is done to easily bring attention to the current menu's title, and separate the user input section of the terminal from the printed messages. The menu title and other menu messages are all printed indented to the centre left of the terminal. This is again so that other terminal programs will be more likely to display the user interface correctly, on the small chance that some of the leftmost display is unreadable or not as aesthetically pleasing.
 
 An example of a serial menu can be seen in \ref{fig:MenuSerialInterface}.
 
@@ -1006,12 +1006,12 @@ The second power rail supplies power to the microcontroller, the servos, the inf
 \begin{figure}
 \centering
 \includegraphics[width=0.7\linewidth]{"../Diagrams/PowerCircuit"}
-\caption[State Diagram]{Power circuit schematic on veroboard/stripboard}
+\caption[PowerBusDiagram]{Power circuit schematic on veroboard/stripboard}
 \label{fig:PowerBusDiagram}
 \end{figure}
 
 \subsubsection{Safety Features}
-Currently the prototype system does not make use of any type of internal fusing or circuit breaker functionality. Should the system be marketed as a commercial product such features would be essential.
+Currently the prototype system does not make use of any type of internal fusing or circuit breaker functionality. Should the system be marketed as a commercial product such features would be essential. The use of a 9V battery is an implicit safety feature due to the low power output. All circuit elements are enclosed and impossible to accidentally come into contact with, especially the large 1mF capacitor located on the power bus, which can produce a painful electric discharge if touched.
 
 \subsection{Computer Design}
 Description of computer hardware, including all interface circuitry to sensors, actuators, and I/O hardware.
@@ -1023,6 +1023,16 @@ Description of computer hardware, including all interface circuitry to sensors, 
 \subsubsection{Operator Input Hardware}
 
 \subsubsection{Operator Output Hardware}
+The output hardware for the operator to see consists of an LCD screen mounted on the local user controller. Pins on the LCD are as follows (also available in the LCD conceptual design section):
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/LcdPins"}
+\caption[LCDPinDiagram]{The two LCD pins labelled LCD- an LCD+ are backlight pins, and were not implemented.
+\label{fig:LCDPinDiagram}
+\end{figure}
+The output hardware also consists of the serial port of both the PIC and the host computer, through the use of a RS-232 standard serial connection.
+
 
 \subsubsection{Hardware Quality assurance}
 Describe any measures that were taken to control (improve) hardware quality and reliability - Heartbeats, brownout conditioning/resets, reset conditions, testing and validation, etc.
@@ -1107,7 +1117,7 @@ Much of the code is functionality around hardware interfaces, most of which is s
 
 \subsubsection{Tracking}
 The tracking algorithm is really the heart of the specification - to design and build a death star tracker. Despite this there is alot of functionality that must be in place before the module is operational. Here only the high level tracking algorithm is discussed. \newline
-Fig. \ref{fig:TrackingStateDiagram} shows the original concept for tracking the moving targets. The basic concept was that the system would start somewhere on the target (after having detected it) and then move outward in each direction (up, down, left and right) until it found the edge, and would return to the centre, and begin again. The problem we found with that 
+Fig. \ref{fig:TrackingStateDiagram} shows the original concept for tracking the moving targets. The basic concept was that the system would start somewhere on the target (after having detected it) and then move outward in each direction (up, down, left and right) until it found the edge, and would return to the centre, and begin again. The problem we found with that
 
 \begin{figure}
 \centering
