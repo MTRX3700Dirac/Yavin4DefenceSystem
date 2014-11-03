@@ -624,7 +624,7 @@ The temp module must be capable of returning the following outputs:
 For performance the temperature module stores the last temperature sampled, so that any call to the temperature module can simply return this value, meaning the temperature need only be sampled once a minute or so as the temperature does not vary quickly.
 
 \subsubsection{Interfaces}
-
+Please refer to the attached Module Descriptions document
 
 \section{Conceptual Design: Temp}
 \subsection{Description}
@@ -658,11 +658,13 @@ Originally amplifiers were planned to set the analogue to digital converter to t
 \subsubsection{Pin Assignments}
 The following pins are used to connect to the temperature module hardware:
 \begin{itemize}
-	\item 
+	\item Output of Temp sensor to AN1 Pin
+	\item Temp $V_{CC}$ to general purpose 5v bus
+	\item Temp GND to common ground
 \end{itemize}
 
 \subsection{Interface}
-
+Please refer to the attached Module Descriptions document
 
 \section{Module Requirements: Tracking}
 \subsection{Functional Requirements}
@@ -741,6 +743,7 @@ Below are some of the more major constraints on the performance of the tracking 
 The tracking system itself made use of no dedicated hardware, it was simply a high level software module, however it did make use of many other modules utilising a range of hardware, such as the range and pan tilt modules.
 
 \subsubsection{Interface}
+Refer to the attached Module Descriptions document
 
 \section{Module Requirements: MenuSubsystem}
 \subsection{Functional Requirements}
@@ -990,25 +993,31 @@ Personally I found there to be few dependencies throughout the project; while it
 \subsubsection{Pseudocode (PDL)}
 It is my opinion that pseudocode should contain essentially the function declarations and the comment blocks of the functions, describing in an algorithmic manner the way that the function should operate without going into language specifics. For this reason we thought the skeleton code, and comment blocks that were written with the skeleton code, in addition to the module descriptions document adequate in lieu of dedicated pseudocode. If the solution was more complex algorithmically pseudocode would definitely have been warranted, but as it was, most of the code was simply interfacing with hardware, and the only modules that could really warrant pseudocode at all would be the tracking and menusystem modules. We had very few algorithmic related issues, but again, were the solution more complex we would have made use of pseudocode.
 
-\subsection{Software Quality Assurance}
+\section{Software Quality Assurance}
 Describe any measures that were taken t control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
 
-\subsection{Software Design Description}
-\subsubsection{Architecture}
-Describe the high-level architecture of the software - that is, the top-level flow of control, and how the various functional modules communicate.
-In this section, you can put state transition diagrams, sequence diagrams, etc.
+\section{Software Design Description}
+\subsection{Architecture}
+The system at its highest level is as basic state machine. Fig. \ref{fig:OperationStateTransitionDiagram} shows the states and transitions in the final version. The attached State descriptions document describes in great detail all the states and transitions as they were designed at the beginning of the project. Some of these states have changed since the document was written, but much of the basic concept is the same.
 
-\subsubsection{Software Interface}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
+	\caption[State Diagram]{System overview state diagram}
+	\label{fig:OperationStateTransitionDiagram}
+\end{figure}
+
+\subsection{Software Interface}
 Describe the public interface of each software module
 
-\subsubsection{Software Components}
+\subsection{Software Components}
 This is a detailed view of the internal workings of each of the software modules
 
-\subsection{Preconditions for Software}
-\subsubsection{Preconditions for System Startup}
+\section{Preconditions for Software}
+\subsection{Preconditions for System Startup}
 Describe any preconditions that must be satisfied before the system can be started.
 
-\subsubsection{Preconditions for System Shutdown}
+\subsection{Preconditions for System Shutdown}
 Describe any preconditions that must be satisfied before the system can be stopped.
 
 \chapter{System Performance}
@@ -1043,12 +1052,6 @@ Must identify foreseeable safety hazards associated with the equipment and then 
 \chapter{Conclusions}
 
 
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
-\caption[State Diagram]{System overview state diagram}
-\label{fig:OperationStateTransitionDiagram}
-\end{figure}
 
 
 
