@@ -66,7 +66,25 @@ The system was broken down into a number of independent modules which contain th
 \label{fig:Modules}
 \end{figure}
 
+\section{Menu System}
+\subsection{Description}
+This module handles the creation of all the menu system used in both the serial user interface, the local user interface and the factory user interface. It handles the parsing of user inputs, navigation between menus, and interfacing with the other modules to change system values and relay important information to the user. 
 
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+The menu system receives a variety of different inputs from the modules discussed below, as it must receive information from each subsystem and relay it to the user. When the menu is initialised, it requires a pointer to the tracking state of the system, so that the menu can know if the system is tracking or searching, and so that the system can enable and disable tracking mode. 
+
+The menu interfaces with the Range module and PanTilt module to access system variables such as the current maximum and minimum ranges so that the current values can be presented to the user, assisting the user with their ability to fine tune the system. 
+
+The menu system module also handles the ability to switch between a the remote serial user interface and the factory user interface, which contains hidden functions not available to a normal user. 
+
+\subsubsection{Processes}
+\subsubsection{Outputs}
+\subsubsection{Timing}
+\subsection{Non-Functional Requirements}
+\subsection{Conceptual Design}
+\subsubsection{Menu Structures}
+\subsection{Software Interface}
 
 \section{Serial}
 \subsection{Description}
@@ -174,6 +192,9 @@ The interrupt latency is the time delay between the interrupt firing and the act
 
 \subsection{Interface}
 Refer to the Technical User Manual For detailed explanations of the interface functions and how to use them.
+
+\section{Local User Interface}
+\subsection{Description}
 
 \section{Pan Tilt}
 \subsubsection{Description}
@@ -376,7 +397,6 @@ There is no public interface for the interrupt framework and nothing can call an
 \subsection{Description}
 
 
-
 \chapter{User Interface Design}
 <Give a detailed description of the design of the user interface. This will gave the reader a god view of how the system functions from the user's perspective.>
 
@@ -389,6 +409,23 @@ There is no public interface for the interrupt framework and nothing can call an
 
 \subsection{Input Validation and Error Trapping}
 <Describe how the system validates user input, and how operator errors are trapped and can be recovered from>
+
+\section{Menu Design}
+\subsection{Menu Structure}
+Different menu structures were considered for interfacing with the user over a serial connection and via the local interface's LCD screen. Early in product design, we had reached the idea of using a potentiometer or encoder with buttons as the method of user input when not using serial. We had also decided that it was best to share a menu system between the remote and local user modes to keep the system consistent, which helps the user feel lees confused or jarred when switching between user modes. 
+
+
+From these requirements, the menu could have either been designed and implemented in a tiered system with sub-menus to navigate between, or as a large cyclic menu. Due to the limited rotation of a potentiometer, the large cyclic menu concept was rejected, as each option would only have a few degrees of potentiometer rotation, which would make the ability to choose a specific option difficult. A tiered system was chosen for both the local and remote user interfaces. However, concepts from the cyclic design were used for choosing options from within a sub-menu using the potentiometer, as it was more feasible with a limited number of choices per sub-menu. 
+
+
+The next design decision came in how the functions of the system were to be broken up into sub-menus. Possible choices included splitting the functionality between an Autonomous Tracking sub-menu which displayed possible relevant menu options, and Manual Tracking which allowed the user to go to specific azimuth and elevation angles. Another option involved splitting the system menus into Autonomous Tracking, which just showed the user the current range and angles, then spilt the remaining functions based on their areas, such as user functions focused around changing the options to do with the azimuth angle, elevation angle, and range. This was the final design used, as it was more intuitive as to how to find the option that a user specifically wanted. However, this meant that navigating between options in different sub-menus took more time, such as switching between the "Go To Azimuth" and "Go To Elevation" functions meant that the user needed to navigate through 3 sub-menus.
+
+
+The final decision in menu structure decision that had to be made was where to include the factory options if the system was put into Factory mode. Either all the factory settings could have their own sub-menu which only appeared when Factory mode was entered, or the factory settings could be placed within their relevant menus, such as placing the "Calibrate Azimuth" function inside the azimuth menu. The final descision was made to place the factory settings in their corresponding menus for consistency, as all possible settings to do with one area of the system should consistently be under the same menu. The downside to this choice is again that navigating between different factory settings takes longer than the alternative, and that the factory settings are not easily identified in one location. 
+
+
+The final menu structure can be seen in \ref{fig:MenuStructureDiagram}.
+\subsection{Menu Appearance}
 
 \chapter{Hardware Design}
 <Give a detailed description of the design of hardware. The description should include mechanical drawings, location diagrams, electrical circuit schematics, circuit simulation or test results, PCB overlays, wiring diagrams, connector pin-out lists, pneumatic/hydraulic circuit diagrams>
@@ -432,7 +469,7 @@ The software requirements and overview have been dealt with elsewhere in this se
 \section{Software Design Process}
 The software was designed in a top down manner, around a basic state machine shown in Fig. \ref{fig:OperationStateTransitionDiagram}. A full detailed description of the system states is included in the state descriptions documents. 
 Once the states and transitions were decided on a basic framework was written that stored the state as an enumeration and a switch case within an infinite loop that continuously calls functions based on the state. \newline
-while the system was designed in a top down manner many of the functions were designed bottom up, primarily the hardware interface functions which were designed by starting with the datasheet, and working upwards. This was however restricted to the individual functions and met the top down design at the function design level. \newline
+While the system was designed in a top down manner many of the functions were designed bottom up, primarily the hardware interface functions which were designed by starting with the datasheet, and working upwards. This was however restricted to the individual functions and met the top down design at the function design level. \newline
 The entire system was designed to be simple, and fit together nicely. As such we had very few interface problems, and almost all of these were hardware related, due to things like common power supplies etc.
 
 

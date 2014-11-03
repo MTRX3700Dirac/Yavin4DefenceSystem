@@ -1,12 +1,87 @@
 /*!******************************************************************************
  * File:   Menusystem.c
- * Author:
+ * Author: Bas
  *
  * Description:
+ * The codebase for the user interface and menus for both serial and
+ * local interaction. This is a tiered menu system, with different
+ * menus and setting being accessible from different sub menus. The
+ * menu system is also designed to work as a background task, to be
+ * serviced as the main program loops through. This was originally designed
+ * so that tracking and menu navigation could happen at the same time.
  *
  * Duties:
+ * 		- Set up the menus for interaction
+ * 		- Service the menu for local or serial input
+ *		- Parse the user input from serial
+ *		- Navigate between the menus
+ *		- Print serial messages and LCD messages to the user
+ *		- Call the appropriate function
  *
  * Functions:
+ *      Public Interfaces:
+ * 		void initialiseMenu(systemState *state);
+ *		char checkForSerialInput(void);
+ *		void menuISR(void);
+ * 		void serviceMenu(void);
+ * 		void dispTrack(TrackingData target);
+ * 		void dispSearching(void);
+ * 		void dispRawRange(void);
+ *
+ *      Local Functions:
+ *              Serial Display Functions
+ *                      void sendROM(const rom char *romchar);
+ *                      void clearScreen(void);
+ *                      void sendNewLine(char length);
+ *                      void filler(char length);
+ *                       void errOutOfRange(int lowerBound, int upperBound);
+ *                       char* intToAscii(int num);
+ *                      void autodisp(void);
+ *                      
+ *              Input Parsing
+ *                      int parseNumeric(char *input);
+ *                      int getSerialNumericInput(void);
+ *                      void configureTimer0(void);
+ *                      int getLocalInputMenu(int maxStates, int (*function)(int));
+ *
+ *              Confirm User Input Functions
+ *                       void setValue(int input);
+ *                       void setMenu(struct menuStruct menu);
+ *                      void navigateTopMenu(int inputResult);
+ *                      void noFunctionNumeric(int input);
+ *                      void setCalibrateRange(int num);
+ * 
+ *              Return Functions
+ *                      void noFunction(void);
+ *                      void returnToTopMenu(void);
+ *                      void exitFromTracking(void);
+ *                      void returnToAzMenu(void);
+ *                      void returnToElMenu(void);
+ *                      void returnToRngMenu(void);
+ * 
+ *              Navigation between sub menus Functions
+ *                      void navigateTopMenu(int inputResult);
+ *                      void navigateAzimuthMenu(int inputResult);
+ *                      void navigateElevationMenu(int inputResult);
+ *                      void navigateRangeMenu(int inputResult);
+ * 
+ *              Display Serial functions
+ *                      void dispTopOptions(void);
+ *                      void displayMenuSerial();
+ *                      void dispTopOptions(void);
+ *                      void dispAzOptions(void);
+ *                      void dispElOptions(void);
+ *                      void dispRngOptions(void);
+ *                      void dispTempSerialMessage(void);
+ *                      void dispSerialMessage(void);
+ *                      void dispSetValueMessage(void);
+ * 
+ *              LCD Display Functions
+ *                      void dispLCDTopMenu(int option);
+ *                      void dispLCDAzMenu(int option);
+ *                      void dispLCDElMenu(int option);
+ *                      void dispLCDRngMenu(int option);
+ *                      void dispLCDNum(int option);
  *
  * Created on 16 September 2014, 6:47 PM
  *******************************************************************************/
@@ -19,13 +94,9 @@
 #include "Range.h"
 #include "PanTilt.h"
 #include "Temp.h"
-
 #include "MenuDefs.h"
 
-
-
-// Serial Display
-//void sendROM(const static rom char *romchar);
+/// Serial Display Functions
 static void sendROM(const rom char *romchar);
 static void clearScreen(void);
 static void sendNewLine(char length);
@@ -34,20 +105,20 @@ static void errOutOfRange(int lowerBound, int upperBound);
 static char* intToAscii(int num);
 static void autodisp(void);
 
+/// Input Parsing
 int parseNumeric(char *input);
 static int getSerialNumericInput(void);
 static void configureTimer0(void);
 static int getLocalInputMenu(int maxStates, int (*function)(int));
-//static int getLocalPotResult(int min, int max, int interval);
 
-// Confirm Methods
+/// Confirm User Input Functions
 static void setValue(int input);
 static void setMenu(struct menuStruct menu);
 static void navigateTopMenu(int inputResult);
 static void noFunctionNumeric(int input);
 static void setCalibrateRange(int num);
 
-// Return Methods
+// Return Functions
 static void noFunction(void);
 static void returnToTopMenu(void);
 static void exitFromTracking(void);
@@ -55,13 +126,13 @@ static void returnToAzMenu(void);
 static void returnToElMenu(void);
 static void returnToRngMenu(void);
 
-// Navigation Methods
+/// Navigation between sub menus Functions
 static void navigateTopMenu(int inputResult);
 static void navigateAzimuthMenu(int inputResult);
 static void navigateElevationMenu(int inputResult);
 static void navigateRangeMenu(int inputResult);
 
-// Display methods
+/// Display Serial functions
 static void dispTopOptions(void);
 static void displayMenuSerial();
 static void dispTopOptions(void);
@@ -96,16 +167,18 @@ struct menuStruct RngMin = {RANGE_MIN, minRngSerialStr, minRngSetStr, MIN_RANGE_
 struct menuStruct RngMax = {RANGE_MAX, maxRngSerialStr, maxRngSetStr, MAX_RANGE_INFIMUM, MAX_RANGE_SUPREMUM, 50, dispSetValueMessage, setValue, /*dispLCDNum*/noFunctionNumeric, returnToRngMenu};
 struct menuStruct ShowTemp = {SHOW_TEMP, showTempLCDTitle, showTempLCDTitle, 0, 0, 0, dispTempSerialMessage, noFunctionNumeric, noFunctionNumeric, returnToTopMenu};
 struct menuStruct Tracking = {TRACKING, autoSerialMessage, autoLcdTitle, 0, 0, 0, dispSerialMessage, noFunctionNumeric, noFunctionNumeric, exitFromTracking};
-struct menuStruct RawRange;// = {RANGE_RAW, rawRangeStr, rawRangeTitle, 0, 0, 0, dispSerialMessage, noFunctionNumeric, noFunctionNumeric, returnToRngMenu};
+struct menuStruct RawRange;
 struct menuStruct NumSamples;
 struct menuStruct UsSampleRate;
 struct menuStruct calibrateRangeMenu;
+
 /*! Global variable with the current menu position */
 struct menuStruct m_currentMenu;
 
 /*! Global variable with the current user mode: Local, remote or factory */
 static userState m_userMode;
 
+/*! Global variable with the current tracking state, if the tracker is searching or tracking or neither*/
 static systemState *m_trackingState;
 
 // *****************************************************************************
@@ -114,8 +187,6 @@ static systemState *m_trackingState;
 
 /*! **********************************************************************
  * Function: sendROM(void)
- *
- * @brief
  *
  * Include: Local to Menusystem.c
  *
@@ -132,13 +203,11 @@ static void sendROM(const rom char *romchar) {
     // Convert the string from ROM to RAM
     strcpypgm2ram(temp, romchar);
     transmit(temp);
-    for (j = 0; j < 8000; j++); //Some Arbitrary Delay
+    for (j = 0; j < 8000; j++); //Some Arbitrary Delay to make sure transmission is not interrupted
 }
 
 /*! **********************************************************************
  * Function: sendNewLine(char length)
- *
- * @brief
  *
  * Include: Local to Menusystem.c
  *
@@ -161,12 +230,9 @@ static void sendNewLine(char length)
     // End with a line return
     temp[index] = '\r';
     transmit(temp);
-    for (j = 0; j < 2000; j++);
+    for (j = 0; j < 2000; j++);     // wait
 }
 
-/*!
- * Clears the Serial display
- */
 /*! **********************************************************************
  * Function: clearScreen(void)
  *
@@ -186,17 +252,32 @@ static void clearScreen()
     char clearScreen[] = CLEAR_SCREEN_STRING;    // Clears the screen and writes from the top
     transmit(clearScreen);
 
-    for (j = 0; j < 1000; j++);
+    for (j = 0; j < 1000; j++);                 // Wait
 }
 
+/*! **********************************************************************
+ * Function: filler(char length)
+ *
+ * Include: Local to Menusystem.c
+ *
+ * @description: Transmits a line of filler characters to frame the menu
+ *
+ * @input The number of characters to transmit
+ *
+ * Returns: None
+ *************************************************************************/
 static void filler(char length) {
     char index = 0;
     char temp[81] = {0};
     int j;
+
+    // Add length amount of filler chars to an array
     for (; length > 0; length--) {
         temp[index] = '+';
         index++;
     }
+
+    // Transmit the buffer and wait.
     transmit(temp);
     for (j = 0; j < 3000; j++);
 }
@@ -206,23 +287,25 @@ static void filler(char length) {
  *
  * \brief Initialises the menu system
  *
- * Include: Menusystem.h
+ * @Include: Menusystem.h
  *
- * Description: initialises the menu system so that it is fully operational
+ * @Description: Initialises the menu system so that it is fully operational
  *
- * Arguments: None
+ * @Arguments: None
  *
- * Returns: None
+ * @Returns: None
  *************************************************************************/
 void initialiseMenu(systemState *state) {
     m_userMode = REMOTE;
     configureSerial();
-    //@TODO WHILE UNPLUGGED configLCD();
+    //@TODO WHILE LOCAL UNPLUGGED configLCD();
     configUSER();
     setMenu(topMenu);
     m_trackingState = state;
 
-    RawRange;// = {RANGE_RAW, rawRangeStr, rawRangeTitle, 0, 0, 0, dispSerialMessage, noFunctionNumeric, noFunctionNumeric, returnToRngMenu};
+    // Running out of RAM, so intiialise some menus here to save on iData.
+    // Initialise the Raw Range menu
+    RawRange;
     RawRange.confirmFunction = noFunctionNumeric;
             RawRange.menuID = RANGE_RAW;
     RawRange.serialMessage = rawRangeStr;
@@ -234,6 +317,7 @@ void initialiseMenu(systemState *state) {
     RawRange.returnToPrevious = returnToRngMenu;
     RawRange.lcdDisplayFunction = noFunctionNumeric;
 
+    // Initialise the calibrate range menu
     calibrateRangeMenu.confirmFunction = setCalibrateRange;
     calibrateRangeMenu.menuID = CALIBRATE_RANGE;
     calibrateRangeMenu.serialMessage = calRangeStr;
@@ -245,6 +329,7 @@ void initialiseMenu(systemState *state) {
     calibrateRangeMenu.returnToPrevious = returnToRngMenu;
     calibrateRangeMenu.lcdDisplayFunction = noFunctionNumeric;
 
+    // Initialise the menu which sets the number of US samples used per estimate
     NumSamples.confirmFunction = setValue;
     NumSamples.menuID = US_SAMPLE_AVG;
     NumSamples.serialMessage = numSamplesStr;
@@ -256,6 +341,7 @@ void initialiseMenu(systemState *state) {
     NumSamples.returnToPrevious = returnToRngMenu;
     NumSamples.lcdDisplayFunction = noFunctionNumeric;
 
+    // Initialise the menu which sets the US sample rate
     UsSampleRate.confirmFunction = setValue;
     UsSampleRate.menuID = US_SAMPLE_RATE;
     UsSampleRate.serialMessage = usSampleRateStr;
@@ -272,13 +358,13 @@ void initialiseMenu(systemState *state) {
 /*! **********************************************************************
  * Function: waitForInput(void)
  *
- * Include:
+ * @Include: Serial.c
  *
- * Description: Checks the serial/local buffers for inputs
+ * @Description: Checks the serial/local buffers for inputs
  *
- * Arguments: None
+ * @Arguments: None
  *
- * Returns: 1 if input has been received, 0 otherwise
+ * @Returns: 1 if input has been received, 0 otherwise
  *************************************************************************/
 char checkForSerialInput(void)
 {
@@ -291,18 +377,18 @@ char checkForSerialInput(void)
  *
  * \brief parses user input string into a number
  *
- * Include:
+ * @Include:
  *
- * Description: Converts ASCII input to a number, and records an error for
+ * @Description: Converts ASCII input to a number, and records an error for
  *              non-numeric input, or if the number is larger than 4 digits.
  *              No number used by the user in this program will be larger
- *              than 4 digits.
+ *              than 6 digits.
  *
- * Arguments: The ASCII string to decode
+ * @Arguments: The ASCII string to decode
  *
- * Returns: The integer result of the string
+ * @Returns: The integer result of the string
  *          ERR_NOT_NUMERIC for any non-numeric input
- *          ERR_NUM_OUT_OF_RANGE for 0 digits or 5+ digits
+ *          ERR_NUM_OUT_OF_RANGE for 0 digits or 6+ digits
  *************************************************************************/
 int parseNumeric(char *number)
 {
@@ -347,12 +433,25 @@ int parseNumeric(char *number)
     return multiplier * result;
 }
 
-/*!
- * Description: Displays a number out of range error
- */
+/*! **********************************************************************
+ * Function: errOutOfRange(int lowerBound, int upperBound)
+ *
+ * \brief Displays an error message that the number was out of range
+ *
+ * Include: Local to Menusystem.c
+ *
+ * @description: Transmits an error message saying that the user has given a
+ *               value which is out of the appropriate range for the menu
+ *               in which they are currently in. It also informs the user the
+ *               bounds for which values should be entered
+ *
+ * @input lowerBound - The minimal value that the user can correctly enter
+ *        upperBound - the maximum value that the user can correctly enter
+ *
+ * Returns: None
+ *************************************************************************/
 static void errOutOfRange(int lowerBound, int upperBound)
 {
-//    sendROM(errStr);
     sendROM(inputNumRangeStr);
     transmit(intToAscii(lowerBound));
     sendROM(and);
@@ -361,15 +460,14 @@ static void errOutOfRange(int lowerBound, int upperBound)
 }
 
 /*! **********************************************************************
- * Function: waitForNumericInput
+ * Function: getSerialNumericInput
  *
- * \brief Waits for input and parses number
+ * Include: Local to MenuSystem.c
  *
- * Include:
- *
- * Description: Waits in a loop for a user command ended with a new line character.
- *              Once a command is received, it is converted into the appropriate
- *              numeric value that the user has given.
+ * Description: Checks the user input for an escape character, and handles
+ *              the reception of different serial inputs by either indicating
+ *              that esc was pressed, or parsing numeric input and returning
+ *              its value.
  *
  * Arguments: None
  *
@@ -391,11 +489,22 @@ static int getSerialNumericInput()
 }
 
 /*!
- * Description: Returns the value of the potentiometer on the user
+ * Function:    getLocalPotResult
+ *
+ * @Include:    UserInterface.h
+ *
+ * @Description: Returns the value of the potentiometer on the user
  *              interface, given a maximum and minimum value, and
  *              the interval between values (eg 10-100 in multiples
  *              of 10).
+ *
+ * @Arguments:  int min - The minimum value the potentiometer should indicate
+ *              int max - the maximum valye the potentiometer should indicate
+ *              int interval - The number between successive values  (eg 10 = 10, 20, 30 etc)
+ *
+ * @Returns:    The resulting value the potentiometer returns given the system bounds
  */
+// Commented out as it is unused with the local interface disconnected
 //static int getLocalPotResult(int min, int max, int interval)
 //{
 //    int adcResult = readDial((max - min)/interval);
@@ -404,8 +513,16 @@ static int getSerialNumericInput()
 //}
 
 /*!
- * Description: Converts a number to a string
- * Can only print numbers under 8 digits
+ * Function:    intToAscii
+ *
+ * @Include:    Local to MenuSystem.c
+ *
+ * @Description: Short wrapper method to convert an int to a string representation
+ *               of that number in ASCII
+ *
+ * @Arguments:  int num - The number to convert
+ *
+ * @Returns:    A pointer to the resulting
  */
 static char* intToAscii(int num)
 {
@@ -419,7 +536,7 @@ static char* intToAscii(int num)
  *
  * \brief services any user interface with the menu
  *
- * Include:
+ * Include:Local to Menu/system.c
  *
  * Description: Checks if the user has made any inputs to the system. If not
  *              the function simply returns. If they have then it services
@@ -436,19 +553,20 @@ void serviceMenu(void)
     char string[50];
     int numericInpt;
 
-    // Go to factory mode
+    // Go to factory mode if the key is turned
     if (FACTORY_SWITCH == 1 && m_userMode == REMOTE)
     {
         m_userMode = FACTORY;
         setMenu(m_currentMenu);
     }
-    // Rest back to serial mode
+    // Rest back to serial mode if the key is removed
     else if(FACTORY_SWITCH == 0 && m_userMode == FACTORY)
     {
         m_userMode = REMOTE;
         setMenu(topMenu);
     }
 
+    // Service serial
     if (m_userMode == REMOTE || m_userMode == FACTORY)
     {
         // Check for serial input
@@ -457,7 +575,7 @@ void serviceMenu(void)
             // Handle serial input
             numericInpt = getSerialNumericInput();
             sendNewLine(1);
-            sendROM("DEBUG: Value entered = ");
+            sendROM("DEBUG: Value entered = ");     //Debugging statement due to serial issue.
             transmit(intToAscii(numericInpt));
             sendNewLine(1);
             clearReceive();
@@ -467,6 +585,7 @@ void serviceMenu(void)
             return;
         }
     }
+/// COMMENTED OUT DUE TO DISCONNECTION OF LOCAL INTERFACE
 //    else
 //    {
 //        if (userEmpty())
@@ -508,6 +627,19 @@ void serviceMenu(void)
     }
 }
 
+
+/*! **********************************************************************
+ * Function: setCalibrateRange
+ *
+ * Include:Range.c
+ *
+ * Description: Displays the message for Calibrating the rangefinders, and
+ *              calls the appropriate function.
+ *
+ * Arguments: int num - unused, but needed to fit the function pointer prototype
+ *
+ * Returns: None
+ *************************************************************************/
 static void setCalibrateRange(int num)
 {
     calibrateRange(500);
@@ -517,9 +649,17 @@ static void setCalibrateRange(int num)
 }
 
 /*!
- * Description: General funtion for menus which set values
+ * Function: setValue
+ *
+ * @Include Range.c, PanTilt.c
+ *
+ * @Description: General funtion for menus which set values
  *              (Such as Set Max Range). This calls the
  *              appropriate function, and transmits user messages.
+ *
+ * @Arguments: int input - The value the user has given
+ *
+ * @Returns:    N/A
  */
 static void setValue(int input)
 {
@@ -538,9 +678,7 @@ static void setValue(int input)
         return;
     }
 
-    // Handle Different cases
-    // @TODO handle current values
-    // @TODO Integrate
+    // Handle Different cases, call functions and print messages
     switch (m_currentMenu.menuID)
     {
         case AZ_GOTO:
@@ -557,22 +695,22 @@ static void setValue(int input)
             break;
         case AZ_MIN:
             setMinAzimuthAngle((char) input);
-            AzGoto.minVal = input;
+            AzGoto.minVal = input;              // Make sure to update the new min/max values
             sendROM(angleStr);
             break;
         case AZ_MAX:
             setMaxAzimuthAngle((char) input);
-            AzGoto.maxVal = input;
+            AzGoto.maxVal = input;              // Make sure to update the new min/max values
             sendROM(angleStr);
             break;
         case EL_MIN:
             setMinElevationAngle((char) input);
-            ElGoto.minVal = input;
+            ElGoto.minVal = input;              // Make sure to update the new min/max values
             sendROM(angleStr);
             break;
         case EL_MAX:
             setMaxElevationAngle((char) input);
-            ElGoto.maxVal = input;
+            ElGoto.maxVal = input;              // Make sure to update the new min/max values
             sendROM(angleStr);
             break;
         case RANGE_MIN:
@@ -598,32 +736,93 @@ static void setValue(int input)
     transmit(intToAscii(input));
     sendNewLine(1);
 
+    // COMMENTED OUT DUE TO DISCONNECTION OF LOCAL INTERFACE
     //lcdWriteString(strcpypgm2ram(stringLcd, "OK!"), 2);
 }
 
+/*!
+ * Function: setMenu
+ *
+ * @Include Local to MenuSystem.c
+ *
+ * @Description: General funtion for navigating between menus. This changes
+ *               the current menu, and displays the heading message for the
+ *               new menu.
+ *
+ * @Arguments: menuStruct menu - The new menu to go to
+ *
+ * @Returns:    N/A
+ */
 static void setMenu(struct menuStruct menu)
 {
     char stringLcd[20] = {0};
     m_currentMenu = menu;
     if (m_userMode == REMOTE || m_userMode == FACTORY) displayMenuSerial();
+    // COMMENTED OUT DUE TO DISCONNECT OF LOCAL INTERFACT
     //lcdWriteString(strcpypgm2ram(stringLcd, m_currentMenu.lcdTitleMessage), 1);
 }
 
+/*!
+ * Function: noFunctionNumeric
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Does nothing, used for when nothing happens when the user
+ *               enters a number.
+ *
+ * @Arguments: int input - unused.
+ *
+ * @Returns:    N/A
+ */
 static void noFunctionNumeric(int input)
 {
     return;
 }
 
+/*!
+ * Function: noFunction
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Does nothing, used for testing and for the highest level menu.
+ *
+ * @Arguments: N/A
+ *
+ * @Returns:    N/A
+ */
 static void noFunction(void)
 {
     return;
 }
 
+/*!
+ * Function: returnToTopMenu
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Returns to the top level of the menu system and prints the heading
+ *
+ * @Arguments: N/A
+ *
+ * @Returns:    N/A
+ */
 static void returnToTopMenu(void)
 {
     setMenu(topMenu);
 }
 
+/*!
+ * Function: exitFromTracking
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Returns to the top level menu, and stops the system from trying to
+ *               search or track the object.
+ *
+ * @Arguments: N/A
+ *
+ * @Returns:    N/A
+ */
 static void exitFromTracking(void)
 {
     m_trackingState->previous = m_trackingState->current;
@@ -631,14 +830,49 @@ static void exitFromTracking(void)
     setMenu(topMenu);
 }
 
+/*!
+ * Function: returnToAzMenu
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Returns the user to the Azimuth menu
+ *
+ * @Arguments: N/A
+ *
+ * @Returns:    N/A
+ */
 static void returnToAzMenu(void)
 {
     setMenu(AzMenu);
 }
+
+/*!
+ * Function: returnToElMenu
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Returns the user to the Elevation menu
+ *
+ * @Arguments: N/A
+ *
+ * @Returns:    N/A
+ */
 static void returnToElMenu(void)
 {
     setMenu(ElMenu);
 }
+
+/*!
+ * Function: returnToRngMenu
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Returns the user to the Range menu
+ *
+ * @Arguments: N/A
+ *
+ * @Returns:    N/A
+ */
 static void returnToRngMenu(void)
 {
     setMenu(RangeMenu);
@@ -648,6 +882,18 @@ static void returnToRngMenu(void)
 // *************************** NAVIGATE MENUS *********************************
 // *****************************************************************************
 
+/*!
+ * Function: navigateTopMenu
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Once a user has given an input, handle the appropriate responce
+ *               in the top level menu by navigating to the correct submenu.
+ *
+ * @Arguments: int inputResult - The value that the user has entered.
+ *
+ * @Returns:    N/A
+ */
 static void navigateTopMenu(int inputResult) {
     switch (inputResult) {
         case 1:
@@ -685,6 +931,7 @@ static void navigateTopMenu(int inputResult) {
             } 
             else
             {
+                // COMMENTED OUT DUE TO DISCONNECTION OF LOCAL INTERFACE
                 // Switch user mode!
 //                if (m_userMode == REMOTE) {
 //                    m_userMode = LOCAL;
@@ -700,6 +947,18 @@ static void navigateTopMenu(int inputResult) {
     }
 }
 
+/*!
+ * Function: navigateAzimuthMenu
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Once a user has given an input, handle the appropriate responce
+ *               in the Azimuth menu by navigating to the correct function menu.
+ *
+ * @Arguments: int inputResult - The value that the user has entered.
+ *
+ * @Returns:    N/A
+ */
 static void navigateAzimuthMenu(int inputResult) {
     switch (inputResult) {
         case 1:
@@ -735,6 +994,18 @@ static void navigateAzimuthMenu(int inputResult) {
     }
 }
 
+/*!
+ * Function: navigateRangeMenu
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Once a user has given an input, handle the appropriate responce
+ *               in the Range menu by navigating to the correct function menu.
+ *
+ * @Arguments: int inputResult - The value that the user has entered.
+ *
+ * @Returns:    N/A
+ */
 static void navigateRangeMenu(int inputResult)
 {
     switch (inputResult) {
@@ -805,6 +1076,18 @@ static void navigateRangeMenu(int inputResult)
     }
 }
 
+/*!
+ * Function: navigateElevationMenu
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Once a user has given an input, handle the appropriate responce
+ *               in the Elevation menu by navigating to the correct function menu.
+ *
+ * @Arguments: int inputResult - The value that the user has entered.
+ *
+ * @Returns:    N/A
+ */
 static void navigateElevationMenu(int inputResult)
 {
         switch (inputResult) {
@@ -813,7 +1096,7 @@ static void navigateElevationMenu(int inputResult)
             setMenu(ElGoto);
             break;
         case 2:
-            // Set elevation minimum
+            // Set elevation ,minimum
             setMenu(ElMin);
             break;
         case 3:
@@ -846,21 +1129,39 @@ static void navigateElevationMenu(int inputResult)
 // *****************************************************************************
 
 /*!
- * Display the current menu Title and other information over serial
+v * Function: displayMenuSerial
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Generic method for displaying the current menu Title and border
+ *               over serial. It also calls the current menu's display Serial
+ *               function for other messages which need to be printed
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
  */
 static void displayMenuSerial()
 {
     int j;
+
+    // Clear screen and print border
     sendNewLine(1);
     clearScreen();
     filler(width);
     sendNewLine(1);
+
+    // Print menu title
     transChar('\t');
     sendROM(m_currentMenu.lcdTitleMessage);
     sendNewLine(1);
     filler(width);
+
+    // Print this function's Serial message
     sendNewLine(2);
     m_currentMenu.serialDisplayFunction();
+
+    // Pront final border
     sendNewLine(2);
     filler(width);
     for (j=0;j<1000;j++);
@@ -868,9 +1169,21 @@ static void displayMenuSerial()
 }
 
 /*!
- * Display the user options for the top level home menu
+ * Function: dispTopOptions
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Displays the strings for the different options the user can
+ *               choose whilst in the top level menu. It also accounts for
+ *               Factory mode by printing extra messages the user can choose.
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
  */
 static void dispTopOptions(void) {
+
+    // Print the Remote level options
     sendROM("\t");
     sendROM(m_currentMenu.serialMessage);
     sendNewLine(2);
@@ -885,17 +1198,22 @@ static void dispTopOptions(void) {
     sendROM(topOption5);
     sendNewLine(1);
 
+    // Print the FACTORY options
     if (m_userMode == FACTORY)
     {
         sendROM(topOptionCalTemp);
         sendNewLine(1);
+
+        // @TODO Remove and test now that they key switches between modes
         sendROM(topOptionForFactory);
     }
     else
     {
+        // Print the switch to Local option
         sendROM(topOptionLocal);
     }
 
+    // Print text which teaches the user how to navigate menus
     sendNewLine(2);
     sendROM(CHOOSE);
     sendNewLine(1);
@@ -903,16 +1221,29 @@ static void dispTopOptions(void) {
 }
 
 /*!
- * Display the user options for the Azimuth menu
+ * Function: dispAzOptions
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Displays the strings for the different options the user can
+ *               choose whilst in the Azimuth menu. It also accounts for
+ *               Factory mode by printing extra messages the user can choose.
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
  */
 static void dispAzOptions()
 {
+    // Print the Remote level options
     sendROM(azOption1);
     sendNewLine(1);
     sendROM(azOption2);
     sendNewLine(1);
     sendROM(azOption3);
     sendNewLine(1);
+
+    // Print the FACTORY options
     if (m_userMode == FACTORY)
     {
         sendROM(azOption4);
@@ -924,11 +1255,14 @@ static void dispAzOptions()
     }
     else
     {
+        // Print the Return option
         transChar('\t');
         sendROM(menuPrefix4);
         transChar('\t');
         sendROM(goUp);
     }
+
+    // Print lines to help the user navigate
     sendNewLine(2);
     sendROM(CHOOSE);
     sendNewLine(1);
@@ -936,16 +1270,29 @@ static void dispAzOptions()
 }
 
 /*!
- * Display the user options for the Azimuth menu
+ * Function: dispElOptions
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Displays the strings for the different options the user can
+ *               choose whilst in the Elevation menu. It also accounts for
+ *               Factory mode by printing extra messages the user can choose.
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
  */
 static void dispElOptions()
 {
+    // Print REMOTE options
     sendROM(elOption1);
     sendNewLine(1);
     sendROM(elOption2);
     sendNewLine(1);
     sendROM(elOption3);
     sendNewLine(1);
+
+    // Print FACTORY options
     if (m_userMode == FACTORY)
     {
         sendROM(elOption4);
@@ -955,6 +1302,7 @@ static void dispElOptions()
         transChar('\t');
         sendROM(goUp);
     }
+    // Print the Return option in REMOTE
     else
     {
         transChar('\t');
@@ -962,6 +1310,8 @@ static void dispElOptions()
         transChar('\t');
         sendROM(goUp);
     }
+
+    // Print messages to help the user navigate
     sendNewLine(2);
     sendROM(CHOOSE);
     sendNewLine(1);
@@ -969,16 +1319,27 @@ static void dispElOptions()
 }
 
 /*!
- * Display the user options for the Azimuth menu
+ * Function: dispRngOptions
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Displays the strings for the different options the user can
+ *               choose whilst in the Range menu. It also accounts for
+ *               Factory mode by printing extra messages the user can choose.
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
  */
 static void dispRngOptions()
 {
-    //sendROM(rngOption1);
+    // Print the REMOTE options
     sendROM(rngOption1);
     sendNewLine(1);
-    //sendROM(rngOption2);
     sendROM(rngOption2);
     sendNewLine(1);
+
+    // Print the FACTORY options
     if (m_userMode == FACTORY)
     {
         sendROM(rngOption3);
@@ -996,6 +1357,7 @@ static void dispRngOptions()
         transChar('\t');
         sendROM(goUp);
     }
+    // Otherwise print the Return option
     else
     {
         transChar('\t');
@@ -1003,6 +1365,8 @@ static void dispRngOptions()
         transChar('\t');
         sendROM(goUp);
     }
+
+    // Print messages to help the user navigate
     sendNewLine(2);
     sendROM(CHOOSE);
     sendNewLine(1);
@@ -1010,7 +1374,17 @@ static void dispRngOptions()
 }
 
 /*!
- * Display the Show Temperature serial message
+ * Function: dispTempSerialMessage
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Prints the serial message for the temperature sensor. This needed
+ *               its own function as it needs to read the temperature and convert
+ *               the temp reading to ASCII.
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
  */
 static void dispTempSerialMessage(void)
 {
@@ -1022,7 +1396,16 @@ static void dispTempSerialMessage(void)
 }
 
 /*!
- * Display the menu serial message
+ * Function: dispSerialMessage
+ *
+ * @Include Local to menuSystem.c
+ *
+ * @Description: Generic function used to display the serial message for the
+ *               current menu.
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
  */
 static void dispSerialMessage(void)
 {
@@ -1031,7 +1414,18 @@ static void dispSerialMessage(void)
 }
 
 /*!
- * Display the menu serial message with the maximum, minimum and current values
+ * Function: dispSetValueMEssage
+ *
+ * @Include Range.c, PanTilt.c
+ *
+ * @Description: Display the menu serial message with the maximum, minimum
+ *               and current values so that the user knows what to input. This
+ *               function also retrieves the current values from their corresponding
+ *               classes.
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
  */
 static void dispSetValueMessage(void)
 {
@@ -1053,6 +1447,8 @@ static void dispSetValueMessage(void)
     // The current value is:
     sendROM("\t");
     sendROM(currentValueStr);
+
+    // Get the current value
     switch (m_currentMenu.menuID)
     {
         case AZ_GOTO:
@@ -1093,12 +1489,22 @@ static void dispSetValueMessage(void)
 }
 
 /*!
- * Displays the Tracking data over serial
+ * Function: dispTrack
+ *
+ * @Include Local to MenuSystem.c
+ *
+ * @Description: Displays the tracking data (Range, Azimuth and Elevation) over
+ *               serial on one line, by clearing the line between prints.
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
  */
 void dispTrack(TrackingData target)
 {
     unsigned int j;
 
+    // Strings not in ROM
     const char rng_string[] = "Range: ";
     const char inc_string[] = "Elevation: ";
     const char az_string[] = "Azimuth: ";
@@ -1107,26 +1513,31 @@ void dispTrack(TrackingData target)
     char unitsD[] = "deg";
     char num[5];
 
+    // Error checking for bad values
     if (target.azimuth > 100 || target.azimuth < -100) return;
 
     // If in tracking mode, Display the Azimuth, Elevation and Range
     if (m_currentMenu.menuID == TRACKING && transmitComplete())
     {
+        // Clear the line
         sendROM(CLEAR_LINE_STRING);
         transChar('\r');
+
+        // Display range data
         transmit(rng_string);
         sprintf(num, "%d", target.range);
         transmit(num);
         transmit(unitsR);
         transmit(separator);
 
+        // Display Azimuth data
         transmit(az_string);
-
         sprintf(num, "%d", target.azimuth);
         transmit(num);
         transmit(unitsD);
         transmit(separator);
 
+        // Display Elevation Data
         transmit(inc_string);
         sprintf(num, "%d", target.elevation);
         transmit(num);
@@ -1138,10 +1549,23 @@ void dispTrack(TrackingData target)
 /*!
  * Displays the Tracking data over serial
  */
+/*!
+ * Function: dispRawRange
+ *
+ * @Include Range.c
+ *
+ * @Description: Displays the raw IR and US data after being converted to mm,
+ *               before any calibration and merging of values.
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
+ */
 void dispRawRange()
 {
     unsigned int j;
 
+    // Strings not stored in ROM
     const char us_rng_string[] = "US Range: ";
     const char ir_string[] = "IR Range: ";
     const char separator[] = "\t";
@@ -1169,6 +1593,17 @@ void dispRawRange()
     }
 }
 
+/*!
+ * Function: dispSearching
+ *
+ * @Include Local to MenuSystem.c
+ *
+ * @Description: Displays the searching message in tracking mode
+ *
+ * @Arguments:  N/A
+ *
+ * @Returns:    N/A
+ */
 void dispSearching()
 {
     // Clear display and search!
@@ -1179,18 +1614,28 @@ void dispSearching()
         transmit(CLEAR_LINE_STRING);
         transChar('\r');
         sendROM(autoSearching);
-
     }
 }
 
 // *****************************************************************************
 // ****************************** LCD FUNCTIONS **********************************
 // *****************************************************************************
-//
-///*!
-// * Displays the current potentiometer reading on the LCD based on the
-// * menu options contextualised by the Home menu.
-// */
+
+/*!
+ * Function: dispLCDTopMenu
+ *
+ * @Include Range.c, PanTilt.c
+ *
+ * @Description: Display a message on the LCD display depending on what
+ *               the value that the potentiometer is reading based on the
+ *               menu options contextualised by the the Top level menu.
+ *
+ * @Arguments:  int option - The value that the potentiometer has read, scaled
+ *                           to within the bounds of this menu.
+ *
+ * @Returns:    N/A
+ */
+// COMMENTED OUT DUE TO LOCAL INTERFACE ISSUES
 //static void dispLCDTopMenu(int option)
 //{
 //    char string[20] = {0};
@@ -1223,12 +1668,25 @@ void dispSearching()
 //        default:
 //            strcpypgm2ram(string, "ERROR");
 //    }
-//    //lcdWriteString(string, 2);
+//    lcdWriteString(string, 2);
 //}
-///*!
-// * Displays the current potentiometer reading on the LCD based on the
-// * menu options contextualised by the Azimuth menu.
-// */
+
+
+/*!
+ * Function: dispLCDAzMenu
+ *
+ * @Include Range.c, PanTilt.c
+ *
+ * @Description: Display a message on the LCD display depending on what
+ *               the value that the potentiometer is reading based on the
+ *               menu options contextualised by the the Azimuth menu.
+ *
+ * @Arguments:  int option - The value that the potentiometer has read, scaled
+ *                           to within the bounds of this menu.
+ *
+ * @Returns:    N/A
+ */
+// COMMENTED OUT DUE TO LOCAL INTERFACE ISSUES
 //static void dispLCDAzMenu(int option)
 //{
 //    char string[20] = {0};
@@ -1249,12 +1707,25 @@ void dispSearching()
 //        default:
 //            strcpypgm2ram(string, "ERROR");
 //    }
-//    //lcdWriteString(string, 2);
+//    lcdWriteString(string, 2);
 //}
-///*!
-// * Displays the current potentiometer reading on the LCD based on the
-// * menu options contextualised by the Elevation menu.
-// */
+
+
+/*!
+ * Function: dispLCDElMenu
+ *
+ * @Include Range.c, PanTilt.c
+ *
+ * @Description: Display a message on the LCD display depending on what
+ *               the value that the potentiometer is reading based on the
+ *               menu options contextualised by the the Elevation menu.
+ *
+ * @Arguments:  int option - The value that the potentiometer has read, scaled
+ *                           to within the bounds of this menu.
+ *
+ * @Returns:    N/A
+ */
+// COMMENTED OUT DUE TO LOCAL INTERFACE ISSUES
 //static void dispLCDElMenu(int option)
 //{
 //    char string[20] = {0};
@@ -1275,13 +1746,25 @@ void dispSearching()
 //        default:
 //            strcpypgm2ram(string, "ERROR");
 //    }
-//    //lcdWriteString(string, 2);
+//   lcdWriteString(string, 2);
 //}
-//
-///*!
-// * Displays the current potentiometer reading on the LCD based on the
-// * menu options contextualised by the Range menu.
-// */
+
+
+/*!
+ * Function: dispLCDRngMenu
+ *
+ * @Include Range.c, PanTilt.c
+ *
+ * @Description: Display a message on the LCD display depending on what
+ *               the value that the potentiometer is reading based on the
+ *               menu options contextualised by the the Range menu.
+ *
+ * @Arguments:  int option - The value that the potentiometer has read, scaled
+ *                           to within the bounds of this menu.
+ *
+ * @Returns:    N/A
+ */
+// COMMENTED OUT DUE TO LOCAL INTERFACE ISSUES
 //static void dispLCDRngMenu(int option)
 //{
 //    char string[20] = {0};
@@ -1298,19 +1781,29 @@ void dispSearching()
 //        default:
 //            strcpypgm2ram(string, "ERROR");
 //    }
-//    //lcdWriteString(string, 2);
+//    lcdWriteString(string, 2);
 //}
-//
-///*!
-// * Description: Displays the current converted value from the potentiometer
-// *              onto the LCD display
-// *
-// * Arguments: The integer converted from the ADC
-// */
+
+
+/*!
+ * Function: dispLCDNum
+ *
+ * @Include Range.c, PanTilt.c
+ *
+ * @Description: Display a number on the LCD display depending on what
+ *               the value that the potentiometer is reading based on the
+ *               max/min/interval of the current menu.
+ *
+ * @Arguments:  int option - The value that the potentiometer has read, scaled
+ *                           to within the bounds of this menu.
+ *
+ * @Returns:    N/A
+ */
+// COMMENTED OUT DUE TO LOCAL INTERFACE ISSUES
 //static void dispLCDNum(int option)
 //{
 //    char *string = intToAscii(option);
-//    //lcdWriteString(string, 2);
+//    lcdWriteString(string, 2);
 //}
 
 
