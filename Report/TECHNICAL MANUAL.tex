@@ -1027,9 +1027,10 @@ The output hardware for the operator to see consists of an LCD screen mounted on
 \begin{figure}
 \centering
 \includegraphics[width=0.7\linewidth]{"../Diagrams/LcdPins"}
-\caption[LCDPinDiagram]{The two LCD pins labelled LCD- an LCD+ are backlight pins, and were not implemented.
+\caption[LCDPinDiagram]{The two LCD pins labelled LCD- an LCD+ are backlight pins, and were not implemented.}
 \label{fig:LCDPinDiagram}
 \end{figure}
+
 The output hardware also consists of the serial port of both the PIC and the host computer, through the use of a RS-232 standard serial connection.
 
 
@@ -1098,7 +1099,7 @@ Personally I found there to be few dependencies throughout the project; while it
 It is my opinion that pseudocode should contain essentially the function declarations and the comment blocks of the functions, describing in an algorithmic manner the way that the function should operate without going into language specifics. For this reason we thought the skeleton code, and comment blocks that were written with the skeleton code, in addition to the module descriptions document adequate in lieu of dedicated pseudocode. If the solution was more complex algorithmically pseudocode would definitely have been warranted, but as it was, most of the code was simply interfacing with hardware, and the only modules that could really warrant pseudocode at all would be the tracking and menusystem modules. We had very few algorithmic related issues, but again, were the solution more complex we would have made use of pseudocode.
 
 \section{Software Quality Assurance}
-Describe any measures that were taken t control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
+Describe any measures that were taken to control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
 
 \section{Software Design Description}
 \subsection{Architecture}
@@ -1115,10 +1116,10 @@ The system at its highest level is as basic state machine. Fig. \ref{fig:Operati
 Much of the code is functionality around hardware interfaces, most of which is self explanatory, or accessible through the datasheet. Here we will discuss some of the higher level software modules such as the search, tracking and menus.
 
 \subsubsection{Tracking}
-The tracking algorithm is really the heart of the specification - to design and build a death star tracker. Despite this there is alot of functionality that must be in place before the module is operational. Here only the high level tracking algorithm is discussed. \newline
+The tracking algorithm is really the heart of the specification; to design and build a death star tracker. Despite this there is alot of functionality that must be in place before the module is operational. Here only the high level tracking algorithm is discussed. \newline
 Fig. \ref{fig:TrackingStateDiagram} shows the original concept for tracking the moving targets. The basic concept was that the system would start somewhere on the target (after having detected it) and then move outward in each direction (up, down, left and right) until it found the edge, and would return to the centre, and begin again. The problem we found with the original design was that it was not detecting the edges well, or if it hit the maximum azimuth before it got to the edge then it would simply keep going. We also found that if the target was moving in the opposite direction to the edge it was trying to track it would easily loose the target. \newline
 Working from this design I implemented a new concept where discrete, fixed points are sampled and the results are used to create a weighted average of the positions, giving the next target location. This is shown in Fig. \ref{fig:TrackingStateTransitionDiagram}. \newline
-These algorithms are also incremental in nature - they perform a single weighted average and return execution back to the main program, telling it which state to go to next. This may seem less efficient than staying in the tracking algorithm while ever it has a track, but when we are waiting for such periods for the servos to move, and the ultrasonic to return there is no comparative loss of efficiency. It also means that the program is able to do other things such as service the menus while it is searching and tracking, and it lessens the chance of getting stuck in sub-functions. This design also facilitates the implementation of a watch dog timer.
+These algorithms are also incremental in nature; they perform a single weighted average and return execution back to the main program, telling it which state to go to next. This may seem less efficient than staying in the tracking algorithm while ever it has a track, but when we are waiting for such periods for the servos to move, and the ultrasonic to return there is no comparative loss of efficiency. It also means that the program is able to do other things such as service the menus while it is searching and tracking, and it lessens the chance of getting stuck in sub-functions. This design also facilitates the implementation of a watch dog timer.
 
 \begin{figure}
 \centering
