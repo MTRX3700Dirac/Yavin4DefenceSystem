@@ -16,6 +16,7 @@
 
 \chapter{Introduction}
 \section{Document Identification}
+
 This document describes the design and development of the "Yavin IV Orbital Tracking System".  This document and design brief is prepared by Dirac Defence Limited for assessment in MTRX3700, year 2014. The was approved by lieutenants Reid and Bell, and small scale testing initiated. 
 
 \section{System Overview}
@@ -42,7 +43,7 @@ Chapter eight addresses conclusions and provides final final analysis of the sys
 Section two contains the supporting documents, calculations, DOxygen documentation and code listings.
 
 \section{Reference Documents}
-The present document is prepared on the basis of the following reference document, and should be read in conjunction with it.\newline 
+The present document is prepared on the basis of the following reference document, and should be read in conjunction with it.\newline
 
 "MTRX3700 Mechatronics 3, Major Project: Multi Sensor Death Star Tracker".  David Rye, Sydney, 2014.
 \subsection{Acronyms and Abbreviations}
@@ -64,7 +65,7 @@ This section is intended to give a general overview of the basis for the Yavin I
 \section{Introduction}
 %Give a technical description of the function of the whole system, in terms of its constituent parts, here termed modules. Generally, a module will have hardware and software parts.
 
-The Yavin IV Orbital Tracking System's primary function is to track the Empire's Death Star system in real-time. 
+The Yavin IV Orbital Tracking System's primary function is to track the Empire's Death Star system in real-time.
 It consists of the following two major modules, tracking and user interface.
 
 
@@ -73,7 +74,7 @@ This module takes data from the range and pan-tilt modules
 unfinished
 
 -Range
---Ultrasound 
+--Ultrasound
 --Infrared
 --Temperature
 
@@ -85,7 +86,7 @@ Menu System
 --Serial
 
 \section{Operational Scenarios}
-%Describe how the system is to be used. There may be several different ways that it ca be used perhaps involving different users, or classes of user. Present case diagrams here if you are using them. Each operational scenario is a part through a use case diagram - a way of using the system, with different outcomes or methods of use. You should also consider the various failures that may occur, and the consequences of these failures. 
+%Describe how the system is to be used. There may be several different ways that it ca be used perhaps involving different users, or classes of user. Present case diagrams here if you are using them. Each operational scenario is a part through a use case diagram - a way of using the system, with different outcomes or methods of use. You should also consider the various failures that may occur, and the consequences of these failures.
 
 The system is designed to work in two different modes depending on the class of user, factory mode and end-user mode.\newline
 The end user mode is primarily designed to be implemented as the main operational mode, and offers automatic and manual tracking, serial and local user input and output. The factory mode allows technically trained users to calibrate various settings, change sample rates, show statistics and display raw readings, in addition to the full functionality available in end user mode.\newline
@@ -108,26 +109,6 @@ The system was broken down into a number of independent modules which contain th
 \caption[Modules]{Conceptual Diagram of the module breakdown and interaction between modules.}
 \label{fig:Modules}
 \end{figure}
-
-\section{Menu System}
-\subsection{Description}
-This module handles the creation of all the menu system used in both the serial user interface, the local user interface and the factory user interface. It handles the parsing of user inputs, navigation between menus, and interfacing with the other modules to change system values and relay important information to the user. 
-
-\subsection{Functional Requirements}
-\subsubsection{Inputs}
-The menu system receives a variety of different inputs from the modules discussed below, as it must receive information from each subsystem and relay it to the user. When the menu is initialised, it requires a pointer to the tracking state of the system, so that the menu can know if the system is tracking or searching, and so that the system can enable and disable tracking mode. 
-
-The menu interfaces with the Range module and PanTilt module to access system variables such as the current maximum and minimum ranges so that the current values can be presented to the user, assisting the user with their ability to fine tune the system. 
-
-The menu system module also handles the ability to switch between a the remote serial user interface and the factory user interface, which contains hidden functions not available to a normal user. 
-
-\subsubsection{Processes}
-\subsubsection{Outputs}
-\subsubsection{Timing}
-\subsection{Non-Functional Requirements}
-\subsection{Conceptual Design}
-\subsubsection{Menu Structures}
-\subsection{Software Interface}
 
 \section{Serial}
 \subsection{Description}
@@ -443,7 +424,7 @@ The range module uses the IR, Ultrasonic and temperature sensors to take range m
 The range module was designed to sample the Ulrasonic range a specified number of times at a specified frequency. The module then samples the IR sensor as many times as possible at a specified frequency while waiting for the US echo to return. The data is fused and outputted to the user program.
 
 \subsection{Detailed Design}
-The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking. 
+The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking.
 
 \subsection{Implemented Functionality}
 \subsubsection{Implemented Basic Functionality}
@@ -476,7 +457,7 @@ The range module makes use of the following hardware:
 \subsubsection{Pin Assignments}
 The range module uses the following pins to interface with hardware:
 \begin{itemize}
-	\item 
+	\item
 \end{itemize}
 
 \subsection{Constraints On Range Performance}
@@ -662,7 +643,7 @@ The temperature module implements the following functionality:
 The primary assumption made in the temp module is that the system temperature will not change very quickly, which means that the temperature does not need to be sampled each time the temperature value is used. Instead it simply uses a previously sampled value, and ressamples the temperature at semi regular intervals.
 
 \subsection{Constraints on Pan Tilt Performance}
-The main constraint on the performance of the temperature module is the accuracy of the 
+The main constraint on the performance of the temperature module is the accuracy of the
 
 \subsection{Hardware}
 The temperature module makes use of the following hardware:
@@ -722,7 +703,7 @@ In order to perform well (defined as accurate and reliable track) the system sho
 \subsubsection{Interfaces}
 The system should have the following interface characteristics:
 \begin{itemize}
-	\item 
+	\item
 \end{itemize}
 
 \section{Conceptual Design: Tracking}
@@ -761,52 +742,114 @@ The tracking system itself made use of no dedicated hardware, it was simply a hi
 \subsubsection{Interface}
 Refer to the attached Module Descriptions document
 
-\section{Module Requirements: MenuSubsystem}
+\section{Module Requirements: Menu Subsystem}
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
 The menu subsystem must be capable of taking the following inputs in order to fulfil its purpose:
 \begin{itemize}
-	\item 
+	\item User inputs from the Serial and Local Interface modules
+	\item A pointer to a tracking state to be initialised to, so that the menu can modify or read whether the system is tracking, searching, or waiting for user input.
+	\item Inputs from the Range and PanTilt modules for the current value of the system settings that a user can modify. 
+	\item Digital logic level from a physical key switch attached to a pull-down resistor circuit to signal Factory mode is to be used. 
 \end{itemize}
 
 \subsubsection{Processes}
 The menu subsystem must be capable of performing the following processes in order to fulfil its purpose:
 \begin{itemize}
-	\item 
+	\item The menu system must be able to switch between a local, remote serial and factory serial user mode. 
+	\item Parse and convert user data from the Serial and Local User Interface modules into integer values which the menu system and other modules can effectively use. 
+	\item Switch to another menu when commanded to by the user.
+	\item Convert system values to ASCII messages to display.
+	\item Convert messages in the system's ROM memory bank to RAM so that the Serial module can display them. 
 \end{itemize}
 
 \subsubsection{Outputs}
 The menu subsystem must be capable of returning the following outputs in order to fulfil its purpose:
 \begin{itemize}
-	\item 
+	\item Messages and structure for the LCD module to display to show the local user interface.
+	\item Messages for the Serial module to display to form the serial menus.
+	\item Error messages when the user inputs incorrect values.
+	\item User input values to the corresponding modules to change system settings. 
 \end{itemize}
 
 \subsection{Non-Functional Requirements}
 \subsubsection{Performance}
 The menu subsystem should have the following characteristics in order to operate efficiently:
 \begin{itemize}
-	\item 
+	\item The system should be able to quickly respond to user input and quickly display messages, so that the user does not view the system as unresponsive and broken. A response time of 100 milliseconds or less is desired. 
+	\item The serial interface for the user must be easy to understand and use commonly used keys or commands. 
+	\item The user should be able to intuitively know where options are, and how to navigate between different menus.
+	\item The menus should be aesthetically pleasing and consistent between menus. 
 \end{itemize}
 
 \subsubsection{Interfaces}
 The menu subsystem should have the following interface characteristics in order to operate efficiently:
 \begin{itemize}
-	\item 
+	\item The menu system must be able to access the functions from the Range and PanTilt modules which can access and change system variables, such as the maximum system range. 
+	\item Tracking data from the Tracking module should be easily available to the menu system so that it can display the data to the user.
+	\item Range data from the infra-red and ultrasound sensors should be easily available to be displayed in the "Show Raw Data" menu. 
 \end{itemize}
 
-\section{Conceptual Design: MenuSubsystem}
+\section{Conceptual Design: Menu Subsystem}
 \subsection{Description}
-The menu subsystem is responsible for coordinating all the user inputs and outputs, storing the current menu state, and all the system strings and prompts to send to the users. In essence it turns the basic Hardware interface modules that are the serial and LCD modules and uses them to create the user interface to the entire system.
+The menu subsystem is responsible for coordinating all the user inputs and outputs, storing the current menu state, and all the system strings and prompts to send to the users. It also interfaces with the other modules to change system values and relay important information to the user. In essence, it turns the basic Hardware interface modules that are the serial and LCD modules and uses them to create the user interface to the entire system.
 
 \subsection{Overall Design}
+The menu system operates based on a handful of general functions that get called and do different things based on what the current menu is. Every cycle of the main program, the menu gets serviced, which involves the following events. First, there is a check for if the user has submitted any commands over serial for Remote/Factory users, or via the local interface for local users. If so, the input is read and converted to an integer, which is then used differently in each menu.
+
+The concept of the menu system revolves are instances of a menu object, which contain function pointers to other functions, so that a general function can be called from the main loop of the program. This was implemented after a menu system was created which used a series of long switch statements, however these were found to be expensive to the program memory, and hence the system was redesigned. 
 
 \subsection{Detailed Design}
 
-\subsection{Assumptions}
+\subsubsection{Menu Objects}
+Each menu object contains a list of variables which is necessary for the menu to interact with the current system. These will be discussed below. 
 
-\subsection{Constraints On the MenuSubsystem}
+\paragraph{Menu ID:}
+Each menu is given an identification number which is unique to each menu. This is used to identify which menu the current menu is within switch statements, as the menu objects themselves canot be compared easily. 
+
+\paragraph{Serial Message:}
+Each menu contains a message to be displayed when the menu is first entered. These messages are often instructions to the user as to how to operate this specific module, and are often unique to each menu.
+
+\paragraph{LCD Title:}
+Each menu has a title, which is often within the 16 character limit on the LCD so that it can be used for both serial displays and LCD displays. 
+
+\paragraph{Minimum Value:}
+The minimum value integer represents the minimum input value that the user can enter for this menu. This is often 1 for menus which navigate to sub-menus, but is also acts as the lower bound for any menus which allow the user to change a system setting. 
+
+\paragraph{Maximum Value:}
+The maximum value integer represents the maximum input value that the user can enter for this menu. For menus which navigate to sub-menus, this value is the number of options the user has to navigate. This value also acts as the upper bound for any menus which allow the user to change a system setting. 
+
+\paragraph{Increment:}
+The increment value is used to indicate the value of the offset used when counting from the minimum value to the maximum value. This dictates how many possible states there are between the two boundary numbers. For a navigation menu, this is always 1. However for other options, especially for changing the range of the device, the increment value is quite large at 50 millimetres per division. This value is necessary for the local user interface as the potentiometer can only rotate within a fixed arc, so decreasing the number of possible states allows the user to sacrifice accuracy for being able to choose an approximate value in a much less finicky manner.
+
+\paragraph{Serial Display Function}
+This is a function pointer used to indicate which function should be called when the menu is entered via a serial command. There is a generic method which only prints the serial message variable from above, however other alternatives are created for displaying navigation menus with long lists of possible choices, and displaying messages for commands which set system variables, as the upper and lower bounds are also displayed, along with the setting's current value.
+
+\paragraph{LCD Display Function}
+Another function pointer, this time used to indicate how the menu is to display text on the second line of the LCD hardware, depending on the current position of the potentiometer. The user does not have to confirm their selection for this text to appear or change, but this function merely shows them what they may want to select. For instance, this is used to allow the user to cycle through sub-menu choices as they navigate the menu system. This function takes an integer representation as to what the potentiometer is currently pointing at, moved to within the bounds of the maximum and minimum values. 
+
+\paragraph{Confirm Function}
+The confirm function handles how the menu behaves once a user has selected the value they would like, whether by the serial interface or the local interface. These functions also take a numeric input of what the user has selected. These are broken down into two sets of functions. 
+
+The first is used when the user is trying to change a system setting. The function uses the menu's ID to call the corresponding function in another module, such as calling the "setMaxRange(int)" function from the Range module if the menu was for setting the maximum range. These are done using a switch statement, rather than using many very similar small functions, as the memory usage was approximately the same, and a switch statement assists in making code easier to read.   
+
+The second type of confirm function is for the navigation menus, which change the current menu depending on the user's input. The act of changing the menu changes a system variable internally, as well as clearing the serial display, and calling the Serial Display function so that the new menu is shown. Changing the menu also changes the message on the top level of the LCD. Using this method allows the menus to not be called directly from within each other, which reduces the load on the program stack, as the current menu finishes before the next menu is set.
+
+\paragraph{Return Function}
+This function simply allows the user to navigate up a level in the menu by setting the menu to whichever menu should be above it in the menu hierarchy. These functions are accessed by the user pressing the back key on the local interface, or the escape key (or the on-screen option) in the serial interface. These are hard coded so that one specific function always returns to each navigation menu, as having a general function passing in an argument did not seem to have a great effect on the system's memory usage. 
+
+\subsubsection{User inputs}
+Talk about why we use numbers, intToAscii, asciiToInt etc.
+
+\subsection{Assumptions}
+The menu module assumes that the lower level modules are functioning correctly, especially the Serial and Local User Interface modules. If these modules do not function as designed, the menu would not be able to interact with the user as intended, as the side effects of a user's command would be unknown. 
+
+Secondly, the menu system also assumes that the hardware is connected properly. In Remote mode, it is assumed that a RS-232 cample is connected to the system, and to a computer running a terminal program with a serial transmission rate of 9600 bites per second. In Local mode, it is under the assumption that the local interface controller is connected and not damaged. 
+
+\subsection{Constraints On the Menu Subsystem}
 
 \subsection{Interface}
+See the Technical User Manual document for a full list of the public functions from this module.
 
 \section{Module Requirements: LCD}
 \subsection{Functional Requirements}
@@ -818,7 +861,7 @@ The menu subsystem is responsible for coordinating all the user inputs and outpu
 
 \subsubsection{Failure Modes}
 
-\subsection{Implemented Basic Functionality}
+\subsection{Implemented Basic Functionality}.
 \subsubsection{Performance}
 
 \subsubsection{Interfaces}
@@ -919,28 +962,32 @@ Set all the pins to output and set all the control pins to 0. A configuring proc
 
 \section{Menu Design}
 \subsection{Menu Structure}
-Different menu structures were considered for interfacing with the user over a serial connection and via the local interface's LCD screen. Early in product design, we had reached the idea of using a potentiometer or encoder with buttons as the method of user input when not using serial. We had also decided that it was best to share a menu system between the remote and local user modes to keep the system consistent, which helps the user feel lees confused or jarred when switching between user modes. 
+Different menu structures were considered for interfacing with the user over a serial connection and via the local interface's LCD screen. Early in product design, we had reached the idea of using a potentiometer or encoder with buttons as the method of user input when not using serial. We had also decided that it was best to share a menu system between the remote and local user modes to keep the system consistent, which helps the user feel lees confused or jarred when switching between user modes.
 
 
-From these requirements, the menu could have either been designed and implemented in a tiered system with sub-menus to navigate between, or as a large cyclic menu. Due to the limited rotation of a potentiometer, the large cyclic menu concept was rejected, as each option would only have a few degrees of potentiometer rotation, which would make the ability to choose a specific option difficult. A tiered system was chosen for both the local and remote user interfaces. However, concepts from the cyclic design were used for choosing options from within a sub-menu using the potentiometer, as it was more feasible with a limited number of choices per sub-menu. 
+From these requirements, the menu could have either been designed and implemented in a tiered system with sub-menus to navigate between, or as a large cyclic menu. Due to the limited rotation of a potentiometer, the large cyclic menu concept was rejected, as each option would only have a few degrees of potentiometer rotation, which would make the ability to choose a specific option difficult. A tiered system was chosen for both the local and remote user interfaces. However, concepts from the cyclic design were used for choosing options from within a sub-menu using the potentiometer, as it was more feasible with a limited number of choices per sub-menu.
 
 
 The next design decision came in how the functions of the system were to be broken up into sub-menus. Possible choices included splitting the functionality between an Autonomous Tracking sub-menu which displayed possible relevant menu options, and Manual Tracking which allowed the user to go to specific azimuth and elevation angles. Another option involved splitting the system menus into Autonomous Tracking, which just showed the user the current range and angles, then spilt the remaining functions based on their areas, such as user functions focused around changing the options to do with the azimuth angle, elevation angle, and range. This was the final design used, as it was more intuitive as to how to find the option that a user specifically wanted. However, this meant that navigating between options in different sub-menus took more time, such as switching between the "Go To Azimuth" and "Go To Elevation" functions meant that the user needed to navigate through 3 sub-menus.
 
 
-The final decision in menu structure decision that had to be made was where to include the factory options if the system was put into Factory mode. Either all the factory settings could have their own sub-menu which only appeared when Factory mode was entered, or the factory settings could be placed within their relevant menus, such as placing the "Calibrate Azimuth" function inside the azimuth menu. The final descision was made to place the factory settings in their corresponding menus for consistency, as all possible settings to do with one area of the system should consistently be under the same menu. The downside to this choice is again that navigating between different factory settings takes longer than the alternative, and that the factory settings are not easily identified in one location. 
+The final decision in menu structure decision that had to be made was where to include the factory options if the system was put into Factory mode. Either all the factory settings could have their own sub-menu which only appeared when Factory mode was entered, or the factory settings could be placed within their relevant menus, such as placing the "Calibrate Azimuth" function inside the azimuth menu. The final descision was made to place the factory settings in their corresponding menus for consistency, as all possible settings to do with one area of the system should consistently be under the same menu. The downside to this choice is again that navigating between different factory settings takes longer than the alternative, and that the factory settings are not easily identified in one location.
 
 
 The final menu structure can be seen in \ref{fig:MenuStructureDiagram}.
 
 \subsection{Menu Appearance}
-Due to the limited display capabilities of the LCD hardware being used in the system, an intuitive design had to be constructed to convey information to a local user. The LCD module has the ability to write 16 characters to two lines independently. With this, the local user interface was designed so that the top row of the LCD always shows the user their current menu, such as "Azimuth Options" or "Set max range". This allows the second line of the display to be used to show the changes that the user is making, such as displaying sub-menu titles as the user scrolls through potential choices. 
+Due to the limited display capabilities of the LCD hardware being used in the system, an intuitive design had to be constructed to convey information to a local user. The LCD module has the ability to write 16 characters to two lines independently. With this, the local user interface was designed so that the top row of the LCD always shows the user their current menu, such as "Azimuth Options" or "Set max range". This allows the second line of the display to be used to show the changes that the user is making, such as displaying sub-menu titles as the user scrolls through potential choices.
 
-The serial interface is less limited by physical constraints, but was also important to design carefully. A similar style of approach was used; the user must always be shown their current location, along with all the possible options that they can take. This is simpler on the serial interface as many options can be displayed at once, so all correct serial inputs are shown for navigation menus, whilst ranges and current values are displayed in functions which change system settings. This allows to the user to more easily make correct choices as to how to interact with the system, and lets the user easily view their current settings. 
+The serial interface is less limited by physical constraints, but was also important to design carefully. A similar style of approach was used; the user must always be shown their current location, along with all the possible options that they can take. This is simpler on the serial interface as many options can be displayed at once, so all correct serial inputs are shown for navigation menus, whilst ranges and current values are displayed in functions which change system settings. This allows to the user to more easily make correct choices as to how to interact with the system, and lets the user easily view their current settings.
 
-For the physical appearance of the menu itself in the user's terminal program, the menu itself will always appear in the top left of the program's window. This is done by using a generic clear display command which is common to many terminal programs. This was chosen to reduce the possibility of the serial display looking incorrect in terminal programs other than TeraTerm, in which the serial display was tested, as the program will automatically clear whatever was written previously. 
+For the physical appearance of the menu itself in the user's terminal program, the menu itself will always appear in the top left of the program's window. This is done by using a generic clear display command which is common to many terminal programs. This was chosen to reduce the possibility of the serial display looking incorrect in terminal programs other than TeraTerm, in which the serial display was tested, as the program will automatically clear whatever was written previously.
 
-Each menu is framed by a filler character, the plus sign "+". This is done to easily bring attention to the current menu's title, and separate the user input section of the terminal from the printed messages. The menu title and other menu messages are all printed indented to the centre left of the terminal. This is again so that other terminal programs will be more likely to display the user interface correctly, on the small chance that some of the leftmost display is unreadable or not as aesthetically pleasing.  
+Each menu is framed by a filler character, the plus sign "+". This is done to easily bring attention to the current menu's title, and separate the user input section of the terminal from the printed messages. The menu title and other menu messages are all printed indented to the centre left of the terminal. This is again so that other terminal programs will be more likely to display the user interface correctly, on the small chance that some of the leftmost display is unreadable or not as aesthetically pleasing.
+
+An example of a serial menu can be seen in \ref{fig:MenuSerialInterface}.
+
+Finally, the certain functional menus such as the "Autonomous Tracking" menu and the "View Raw Range" menu must be able to refresh the menu as new data is collected. This was performed using another general terminal command, this time to clear the current line. This allowed for data to be constantly overwritten, so that the user is not flooded with tracking data.
 
 \chapter{Hardware Design}
 The system hardware consists of two main components: the local user interface controller, and the housing for the sensors and microcontroller.
@@ -953,11 +1000,17 @@ The local user controller consists of an LCD display, 2 buttons and a potentiome
 \subsubsection{Power Source}
 The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and all hardware is encased in an insulating enclosure that is not designed to be opened easily by users. \newline
 The power supply to the sensors and other hardware was split up into two independent and regulated 5V power rails, one exclusively for the ultrasonic module. This was done to limit the large surge currents the ultrasonic sensor draws from interfering with the rest of the circuit. A large capacitor was added across the ultrasonic power lines to limit this surge current from being drawn from the battery and causing voltage spikes.\newline
-The second power rail supplies power to the microcontroller, the servos, the infrared and temperature sensors,as well as to the local user controller interface.
-\textbf{!!!Need to look up the power specifications for the regulators (e.g. max and min supply voltages) and include them here!!!}
+The second power rail supplies power to the microcontroller, the servos, the infrared and temperature sensors,as well as to the local user controller interface. This is shown in \label{PowerBusDiagram}\newline
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/PowerCircuit"}
+\caption[PowerBusDiagram]{Power circuit schematic on veroboard/stripboard}
+\label{fig:PowerBusDiagram}
+\end{figure}
 
 \subsubsection{Safety Features}
-Currently the prototype system does not make use of any type of internal fusing or circuit breaker functionality. Should the system be marketed as a commercial product such features would be essential.
+Currently the prototype system does not make use of any type of internal fusing or circuit breaker functionality. Should the system be marketed as a commercial product such features would be essential. The use of a 9V battery is an implicit safety feature due to the low power output. All circuit elements are enclosed and impossible to accidentally come into contact with, especially the large 1mF capacitor located on the power bus, which can produce a painful electric discharge if touched.
 
 \subsection{Computer Design}
 Description of computer hardware, including all interface circuitry to sensors, actuators, and I/O hardware.
@@ -969,6 +1022,16 @@ Description of computer hardware, including all interface circuitry to sensors, 
 \subsubsection{Operator Input Hardware}
 
 \subsubsection{Operator Output Hardware}
+The output hardware for the operator to see consists of an LCD screen mounted on the local user controller. Pins on the LCD are as follows (also available in the LCD conceptual design section):
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/LcdPins"}
+\caption[LCDPinDiagram]{The two LCD pins labelled LCD- an LCD+ are backlight pins, and were not implemented.
+\label{fig:LCDPinDiagram}
+\end{figure}
+The output hardware also consists of the serial port of both the PIC and the host computer, through the use of a RS-232 standard serial connection.
+
 
 \subsubsection{Hardware Quality assurance}
 Describe any measures that were taken to control (improve) hardware quality and reliability - Heartbeats, brownout conditioning/resets, reset conditions, testing and validation, etc.
@@ -1049,7 +1112,7 @@ The system at its highest level is as basic state machine. Fig. \ref{fig:Operati
 	\label{fig:OperationStateTransitionDiagram}
 \end{figure}
 
-Much of the code is really just functionality around hardware interfaces, most of which is self explanatory, or accessible through the datasheet. Here we will discuss some of the higher level software modules such as the search, tracking and menus.
+Much of the code is functionality around hardware interfaces, most of which is self explanatory, or accessible through the datasheet. Here we will discuss some of the higher level software modules such as the search, tracking and menus.
 
 \subsubsection{Tracking}
 The tracking algorithm is really the heart of the specification - to design and build a death star tracker. Despite this there is alot of functionality that must be in place before the module is operational. Here only the high level tracking algorithm is discussed. \newline
@@ -1086,7 +1149,7 @@ Among the benefits of this system is that execution is continuously returned to 
 \subsubsection{Menus}
 
 \subsection{Software Interface}
-The software interfaces for each module are described in great detail in the module descriptions document. For the sake of conciseness I will not repeat most of that material here.
+The software interfaces for each module are described in great detail in the module descriptions document.
 
 \subsection{Software Components}
 This is a detailed view of the internal workings of each of the software modules
@@ -1095,7 +1158,7 @@ This is a detailed view of the internal workings of each of the software modules
 \subsection{Preconditions for System Startup}
 Describe any preconditions that must be satisfied before the system can be started.
 
-Before the system can be started it must be connected to a power source with a sufficient power rating. Then obviously it must be fully assembled. Apart from that there are no preconditions for the system to begin startup. The code is designed to configure all the modules and hardware that it needs automatically on startup. There is however some background bootloader which loads all the constants in from program memory and initialises the variables defined in the idata sections etc. Again this happens automatically at startup and requires no other preconditions. The Pan Tilt module is then moved to the starting point of (0,0).
+Before the system can be started it must be connected to a power source with a sufficient power rating. Then it must be fully assembled. Apart from that there are no preconditions for the system to begin startup. The code is designed to configure all the modules and hardware that it needs automatically on startup. There is however some background bootloader which loads all the constants in from program memory and initialises the variables defined in the idata sections etc. Again this happens automatically at startup and requires no other preconditions. The Pan Tilt module is then moved to the starting point of (0,0).
 
 \subsection{Preconditions for System Shutdown}
 There are no preconditions for a system shutdown, and the system can be shutdown at any point with no warning. There is however an option to store the user changes for the configuration settings in the eeprom, and should the user wish to retain their settings this should be completed before shutting down the system. Also if the user were to shut down the system during the eeprom write the action may corrupt their stored settings. Other than this, the system can safely be shut down at any point with no consequences.
