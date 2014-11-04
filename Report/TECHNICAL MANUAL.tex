@@ -1032,6 +1032,27 @@ This subroutine was created so that a user could display an entire string on the
 
 A local variable is set to the location of the initial write location. A loop is entered which sets the location on the screen to print the current character. The string pointer is incremented and the next character displayed. Finally a delay is initialised and the LCD cursor returned to the start of the line.
 
+\section{Module: Usability Software (EEPROM)}
+\subsection{Description}    
+An EEPROM read/write module was added to the system to increase user
+friendliness and system deploy-ability. EEPROM allows for values to be saved in a non-volatile memory location, such that when power cycled, the system will retain important calibration settings. This reduces the maintenance required on the system, and limits the needed interactions of technically trained users to change functional
+
+\subsection{Functional Requirements}
+The EEPROM module must be able to save values in a non-volatile memory location, and retrieve them at a later stage.
+
+\subsection{Inputs}
+The EEPROM module requires inputs of the storage address and the data to be saved.
+\subsection{Processes}
+The EEPROM module uses the inbuilt C18 EEP.h library to achieve its objectives, utilising the Writebeep and Readbeep functions. These functions require char type data for write input and returns a char for read outputs. As the data being stored will predominantly be int type, this value was broken into high and low part bytes prior to writing and concatenated into an int following reads.
+
+\subsection{Outputs}
+Following a successful read from an EEPROM address, an integer is returned and can be used as required in the program.
+
+\subsection{Implementation}
+This module was implemented through two public subroutines, sendEep and readEep.
+SendEep takes an integer number and an integer address, stores the data in two consecutive memory bytes.
+readEep takes an integer address, reads the value at that address into two characters, concatenates the number and returns an integer value.
+
 \chapter{User Interface Design}
 %Give a detailed description of the design of the user interface. This will gave the reader a good view of how the system functions from the user's perspective.
 The Yavin IV ODS has three main user interface points, the remote terminal interface, the local user interface and finally the system housing.\newline
