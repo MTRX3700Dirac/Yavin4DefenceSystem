@@ -7,7 +7,6 @@
 .metadata
 bin/
 tmp/
-Doxygen Documentation/
 *.tmp
 *.bak
 *.swp
