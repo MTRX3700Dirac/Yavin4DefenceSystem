@@ -1,4 +1,4 @@
-\frac{•}{•}\documentclass[]{report}
+\documentclass[]{report}
 
 \usepackage{graphicx}
 \usepackage{bookmark}
@@ -42,7 +42,7 @@ Chapter eight addresses conclusions and provides final final analysis of the sys
 Section two contains the supporting documents, calculations, DOxygen documentation and code listings.
 
 \section{Reference Documents}
-The present document is prepared on the basis of the following reference document, and should be read in conjunction with it.\newline
+The present document is prepared on the basis of the following reference documents, and should be read in conjunction with it.\newline
 
 "MTRX3700 Mechatronics 3, Major Project: Multi Sensor Death Star Tracker".  David Rye, Sydney, 2014.
 \subsection{Acronyms and Abbreviations}
@@ -234,7 +234,7 @@ The baud rate sets a maximum rate data can be transferred, which along with the 
 The interrupt latency is the time delay between the interrupt firing and the actual event. This is generally very small (we found ~300$\mu$s), but a high latency could miss characters being received.
 
 \subsection{Interface}
-Refer to the Technical User Manual For detailed explanations of the interface functions and how to use them.
+Refer to the Interface Manual For detailed explanations of the interface functions and how to use them.
 
 \subsubsection{List of inputs}
 The following are inputs that can be sent to the serial module for transmission:
@@ -362,7 +362,7 @@ The module does not assume that the interrupts fire instantly after the timing e
 The Pan Tilt module is restricted to the servo range of motion. Also the actual position is entirely dependant on the calibration as they merely take a PDM input.
 
 \subsection{Interface}
-Refer to the Technical User Manual For detailed explanations of the interface functions and how to use them.
+Refer to the Interface Manual For detailed explanations of the interface functions and how to use them.
 
 \subsubsection{List of Inputs}
 The Pan Tilt Module takes the following inputs:
@@ -381,7 +381,7 @@ The Pan Tilt Module returns the following outputs:
 	\item Current configurable system settings values (as chars)
 \end{itemize}
 
-\section{Range}
+\section{Module Requirements: Range}
 \subsection{Description}
 The range module uses the IR, Ultrasonic and temperature sensors to take range measurements.
 
@@ -392,9 +392,6 @@ The range module makes use of the following hardware:
 	\item TL851 Sonar Ranging Control
 	\item Infra Red range sensor
 \end{itemize}
-
-\subsubsection{Pin Assignments}
-
 
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
@@ -438,7 +435,7 @@ The range module also implements the following additional functionality
 	\item Range calibrating functions
 \end{itemize}
 
-\subsection{Conceptual Design}
+\section{Conceptual Design: Range}
 The Ultrasonic sensor is interrupt driven, which means that we can be performing other actions while waiting for the echo return. Thus the system uses this time to sample the IR and temperature. The module also allows any number of ultrasonic samples per range estimate, and the IR sensor is sampled continuously while the ultrasonic sensor is being sampled. The module also fuses the ranges returned by the respective sensors based on the range, so that IR is used more at short ranges, and not at all at long ranges. The module also sets a target state that can take a number of states depending on which sensors detect a target. This means the module can differentiate between when the sensors are within the Ultrasonic cone, but not in the IR, or when it is within the Ultrasonic cone, but out of IR range. This is then used for the searching and tracking.
 
 \subsubsection{Assumptions Made}
@@ -610,13 +607,9 @@ The temperature module implements the following functionality:
 \subsection{Assumptions Made}
 The primary assumption made in the temp module is that the system temperature will not change very quickly, which means that the temperature does not need to be sampled each time the temperature value is used. Instead it simply uses a previously sampled value, and ressamples the temperature at semi regular intervals.
 
-<<<<<<< HEAD
+
 \subsection{Constraints on Pan Tilt Performance}
 The main constraint on the performance of the temperature module is the accuracy of the temperature sensor itself, which is only accurate to within half a degree Celcius.
-=======
-\subsection{Constraints on Temperature Sensor Performance}
-The main constraint on the performance of the temperature module is the accuracy of the temperature sensor itself, which is only accurate to within half a degree Celcius. 
->>>>>>> c5e3f30c68f2e932111abc759425a5cb4795eaba
 
 \subsection{Hardware}
 The temperature module makes use of the following hardware:
@@ -761,7 +754,11 @@ For selecting a value, multiple input peripherals were considered, such as a pot
 
 The design for the local user interface hardware began initially with a one box approach, with the LCD and buttons placed near the servo motors. However, our second design included a controller based approach so that the user can freely operate the controls free from moving the sensors. Following this style of approach, we designed the enclosure to be hand-held like a controller, with the buttons and potentiometer being easily accessible to the user's thumbs. 
 \subsection{Software}
-The software model for the Local User interface is very similar to the serial module. As buttons are pressed, they get entered into a circular buffer and processed from the oldest button press to the newest. 
+The software model for the Local User interface is very similar to the serial module. As buttons are pressed, they get entered into a circular buffer and processed from the oldest button press to the newest. When the escape button is pressed, a separate flag is raised so that the system can immediately return from it's current menu. 
+
+A button press is indicated by using the external interrupts, which are connected to pins RB0 and RB1 on Port B, with a different interrupt for each button. These were set up to trigger on a rising edge of a new signal, and did not seem to have any bouncing issues, so a bouncing circuit was not necessary. A pull-down resistor was still added to make sure TTL logic levels were still achieved.
+
+For the potentiometer, a simple division algorithm was used to divide the ADC output from a number between 0 and 1023, to a number between 0 and a value dependant on each menu. This splits the input into a number of even sections to be used by the Menu System. 
 
 \section{Module Requirements: Menu Subsystem}
 \subsection{Functional Requirements}
@@ -895,7 +892,7 @@ Secondly, the menu system also assumes that the hardware is connected properly. 
 As mentioned in the assumptions section above, as the Menu system is the highest level of abstraction for the user, if any module beneath it does not operate correctly, the menu system would also not perform as expected, as the user would attempt to control the system via the menu, and another action would be taken.
 
 \subsection{Interface}
-See the Technical User Manual document for a full list of the public functions from this module.
+See the Interface Manual document for a full list of the public functions from this module.
 
 \section{Module Requirements: LCD}
 \subsection{Functional Requirements}
@@ -1106,13 +1103,8 @@ The second power rail supplies power to the microcontroller, the servos, the inf
 
 All components are also bypassed with capacitors to avoid such effects, although the ultrasonic sensor called for additional measures.
 
-<<<<<<< HEAD
-The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and all hardware is encased in an insulating enclosure that is not designed to be opened easily by users. \newline
-The power supply to the sensors and other hardware was split up into two independent and regulated 5V power rails, one exclusively for the ultrasonic module. This was done to limit the large surge currents the ultrasonic sensor draws from interfering with the rest of the circuit. A large capacitor was added across the ultrasonic power lines to limit this surge current from being drawn from the battery and causing voltage spikes.\newline
-The second power rail supplies power to the microcontroller, the servos, the infrared and temperature sensors,as well as to the local user controller interface, as shown in figure 4.1.
-=======
 \label{PowerBusDiagram}
->>>>>>> c5e3f30c68f2e932111abc759425a5cb4795eaba
+
 
 \begin{figure}[h]
 \centering
@@ -1396,9 +1388,9 @@ This hazard carries a possible to likely likelihood, as the system has no sensor
 To reduce hazard we can put moving parts warning labels on the pan tilt, and recommend that users maintain some kind of distance from it. This could reduce the likelihood to possible to unlikely, giving an overall severity of low.
 
 \chapter{Conclusions}
+In conclusion, the Yavin IV Defence System 
 
-
-<<<<<<< HEAD
+\chapter{Appendix}
 \begin{figure}
 \centering
 \includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
@@ -1406,9 +1398,4 @@ To reduce hazard we can put moving parts warning labels on the pan tilt, and rec
 \label{fig:OperationStateTransitionDiagram}
 \end{figure}
 
-
-
-\end{document}
-=======
 \end{document}          
->>>>>>> fa05950ef2d76e85a60a3616a633932c85f8788f
