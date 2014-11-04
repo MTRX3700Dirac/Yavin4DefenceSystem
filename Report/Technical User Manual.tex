@@ -7,8 +7,8 @@
 
 
 % Title Page
-\title{Technical Users' Manual}
-\author{Grant Louat}
+\title{Interface Manual}
+\author{Team Dirac}
 
 
 \begin{document}
@@ -36,12 +36,21 @@ This system is a state machine; there is a primary loop in main() which repeated
 The Yavin IV Death Star Tracker includes a Factory Mode not available to general users. This mode is used for in-factory calibration and testing.
 
 \section{Entering/Exiting the Factory Mode}
-The factory mode can be entered by ... Similarly ... will exit the factory mode, and the system will return to the standard operational mode.
+The factory mode can be entered by inserting the correct key into the lock on the device, and turning the key. Similarly turning the key back and removing the key will exit the factory mode, and the system will return to the standard operational mode in remote serial mode.
 
 \section{Functionality}
-The Factory Mode adds the following functionality and commands to the standard Mode
+The Factory Mode adds the following functionality and commands to the standard Mode:
 \begin{itemize}
-	\item
+	\item Calibrate the temperature sensor
+	\item Calibrate the Azimuth servo motor
+	\item Calibrate the Elevation servo motor
+	\item Calibrate the range finding sensors
+	\item View raw range data
+	\item Set the ultrasound sample rate
+	\item Set the infrared sample rate
+	\item Set the number of ultrasound samples to use
+	\item Set the number of infrared samples to use
+	\item Show statics of sensor data
 \end{itemize}
 
 
@@ -580,28 +589,83 @@ Performs a single increment of the Pan Tilt mechanism in a defined search patter
 \section{Example Code:}
 
 
-\chapter{User\_Interface}
+\chapter{User Interface}
 \section{Description}
 The user interface module is the equivalent of the serial module for the local user interface. It has a circular buffer and stores all the user inputs to the system to be handled later.
 
 \section{How It Works:}
+The module uses the external interrupt functionality of the PIC microcontroller to register when buttons are pressed by triggering an interrupt on a rising edge of the signal change. These interrupts cause a character for each button to be pushed into a circular buffer to be processed later. 
+
+The confirm button press will add the new line character 0x0D to the buffer, whilst the back button will add the escape character 0x1B to the buffer.
+
+The analogue to digital converter is used to read the value of the voltage drop across the output of potentiometer, and this is translated to an appropriate value for each menu.
+
 
 \section{How To Use It:}
 \begin{itemize}
-	\item 
+	\item Include "User\_Interface.h"
+	\item Call configUSER()
+	\item Call the userEmpty() function to identify if input has been received.
+	\item If so, call userPop() or userPeek()
 \end{itemize}
 
 \section{List of Public Functions}
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
-\subsection{}
+\subsection{configUSER}
+\subsubsection{Description}
+Configures the user interface for use.
 \subsubsection{Usage:}
+This function must be called during system start up so that the user interface buffers get initialised before any input is received. 
 
 \subsubsection{Arguments:}
-
+None
 \subsubsection{Return Value:}
+None
 
-\section{Example Code:}
+\subsection{userEmpty}
+\subsubsection{Description}
+Checks if the local interface receive buffer is empty.
+\subsubsection{Usage:}
+This function should be used before trying to call the userPop()  or userPeek() functions, as a check to see if there is any information to handle. 
+
+\subsubsection{Arguments:}
+None
+\subsubsection{Return Value:}
+A char with the value 1 if the receive buffer is empty, or 0 if the receive buffer contains at least one item.
+
+\subsection{userPop}
+\subsubsection{Description}
+Removes the first item from the circular buffer and returns it.
+\subsubsection{Usage:}
+Call this function to retrieve the value of the first element in the buffer, and remove it from the buffer. Use this when processing the data.
+
+\subsubsection{Arguments:}
+None
+\subsubsection{Return Value:}
+The character representation of the button pressed.
+
+\subsection{userPeek}
+\subsubsection{Description}
+Views the first item from the circular buffer and returns it, without removing it from the buffer.
+\subsubsection{Usage:}
+Call this function to retrieve the value of the first element in the buffer, and without removing it from the buffer.
+
+\subsubsection{Arguments:}
+None
+\subsubsection{Return Value:}
+The character representation of the button pressed.
+
+\subsection{readDial}
+\subsubsection{Description}
+Read the position of the dial by splitting the value returned from the ADC into even discrete steps based on the given argument.
+\subsubsection{Usage:}
+Call this function with an argument equal to the number of states you would like to split the ADC result into. For instance, an input of 7 will return a value from 0 to 6 based on the value found from the potentiometer
+
+\subsubsection{Arguments:}
+An unsigned integer for the number of states to split the ADC result into. 
+\subsubsection{Return Value:}
+Which state number the ADC result was part of. 
 
 \chapter{Range}
 \section{Description}
@@ -626,7 +690,7 @@ Below is a definitive list of all the public functions contained in this module,
 
 \section{Example Code:}
 
-\chapter{MenuSystem}
+\chapter{Menu System}
 \section{Description}
 The Menu System Module is responsible for keeping track of the menu state, and parses all user inputs. The module interfaces with the serial and user interface modules to handle all inputs to the system.
 
@@ -634,43 +698,106 @@ The Menu System Module is responsible for keeping track of the menu state, and p
 
 \section{How To Use It:}
 \begin{itemize}
-	\item 
+	\item Include "MenuSystem.h"
+	\item Call initialiseMenu(TrackingState) with a pointer to the tracking state. 
+	\item Call serviceMenu() periodically to respond to user commands.
+	\item Call dispTrack(TrackingData) to display a set of tracking data
+	\item Call dispSearching() to display a searching message
+	\item Call dispRawRange() to take a range measurement and print it on the screen
 \end{itemize}
 
 \section{List of Public Functions}
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
-\subsection{}
+\subsection{initialiseMenu}
+\subsubsection{Description}
+Initialises the menu objects and any modules that the menu requires. 
 \subsubsection{Usage:}
-
+Call this in before using any function from the menu system. 
 \subsubsection{Arguments:}
-
+A pointer to the global tracking state so the menu can change if the system is tracking or not.
 \subsubsection{Return Value:}
+None
 
-\section{Example Code:}
+\subsection{serviceMenu}
+\subsubsection{Description}
+Services the current menu by checking for local and serial input, and handling the input in the correct way based on the current menu.
+\subsubsection{Usage:}
+Call this periodically so the menu system can refresh and update. 
+\subsubsection{Arguments:}
+None
+\subsubsection{Return Value:}
+None
+
+\subsection{dispTrack}
+\subsubsection{Description}
+Displays the tracking data of a given Tracking Data object by displaying the range, azimuth and elevation of the tracking hardware.
+\subsubsection{Usage:}
+Call this periodically when tracking to print current values. 
+\subsubsection{Arguments:}
+Tracking Data to print.
+\subsubsection{Return Value:}
+None
+
+\subsection{dispSearching}
+Clears the current line and prints a searching message
+\subsubsection{Usage:}
+Call this periodically when searching. 
+\subsubsection{Arguments:}
+None
+\subsubsection{Return Value:}
+None
+
+\subsection{dispRawRange}
+Requests data from the ultrasonic and IR sensors, clears the current line and prints the results.
+\subsubsection{Usage:}
+Call this to view the raw data, such as in the appropriate menu 
+\subsubsection{Arguments:}
+None
+\subsubsection{Return Value:}
+None
 
 \chapter{LCD}
 \section{Description}
 The LCD module is responsible for interfacing with the LCD component and displaying LCD data in the local user mode.
 
 \section{How It Works:}
+The LCD module contains functions for interfacing to the specific LCD hardware model that the system is using.
 
 \section{How To Use It:}
 \begin{itemize}
-	\item 
+	\item Include "LCD.h"
+	\item Call configLCD()
+	\item Call lcdWriteString(String, num) to write a specific string to a specific line.
+	\item Call lcdWriteChar(char, line, column) to write a specific character to a specific place on the display.
 \end{itemize}
 
 \section{List of Public Functions}
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
-\subsection{}
+\subsection{configLCD}
 \subsubsection{Usage:}
-
+Call this to initialise the LCD hardware and software
 \subsubsection{Arguments:}
-
+None
 \subsubsection{Return Value:}
+None
 
-\section{Example Code:}
+\subsection{lcdWriteString}
+\subsubsection{Usage:}
+Call this to write a given null-terminated string to a specific line of the LCD.
+\subsubsection{Arguments:}
+The string to display, and which line (1 or 2) to display it on.
+\subsubsection{Return Value:}
+None
+
+\subsection{lcdWriteChar}
+\subsubsection{Usage:}
+Call this function to write a specified character to a specific location on a line of the LCD.
+\subsubsection{Arguments:}
+The character to display, which line to display it on (1 or 2), and which column to display it to (1 to 16).
+\subsubsection{Return Value:}
+None
 
 \part{Hardware}
 \chapter{Assembly Instructions}
@@ -740,8 +867,40 @@ Refer to the diagram below for the pin placements of the temperature sensor.
 
 
 \subsection{LCD}
+The LCD module uses the following pins
+\begin{itemize}
+	\item Data pins (0-7) - Port D (0-7)
+	\item RS - RC4
+	\item RW - RC5
+	\item EN - RA4
+	\item V+ - 5v bus
+	\item GND - 0v bus
+\end{itemize}
 
 \subsection{Buttons (Interface)}
+The buttons use the following pins:
+\begin{itemize}
+	\item Output button 1 - RB0
+	\item Output button 2 - RB1 
+	\item V+ - 5v bus
+	\item GND - 0v bus (via pull down resistor)
+\end{itemize}
+
+\subsection{Potentiometer (Interface)}
+The potentiometer uses the following pins:
+\begin{itemize}
+	\item Output - AN2 
+	\item V+ - 5v bus
+	\item GND - 0v bus
+\end{itemize}
+
+\subsection{Factory Switch}
+The Factory switch uses the following pins:
+\begin{itemize}
+	\item Output - RB2
+	\item V+ - 5v bus
+	\item GND - 0v bus (via pull down resistor)
+\end{itemize}
 
 \chapter{Power Bus}
 \subsection{Description}

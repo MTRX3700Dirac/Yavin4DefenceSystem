@@ -210,7 +210,7 @@ static void filler(char length) {
  *
  * Description: initialises the menu system so that it is fully operational
  *
- * Arguments: None
+ * Arguments: A pointer to the global tracking state
  *
  * Returns: None
  *************************************************************************/
