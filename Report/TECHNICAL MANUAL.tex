@@ -22,7 +22,7 @@ This document describes the design and development of the "Yavin IV Orbital Trac
 %A brief statement of the purpose of the system or subsystem to which this document applies.
 
 This document outlines a proposed and prototyped design in response to the Rebel Alliance Commander Rye's request for a defence system to combat the imminent threat posed by The Empire, and their Death Star weapons platform. This system is to effectively, efficiently and easily track a space-based planetary annihilator, approximately the size of a small moon.\newline
-The system described in this paper is the small scale prototype for stage one of implementation and testing prior to contract approval and large scale deployment. IV Defence System is designed to provide accurate, low cost tracking for Death Stars and other similar objects.
+The system described in this paper is the small scale prototype for stage one of implementation and testing prior to contract approval and large scale deployment. Yavin IV Defence System is designed to provide accurate, low cost tracking for Death Stars and other similar objects.
 
 \section{Document Overview}
 %A short “road map” of the document, to provide an orientation for the reader. Summarise the purpose and contents of this document.
@@ -895,8 +895,22 @@ See the Technical User Manual document for a full list of the public functions f
 \section{Module Requirements: LCD}
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
+%Describe each external input, including signal encoding and timing, message encoding and timing, protocols, file formats, protection against input errors, etc, as relevant.
+The LCD module requires three internal inputs written to operate effectively, a command (what operation is required to execute) or data, the command type (data or control instruction) and whether it is a read or write instruction. \newline
+This information is encoded in two control pins and eight data pins, Register Select, Read/Write and data. Once the instruction mode is determined, the command/data is decoded. The command set and its corresponding options are encoded with the most significant numbered bit determining the command, and the following bits are the particular settings altered.\newline
+These commands and data read/writes require specific understanding of the LCD and it's associated hardware, so for high level use and protection against input errors, two subroutines were written, a string write and a character write. The configuration settings were pre-configured and kept internal to the module to ensure no accidental changes could be made.
 
 \subsubsection{Processes}
+%Describe the internal signal transformations and/or computer processing functionality required within the module, required performance limits, and error tolerances as appropriate.
+The LCD module requires the following processes to function properly
+\begin{itemize}
+	\item Loop through a given string, writing individual characters
+	\item Appropriately increment the data address location for character display
+\end{itemize}
+\subsubsection{Outputs}
+%Describe outputs that must be produced for the module to function correctly, including timing, frequency, protocols, etc as relevant.
+The LCD system is an output device and is required to consistently and clearly display requested characters for the user. It must be able to display the characters/strings when user input calls them, and do so without noticeable delay or flicker. \newline
+The LCD is to display information on a 5x7 dot matrix, within a 2x16 limit.
 
 \subsubsection{Timing}
 %Any required timing or latency specifications that must be met.
@@ -1017,7 +1031,14 @@ This subroutine was created so that a user could display an entire string on the
 A local variable is set to the location of the initial write location. A loop is entered which sets the location on the screen to print the current character. The string pointer is incremented and the next character displayed. Finally a delay is initialised and the LCD cursor returned to the start of the line.
 
 \chapter{User Interface Design}
-<Give a detailed description of the design of the user interface. This will gave the reader a god view of how the system functions from the user's perspective.>
+%Give a detailed description of the design of the user interface. This will gave the reader a good view of how the system functions from the user's perspective.
+The Yavin IV ODS has three main user interface points, the remote terminal interface, the local user interface and finally the system housing.\newline
+The remote interface is implemented using 'Teraterm' PC terminal software. This point of contact allows the user to enter commands and receive return values via keyboard and screen. The user will view a menu-select style set of options, which allows for a very shallow learning curve. If any input which is not an available command is selected, a friendly error note is displayed indicating the issue to the user. \newline
+The remote interface also allows users to configure factory settings if the factory lock is disabled. Factory is only available in remote mode, as it allows for a more developed command system, and an overview of all options. \newline
+The local user interface is designed with ease of use and simplicity as it's primary function. The local system consists of an hand-held interface with one output LCD, two input buttons and one potentiometer select dial. This design was inspired by video game controllers which many users will feel comfortable and familiar with.\newline
+The button functionality includes "Up one level" on the left of the controller, and "Select" on the right, whilst the dial allows users to cycle through menu and value options. Having only three options ensures that users cannot encounter any input errors, as none are possible.\newline
+The system housing encases the important hardware for then system, and thus is completely inaccessible for the user. However, the user interacts with the housing to change the battery, turn on the system, enable factory mode, and connect serial. The battery is changed by opening a compartment on the side of the box, uncapping the battery and replacing it with a new one. The system is turned on by flicking the red switch atop the housing. Factory mode is enabled by inserting the (correct) key into the keyhole atop the box and turning, enabling the electrical connection. Finally, the serial connection is a simple RS-232 female header on the outside of the box.\newline
+
 
 \section{Classes of User}
 <If there are different user interfaces presented to different classes of users, define there user casses, and how access by the various user classes is enabled or disabled.
