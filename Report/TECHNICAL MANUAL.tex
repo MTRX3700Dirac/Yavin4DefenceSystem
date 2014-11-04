@@ -1176,6 +1176,11 @@ It is my opinion that pseudocode should contain essentially the function declara
 \section{Software Quality Assurance}
 Describe any measures that were taken to control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
 
+The code was designed and written to be as modular, and easy to implement and integrate as possible. This necessarily improves the quality as any errors, or unhanded exceptions become much clearer as the solution becomes simpler. In other words the very way we went about writing and integrating the software improved and helped ensure the software was of a high standard. \newline
+In addition we also drew up documents, such as the testing document into which everyone contributes. This document was designed as a running document which details which functions and functionality is working, what has been tested, by what vigour and methodology (in case someone finds a hole in the testing methodology), and when and by whom it was tested and validated. This document should at a glance communicate what has been completed and tested, what may be working and what is yet to be done. The core concept was that nothing went into the testing document unless it had been rigorously and assuredly been tested and verified, even if it were a trivial macro or something in one line. This ensured that everything in the testing document was absolutely working, and never had to be examined again, ensuring that once a function has been completed it is verified and never has to be touched again. This also allows a mechanism for the author of a function to write out a testing method for their function, even if they don't do the actual testing. \newline
+Another method we used to ensure quality was to begin by creating a working skeleton code framework of the entire code before starting to write any of the functionality. The entire time we were testing and writing code, even for individual systems, the rest of the code was simply not called. This ensured that the code as as whole built to start with, and was written incrementally, so it never stopped building. Thus our integration was simply putting all the function calls in, and working through run time errors. We had no real compiling or building errors due to integration at the end.\newline
+There were also other documents such as the state descriptions and module descriptions which gives a detailed holistic view of the entire system and how it all fits and works together.
+
 \section{Software Design Description}
 \subsection{Architecture}
 \subsubsection{System Overview}
@@ -1347,15 +1352,6 @@ This hazard carries a possible to likely likelihood, as the system has no sensor
 To reduce hazard we can put moving parts warning labels on the pan tilt, and recommend that users maintain some kind of distance from it. This could reduce the likelihood to possible to unlikely, giving an overall severity of low.
 
 \chapter{Conclusions}
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
-\caption[State Diagram]{System overview state diagram}
-\label{fig:OperationStateTransitionDiagram}
-\end{figure}
-
 
 
 \end{document}          
