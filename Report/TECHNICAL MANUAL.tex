@@ -54,6 +54,7 @@ The present document is prepared on the basis of the following reference documen
 		Acronym & Meaning \\ \hline \hline
 		OTS & Orbital Tracking System, the system under development \\ \hline
 		LCD & Liquid Crystal Display \\ \hline
+		ADC & Analogue-to-Digital Converter \\ \hline
 		Stuff & Meaning of Stuff \\
 		\hline
 	\end{tabular}
@@ -270,7 +271,7 @@ The Pan Tilt module must be capable of performing the following processes:
 \begin{itemize}
 	\item Storing the current direction\\PDM
 	\item Converting a given direction into a PDM
-	\item Continuously generating the control PDM to send to the servo's
+	\item Continuously generating the control PDM to send to the servo motors
 \end{itemize}
 
 \subsubsection{Outputs}
@@ -742,6 +743,49 @@ The tracking system itself made use of no dedicated hardware, it was simply a hi
 \subsubsection{Interface}
 Refer to the attached Module Descriptions document
 
+\section{Module Requirements: Local User Interface}
+\subsection{Functional Requirements}
+For a functioning local user interface, the following requirements must be met.
+\subsubsection{Inputs}
+\begin{itemize}
+	\item The user must be able to select options suitable to the system in an intuitive manner. This can be done using a potentiometer, encoder, or left/right buttons. This system uses a potentiometer which the user can rotate to choose an option.
+	\item The user must be able to confirm/select their input using a button on the device.
+	\item The user must be able to cancel and return from their selection using a button on the device.
+	\item The buttons must only trigger a signal once when pressed, and should not incorrectly return a signal. This can be done using a de-bouncing circuit and a pull-down resistor.
+\end{itemize}
+\subsubsection{Processes}
+The Local User Interface module must map the physical actions of the user to software outputs which the menu system can analyse and use. The necessary processes are:
+
+\begin{itemize}
+	\item Adding button presses to a circular buffer to be retrieved and handled by the menu system so that order is conserved.
+	\item Indicating when the buffer is empty, or contains an escape character. 
+	\item Process the potentiometer value from the microcontroller's ADC, and scale the value into discrete steps for a given number of steps.
+\end{itemize} 
+\subsubsection{Outputs}
+\begin{itemize}
+	\item The module must be able to indicate when a confirm or escape button is pressed.
+	\item The module must be able to indicate which button was pressed, and the order buttons are pressed.
+	\item The module must be able to output the converted value from the potentiometer. 
+	\item The hardware for the interface must also contain the physical LCD module and the circuitry needed to support it.
+\end{itemize}
+\subsubsection{Timing and Performance}
+The local interface must act immediately when a button is pressed by using an interrupt subroutine, so that user may press buttons as fast as they would like. Readings from the potentiometer must be performed at a fast enough pace so that the user does not notice an unresponsive system. This is usually on the order of approximately 10 samples per second.
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Interface}
+Aside from functional requirements, there are other requirements for the system to operate the best it can. In terms of hardware, the local user interface must be ergonomic and robust for the user to easily be able to handle the device. The system should also be adequately labelled so that any user can use the system without prior training. 
+
+The software interface must be intuitive, and be based upon the circular buffer module used above. 
+\subsubsection{Design Restraints}
+The local user interface must be constructed from available and moderately priced components. This is so that different prototypes of the user interface can be constructed cheaply, and in the future if a client is in need of repairs, the time and monetary cost of repairing the device is not expensive. 
+
+As per the other modules, the software for the local interface must be programmed in C and run on the PIC18F4520 microcontroller. Due to the size of this module, it is ideal that the module is lightweight and can be built upon the circular buffer module.
+
+\section{Conceptual Design: Local User Interface}
+\subsection{Hardware}
+\subsection{Software}
+
+
 \section{Module Requirements: Menu Subsystem}
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
@@ -841,7 +885,17 @@ This function simply allows the user to navigate up a level in the menu by setti
 \subsubsection{User inputs}
 Talk about why we use numbers, intToAscii, asciiToInt etc.
 
-User inputs were designed in a manner so that inputs from both the serial interface and the local interface could be handled in one place in the same way, to keep the user experience consistent and reduce memory load on the microcontroller, at the cost of a small amount of processing time. The local user interface's simple input design meant that input information was limited to two commands for confirming and returning, and a range of values on a potentiometer.
+User inputs were designed in a manner so that inputs from both the serial interface and the local interface could be handled in one place in the same way, to keep the user experience consistent and reduce memory load on the microcontroller, at the cost of a small amount of processing time. The local user interface's simple input design meant that input information was limited to two commands for confirming and returning, and a range of values on a potentiometer.The values from the potentiometer in the Local Interface module map a result to a number of discrete steps. These steps are then scaled to the appropriate values for this menu by passing in the total number of discrete states by the following formula:
+
+\begin{equation}
+NumberOfStates = (maxVal-minVal)/increment
+\end{equation}
+
+These discrete states are then scales back to the minimum and maximum numbers by:
+
+\begin{equation}
+Value = minVal + (increment * adcResult)
+\end{equation}
 
 To set up a similar system on the serial interface, the user controls were bound so that the enter key acted in the same way as the confirm button on the local interface, and similarly the escape key was mapped to the return button. These two keys were chosen as they are used often by computer programs for confirming and cancelling values that the user may want to enter, and are isolated from the input step for giving commands. 
 

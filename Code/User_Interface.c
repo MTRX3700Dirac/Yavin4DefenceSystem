@@ -102,10 +102,6 @@ void configUSER(void)
     INTCON2bits.INTEDG0 = 1;    // Interrupt on rising edge
     INTCONbits.INT0IE = 1;
 
-//    INTCON2bits.RBPU = 1;
-//    INTCON2bits.RBIP = 1;
-//    INTCONbits.RBIE = 1;
-
     // Enable INT1 interrupt
     INTCON3bits.INT1IP = 1;
     INTCON2bits.INTEDG1 = 1;    // Interrupt on rising edge
@@ -117,11 +113,14 @@ void configUSER(void)
  *
  * Include:
  *
- * Description: Read the position of the dial
+ * Description: Read the position of the dial by splitting the value
+ *              returned from the ADC into even discrete steps based on the
+ *              given argument. For instance, an input of 7 will return
+ *              a value from 0 to 7 based on the value found from the potentiometer
  *
- * Arguments: None
+ * Arguments: int max - The number of maximum state to split values into
  *
- * Returns: The dial position scaled by
+ * Returns: The dial position scaled by the maximum number
  *************************************************************************/
 unsigned int readDial(unsigned int max)
 {
@@ -141,9 +140,17 @@ unsigned int readDial(unsigned int max)
     return (value/divisor);
 }
 
-/*!
- * Returns a value from 1 to max
- */
+/*! **********************************************************************
+ * Function: readDialForMEnu(void)
+ *
+ * Include:
+ *
+ * Description: Read the position of the dial for Navigation menus. Currently unused.
+ *
+ * Arguments: None
+ *
+ * Returns: Returns a value from 1 to max used in Navigation menus
+ *************************************************************************/
 unsigned int readDialForMenu(unsigned int max)
 {
     return readDial(max -1 ) + 1;
