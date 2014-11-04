@@ -615,7 +615,7 @@ The primary assumption made in the temp module is that the system temperature wi
 The main constraint on the performance of the temperature module is the accuracy of the temperature sensor itself, which is only accurate to within half a degree Celcius.
 =======
 \subsection{Constraints on Temperature Sensor Performance}
-The main constraint on the performance of the temperature module is the accuracy of the temperature sensor itself, which is only accurate to within half a degree Celcius. 
+The main constraint on the performance of the temperature module is the accuracy of the temperature sensor itself, which is only accurate to within half a degree Celcius.
 >>>>>>> c5e3f30c68f2e932111abc759425a5cb4795eaba
 
 \subsection{Hardware}
@@ -755,11 +755,11 @@ As per the other modules, the software for the local interface must be programme
 
 \section{Conceptual Design: Local User Interface}
 \subsection{Hardware}
-The local interface design uses a potentiometer and two buttons to  act as the control scheme for the system. The two button approach had been a design choice since the early stages of the project, as having a confirm/select button and a cancel/return button is common on many systems, and is very intuitive. 
+The local interface design uses a potentiometer and two buttons to  act as the control scheme for the system. The two button approach had been a design choice since the early stages of the project, as having a confirm/select button and a cancel/return button is common on many systems, and is very intuitive.
 
-For selecting a value, multiple input peripherals were considered, such as a potentiometer, rotary encoder, and keypad. For the final selection, the potentiometer had been chosen as in the input device, as team members were more familiar with how to write software using one, where the encoder and keypad would require more time and energy invested into it to the same response. 
+For selecting a value, multiple input peripherals were considered, such as a potentiometer, rotary encoder, and keypad. For the final selection, the potentiometer had been chosen as in the input device, as team members were more familiar with how to write software using one, where the encoder and keypad would require more time and energy invested into it to the same response.
 
-The design for the local user interface hardware began initially with a one box approach, with the LCD and buttons placed near the servo motors. However, our second design included a controller based approach so that the user can freely operate the controls free from moving the sensors. Following this style of approach, we designed the enclosure to be hand-held like a controller, with the buttons and potentiometer being easily accessible to the user's thumbs. 
+The design for the local user interface hardware began initially with a one box approach, with the LCD and buttons placed near the servo motors. However, our second design included a controller based approach so that the user can freely operate the controls free from moving the sensors. Following this style of approach, we designed the enclosure to be hand-held like a controller, with the buttons and potentiometer being easily accessible to the user's thumbs.
 \subsection{Software}
 
 
@@ -1106,13 +1106,12 @@ The second power rail supplies power to the microcontroller, the servos, the inf
 
 All components are also bypassed with capacitors to avoid such effects, although the ultrasonic sensor called for additional measures.
 
-<<<<<<< HEAD
+
 The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and all hardware is encased in an insulating enclosure that is not designed to be opened easily by users. \newline
 The power supply to the sensors and other hardware was split up into two independent and regulated 5V power rails, one exclusively for the ultrasonic module. This was done to limit the large surge currents the ultrasonic sensor draws from interfering with the rest of the circuit. A large capacitor was added across the ultrasonic power lines to limit this surge current from being drawn from the battery and causing voltage spikes.\newline
 The second power rail supplies power to the microcontroller, the servos, the infrared and temperature sensors,as well as to the local user controller interface, as shown in figure 4.1.
-=======
-\label{PowerBusDiagram}
->>>>>>> c5e3f30c68f2e932111abc759425a5cb4795eaba
+
+
 
 \begin{figure}[h]
 \centering
@@ -1410,5 +1409,5 @@ To reduce hazard we can put moving parts warning labels on the pan tilt, and rec
 
 \end{document}
 =======
-\end{document}          
+\end{document}
 >>>>>>> fa05950ef2d76e85a60a3616a633932c85f8788f
