@@ -67,7 +67,7 @@ Created on 15 September 2014, 1:21 PM
 .PP
 Description:around 2 ms delay function for the proper delay added after specific commands.
 .PP
-Arguments: t -
+Arguments: t - delay time input
 .PP
 Returns: None 
 .SS "char lcdBusy (void)"
@@ -81,7 +81,7 @@ Description: check the busy flag(DB7) of the LCD,when 0, it means the LCD is not
 .PP
 Arguments: None
 .PP
-Returns: None Set data lines to input
+Returns: 1 or 0(current status of the LCD busy flag bit)
 .PP
 Set the enable low, ensure clock signal is low
 .PP
@@ -136,7 +136,7 @@ Include: \fBLCD\&.h\fP\&.
 .PP
 Description: the write enable function for LCD, send the data or commands to LCD and enable the LCD to do and write.
 .PP
-Arguments: byte - mode -
+Arguments: byte - the data or commands being sent. mode - the register selected(writing commands or characters)
 .PP
 Returns: None Set data lines to output
 .PP
@@ -157,7 +157,7 @@ Include: \fBLCD\&.h\fP
 .PP
 Description: write a single character to LCD on the specific location(which line and which column)
 .PP
-Arguments: byte - line - column -
+Arguments: byte - character written to LCD. line - line 1 or 2  column - column 1-16
 .PP
 Returns: NoneFeed character, line (1 or 2), and column(1-16) 
 .SS "void lcdWriteString (char *string, charline)"
