@@ -1,4 +1,4 @@
-\documentclass[]{report}
+\frac{•}{•}\documentclass[]{report}
 
 \usepackage{graphicx}
 \usepackage{bookmark}
@@ -756,7 +756,7 @@ For selecting a value, multiple input peripherals were considered, such as a pot
 
 The design for the local user interface hardware began initially with a one box approach, with the LCD and buttons placed near the servo motors. However, our second design included a controller based approach so that the user can freely operate the controls free from moving the sensors. Following this style of approach, we designed the enclosure to be hand-held like a controller, with the buttons and potentiometer being easily accessible to the user's thumbs. 
 \subsection{Software}
-
+The software model for the Local User interface is very similar to the serial module. As buttons are pressed, they get entered into a circular buffer and processed from the oldest button press to the newest. 
 
 \section{Module Requirements: Menu Subsystem}
 \subsection{Functional Requirements}
