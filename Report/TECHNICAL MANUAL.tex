@@ -754,11 +754,11 @@ For selecting a value, multiple input peripherals were considered, such as a pot
 
 The design for the local user interface hardware began initially with a one box approach, with the LCD and buttons placed near the servo motors. However, our second design included a controller based approach so that the user can freely operate the controls free from moving the sensors. Following this style of approach, we designed the enclosure to be hand-held like a controller, with the buttons and potentiometer being easily accessible to the user's thumbs.
 \subsection{Software}
-The software model for the Local User interface is very similar to the serial module. As buttons are pressed, they get entered into a circular buffer and processed from the oldest button press to the newest. When the escape button is pressed, a separate flag is raised so that the system can immediately return from it's current menu. 
+The software model for the Local User interface is very similar to the serial module. As buttons are pressed, they get entered into a circular buffer and processed from the oldest button press to the newest. When the escape button is pressed, a separate flag is raised so that the system can immediately return from it's current menu.
 
 A button press is indicated by using the external interrupts, which are connected to pins RB0 and RB1 on Port B, with a different interrupt for each button. These were set up to trigger on a rising edge of a new signal, and did not seem to have any bouncing issues, so a bouncing circuit was not necessary. A pull-down resistor was still added to make sure TTL logic levels were still achieved.
 
-For the potentiometer, a simple division algorithm was used to divide the ADC output from a number between 0 and 1023, to a number between 0 and a value dependant on each menu. This splits the input into a number of even sections to be used by the Menu System. 
+For the potentiometer, a simple division algorithm was used to divide the ADC output from a number between 0 and 1023, to a number between 0 and a value dependant on each menu. This splits the input into a number of even sections to be used by the Menu System.
 
 \section{Module Requirements: Menu Subsystem}
 \subsection{Functional Requirements}
@@ -1040,13 +1040,13 @@ The remote interface also allows users to configure factory settings if the fact
 The local user interface is designed with ease of use and simplicity as it's primary function. The local system consists of an hand-held interface with one output LCD, two input buttons and one potentiometer select dial. This design was inspired by video game controllers which many users will feel comfortable and familiar with.\newline
 The button functionality includes "Up one level" on the left of the controller, and "Select" on the right, whilst the dial allows users to cycle through menu and value options. Having only three options ensures that users cannot encounter any input errors, as none are possible.\newline
 The system housing encases the important hardware for then system, and thus is completely inaccessible for the user. However, the user interacts with the housing to change the battery, turn on the system, enable factory mode, and connect serial. The battery is changed by opening a compartment on the side of the box, uncapping the battery and replacing it with a new one. The system is turned on by flicking the red switch atop the housing. Factory mode is enabled by inserting the (correct) key into the keyhole atop the box and turning, enabling the electrical connection. Finally, the serial connection is a simple RS-232 female header on the outside of the box.\newline
-The entire system was tied together with Rebel Alliance style decals to aid in cohesion and user unity. 
+The entire system was tied together with Rebel Alliance style decals to aid in cohesion and user unity.
 
 \section{Classes of User}
 %If there are different user interfaces presented to different classes of users, define there user casses, and how access by the various user classes is enabled or disabled.
 There are two different types of users that this system caters for, end users, and technical users. An end user is the expected operator of the system and is reasoned to have no technical know-how. It is expected that this user will be able to interpret and use the system correctly the first time it is encountered. Due to this, when initialised, the system defaults to this class. \newline
 The second class of users are technical users. These are users who are expected to conduct testing, calibration and possible repairs to the system. This user is able to access the factory mode through a physical key switch which enables additional options on the remote interface. These additional options include calibration for the pan-tilt unit, ultrasound and infrared  ranging modules and the temperature sensor.
- 
+
 \section{Interface Design: End User}
 \subsection{User Inputs and Outputs}
 %Description of how the user presents inputs to the system, and how the system responds to those inputs. Include a description of how the user knows the state of the system.
@@ -1103,7 +1103,7 @@ The local user controller consists of an LCD display, 2 buttons and a potentiome
 \subsubsection{Power Source}
 
 The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and the entire thing is encased in an insulating enclosure that is not designed to be open-able by users. \newline
-\textbf{!!!Need to look up the power specifications for the regulators (e.g. max and min supply voltages) and include them here!!!}
+The voltage regulators used had a min/max voltage rating of 6V/20V from testing, which lay within our operating conditions.
 
 \subsubsection{Safety Features}
 Currently the prototype system does not make use of any type of internal fusing or circuit breaker functionality. Should the system be marketed as a commercial product such features would be essential.
@@ -1193,8 +1193,9 @@ The output hardware also consists of the serial port of both the PIC and the hos
 Describe any measures that were taken to control (improve) hardware quality and reliability - Heartbeats, brownout conditioning/resets, reset conditions, testing and validation, etc.
 
 \subsection{Hardware Validation}
-Details of any systematic testing to ensure that the hardware actually functions as intended
-
+It was important to test all hardware separately first before integration as this showed all components working correctly and gave a baseline for expected results so component issues could be isolated and debugged once integrated.\newline
+In order to confirm that the hardware was working as intended we used the datasheet information as detailed in the sections above to compare values we were receiving from each hardware with the expected results outlined in the datasheets. For example, the infrared sensor was validated by measuring 50cm with an accurate measuring tape and checking that the sensor reading was correct. If the sensor reported inaccurate readings, then a calibration offset was added to make future readings accurate. \newline
+More information including the results of working components can be found in the testing documentation within the appendix.\newline
 \subsection{Hardware Validation}
 Details of any systematic testing to ensure that the hardware actually functions as intended.
 
@@ -1432,7 +1433,7 @@ This hazard carries a possible to likely likelihood, as the system has no sensor
 To reduce hazard we can put moving parts warning labels on the pan tilt, and recommend that users maintain some kind of distance from it. This could reduce the likelihood to possible to unlikely, giving an overall severity of low.
 
 \chapter{Conclusions}
-In conclusion, the Yavin IV Defence System 
+In conclusion, the Yavin IV Defence System
 
 \chapter{Appendix}
 \begin{figure}
