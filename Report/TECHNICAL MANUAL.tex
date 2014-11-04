@@ -1132,6 +1132,38 @@ Currently the prototype system does not make use of any type of internal fusing 
 Description of computer hardware, including all interface circuitry to sensors, actuators, and I/O hardware.
 
 \subsubsection{Sensor Hardware}
+The system consists of three sensors.
+\subsubsubsection{Temperature (LM35)}
+The LM35 is a centigrade temperature sensor calibrated directly in Degrees Celsius. It’s also has a linear + 10 mV/°C scale factor. Only a basic configuration of the temperature sensor was used as we only need to measure between to +2°C to +150°C as shown in the figure below. We found that 0mv started at +2°C so we had to adjust the final calculations by -20mV offset to get accurate temperature readings.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/tempResponse"}
+\caption[LM35]{Temperature sensor linear response and wiring diagram}
+\label{fig:tempResponse}
+\end{figure}
+
+\subsubsubsection{IR [Distance Measuring] (GP2Y0A02YK0F)}
+The IR sensor used in this system is ideal for distance measuring between 20cm to 150cm. It has a non-linear analogue output that reflects the figure below. This show that if using a 10bit ADC at 5V Reference we would expect a decimal output value of around 512 for 20cm. We could use the below formula to calculate expected values for all points to compare when testing. \newline
+
+Decimal Value = (1024 / 5Vref) * (Output Voltage at given distance)
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/IRresponse"}
+\caption[LM35]{Infrared sensor response}
+\label{fig:IRresponse}
+\end{figure}
+
+\subsubsubsection{Ultrasonic (6500)}
+This sonar ranging sensor is able to measure distances from 0.15m to 10.67m with a typical 1% error.
+We used single-echo mode in our system as we were only tracking one object and therefore only need one echo output at a time. Basically the distance between to a target is measured by the time between INIT going high and ECHO going high as seen in the figure below. The signal travels at approximately 0.274 milliseconds per meter.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/ultrasonicResponse"}
+\caption[LM35]{Ultrasonic sensor response and timing diagram}
+\label{fig:ultrasonicResponse}
+\end{figure}
 
 \subsubsection{Actuator Hardware}
 
