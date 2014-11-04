@@ -610,7 +610,7 @@ The temperature module implements the following functionality:
 \subsection{Assumptions Made}
 The primary assumption made in the temp module is that the system temperature will not change very quickly, which means that the temperature does not need to be sampled each time the temperature value is used. Instead it simply uses a previously sampled value, and ressamples the temperature at semi regular intervals.
 
-\subsection{Constraints on Pan Tilt Performance}
+\subsection{Constraints on Temperature Sensor Performance}
 The main constraint on the performance of the temperature module is the accuracy of the temperature sensor itself, which is only accurate to within half a degree Celcius. 
 
 \subsection{Hardware}
@@ -1070,12 +1070,13 @@ The system is designed to run off a 9v battery, but can be powered from any 9v p
 Currently the prototype system does not make use of any type of internal fusing or circuit breaker functionality. Should the system be marketed as a commercial product such features would be essential.
 
 \subsubsection{Power Regulation}
-The internal system components run off a regulated 5v bus which can be supplied by any unregulated 9v supply as outlined above. The system contains two regulators so the ultrasonic sensor has its own regulated power supply to eliminate the 'heartbeat' effect on the voltage of the bus as the ultrasonic sensor draws very high current spikes. \newline
+The internal system components run off a regulated 5v bus which can be supplied by any unregulated 9v supply as outlined above. The system contains two regulators so the ultrasonic sensor has its own regulated power supply to eliminate the 'heartbeat' effect on the voltage of the bus as the ultrasonic sensor draws very high current spikes.  A large capacitor (1 milliFarad) was added across the ultrasonic power lines to limit this surge current \newline
+
+The second power rail supplies power to the microcontroller, the servos, the infrared and temperature sensors,as well as to the local user controller interface. This is shown in \ref{fig:PowerBusDiagram}
+
 All components are also bypassed with capacitors to avoid such effects, although the ultrasonic sensor called for additional measures.
 
-The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and all hardware is encased in an insulating enclosure that is not designed to be opened easily by users. \newline
-The power supply to the sensors and other hardware was split up into two independent and regulated 5V power rails, one exclusively for the ultrasonic module. This was done to limit the large surge currents the ultrasonic sensor draws from interfering with the rest of the circuit. A large capacitor was added across the ultrasonic power lines to limit this surge current from being drawn from the battery and causing voltage spikes.\newline
-The second power rail supplies power to the microcontroller, the servos, the infrared and temperature sensors,as well as to the local user controller interface. This is shown in \label{PowerBusDiagram}\newline
+\label{PowerBusDiagram}
 
 \begin{figure}
 \centering
