@@ -501,6 +501,27 @@ There is no public interface for the interrupt framework and nothing can call an
 \subsection{Description}
 The temperature module is responsible for sampling, storing and calibrating the temperature sensor, primarily for the ultrasonic range calculation and user output.
 
+<<<<<<< HEAD
+=======
+\subsection{Overall/Detailed Design}
+The system revolves around the temperature sampling. There is a static offset which is calculated from the calibration function and gets added to any sensor reading. The static variable in the temperature module (storing the last temperature sampled) gets updated every time the temperature is read. Calling the getTemp() function simply returns this value without sampling the temperature.
+
+\subsection{Implemented Functionality}
+The temperature module implements the following functionality:
+\begin{itemize}
+	\item Temperature reading
+	\item Calibrating temperature
+	\item Raw temperature
+	\item configure temp module
+\end{itemize}
+
+\subsection{Assumptions Made}
+The primary assumption made in the temp module is that the system temperature will not change very quickly, which means that the temperature does not need to be sampled each time the temperature value is used. Instead it simply uses a previously sampled value, and ressamples the temperature at semi regular intervals.
+
+\subsection{Constraints on Pan Tilt Performance}
+The main constraint on the performance of the temperature module is the accuracy of the temperature sensor itself, which is only accurate to within half a degree Celcius. 
+
+>>>>>>> f44c3c2a6cc7e54890e740b7da98990ebb2bfc95
 \subsection{Hardware}
 \subsubsection{Pin Assignments}
 
@@ -508,6 +529,54 @@ The temperature module is responsible for sampling, storing and calibrating the 
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
 
+<<<<<<< HEAD
+=======
+\subsubsection{Processes}
+The tracking module is required to perform the following processes:
+\begin{itemize}
+	\item Move the Pan Tilt module in a search pattern
+	\item Use sensor data to detect targets
+	\item Use algorithms and sensors to track moving targets
+\end{itemize}
+
+\subsubsection{Outputs}
+The tracking module is required to return the following outputs:
+\begin{itemize}
+	\item The target details (range, azimuth, elevation)
+	\item whether it still has a target
+	\item the next system state
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+In order to perform well (defined as accurate and reliable track) the system should have the following characteristics:
+\begin{itemize}
+	\item Quite fast tracing step
+	\item Fine adjustments when target is fixed
+	\item Coarse adjustments when target is unknown
+	\item Efficient tracking algorithm
+\end{itemize}
+
+\subsubsection{Interfaces}
+The system should have the following interface characteristics:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Conceptual Design: Tracking}
+\subsection{Description}
+The tracking module contains the high level tracking and search algorithms used by the system. It then uses the Pan Tilt and Range modules to enact these modules.
+
+\subsubsection{Overall Design}
+The searching algorithm uses a simple raster scan variant which scans the azimuthal range, then increments (or decrements) the elevation and scans back the other way. When the system detects any object with either the ultrasonic or the infra red then it enters the tracking mode. \newline
+The tracking mode uses a simple weighted average technique, where the system increments the pan tilt direction up, down, left and right of the know target, and averages the directions based on the returns it samples at each of those points. The result is the new target position.
+
+\subsubsection{Detailed Design}
+The Tracking module contains two primary functions: search and track. Each of these functions is 'incremental' in nature. This means a single call will perform a single 'step', and these functions are called continuously to perform a constant action. \newline
+The search algorithm is based on a simple raster like scan. The system simply increments sweeps the azimuth, incrementing the elevation each time it hits the max or min azimuth. If it gets to the limits of the elevation then it reverses the direction of its increment variable, making the system scan the other way. \newline
+As mentioned previously the tracking algorithm is a simple weighted average. The algorithm is highly configurable with surprising ease, but currently it is configured so as to take sampled above, below, to the left and to the right of the know target location. If the system gets an ultrasonic return (i.e. in the large ultrasonic cone) then it assigns a weighting of 1, adding that direction to the sum. If it returns an IR reading it multiplies the direction by 8, and adds it, no return has no weighting. Then it divides by the sum of the weights to get the new target location. \newline
+This means that if it is far from the target, then only 1 direction will get returns and the system will necessarily move toward the target. If it is almost on the target, then the preferential return of ultrasonic and/or IR samples to one side will serve to tune the know position.
+>>>>>>> f44c3c2a6cc7e54890e740b7da98990ebb2bfc95
 
 \section{Module Requirements: LCD}
 \subsection{Functional Requirements}
@@ -526,10 +595,112 @@ The LCD module requires the following processes to function properly
 	\item Appropriately increment the data address location for character display
 \end{itemize}
 
+<<<<<<< HEAD
 \subsubsection{Outputs}
 %Describe outputs that must be produced for the module to function correctly, including timing, frequency, protocols, etc as relevant.
 The LCD system is an output device and is required to consistently and clearly display requested characters for the user. It must be able to display the characters/strings when user input calls them, and do so without noticeable delay or flicker. \newline
 The LCD is to display information on a 5x7 dot matrix, within a 2x16 limit. 
+=======
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+The menu subsystem should have the following characteristics in order to operate efficiently:
+\begin{itemize}
+	\item The system should be able to quickly respond to user input and quickly display messages, so that the user does not view the system as unresponsive and broken. A response time of 100 milliseconds or less is desired. 
+	\item The serial interface for the user must be easy to understand and use commonly used keys or commands. 
+	\item The user should be able to intuitively know where options are, and how to navigate between different menus.
+	\item The menus should be aesthetically pleasing and consistent between menus. 
+\end{itemize}
+
+\subsubsection{Interfaces}
+The menu subsystem should have the following interface characteristics in order to operate efficiently:
+\begin{itemize}
+	\item The menu system must be able to access the functions from the Range and PanTilt modules which can access and change system variables, such as the maximum system range. 
+	\item Tracking data from the Tracking module should be easily available to the menu system so that it can display the data to the user.
+	\item Range data from the infra-red and ultrasound sensors should be easily available to be displayed in the "Show Raw Data" menu. 
+\end{itemize}
+
+\section{Conceptual Design: Menu Subsystem}
+\subsection{Description}
+The menu subsystem is responsible for coordinating all the user inputs and outputs, storing the current menu state, and all the system strings and prompts to send to the users. It also interfaces with the other modules to change system values and relay important information to the user. In essence, it turns the basic Hardware interface modules that are the serial and LCD modules and uses them to create the user interface to the entire system.
+
+\subsection{Overall Design}
+The menu system operates based on a handful of general functions that get called and do different things based on what the current menu is. Every cycle of the main program, the menu gets serviced, which involves the following events. First, there is a check for if the user has submitted any commands over serial for Remote/Factory users, or via the local interface for local users. If so, the input is read and converted to an integer, which is then used differently in each menu.
+
+The concept of the menu system revolves are instances of a menu object, which contain function pointers to other functions, so that a general function can be called from the main loop of the program. This was implemented after a menu system was created which used a series of long switch statements, however these were found to be expensive to the program memory, and hence the system was redesigned. 
+
+\subsection{Detailed Design}
+
+\subsubsection{Menu Objects}
+Each menu object contains a list of variables which is necessary for the menu to interact with the current system. These will be discussed below. 
+
+\paragraph{Menu ID:}
+Each menu is given an identification number which is unique to each menu. This is used to identify which menu the current menu is within switch statements, as the menu objects themselves canot be compared easily. 
+
+\paragraph{Serial Message:}
+Each menu contains a message to be displayed when the menu is first entered. These messages are often instructions to the user as to how to operate this specific module, and are often unique to each menu.
+
+\paragraph{LCD Title:}
+Each menu has a title, which is often within the 16 character limit on the LCD so that it can be used for both serial displays and LCD displays. 
+
+\paragraph{Minimum Value:}
+The minimum value integer represents the minimum input value that the user can enter for this menu. This is often 1 for menus which navigate to sub-menus, but is also acts as the lower bound for any menus which allow the user to change a system setting. 
+
+\paragraph{Maximum Value:}
+The maximum value integer represents the maximum input value that the user can enter for this menu. For menus which navigate to sub-menus, this value is the number of options the user has to navigate. This value also acts as the upper bound for any menus which allow the user to change a system setting. 
+
+\paragraph{Increment:}
+The increment value is used to indicate the value of the offset used when counting from the minimum value to the maximum value. This dictates how many possible states there are between the two boundary numbers. For a navigation menu, this is always 1. However for other options, especially for changing the range of the device, the increment value is quite large at 50 millimetres per division. This value is necessary for the local user interface as the potentiometer can only rotate within a fixed arc, so decreasing the number of possible states allows the user to sacrifice accuracy for being able to choose an approximate value in a much less finicky manner.
+
+\paragraph{Serial Display Function}
+This is a function pointer used to indicate which function should be called when the menu is entered via a serial command. There is a generic method which only prints the serial message variable from above, however other alternatives are created for displaying navigation menus with long lists of possible choices, and displaying messages for commands which set system variables, as the upper and lower bounds are also displayed, along with the setting's current value.
+
+\paragraph{LCD Display Function}
+Another function pointer, this time used to indicate how the menu is to display text on the second line of the LCD hardware, depending on the current position of the potentiometer. The user does not have to confirm their selection for this text to appear or change, but this function merely shows them what they may want to select. For instance, this is used to allow the user to cycle through sub-menu choices as they navigate the menu system. This function takes an integer representation as to what the potentiometer is currently pointing at, moved to within the bounds of the maximum and minimum values. 
+
+\paragraph{Confirm Function}
+The confirm function handles how the menu behaves once a user has selected the value they would like, whether by the serial interface or the local interface. These functions also take a numeric input of what the user has selected. These are broken down into two sets of functions. 
+
+The first is used when the user is trying to change a system setting. The function uses the menu's ID to call the corresponding function in another module, such as calling the "setMaxRange(int)" function from the Range module if the menu was for setting the maximum range. These are done using a switch statement, rather than using many very similar small functions, as the memory usage was approximately the same, and a switch statement assists in making code easier to read.   
+
+The second type of confirm function is for the navigation menus, which change the current menu depending on the user's input. The act of changing the menu changes a system variable internally, as well as clearing the serial display, and calling the Serial Display function so that the new menu is shown. Changing the menu also changes the message on the top level of the LCD. Using this method allows the menus to not be called directly from within each other, which reduces the load on the program stack, as the current menu finishes before the next menu is set.
+
+\paragraph{Return Function}
+This function simply allows the user to navigate up a level in the menu by setting the menu to whichever menu should be above it in the menu hierarchy. These functions are accessed by the user pressing the back key on the local interface, or the escape key (or the on-screen option) in the serial interface. These are hard coded so that one specific function always returns to each navigation menu, as having a general function passing in an argument did not seem to have a great effect on the system's memory usage. 
+
+\subsubsection{User inputs}
+Talk about why we use numbers, intToAscii, asciiToInt etc.
+
+User inputs were designed in a manner so that inputs from both the serial interface and the local interface could be handled in one place in the same way, to keep the user experience consistent and reduce memory load on the microcontroller, at the cost of a small amount of processing time. The local user interface's simple input design meant that input information was limited to two commands for confirming and returning, and a range of values on a potentiometer.
+
+To set up a similar system on the serial interface, the user controls were bound so that the enter key acted in the same way as the confirm button on the local interface, and similarly the escape key was mapped to the return button. These two keys were chosen as they are used often by computer programs for confirming and cancelling values that the user may want to enter, and are isolated from the input step for giving commands. 
+
+The user must be able to enter commands to be confirmed, and this is achieved on the local interface by turning the potentiometer to receive an integer value. This could not be done on the serial interface, so instead a numbered list is presented to the user upon entering a menu. This serves three purposes: the user can easily see exactly which commands are available to them from the current menu, the user does not need to memorise text commands to user the system, and finally ASCII number input is straight forward to convert into the integer value that the menus are expecting. 
+
+To convert to and from integers to ASCII character strings, a custom function was written to handle user input, and the itoa and sprintf functions from the c library were used to form the string equivalent of the number. The created function separates the user input into each digit, checks for a negative sign, then multiplies each digit by the corresponding power of ten to sum to the same number in the integer format.
+
+\subsubsection{Error Handling}
+Most errors in the user interface stem from the user inputting the incorrect value into the system. This can only happen in the serial interface, as the local interface input is already constricted to correct values. To handle incorrect user input, the user is first instructed as to how to correctly give the input over the system, and if an incorrect number is entered, an error message is displayed asking the user to input a number within the minimum and maximum values for that menu. This error case also handles any non-numeric input received, as this is detected during the input parsing step. 
+
+\subsubsection{Factory Mode}
+Factory mode functions were added to their appropriate navigation menus once the user had switched to factory mode. The user interface only showed these settings and allowed these settings to be selectable when in factory mode. Switching between factory mode and remote user mode was performed by inserting and turning a key into the device. This process was set to always bring the user back to the main menu, as it firstly reset the system and refreshed the interface to show the user the new options, but also  did not allow the user to switch out of factory mode whilst in a factory setting, which would have unexpected side effects.
+
+\subsection{Assumptions}
+The menu module assumes that the lower level modules are functioning correctly, especially the Serial and Local User Interface modules. If these modules do not function as designed, the menu would not be able to interact with the user as intended, as the side effects of a user's command would be unknown. 
+
+Secondly, the menu system also assumes that the hardware is connected properly. In Remote mode, it is assumed that a RS-232 cample is connected to the system, and to a computer running a terminal program with a serial transmission rate of 9600 bites per second. In Local mode, it is under the assumption that the local interface controller is connected and not damaged. 
+
+\subsection{Constraints On the Menu Subsystem}
+As mentioned in the assumptions section above, as the Menu system is the highest level of abstraction for the user, if any module beneath it does not operate correctly, the menu system would also not perform as expected, as the user would attempt to control the system via the menu, and another action would be taken.
+
+\subsection{Interface}
+See the Technical User Manual document for a full list of the public functions from this module.
+
+\section{Module Requirements: LCD}
+\subsection{Functional Requirements}
+\subsubsection{Inputs}
+
+\subsubsection{Processes}
+>>>>>>> f44c3c2a6cc7e54890e740b7da98990ebb2bfc95
 
 \subsubsection{Timing}
 %Any required timing or latency specifications that must be met.
@@ -662,6 +833,38 @@ A local variable is set to the location of the initial write location. A loop is
 \subsection{Input Validation and Error Trapping}
 <Describe how the system validates user input, and how operator errors are trapped and can be recovered from>
 
+<<<<<<< HEAD
+=======
+\section{Menu Design}
+\subsection{Menu Structure}
+Different menu structures were considered for interfacing with the user over a serial connection and via the local interface's LCD screen. Early in product design, we had reached the idea of using a potentiometer or encoder with buttons as the method of user input when not using serial. We had also decided that it was best to share a menu system between the remote and local user modes to keep the system consistent, which helps the user feel lees confused or jarred when switching between user modes. 
+
+
+From these requirements, the menu could have either been designed and implemented in a tiered system with sub-menus to navigate between, or as a large cyclic menu. Due to the limited rotation of a potentiometer, the large cyclic menu concept was rejected, as each option would only have a few degrees of potentiometer rotation, which would make the ability to choose a specific option difficult. A tiered system was chosen for both the local and remote user interfaces. However, concepts from the cyclic design were used for choosing options from within a sub-menu using the potentiometer, as it was more feasible with a limited number of choices per sub-menu. 
+
+
+The next design decision came in how the functions of the system were to be broken up into sub-menus. Possible choices included splitting the functionality between an Autonomous Tracking sub-menu which displayed possible relevant menu options, and Manual Tracking which allowed the user to go to specific azimuth and elevation angles. Another option involved splitting the system menus into Autonomous Tracking, which just showed the user the current range and angles, then spilt the remaining functions based on their areas, such as user functions focused around changing the options to do with the azimuth angle, elevation angle, and range. This was the final design used, as it was more intuitive as to how to find the option that a user specifically wanted. However, this meant that navigating between options in different sub-menus took more time, such as switching between the "Go To Azimuth" and "Go To Elevation" functions meant that the user needed to navigate through 3 sub-menus.
+
+
+The final decision in menu structure decision that had to be made was where to include the factory options if the system was put into Factory mode. Either all the factory settings could have their own sub-menu which only appeared when Factory mode was entered, or the factory settings could be placed within their relevant menus, such as placing the "Calibrate Azimuth" function inside the azimuth menu. The final descision was made to place the factory settings in their corresponding menus for consistency, as all possible settings to do with one area of the system should consistently be under the same menu. The downside to this choice is again that navigating between different factory settings takes longer than the alternative, and that the factory settings are not easily identified in one location. 
+
+
+The final menu structure can be seen in \ref{fig:MenuStructureDiagram}.
+
+\subsection{Menu Appearance}
+Due to the limited display capabilities of the LCD hardware being used in the system, an intuitive design had to be constructed to convey information to a local user. The LCD module has the ability to write 16 characters to two lines independently. With this, the local user interface was designed so that the top row of the LCD always shows the user their current menu, such as "Azimuth Options" or "Set max range". This allows the second line of the display to be used to show the changes that the user is making, such as displaying sub-menu titles as the user scrolls through potential choices. 
+
+The serial interface is less limited by physical constraints, but was also important to design carefully. A similar style of approach was used; the user must always be shown their current location, along with all the possible options that they can take. This is simpler on the serial interface as many options can be displayed at once, so all correct serial inputs are shown for navigation menus, whilst ranges and current values are displayed in functions which change system settings. This allows to the user to more easily make correct choices as to how to interact with the system, and lets the user easily view their current settings. 
+
+For the physical appearance of the menu itself in the user's terminal program, the menu itself will always appear in the top left of the program's window. This is done by using a generic clear display command which is common to many terminal programs. This was chosen to reduce the possibility of the serial display looking incorrect in terminal programs other than TeraTerm, in which the serial display was tested, as the program will automatically clear whatever was written previously. 
+
+Each menu is framed by a filler character, the plus sign "+". This is done to easily bring attention to the current menu's title, and separate the user input section of the terminal from the printed messages. The menu title and other menu messages are all printed indented to the centre left of the terminal. This is again so that other terminal programs will be more likely to display the user interface correctly, on the small chance that some of the leftmost display is unreadable or not as aesthetically pleasing.  
+
+An example of a serial menu can be seen in \ref{fig:MenuSerialInterface}.
+
+Finally, the certain functional menus such as the "Autonomous Tracking" menu and the "View Raw Range" menu must be able to refresh the menu as new data is collected. This was performed using another general terminal command, this time to clear the current line. This allowed for data to be constantly overwritten, so that the user is not flooded with tracking data.
+
+>>>>>>> f44c3c2a6cc7e54890e740b7da98990ebb2bfc95
 \chapter{Hardware Design}
 <Give a detailed description of the design of hardware. The description should include mechanical drawings, location diagrams, electrical circuit schematics, circuit simulation or test results, PCB overlays, wiring diagrams, connector pin-out lists, pneumatic/hydraulic circuit diagrams>
 
@@ -671,6 +874,7 @@ Statement of what is, and what is not, being designed and described here.
 \section{Hardware Design}
 \subsection{Power Supply}
 \subsubsection{Power Source}
+<<<<<<< HEAD
 The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and the entire thing is encased in an insulating enclosure that is not designed to be open-able by users. \newline
 \textbf{!!!Need to look up the power specifications for the regulators (e.g. max and min supply voltages) and include them here!!!}
 
@@ -681,6 +885,21 @@ Currently the prototype system does not make use of any type of internal fusing 
 The internal system components run off a regulated 5v bus which can be supplied by any unregulated 9v supply as outlined above. The system contains two regulators so the ultrasonic sensor has its own regulated power supply to eliminate the 'heartbeat' effect on the voltage of the bus as the ultrasonic sensor draws very high current spikes. \newline
 All components are also bypassed with capacitors to avoid such effects, although the ultrasonic sensor called for additional measures.
 
+=======
+The system is designed to run off a 9v battery, but can be powered from any 9v power supply rated for 3A. The system is battery operated, and thus does not facilitate any protective earth. There are also no conductive exposed surfaces and all hardware is encased in an insulating enclosure that is not designed to be opened easily by users. \newline
+The power supply to the sensors and other hardware was split up into two independent and regulated 5V power rails, one exclusively for the ultrasonic module. This was done to limit the large surge currents the ultrasonic sensor draws from interfering with the rest of the circuit. A large capacitor was added across the ultrasonic power lines to limit this surge current from being drawn from the battery and causing voltage spikes.\newline
+The second power rail supplies power to the microcontroller, the servos, the infrared and temperature sensors,as well as to the local user controller interface. This is shown in \label{PowerBusDiagram}\newline
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/PowerCircuit"}
+\caption[State Diagram]{Power circuit schematic on veroboard/stripboard}
+\label{fig:PowerBusDiagram}
+\end{figure}
+
+\subsubsection{Safety Features}
+Currently the prototype system does not make use of any type of internal fusing or circuit breaker functionality. Should the system be marketed as a commercial product such features would be essential.
+>>>>>>> f44c3c2a6cc7e54890e740b7da98990ebb2bfc95
 
 \subsection{Computer Design}
 Description of computer hardware, including all interface circuitry to sensors, actuators, and I/O hardware.
@@ -692,6 +911,20 @@ Description of computer hardware, including all interface circuitry to sensors, 
 \subsubsection{Operator Input Hardware}
 
 \subsubsection{Operator Output Hardware}
+<<<<<<< HEAD
+=======
+The output hardware for the operator to see consists of an LCD screen mounted on the local user controller. Pins on the LCD are as follows (also available in the LCD conceptual design section):
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/LcdPins"}
+\caption[LCDPinDiagram]{The two LCD pins labelled LCD- an LCD+ are backlight pins, and were not implemented.}
+\label{fig:LCDPinDiagram}
+\end{figure}
+
+The output hardware also consists of the serial port of both the PIC and the host computer, through the use of a RS-232 standard serial connection.
+
+>>>>>>> f44c3c2a6cc7e54890e740b7da98990ebb2bfc95
 
 \subsubsection{Hardware Quality assurance}
 Describe any measures that were taken to control (improve) hardware quality and reliability - Heartbeats, brownout conditioning/resets, reset conditions, testing and validation, etc.
@@ -757,6 +990,7 @@ Personally I found there to be few dependencies throughout the project; while it
 \subsubsection{Pseudocode (PDL)}
 It is my opinion that pseudocode should contain essentially the function declarations and the comment blocks of the functions, describing in an algorithmic manner the way that the function should operate without going into language specifics. For this reason we thought the skeleton code, and comment blocks that were written with the skeleton code, in addition to the module descriptions document adequate in lieu of dedicated pseudocode. If the solution was more complex algorithmically pseudocode would definitely have been warranted, but as it was, most of the code was simply interfacing with hardware, and the only modules that could really warrant pseudocode at all would be the tracking and menusystem modules. We had very few algorithmic related issues, but again, were the solution more complex we would have made use of pseudocode.
 
+<<<<<<< HEAD
 \subsection{Software Quality Assurance}
 Describe any measures that were taken t control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
 
@@ -767,6 +1001,58 @@ In this section, you can put state transition diagrams, sequence diagrams, etc.
 
 \subsubsection{Software Interface}
 Describe the public interface of each software module
+=======
+\section{Software Quality Assurance}
+Describe any measures that were taken to control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
+
+\section{Software Design Description}
+\subsection{Architecture}
+\subsubsection{System Overview}
+The system at its highest level is as basic state machine. Fig. \ref{fig:OperationStateTransitionDiagram} shows the states and transitions in the final version. The attached State descriptions document describes in great detail all the states and transitions as they were designed at the beginning of the project. Some of these states have changed since the document was written, but much of the basic concept is the same.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{"../Diagrams/Operation State Transition Diagram"}
+	\caption[State Diagram]{System overview state diagram}
+	\label{fig:OperationStateTransitionDiagram}
+\end{figure}
+
+Much of the code is functionality around hardware interfaces, most of which is self explanatory, or accessible through the datasheet. Here we will discuss some of the higher level software modules such as the search, tracking and menus.
+
+\subsubsection{Tracking}
+The tracking algorithm is really the heart of the specification; to design and build a death star tracker. Despite this there is alot of functionality that must be in place before the module is operational. Here only the high level tracking algorithm is discussed. \newline
+Fig. \ref{fig:TrackingStateDiagram} shows the original concept for tracking the moving targets. The basic concept was that the system would start somewhere on the target (after having detected it) and then move outward in each direction (up, down, left and right) until it found the edge, and would return to the centre, and begin again. The problem we found with the original design was that it was not detecting the edges well, or if it hit the maximum azimuth before it got to the edge then it would simply keep going. We also found that if the target was moving in the opposite direction to the edge it was trying to track it would easily loose the target. \newline
+Working from this design I implemented a new concept where discrete, fixed points are sampled and the results are used to create a weighted average of the positions, giving the next target location. This is shown in Fig. \ref{fig:TrackingStateTransitionDiagram}. \newline
+These algorithms are also incremental in nature; they perform a single weighted average and return execution back to the main program, telling it which state to go to next. This may seem less efficient than staying in the tracking algorithm while ever it has a track, but when we are waiting for such periods for the servos to move, and the ultrasonic to return there is no comparative loss of efficiency. It also means that the program is able to do other things such as service the menus while it is searching and tracking, and it lessens the chance of getting stuck in sub-functions. This design also facilitates the implementation of a watch dog timer.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Tracking State Diagram"}
+\caption{State Transition Diagram depicting the Original Idea for the tracking algorithm}
+\label{fig:TrackingStateDiagram}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Tracking State Transition Diagram"}
+\caption{State Transition Diagram depicting the final tracking algorithm}
+\label{fig:TrackingStateTransitionDiagram}
+\end{figure}
+
+\subsubsection{Searching}
+Fig. \ref{fig:SearchingStateTransitionDiagram} depicts the operation of the searching algorithm. The concept is very simple: the system scans the azimuth until it reaches the maximum and minimum azimuth (user defined), and then increments the elevation. The increments for the azimuth and elevation are stored as variables, so their magnitude can be changed at any time, and it means that they are simply negated when the system reaches a maximum value, again as shown in Fig. \ref{fig:SearchingStateTransitionDiagram}. This algorithm is incremental, so it does a single pan tilt movement in the correct direction, checks the target and returns the next system state. If the system detects a target this next system state will be the tracking state, otherwise it will remain in the searching state. In this way the searching function acts as the 'state functions' described in the system design process. \newline
+Among the benefits of this system is that execution is continuously returned to the primary loop, which lowers the chance of nested infinite loops and getting stuck in sub-functions, but it also means that we are able to implement a watch dog timer simply by clearing it every loop iteration. Thus if for whatever reason the execution does not complete a loop in a few seconds or so, the entire system resets.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Searching State Transition Diagram"}
+\caption{State Transition Diagram of the searching algorithm}
+\label{fig:SearchingStateTransitionDiagram}
+\end{figure}
+
+
+\subsubsection{Menus}
+>>>>>>> f44c3c2a6cc7e54890e740b7da98990ebb2bfc95
 
 \subsubsection{Software Components}
 This is a detailed view of the internal workings of each of the software modules
@@ -783,15 +1069,36 @@ Describe any preconditions that must be satisfied before the system can be stopp
 Give the results of testing conducted to determine the characteristics and performance of the system - memory usage, loop time, system accuracy, repeatabability, ease of use, etc.
 
 \section{State of the System as Delivered}
-A statement of your group's opinion of the conformance of the system with the specification.
+
+Over the period of development, a majority of the system modules met their required functional and non-functional requirements. The  PanTilt and Range modules performed as designed once calibrated, which allowed the tracking module to accurately track the model Death Star from ranges between 30 centimetres to 2.5 metres. The tracking algorithm performed at a rate exceeding the requirement of the target travelling at 10 centimetres per second.
+
+The system hardware and user interface was constructed and put together with a custom faceplate to improve the aesthetic design of the device, which made the device appear much more presentable and professional. The user interface over both serial and the LCD were refined and easy to understand, and was praised for it's effectiveness. 
+
+At the end of development, a watchdog timer was implemented but not adequately tested, which caused a major serial communications issue to occur during the product demonstration from a last-minute change in values. The watchdog timer successfully reset the program when it crashed, however it would also cause the program to crash whenever a user had the ability to change system settings. This was a major issue, as the code to change system variables was correct and working, the demonstrator was not able to do so due to the program halting. This was the largest issue with the presentation of the system, as multiple requirements could not be demonstrated. These changes to the watchdog timer should not have been included with the demonstration version of the program as they were not thoroughly tested, and a more stable build would be presented in the future.  
+
+Although the hardware for the local interface and software for the interface was most likely correct, an adequate amount of integration testing had not been completed, so these systems were disconnected upon system demonstration as to not affect each other. From this, we were not able to demonstrate switching between remote and local user modes, but could show the ability to switch to factory mode using the key switch, which worked as expected. 
 
 \section{Future Improvements}
-Present a prioritised list of improvements to be made in future releases, giving reasons for the improvement and priority rank
+The system could be improved in many ways if the project had a longer deadline or if future work is allowed. The following is a list of prioritised work that could be completed based on the current design of the system. 
+
+\begin{itemize}
+\item \textbf{Improve and fix the watchdog timer:} The watchdog timer change to the code could be fixed so that it does not interfere with the serial communications as it did in the demonstration. This is the most important fix which would need to be done, as most of the serial user interface did not function due to the watchdog timer, and having the ability to provide to both the remote user and factory user is of the utmost importance. 
+
+\item \textbf{Integrate Local Interface:} Some further testing would need to be performed so that the local interface software could be integrated correctly. This is also a large requirement of the system, and is prioritised as such.
+
+\item \textbf{Add additional factory menus:} Some factory settings were developed as part of the appropriate module but did not have a user menu dedicated to them, such as the ability to calibrate the servo motors. This would satisfy more of the requirements quickly and easily fits into the current menu system.\
+
+\item \textbf{Fix serial communications issues:} On occasion, the serial interface would display an incorrect character or shorten messages. The user input would also occasionally be received or parsed incorrectly. These issues were investigated over the course of development, but more time could be invested so that the user feels as if the product has a high level of quality. 
+
+
+\item \textbf{Integrate the EEPROM module:} An EEPROM module was written and tested, but was not integrated into the system due to time constraints. Adding this into the system would allow the user to save system variables regardless of if the device was powered down. This is a quality of life improvement for the user, and is hence not a top priority. 
+\end{itemize}
 
 \chapter{Safety Implications}
-Must identify foreseeable safety hazards associated with the equipment and then assess and control th identified risks - By law (NSW Occupational Health and Safety Act 2000)
+This section outlines identified hazards associated with operating this system, their likelihood, consequences and overall severity. It then details measures taken to reduce the severity of all hazards to an acceptably low level.
 
 \section{Hazard Risk Table}
+Table \ref{RiskMatrixTable} shows the risk associated with different hazards based on the likelihood and severity of the injury. In general practise a low risk is considered acceptable, whereas anything higher should be addressed with safety measures to reduce both the likelihood and severity of the possible injury.
 
 \begin{table}[h]
 	\begin{tabular}{|l|lllll}
@@ -806,6 +1113,60 @@ Must identify foreseeable safety hazards associated with the equipment and then 
 	\end{tabular}
 	\label{RiskMatrixTable}
 \end{table}
+
+\section{Identified Hazards}
+Below is a list of hazards identified for the product, their associated risk, and measures taken to reduce the risk.
+
+
+\subsection{Cut Hazard}
+\subsubsection{Description}
+There is a hazard that someone could cut themselves on one of the edges of the product, or poke their eye on one of the corners etc.
+
+\subsubsection{Risk}
+This hazard has a Possible to likely likelihood, and a minor consequence. This gives the hazard a risk factor of Medium.
+
+\subsubsection{Hazard Reduction Techniques}
+To reduce the likelihood of this hazard we recommend that it is kept away from small children, and used professionally, which could reduce the likelihood of this type of injury to Possible. We also smooth all the sharp edges and corners to reduce the consequence to insignificant. This reduces the severity of the hazard to an acceptably low standard.
+
+\subsection{Drop hazard}
+\subsubsection{Description}
+There is a hazard associated with people dropping the product, if it lands on them, or someone else, or breaks and produces dangerous shards etc.
+
+\subsubsection{Risk}
+This hazard has a Possible to unlikely likelihood, and a minor consequence (as the system is not particularly heavy). Thus it carries a Medium to low severity.
+
+\subsubsection{Hazard Reduction Techniques}
+To reduce the likelihood of this hazard we have ensured that the product does not contain any materials that may shatter or splinter during a typical drop scenario. We can also recommend that the product is installed (fixed down) or handled carefully to reduce the likelihood to unlikely. We have also ensured that the product is reasonably light such as to not injure someone by dropping it on someone, so it carries a minor to insignificant consequence. Thus the hazard risk is reduced to an acceptably low level.
+
+\subsection{Shock hazard}
+\subsubsection{Description}
+This hazard is separated from the electrocution hazard as it is a much more likely, but more insignificant effect. Such a shock hazard could include touching the ultrasonic sensor during operation, and getting a shock, while the electricity does really pass through you.
+
+\subsubsection{Risk}
+This hazard carries a likely to almost certain risk if being used by children or curious casual users. This hazard carries no real risk of any kind of injury, but typically more of an unpleasant shock unless amplified by some kind of conductor. Thus the hazard carries an insignificant consequence, giving a severity of medium.
+
+\subsubsection{Hazard Reduction}
+To reduce the likelihood of this hazard we can place warning labels on the ultrasonic sensor, and box, again recommend it be kept away from small children, and that aeronautical engineers should operate it under the supervision of an adult. This could reduce the likelihood of the hazard to possible to unlikely, and reducing the severity to low.
+
+\subsection{Electrocution hazard}
+\subsubsection{Description}
+There is always an electrocution risk associated with any electrical product, especially one drawing high amperage. This product however is typically battery powered and thus there is no active terminal that will flow to ground.
+
+\subsubsection{Risk}
+This hazard has a likelihood of rare, and a consequence of moderate to major. This gives a severity of medium.
+
+\subsubsection{Hazard Reduction}
+To reduce the hazard we have completely concealed the electrical components and wires in an insulating container that is not designed to be opened by a typical user. We have also used insulating wires and electrical tape to conceal connections. The product is typically battery operated, which significantly reduces the risk, and while it does not have any inbuilt fuses, circuit breakers or grounds, should it be powered from an external source (by an experienced user) it is assumed that such a source have its own safety features. Thus the consequence can be reduced to minor (possibly moderate if using an external power supply) which reduces the severity to low (possibly low to moderate with an external power supply).
+
+\subsection{Collision Hazard}
+\subsubsection{Description}
+As the system has moving parts there is a risk that it will collide with something or someone during operation.
+
+\subsubsection{Risk}
+This hazard carries a possible to likely likelihood, as the system has no sensors or safeguards to prevent such collisions. As the system is using low torque (~0.1N.m) servo's, and the system itself is quite light (e.g. would probably just turn the box) this has an insignificant consequence. This gives a low to medium severity.
+
+\subsubsection{Hazard Reduction}
+To reduce hazard we can put moving parts warning labels on the pan tilt, and recommend that users maintain some kind of distance from it. This could reduce the likelihood to possible to unlikely, giving an overall severity of low.
 
 \chapter{Conclusions}
 
