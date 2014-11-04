@@ -63,7 +63,6 @@ The present document is prepared on the basis of the following reference documen
 This section is intended to give a general overview of the basis for the Yavin IV Defence System system design, of its division into hardware and software modules, and of its development and implementation.
 
 \section{Introduction}
-
 %Give a technical description of the function of the whole system, in terms of its constituent parts, here termed modules. Generally, a module will have hardware and software parts.
 
 The Yavin IV Orbital Tracking System's primary function is to track the Empire's Death Star system in real-time.
@@ -644,7 +643,7 @@ The temperature module implements the following functionality:
 The primary assumption made in the temp module is that the system temperature will not change very quickly, which means that the temperature does not need to be sampled each time the temperature value is used. Instead it simply uses a previously sampled value, and ressamples the temperature at semi regular intervals.
 
 \subsection{Constraints on Pan Tilt Performance}
-The main constraint on the performance of the temperature module is the accuracy of the 
+The main constraint on the performance of the temperature module is the accuracy of the temperature sensor itself, which is only accurate to within half a degree Celcius. 
 
 \subsection{Hardware}
 The temperature module makes use of the following hardware:
@@ -1038,6 +1037,17 @@ Description of computer hardware, including all interface circuitry to sensors, 
 \subsubsection{Operator Input Hardware}
 
 \subsubsection{Operator Output Hardware}
+The output hardware for the operator to see consists of an LCD screen mounted on the local user controller. Pins on the LCD are as follows (also available in the LCD conceptual design section):
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/LcdPins"}
+\caption[LCDPinDiagram]{The two LCD pins labelled LCD- an LCD+ are backlight pins, and were not implemented.}
+\label{fig:LCDPinDiagram}
+\end{figure}
+
+The output hardware also consists of the serial port of both the PIC and the host computer, through the use of a RS-232 standard serial connection.
+
 
 \subsubsection{Hardware Quality assurance}
 Describe any measures that were taken to control (improve) hardware quality and reliability - Heartbeats, brownout conditioning/resets, reset conditions, testing and validation, etc.
@@ -1104,7 +1114,7 @@ Personally I found there to be few dependencies throughout the project; while it
 It is my opinion that pseudocode should contain essentially the function declarations and the comment blocks of the functions, describing in an algorithmic manner the way that the function should operate without going into language specifics. For this reason we thought the skeleton code, and comment blocks that were written with the skeleton code, in addition to the module descriptions document adequate in lieu of dedicated pseudocode. If the solution was more complex algorithmically pseudocode would definitely have been warranted, but as it was, most of the code was simply interfacing with hardware, and the only modules that could really warrant pseudocode at all would be the tracking and menusystem modules. We had very few algorithmic related issues, but again, were the solution more complex we would have made use of pseudocode.
 
 \section{Software Quality Assurance}
-Describe any measures that were taken t control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
+Describe any measures that were taken to control (improve) the software quality - code or documentation standards, code walkthroughs, testing and validation, etc.
 
 \section{Software Design Description}
 \subsection{Architecture}
@@ -1121,8 +1131,10 @@ The system at its highest level is as basic state machine. Fig. \ref{fig:Operati
 Much of the code is functionality around hardware interfaces, most of which is self explanatory, or accessible through the datasheet. Here we will discuss some of the higher level software modules such as the search, tracking and menus.
 
 \subsubsection{Tracking}
-The tracking algorithm is really the heart of the specification - to design and build a death star tracker. Despite this there is alot of functionality that must be in place before the module is operational. Here only the high level tracking algorithm is discussed. \newline
-Fig. \ref{fig:TrackingStateDiagram} shows the original concept for tracking the moving targets. The basic concept was that the system would start somewhere on the target (after having detected it) and then move outward in each direction (up, down, left and right) until it found the edge, and would return to the centre, and begin again. The problem we found with that 
+The tracking algorithm is really the heart of the specification; to design and build a death star tracker. Despite this there is alot of functionality that must be in place before the module is operational. Here only the high level tracking algorithm is discussed. \newline
+Fig. \ref{fig:TrackingStateDiagram} shows the original concept for tracking the moving targets. The basic concept was that the system would start somewhere on the target (after having detected it) and then move outward in each direction (up, down, left and right) until it found the edge, and would return to the centre, and begin again. The problem we found with the original design was that it was not detecting the edges well, or if it hit the maximum azimuth before it got to the edge then it would simply keep going. We also found that if the target was moving in the opposite direction to the edge it was trying to track it would easily loose the target. \newline
+Working from this design I implemented a new concept where discrete, fixed points are sampled and the results are used to create a weighted average of the positions, giving the next target location. This is shown in Fig. \ref{fig:TrackingStateTransitionDiagram}. \newline
+These algorithms are also incremental in nature; they perform a single weighted average and return execution back to the main program, telling it which state to go to next. This may seem less efficient than staying in the tracking algorithm while ever it has a track, but when we are waiting for such periods for the servos to move, and the ultrasonic to return there is no comparative loss of efficiency. It also means that the program is able to do other things such as service the menus while it is searching and tracking, and it lessens the chance of getting stuck in sub-functions. This design also facilitates the implementation of a watch dog timer.
 
 \begin{figure}
 \centering
@@ -1139,6 +1151,16 @@ Fig. \ref{fig:TrackingStateDiagram} shows the original concept for tracking the 
 \end{figure}
 
 \subsubsection{Searching}
+Fig. \ref{fig:SearchingStateTransitionDiagram} depicts the operation of the searching algorithm. The concept is very simple: the system scans the azimuth until it reaches the maximum and minimum azimuth (user defined), and then increments the elevation. The increments for the azimuth and elevation are stored as variables, so their magnitude can be changed at any time, and it means that they are simply negated when the system reaches a maximum value, again as shown in Fig. \ref{fig:SearchingStateTransitionDiagram}. This algorithm is incremental, so it does a single pan tilt movement in the correct direction, checks the target and returns the next system state. If the system detects a target this next system state will be the tracking state, otherwise it will remain in the searching state. In this way the searching function acts as the 'state functions' described in the system design process. \newline
+Among the benefits of this system is that execution is continuously returned to the primary loop, which lowers the chance of nested infinite loops and getting stuck in sub-functions, but it also means that we are able to implement a watch dog timer simply by clearing it every loop iteration. Thus if for whatever reason the execution does not complete a loop in a few seconds or so, the entire system resets.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/Searching State Transition Diagram"}
+\caption{State Transition Diagram of the searching algorithm}
+\label{fig:SearchingStateTransitionDiagram}
+\end{figure}
+
 
 \subsubsection{Menus}
 
@@ -1192,9 +1214,10 @@ The system could be improved in many ways if the project had a longer deadline o
 \end{itemize}
 
 \chapter{Safety Implications}
-Must identify foreseeable safety hazards associated with the equipment and then assess and control th identified risks - By law (NSW Occupational Health and Safety Act 2000)
+This section outlines identified hazards associated with operating this system, their likelihood, consequences and overall severity. It then details measures taken to reduce the severity of all hazards to an acceptably low level.
 
 \section{Hazard Risk Table}
+Table \ref{RiskMatrixTable} shows the risk associated with different hazards based on the likelihood and severity of the injury. In general practise a low risk is considered acceptable, whereas anything higher should be addressed with safety measures to reduce both the likelihood and severity of the possible injury.
 
 \begin{table}[h]
 	\begin{tabular}{|l|lllll}
@@ -1209,6 +1232,60 @@ Must identify foreseeable safety hazards associated with the equipment and then 
 	\end{tabular}
 	\label{RiskMatrixTable}
 \end{table}
+
+\section{Identified Hazards}
+Below is a list of hazards identified for the product, their associated risk, and measures taken to reduce the risk.
+
+
+\subsection{Cut Hazard}
+\subsubsection{Description}
+There is a hazard that someone could cut themselves on one of the edges of the product, or poke their eye on one of the corners etc.
+
+\subsubsection{Risk}
+This hazard has a Possible to likely likelihood, and a minor consequence. This gives the hazard a risk factor of Medium.
+
+\subsubsection{Hazard Reduction Techniques}
+To reduce the likelihood of this hazard we recommend that it is kept away from small children, and used professionally, which could reduce the likelihood of this type of injury to Possible. We also smooth all the sharp edges and corners to reduce the consequence to insignificant. This reduces the severity of the hazard to an acceptably low standard.
+
+\subsection{Drop hazard}
+\subsubsection{Description}
+There is a hazard associated with people dropping the product, if it lands on them, or someone else, or breaks and produces dangerous shards etc.
+
+\subsubsection{Risk}
+This hazard has a Possible to unlikely likelihood, and a minor consequence (as the system is not particularly heavy). Thus it carries a Medium to low severity.
+
+\subsubsection{Hazard Reduction Techniques}
+To reduce the likelihood of this hazard we have ensured that the product does not contain any materials that may shatter or splinter during a typical drop scenario. We can also recommend that the product is installed (fixed down) or handled carefully to reduce the likelihood to unlikely. We have also ensured that the product is reasonably light such as to not injure someone by dropping it on someone, so it carries a minor to insignificant consequence. Thus the hazard risk is reduced to an acceptably low level.
+
+\subsection{Shock hazard}
+\subsubsection{Description}
+This hazard is separated from the electrocution hazard as it is a much more likely, but more insignificant effect. Such a shock hazard could include touching the ultrasonic sensor during operation, and getting a shock, while the electricity does really pass through you.
+
+\subsubsection{Risk}
+This hazard carries a likely to almost certain risk if being used by children or curious casual users. This hazard carries no real risk of any kind of injury, but typically more of an unpleasant shock unless amplified by some kind of conductor. Thus the hazard carries an insignificant consequence, giving a severity of medium.
+
+\subsubsection{Hazard Reduction}
+To reduce the likelihood of this hazard we can place warning labels on the ultrasonic sensor, and box, again recommend it be kept away from small children, and that aeronautical engineers should operate it under the supervision of an adult. This could reduce the likelihood of the hazard to possible to unlikely, and reducing the severity to low.
+
+\subsection{Electrocution hazard}
+\subsubsection{Description}
+There is always an electrocution risk associated with any electrical product, especially one drawing high amperage. This product however is typically battery powered and thus there is no active terminal that will flow to ground.
+
+\subsubsection{Risk}
+This hazard has a likelihood of rare, and a consequence of moderate to major. This gives a severity of medium.
+
+\subsubsection{Hazard Reduction}
+To reduce the hazard we have completely concealed the electrical components and wires in an insulating container that is not designed to be opened by a typical user. We have also used insulating wires and electrical tape to conceal connections. The product is typically battery operated, which significantly reduces the risk, and while it does not have any inbuilt fuses, circuit breakers or grounds, should it be powered from an external source (by an experienced user) it is assumed that such a source have its own safety features. Thus the consequence can be reduced to minor (possibly moderate if using an external power supply) which reduces the severity to low (possibly low to moderate with an external power supply).
+
+\subsection{Collision Hazard}
+\subsubsection{Description}
+As the system has moving parts there is a risk that it will collide with something or someone during operation.
+
+\subsubsection{Risk}
+This hazard carries a possible to likely likelihood, as the system has no sensors or safeguards to prevent such collisions. As the system is using low torque (~0.1N.m) servo's, and the system itself is quite light (e.g. would probably just turn the box) this has an insignificant consequence. This gives a low to medium severity.
+
+\subsubsection{Hazard Reduction}
+To reduce hazard we can put moving parts warning labels on the pan tilt, and recommend that users maintain some kind of distance from it. This could reduce the likelihood to possible to unlikely, giving an overall severity of low.
 
 \chapter{Conclusions}
 
