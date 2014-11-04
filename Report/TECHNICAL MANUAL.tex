@@ -2,7 +2,7 @@
 
 \usepackage{graphicx}
 \usepackage{bookmark}
-
+\usepackage{listings}
 \usepackage{multirow}
 \usepackage[table,xcdraw]{xcolor}
 
@@ -1409,5 +1409,91 @@ In conclusion, the Yavin IV Defence System
 \caption[State Diagram]{System overview state diagram}
 \label{fig:OperationStateTransitionDiagram}
 \end{figure}
+
+\section{Code}
+\lstset{language=C}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=false,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8  
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\section{CircularBuffers.h}
+\lstinputlisting{../Code/CircularBuffers.h}
+\section{Common.h}
+\lstinputlisting{../Code/Common.h}
+\section{EEPROM.c}
+\lstinputlisting{../Code/EEPROM.c}
+\section{Interrupts.c}
+\lstinputlisting{../Code/Interrupts.c}
+\section{jEEP.h}
+\lstinputlisting{../Code/jEEP.h}
+\section{LCD.h}
+\lstinputlisting{../Code/LCD.h}
+\section{LCD\_defs.h}
+\lstinputlisting{../Code/LCD_defs.h}
+\section{LCD.c}
+\lstinputlisting{../Code/LCD.c}
+\section{MenuDefs.h}
+\lstinputlisting{../Code/MenuDefs.h}
+
+\section{Menusystem.h}
+\lstinputlisting{../Code/Menusystem.h}
+
+\section{Menusystem.c}
+\lstinputlisting{../Code/Menusystem.c}
+
+\section{newmain.c}
+\lstinputlisting{../Code/newmain.c}
+
+\section{PanTilt.h}
+\lstinputlisting{../Code/PanTilt.h}
+\section{PanTilt.c}
+\lstinputlisting{../Code/PanTilt.c}
+\section{Range.h}
+\lstinputlisting{../Code/Range.h}
+\section{Range.c}
+\lstinputlisting{../Code/Range.c}
+\section{Serial.h}
+\lstinputlisting{../Code/Serial.h}
+\section{Serial.c}
+\lstinputlisting{../Code/Serial.c}
+\section{Temp.h}
+\lstinputlisting{../Code/Temp.h}
+\section{Temp.c}
+\lstinputlisting{../Code/Temp.c}
+\section{Tracking.h}
+\lstinputlisting{../Code/Tracking.h}
+\section{Tracking.c}
+\lstinputlisting{../Code/Tracking.c}
+\section{User\_Interface.h}
+\lstinputlisting{../Code/User_Interface.h}
+\section{User\_Interface.c}
+\lstinputlisting{../Code/User_Interface.c}
 
 \end{document}
