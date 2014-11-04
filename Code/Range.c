@@ -221,7 +221,7 @@ static unsigned int rangeUS(unsigned char temp)
 /*! **********************************************************************
  * Function: rangeISR(void)
  *
- * Include: ultrasonic.h
+ * Include: range.h
  *
  * Description: Called when an range related interrupt is fired, acts
  *              as the service routine for the rangefinding module.
@@ -315,22 +315,6 @@ void calibrateRange(unsigned int reference)
 }
 
 /*! **********************************************************************
- * Function: speed_sound(unsigned char tempx2)
- *
- * Include:
- *
- * Description: Returns the calibration offset to calculate the raw data
- *
- * Arguments: None
- *
- * Returns: None
- *************************************************************************/
-//unsigned int rawRange(void)
-//{
-//    return lastRange;
-//}
-
-/*! **********************************************************************
  * Function: range(void)
  *
  * Include: Range.h
@@ -346,7 +330,6 @@ void calibrateRange(unsigned int reference)
  *
  * Returns: the range
  *************************************************************************/
-//static unsigned int sampleRange(char numSamples, unsigned char rateUS, unsigned int rateIR)
 unsigned int range(void)
 {
 #define range_IR sumIR      //Come conenient name changes
@@ -410,27 +393,32 @@ unsigned int range(void)
 }
 
 /*! **********************************************************************
- * Function: range(void)
+ * Function: rawRangeIR(void)
  *
  * Include: Range.h
  *
- * @brief Samples the range
- *
- * Description: Takes a number of samples of the ultrasonic sensor at a specified
- *              rate. Continues to sample the IR sensor at a different rate while
- *              sampling the ultrasonic. Then combines the ranges and sets the
- *              target state
+ * Description: Returns the last IR range reading
  *
  * Arguments: None
  *
- * Returns: the range
+ * Returns: the range in mm
  *************************************************************************/
 unsigned int rawRangeIR(void)
 {
     return lastIRRange;
 }
 
-
+/*! **********************************************************************
+ * Function: rawRangeUS(void)
+ *
+ * Include: Range.h
+ *
+ * Description: Returns the last US range reading
+ *
+ * Arguments: None
+ *
+ * Returns: the range in mm
+ *************************************************************************/
 unsigned int rawRangeUS(void)
 {
     return lastUSRange;
@@ -570,11 +558,6 @@ static unsigned int fuseRange(unsigned int us, unsigned int ir)
     }
 }
 
-void displayAvg(void)
-{
-    
-}
-
 /*! **********************************************************************
  * Function: getMaxRange()
  *
@@ -639,21 +622,65 @@ void setMinRange(int range)
     m_minRange = range;
 }
 
+/*! **********************************************************************
+ * Function: setNumSamples()
+ *
+ * Include: Range.h
+ *
+ * Description: sets the number of samples per range estimage
+ *
+ * Arguments: the number of samples
+ *
+ * Returns: None
+ *************************************************************************/
 void setNumSamples(char samples)
 {
     numSamples = samples;
 }
 
+/*! **********************************************************************
+ * Function: getNumSamples()
+ *
+ * Include: Range.h
+ *
+ * Description: Gets the number of samples per range estimate
+ *
+ * Arguments: None
+ *
+ * Returns: The number of samples 
+ *************************************************************************/
 char getNumSamples()
 {
     return numSamples;
 }
 
+/*! **********************************************************************
+ * Function: setUsSampleRate(char sampleRate)
+ *
+ * Include: Range.h
+ *
+ * Description: Sets the ultrasonic sampling rate
+ *
+ * Arguments: the sampling rate in Hz
+ *
+ * Returns: None
+ *************************************************************************/
 void setUsSampleRate(char sampleRate)
 {
     rateUS = sampleRate;
 }
 
+/*! **********************************************************************
+ * Function: getUsSampleRate()
+ *
+ * Include: Range.h
+ *
+ * Description: Gets the sampling rate of the ultrasonic sensor
+ *
+ * Arguments:
+ *
+ * Returns: The sampling rate (In Hz)
+ *************************************************************************/
 char getUsSampleRate()
 {
     return rateUS;
