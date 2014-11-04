@@ -672,23 +672,190 @@ Which state number the ADC result was part of.
 The Rang module is responsible for sampling the range from the IR and ultrasonic sensors. It is also used to detect the object as the functions return zero if the object is out of range.
 
 \section{How It Works:}
+The range module samples the ultrasonic and infra red sensors, combines the results based on the distance to the target, and returns the result. Both the ultrasonic and infra red sampling modules use linear approximations, such as a linear approximation for the distance and the inverse of the ir output voltage, and a linear approximation for the distance and ultrasonic echo delay, and a linear approximation for the speed of sound and temperature. These approximations are not true in general, but for small deviations around a certain value they are very accurate, and much more efficient to calculate.
 
 \section{How To Use It:}
 \begin{itemize}
-	\item 
+	\item Include the Range.h header
+	\item make sure that Range.c is included in the project
+	\item call configureRange()
+	\item call range() to sample the range
+	\item call readTargetState() get the target state
 \end{itemize}
 
 \section{List of Public Functions}
 Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
 
-\subsection{}
+\subsection{configureRange}
 \subsubsection{Usage:}
+Used at the beginning of the program to configure the system to start sampling the range
 
 \subsubsection{Arguments:}
+None
 
 \subsubsection{Return Value:}
+None
+
+\subsection{Range}
+\subsubsection{Usage}
+Used anywhere after calling configureRange to sample the range
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value:}
+The distance in mm (as an unsigned integer)
+
+\subsection{readTargetState}
+\subsubsection{Usage}
+Used anywhere after calling configureRange to sample the target state
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value:}
+The target state as a TargetState enumeration defined in Common.h
+
+\subsection{GetTargetState}
+\subsubsection{Usage}
+Used after a range call to return the targetState from the last range sample
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value}
+The target state as a TargetState enumeration defined in Common.h
+
+\subsection{configureAD}
+\subsubsection{Usage}
+Used to configure the AD, such as in the temp module
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value}
+None
+
+\subsection{lastRange}
+\subsubsection{Usage}
+Used after a range (or readTargetState) call to return the range from the previous sample
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value}
+The range in mm (as an unsigned int)
 
 \section{Example Code:}
+\begin{lstlisting}
+#include "Range.h"
+
+void main(void)
+{
+	unsigned in rng;
+	
+	configureRange();
+	for (;;) 
+	{
+		readTargetState();//Sample range and return the state
+		rng = lastRange();//Return range from previous sample
+	}
+}
+\end{lstlisting}\chapter{Range}
+\section{Description}
+The Rang module is responsible for sampling the range from the IR and ultrasonic sensors. It is also used to detect the object as the functions return zero if the object is out of range.
+
+\section{How It Works:}
+The range module samples the ultrasonic and infra red sensors, combines the results based on the distance to the target, and returns the result. Both the ultrasonic and infra red sampling modules use linear approximations, such as a linear approximation for the distance and the inverse of the ir output voltage, and a linear approximation for the distance and ultrasonic echo delay, and a linear approximation for the speed of sound and temperature. These approximations are not true in general, but for small deviations around a certain value they are very accurate, and much more efficient to calculate.
+
+\section{How To Use It:}
+\begin{itemize}
+	\item Include the Range.h header
+	\item make sure that Range.c is included in the project
+	\item call configureRange()
+	\item call range() to sample the range
+	\item call readTargetState() get the target state
+\end{itemize}
+
+\section{List of Public Functions}
+Below is a definitive list of all the public functions contained in this module, their use, their arguments and their returns.
+
+\subsection{configureRange}
+\subsubsection{Usage:}
+Used at the beginning of the program to configure the system to start sampling the range
+
+\subsubsection{Arguments:}
+None
+
+\subsubsection{Return Value:}
+None
+
+\subsection{Range}
+\subsubsection{Usage}
+Used anywhere after calling configureRange to sample the range
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value:}
+The distance in mm (as an unsigned integer)
+
+\subsection{readTargetState}
+\subsubsection{Usage}
+Used anywhere after calling configureRange to sample the target state
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value:}
+The target state as a TargetState enumeration defined in Common.h
+
+\subsection{GetTargetState}
+\subsubsection{Usage}
+Used after a range call to return the targetState from the last range sample
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value}
+The target state as a TargetState enumeration defined in Common.h
+
+\subsection{configureAD}
+\subsubsection{Usage}
+Used to configure the AD, such as in the temp module
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value}
+None
+
+\subsection{lastRange}
+\subsubsection{Usage}
+Used after a range (or readTargetState) call to return the range from the previous sample
+
+\subsubsection{Arguments}
+None
+
+\subsubsection{Return Value}
+The range in mm (as an unsigned int)
+
+\section{Example Code:}
+\begin{lstlisting}
+#include "Range.h"
+
+void main(void)
+{
+	unsigned in rng;
+	
+	configureRange();
+	for (;;) 
+	{
+		readTargetState();//Sample range and return the state
+		rng = lastRange();//Return range from previous sample
+	}
+}
+\end{lstlisting}
 
 \chapter{Menu System}
 \section{Description}

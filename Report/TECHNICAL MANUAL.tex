@@ -1080,6 +1080,13 @@ The final decision in menu structure decision that had to be made was where to i
 
 The final menu structure can be seen in \ref{fig:MenuStructureDiagram}.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"../Diagrams/MenuSystem"}
+\caption[Menu Diagram]{Menu Diagram}
+\label{fig:MenuStructureDiagram}
+\end{figure}
+
 \subsection{Menu Appearance}
 Due to the limited display capabilities of the LCD hardware being used in the system, an intuitive design had to be constructed to convey information to a local user. The LCD module has the ability to write 16 characters to two lines independently. With this, the local user interface was designed so that the top row of the LCD always shows the user their current menu, such as "Azimuth Options" or "Set max range". This allows the second line of the display to be used to show the changes that the user is making, such as displaying sub-menu titles as the user scrolls through potential choices.
 
@@ -1133,7 +1140,7 @@ Description of computer hardware, including all interface circuitry to sensors, 
 
 \subsubsection{Sensor Hardware}
 The system consists of three sensors.
-\subsubsubsection{Temperature (LM35)}
+\subsubsection{Temperature (LM35)}
 The LM35 is a centigrade temperature sensor calibrated directly in Degrees Celsius. It’s also has a linear + 10 mV/°C scale factor. Only a basic configuration of the temperature sensor was used as we only need to measure between to +2°C to +150°C as shown in the figure below. We found that 0mv started at +2°C so we had to adjust the final calculations by -20mV offset to get accurate temperature readings.
 
 \begin{figure}[h]
@@ -1143,7 +1150,7 @@ The LM35 is a centigrade temperature sensor calibrated directly in Degrees Celsi
 \label{fig:tempResponse}
 \end{figure}
 
-\subsubsubsection{IR [Distance Measuring] (GP2Y0A02YK0F)}
+\subsubsection{IR [Distance Measuring] (GP2Y0A02YK0F)}
 The IR sensor used in this system is ideal for distance measuring between 20cm to 150cm. It has a non-linear analogue output that reflects the figure below. This show that if using a 10bit ADC at 5V Reference we would expect a decimal output value of around 512 for 20cm. We could use the below formula to calculate expected values for all points to compare when testing. \newline
 
 Decimal Value = (1024 / 5Vref) * (Output Voltage at given distance)
@@ -1154,7 +1161,7 @@ Decimal Value = (1024 / 5Vref) * (Output Voltage at given distance)
 \label{fig:IRresponse}
 \end{figure}
 
-\subsubsubsection{Ultrasonic (6500)}
+\subsubsection{Ultrasonic (6500)}
 This sonar ranging sensor is able to measure distances from 0.15m to 10.67m with a typical 1% error.
 We used single-echo mode in our system as we were only tracking one object and therefore only need one echo output at a time. Basically the distance between to a target is measured by the time between INIT going high and ECHO going high as seen in the figure below. The signal travels at approximately 0.274 milliseconds per meter.
 
@@ -1306,9 +1313,6 @@ Among the benefits of this system is that execution is continuously returned to 
 \label{fig:SearchingStateTransitionDiagram}
 \end{figure}
 
-
-\subsubsection{Menus}
-
 \subsection{Software Interface}
 The software interfaces for each module are described in great detail in the module descriptions document.
 
@@ -1432,7 +1436,7 @@ This hazard carries a possible to likely likelihood, as the system has no sensor
 To reduce hazard we can put moving parts warning labels on the pan tilt, and recommend that users maintain some kind of distance from it. This could reduce the likelihood to possible to unlikely, giving an overall severity of low.
 
 \chapter{Conclusions}
-In conclusion, the Yavin IV Defence System 
+In conclusion, the Yavin IV Defence System has reached it's purpose of being able to track a model of the Galactic Empire's Death Star using ultrasonic and infra-red range-finders mounter using servo motors and running software developed for a PIC18F4520 microcontroller. Whilst much of the functionality was achieved, time remaining became a large concern, the system could be improved with more time to improve the product, specifically in regards to integrating the user menu with other components.
 
 \chapter{Appendix}
 \begin{figure}
@@ -1475,57 +1479,57 @@ In conclusion, the Yavin IV Defence System
   title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
-\section{CircularBuffers.h}
+\subsection{CircularBuffers.h}
 \lstinputlisting{../Code/CircularBuffers.h}
-\section{Common.h}
+\subsection{Common.h}
 \lstinputlisting{../Code/Common.h}
-\section{EEPROM.c}
+\subsection{EEPROM.c}
 \lstinputlisting{../Code/EEPROM.c}
-\section{Interrupts.c}
+\subsection{Interrupts.c}
 \lstinputlisting{../Code/Interrupts.c}
-\section{jEEP.h}
+\subsection{jEEP.h}
 \lstinputlisting{../Code/jEEP.h}
-\section{LCD.h}
+\subsection{LCD.h}
 \lstinputlisting{../Code/LCD.h}
-\section{LCD\_defs.h}
+\subsection{LCD\_defs.h}
 \lstinputlisting{../Code/LCD_defs.h}
-\section{LCD.c}
+\subsection{LCD.c}
 \lstinputlisting{../Code/LCD.c}
-\section{MenuDefs.h}
+\subsection{MenuDefs.h}
 \lstinputlisting{../Code/MenuDefs.h}
 
-\section{Menusystem.h}
+\subsection{Menusystem.h}
 \lstinputlisting{../Code/Menusystem.h}
 
-\section{Menusystem.c}
+\subsection{Menusystem.c}
 \lstinputlisting{../Code/Menusystem.c}
 
-\section{newmain.c}
+\subsection{newmain.c}
 \lstinputlisting{../Code/newmain.c}
 
-\section{PanTilt.h}
+\subsection{PanTilt.h}
 \lstinputlisting{../Code/PanTilt.h}
-\section{PanTilt.c}
+\subsection{PanTilt.c}
 \lstinputlisting{../Code/PanTilt.c}
-\section{Range.h}
+\subsection{Range.h}
 \lstinputlisting{../Code/Range.h}
-\section{Range.c}
+\subsection{Range.c}
 \lstinputlisting{../Code/Range.c}
-\section{Serial.h}
+\subsection{Serial.h}
 \lstinputlisting{../Code/Serial.h}
-\section{Serial.c}
+\subsection{Serial.c}
 \lstinputlisting{../Code/Serial.c}
-\section{Temp.h}
+\subsection{Temp.h}
 \lstinputlisting{../Code/Temp.h}
-\section{Temp.c}
+\subsection{Temp.c}
 \lstinputlisting{../Code/Temp.c}
-\section{Tracking.h}
+\subsection{Tracking.h}
 \lstinputlisting{../Code/Tracking.h}
-\section{Tracking.c}
+\subsection{Tracking.c}
 \lstinputlisting{../Code/Tracking.c}
-\section{User\_Interface.h}
+\subsection{User\_Interface.h}
 \lstinputlisting{../Code/User_Interface.h}
-\section{User\_Interface.c}
+\subsection{User\_Interface.c}
 \lstinputlisting{../Code/User_Interface.c}
 
 \end{document}
