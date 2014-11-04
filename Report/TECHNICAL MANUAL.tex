@@ -512,17 +512,40 @@ The temperature module is responsible for sampling, storing and calibrating the 
 \section{Module Requirements: LCD}
 \subsection{Functional Requirements}
 \subsubsection{Inputs}
+%Describe each external input, including signal encoding and timing, message encoding and timing, protocols, file formats, protection against input errors, etc, as relevant.
+The LCD module requires three internal inputs written to operate effectively, a command (what operation is required to execute) or data, the command type (data or control instruction) and whether it is a read or write instruction. \newline
+This information is encoded in two control pins and eight data pins, Register Select, Read/Write and data. Once the instruction mode is determined, the command/data is decoded. The command set and its corresponding options are encoded with the most significant numbered bit determining the command, and the following bits are the particular settings altered.\newline
+These commands and data read/writes require specific understanding of the LCD and it's associated hardware, so for high level use and protection against input errors, two subroutines were written, a string write and a character write. The configuration settings were pre-configured and kept internal to the module to ensure no accidental changes could be made.
 
 \subsubsection{Processes}
+%Describe the internal signal transformations and/or computer processing functionality required within the module, required performance limits, and error tolerances as appropriate.
+
+The LCD module requires the following processes to function properly
+\begin{itemize}
+	\item Loop through a given string, writing individual characters
+	\item Appropriately increment the data address location for character display
+\end{itemize}
+
+\subsubsection{Outputs}
+%Describe outputs that must be produced for the module to function correctly, including timing, frequency, protocols, etc as relevant.
+The LCD system is an output device and is required to consistently and clearly display requested characters for the user. It must be able to display the characters/strings when user input calls them, and do so without noticeable delay or flicker. \newline
+The LCD is to display information on a 5x7 dot matrix, within a 2x16 limit. 
 
 \subsubsection{Timing}
-
-\subsubsection{Failure Modes}
+%Any required timing or latency specifications that must be met.
+The LCD has two timing requirements, the first being in regards to usability. The display must be able to update at a rate so the user does not experience any latency. This is achieved by implementing short write sequences with minimal computation.\newline
+Secondly, as the LCD processor has no internal 'queue', timing for instructions must be met to ensure there is no command overrun error. This can be achieved in two ways, calling the LCDbusy() subroutine, which waits until the current instruction has executed, or more simply, byu implementing a delay function. The latter was chosen, as errors with the busy function could not be overcome, and the delay function was simple to implement.
 
 \subsection{Implemented Basic Functionality}
+This module is able to write any character or string to the LCD display effectively, easily and without noticeable delay.
+
+\section{Non-Functional Requirements}
+
 \subsubsection{Performance}
+The LCD should be able to display required characters without delay and correctly. It should also be adaptable and easy to use, such that no technical knowledge is required to call the write function.
 
 \subsubsection{Interfaces}
+The external interfaces to this module are three subroutines, configLCD, lcdWriteChar and lcdWriteString. Through these functions, the system can interface with the entire program and the external environment.
 
 \section{Conceptual Design: LCD}
 \subsection{Description}
@@ -604,6 +627,27 @@ Set all the pins to output and set all the control pins to 0. A configuring proc
 \end{itemize}
 
      It is worth mentioning that since the first 3 commands has a fast operation speed which is about 40*$10^{-3}$ ms while the clearing screen command takes around 1 ms.  Therefore a proper delay is needed after the clearing screen command is written.
+     
+\paragraph{Writing characters to the LCD}
+This subroutine was created to ensure usability and simplicity for LCD character write operations.
+To use this function, one must:
+\begin{itemize}
+\item Pass the desired character to be written.
+\item Select the line (1 or 2) to write to.
+\item Select the column (1 through 16) to write to.
+\end{itemize}
+
+
+A local variable is set up with a value equal to the selected line. The screen write location is set by calling the instruction write. Next, the data is sent through and the character displayed on the screen. Finally, a delay is called to ensure there is no potential overwrite.
+
+\paragraph{Writing strings to the LCD}
+This subroutine was created so that a user could display an entire string on the LCD without requiring specific technical knowledge. To use this function, one must:
+\begin{itemize}
+\item Pass a pointer to the start of the desired string
+\item Select the line to display the string (1 or 2).
+\end{itemize}
+
+A local variable is set to the location of the initial write location. A loop is entered which sets the location on the screen to print the current character. The string pointer is incremented and the next character displayed. Finally a delay is initialised and the LCD cursor returned to the start of the line.
 
 \chapter{User Interface Design}
 <Give a detailed description of the design of the user interface. This will gave the reader a god view of how the system functions from the user's perspective.>
