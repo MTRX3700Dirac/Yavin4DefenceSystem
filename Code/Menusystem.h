@@ -145,10 +145,53 @@ extern const rom char maxRngSetStr[];
 extern const rom char maxRngSerialStr[];
 //
 
+/*! **********************************************************************
+ * Function: initialiseMenu(systemState *state)
+ *
+ * \brief Initialises the menu system
+ *
+ * Include: Menusystem.h
+ *
+ * Description: initialises the menu system so that it is fully operational
+ *
+ * Arguments: state - The current system state
+ *
+ * Returns: None
+ *************************************************************************/
 extern void initialiseMenu(systemState *state);
+
+/*! **********************************************************************
+ * Function: checkForSerialInput(void)
+ *
+ * Include: Menusystem
+ *
+ * Description: Checks the serial/local buffers for inputs
+ *
+ * Arguments: None
+ *
+ * Returns: 1 if input has been received, 0 otherwise
+ *************************************************************************/
 extern char checkForSerialInput(void);
-extern void menuISR(void);
+
+/*! **********************************************************************
+ * Function: serviceMenu(void)
+ *
+ * \brief services any user interface with the menu
+ *
+ * Include:
+ *
+ * Description: Checks if the user has made any inputs to the system. If not
+ *              the function simply returns. If they have then it services
+ *              the inputs, displays the correct outputs and performs the
+ *              specified actions
+ *
+ * Arguments: None
+ *
+ * Returns: None
+ *************************************************************************/
 extern void serviceMenu(void);
+
+
 extern void dispTrack(TrackingData target);
 extern void dispSearching(void);
 extern void dispRawRange(void);

@@ -214,7 +214,7 @@ char receiveEsc(void)
  *
  * Arguments: None
  *
- * Returns:
+ * Returns: Non-zero if received escape character
  *************************************************************************/
 void popEsc(void)
 {
@@ -257,7 +257,7 @@ void readString(char *string)
 }
 
 /*! **********************************************************************
- * Function: transmitted(void)
+ * Function: transmitComplete(void)
  *
  * Include: Serial.h
  *
@@ -266,7 +266,7 @@ void readString(char *string)
  *
  * Arguments: None
  *
- * Returns: None
+ * Returns: non-zero if all messages have been transmitted
  *************************************************************************/
 char transmitComplete(void)
 {

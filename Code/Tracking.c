@@ -51,7 +51,7 @@ typedef struct
 
 static char newAngle(char angle, TargetStateData target_data);
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: configureTracking(void)
  *
  * Include: Tracking.h
@@ -72,15 +72,17 @@ void configureTracking(void)
 //    OpenTimer0(T0_16BIT & T0_SOURCE_INT & T0_PS_1_256);
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: search(void)
  *
  * Include: Tracking.h
  *
  * Description: Performs an incrimental change in position. Local variables
- *              store previous movements to create a search pattern
+ *              store previous movements to create a raster-like search pattern.
+ *              Then samples the range sensors and determines the next system
+ *              state.
  *
- * Arguments: None
+ * Arguments: state - a pointer to the current system state
  *
  * Returns: None
  *************************************************************************/
@@ -98,7 +100,6 @@ void search(systemState *state)
 
     for (j = 0; j < 5000; j++);
     //If max azimuth range, increment vertical and change azimuth direction
-    //if (dir.azimuth > 40 || dir.azimuth < -40)
     if (dir.azimuth > getMaxAzimuthAngle() || dir.azimuth < getMinAzimuthAngle())
     {
         increment(vertical);                //Move up (or down) vertically 1 degree
@@ -107,14 +108,13 @@ void search(systemState *state)
         increment(lateral);
     }
     //If max inclination range, change vertical direction and increment vertical
-    //else if (dir.elevation > 10 || dir.elevation < -40)
     else if (dir.elevation > getMaxElevationAngle() || dir.elevation < getMinElevationAngle())
     {
         if (dir.elevation < 0 && dir.elevation < 0) vertical.elevation = diff; //Move in the opposite azimuth
         if (dir.elevation > 0 && dir.elevation > 0) vertical.elevation = -diff;
         increment(vertical);
     }
-    //Alse just move in azimuth
+    //Else just move in azimuth
     else
     {
         increment(lateral);
@@ -129,12 +129,13 @@ void search(systemState *state)
     }
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: trackingISR(void)
  *
  * Include: Tracking.h
  *
  * Description: Acts as the Interrupt Service Routine for the Tracking module
+ *              Not currently implemented
  *
  * Arguments: None
  *
@@ -145,15 +146,16 @@ void trackingISR(void)
     
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: track(void)
  *
  * Include: Tracking.h
  *
- * Description: Finds the Edge of the target in both the azimuth and inclination
- *              and uses this to find (and move to) the center of the target.
+ * Description: Takes a number of samples at the previous target location, and
+ *              several descrete locations around the target location and takes
+ *              a weighted average based on the sampled signal return
  *
- * Arguments: None
+ * Arguments: state - A pointer to the current system state
  *
  * Returns: TargetData - The current target information (Azimuth, inclination
  *                       and range to the target). This information is then used
@@ -175,7 +177,6 @@ TrackingData track(systemState *state)
     char angle;
     TargetStateData target_data;
 
-    //angle = 2 * TARGET_RAD * (unsigned int)57 / range();
     rng = range();
     if (rng)
     {
@@ -234,13 +235,13 @@ TrackingData track(systemState *state)
 #undef sampleTargetState
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: prediction(Direction current)
  *
  * Include: Local to Tracking.c
  *
  * Description: Predicts where the object is likely to be found based on previous
- *              movement and prediction algorithms
+ *              movement and prediction algorithms. Not currently implemented
  *
  * Arguments: current - The current position of the target
  *
@@ -255,12 +256,13 @@ static Direction prediction(Direction current)
     return next_predict;
 }
 
-/* **********************************************************************
+/*! **********************************************************************
  * Function: newAngle(void)
  *
  * Include: Local to Tracking.c
  *
- * Description: Calculates the new angle offset
+ * Description: Calculates the new angle offset - So when the target position
+ *              is better known the sampling locations are more file. Not currently implemented
  *
  * Arguments: angle - The previous angle
  *
