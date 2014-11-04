@@ -65,7 +65,7 @@ Created on 15 September 2014, 1:21 PM
 .PP
  Function: delay(void)
 .PP
-Description:
+Description:around 2 ms delay function for the proper delay added after specific commands.
 .PP
 Arguments: t -
 .PP
@@ -77,7 +77,7 @@ Include:
 .PP
  Function: \fBlcdBusy(void)\fP
 .PP
-Description:
+Description: check the busy flag(DB7) of the LCD,when 0, it means the LCD is not busy and ready to receive data
 .PP
 Arguments: None
 .PP
@@ -134,7 +134,7 @@ Include: \fBLCD\&.h\fP\&.
 .PP
  Function: \fBlcdWrite(unsigned char byte, unsigned char mode)\fP
 .PP
-Description:
+Description: the write enable function for LCD, send the data or commands to LCD and enable the LCD to do and write.
 .PP
 Arguments: byte - mode -
 .PP
@@ -155,7 +155,7 @@ Feed character, line (1 or 2), and column(1-16) Feed character string, and line 
 .PP
 Include: \fBLCD\&.h\fP
 .PP
-Description:
+Description: write a single character to LCD on the specific location(which line and which column)
 .PP
 Arguments: byte - line - column -
 .PP
@@ -167,7 +167,7 @@ Include: \fBLCD\&.h\fP\&.
 .PP
  Function: lcdWriteString(char *string, unsigned char line)
 .PP
-Description:
+Description: Write the string to the LCD on the specific line.
 .PP
 Arguments: string - line -
 .PP
