@@ -70,9 +70,9 @@ Feed character string, and line (1 or 2) Feed character string, and line (1 or 2
 .PP
 Include: \fBLCD\&.h\fP
 .PP
-Description:
+Description: Write the character data to the specific location on the LCD screen.
 .PP
-Arguments: byte - line - column -
+Arguments: byte - character written to LCD  line - line 1 or 2 column - col 1-16
 .PP
 Returns: NoneFeed character, line (1 or 2), and column(1-16) 
 .SS "void lcdWriteString (char *string, charline)"
@@ -89,9 +89,9 @@ Created on 17 September 2014, 9:01 PM
 .PP
  Function: lcdWriteString(char *string, unsigned char line)
 .PP
-Description:
+Description: Write the string on the specific line on the LCD screen
 .PP
-Arguments: string - line -
+Arguments: string - string written to LCD line - location of the string on the LCD screen.
 .PP
 Returns: NoneFeed character string, and line (1 or 2) Also include information about which row 
 .SH "Author"

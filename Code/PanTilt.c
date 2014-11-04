@@ -297,6 +297,7 @@ void setMaxAzimuthAngle(char p_angle)
 {
     azimuth_angle_max = p_angle;
 }
+
 /*! **********************************************************************
  * Function: setMinAzimuthAngle(void)
  *

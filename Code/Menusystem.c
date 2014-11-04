@@ -270,9 +270,9 @@ void initialiseMenu(systemState *state) {
 }
 
 /*! **********************************************************************
- * Function: waitForInput(void)
+ * Function: checkForSerialInput(void)
  *
- * Include:
+ * Include: Menusystem
  *
  * Description: Checks the serial/local buffers for inputs
  *

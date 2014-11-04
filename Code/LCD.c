@@ -23,7 +23,7 @@ char lcdBusy(void);                 //check busy flag
 void lcdWrite(unsigned char byte, unsigned char mode);
 
 /*! **********************************************************************
- * Function: lcdInit(void)
+ * Function: configLCD(void)
  *
  * \brief Initialises the LCD so that it can be used
  *
@@ -172,10 +172,10 @@ void lcdWrite(unsigned char byte, unsigned char mode){
  *
  * Include: LCD.h
  *
- * Description: 
+ * Description: Writes a string to the LCD at the given line
  *
- * Arguments: string -
- *            line - 
+ * Arguments: string - The string to write
+ *            line - the line to write to
  *
  * Returns: None
  *************************************************************************/
@@ -202,11 +202,11 @@ void lcdWriteString(char *string, char line){
  *
  * Include: LCD.h
  *
- * Description: 
+ * Description: Writes a character to the LCD at a given location
  *
- * Arguments: byte -
- *            line -
- *            column - 
+ * Arguments: byte - byte to write
+ *            line - line to wrtie to
+ *            column - column to write in
  *
  * Returns: None
  *************************************************************************/

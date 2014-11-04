@@ -118,7 +118,7 @@ unsigned char rawTemp(void)
 }
 
 /*! **********************************************************************
- * Function: calibrationTemp(unsigned char reference)
+ * Function: calibrateTemp(unsigned char reference)
  *
  * Include: Temp.h
  *
